@@ -23,8 +23,7 @@
     }
     .snippet {
       position: relative;
-      margin-bottom: 2rem;
-      transition: transform 0.2s ease-in-out;
+      margin-bottom: 1rem;
     }
     .copy-btn {
       position: absolute;
@@ -63,10 +62,25 @@
     }
     details summary:hover {
       background-color: #f1f1f1;
-      transform: none;
     }
     details summary::after {
       content: '';
+    }
+    .snippet-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .snippet-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+    .snippet.open .snippet-content {
+      display: block;
     }
   </style>
 </head>
@@ -85,18 +99,21 @@
         <div class="mt-3 fade-toggle" id="snippet-list">
 
           <div class="snippet">
-            <h6>Abrir/fechar transação:</h6>
-            <button class="copy-btn" title="Copiar"><i class="fas fa-copy"></i></button>
-            <pre><code class="language-php">&lt;?php
+            <div class="snippet-toggle"><i class="fas fa-plus toggle-icon"></i>Abrir/fechar transação:</div>
+            <div class="snippet-content">
+              <button class="copy-btn"><i class="fas fa-copy"></i></button>
+              <pre><code class="language-php">&lt;?php
    TTransaction::open('mini_erp');
    TTransaction::close();
 ?&gt;</code></pre>
+            </div>
           </div>
 
           <div class="snippet">
-            <h6>SQL manual:</h6>
-            <button class="copy-btn"><i class="fas fa-copy"></i></button>
-            <pre><code class="language-php">&lt;?php
+            <div class="snippet-toggle"><i class="fas fa-plus toggle-icon"></i>SQL manual:</div>
+            <div class="snippet-content">
+              <button class="copy-btn"><i class="fas fa-copy"></i></button>
+              <pre><code class="language-php">&lt;?php
    $conn = TTransaction::get();
    $result = $conn->query('SELECT id FROM bank ORDER BY id');
    $objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
@@ -106,6 +123,7 @@
       }
    }
 ?&gt;</code></pre>
+            </div>
           </div>
 
         </div>
@@ -144,6 +162,13 @@
           icon.removeClass('fa-compress').addClass('fa-expand');
         }
       }, 50);
+    });
+
+    $(document).on('click', '.snippet-toggle', function () {
+      const snippet = $(this).closest('.snippet');
+      snippet.toggleClass('open');
+      const icon = $(this).find('.toggle-icon');
+      icon.toggleClass('fa-plus fa-minus');
     });
   </script>
 </body>
