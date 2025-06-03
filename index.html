@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Snippets por linguagem e contexto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FontAwesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .section {
+      margin-bottom: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .snippet {
+      margin: 10px 0;
+      padding: 10px;
+      background: #eee;
+      border-radius: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Snippets por linguagem e contexto</h1>
+
+  <input type="text" id="search" placeholder="Filtrar snippets...">
+
+  <div class="section" id="madbuilder">
+    <h2><i class="fa-solid fa-cubes"></i> Snippets Mad[Builder]</h2>
+
+    <div class="section" data-section="bancos">
+      <h3><i class="fa-solid fa-database"></i> Bancos de dados</h3>
+      <div class="snippet">Exemplo de snippet 1</div>
+      <div class="snippet">Conexão com DB</div>
+    </div>
+
+    <div class="section" data-section="codigos">
+      <h3><i class="fa-solid fa-code"></i> Códigos</h3>
+      <div class="snippet">Validação de CPF</div>
+      <div class="snippet">Função de formatação</div>
+    </div>
+
+    <div class="section" data-section="campos">
+      <h3><i class="fa-solid fa-list"></i> Campos</h3>
+      <div class="snippet">Campo com máscara</div>
+    </div>
+
+    <div class="section" data-section="sessao">
+      <h3><i class="fa-solid fa-user-lock"></i> Sessão</h3>
+      <div class="snippet">Login do usuário</div>
+    </div>
+
+    <div class="section" data-section="janelas">
+      <h3><i class="fa-solid fa-window-maximize"></i> Janelas</h3>
+      <div class="snippet">Abertura de janela modal</div>
+    </div>
+
+    <div class="section" data-section="outros">
+      <h3><i class="fa-solid fa-ellipsis-h"></i> Outros</h3>
+      <div class="snippet">Observações gerais</div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#search').on('keyup', function () {
+        const searchTerm = $(this).val().toLowerCase();
+
+        $('.snippet').each(function () {
+          const text = $(this).text().toLowerCase();
+          $(this).toggle(text.includes(searchTerm));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
