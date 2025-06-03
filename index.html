@@ -118,11 +118,11 @@
               <button class="copy-btn"><i class="fas fa-copy"></i></button>
               <pre><code class="language-php">&lt;?php
    $conn = TTransaction::get();
-   $result = $conn->query('SELECT id FROM bank ORDER BY id');
-   $objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
+   $result = $conn-&gt;query('SELECT id FROM bank ORDER BY id');
+   $objects = $result-&gt;fetchAll(PDO::FETCH_CLASS, "stdClass");
    if($objects) {
       foreach($objects as $object) {
-         echo $object->id;
+         echo $object-&gt;id;
       }
    }
 ?&gt;</code></pre>
