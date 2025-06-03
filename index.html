@@ -15,37 +15,57 @@
       border-radius: 8px;
       padding: 1rem;
       font-size: 0.95rem;
+      display: block;
+      overflow-x: auto;
     }
     .section-icon {
       margin-right: 0.5rem;
     }
     .snippet {
       position: relative;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.2s ease-in-out;
     }
     .copy-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      bottom: 12px;
+      right: 16px;
       z-index: 10;
       border: none;
-      background: transparent;
+      background: rgba(0, 0, 0, 0.5);
       color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 0.9rem;
     }
     .copy-btn:hover {
-      color: #0d6efd;
+      background: #0d6efd;
     }
     summary {
       font-size: 1.1rem;
       cursor: pointer;
+      background: #f1f1f1;
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    summary:hover {
+      background-color: #e0e0e0;
+      transform: scale(1.02);
+    }
+    details[open] summary::after {
+      content: ' ▲';
+    }
+    details summary::after {
+      content: ' ▼';
     }
   </style>
 </head>
 <body class="bg-light text-dark p-4">
   <div class="container">
     <h1 class="mb-4">Snippets por linguagem e contexto</h1>
-    
+
     <div class="mb-3">
       <input type="text" id="search" class="form-control" placeholder="Filtrar snippets..." />
     </div>
@@ -53,7 +73,7 @@
     <section class="mb-5" id="bancos-de-dados">
       <h2><i class="fas fa-database section-icon"></i>Bancos de dados</h2>
       <details open>
-        <summary><strong>Ver snippets</strong></summary>
+        <summary><strong>Mostrar/ocultar snippets</strong></summary>
         <div class="mt-3" id="snippet-list">
 
           <div class="snippet">
@@ -80,7 +100,7 @@
 ?&gt;</code></pre>
           </div>
 
-          <!-- Repita para os demais snippets aqui... -->
+          <!-- Demais snippets seguem o mesmo padrão... -->
 
         </div>
       </details>
