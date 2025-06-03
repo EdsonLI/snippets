@@ -98,7 +98,7 @@
       <h2><i class="fas fa-database section-icon"></i>Bancos de dados</h2>
       <details open>
         <summary><i class="fas fa-compress toggle-icon"></i><strong>Mostrar/ocultar snippets</strong></summary>
-        <div class="toggle-all-btn" id="toggle-all-snippets"><i class="fas fa-expand"></i> Mostrar/ocultar todos os snippets</div>
+        <div class="toggle-all-btn" id="toggle-all-snippets"><i class="fas fa-plus toggle-icon"></i> <span id="toggle-all-label">Mostrar todos</span></div>
         <div class="mt-3 fade-toggle" id="snippet-list">
 
           <div class="snippet">
@@ -189,6 +189,16 @@
           icon.removeClass('fa-minus').addClass('fa-plus');
         }
       });
+
+      const allIcon = $('#toggle-all-snippets .toggle-icon');
+      const label = $('#toggle-all-label');
+      if (anyClosed) {
+        allIcon.removeClass('fa-plus').addClass('fa-minus');
+        label.text('Ocultar todos');
+      } else {
+        allIcon.removeClass('fa-minus').addClass('fa-plus');
+        label.text('Mostrar todos');
+      }
     });
   </script>
 </body>
