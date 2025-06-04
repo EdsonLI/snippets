@@ -117,7 +117,7 @@
     margin-bottom: 10px;
   }
 
-  .expand-all,
+  .-all,
   .collapse-all {
     background: none;
     border: none;
@@ -127,7 +127,7 @@
     font-size: 0.9em;
   }
 
-  .expand-all:hover,
+  .-all:hover,
   .collapse-all:hover {
     text-decoration: underline;
   }
@@ -153,8 +153,14 @@
       </h3>
 
       <div class="category-controls">
-        <button class="expand-all" data-target="bancos-de-dados-snippets">+ Mostrar todos</button>
-        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">- Ocultar todos</button>
+        <!-- Para mostrar todos -->
+        <button class="expand-all" data-target="bancos-de-dados-snippets">
+          <i class="fa-solid fa-chevron-down"></i> Mostrar todos
+        </button>
+        <!-- Para ocultar todos -->
+        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
+          <i class="fa-solid fa-chevron-up"></i> Ocultar todos
+        </button>
       </div>
 
       <div id="bancos-de-dados-snippets">
