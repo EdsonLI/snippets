@@ -8,7 +8,7 @@
   <!-- FontAwesome (ícones) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Highlight.js (tema escuro) -->  
+  <!-- Highlight.js (tema escuro) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
@@ -17,235 +17,272 @@
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #181818;
-    color: #e0e0e0;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #fafafa;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 30px;
-    border-radius: 6px;
-    background-color: #333;
-    border: 1px solid #333;
-    color: #fafafa;
-    font-size: 1em;
-    transition: border 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-  }
-  
-  input[type="text"]:focus {
-    outline: none;
-    border: 1.5px solid #444;
-    box-shadow: 0 0 0 2px #444a;
-  }
-  
-  .section {
-    margin-bottom: 40px;
-    background-color: #202020;
-    padding: 22px 20px 20px 20px;
-    border-radius: 10px;
-    border: 1px solid #292929;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.13);
-  }
-  
-  .section h2,
-  .section h3 {
-    border-bottom: 1px solid #292929;
-    padding-bottom: 7px;
-    display: flex;
-    align-items: center;
-    color: #fafafa;
-  }
-  
-  .section h3 i {
-    margin-right: 10px;
-    color: #b0b0b0;
-  }
-  
-  .snippet-block {
-    margin: 20px 0;
-  }
-  
-  .snippet-title {
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    color: #fafafa;
-  }
-  
-  .snippet-title i {
-    margin-right: 8px;
-    color: #b0b0b0;
-  }
-  
-  .snippet-content {
-    display: none;
-  }
-  
-  .copy-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(40, 40, 40, 0.7);
-    border: none;
-    border-radius: 4px;
-    padding: 6px 8px;
-    color: #fafafa;
-    font-size: 1.1em;
-    cursor: pointer;
-    z-index: 2;
-    transition: background 0.3s, color 0.3s, opacity 0.3s;
-    opacity: 0.7;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  
-  .copy-btn:hover, .copy-btn:focus {
-    background: #444;
-    color: #fff;
-    opacity: 1;
-  }
-  
-  .copy-btn.copied {
-    background: rgba(120, 255, 180, 0.10);
-    color: #fff;
-    opacity: 1;
-    box-shadow: 0 0 0 2px #444, 0 2px 8px 0 rgba(0,0,0,0.10);
-  }
-  
-  pre, code, .hljs {
-    background: #181818 !important;
-    color: #e0e0e0 !important;
-    border-radius: 8px;
-    border: 1px solid #292929;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-  }
-  
-  pre {
-    overflow-x: auto;
-    margin-bottom: 1.5em;
-    position: relative;
-  }
-  
-  code {
-    background: none !important;
-    color: inherit !important;
-    font-size: 15px;
-  }
-  
-  .collapse-icon {
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 0.8em;
-    color: #b0b0b0;
-  }
-  
-  .category-controls {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-    gap: 10px;
-  }
-  
-  .control-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 16px;
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    background: linear-gradient(90deg, #333 0%, #444 100%);
-    color: #fafafa;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .control-btn:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.08);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  
-  .control-btn:hover, .control-btn:focus {
-    background: linear-gradient(90deg, #444 0%, #333 100%);
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.15);
-  }
-  
-  .control-btn:active {
-    background: linear-gradient(90deg, #181818 0%, #333 100%);
-  }
-  
-  .control-btn i {
-    font-size: 1.1em;
-    transition: transform 0.2s;
-  }
-  
-  .control-btn.show i {
-    color: #aaffcc;
-    animation: swing-in 0.4s;
-  }
-  
-  .control-btn.hide i {
-    color: #ff6f91;
-    animation: swing-in 0.4s;
-  }
-  
-  @keyframes swing-in {
-    0% { transform: rotate(-20deg) scale(0.8);}
-    60% { transform: rotate(10deg) scale(1.1);}
-    100% { transform: rotate(0deg) scale(1);}
-  }
-  
-  .expand-all,
-  .collapse-all {
-    background: none;
-    border: none;
-    color: #b0b0b0;
-    cursor: pointer;
-    margin-left: 15px;
-    font-size: 0.9em;
-  }
-  
-  .expand-all:hover,
-  .collapse-all:hover {
-    text-decoration: underline;
-  }
-  
-  .hidden-category {
-    display: none;
-  }
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #181818;
+  color: #e0e0e0;
+}
+
+h1 {
+  text-align: center;
+  color: #fafafa;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  background-color: #232323;
+  border: 1px solid #333;
+  color: #fafafa;
+  font-size: 1em;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 1.5px solid #444;
+  box-shadow: 0 0 0 2px #444a;
+}
+
+.suggestions {
+  margin-bottom: 18px;
+  color: #b0b0b0;
+  font-size: 0.98em;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.suggestions span {
+  background: #232323;
+  border-radius: 4px;
+  padding: 2px 10px;
+  color: #b0b0b0;
+  border: 1px solid #292929;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.suggestions span:hover {
+  background: #444;
+  color: #fff;
+}
+
+.section {
+  margin-bottom: 40px;
+  background-color: #202020;
+  padding: 22px 20px 20px 20px;
+  border-radius: 10px;
+  border: 1px solid #292929;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.13);
+}
+
+.section h2,
+.section h3 {
+  border-bottom: 1px solid #292929;
+  padding-bottom: 7px;
+  display: flex;
+  align-items: center;
+  color: #fafafa;
+}
+
+.section h3 i {
+  margin-right: 10px;
+  color: #b0b0b0;
+}
+
+.snippet-block {
+  margin: 20px 0;
+}
+
+.snippet-title {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  color: #fafafa;
+}
+
+.snippet-title i {
+  margin-right: 8px;
+  color: #b0b0b0;
+}
+
+.snippet-content {
+  display: none;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(40, 40, 40, 0.7);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: #fafafa;
+  font-size: 1.1em;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s, color 0.3s, opacity 0.3s;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.copy-btn:hover, .copy-btn:focus {
+  background: #444;
+  color: #fff;
+  opacity: 1;
+}
+
+.copy-btn.copied {
+  background: rgba(120, 255, 180, 0.10);
+  color: #fff;
+  opacity: 1;
+  box-shadow: 0 0 0 2px #444, 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+pre, code, .hljs {
+  background: #181818 !important;
+  color: #e0e0e0 !important;
+  border-radius: 8px;
+  border: 1px solid #292929;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+pre {
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+  position: relative;
+}
+
+code {
+  background: none !important;
+  color: inherit !important;
+  font-size: 15px;
+}
+
+.collapse-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 0.8em;
+  color: #b0b0b0;
+}
+
+.category-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #333 0%, #444 100%);
+  color: #fafafa;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-btn:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.08);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.control-btn:hover, .control-btn:focus {
+  background: linear-gradient(90deg, #444 0%, #333 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.15);
+}
+
+.control-btn:active {
+  background: linear-gradient(90deg, #181818 0%, #333 100%);
+}
+
+.control-btn i {
+  font-size: 1.1em;
+  transition: transform 0.2s;
+}
+
+.control-btn.show i {
+  color: #aaffcc;
+  animation: swing-in 0.4s;
+}
+
+.control-btn.hide i {
+  color: #ff6f91;
+  animation: swing-in 0.4s;
+}
+
+@keyframes swing-in {
+  0% { transform: rotate(-20deg) scale(0.8);}
+  60% { transform: rotate(10deg) scale(1.1);}
+  100% { transform: rotate(0deg) scale(1);}
+}
+
+.expand-all,
+.collapse-all {
+  background: none;
+  border: none;
+  color: #b0b0b0;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 0.9em;
+}
+
+.expand-all:hover,
+.collapse-all:hover {
+  text-decoration: underline;
+}
+
+.hidden-category {
+  display: none;
+}
 </style>
 </head>
 <body>
 
   <h1>Snippets por linguagem e contexto</h1>
 
-  <input type="text" id="search" placeholder="Filtrar snippets...">
+  <div class="suggestions">
+    <span data-tag="#categoria">#categoria</span>
+    <span data-tag="#madbuilder">#madbuilder</span>
+    <span data-tag="#php">#php</span>
+    <span data-tag="#sql">#sql</span>
+    <span data-tag="#js">#js</span>
+    <span data-tag="#css">#css</span>
+    <span data-tag="#snippets">#snippets</span>
+  </div>
+
+  <input type="text" id="search" placeholder="Filtrar por texto ou #tag (ex: #php cadastro)">
 
   <div id="madbuilder-container"></div>
 
   <script>
     $(document).ready(function () {
+      // Sugestão de tags clicáveis
+      $('.suggestions span').on('click', function() {
+        $('#search').val($(this).data('tag') + ' ').focus().trigger('keyup');
+      });
+
       // Carrega o conteúdo externo da seção Mad[Builder]
       $('#madbuilder-container').load('snippets_madbuilder.html', function() {
         inicializarSnippets();
@@ -255,27 +292,73 @@
 
       // Função para inicializar os eventos dos snippets
       function inicializarSnippets() {
-        // Inicialização - recolher todos os snippets
         $('.snippet-content').hide();
 
-        // Pesquisa de snippets
+        // Filtro com tags
         $('#search').off('keyup').on('keyup', function () {
-          const searchTerm = $(this).val().toLowerCase();
+          const searchTerm = $(this).val().toLowerCase().trim();
+          let tag = null;
+          let term = searchTerm;
 
-          if (searchTerm === '') {
+          // Detecta se começa com #
+          if (searchTerm.startsWith('#')) {
+            const parts = searchTerm.split(' ');
+            tag = parts[0].replace('#', '');
+            term = parts.slice(1).join(' ');
+          }
+
+          if (!tag && !term) {
             $('.section').removeClass('hidden-category');
             $('.snippet-block').show();
-          } else {
-            $('.snippet-block').each(function () {
-              const text = $(this).text().toLowerCase();
-              $(this).toggle(text.includes(searchTerm));
-            });
-
-            $('.section').each(function() {
-              const visibleSnippets = $(this).find('.snippet-block:visible').length;
-              $(this).toggleClass('hidden-category', visibleSnippets === 0);
-            });
+            return;
           }
+
+          $('.section').each(function () {
+            let showSection = false;
+
+            // Filtro por categoria
+            if (tag === 'categoria' || tag === 'categorias') {
+              const sectionTitle = $(this).find('h2,h3').text().toLowerCase();
+              showSection = sectionTitle.includes(term);
+              $(this).toggleClass('hidden-category', !showSection);
+              if (showSection) $(this).find('.snippet-block').show();
+              else $(this).find('.snippet-block').hide();
+              return;
+            }
+
+            // Filtro por seção (ex: madbuilder)
+            if (tag === 'madbuilder') {
+              showSection = $(this).data('tags') && $(this).data('tags').includes('madbuilder');
+              $(this).toggleClass('hidden-category', !showSection);
+              if (showSection) $(this).find('.snippet-block').show();
+              else $(this).find('.snippet-block').hide();
+              return;
+            }
+
+            // Filtro por linguagem
+            if (['php','sql','js','css'].includes(tag)) {
+              $(this).removeClass('hidden-category');
+              $(this).find('.snippet-block').each(function () {
+                const tags = ($(this).data('tags') || '').toLowerCase();
+                const text = $(this).text().toLowerCase();
+                const match = tags.includes(tag) && (!term || text.includes(term));
+                $(this).toggle(match);
+                if (match) showSection = true;
+              });
+              $(this).toggleClass('hidden-category', !showSection);
+              return;
+            }
+
+            // Filtro geral (sem tag)
+            $(this).removeClass('hidden-category');
+            $(this).find('.snippet-block').each(function () {
+              const text = $(this).text().toLowerCase();
+              const match = text.includes(term);
+              $(this).toggle(match);
+              if (match) showSection = true;
+            });
+            $(this).toggleClass('hidden-category', !showSection);
+          });
         });
 
         // Toggle individual snippet
@@ -356,10 +439,15 @@
         });
 
         // Evento de copiar
-        // Evento de copiar
         $('.copy-btn').off('click').on('click', function (e) {
           e.stopPropagation();
-          const code = $(this).siblings('code').text();
+          let code = $(this).siblings('code').text();
+
+          // Remove tags de abertura/fechamento PHP
+          code = code.replace(/^\s*<\?php\s*/i, '').replace(/\s*\?>\s*$/i, '');
+          // Remove linhas em branco no início/fim
+          code = code.replace(/^\s+|\s+$/g, '');
+
           const btn = $(this);
           navigator.clipboard.writeText(code)
             .then(() => {
@@ -373,9 +461,6 @@
             });
         });
       }
-
-      // Se quiser que a busca funcione mesmo antes de carregar, pode chamar inicializarSnippets() aqui também
-      // inicializarSnippets();
     });
   </script>
 
