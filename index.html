@@ -135,6 +135,20 @@
   .hidden-category {
     display: none;
   }
+.toggle-all {
+  background: none;
+  border: none;
+  color: #66aaff;
+  cursor: pointer;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggle-all:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -307,9 +321,9 @@
       </h3>
 
       <div class="category-controls">
-  <button class="expand-all" data-target="bancos-de-dados-snippets">Expandir todos</button>
-  <button class="collapse-all" data-target="bancos-de-dados-snippets">Recolher todos</button>
-</div>
+        <button class="expand-all" data-target="bancos-de-dados-snippets">Expandir todos</button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets">Recolher todos</button>
+      </div>
 
       <div id="bancos-de-dados-snippets">
         <div class="snippet-block">
