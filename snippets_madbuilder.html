@@ -1,33 +1,352 @@
 <div class="section" id="madbuilder" data-tags="madbuilder">
-    <h2><i class="fa-solid fa-cubes"></i> Snippets Mad[Builder]</h2>
+  <h2><i class="fa-solid fa-cubes"></i> Snippets Mad[Builder]</h2>
 
-    <div class="section" id="bancos-de-dados" data-tags="categoria bancos sql php">
-      <h3>
-        <i class="fa-solid fa-database"></i> Bancos de dados
-        <i class="fa-solid fa-chevron-down collapse-icon" data-target="bancos-de-dados-snippets"></i>
-      </h3>
-      <div class="category-controls">
-        <button class="expand-all" data-target="bancos-de-dados-snippets">
+  <!-- Categoria: Bancos de dados -->
+  <div class="section" id="bancos-de-dados" data-tags="categoria bancos sql php">
+    <h3>
+      <i class="fa-solid fa-database"></i> Bancos de dados
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="bancos-de-dados-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="bancos-de-dados-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="bancos-de-dados-snippets">
+      <div class="snippet-block" data-tags="php sql banco transacao">
+        <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Mostrar todos</strong>
-        </button>
-        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
-          <i class="fa-solid fa-minus"></i>
-          <strong>Ocultar todos</strong>
-        </button>
-      </div>
-
-      <div id="bancos-de-dados-snippets">
-        <div class="snippet-block" data-tags="php sql banco transacao">
-          <div class="snippet-title">
-            <i class="fa-solid fa-plus"></i>
-            <strong>Abrir/fechar transação:</strong>
-          </div>
-          <div class="snippet-content">
-            <pre><code class="language-php">&lt;?php
-   TTransaction::open('mini_erp');
-   TTransaction::close();
-?&gt;</code></pre>
-          </div>
+          <strong>Abrir/fechar transação:</strong>
         </div>
-        <!-- ...repita para os outros snippets, mudando data-tags conforme o contexto... -->
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+TTransaction::open('mini_erp');
+TTransaction::close();
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php sql banco select">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>SQL manual:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$conn = TTransaction::get();
+$result = $conn->query('SELECT id FROM bank ORDER BY id');
+$objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
+if($objects) {
+  foreach($objects as $object) { 
+    echo $object->id;
+  }    
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php banco insert">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Inserir registro:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objeto = new Bank();
+$objeto->campo = 'valor';
+$objeto->store();
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php banco find id">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar registro pelo id:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php $objeto = Bank::find( $id ); ?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php banco where coluna">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar registro por outra coluna:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php $objeto = Bank::where('coluna', '=', $valor)->first(); ?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php banco update alterar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Alterar registro pelo id:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objeto = Bank::find( $id );
+if($objeto) {
+  $objeto->coluna = 'valor';
+  $objeto->store();    
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: Campos -->
+  <div class="section" id="campos" data-tags="categoria campos php">
+    <h3>
+      <i class="fa-solid fa-cogs"></i> Campos
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="campos-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="campos-snippets">
+      <div class="snippet-block" data-tags="php campo criar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Definir campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$campo = new Campo('nome', 'string');
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php campo validar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$campo->validar('required');
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php campo valor get">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter valor do campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$valor = $campo->getValor();
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php campo valor set">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Definir valor do campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$campo->setValor('novo valor');
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php campo remover">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Remover campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$campo->remover();
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="php campo listar loop">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Listar campos:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$campos = Campo::listar();
+foreach ($campos as $campo) {
+    echo $campo->getNome();
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: SQL -->
+  <div class="section" id="sql" data-tags="categoria sql banco">
+    <h3>
+      <i class="fa-solid fa-database"></i> SQL
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="sql-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="sql-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="sql-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="sql-snippets">
+      <div class="snippet-block" data-tags="sql select">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>SELECT simples:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-sql">SELECT * FROM usuarios WHERE ativo = 1;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="sql insert">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>INSERT:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-sql">INSERT INTO usuarios (nome, email) VALUES ('João', 'joao@email.com');</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="sql update">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>UPDATE:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-sql">UPDATE usuarios SET ativo = 0 WHERE id = 5;</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="sql delete">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>DELETE:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-sql">DELETE FROM usuarios WHERE id = 10;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: JavaScript -->
+  <div class="section" id="javascript" data-tags="categoria js javascript">
+    <h3>
+      <i class="fa-brands fa-js"></i> JavaScript
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="js-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="js-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="js-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="js-snippets">
+      <div class="snippet-block" data-tags="js array map">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mapeando array:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-js">const nomes = ['Ana', 'Bia', 'Carlos'];
+const maiusculos = nomes.map(nome => nome.toUpperCase());</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="js fetch api">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Requisição fetch:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-js">fetch('/api/dados')
+  .then(resp => resp.json())
+  .then(data => console.log(data));</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="js function arrow">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Função arrow:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-js">const soma = (a, b) => a + b;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: CSS -->
+  <div class="section" id="css" data-tags="categoria css estilo">
+    <h3>
+      <i class="fa-brands fa-css3-alt"></i> CSS
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="css-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="css-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="css-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="css-snippets">
+      <div class="snippet-block" data-tags="css flexbox centralizar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Centralizar com Flexbox:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-css">.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="css grid layout">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Grid layout:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+}</code></pre>
+        </div>
+      </div>
+      <div class="snippet-block" data-tags="css hover efeito">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Efeito hover:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-css">.botao:hover {
+  background: #333;
+  color: #fff;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
