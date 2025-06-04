@@ -1,0 +1,199 @@
+<div class="section" id="madbuilder">
+    <h2><i class="fa-solid fa-cubes"></i> Snippets Mad[Builder]</h2>
+
+    <div class="section" id="bancos-de-dados">
+      <h3>
+        <i class="fa-solid fa-database"></i> Bancos de dados
+        <i class="fa-solid fa-chevron-down collapse-icon" data-target="bancos-de-dados-snippets"></i>
+      </h3>
+      <div class="category-controls">
+        <button class="expand-all" data-target="bancos-de-dados-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
+      </div>
+
+      <div id="bancos-de-dados-snippets">
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Abrir/fechar transação:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   TTransaction::open('mini_erp');
+   TTransaction::close();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>SQL manual:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $conn = TTransaction::get();
+   $result = $conn->query('SELECT id FROM bank ORDER BY id');
+   $objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
+   if($objects) {
+      foreach($objects as $object) { 
+         echo $object->id;
+      }    
+   }
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Inserir registro:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $objeto = new Bank();
+   $objeto->campo = 'valor';
+   $objeto->store();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Carregar registro pelo id:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php $objeto = Bank::find( $id ); ?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Carregar registro por outra coluna:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php $objeto = Bank::where('coluna', '=', $valor)->first(); ?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Alterar registro pelo id:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $objeto = Bank::find( $id );
+   if($objeto) {
+      $objeto->coluna = 'valor';
+      $objeto->store();    
+   }
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="campos">
+      <h3>
+        <i class="fa-solid fa-cogs"></i> Campos
+        <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
+      </h3>
+
+      <div class="category-controls">
+        <button class="expand-all" data-target="campos-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
+      </div>
+
+      <div id="campos-snippets">
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Definir campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo = new Campo('nome', 'string');
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Validar campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo->validar('required');
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Obter valor do campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $valor = $campo->getValor();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Definir valor do campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo->setValor('novo valor');
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Remover campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo->remover();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Listar campos:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campos = Campo::listar();
+   foreach ($campos as $campo) {
+       echo $campo->getNome();
+   }
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
