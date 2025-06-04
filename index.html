@@ -153,8 +153,8 @@
       </h3>
 
       <div class="category-controls">
-        <button class="expand-all" data-target="bancos-de-dados-snippets">Expandir todos</button>
-        <button class="collapse-all" data-target="bancos-de-dados-snippets">Recolher todos</button>
+        <button class="expand-all" data-target="bancos-de-dados-snippets">+ Mostrar todos</button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">- Ocultar todos</button>
       </div>
 
       <div id="bancos-de-dados-snippets">
@@ -249,8 +249,8 @@
       </h3>
 
       <div class="category-controls">
-        <button class="expand-all" data-target="campos-snippets">Expandir todos</button>
-        <button class="collapse-all" data-target="campos-snippets">Recolher todos</button>
+        <button class="expand-all" data-target="campos-snippets">+ Mostrar todos</button>
+        <button class="collapse-all" data-target="campos-snippets" style="display:none;">- Ocultar todos</button>
       </div>
 
       <div id="campos-snippets">
@@ -336,11 +336,15 @@
     $(document).ready(function () {
       // Inicialização - recolher todos os snippets
       $('.snippet-content').hide();
-      
+
+      // Inicialização dos botões: só mostrar "+ Mostrar todos"
+      $('.expand-all').show();
+      $('.collapse-all').hide();
+
       // Pesquisa de snippets
       $('#search').on('keyup', function () {
         const searchTerm = $(this).val().toLowerCase();
-        
+
         if (searchTerm === '') {
           // Mostrar todas as categorias quando a pesquisa está vazia
           $('.section').removeClass('hidden-category');
@@ -351,7 +355,7 @@
             const text = $(this).text().toLowerCase();
             $(this).toggle(text.includes(searchTerm));
           });
-          
+
           // Esconder categorias vazias
           $('.section').each(function() {
             const visibleSnippets = $(this).find('.snippet-block:visible').length;
@@ -359,26 +363,26 @@
           });
         }
       });
-      
+
       // Toggle individual snippet
       $('.snippet-title').on('click', function () {
         const content = $(this).next('.snippet-content');
         const icon = $(this).find('i:first');
-        
+
         content.slideToggle(200);
-        
+
         if (icon.hasClass('fa-plus')) {
           icon.removeClass('fa-plus').addClass('fa-minus');
         } else {
           icon.removeClass('fa-minus').addClass('fa-plus');
         }
       });
-      
+
       // Toggle categoria inteira
       $('.collapse-icon').on('click', function () {
         const targetId = $(this).data('target');
         const targetDiv = $('#' + targetId);
-        
+
         if ($(this).hasClass('fa-chevron-down')) {
           // Esconder todos os snippets
           targetDiv.slideUp(200);
@@ -389,37 +393,43 @@
           $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
         }
       });
-      
+
       // Expandir todos os snippets em uma categoria
       $('.expand-all').on('click', function () {
         const targetId = $(this).data('target');
         const snippets = $('#' + targetId + ' .snippet-content');
         const icons = $('#' + targetId + ' .snippet-title i:first-child');
-        
+        const controls = $(this).closest('.category-controls');
+
         snippets.slideDown(200);
         icons.removeClass('fa-plus').addClass('fa-minus');
+        controls.find('.expand-all').hide();
+        controls.find('.collapse-all').show();
       });
-      
+
       // Recolher todos os snippets em uma categoria
       $('.collapse-all').on('click', function () {
         const targetId = $(this).data('target');
         const snippets = $('#' + targetId + ' .snippet-content');
         const icons = $('#' + targetId + ' .snippet-title i:first-child');
-        
+        const controls = $(this).closest('.category-controls');
+
         snippets.slideUp(200);
         icons.removeClass('fa-minus').addClass('fa-plus');
+        controls.find('.collapse-all').hide();
+        controls.find('.expand-all').show();
       });
-      
+
       // Botão de copiar código
       $('.copy-btn').on('click', function (e) {
         e.stopPropagation(); // Prevenir que o click propague para o snippet-title
-        
+
         const code = $(this).prev('code').text();
         navigator.clipboard.writeText(code)
           .then(() => {
             const originalText = $(this).text();
             $(this).text('Copiado!');
-            
+
             setTimeout(() => {
               $(this).text(originalText);
             }, 1500);
@@ -428,7 +438,7 @@
             console.error('Erro ao copiar: ', err);
           });
       });
-      
+
       // Re-aplicar highlight.js após alterações dinâmicas
       $('.snippet-title').on('click', function() {
         setTimeout(function() {
