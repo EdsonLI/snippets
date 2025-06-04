@@ -18,9 +18,88 @@
       </button>
     </div>
     <div id="bancos-de-dados-snippets">
-      <!-- Snippets existentes -->
+      <div class="snippet-block" data-tags="php sql banco transacao">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Abrir/fechar transação:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+TTransaction::open('mini_erp');
+TTransaction::close();
+?&gt;</code></pre>
+        </div>
+      </div>
       
-      <!-- Snippets adicionais para Bancos de dados -->
+      <div class="snippet-block" data-tags="php sql banco select">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>SQL manual:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$conn = TTransaction::get();
+$result = $conn->query('SELECT id FROM bank ORDER BY id');
+$objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
+if($objects) {
+  foreach($objects as $object) { 
+    echo $object->id;
+  }    
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco insert">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Inserir registro:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objeto = new Bank();
+$objeto->campo = 'valor';
+$objeto->store();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco find id">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar registro pelo id:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php $objeto = Bank::find( $id ); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco where coluna">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar registro por outra coluna:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php $objeto = Bank::where('coluna', '=', $valor)->first(); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco update alterar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Alterar registro pelo id:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objeto = Bank::find( $id );
+if($objeto) {
+  $objeto->coluna = 'valor';
+  $objeto->store();    
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
       <div class="snippet-block" data-tags="php banco delete deletar">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
@@ -181,13 +260,109 @@ $array = Bank::where('coluna',  '=', $valor)
     </div>
   </div>
 
-  <!-- Categoria: Campos - já existe no código, adicionar campos complementares -->
-  <div class="section" id="campos" data-tags="categoria campos php">
-    <!-- ... mantendo o código existente ... -->
-    <div id="campos-snippets">
-      <!-- ... mantendo os snippets existentes ... -->
+  <!-- Categoria: Códigos -->
+  <div class="section" id="codigos" data-tags="categoria codigos php">
+    <h3>
+      <i class="fa-solid fa-code"></i> Códigos
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="codigos-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="codigos-snippets">
+      <div class="snippet-block" data-tags="php lista registros selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter array de registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+     $bank = new Bank($check_id);
+  }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
       
-      <!-- Adicionando campos faltantes -->
+      <div class="snippet-block" data-tags="php lista deletar selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Deletar registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+     $bank = new Bank($check_id);
+     $bank->delete();
+   }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php lista editar selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Editar registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+      $bank = new Bank($check_id);
+      $bank->nome_da_coluna1 = 'novo valor';
+      $bank->nome_da_coluna2 = 'novo valor';
+      $bank->store();
+  }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php clonar registro">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Clonar registro:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$bank = new Bank();
+$bankClone = clone $bank;
+unset($bankClone->id);
+$bankClone->store();
+?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: Campos -->
+  <div class="section" id="campos" data-tags="categoria campos php">
+    <h3>
+      <i class="fa-solid fa-cogs"></i> Campos
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="campos-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="campos-snippets">
       <div class="snippet-block" data-tags="php campo habilitar">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
@@ -338,92 +513,6 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php (new TEmailValidator())->validate('E-mail', $data->email); ?&gt;</code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categoria: Códigos -->
-  <div class="section" id="codigos" data-tags="categoria codigos php">
-    <h3>
-      <i class="fa-solid fa-code"></i> Códigos
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="codigos-snippets">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
-        <i class="fa-solid fa-minus"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div id="codigos-snippets">
-      <div class="snippet-block" data-tags="php lista registros selecionados">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Obter array de registros selecionados na listagem:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-     $bank = new Bank($check_id);
-  }
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      
-      <div class="snippet-block" data-tags="php lista deletar selecionados">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Deletar registros selecionados na listagem:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-     $bank = new Bank($check_id);
-     $bank->delete();
-   }
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      
-      <div class="snippet-block" data-tags="php lista editar selecionados">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Editar registros selecionados na listagem:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-      $bank = new Bank($check_id);
-      $bank->nome_da_coluna1 = 'novo valor';
-      $bank->nome_da_coluna2 = 'novo valor';
-      $bank->store();
-  }
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      
-      <div class="snippet-block" data-tags="php clonar registro">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Clonar registro:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-$bank = new Bank();
-$bankClone = clone $bank;
-unset($bankClone->id);
-$bankClone->store();
-?&gt;</code></pre>
         </div>
       </div>
     </div>
