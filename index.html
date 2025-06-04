@@ -282,40 +282,39 @@ code {
       $('.suggestions span').on('click', function() {
         $('#search').val($(this).data('tag') + ' ').focus().trigger('keyup');
       });
-
+    
       // Carrega o conteúdo externo da seção Mad[Builder]
       $('#madbuilder-container').load('snippets_madbuilder.html', function() {
         inicializarSnippets();
         hljs.highlightAll();
         adicionarBotoesCopiar();
       });
-
-      // Função para inicializar os eventos dos snippets
+    
       function inicializarSnippets() {
         $('.snippet-content').hide();
-
+    
         // Filtro com tags
         $('#search').off('keyup').on('keyup', function () {
           const searchTerm = $(this).val().toLowerCase().trim();
           let tag = null;
           let term = searchTerm;
-
+    
           // Detecta se começa com #
           if (searchTerm.startsWith('#')) {
             const parts = searchTerm.split(' ');
             tag = parts[0].replace('#', '');
-            term = parts.slice(1).join(' ');
+            term = parts.slice(1).join(' ').trim();
           }
-
+    
           if (!tag && !term) {
             $('.section').removeClass('hidden-category');
             $('.snippet-block').show();
             return;
           }
-
+    
           $('.section').each(function () {
             let showSection = false;
-
+    
             // Filtro por categoria
             if (tag === 'categoria' || tag === 'categorias') {
               const sectionTitle = $(this).find('h2,h3').text().toLowerCase();
@@ -325,30 +324,41 @@ code {
               else $(this).find('.snippet-block').hide();
               return;
             }
-
+    
             // Filtro por seção (ex: madbuilder)
             if (tag === 'madbuilder') {
               showSection = $(this).data('tags') && $(this).data('tags').includes('madbuilder');
               $(this).toggleClass('hidden-category', !showSection);
-              if (showSection) $(this).find('.snippet-block').show();
-              else $(this).find('.snippet-block').hide();
+    
+              if (showSection) {
+                // Filtra os snippets internos pelo termo, se houver
+                $(this).find('.snippet-block').each(function () {
+                  const tags = ($(this).data('tags') || '').toLowerCase();
+                  const text = $(this).text().toLowerCase();
+                  const match = !term || tags.includes(term) || text.includes(term);
+                  $(this).toggle(match);
+                  if (match) showSection = true;
+                });
+              } else {
+                $(this).find('.snippet-block').hide();
+              }
               return;
             }
-
+    
             // Filtro por linguagem
             if (['php','sql','js','css'].includes(tag)) {
               $(this).removeClass('hidden-category');
               $(this).find('.snippet-block').each(function () {
                 const tags = ($(this).data('tags') || '').toLowerCase();
                 const text = $(this).text().toLowerCase();
-                const match = tags.includes(tag) && (!term || text.includes(term));
+                const match = tags.includes(tag) && (!term || tags.includes(term) || text.includes(term));
                 $(this).toggle(match);
                 if (match) showSection = true;
               });
               $(this).toggleClass('hidden-category', !showSection);
               return;
             }
-
+    
             // Filtro geral (sem tag)
             $(this).removeClass('hidden-category');
             $(this).find('.snippet-block').each(function () {
@@ -360,35 +370,35 @@ code {
             $(this).toggleClass('hidden-category', !showSection);
           });
         });
-
+    
         // Toggle individual snippet
         $('.snippet-title').off('click').on('click', function () {
           const content = $(this).next('.snippet-content');
           const icon = $(this).find('i:first');
-
+    
           content.slideToggle(200);
-
+    
           if (icon.hasClass('fa-plus')) {
             icon.removeClass('fa-plus').addClass('fa-minus');
           } else {
             icon.removeClass('fa-minus').addClass('fa-plus');
           }
-
+    
           setTimeout(function() {
             hljs.highlightAll();
             adicionarBotoesCopiar();
           }, 200);
         });
-
+    
         // Toggle categoria inteira
         $('.collapse-icon').off('click').on('click', function () {
           const targetId = $(this).data('target');
           const targetDiv = $('#' + targetId);
-
+    
           const parent = $(this).closest('.section');
           parent.find('.expand-all').show();
           parent.find('.collapse-all').hide();
-
+    
           if ($(this).hasClass('fa-chevron-down')) {
             targetDiv.slideUp(200);
             $(this).removeClass('fa-chevron-down').addClass('fa-chevron-right');
@@ -397,57 +407,57 @@ code {
             $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
           }
         });
-
+    
         // Expandir todos os snippets em uma categoria
         $('.expand-all').off('click').on('click', function () {
           const targetId = $(this).data('target');
           const snippets = $('#' + targetId + ' .snippet-content');
           const icons = $('#' + targetId + ' .snippet-title i:first-child');
-
+    
           snippets.slideDown(200);
           icons.removeClass('fa-plus').addClass('fa-minus');
-
+    
           $(this).hide();
           $(this).siblings('.collapse-all').show();
         });
-
+    
         // Recolher todos os snippets em uma categoria
         $('.collapse-all').off('click').on('click', function () {
           const targetId = $(this).data('target');
           const snippets = $('#' + targetId + ' .snippet-content');
           const icons = $('#' + targetId + ' .snippet-title i:first-child');
-
+    
           snippets.slideUp(200);
           icons.removeClass('fa-minus').addClass('fa-plus');
-
+    
           $(this).hide();
           $(this).siblings('.expand-all').show();
         });
       }
-
+    
       // Função para adicionar botões de copiar nos blocos de código
       function adicionarBotoesCopiar() {
         // Remove botões duplicados
         $('pre').each(function () {
           $(this).find('.copy-btn').remove();
         });
-
+    
         // Adiciona botão de copiar em cada bloco <pre>
         $('pre').each(function () {
           const btn = $('<button class="copy-btn" title="Copiar"><i class="fa-regular fa-copy"></i></button>');
           $(this).prepend(btn);
         });
-
+    
         // Evento de copiar
         $('.copy-btn').off('click').on('click', function (e) {
           e.stopPropagation();
           let code = $(this).siblings('code').text();
-
+    
           // Remove tags de abertura/fechamento PHP
           code = code.replace(/^\s*<\?php\s*/i, '').replace(/\s*\?>\s*$/i, '');
           // Remove linhas em branco no início/fim
           code = code.replace(/^\s+|\s+$/g, '');
-
+    
           const btn = $(this);
           navigator.clipboard.writeText(code)
             .then(() => {
@@ -462,7 +472,7 @@ code {
         });
       }
     });
-  </script>
+    </script>
 
 </body>
 </html>
