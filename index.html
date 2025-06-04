@@ -106,22 +106,24 @@
     font-size: 1.1em;
     cursor: pointer;
     z-index: 2;
-    transition: background 0.2s, color 0.2s, opacity 0.2s;
+    transition: background 0.3s, color 0.3s, opacity 0.3s;
     opacity: 0.7;
     display: flex;
     align-items: center;
     gap: 4px;
   }
-
+  
   .copy-btn:hover, .copy-btn:focus {
     background: #2d82f7;
     color: #fff;
     opacity: 1;
   }
-
+  
   .copy-btn.copied {
-    background: #47e8d4;
-    color: #23272e;
+    background: rgba(80, 255, 180, 0.18);
+    color: #fff;
+    opacity: 1;
+    box-shadow: 0 0 0 2px #47e8d4, 0 2px 8px 0 rgba(0,0,0,0.10);
   }
 
   .category-controls {
@@ -347,17 +349,14 @@
         // Evento de copiar
         $('.copy-btn').off('click').on('click', function (e) {
           e.stopPropagation();
-          // Pega o texto do <code> dentro do <pre>
           const code = $(this).siblings('code').text();
           const btn = $(this);
           navigator.clipboard.writeText(code)
             .then(() => {
               btn.addClass('copied');
-              btn.find('i').removeClass('fa-copy').addClass('fa-check');
               setTimeout(() => {
                 btn.removeClass('copied');
-                btn.find('i').removeClass('fa-check').addClass('fa-copy');
-              }, 1200);
+              }, 1000);
             })
             .catch(err => {
               console.error('Erro ao copiar: ', err);
