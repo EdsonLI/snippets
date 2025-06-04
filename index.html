@@ -16,85 +16,136 @@
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #ddd;
+  }
 
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
-    h1 { text-align: center; }
-    input[type="text"] { width: 100%; padding: 10px; margin-bottom: 30px; border-radius: 5px; border: 1px solid #ccc; }
-    .section { margin-bottom: 40px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .section h2, .section h3 { border-bottom: 2px solid #ddd; padding-bottom: 5px; display: flex; align-items: center; }
-    .section h3 i { margin-right: 10px; }
-    .snippet-block { margin: 20px 0; }
-    pre { background: #2d2d2d; color: #ccc; padding: 10px; border-radius: 5px; overflow: auto; position: relative; }
-    code { font-size: 14px; }
-    
-    .collapse-icon { 
-      cursor: pointer; 
-      margin-left: 10px;
-      font-size: 0.8em;
-    }
-    
-    .snippet-content {
-      display: none;
-    }
-    
-    .snippet-title {
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      align-items: center;
-    }
-    
-    .snippet-title i {
-      margin-right: 8px;
-    }
-    
-    .copy-btn {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: rgba(255,255,255,0.2);
-      border: none;
-      border-radius: 3px;
-      padding: 2px 8px;
-      color: #fff;
-      font-size: 12px;
-      cursor: pointer;
-    }
-    
-    .copy-btn:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    
-    .category-controls {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 10px;
-    }
-    
-    .expand-all, .collapse-all {
-      background: none;
-      border: none;
-      color: #0066cc;
-      cursor: pointer;
-      margin-left: 15px;
-      font-size: 0.9em;
-    }
-    
-    .expand-all:hover, .collapse-all:hover {
-      text-decoration: underline;
-    }
+  h1 {
+    text-align: center;
+    color: #fff;
+  }
 
-    .hidden-category {
-      display: none;
-    }
-.section {
-  margin-bottom: 30px;
-  background: #ffffff;
-  padding: 16px;
-  border-radius: 8px;
-}
-  </style>
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    color: #eee;
+  }
+
+  .section {
+    margin-bottom: 40px;
+    background-color: #2b2b2b;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .section h2,
+  .section h3 {
+    border-bottom: 1px solid #3a3a3a;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+
+  .section h3 i {
+    margin-right: 10px;
+    color: #888;
+  }
+
+  .snippet-block {
+    margin: 20px 0;
+  }
+
+  pre {
+    background-color: #1a1a1a;
+    color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    position: relative;
+    border: 1px solid #333;
+  }
+
+  code {
+    font-size: 14px;
+  }
+
+  .collapse-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 0.8em;
+    color: #aaa;
+  }
+
+  .snippet-content {
+    display: none;
+  }
+
+  .snippet-title {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    color: #eee;
+  }
+
+  .snippet-title i {
+    margin-right: 8px;
+    color: #bbb;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    padding: 2px 8px;
+    color: #ccc;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .copy-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .category-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .expand-all,
+  .collapse-all {
+    background: none;
+    border: none;
+    color: #66aaff;
+    cursor: pointer;
+    margin-left: 15px;
+    font-size: 0.9em;
+  }
+
+  .expand-all:hover,
+  .collapse-all:hover {
+    text-decoration: underline;
+  }
+
+  .hidden-category {
+    display: none;
+  }
+</style>
 </head>
 <body>
 
