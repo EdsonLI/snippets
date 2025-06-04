@@ -349,7 +349,18 @@
         // Evento de copiar
         $('.copy-btn').off('click').on('click', function (e) {
           e.stopPropagation();
-          const code = $(this).siblings('code').text();
+          let code = $(this).prev('code').text();
+        
+          // Remove tags de abertura/fechamento comuns
+          // PHP
+          code = code.replace(/^\s*<\?php\s*/i, '').replace(/\s*\?>\s*$/i, '');
+          // SQL (exemplo: não faz nada, mas pode adicionar se quiser)
+          // CSS (exemplo: não faz nada, mas pode adicionar se quiser)
+          // JS (exemplo: não faz nada, mas pode adicionar se quiser)
+        
+          // Remove linhas em branco no início/fim
+          code = code.replace(/^\s+|\s+$/g, '');
+        
           const btn = $(this);
           navigator.clipboard.writeText(code)
             .then(() => {
@@ -361,7 +372,7 @@
             .catch(err => {
               console.error('Erro ao copiar: ', err);
             });
-        });
+        });  
       }
 
       // Se quiser que a busca funcione mesmo antes de carregar, pode chamar inicializarSnippets() aqui também
