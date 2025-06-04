@@ -115,6 +115,65 @@
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
+    gap: 10px;
+  }
+  
+  .control-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #2d82f7 0%, #47e8d4 100%);
+    color: #fff;
+    box-shadow: 0 2px 8px 0 rgba(45,130,247,0.1);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .control-btn:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.12);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .control-btn:hover, .control-btn:focus {
+    background: linear-gradient(90deg, #47e8d4 0%, #2d82f7 100%);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 12px 0 rgba(45,130,247,0.15);
+  }
+  
+  .control-btn:active {
+    background: linear-gradient(90deg, #2562b3 0%, #2cb8a0 100%);
+  }
+  
+  .control-btn i {
+    font-size: 1.1em;
+    transition: transform 0.2s;
+  }
+  
+  .control-btn.show i {
+    color: #5affd8;
+    animation: swing-in 0.4s;
+  }
+  
+  .control-btn.hide i {
+    color: #ff6f91;
+    animation: swing-in 0.4s;
+  }
+  
+  @keyframes swing-in {
+    0% { transform: rotate(-20deg) scale(0.8);}
+    60% { transform: rotate(10deg) scale(1.1);}
+    100% { transform: rotate(0deg) scale(1);}
   }
 
   .expand-all,
@@ -153,8 +212,24 @@
       </h3>
 
       <div class="category-controls">
-        <button class="expand-all" data-target="bancos-de-dados-snippets">Expandir todos</button>
-        <button class="collapse-all" data-target="bancos-de-dados-snippets">Recolher todos</button>
+        <button class="expand-all" data-target="bancos-de-dados-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
+      </div>
+      <div class="category-controls">
+        <button class="expand-all" data-target="campos-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
       </div>
 
       <div id="bancos-de-dados-snippets">
