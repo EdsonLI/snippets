@@ -118,19 +118,28 @@
   }
 
   .expand-all,
-  .collapse-all {
-    background: none;
-    border: none;
-    color: #66aaff;
-    cursor: pointer;
-    margin-left: 15px;
-    font-size: 0.9em;
-  }
-
-  .expand-all:hover,
-  .collapse-all:hover {
-    text-decoration: underline;
-  }
+    .collapse-all {
+      background: none;
+      border: none;
+      color: #eee;
+      cursor: pointer;
+      margin-left: 15px;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    
+    .expand-all i,
+    .collapse-all i {
+      margin-right: 8px;
+      color: #bbb;
+    }
+    
+    .expand-all strong,
+    .collapse-all strong {
+      font-weight: normal;
+    }
 
   .hidden-category {
     display: none;
@@ -153,8 +162,24 @@
       </h3>
 
       <div class="category-controls">
-        <button class="expand-all" data-target="bancos-de-dados-snippets">Expandir todos</button>
-        <button class="collapse-all" data-target="bancos-de-dados-snippets">Recolher todos</button>
+        <button class="expand-all" data-target="bancos-de-dados-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
+      </div>
+      <div class="category-controls">
+        <button class="expand-all" data-target="campos-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
       </div>
 
       <div id="bancos-de-dados-snippets">
@@ -249,8 +274,24 @@
       </h3>
 
       <div class="category-controls">
-        <button class="expand-all" data-target="campos-snippets">Expandir todos</button>
-        <button class="collapse-all" data-target="campos-snippets">Recolher todos</button>
+        <button class="expand-all" data-target="bancos-de-dados-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
+      </div>
+      <div class="category-controls">
+        <button class="expand-all" data-target="campos-snippets">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar todos</strong>
+        </button>
+        <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+          <i class="fa-solid fa-minus"></i>
+          <strong>Ocultar todos</strong>
+        </button>
       </div>
 
       <div id="campos-snippets">
