@@ -18,9 +18,9 @@
       </button>
     </div>
     <div id="bancos-de-dados-snippets">
-      <!-- ...existing code... -->
+      <!-- Snippets existentes -->
       
-      <!-- Adicionando snippets faltantes para Bancos de dados -->
+      <!-- Snippets adicionais para Bancos de dados -->
       <div class="snippet-block" data-tags="php banco delete deletar">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
@@ -149,7 +149,7 @@ Bank::where('coluna', '=', $valor)
           <pre><code class="language-php">&lt;?php
 Bank::where('coluna',  '=', $valor)
     ->where('coluna2', '=', $valor2)
-    ->delete();
+    ->count();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -181,100 +181,13 @@ $array = Bank::where('coluna',  '=', $valor)
     </div>
   </div>
 
-  <!-- Categoria: Campos - já existe no código, apenas complementando -->
-  <!-- ...existing code... -->
-
-  <!-- Nova Categoria: Códigos -->
-  <div class="section" id="codigos" data-tags="categoria codigos php">
-    <h3>
-      <i class="fa-solid fa-code"></i> Códigos
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="codigos-snippets">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
-        <i class="fa-solid fa-minus"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div id="codigos-snippets">
-      <div class="snippet-block" data-tags="php lista registros selecionados">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Obter array de registros selecionados na listagem:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-     $bank = new Bank($check_id);
-  }
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      
-      <div class="snippet-block" data-tags="php lista deletar selecionados">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Deletar registros selecionados na listagem:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-     $bank = new Bank($check_id);
-     $bank->delete();
-   }
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      
-      <div class="snippet-block" data-tags="php lista editar selecionados">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Editar registros selecionados na listagem:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-      $bank = new Bank($check_id);
-      $bank->nome_da_coluna1 = 'novo valor';
-      $bank->nome_da_coluna2 = 'novo valor';
-      $bank->store();
-  }
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      
-      <div class="snippet-block" data-tags="php clonar registro">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Clonar registro:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-$bank = new Bank();
-$bankClone = clone $bank;
-unset($bankClone->id);
-$bankClone->store();
-?&gt;</code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categoria: Campos (complementando com os snippets faltantes) -->
+  <!-- Categoria: Campos - já existe no código, adicionar campos complementares -->
   <div class="section" id="campos" data-tags="categoria campos php">
-    <!-- ...existing code... -->
+    <!-- ... mantendo o código existente ... -->
     <div id="campos-snippets">
-      <!-- Adicionar snippets faltantes -->
+      <!-- ... mantendo os snippets existentes ... -->
+      
+      <!-- Adicionando campos faltantes -->
       <div class="snippet-block" data-tags="php campo habilitar">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
@@ -430,7 +343,93 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
     </div>
   </div>
 
-  <!-- Nova Categoria: Sessão -->
+  <!-- Categoria: Códigos -->
+  <div class="section" id="codigos" data-tags="categoria codigos php">
+    <h3>
+      <i class="fa-solid fa-code"></i> Códigos
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="codigos-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="codigos-snippets">
+      <div class="snippet-block" data-tags="php lista registros selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter array de registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+     $bank = new Bank($check_id);
+  }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php lista deletar selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Deletar registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+     $bank = new Bank($check_id);
+     $bank->delete();
+   }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php lista editar selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Editar registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+      $bank = new Bank($check_id);
+      $bank->nome_da_coluna1 = 'novo valor';
+      $bank->nome_da_coluna2 = 'novo valor';
+      $bank->store();
+  }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php clonar registro">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Clonar registro:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$bank = new Bank();
+$bankClone = clone $bank;
+unset($bankClone->id);
+$bankClone->store();
+?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: Sessão -->
   <div class="section" id="sessao" data-tags="categoria sessao php">
     <h3>
       <i class="fa-solid fa-key"></i> Sessão
@@ -482,7 +481,7 @@ $valor = TSession::setValue('nome_posicao', $var);
     </div>
   </div>
 
-  <!-- Nova Categoria: Janelas -->
+  <!-- Categoria: Janelas -->
   <div class="section" id="janelas" data-tags="categoria janelas php">
     <h3>
       <i class="fa-solid fa-window-maximize"></i> Janelas
@@ -568,7 +567,7 @@ $window->show();
     </div>
   </div>
 
-  <!-- Nova Categoria: Outros -->
+  <!-- Categoria: Outros -->
   <div class="section" id="outros" data-tags="categoria outros php">
     <h3>
       <i class="fa-solid fa-ellipsis-h"></i> Outros
