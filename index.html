@@ -525,6 +525,7 @@
       // Carrega o conteúdo externo da seção Mad[Builder]
       $('#madbuilder-container').load('snippets_madbuilder.html', function() {
         inicializarSnippets();
+        hljs.highlightAll();
       });
     
       // Função para inicializar os eventos dos snippets
