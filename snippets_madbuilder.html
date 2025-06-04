@@ -18,333 +18,658 @@
       </button>
     </div>
     <div id="bancos-de-dados-snippets">
-      <div class="snippet-block" data-tags="php sql banco transacao">
+      <!-- ...existing code... -->
+      
+      <!-- Adicionando snippets faltantes para Bancos de dados -->
+      <div class="snippet-block" data-tags="php banco delete deletar">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Abrir/fechar transação:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-TTransaction::open('mini_erp');
-TTransaction::close();
-?&gt;</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="php sql banco select">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>SQL manual:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-$conn = TTransaction::get();
-$result = $conn->query('SELECT id FROM bank ORDER BY id');
-$objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
-if($objects) {
-  foreach($objects as $object) { 
-    echo $object->id;
-  }    
-}
-?&gt;</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="php banco insert">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Inserir registro:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php
-$objeto = new Bank();
-$objeto->campo = 'valor';
-$objeto->store();
-?&gt;</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="php banco find id">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Carregar registro pelo id:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $objeto = Bank::find( $id ); ?&gt;</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="php banco where coluna">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Carregar registro por outra coluna:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $objeto = Bank::where('coluna', '=', $valor)->first(); ?&gt;</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="php banco update alterar">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Alterar registro pelo id:</strong>
+          <strong>Deletar registro pelo id:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
 $objeto = Bank::find( $id );
 if($objeto) {
-  $objeto->coluna = 'valor';
-  $objeto->store();    
+  $objeto->delete();    
 }
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco array converter">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Converter registro em vetor:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objeto = Bank::find( $id );
+if($objeto) {
+  $array = $objeto->toArray();    
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco json converter">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Converter registro em json:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objeto = Bank::find( $id );
+if($objeto) {
+  $array = $objeto->toJson();    
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco filtros">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar registros através de filtros:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objs = Bank::where('coluna', '=', $valor)
+          ->where('coluna2', '=', $valor2)
+          ->orderBy('id')
+          ->load();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco first primeiro">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar o primeiro registro encontrado:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objs = Bank::where('coluna',  '=', $valor)
+          ->where('coluna2', '=', $valor2)
+          ->orderBy('id')
+          ->first();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco take limite">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar n registros:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$objs = Bank::where('coluna',  '=', $valor)
+          ->orderBy('id')
+          ->take(10)
+          ->load();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco update multiplos">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Alterar múltiplos registros:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+Bank::where('id', 'IN', [1,2,3,4]) // id in (1,2,3,4)
+    ->where('coluna1', '=', 'valor1') // coluna1 = 'valor1'
+    ->set('coluna2', '50') // set coluna2 = '50'
+    ->update();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco delete multiplos">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Deletar múltiplos registros:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+Bank::where('coluna', '=', $valor)
+    ->where('coluna2', '=', $valor2)
+    ->delete();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco count contar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Contar registros:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+Bank::where('coluna',  '=', $valor)
+    ->where('coluna2', '=', $valor2)
+    ->delete();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php banco array indexado">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Carregar registros como vetor indexado:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$array = Bank::where('coluna',  '=', $valor)
+             ->where('coluna2', '=', $valor2)
+             ->orderBy('id')
+             ->getIndexedArray('primaryKey', 'coluna3');
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php sql log logger">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Habilitar logs de sql:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TTransaction::setLogger(new TLoggerSTD); ?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categoria: Campos - já existe no código, apenas complementando -->
+  <!-- ...existing code... -->
+
+  <!-- Nova Categoria: Códigos -->
+  <div class="section" id="codigos" data-tags="categoria codigos php">
+    <h3>
+      <i class="fa-solid fa-code"></i> Códigos
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="codigos-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="codigos-snippets">
+      <div class="snippet-block" data-tags="php lista registros selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter array de registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+     $bank = new Bank($check_id);
+  }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php lista deletar selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Deletar registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+     $bank = new Bank($check_id);
+     $bank->delete();
+   }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php lista editar selecionados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Editar registros selecionados na listagem:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+  foreach($param['builder_datagrid_check'] as $check_id) {
+      $bank = new Bank($check_id);
+      $bank->nome_da_coluna1 = 'novo valor';
+      $bank->nome_da_coluna2 = 'novo valor';
+      $bank->store();
+  }
+}
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php clonar registro">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Clonar registro:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$bank = new Bank();
+$bankClone = clone $bank;
+unset($bankClone->id);
+$bankClone->store();
 ?&gt;</code></pre>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Categoria: Campos -->
+  <!-- Categoria: Campos (complementando com os snippets faltantes) -->
   <div class="section" id="campos" data-tags="categoria campos php">
+    <!-- ...existing code... -->
+    <div id="campos-snippets">
+      <!-- Adicionar snippets faltantes -->
+      <div class="snippet-block" data-tags="php campo habilitar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Habilitar campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TEntry::enableField(self::$formName, 'bank_id'); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo desabilitar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Desabilitar campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TEntry::disableField(self::$formName, 'bank_id'); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo fieldlist reordenar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Habilitar arrastar para reordenar valores de um TFieldList:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$increaseFieldList = new TFieldList('increase_field_list');
+$this->increaseFieldList = $increaseFieldList;
+$this->increaseFieldList->enableSorting();
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo enviar dados">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Enviar dados para campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$object = new stdClass();
+$object->bank_id = 'insira o novo valor aqui';
+//$object->fieldName = 'insira o novo valor aqui'; //sample
+TForm::sendData(self::$formName, $object);
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo recarregar combo">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Recarregar combo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php
+$items = array();
+$items['chave'] = 'valor';
+TCombo::reload(self::$formName, 'stages_id', $items, true);
+?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo esconder">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Esconder campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').hide()"); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo mostrar">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar campo:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').show()"); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo mostrar rotulo">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar rótulo pelo texto:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TScript::create("$('label:contains(\"Título\")').show();"); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo esconder rotulo">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Esconder rótulo pelo texto:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TScript::create("$('label:contains(\"Título\")').hide();"); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo trocar rotulo">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Trocar rótulo pelo texto:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TScript::create("$('label:contains(\"Título 1\")').html('Título 2')"); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo trocar mascara">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Trocar máscara do TEntry:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500'); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo validar cpf">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar campos CPF:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php (new TCPFValidator())->validate('CPF', $data->cpf); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo validar cnpj">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar campos CNPJ:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php (new TCNPJValidator())->validate('CNPJ', $data->cnpj); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php campo validar email">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar campos E-mail:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php (new TEmailValidator())->validate('E-mail', $data->email); ?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nova Categoria: Sessão -->
+  <div class="section" id="sessao" data-tags="categoria sessao php">
     <h3>
-      <i class="fa-solid fa-cogs"></i> Campos
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
+      <i class="fa-solid fa-key"></i> Sessão
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="sessao-snippets"></i>
     </h3>
     <div class="category-controls">
-      <button class="expand-all" data-target="campos-snippets">
+      <button class="expand-all" data-target="sessao-snippets">
         <i class="fa-solid fa-plus"></i>
         <strong>Mostrar todos</strong>
       </button>
-      <button class="collapse-all" data-target="campos-snippets" style="display:none;">
+      <button class="collapse-all" data-target="sessao-snippets" style="display:none;">
         <i class="fa-solid fa-minus"></i>
         <strong>Ocultar todos</strong>
       </button>
     </div>
-    <div id="campos-snippets">
-      <div class="snippet-block" data-tags="php campo criar">
+    <div id="sessao-snippets">
+      <div class="snippet-block" data-tags="php sessao get valor">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Definir campo:</strong>
+          <strong>Obter valor da sessão:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php $valor = TSession::getValue('nome_posicao'); ?&gt;</code></pre>
+        </div>
+      </div>
+      
+      <div class="snippet-block" data-tags="php sessao set valor">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Definir valor na sessão:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$campo = new Campo('nome', 'string');
+$var = [1,2,3,4];
+$valor = TSession::setValue('nome_posicao', $var);
 ?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="php campo validar">
+      
+      <div class="snippet-block" data-tags="php sessao sistema">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Validar campo:</strong>
+          <strong>Obter valor da sessão do sistema:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-php">&lt;?php $valor = TSession::getValue('userid'); ?&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nova Categoria: Janelas -->
+  <div class="section" id="janelas" data-tags="categoria janelas php">
+    <h3>
+      <i class="fa-solid fa-window-maximize"></i> Janelas
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="janelas-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="janelas-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="janelas-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="janelas-snippets">
+      <div class="snippet-block" data-tags="php janelas pagina">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Ir para página:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$campo->validar('required');
+$pageParam = []; // ex.: = ['key' => 10]
+TApplication::loadPage('BankList', 'onShow', $pageParam);
 ?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="php campo valor get">
+      
+      <div class="snippet-block" data-tags="php janelas window demanda">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Obter valor do campo:</strong>
+          <strong>Janela sob demanda:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$valor = $campo->getValor();
+$object = new TLabel('Teste');
+$window = TWindow::create('Janela sob demanda', 0.8, 650);
+$window->add($object);
+$window->show();
 ?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="php campo valor set">
+      
+      <div class="snippet-block" data-tags="php janelas pdf">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Definir valor do campo:</strong>
+          <strong>Embed PDF:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$campo->setValor('novo valor');
+$window = TWindow::create('PDF', 0.8, 0.8);
+$object = new TElement('iframe');
+$object->src  = 'http://www.adianti.com.br/framework_files/adianti_framework.pdf';
+$object->type  = 'application/pdf';
+$object->style = "width: 100%; height:calc(100% - 10px)";
+$window->add($object);
+$window->show();
 ?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="php campo remover">
+      
+      <div class="snippet-block" data-tags="php janelas iframe sistema">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Remover campo:</strong>
+          <strong>Embarcar sistema em janela:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$campo->remover();
+$window = TWindow::create('Adianti', 0.8, 0.8);
+$iframe = new TElement('iframe');
+$iframe->id = "iframe_external";
+$iframe->src = "http://www.adianti.com.br/framework_files/template-material/";
+$iframe->frameborder = "0";
+$iframe->scrolling = "yes";
+$iframe->width = "100%";
+$iframe->height = "600px";
+$window->add($iframe);
+$window->show();
 ?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="php campo listar loop">
+    </div>
+  </div>
+
+  <!-- Nova Categoria: Outros -->
+  <div class="section" id="outros" data-tags="categoria outros php">
+    <h3>
+      <i class="fa-solid fa-ellipsis-h"></i> Outros
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="outros-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="outros-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="outros-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="outros-snippets">
+      <div class="snippet-block" data-tags="php debug console">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Listar campos:</strong>
+          <strong>Debug PHP no console:</strong>
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$campos = Campo::listar();
-foreach ($campos as $campo) {
-    echo $campo->getNome();
+public function onSave($param = null) {
+    try {
+        $jsonParam = json_encode($param, JSON_UNESCAPED_UNICODE);
+        TScript::create('console.log('.$jsonParam.');');
+    } catch (Exception $e) {
+        SweetAlertDialogs::showAlert('error', $e->getMessage());
+    }
 }
 ?&gt;</code></pre>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Categoria: SQL -->
-  <div class="section" id="sql" data-tags="categoria sql banco">
-    <h3>
-      <i class="fa-solid fa-database"></i> SQL
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="sql-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="sql-snippets">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="sql-snippets" style="display:none;">
-        <i class="fa-solid fa-minus"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div id="sql-snippets">
-      <div class="snippet-block" data-tags="sql select">
+      
+      <div class="snippet-block" data-tags="php datagrid click">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>SELECT simples:</strong>
+          <strong>Desabilitar o click na linha do datagrid:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-sql">SELECT * FROM usuarios WHERE ativo = 1;</code></pre>
+          <pre><code class="language-php">&lt;?php
+$this->datagrid = new TDataGrid;
+$this->datagrid->disableDefaultClick();
+?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="sql insert">
+      
+      <div class="snippet-block" data-tags="php criteria operador or">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>INSERT:</strong>
+          <strong>Exemplo de uso do operador OR em um criteria:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-sql">INSERT INTO usuarios (nome, email) VALUES ('João', 'joao@email.com');</code></pre>
+          <pre><code class="language-php">&lt;?php
+$this->filter_criteria->add(new TFilter('company_id', '=', UserService::getOwner()));
+$this->filter_criteria->add(new TFilter('company_id', '=', Company::DinaBox), TExpression::OR_OPERATOR);
+?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="sql update">
+      
+      <div class="snippet-block" data-tags="php criteria operador and">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>UPDATE:</strong>
+          <strong>Exemplo de uso do operador AND em um criteria:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-sql">UPDATE usuarios SET ativo = 0 WHERE id = 5;</code></pre>
+          <pre><code class="language-php">&lt;?php
+$this->filter_criteria->add(new TFilter('system_users_id', '!=', $filterVar), TExpression::AND_OPERATOR);
+$this->filter_criteria->add(new TFilter('system_users_id', '=', TSession::getValue('userid')), TExpression::AND_OPERATOR);
+?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="sql delete">
+      
+      <div class="snippet-block" data-tags="php title dica">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>DELETE:</strong>
+          <strong>Colocar um title em um objeto de um formulário:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-sql">DELETE FROM usuarios WHERE id = 10;</code></pre>
+          <pre><code class="language-php">&lt;?php $cpf->setTip("999.999.999-99"); ?&gt;</code></pre>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Categoria: JavaScript -->
-  <div class="section" id="javascript" data-tags="categoria js javascript">
-    <h3>
-      <i class="fa-brands fa-js"></i> JavaScript
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="js-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="js-snippets">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="js-snippets" style="display:none;">
-        <i class="fa-solid fa-minus"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div id="js-snippets">
-      <div class="snippet-block" data-tags="js array map">
+      
+      <div class="snippet-block" data-tags="php paginacao">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Mapeando array:</strong>
+          <strong>Manter a paginação:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-js">const nomes = ['Ana', 'Bia', 'Carlos'];
-const maiusculos = nomes.map(nome => nome.toUpperCase());</code></pre>
+          <pre><code class="language-php">&lt;?php $this->pageNavigation->keepLastPagination(__CLASS__); ?&gt;</code></pre>
         </div>
       </div>
-      <div class="snippet-block" data-tags="js fetch api">
+      
+      <div class="snippet-block" data-tags="php datagrid agrupamento">
         <div class="snippet-title">
           <i class="fa-solid fa-plus"></i>
-          <strong>Requisição fetch:</strong>
+          <strong>Agrupamento na datagrid:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-js">fetch('/api/dados')
-  .then(resp => resp.json())
-  .then(data => console.log(data));</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="js function arrow">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Função arrow:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-js">const soma = (a, b) => a + b;</code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categoria: CSS -->
-  <div class="section" id="css" data-tags="categoria css estilo">
-    <h3>
-      <i class="fa-brands fa-css3-alt"></i> CSS
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="css-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="css-snippets">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="css-snippets" style="display:none;">
-        <i class="fa-solid fa-minus"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div id="css-snippets">
-      <div class="snippet-block" data-tags="css flexbox centralizar">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Centralizar com Flexbox:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-css">.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="css grid layout">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Grid layout:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-css">.grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 16px;
-}</code></pre>
-        </div>
-      </div>
-      <div class="snippet-block" data-tags="css hover efeito">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Efeito hover:</strong>
-        </div>
-        <div class="snippet-content">
-          <pre><code class="language-css">.botao:hover {
-  background: #333;
-  color: #fff;
-}</code></pre>
+          <pre><code class="language-php">&lt;?php $this->datagrid->setGroupColumn('company_id', "&lt;b&gt;{company->id} - {company->name}&lt;/b&gt;"); ?&gt;</code></pre>
         </div>
       </div>
     </div>
