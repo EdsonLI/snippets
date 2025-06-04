@@ -403,110 +403,124 @@
   </div>
 
   <script>
-    $(document).ready(function () {
-      // Inicialização - recolher todos os snippets
-      $('.snippet-content').hide();
-      
-      // Pesquisa de snippets
-      $('#search').on('keyup', function () {
-        const searchTerm = $(this).val().toLowerCase();
-        
-        if (searchTerm === '') {
-          // Mostrar todas as categorias quando a pesquisa está vazia
-          $('.section').removeClass('hidden-category');
-          $('.snippet-block').show();
-        } else {
-          // Verificar cada snippet
-          $('.snippet-block').each(function () {
-            const text = $(this).text().toLowerCase();
-            $(this).toggle(text.includes(searchTerm));
-          });
-          
-          // Esconder categorias vazias
-          $('.section').each(function() {
-            const visibleSnippets = $(this).find('.snippet-block:visible').length;
-            $(this).toggleClass('hidden-category', visibleSnippets === 0);
-          });
-        }
-      });
-      
-      // Toggle individual snippet
-      $('.snippet-title').on('click', function () {
-        const content = $(this).next('.snippet-content');
-        const icon = $(this).find('i:first');
-        
-        content.slideToggle(200);
-        
-        if (icon.hasClass('fa-plus')) {
-          icon.removeClass('fa-plus').addClass('fa-minus');
-        } else {
-          icon.removeClass('fa-minus').addClass('fa-plus');
-        }
-      });
-      
-      // Toggle categoria inteira
-      $('.collapse-icon').on('click', function () {
-        const targetId = $(this).data('target');
-        const targetDiv = $('#' + targetId);
-        
-        if ($(this).hasClass('fa-chevron-down')) {
-          // Esconder todos os snippets
-          targetDiv.slideUp(200);
-          $(this).removeClass('fa-chevron-down').addClass('fa-chevron-right');
-        } else {
-          // Mostrar div de snippets (mas não expandir snippets individuais)
-          targetDiv.slideDown(200);
-          $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
-        }
-      });
-      
-      // Expandir todos os snippets em uma categoria
-      $('.expand-all').on('click', function () {
-        const targetId = $(this).data('target');
-        const snippets = $('#' + targetId + ' .snippet-content');
-        const icons = $('#' + targetId + ' .snippet-title i:first-child');
-        
-        snippets.slideDown(200);
-        icons.removeClass('fa-plus').addClass('fa-minus');
-      });
-      
-      // Recolher todos os snippets em uma categoria
-      $('.collapse-all').on('click', function () {
-        const targetId = $(this).data('target');
-        const snippets = $('#' + targetId + ' .snippet-content');
-        const icons = $('#' + targetId + ' .snippet-title i:first-child');
-        
-        snippets.slideUp(200);
-        icons.removeClass('fa-minus').addClass('fa-plus');
-      });
-      
-      // Botão de copiar código
-      $('.copy-btn').on('click', function (e) {
-        e.stopPropagation(); // Prevenir que o click propague para o snippet-title
-        
-        const code = $(this).prev('code').text();
-        navigator.clipboard.writeText(code)
-          .then(() => {
-            const originalText = $(this).text();
-            $(this).text('Copiado!');
-            
-            setTimeout(() => {
-              $(this).text(originalText);
-            }, 1500);
-          })
-          .catch(err => {
-            console.error('Erro ao copiar: ', err);
-          });
-      });
-      
-      // Re-aplicar highlight.js após alterações dinâmicas
-      $('.snippet-title').on('click', function() {
-        setTimeout(function() {
-          hljs.highlightAll();
-        }, 200);
-      });
+  $(document).ready(function () {
+    // Inicialização - recolher todos os snippets
+    $('.snippet-content').hide();
+
+    // Pesquisa de snippets
+    $('#search').on('keyup', function () {
+      const searchTerm = $(this).val().toLowerCase();
+
+      if (searchTerm === '') {
+        // Mostrar todas as categorias quando a pesquisa está vazia
+        $('.section').removeClass('hidden-category');
+        $('.snippet-block').show();
+      } else {
+        // Verificar cada snippet
+        $('.snippet-block').each(function () {
+          const text = $(this).text().toLowerCase();
+          $(this).toggle(text.includes(searchTerm));
+        });
+
+        // Esconder categorias vazias
+        $('.section').each(function() {
+          const visibleSnippets = $(this).find('.snippet-block:visible').length;
+          $(this).toggleClass('hidden-category', visibleSnippets === 0);
+        });
+      }
     });
-  </script>
+
+    // Toggle individual snippet
+    $('.snippet-title').on('click', function () {
+      const content = $(this).next('.snippet-content');
+      const icon = $(this).find('i:first');
+
+      content.slideToggle(200);
+
+      if (icon.hasClass('fa-plus')) {
+        icon.removeClass('fa-plus').addClass('fa-minus');
+      } else {
+        icon.removeClass('fa-minus').addClass('fa-plus');
+      }
+    });
+
+    // Toggle categoria inteira
+    $('.collapse-icon').on('click', function () {
+      const targetId = $(this).data('target');
+      const targetDiv = $('#' + targetId);
+
+      // Sempre que colapsar, volta os botões para o estado inicial
+      const parent = $(this).closest('.section');
+      parent.find('.expand-all').show();
+      parent.find('.collapse-all').hide();
+
+      if ($(this).hasClass('fa-chevron-down')) {
+        // Esconder todos os snippets
+        targetDiv.slideUp(200);
+        $(this).removeClass('fa-chevron-down').addClass('fa-chevron-right');
+      } else {
+        // Mostrar div de snippets (mas não expandir snippets individuais)
+        targetDiv.slideDown(200);
+        $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
+      }
+    });
+
+    // Expandir todos os snippets em uma categoria
+    $('.expand-all').on('click', function () {
+      const targetId = $(this).data('target');
+      const snippets = $('#' + targetId + ' .snippet-content');
+      const icons = $('#' + targetId + ' .snippet-title i:first-child');
+
+      snippets.slideDown(200);
+      icons.removeClass('fa-plus').addClass('fa-minus');
+
+      // Toggle botões
+      $(this).hide();
+      $(this).siblings('.collapse-all').show();
+    });
+
+    // Recolher todos os snippets em uma categoria
+    $('.collapse-all').on('click', function () {
+      const targetId = $(this).data('target');
+      const snippets = $('#' + targetId + ' .snippet-content');
+      const icons = $('#' + targetId + ' .snippet-title i:first-child');
+
+      snippets.slideUp(200);
+      icons.removeClass('fa-minus').addClass('fa-plus');
+
+      // Toggle botões
+      $(this).hide();
+      $(this).siblings('.expand-all').show();
+    });
+
+    // Botão de copiar código
+    $('.copy-btn').on('click', function (e) {
+      e.stopPropagation(); // Prevenir que o click propague para o snippet-title
+
+      const code = $(this).prev('code').text();
+      navigator.clipboard.writeText(code)
+        .then(() => {
+          const originalText = $(this).text();
+          $(this).text('Copiado!');
+
+          setTimeout(() => {
+            $(this).text(originalText);
+          }, 1500);
+        })
+        .catch(err => {
+          console.error('Erro ao copiar: ', err);
+        });
+    });
+
+    // Re-aplicar highlight.js após alterações dinâmicas
+    $('.snippet-title').on('click', function() {
+      setTimeout(function() {
+        hljs.highlightAll();
+      }, 200);
+    });
+  });
+</script>
+
 </body>
 </html>
 <!-- teste -->
