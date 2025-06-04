@@ -20,13 +20,13 @@
   body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #181f2f;
-    color: #e0e6f6;
+    background-color: #181818;
+    color: #e0e0e0;
   }
   
   h1 {
     text-align: center;
-    color: #e0e6f6;
+    color: #fafafa;
   }
   
   input[type="text"] {
@@ -34,41 +34,41 @@
     padding: 10px;
     margin-bottom: 30px;
     border-radius: 6px;
-    background-color: #22305b;
-    border: 1px solid #2d3c6b;
-    color: #e0e6f6;
+    background-color: #232323;
+    border: 1px solid #333;
+    color: #fafafa;
     font-size: 1em;
     transition: border 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px 0 rgba(35,51,108,0.10);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
   }
   
   input[type="text"]:focus {
     outline: none;
-    border: 1.5px solid #3e5edb;
-    box-shadow: 0 0 0 2px #3e5edb33;
+    border: 1.5px solid #444;
+    box-shadow: 0 0 0 2px #444a;
   }
   
   .section {
     margin-bottom: 40px;
-    background-color: #202a48;
+    background-color: #202020;
     padding: 22px 20px 20px 20px;
     border-radius: 10px;
-    border: 1px solid #2d3c6b;
-    box-shadow: 0 1px 4px rgba(35,51,108,0.13);
+    border: 1px solid #292929;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.13);
   }
   
   .section h2,
   .section h3 {
-    border-bottom: 1px solid #2d3c6b;
+    border-bottom: 1px solid #292929;
     padding-bottom: 7px;
     display: flex;
     align-items: center;
-    color: #e0e6f6;
+    color: #fafafa;
   }
   
   .section h3 i {
     margin-right: 10px;
-    color: #a3b1d1;
+    color: #b0b0b0;
   }
   
   .snippet-block {
@@ -80,12 +80,12 @@
     user-select: none;
     display: flex;
     align-items: center;
-    color: #e0e6f6;
+    color: #fafafa;
   }
   
   .snippet-title i {
     margin-right: 8px;
-    color: #a3b1d1;
+    color: #b0b0b0;
   }
   
   .snippet-content {
@@ -96,11 +96,11 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(35, 51, 108, 0.7);
+    background: rgba(40, 40, 40, 0.7);
     border: none;
     border-radius: 4px;
     padding: 6px 8px;
-    color: #e0e6f6;
+    color: #fafafa;
     font-size: 1.1em;
     cursor: pointer;
     z-index: 2;
@@ -112,24 +112,24 @@
   }
   
   .copy-btn:hover, .copy-btn:focus {
-    background: #3e5edb;
+    background: #444;
     color: #fff;
     opacity: 1;
   }
   
   .copy-btn.copied {
-    background: rgba(80, 255, 180, 0.13);
+    background: rgba(120, 255, 180, 0.10);
     color: #fff;
     opacity: 1;
-    box-shadow: 0 0 0 2px #47e8d4, 0 2px 8px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 0 0 2px #444, 0 2px 8px 0 rgba(0,0,0,0.10);
   }
   
   pre, code, .hljs {
-    background: #23336c !important;
-    color: #e0e6f6 !important;
+    background: #181818 !important;
+    color: #e0e0e0 !important;
     border-radius: 8px;
-    border: 1px solid #2d3c6b;
-    box-shadow: 0 2px 8px 0 rgba(35,51,108,0.10);
+    border: 1px solid #292929;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
   }
   
   pre {
@@ -149,7 +149,7 @@
     cursor: pointer;
     margin-left: 10px;
     font-size: 0.8em;
-    color: #a3b1d1;
+    color: #b0b0b0;
   }
   
   .category-controls {
@@ -168,9 +168,9 @@
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(90deg, #3e5edb 0%, #47e8d4 100%);
-    color: #fff;
-    box-shadow: 0 2px 8px 0 rgba(45,130,247,0.1);
+    background: linear-gradient(90deg, #232323 0%, #444 100%);
+    color: #fafafa;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
     cursor: pointer;
     transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
     position: relative;
@@ -181,19 +181,19 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.08);
     opacity: 0;
     transition: opacity 0.2s;
   }
   
   .control-btn:hover, .control-btn:focus {
-    background: linear-gradient(90deg, #47e8d4 0%, #3e5edb 100%);
+    background: linear-gradient(90deg, #444 0%, #232323 100%);
     transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 4px 12px 0 rgba(45,130,247,0.15);
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.15);
   }
   
   .control-btn:active {
-    background: linear-gradient(90deg, #2562b3 0%, #2cb8a0 100%);
+    background: linear-gradient(90deg, #181818 0%, #232323 100%);
   }
   
   .control-btn i {
@@ -202,7 +202,7 @@
   }
   
   .control-btn.show i {
-    color: #5affd8;
+    color: #aaffcc;
     animation: swing-in 0.4s;
   }
   
@@ -221,7 +221,7 @@
   .collapse-all {
     background: none;
     border: none;
-    color: #3e5edb;
+    color: #b0b0b0;
     cursor: pointer;
     margin-left: 15px;
     font-size: 0.9em;
