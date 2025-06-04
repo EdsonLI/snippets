@@ -1,204 +1,393 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Snippets por linguagem e contexto</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FontAwesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
   <style>
-    pre code {
-      border: none;
-      background: #1e1e1e;
-      color: #dcdcdc;
-      border-radius: 8px;
-      padding: 1rem;
-      font-size: 0.95rem;
-      display: block;
-      overflow-x: auto;
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    h1 { text-align: center; }
+    input[type="text"] { width: 100%; padding: 10px; margin-bottom: 30px; border-radius: 5px; border: 1px solid #ccc; }
+    .section { margin-bottom: 40px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .section h2, .section h3 { border-bottom: 2px solid #ddd; padding-bottom: 5px; display: flex; align-items: center; }
+    .section h3 i { margin-right: 10px; }
+    .snippet-block { margin: 20px 0; }
+    pre { background: #2d2d2d; color: #ccc; padding: 10px; border-radius: 5px; overflow: auto; position: relative; }
+    code { font-size: 14px; }
+    
+    .collapse-icon { 
+      cursor: pointer; 
+      margin-left: 10px;
+      font-size: 0.8em;
     }
-    .section-icon {
-      margin-right: 0.5rem;
-    }
-    .snippet {
-      position: relative;
-      margin-bottom: 1rem;
-    }
-    .copy-btn {
-      position: absolute;
-      bottom: 12px;
-      right: 16px;
-      z-index: 10;
-      border: none;
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    .copy-btn:hover {
-      background: #0d6efd;
-    }
-    summary {
-      font-size: 1.1rem;
-      cursor: pointer;
-      background: #f1f1f1;
-      padding: 0.6rem 1rem;
-      border-radius: 0.5rem;
-      transition: background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      user-select: none;
-    }
-    details[open] .fade-toggle {
-      animation: fadeIn 0.4s ease-in-out forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scaleY(0.95); }
-      to { opacity: 1; transform: scaleY(1); }
-    }
-    .snippet-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      user-select: none;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
+    
     .snippet-content {
       display: none;
-      animation: fadeIn 0.4s ease-in-out forwards;
     }
-    .snippet.open .snippet-content {
-      display: block;
-    }
-    .toggle-all-btn {
-      display: inline-block;
-      margin: 10px 0;
+    
+    .snippet-title {
       cursor: pointer;
-      font-weight: 600;
-      color: #0d6efd;
       user-select: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .snippet-title i {
+      margin-right: 8px;
+    }
+    
+    .copy-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      border-radius: 3px;
+      padding: 2px 8px;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    
+    .copy-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .category-controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    
+    .expand-all, .collapse-all {
+      background: none;
+      border: none;
+      color: #0066cc;
+      cursor: pointer;
+      margin-left: 15px;
+      font-size: 0.9em;
+    }
+    
+    .expand-all:hover, .collapse-all:hover {
+      text-decoration: underline;
+    }
+
+    .hidden-category {
+      display: none;
     }
   </style>
 </head>
-<body class="bg-light text-dark p-4">
-  <div class="container">
-    <h1 class="mb-4">Snippets por linguagem e contexto</h1>
+<body>
 
-    <div class="mb-3">
-      <input type="text" id="search" class="form-control" placeholder="Filtrar snippets..." />
-    </div>
+  <h1>Snippets por linguagem e contexto</h1>
 
-    <section class="mb-5" id="bancos-de-dados">
-      <h2><i class="fas fa-database section-icon"></i>Bancos de dados</h2>
-      <details open>
-        <summary><i class="fas fa-compress toggle-icon"></i><strong>Mostrar/ocultar snippets</strong></summary>
-        <div class="toggle-all-btn" id="toggle-all-snippets"><i class="fas fa-plus toggle-icon"></i> <span id="toggle-all-label">Mostrar todos</span></div>
-        <div class="mt-3 fade-toggle" id="snippet-list">
+  <input type="text" id="search" placeholder="Filtrar snippets...">
 
-          <div class="snippet">
-            <div class="snippet-toggle"><i class="fas fa-plus toggle-icon"></i>Abrir/fechar transação:</div>
-            <div class="snippet-content">
-              <button class="copy-btn"><i class="fas fa-copy"></i></button>
-              <pre><code class="language-php">&lt;?php
+  <div class="section" id="madbuilder">
+    <h2><i class="fa-solid fa-cubes"></i> Snippets Mad[Builder]</h2>
+
+    <div class="section" id="bancos-de-dados">
+      <h3>
+        <i class="fa-solid fa-database"></i> Bancos de dados
+        <i class="fa-solid fa-chevron-down collapse-icon" data-target="bancos-de-dados-snippets"></i>
+      </h3>
+
+      <div class="category-controls">
+        <button class="expand-all" data-target="bancos-de-dados-snippets">Expandir todos</button>
+        <button class="collapse-all" data-target="bancos-de-dados-snippets">Recolher todos</button>
+      </div>
+
+      <div id="bancos-de-dados-snippets">
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Abrir/fechar transação:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
    TTransaction::open('mini_erp');
    TTransaction::close();
-?&gt;</code></pre>
-            </div>
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
           </div>
-
-          <div class="snippet">
-            <div class="snippet-toggle"><i class="fas fa-plus toggle-icon"></i>SQL manual:</div>
-            <div class="snippet-content">
-              <button class="copy-btn"><i class="fas fa-copy"></i></button>
-              <pre><code class="language-php">&lt;?php
-   $conn = TTransaction::get();
-   $result = $conn-&gt;query('SELECT id FROM bank ORDER BY id');
-   $objects = $result-&gt;fetchAll(PDO::FETCH_CLASS, "stdClass");
-   if($objects) {
-      foreach($objects as $object) {
-         echo $object-&gt;id;
-      }
-   }
-?&gt;</code></pre>
-            </div>
-          </div>
-
         </div>
-      </details>
-    </section>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>SQL manual:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $conn = TTransaction::get();
+   $result = $conn->query('SELECT id FROM bank ORDER BY id');
+   $objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
+   if($objects) {
+      foreach($objects as $object) { 
+         echo $object->id;
+      }    
+   }
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Inserir registro:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $objeto = new Bank();
+   $objeto->campo = 'valor';
+   $objeto->store();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Carregar registro pelo id:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php $objeto = Bank::find( $id ); ?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Carregar registro por outra coluna:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php $objeto = Bank::where('coluna', '=', $valor)->first(); ?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Alterar registro pelo id:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $objeto = Bank::find( $id );
+   if($objeto) {
+      $objeto->coluna = 'valor';
+      $objeto->store();    
+   }
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="campos">
+      <h3>
+        <i class="fa-solid fa-cogs"></i> Campos
+        <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
+      </h3>
+
+      <div class="category-controls">
+        <button class="expand-all" data-target="campos-snippets">Expandir todos</button>
+        <button class="collapse-all" data-target="campos-snippets">Recolher todos</button>
+      </div>
+
+      <div id="campos-snippets">
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Definir campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo = new Campo('nome', 'string');
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Validar campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo->validar('required');
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Obter valor do campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $valor = $campo->getValor();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Definir valor do campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo->setValor('novo valor');
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Remover campo:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campo->remover();
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+
+        <div class="snippet-block">
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Listar campos:</strong>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-php">&lt;?php
+   $campos = Campo::listar();
+   foreach ($campos as $campo) {
+       echo $campo->getNome();
+   }
+?&gt;</code><button class="copy-btn">Copiar</button></pre>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
   <script>
-    $(document).on('click', '.copy-btn', function () {
-      const code = $(this).siblings('pre').text();
-      navigator.clipboard.writeText(code).then(() => {
-        $(this).html('<i class="fas fa-check"></i>');
-        setTimeout(() => $(this).html('<i class="fas fa-copy"></i>'), 1500);
-      });
-    });
-
-    $('#search').on('input', function () {
-      const val = $(this).val().toLowerCase();
-      $('.snippet').each(function () {
-        const content = $(this).text().toLowerCase();
-        $(this).toggle(content.includes(val));
-      });
-    });
-
-    $('details summary').on('click', function () {
-      const icon = $(this).find('.toggle-icon');
-      const details = $(this).parent()[0];
-      setTimeout(() => {
-        if (details.open) {
-          icon.removeClass('fa-expand').addClass('fa-compress');
+    $(document).ready(function () {
+      // Inicialização - recolher todos os snippets
+      $('.snippet-content').hide();
+      
+      // Pesquisa de snippets
+      $('#search').on('keyup', function () {
+        const searchTerm = $(this).val().toLowerCase();
+        
+        if (searchTerm === '') {
+          // Mostrar todas as categorias quando a pesquisa está vazia
+          $('.section').removeClass('hidden-category');
+          $('.snippet-block').show();
         } else {
-          icon.removeClass('fa-compress').addClass('fa-expand');
+          // Verificar cada snippet
+          $('.snippet-block').each(function () {
+            const text = $(this).text().toLowerCase();
+            $(this).toggle(text.includes(searchTerm));
+          });
+          
+          // Esconder categorias vazias
+          $('.section').each(function() {
+            const visibleSnippets = $(this).find('.snippet-block:visible').length;
+            $(this).toggleClass('hidden-category', visibleSnippets === 0);
+          });
         }
-      }, 50);
-    });
-
-    $(document).on('click', '.snippet-toggle', function () {
-      const snippet = $(this).closest('.snippet');
-      snippet.toggleClass('open');
-      const icon = $(this).find('.toggle-icon');
-      icon.toggleClass('fa-plus fa-minus');
-    });
-
-    $(document).on('click', '#toggle-all-snippets', function () {
-      const snippets = $('#snippet-list .snippet');
-      const anyClosed = snippets.not('.open').length > 0;
-
-      snippets.each(function () {
-        const toggle = $(this).find('.snippet-toggle');
-        const icon = toggle.find('.toggle-icon');
-        if (anyClosed) {
-          $(this).addClass('open');
+      });
+      
+      // Toggle individual snippet
+      $('.snippet-title').on('click', function () {
+        const content = $(this).next('.snippet-content');
+        const icon = $(this).find('i:first');
+        
+        content.slideToggle(200);
+        
+        if (icon.hasClass('fa-plus')) {
           icon.removeClass('fa-plus').addClass('fa-minus');
         } else {
-          $(this).removeClass('open');
           icon.removeClass('fa-minus').addClass('fa-plus');
         }
       });
-
-      const allIcon = $('#toggle-all-snippets .toggle-icon');
-      const label = $('#toggle-all-label');
-      if (anyClosed) {
-        allIcon.removeClass('fa-plus').addClass('fa-minus');
-        label.text('Ocultar todos');
-      } else {
-        allIcon.removeClass('fa-minus').addClass('fa-plus');
-        label.text('Mostrar todos');
-      }
+      
+      // Toggle categoria inteira
+      $('.collapse-icon').on('click', function () {
+        const targetId = $(this).data('target');
+        const targetDiv = $('#' + targetId);
+        
+        if ($(this).hasClass('fa-chevron-down')) {
+          // Esconder todos os snippets
+          targetDiv.slideUp(200);
+          $(this).removeClass('fa-chevron-down').addClass('fa-chevron-right');
+        } else {
+          // Mostrar div de snippets (mas não expandir snippets individuais)
+          targetDiv.slideDown(200);
+          $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
+        }
+      });
+      
+      // Expandir todos os snippets em uma categoria
+      $('.expand-all').on('click', function () {
+        const targetId = $(this).data('target');
+        const snippets = $('#' + targetId + ' .snippet-content');
+        const icons = $('#' + targetId + ' .snippet-title i:first-child');
+        
+        snippets.slideDown(200);
+        icons.removeClass('fa-plus').addClass('fa-minus');
+      });
+      
+      // Recolher todos os snippets em uma categoria
+      $('.collapse-all').on('click', function () {
+        const targetId = $(this).data('target');
+        const snippets = $('#' + targetId + ' .snippet-content');
+        const icons = $('#' + targetId + ' .snippet-title i:first-child');
+        
+        snippets.slideUp(200);
+        icons.removeClass('fa-minus').addClass('fa-plus');
+      });
+      
+      // Botão de copiar código
+      $('.copy-btn').on('click', function (e) {
+        e.stopPropagation(); // Prevenir que o click propague para o snippet-title
+        
+        const code = $(this).prev('code').text();
+        navigator.clipboard.writeText(code)
+          .then(() => {
+            const originalText = $(this).text();
+            $(this).text('Copiado!');
+            
+            setTimeout(() => {
+              $(this).text(originalText);
+            }, 1500);
+          })
+          .catch(err => {
+            console.error('Erro ao copiar: ', err);
+          });
+      });
+      
+      // Re-aplicar highlight.js após alterações dinâmicas
+      $('.snippet-title').on('click', function() {
+        setTimeout(function() {
+          hljs.highlightAll();
+        }, 200);
+      });
     });
   </script>
 </body>
