@@ -1,10 +1,10 @@
 <style>
   .categoria-bancos { color: #1abc9c !important; }
-  .categoria-codigos { color: #e67e22; }
-  .categoria-campos { color: #9b59b6; }
-  .categoria-sessao { color: #2980b9; }
-  .categoria-janelas { color: #f39c12; }
-  .categoria-outros { color: #95a5a6; }
+  .categoria-codigos { color: #e67e22 !important; }
+  .categoria-campos { color: #9b59b6 !important; }
+  .categoria-sessao { color: #2980b9 !important; }
+  .categoria-janelas { color: #f39c12 !important; }
+  .categoria-outros { color: #95a5a6 !important; }
 </style>
 
 <div class="section" id="madbuilder" data-tags="madbuilder">
@@ -273,7 +273,8 @@ $array = Bank::where('coluna',  '=', $valor)
   <!-- Categoria: Códigos -->
   <div class="section" id="codigos" data-tags="categoria codigos php">
     <h3>
-      <i class="fa-solid fa-code"></i> Códigos
+      <i class="categoria-codigos fa-solid fa-code"></i>
+      <span class="categoria-codigos">Códigos</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -359,7 +360,8 @@ $bankClone->store();
   <!-- Categoria: Campos -->
   <div class="section" id="campos" data-tags="categoria campos php">
     <h3>
-      <i class="fa-solid fa-cogs"></i> Campos
+      <i class="categoria-campos fa-solid fa-cogs"></i>
+      <span class="categoria-campos">Campos</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -531,7 +533,8 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
   <!-- Categoria: Sessão -->
   <div class="section" id="sessao" data-tags="categoria sessao php">
     <h3>
-      <i class="fa-solid fa-key"></i> Sessão
+      <i class="categoria-sessao fa-solid fa-key"></i>
+      <span class="categoria-sessao">Sessão</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="sessao-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -583,7 +586,8 @@ $valor = TSession::setValue('nome_posicao', $var);
   <!-- Categoria: Janelas -->
   <div class="section" id="janelas" data-tags="categoria janelas php">
     <h3>
-      <i class="fa-solid fa-window-maximize"></i> Janelas
+      <i class="categoria-janelas fa-solid fa-window-maximize"></i>
+      <span class="categoria-janelas">Janelas</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="janelas-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -669,7 +673,8 @@ $window->show();
   <!-- Categoria: Outros -->
   <div class="section" id="outros" data-tags="categoria outros php">
     <h3>
-      <i class="fa-solid fa-ellipsis-h"></i> Outros
+      <i class="categoria-outros fa-solid fa-ellipsis-h"></i>
+      <span class="categoria-outros">Outros</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="outros-snippets"></i>
     </h3>
     <div class="category-controls">
