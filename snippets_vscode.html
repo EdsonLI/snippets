@@ -1,1 +1,128 @@
 
+<div class="section" id="vscode" data-tags="vscode">
+  <h2><i class="fa-solid fa-code"></i> Snippets VS Code</h2>
+
+  <!-- Categoria: Formulários -->
+  <div class="section" id="formularios" data-tags="categoria formularios php adianti">
+    <h3>
+      <i class="fa-solid fa-file-code"></i> Formulários
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="formularios-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="formularios-snippets">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="formularios-snippets" style="display:none;">
+        <i class="fa-solid fa-minus"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div id="formularios-snippets">
+      <div class="snippet-block" data-tags="adianti php form formulario abas">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Formulário Adianti com abas:</strong>
+        </div>
+        <div class="snippet-content">
+          <pre><code class="language-json">{
+  "Formulário Adianti com abas": {
+    "prefix": "adianti_form_abas",
+    "body": [
+      "class FuncionarioAbasForm extends TPage {",
+      "    protected \\$form;",
+      "    private \\$formFields = [];",
+      "    private static \\$database = 'exemplos';",
+      "    private static \\$activeRecord = 'Funcionario';",
+      "    private static \\$primaryKey = 'id';",
+      "    private static \\$formName = 'form_Funcionario';",
+      "",
+      "    /**",
+      "     * Form constructor",
+      "     * @param \\$param Request",
+      "     */",
+      "    public function __construct(\\$param) {",
+      "        parent::__construct();",
+      "",
+      "        if(!empty(\\$param['target_container'])) {",
+      "            \\$this->adianti_target_container = \\$param['target_container'];",
+      "        }",
+      "",
+      "        // creates the form",
+      "        \\$this->form = new BootstrapFormBuilder(self::\\$formName);",
+      "        // define the form title",
+      "        \\$this->form->setFormTitle(\"Formulário com abas\");",
+      "",
+      "        \\$id = new TEntry('id');",
+      "        \\$dt_nascimento = new TDate('dt_nascimento');",
+      "        \\$nome = new TEntry('nome');",
+      "        \\$sobrenome = new TEntry('sobrenome');",
+      "        \\$cidade_estado_pais_id = new TDBCombo('cidade_estado_pais_id', 'exemplos', 'Pais', 'id', '{nome}','nome asc');",
+      "        \\$cidade_estado_id = new TCombo('cidade_estado_id');",
+      "        \\$cidade_id = new TCombo('cidade_id');",
+      "        \\$cep = new TEntry('cep');",
+      "        \\$endereco = new TEntry('endereco');",
+      "        \\$funcao_id = new TDBCombo('funcao_id', 'exemplos', 'Funcao', 'id', '{nome}','nome asc');",
+      "        \\$habilidades = new TDBMultiSearch('habilidades', 'exemplos', 'Habilidades', 'id', 'nome','nome asc');",
+      "",
+      "        \\$cidade_estado_pais_id->setChangeAction(new TAction([\\$this,'onChangecidade_estado_pais_id']));",
+      "        \\$cidade_estado_id->setChangeAction(new TAction([\\$this,'onChangecidade_estado_id']));",
+      "",
+      "        \\$dt_nascimento->addValidation(\"Data de nascimento\", new TRequiredValidator());",
+      "        \\$nome->addValidation(\"Nome\", new TRequiredValidator());",
+      "        \\$sobrenome->addValidation(\"Sobrenome\", new TRequiredValidator());",
+      "        \\$cidade_id->addValidation(\"Cidade id\", new TRequiredValidator());",
+      "        \\$funcao_id->addValidation(\"Funcao id\", new TRequiredValidator());",
+      "",
+      "        \\$id->setEditable(false);",
+      "        \\$dt_nascimento->setDatabaseMask('yyyy-mm-dd');",
+      "        \\$habilidades->setMinLength(2);",
+      "        \\$habilidades->setMask('{nome}');",
+      "        \\$dt_nascimento->setMask('dd/mm/yyyy');",
+      "",
+      "        \\$id->setSize(100);",
+      "        \\$cep->setSize('100%');",
+      "        \\$nome->setSize('100%');",
+      "        \\$endereco->setSize('100%');",
+      "        \\$sobrenome->setSize('100%');",
+      "        \\$cidade_id->setSize('100%');",
+      "        \\$funcao_id->setSize('100%');",
+      "        \\$dt_nascimento->setSize(110);",
+      "        \\$habilidades->setSize('100%', 68);",
+      "        \\$cidade_estado_id->setSize('100%');",
+      "        \\$cidade_estado_pais_id->setSize('100%');",
+      "",
+      "        \\$this->form->appendPage(\"Dados pessoais\");",
+      "",
+      "        \\$this->form->addFields([new THidden('current_tab')]);",
+      "        \\$this->form->setTabFunction(\"\\$('[name=current_tab]').val(\\$(this).attr('data-current_page'));\");",
+      "",
+      "        \\$row1 = \\$this->form->addFields([new TLabel(\"Id:\", null, '14px', null)],[\\$id],[new TLabel(\"Data de nascimento:\", '#ff0000', '14px', null)],[\\$dt_nascimento]);",
+      "        \\$row2 = \\$this->form->addFields([new TLabel(\"Nome:\", '#ff0000', '14px', null)],[\\$nome],[new TLabel(\"Sobrenome:\", '#ff0000', '14px', null)],[\\$sobrenome]);",
+      "",
+      "        \\$this->form->appendPage(\"Endereço\");",
+      "        \\$row3 = \\$this->form->addFields([new TLabel(\"País:\", '#ff0000', '14px', null)],[\\$cidade_estado_pais_id],[new TLabel(\"Estado:\", '#ff0000', '14px', null)],[\\$cidade_estado_id]);",
+      "        \\$row4 = \\$this->form->addFields([new TLabel(\"Cidade:\", '#ff0000', '14px', null)],[\\$cidade_id],[new TLabel(\"CEP:\", '#ff0000', '14px', null)],[\\$cep]);",
+      "        \\$row5 = \\$this->form->addFields([new TLabel(\"Endereco:\", '#ff0000', '14px', null)],[\\$endereco]);",
+      "",
+      "        \\$this->form->appendPage(\"Capacitação\");",
+      "        \\$row6 = \\$this->form->addFields([new TLabel(\"Funcao id:\", '#ff0000', '14px', null)],[\\$funcao_id]);",
+      "        \\$row7 = \\$this->form->addFields([new TLabel(\"Habilidades\", null, '14px', null)],[\\$habilidades]);",
+      "",
+      "        // create the form actions",
+      "        \\$btn_onsave = \\$this->form->addAction(\"Salvar\", new TAction([\\$this, 'onSave']), 'far:save #ffffff');",
+      "        \\$this->btn_onsave = \\$btn_onsave;",
+      "        \\$btn_onsave->addStyleClass('btn-primary');",
+      "",
+      "        \\$btn_onclear = \\$this->form->addAction(\"Limpar formulário\", new TAction([\\$this, 'onClear']), 'fas:eraser #dd5a43');",
+      "        \\$this->btn_onclear = \\$btn_onclear;"
+    ],
+    "description": "Formulário com abas Adianti",
+    "link": "https://www.madbuilder.com.br/exemplo-com-abas"
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
