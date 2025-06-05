@@ -270,13 +270,16 @@
     <span data-tag="form">Formulários</span>
     <span data-tag="adianti">Adianti</span>
     <span data-tag="madbuilder">MadBuilder</span>
-    <span data-tag="vscode">VS Code</span>
+    <span data-tag="vscode">VSCode</span>
+    <button id="refresh-list" title="Limpar filtros e atualizar" style="margin-left:10px;padding:6px 12px;border-radius:6px;border:1px solid #30363d;background:#21262d;color:#8b949e;cursor:pointer;">
+      <i class="fa fa-rotate-right"></i>
+    </button>
   </div>
   
   <!-- Abas -->
   <div class="tabs">
-    <div class="tab active" data-target="madbuilder-content">MadBuilder</div>
-    <div class="tab" data-target="vscode-content">VS Code</div>
+    <div class="tab active" data-target="madbuilder-content">Mad.Builder</div>
+    <div class="tab" data-target="vscode-content">VSCode</div>
   </div>
   
   <!-- Conteúdo das abas -->
@@ -421,6 +424,16 @@
     // Filtros rápidos
     $('.suggestions span').click(function() {
       $('#search').val($(this).data('tag')).trigger('input');
+    });
+
+    // Botão de atualizar/limpar filtros
+    $('#refresh-list').click(function() {
+      $('#search').val('');
+      // Restaurar a visibilidade padrão
+      $('.section, .snippet-block').show();
+      $('.snippet-content').hide();
+      $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+      addCopyButtons();
     });
 
     // Garante que os botões de copiar estejam presentes ao iniciar
