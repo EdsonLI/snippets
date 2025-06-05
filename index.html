@@ -283,7 +283,7 @@
         $btn.on('click', function () {
           var code = $pre.text();
           navigator.clipboard.writeText(code);
-          $btn.html('<i class="fa fa-check"></i> Copiado!');
+          $btn.html('<i class="fa fa-check"></i>');
           setTimeout(function () {
             $btn.html('<i class="fa fa-copy"></i>');
           }, 1200);
