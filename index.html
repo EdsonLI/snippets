@@ -208,6 +208,33 @@
       color: #1f6feb;
       text-decoration: underline;
     }
+    /* Botão copiar estilo GitHub */
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #21262d;
+      color: #8b949e;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.95em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: background 0.2s, color 0.2s, opacity 0.2s;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .copy-btn:hover {
+      background: #30363d;
+      color: #f0f6fc;
+      opacity: 1;
+    }
+    .code-block-wrapper {
+      position: relative;
+    }
   </style>
 </head>
 <body>
@@ -242,35 +269,56 @@
 
 <script>
   $(document).ready(function() {
+    // Função para adicionar botões de copiar código
+    function addCopyButtons() {
+      $('pre code.hljs').each(function () {
+        // Evita duplicar botões
+        if ($(this).parent().hasClass('code-block-wrapper')) return;
+
+        var $pre = $(this).parent();
+        $pre.wrap('<div class="code-block-wrapper" style="position:relative"></div>');
+        var $wrapper = $pre.parent();
+
+        var $btn = $('<button class="copy-btn" title="Copiar código"><i class="fa fa-copy"></i></button>');
+        $btn.on('click', function () {
+          var code = $pre.text();
+          navigator.clipboard.writeText(code);
+          $btn.html('<i class="fa fa-check"></i> Copiado!');
+          setTimeout(function () {
+            $btn.html('<i class="fa fa-copy"></i>');
+          }, 1200);
+        });
+        $wrapper.append($btn);
+      });
+    }
+
     // Carrega os conteúdos iniciais
     $('#madbuilder-content').load('snippets_madbuilder.html', function() {
-      console.log('MadBuilder content loaded');
       hljs.highlightAll();
       setupSnippetInteractions();
+      addCopyButtons();
     });
-    
-    // Pré-carregar o conteúdo do VS Code para garantir que esteja disponível
+
     $('#vscode-content').load('snippets_vscode.html', function() {
-      console.log('VS Code content loaded');
       hljs.highlightAll();
       setupSnippetInteractions();
+      addCopyButtons();
     });
-    
+
     // Sistema de abas
     $('.tab').click(function() {
       $('.tab').removeClass('active');
       $(this).addClass('active');
-      
       $('.tab-content').removeClass('active');
       $('#' + $(this).data('target')).addClass('active');
+      addCopyButtons();
     });
-    
+
     // Função para configurar as interações dos snippets
     function setupSnippetInteractions() {
       // Expandir/colapsar snippets ao clicar no título
       $('.snippet-title').off('click').on('click', function() {
         $(this).next('.snippet-content').slideToggle();
-        
         // Alternar o ícone de + para -
         const icon = $(this).find('i:first');
         if (icon.hasClass('fa-plus')) {
@@ -279,20 +327,18 @@
           icon.removeClass('fa-minus').addClass('fa-plus');
         }
       });
-      
+
       // Expandir/colapsar categorias
       $('.collapse-icon').off('click').on('click', function() {
         const targetId = $(this).data('target');
         $('#' + targetId).slideToggle();
-        
         // Rotacionar o ícone
         $(this).css('transform', $(this).css('transform') === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)');
-        
         // Alternar botões de expandir/colapsar
         const categoryControls = $(this).closest('h3').next('.category-controls');
         categoryControls.find('.expand-all, .collapse-all').toggle();
       });
-      
+
       // Botões de expandir/colapsar todos
       $('.expand-all').off('click').on('click', function() {
         const targetId = $(this).data('target');
@@ -301,7 +347,7 @@
         $(this).hide();
         $(this).siblings('.collapse-all').show();
       });
-      
+
       $('.collapse-all').off('click').on('click', function() {
         const targetId = $(this).data('target');
         $('#' + targetId + ' .snippet-content').slideUp();
@@ -309,18 +355,21 @@
         $(this).hide();
         $(this).siblings('.expand-all').show();
       });
+
+      // Adiciona botões de copiar código sempre que interações são configuradas
+      addCopyButtons();
     }
-    
+
     // Busca
     $('#search').on('input', function() {
       const searchText = $(this).val().toLowerCase();
-      
+
       if (searchText.length > 1) {
         $('.snippet-block').each(function() {
           const tags = $(this).data('tags') || '';
           const title = $(this).find('.snippet-title strong').text().toLowerCase();
           const content = $(this).find('.snippet-content').text().toLowerCase();
-          
+
           if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
             $(this).show();
             // Expandir o snippet para mostrar o resultado
@@ -330,7 +379,7 @@
             $(this).hide();
           }
         });
-        
+
         // Mostrar apenas categorias com snippets visíveis
         $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
           if ($(this).find('.snippet-block:visible').length > 0) {
@@ -345,12 +394,16 @@
         $('.snippet-content').hide();
         $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
       }
+      addCopyButtons();
     });
-    
+
     // Filtros rápidos
     $('.suggestions span').click(function() {
       $('#search').val($(this).data('tag')).trigger('input');
     });
+
+    // Garante que os botões de copiar estejam presentes ao iniciar
+    addCopyButtons();
   });
 </script>
 </body>
