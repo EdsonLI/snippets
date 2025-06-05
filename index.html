@@ -183,6 +183,25 @@ input[type="text"]:focus {
 .collapse-all:hover {
   background: #3a3a3a;
 }
+
+/* Estilo inspirado no .post-code .hljs do Mattermost */
+pre, code, .hljs {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 8.5px;
+  border: 1px solid rgba(224,224,224, 0.2); /* substitui var(--center-channel-color-rgb) por #e0e0e0 */
+  border-radius: .25em;
+  margin: 5px 0;
+  cursor: auto;
+  font-size: 13px;
+  overflow-x: auto;
+  visibility: visible;
+  white-space: pre;
+  background: #181818 !important;
+  color: #e0e0e0 !important;
+  box-shadow: none;
+}
 </style>
 </head>
 <body>
