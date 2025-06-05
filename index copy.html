@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Snippets por linguagem e contexto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FontAwesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Highlight.js (tema escuro) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+  /* Tema escuro inspirado no GitHub Dark */
+    body {
+      font-family: 'Segoe UI', 'Liberation Sans', Arial, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      padding: 24px;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #f0f6fc;
+      font-weight: 600;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 28px;
+      border-radius: 6px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      font-size: 1em;
+      transition: border 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    }
+    
+    input[type="text"]:focus {
+      outline: none;
+      border: 1.5px solid #388bfd;
+      box-shadow: 0 0 0 2px #388bfd33;
+    }
+    
+    .suggestions {
+      margin-bottom: 18px;
+      font-size: 0.98em;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .suggestions span {
+      background: #21262d;
+      border-radius: 4px;
+      padding: 3px 12px;
+      color: #8b949e;
+      border: 1px solid #30363d;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+    }
+    .suggestions span:hover {
+      background: #30363d;
+      color: #f0f6fc;
+      border-color: #388bfd;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+      background: #161b22;
+      padding: 22px 20px 20px 20px;
+      border-radius: 10px;
+      border: 1px solid #30363d;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    }
+    
+    .section h2,
+    .section h3 {
+      border-bottom: 1px solid #21262d;
+      padding-bottom: 7px;
+      display: flex;
+      align-items: center;
+      color: #f0f6fc;
+      font-weight: 500;
+    }
+    
+    .section h3 i {
+      margin-right: 10px;
+      color: #8b949e;
+    }
+    
+    .snippet-block {
+      margin: 20px 0;
+    }
+    
+    .snippet-title {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      color: #f0f6fc;
+      font-weight: 500;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    
+    .snippet-title i {
+      margin-right: 8px;
+      color: #8b949e;
+    }
+    
+    .snippet-content {
+      display: none;
+      margin-top: 8px;
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #21262d;
+    }
+    
+    .tab {
+      padding: 10px 22px;
+      cursor: pointer;
+      background: #161b22;
+      color: #8b949e;
+      border-radius: 6px 6px 0 0;
+      margin-right: 5px;
+      transition: all 0.2s;
+      border: 1px solid #21262d;
+      border-bottom: none;
+      font-weight: 500;
+    }
+    
+    .tab:hover {
+      background: #21262d;
+      color: #f0f6fc;
+    }
+    
+    .tab.active {
+      background: #0d1117;
+      color: #f0f6fc;
+      border-bottom: 2px solid #388bfd;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .collapse-icon {
+      margin-left: auto;
+      cursor: pointer;
+      transition: transform 0.3s;
+      color: #8b949e;
+    }
+    
+    .category-controls {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .expand-all,
+    .collapse-all {
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s, border 0.2s, color 0.2s;
+    }
+    
+    .expand-all:hover,
+    .collapse-all:hover {
+      background: #30363d;
+      color: #f0f6fc;
+      border-color: #388bfd;
+    }
+    
+    /* Remove marrom e outros tons indesejados */
+    a, a:visited {
+      color: #58a6ff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #1f6feb;
+      text-decoration: underline;
+    }
+    /* Botão copiar estilo GitHub */
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #21262d;
+      color: #8b949e;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.95em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: background 0.2s, color 0.2s, opacity 0.2s;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .copy-btn:hover {
+      background: #30363d;
+      color: #f0f6fc;
+      opacity: 1;
+    }
+    .download-btn {
+      margin-left: 10px;
+      color: #8b949e;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.95em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: background 0.2s, color 0.2s, opacity 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .download-btn:hover {
+      background: #30363d;
+      color: #f0f6fc;
+      opacity: 1;
+    }
+    .code-block-wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h1>Snippets por linguagem e contexto</h1>
+  
+  <input type="text" id="search" placeholder="Buscar snippets (ex: php banco, select, transação, etc)">
+  
+  <div class="suggestions">
+    <span data-tag="php">PHP</span>
+    <span data-tag="sql">SQL</span>
+    <span data-tag="banco">Banco de dados</span>
+    <span data-tag="form">Formulários</span>
+    <span data-tag="adianti">Adianti</span>
+    <span data-tag="madbuilder">MadBuilder</span>
+    <span data-tag="vscode">VSCode</span>
+    <button id="refresh-list" title="Limpar filtros e atualizar" style="margin-left:10px;padding:6px 12px;border-radius:6px;border:1px solid #30363d;background:#21262d;color:#8b949e;cursor:pointer;">
+      <i class="fa fa-rotate-right"></i>
+    </button>
+  </div>
+  
+  <!-- Abas -->
+  <div class="tabs">
+    <div class="tab active" data-target="madbuilder-content">Mad.Builder</div>
+    <div class="tab" data-target="vscode-content">VS Code</div>
+  </div>
+  
+  <!-- Conteúdo das abas -->
+  <div id="madbuilder-content" class="tab-content active">
+    <!-- O conteúdo será carregado via AJAX -->
+  </div>
+  
+  <div id="vscode-content" class="tab-content">
+    <!-- O conteúdo será carregado via AJAX -->
+  </div>
+
+<script>
+  $(document).ready(function() {
+    // Função para adicionar botões de copiar código
+    function addCopyButtons() {
+      $('pre code.hljs').each(function () {
+        // Evita duplicar botões
+        if ($(this).parent().hasClass('code-block-wrapper')) return;
+
+        var $pre = $(this).parent();
+        $pre.wrap('<div class="code-block-wrapper" style="position:relative"></div>');
+        var $wrapper = $pre.parent();
+
+        var $btn = $('<button class="copy-btn" title="Copiar código"><i class="fa fa-copy"></i></button>');
+        $btn.on('click', function () {
+          var code = $pre.text();
+          navigator.clipboard.writeText(code);
+          $btn.html('<i class="fa fa-check"></i>');
+          setTimeout(function () {
+            $btn.html('<i class="fa fa-copy"></i>');
+          }, 1200);
+        });
+        $wrapper.append($btn);
+      });
+    }
+
+    // Carrega os conteúdos iniciais
+    $('#madbuilder-content').load('snippets_madbuilder.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#vscode-content').load('snippets_vscode.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    // Sistema de abas
+    $('.tab').click(function() {
+      $('.tab').removeClass('active');
+      $(this).addClass('active');
+      $('.tab-content').removeClass('active');
+      $('#' + $(this).data('target')).addClass('active');
+      addCopyButtons();
+    });
+
+    // Função para configurar as interações dos snippets
+    function setupSnippetInteractions() {
+      // Expandir/colapsar snippets ao clicar no título
+      $('.snippet-title').off('click').on('click', function() {
+        $(this).next('.snippet-content').slideToggle();
+        // Alternar o ícone de + para -
+        const icon = $(this).find('i:first');
+        if (icon.hasClass('fa-plus')) {
+          icon.removeClass('fa-plus').addClass('fa-minus');
+        } else {
+          icon.removeClass('fa-minus').addClass('fa-plus');
+        }
+      });
+
+      // Expandir/colapsar categorias
+      $('.collapse-icon').off('click').on('click', function() {
+        const targetId = $(this).data('target');
+        $('#' + targetId).slideToggle();
+        // Rotacionar o ícone
+        $(this).css('transform', $(this).css('transform') === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)');
+        // Alternar botões de expandir/colapsar
+        const categoryControls = $(this).closest('h3').next('.category-controls');
+        categoryControls.find('.expand-all, .collapse-all').toggle();
+      });
+
+      // Botões de expandir/colapsar todos
+      $('.expand-all').off('click').on('click', function() {
+        const targetId = $(this).data('target');
+        $('#' + targetId + ' .snippet-content').slideDown();
+        $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
+        $(this).hide();
+        $(this).siblings('.collapse-all').show();
+      });
+
+      $('.collapse-all').off('click').on('click', function() {
+        const targetId = $(this).data('target');
+        $('#' + targetId + ' .snippet-content').slideUp();
+        $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+        $(this).hide();
+        $(this).siblings('.expand-all').show();
+      });
+
+      // Adiciona botões de copiar código sempre que interações são configuradas
+      addCopyButtons();
+    }
+
+    // Busca
+    $('#search').on('input', function() {
+      const searchText = $(this).val().toLowerCase();
+
+      if (searchText.length > 1) {
+        $('.snippet-block').each(function() {
+          const tags = $(this).data('tags') || '';
+          const title = $(this).find('.snippet-title strong').text().toLowerCase();
+          const content = $(this).find('.snippet-content').text().toLowerCase();
+
+          if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
+            $(this).show();
+            // Expandir o snippet para mostrar o resultado
+            $(this).find('.snippet-content').slideDown();
+            $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
+          } else {
+            $(this).hide();
+          }
+        });
+
+        // Mostrar apenas categorias com snippets visíveis
+        $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
+          if ($(this).find('.snippet-block:visible').length > 0) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      } else {
+        // Restaurar a visibilidade padrão
+        $('.section, .snippet-block').show();
+        $('.snippet-content').hide();
+        $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+      }
+      addCopyButtons();
+    });
+
+    // Filtros rápidos
+    $('.suggestions span').click(function() {
+      $('#search').val($(this).data('tag')).trigger('input');
+    });
+
+    // Botão de atualizar/limpar filtros
+    $('#refresh-list').click(function() {
+      $('#search').val('');
+      // Restaurar a visibilidade padrão
+      $('.section, .snippet-block').show();
+      $('.snippet-content').hide();
+      $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+      addCopyButtons();
+    });
+
+    // Garante que os botões de copiar estejam presentes ao iniciar
+    addCopyButtons();
+  });
+</script>
+</body>
+</html>
