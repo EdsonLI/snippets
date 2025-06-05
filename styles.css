@@ -1,0 +1,239 @@
+/* Tema escuro inspirado no GitHub Dark */
+body {
+  font-family: 'Segoe UI', 'Liberation Sans', Arial, sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 24px;
+}
+
+h1 {
+  text-align: center;
+  color: #f0f6fc;
+  font-weight: 600;
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 28px;
+  border-radius: 6px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 1em;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 1.5px solid #388bfd;
+  box-shadow: 0 0 0 2px #388bfd33;
+}
+
+.suggestions {
+  margin-bottom: 18px;
+  font-size: 0.98em;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.suggestions span {
+  background: #21262d;
+  border-radius: 4px;
+  padding: 3px 12px;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.suggestions span:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  border-color: #388bfd;
+}
+
+.section {
+  margin-bottom: 40px;
+  background: #161b22;
+  padding: 22px 20px 20px 20px;
+  border-radius: 10px;
+  border: 1px solid #30363d;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+
+.section h2,
+.section h3 {
+  border-bottom: 1px solid #21262d;
+  padding-bottom: 7px;
+  display: flex;
+  align-items: center;
+  color: #f0f6fc;
+  font-weight: 500;
+}
+
+.section h3 i {
+  margin-right: 10px;
+  color: #8b949e;
+}
+
+.snippet-block {
+  margin: 20px 0;
+}
+
+.snippet-title {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  color: #f0f6fc;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.snippet-title i {
+  margin-right: 8px;
+  color: #8b949e;
+}
+
+.snippet-content {
+  display: none;
+  margin-top: 8px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #21262d;
+}
+
+.tab {
+  padding: 10px 22px;
+  cursor: pointer;
+  background: #161b22;
+  color: #8b949e;
+  border-radius: 6px 6px 0 0;
+  margin-right: 5px;
+  transition: all 0.2s;
+  border: 1px solid #21262d;
+  border-bottom: none;
+  font-weight: 500;
+}
+
+.tab:hover {
+  background: #21262d;
+  color: #f0f6fc;
+}
+
+.tab.active {
+  background: #0d1117;
+  color: #f0f6fc;
+  border-bottom: 2px solid #388bfd;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.collapse-icon {
+  margin-left: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+  color: #8b949e;
+}
+
+.category-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.expand-all,
+.collapse-all {
+  background: #21262d;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s, border 0.2s, color 0.2s;
+}
+
+.expand-all:hover,
+.collapse-all:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  border-color: #388bfd;
+}
+
+/* Remove marrom e outros tons indesejados */
+a, a:visited {
+  color: #58a6ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #1f6feb;
+  text-decoration: underline;
+}
+
+/* Botão copiar estilo GitHub */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #21262d;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.copy-btn:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  opacity: 1;
+}
+.download-btn {
+  margin-left: 10px;
+  color: #8b949e;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.download-btn:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  opacity: 1;
+}
+.code-block-wrapper {
+  position: relative;
+}
