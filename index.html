@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
   <script>hljs.highlightAll();</script>
 
   <!-- jQuery -->
@@ -114,365 +115,218 @@ input[type="text"]:focus {
   display: none;
 }
 
-.copy-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(40, 40, 40, 0.7);
-  border: none;
-  border-radius: 4px;
-  padding: 6px 8px;
-  color: #fafafa;
-  font-size: 1.1em;
-  cursor: pointer;
-  z-index: 2;
-  transition: background 0.3s, color 0.3s, opacity 0.3s;
-  opacity: 0.7;
+/* Estilo para as abas */
+.tabs {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
 }
 
-.copy-btn:hover, .copy-btn:focus {
-  background: #444;
-  color: #fff;
-  opacity: 1;
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #232323;
+  color: #b0b0b0;
+  border-radius: 5px 5px 0 0;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+  border-bottom: none;
 }
 
-.copy-btn.copied {
-  background: rgba(120, 255, 180, 0.10);
-  color: #fff;
-  opacity: 1;
-  box-shadow: 0 0 0 2px #444, 0 2px 8px 0 rgba(0,0,0,0.10);
+.tab:hover {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
 }
 
-pre, code, .hljs {
-  background: #181818 !important;
-  color: #e0e0e0 !important;
-  border-radius: 8px;
-  border: 1px solid #292929;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+.tab.active {
+  background-color: #3a3a3a;
+  color: #ffffff;
+  border-bottom: 2px solid #0078d7;
 }
 
-pre {
-  overflow-x: auto;
-  margin-bottom: 1.5em;
-  position: relative;
+.tab-content {
+  display: none;
 }
 
-code {
-  background: none !important;
-  color: inherit !important;
-  font-size: 15px;
+.tab-content.active {
+  display: block;
 }
 
 .collapse-icon {
+  margin-left: auto;
   cursor: pointer;
-  margin-left: 10px;
-  font-size: 0.8em;
-  color: #b0b0b0;
+  transition: transform 0.3s;
 }
 
 .category-controls {
+  margin-top: 10px;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
   gap: 10px;
-}
-
-.control-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  font-size: 1em;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  background: linear-gradient(90deg, #333 0%, #444 100%);
-  color: #fafafa;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-
-.control-btn:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.08);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.control-btn:hover, .control-btn:focus {
-  background: linear-gradient(90deg, #444 0%, #333 100%);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.15);
-}
-
-.control-btn:active {
-  background: linear-gradient(90deg, #181818 0%, #333 100%);
-}
-
-.control-btn i {
-  font-size: 1.1em;
-  transition: transform 0.2s;
-}
-
-.control-btn.show i {
-  color: #aaffcc;
-  animation: swing-in 0.4s;
-}
-
-.control-btn.hide i {
-  color: #ff6f91;
-  animation: swing-in 0.4s;
-}
-
-@keyframes swing-in {
-  0% { transform: rotate(-20deg) scale(0.8);}
-  60% { transform: rotate(10deg) scale(1.1);}
-  100% { transform: rotate(0deg) scale(1);}
 }
 
 .expand-all,
 .collapse-all {
-  background: none;
+  background: #2a2a2a;
   border: none;
-  color: #b0b0b0;
+  color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-left: 15px;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .expand-all:hover,
 .collapse-all:hover {
-  text-decoration: underline;
-}
-
-.hidden-category {
-  display: none;
+  background: #3a3a3a;
 }
 </style>
 </head>
 <body>
-
   <h1>Snippets por linguagem e contexto</h1>
-
+  
+  <input type="text" id="search" placeholder="Buscar snippets (ex: php banco, select, transação, etc)">
+  
   <div class="suggestions">
-    <span data-tag="#categoria">#categoria</span>
-    <span data-tag="#madbuilder">#madbuilder</span>
-    <span data-tag="#php">#php</span>
-    <span data-tag="#sql">#sql</span>
-    <span data-tag="#js">#js</span>
-    <span data-tag="#css">#css</span>
-    <span data-tag="#snippets">#snippets</span>
+    <span data-tag="php">PHP</span>
+    <span data-tag="sql">SQL</span>
+    <span data-tag="banco">Banco de dados</span>
+    <span data-tag="form">Formulários</span>
+    <span data-tag="adianti">Adianti</span>
+    <span data-tag="madbuilder">MadBuilder</span>
+    <span data-tag="vscode">VS Code</span>
+  </div>
+  
+  <!-- Abas -->
+  <div class="tabs">
+    <div class="tab active" data-target="madbuilder-content">MadBuilder</div>
+    <div class="tab" data-target="vscode-content">VS Code</div>
+  </div>
+  
+  <!-- Conteúdo das abas -->
+  <div id="madbuilder-content" class="tab-content active">
+    <!-- O conteúdo será carregado via AJAX -->
+  </div>
+  
+  <div id="vscode-content" class="tab-content">
+    <!-- O conteúdo será carregado via AJAX -->
   </div>
 
-  <input type="text" id="search" placeholder="Filtrar por texto ou #tag (ex: #php cadastro)">
-
-  <div id="madbuilder-container"></div>
-
   <script>
-    $(document).ready(function () {
-      // Sugestão de tags clicáveis
-      $('.suggestions span').on('click', function() {
-        $('#search').val($(this).data('tag') + ' ').focus().trigger('keyup');
-      });
-    
-      // Carrega o conteúdo externo da seção Mad[Builder]
-      $('#madbuilder-container').load('snippets_madbuilder.html', function() {
-        inicializarSnippets();
+    $(document).ready(function() {
+      // Carrega os conteúdos iniciais
+      $('#madbuilder-content').load('snippets_madbuilder.html', function() {
         hljs.highlightAll();
-        adicionarBotoesCopiar();
+        setupSnippetInteractions();
       });
-    
-      function inicializarSnippets() {
-        $('.snippet-content').hide();
-    
-        // Filtro com tags
-        $('#search').off('keyup').on('keyup', function () {
-          const searchTerm = $(this).val().toLowerCase().trim();
-          let tag = null;
-          let term = searchTerm;
-    
-          // Detecta se começa com #
-          if (searchTerm.startsWith('#')) {
-            const parts = searchTerm.split(' ');
-            tag = parts[0].replace('#', '');
-            term = parts.slice(1).join(' ').trim();
-          }
-    
-          if (!tag && !term) {
-            $('.section').removeClass('hidden-category');
-            $('.snippet-block').show();
-            return;
-          }
-    
-          $('.section').each(function () {
-            let showSection = false;
-    
-            // Filtro por categoria
-            if (tag === 'categoria' || tag === 'categorias') {
-              const sectionTitle = $(this).find('h2,h3').text().toLowerCase();
-              showSection = sectionTitle.includes(term);
-              $(this).toggleClass('hidden-category', !showSection);
-              if (showSection) $(this).find('.snippet-block').show();
-              else $(this).find('.snippet-block').hide();
-              return;
-            }
-    
-            // Filtro por seção (ex: madbuilder)
-            if (tag === 'madbuilder') {
-              showSection = $(this).data('tags') && $(this).data('tags').includes('madbuilder');
-              $(this).toggleClass('hidden-category', !showSection);
-    
-              if (showSection) {
-                // Filtra os snippets internos pelo termo, se houver
-                $(this).find('.snippet-block').each(function () {
-                  const tags = ($(this).data('tags') || '').toLowerCase();
-                  const text = $(this).text().toLowerCase();
-                  const match = !term || tags.includes(term) || text.includes(term);
-                  $(this).toggle(match);
-                  if (match) showSection = true;
-                });
-              } else {
-                $(this).find('.snippet-block').hide();
-              }
-              return;
-            }
-    
-            // Filtro por linguagem
-            if (['php','sql','js','css'].includes(tag)) {
-              $(this).removeClass('hidden-category');
-              $(this).find('.snippet-block').each(function () {
-                const tags = ($(this).data('tags') || '').toLowerCase();
-                const text = $(this).text().toLowerCase();
-                const match = tags.includes(tag) && (!term || tags.includes(term) || text.includes(term));
-                $(this).toggle(match);
-                if (match) showSection = true;
-              });
-              $(this).toggleClass('hidden-category', !showSection);
-              return;
-            }
-    
-            // Filtro geral (sem tag)
-            $(this).removeClass('hidden-category');
-            $(this).find('.snippet-block').each(function () {
-              const text = $(this).text().toLowerCase();
-              const match = text.includes(term);
-              $(this).toggle(match);
-              if (match) showSection = true;
-            });
-            $(this).toggleClass('hidden-category', !showSection);
+      
+      // Sistema de abas
+      $('.tab').click(function() {
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
+        
+        $('.tab-content').removeClass('active');
+        $('#' + $(this).data('target')).addClass('active');
+        
+        // Carrega o conteúdo da aba se ainda não foi carregado
+        if ($(this).data('target') === 'vscode-content' && $('#vscode-content').is(':empty')) {
+          $('#vscode-content').load('snippets_vscode.html', function() {
+            hljs.highlightAll();
+            setupSnippetInteractions();
           });
-        });
-    
-        // Toggle individual snippet
-        $('.snippet-title').off('click').on('click', function () {
-          const content = $(this).next('.snippet-content');
+        }
+      });
+      
+      // Função para configurar as interações dos snippets
+      function setupSnippetInteractions() {
+        // Expandir/colapsar snippets ao clicar no título
+        $('.snippet-title').off('click').on('click', function() {
+          $(this).next('.snippet-content').slideToggle();
+          
+          // Alternar o ícone de + para -
           const icon = $(this).find('i:first');
-    
-          content.slideToggle(200);
-    
           if (icon.hasClass('fa-plus')) {
             icon.removeClass('fa-plus').addClass('fa-minus');
           } else {
             icon.removeClass('fa-minus').addClass('fa-plus');
           }
-    
-          setTimeout(function() {
-            hljs.highlightAll();
-            adicionarBotoesCopiar();
-          }, 200);
         });
-    
-        // Toggle categoria inteira
-        $('.collapse-icon').off('click').on('click', function () {
+        
+        // Expandir/colapsar categorias
+        $('.collapse-icon').off('click').on('click', function() {
           const targetId = $(this).data('target');
-          const targetDiv = $('#' + targetId);
-    
-          const parent = $(this).closest('.section');
-          parent.find('.expand-all').show();
-          parent.find('.collapse-all').hide();
-    
-          if ($(this).hasClass('fa-chevron-down')) {
-            targetDiv.slideUp(200);
-            $(this).removeClass('fa-chevron-down').addClass('fa-chevron-right');
-          } else {
-            targetDiv.slideDown(200);
-            $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
-          }
+          $('#' + targetId).slideToggle();
+          
+          // Rotacionar o ícone
+          $(this).css('transform', $(this).css('transform') === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)');
+          
+          // Alternar botões de expandir/colapsar
+          const categoryControls = $(this).closest('h3').next('.category-controls');
+          categoryControls.find('.expand-all, .collapse-all').toggle();
         });
-    
-        // Expandir todos os snippets em uma categoria
-        $('.expand-all').off('click').on('click', function () {
+        
+        // Botões de expandir/colapsar todos
+        $('.expand-all').off('click').on('click', function() {
           const targetId = $(this).data('target');
-          const snippets = $('#' + targetId + ' .snippet-content');
-          const icons = $('#' + targetId + ' .snippet-title i:first-child');
-    
-          snippets.slideDown(200);
-          icons.removeClass('fa-plus').addClass('fa-minus');
-    
+          $('#' + targetId + ' .snippet-content').slideDown();
+          $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
           $(this).hide();
           $(this).siblings('.collapse-all').show();
         });
-    
-        // Recolher todos os snippets em uma categoria
-        $('.collapse-all').off('click').on('click', function () {
+        
+        $('.collapse-all').off('click').on('click', function() {
           const targetId = $(this).data('target');
-          const snippets = $('#' + targetId + ' .snippet-content');
-          const icons = $('#' + targetId + ' .snippet-title i:first-child');
-    
-          snippets.slideUp(200);
-          icons.removeClass('fa-minus').addClass('fa-plus');
-    
+          $('#' + targetId + ' .snippet-content').slideUp();
+          $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
           $(this).hide();
           $(this).siblings('.expand-all').show();
         });
       }
-    
-      // Função para adicionar botões de copiar nos blocos de código
-      function adicionarBotoesCopiar() {
-        // Remove botões duplicados
-        $('pre').each(function () {
-          $(this).find('.copy-btn').remove();
-        });
-    
-        // Adiciona botão de copiar em cada bloco <pre>
-        $('pre').each(function () {
-          const btn = $('<button class="copy-btn" title="Copiar"><i class="fa-regular fa-copy"></i></button>');
-          $(this).prepend(btn);
-        });
-    
-        // Evento de copiar
-        $('.copy-btn').off('click').on('click', function (e) {
-          e.stopPropagation();
-          let code = $(this).siblings('code').text();
-    
-          // Remove tags de abertura/fechamento PHP
-          code = code.replace(/^\s*<\?php\s*/i, '').replace(/\s*\?>\s*$/i, '');
-          // Remove linhas em branco no início/fim
-          code = code.replace(/^\s+|\s+$/g, '');
-    
-          const btn = $(this);
-          navigator.clipboard.writeText(code)
-            .then(() => {
-              btn.addClass('copied');
-              setTimeout(() => {
-                btn.removeClass('copied');
-              }, 1000);
-            })
-            .catch(err => {
-              console.error('Erro ao copiar: ', err);
-            });
-        });
-      }
+      
+      // Busca
+      $('#search').on('input', function() {
+        const searchText = $(this).val().toLowerCase();
+        
+        if (searchText.length > 1) {
+          $('.snippet-block').each(function() {
+            const tags = $(this).data('tags') || '';
+            const title = $(this).find('.snippet-title strong').text().toLowerCase();
+            const content = $(this).find('.snippet-content').text().toLowerCase();
+            
+            if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
+              $(this).show();
+              // Expandir o snippet para mostrar o resultado
+              $(this).find('.snippet-content').slideDown();
+              $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
+            } else {
+              $(this).hide();
+            }
+          });
+          
+          // Mostrar apenas categorias com snippets visíveis
+          $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
+            if ($(this).find('.snippet-block:visible').length > 0) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        } else {
+          // Restaurar a visibilidade padrão
+          $('.section, .snippet-block').show();
+          $('.snippet-content').hide();
+          $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+        }
+      });
+      
+      // Filtros rápidos
+      $('.suggestions span').click(function() {
+        $('#search').val($(this).data('tag')).trigger('input');
+      });
     });
-    </script>
-
+  </script>
 </body>
 </html>
