@@ -40,6 +40,7 @@ input[type="text"]:focus {
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .suggestions span {
   background: #21262d;
   border-radius: 4px;
@@ -49,6 +50,7 @@ input[type="text"]:focus {
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
+
 .suggestions span:hover {
   background: #30363d;
   color: #f0f6fc;
@@ -56,7 +58,7 @@ input[type="text"]:focus {
 }
 
 .section {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   background: #161b22;
   padding: 22px 20px 20px 20px;
   border-radius: 10px;
@@ -91,15 +93,8 @@ input[type="text"]:focus {
 
 .snippet-block {
   margin: 20px 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 0;
-  position: relative;
 }
 
-/* Ajuste para alinhar o botão de download ao lado do texto, com espaçamento interno correto */
 .snippet-title {
   cursor: pointer;
   user-select: none;
@@ -110,13 +105,6 @@ input[type="text"]:focus {
   background: none;
   border: none;
   padding: 0;
-  min-height: 32px;
-  gap: 10px;
-}
-
-.snippet-title strong {
-  flex: 1;
-  /* Garante que o texto ocupe o espaço disponível */
 }
 
 .snippet-title i {
@@ -208,6 +196,7 @@ a, a:visited {
   text-decoration: none;
   transition: color 0.2s;
 }
+
 a:hover {
   color: #1f6feb;
   text-decoration: underline;
@@ -232,6 +221,7 @@ a:hover {
   align-items: center;
   gap: 6px;
 }
+
 .copy-btn:hover {
   background: #30363d;
   color: #f0f6fc;
@@ -240,12 +230,11 @@ a:hover {
 
 .download-btn {
   margin-left: 10px;
-  margin-right: 0;
   color: #8b949e;
   background: #21262d;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 4px 8px; /* Reduzido o padding lateral para menos espaço à direita */
+  padding: 4px 10px;
   font-size: 0.95em;
   cursor: pointer;
   opacity: 0.7;
@@ -255,6 +244,7 @@ a:hover {
   gap: 6px;
   text-decoration: none;
 }
+
 .download-btn:hover {
   background: #30363d;
   color: #f0f6fc;
