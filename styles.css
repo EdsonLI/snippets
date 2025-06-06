@@ -40,6 +40,7 @@ input[type="text"]:focus {
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .suggestions span {
   background: #21262d;
   border-radius: 4px;
@@ -49,6 +50,7 @@ input[type="text"]:focus {
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
+
 .suggestions span:hover {
   background: #30363d;
   color: #f0f6fc;
@@ -194,6 +196,7 @@ a, a:visited {
   text-decoration: none;
   transition: color 0.2s;
 }
+
 a:hover {
   color: #1f6feb;
   text-decoration: underline;
@@ -218,11 +221,13 @@ a:hover {
   align-items: center;
   gap: 6px;
 }
+
 .copy-btn:hover {
   background: #30363d;
   color: #f0f6fc;
   opacity: 1;
 }
+
 .download-btn {
   margin-left: 10px;
   color: #8b949e;
@@ -239,11 +244,21 @@ a:hover {
   gap: 6px;
   text-decoration: none;
 }
+
 .download-btn:hover {
   background: #30363d;
   color: #f0f6fc;
   opacity: 1;
 }
+
 .code-block-wrapper {
   position: relative;
 }
+
+/* Cores dos títulos das categorias de snippets do mad.builder */
+.categoria-bancos { color: #1abc9c !important; }
+.categoria-codigos { color: #e67e22 !important; }
+.categoria-campos { color: #9b59b6 !important; }
+.categoria-sessao { color: #2980b9 !important; }
+.categoria-janelas { color: #f39c12 !important; }
+.categoria-outros { color: #95a5a6 !important; }
