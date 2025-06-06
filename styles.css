@@ -99,13 +99,12 @@ input[type="text"]:focus {
   position: relative;
 }
 
-/* Ajuste para alinhar o botão de download à direita */
+/* Ajuste para alinhar o botão de download ao lado do texto, com espaçamento interno correto */
 .snippet-title {
   cursor: pointer;
   user-select: none;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* separa texto e botão */
   color: #f0f6fc;
   font-weight: 500;
   background: none;
@@ -246,7 +245,7 @@ a:hover {
   background: #21262d;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 4px 10px;
+  padding: 4px 8px; /* Reduzido o padding lateral para menos espaço à direita */
   font-size: 0.95em;
   cursor: pointer;
   opacity: 0.7;
