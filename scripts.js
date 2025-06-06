@@ -24,12 +24,24 @@ $(document).ready(function() {
 
   // Carrega os conteúdos iniciais
   $('#madbuilder-content').load('snippets_madbuilder.html', function() {
+    // Substituir ícones plus por chevron-right em todos os snippets
+    $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-chevron-right');
+    
+    // Converter chevron-down para chevron-left ao carregar
+    $(this).find('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
+    
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
+    // Substituir ícones plus por chevron-right em todos os snippets
+    $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-chevron-right');
+    
+    // Converter chevron-down para chevron-left ao carregar
+    $(this).find('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
+    
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
@@ -49,16 +61,16 @@ $(document).ready(function() {
     // Expandir/colapsar snippets ao clicar no título
     $('.snippet-title').off('click').on('click', function() {
       $(this).next('.snippet-content').slideToggle();
-      // Alternar o ícone de + para -
+      // Alternar o ícone de chevron-right para chevron-down
       const icon = $(this).find('i:first');
-      if (icon.hasClass('fa-plus')) {
-        icon.removeClass('fa-plus').addClass('fa-minus');
+      if (icon.hasClass('fa-chevron-right')) {
+        icon.removeClass('fa-chevron-right').addClass('fa-chevron-down');
       } else {
-        icon.removeClass('fa-minus').addClass('fa-plus');
+        icon.removeClass('fa-chevron-down').addClass('fa-chevron-right');
       }
     });
 
-    // Expandir/colapsar categorias - CORREÇÃO AQUI
+    // Expandir/colapsar categorias 
     $('.collapse-icon').off('click').on('click', function(e) {
       e.stopPropagation(); // Prevenir propagação do evento
       const targetId = $(this).data('target');
@@ -67,13 +79,11 @@ $(document).ready(function() {
       // Toggle do conteúdo
       $target.slideToggle();
       
-      // Alternar a rotação do ícone corretamente
-      if ($(this).hasClass('rotated')) {
-        $(this).removeClass('rotated');
-        $(this).css('transform', 'rotate(0deg)');
+      // Alternar entre chevron-left e chevron-down
+      if ($(this).hasClass('fa-chevron-left')) {
+        $(this).removeClass('fa-chevron-left').addClass('fa-chevron-down');
       } else {
-        $(this).addClass('rotated');
-        $(this).css('transform', 'rotate(180deg)');
+        $(this).removeClass('fa-chevron-down').addClass('fa-chevron-left');
       }
       
       // Alternar botões de expandir/colapsar
@@ -85,18 +95,26 @@ $(document).ready(function() {
     $('.expand-all').off('click').on('click', function() {
       const targetId = $(this).data('target');
       $('#' + targetId + ' .snippet-content').slideDown();
-      $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
+      $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-chevron-right').addClass('fa-chevron-down');
       $(this).hide();
       $(this).siblings('.collapse-all').show();
+      
+      // Muda o ícone de colapso para chevron-down quando expandir todos
+      const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
+      collapseIcon.removeClass('fa-chevron-left').addClass('fa-chevron-down');
     });
 
     // Botões de colapsar todos
     $('.collapse-all').off('click').on('click', function() {
       const targetId = $(this).data('target');
       $('#' + targetId + ' .snippet-content').slideUp();
-      $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+      $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
       $(this).hide();
       $(this).siblings('.expand-all').show();
+      
+      // Muda o ícone de colapso para chevron-left quando colapsar todos
+      const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
+      collapseIcon.removeClass('fa-chevron-down').addClass('fa-chevron-left');
     });
 
     // Adiciona botões de copiar código sempre que interações são configuradas
@@ -117,7 +135,7 @@ $(document).ready(function() {
           $(this).show();
           // Expandir o snippet para mostrar o resultado
           $(this).find('.snippet-content').slideDown();
-          $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
+          $(this).find('.snippet-title i:first-child').removeClass('fa-chevron-right').addClass('fa-chevron-down');
         } else {
           $(this).hide();
         }
@@ -127,6 +145,8 @@ $(document).ready(function() {
       $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
         if ($(this).find('.snippet-block:visible').length > 0) {
           $(this).show();
+          // Mudar o ícone para baixo para categorias que ficam visíveis
+          $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
         } else {
           $(this).hide();
         }
@@ -135,7 +155,9 @@ $(document).ready(function() {
       // Restaurar a visibilidade padrão
       $('.section, .snippet-block').show();
       $('.snippet-content').hide();
-      $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+      $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+      // Restaurar todos os ícones para esquerda
+      $('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
     }
     addCopyButtons();
   });
@@ -151,7 +173,9 @@ $(document).ready(function() {
     // Restaurar a visibilidade padrão
     $('.section, .snippet-block').show();
     $('.snippet-content').hide();
-    $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+    $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+    // Restaurar todos os ícones para esquerda
+    $('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
     addCopyButtons();
   });
 
