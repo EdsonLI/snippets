@@ -58,18 +58,30 @@ $(document).ready(function() {
       }
     });
 
-    // Expandir/colapsar categorias
-    $('.collapse-icon').off('click').on('click', function() {
+    // Expandir/colapsar categorias - CORREÇÃO AQUI
+    $('.collapse-icon').off('click').on('click', function(e) {
+      e.stopPropagation(); // Prevenir propagação do evento
       const targetId = $(this).data('target');
-      $('#' + targetId).slideToggle();
-      // Rotacionar o ícone
-      $(this).css('transform', $(this).css('transform') === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)');
+      const $target = $('#' + targetId);
+      
+      // Toggle do conteúdo
+      $target.slideToggle();
+      
+      // Alternar a rotação do ícone corretamente
+      if ($(this).hasClass('rotated')) {
+        $(this).removeClass('rotated');
+        $(this).css('transform', 'rotate(0deg)');
+      } else {
+        $(this).addClass('rotated');
+        $(this).css('transform', 'rotate(180deg)');
+      }
+      
       // Alternar botões de expandir/colapsar
       const categoryControls = $(this).closest('h3').next('.category-controls');
       categoryControls.find('.expand-all, .collapse-all').toggle();
     });
 
-    // Botões de expandir/colapsar todos
+    // Botões de expandir todos
     $('.expand-all').off('click').on('click', function() {
       const targetId = $(this).data('target');
       $('#' + targetId + ' .snippet-content').slideDown();
@@ -78,6 +90,7 @@ $(document).ready(function() {
       $(this).siblings('.collapse-all').show();
     });
 
+    // Botões de colapsar todos
     $('.collapse-all').off('click').on('click', function() {
       const targetId = $(this).data('target');
       $('#' + targetId + ' .snippet-content').slideUp();
