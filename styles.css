@@ -64,6 +64,16 @@ input[type="text"]:focus {
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
 
+/* Ajuste global para espaçamento das categorias em todas as seções de snippets */
+.section h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.section {
+  padding: 10px !important;
+}
+
 .section h2,
 .section h3 {
   border-bottom: 1px solid #21262d;
