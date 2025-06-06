@@ -24,12 +24,16 @@ $(document).ready(function() {
 
   // Carrega os conteúdos iniciais
   $('#madbuilder-content').load('snippets_madbuilder.html', function() {
+    // Converter chevron-down para chevron-left ao carregar
+    $(this).find('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
+    // Converter chevron-down para chevron-left ao carregar
+    $(this).find('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
@@ -67,13 +71,11 @@ $(document).ready(function() {
       // Toggle do conteúdo
       $target.slideToggle();
       
-      // Alternar a rotação do ícone corretamente
-      if ($(this).hasClass('rotated')) {
-        $(this).removeClass('rotated');
-        $(this).css('transform', 'rotate(0deg)');
+      // Alternar entre chevron-left e chevron-down
+      if ($(this).hasClass('fa-chevron-left')) {
+        $(this).removeClass('fa-chevron-left').addClass('fa-chevron-down');
       } else {
-        $(this).addClass('rotated');
-        $(this).css('transform', 'rotate(180deg)');
+        $(this).removeClass('fa-chevron-down').addClass('fa-chevron-left');
       }
       
       // Alternar botões de expandir/colapsar
@@ -88,6 +90,10 @@ $(document).ready(function() {
       $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-plus').addClass('fa-minus');
       $(this).hide();
       $(this).siblings('.collapse-all').show();
+      
+      // Muda o ícone de colapso para chevron-down quando expandir todos
+      const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
+      collapseIcon.removeClass('fa-chevron-left').addClass('fa-chevron-down');
     });
 
     // Botões de colapsar todos
@@ -97,6 +103,10 @@ $(document).ready(function() {
       $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
       $(this).hide();
       $(this).siblings('.expand-all').show();
+      
+      // Muda o ícone de colapso para chevron-left quando colapsar todos
+      const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
+      collapseIcon.removeClass('fa-chevron-down').addClass('fa-chevron-left');
     });
 
     // Adiciona botões de copiar código sempre que interações são configuradas
@@ -127,6 +137,8 @@ $(document).ready(function() {
       $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
         if ($(this).find('.snippet-block:visible').length > 0) {
           $(this).show();
+          // Mudar o ícone para baixo para categorias que ficam visíveis
+          $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
         } else {
           $(this).hide();
         }
@@ -136,6 +148,8 @@ $(document).ready(function() {
       $('.section, .snippet-block').show();
       $('.snippet-content').hide();
       $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+      // Restaurar todos os ícones para esquerda
+      $('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
     }
     addCopyButtons();
   });
@@ -152,6 +166,8 @@ $(document).ready(function() {
     $('.section, .snippet-block').show();
     $('.snippet-content').hide();
     $('.snippet-title i:first-child').removeClass('fa-minus').addClass('fa-plus');
+    // Restaurar todos os ícones para esquerda
+    $('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
     addCopyButtons();
   });
 
