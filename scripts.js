@@ -22,18 +22,6 @@ $(document).ready(function() {
     });
   }
 
-  // Função para prevenir seleção de texto em ícones
-  function preventTextSelection() {
-    // Aplica user-select: none a todos os ícones
-    $('.fa-chevron-down, .fa-chevron-left, .fa-chevron-right, .collapse-icon, .snippet-title i, .category-controls button i, .fa, .fas, .far, .fal, .fab, .fa-solid')
-      .css({
-        '-webkit-user-select': 'none',
-        '-moz-user-select': 'none',
-        '-ms-user-select': 'none',
-        'user-select': 'none'
-      });
-  }
-
   // Carrega os conteúdos iniciais
   $('#madbuilder-content').load('snippets_madbuilder.html', function() {
     // Substituir ícones plus por chevron-right em todos os snippets
@@ -45,7 +33,6 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
-    preventTextSelection();
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
@@ -58,7 +45,6 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Sistema de abas
@@ -68,7 +54,6 @@ $(document).ready(function() {
     $('.tab-content').removeClass('active');
     $('#' + $(this).data('target')).addClass('active');
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Função para configurar as interações dos snippets
@@ -94,10 +79,6 @@ $(document).ready(function() {
       // Toggle do conteúdo
       $target.slideToggle();
       
-      // Também esconder/mostrar os botões de controle da categoria
-      const categoryControls = $(this).closest('h3').next('.category-controls');
-      categoryControls.slideToggle();
-      
       // Alternar entre chevron-down e chevron-left (invertido)
       if ($(this).hasClass('fa-chevron-down')) {
         $(this).removeClass('fa-chevron-down').addClass('fa-chevron-left');
@@ -106,6 +87,7 @@ $(document).ready(function() {
       }
       
       // Alternar botões de expandir/colapsar
+      const categoryControls = $(this).closest('h3').next('.category-controls');
       categoryControls.find('.expand-all, .collapse-all').toggle();
     });
 
@@ -165,8 +147,6 @@ $(document).ready(function() {
           $(this).show();
           // Mudar o ícone para baixo para categorias que ficam visíveis
           $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-          // Mostrar os controles da categoria
-          $(this).find('.category-controls').show();
         } else {
           $(this).hide();
         }
@@ -178,11 +158,8 @@ $(document).ready(function() {
       $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
       // Restaurar todos os ícones para baixo (expandido)
       $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-      // Mostrar todos os controles de categoria
-      $('.category-controls').show();
     }
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Filtros rápidos
@@ -199,15 +176,9 @@ $(document).ready(function() {
     $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
     // Restaurar todos os ícones para baixo (expandido)
     $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-    // Mostrar todos os controles de categoria
-    $('.category-controls').show();
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
-  
-  // Aplica a prevenção de seleção de texto para os elementos iniciais
-  preventTextSelection();
 });
