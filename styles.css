@@ -1,94 +1,264 @@
-/* Filtros de categoria do Mad.Builder */
-.category-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-  padding: 0 5px;
+/* Tema escuro inspirado no GitHub Dark */
+body {
+  font-family: 'Segoe UI', 'Liberation Sans', Arial, sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 1px;
 }
 
-.filter-btn {
-  display: inline-flex;
+h1 {
+  text-align: center;
+  color: #f0f6fc;
+  font-weight: 600;
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 28px;
+  border-radius: 6px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 1em;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 1.5px solid #388bfd;
+  box-shadow: 0 0 0 2px #388bfd33;
+}
+
+.suggestions {
+  margin-bottom: 18px;
+  font-size: 0.98em;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.suggestions span {
+  background: #21262d;
+  border-radius: 4px;
+  padding: 3px 12px;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.suggestions span:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  border-color: #388bfd;
+}
+
+.section {
+  margin-bottom: 10px;
+  background: #161b22;
+  padding: 22px 20px 20px 20px;
+  border-radius: 10px;
+  border: 1px solid #30363d;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+
+/* Ajuste global para espaçamento das categorias em todas as seções de snippets */
+.section h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.section {
+  padding: 10px !important;
+}
+
+.section h2,
+.section h3 {
+  border-bottom: 1px solid #21262d;
+  padding-bottom: 7px;
+  display: flex;
   align-items: center;
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: 1px solid;
+  color: #f0f6fc;
+  font-weight: 500;
+}
+
+.section h3 i {
+  margin-right: 10px;
+  color: #8b949e;
+}
+
+.snippet-block {
+  margin: 20px 0;
+}
+
+.snippet-title {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  color: #f0f6fc;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.snippet-title i {
+  margin-right: 8px;
+  color: #8b949e;
+}
+
+.snippet-content {
+  display: none;
+  margin-top: 8px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #21262d;
+}
+
+.tab {
+  padding: 10px 22px;
+  cursor: pointer;
+  background: #161b22;
+  color: #8b949e;
+  border-radius: 6px 6px 0 0;
+  margin-right: 5px;
+  transition: all 0.2s;
+  border: 1px solid #21262d;
+  border-bottom: none;
+  font-weight: 500;
+}
+
+.tab:hover {
+  background: #21262d;
+  color: #f0f6fc;
+}
+
+.tab.active {
+  background: #0d1117;
+  color: #f0f6fc;
+  border-bottom: 2px solid #388bfd;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.collapse-icon {
+  margin-left: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+  color: #8b949e;
+}
+
+.category-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.expand-all,
+.collapse-all {
+  background: #21262d;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 5px 12px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 0.9em;
-  transition: all 0.2s ease;
-  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s, border 0.2s, color 0.2s;
 }
 
-.filter-btn i {
-  margin-right: 6px;
+.expand-all:hover,
+.collapse-all:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  border-color: #388bfd;
 }
 
-/* Estilos específicos para botões de filtro por categoria */
-.filter-btn.categoria-bancos {
-  border-color: #1abc9c;
-  background-color: rgba(26, 188, 156, 0.15);
-}
-.filter-btn.categoria-bancos:hover, .filter-btn.categoria-bancos.active {
-  background-color: rgba(26, 188, 156, 0.3);
+/* Remove marrom e outros tons indesejados */
+a, a:visited {
+  color: #58a6ff;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.filter-btn.categoria-codigos {
-  border-color: #e67e22;
-  background-color: rgba(230, 126, 34, 0.15);
-}
-.filter-btn.categoria-codigos:hover, .filter-btn.categoria-codigos.active {
-  background-color: rgba(230, 126, 34, 0.3);
+a:hover {
+  color: #1f6feb;
+  text-decoration: underline;
 }
 
-.filter-btn.categoria-campos {
-  border-color: #9b59b6;
-  background-color: rgba(155, 89, 182, 0.15);
-}
-.filter-btn.categoria-campos:hover, .filter-btn.categoria-campos.active {
-  background-color: rgba(155, 89, 182, 0.3);
-}
-
-.filter-btn.categoria-sessao {
-  border-color: #2980b9;
-  background-color: rgba(41, 128, 185, 0.15);
-}
-.filter-btn.categoria-sessao:hover, .filter-btn.categoria-sessao.active {
-  background-color: rgba(41, 128, 185, 0.3);
-}
-
-.filter-btn.categoria-janelas {
-  border-color: #f39c12;
-  background-color: rgba(243, 156, 18, 0.15);
-}
-.filter-btn.categoria-janelas:hover, .filter-btn.categoria-janelas.active {
-  background-color: rgba(243, 156, 18, 0.3);
+/* Botão copiar estilo GitHub */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #21262d;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.filter-btn.categoria-outros {
-  border-color: #95a5a6;
-  background-color: rgba(149, 165, 166, 0.15);
-}
-.filter-btn.categoria-outros:hover, .filter-btn.categoria-outros.active {
-  background-color: rgba(149, 165, 166, 0.3);
+.copy-btn:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  opacity: 1;
 }
 
-.filter-btn.filter-reset {
-  border-color: #e74c3c;
-  color: #e74c3c;
-  background-color: rgba(231, 76, 60, 0.1);
-  margin-left: auto;
-}
-.filter-btn.filter-reset:hover {
-  background-color: rgba(231, 76, 60, 0.2);
+.download-btn {
+  margin-left: 10px;
+  color: #8b949e;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
 }
 
-/* Prevenir seleção de texto nos ícones e botões */
-.fa, .fas, .far, .fal, .fab, .fa-solid,
-.fa-chevron-down, .fa-chevron-left, .fa-chevron-right,
-.collapse-icon, .snippet-title i, .category-controls button i,
-.filter-btn i {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.download-btn:hover {
+  background: #30363d;
+  color: #f0f6fc;
+  opacity: 1;
 }
+
+.code-block-wrapper {
+  position: relative;
+}
+
+/* Cores dos títulos das categorias de snippets do mad.builder */
+.categoria-bancos { color: #1abc9c !important; }
+.categoria-codigos { color: #e67e22 !important; }
+.categoria-campos { color: #9b59b6 !important; }
+.categoria-sessao { color: #2980b9 !important; }
+.categoria-janelas { color: #f39c12 !important; }
+.categoria-outros { color: #95a5a6 !important; }
