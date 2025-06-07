@@ -22,6 +22,18 @@ $(document).ready(function() {
     });
   }
 
+  // Função para prevenir seleção de texto em ícones
+  function preventTextSelection() {
+    // Aplica user-select: none a todos os ícones
+    $('.fa-chevron-down, .fa-chevron-left, .fa-chevron-right, .collapse-icon, .snippet-title i, .category-controls button i, .fa, .fas, .far, .fal, .fab, .fa-solid')
+      .css({
+        '-webkit-user-select': 'none',
+        '-moz-user-select': 'none',
+        '-ms-user-select': 'none',
+        'user-select': 'none'
+      });
+  }
+
   // Carrega os conteúdos iniciais
   $('#madbuilder-content').load('snippets_madbuilder.html', function() {
     // Substituir ícones plus por chevron-right em todos os snippets
@@ -33,6 +45,7 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
+    preventTextSelection();
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
@@ -45,6 +58,7 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
+    preventTextSelection();
   });
 
   // Sistema de abas
@@ -54,6 +68,7 @@ $(document).ready(function() {
     $('.tab-content').removeClass('active');
     $('#' + $(this).data('target')).addClass('active');
     addCopyButtons();
+    preventTextSelection();
   });
 
   // Função para configurar as interações dos snippets
@@ -167,6 +182,7 @@ $(document).ready(function() {
       $('.category-controls').show();
     }
     addCopyButtons();
+    preventTextSelection();
   });
 
   // Filtros rápidos
@@ -186,8 +202,12 @@ $(document).ready(function() {
     // Mostrar todos os controles de categoria
     $('.category-controls').show();
     addCopyButtons();
+    preventTextSelection();
   });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
+  
+  // Aplica a prevenção de seleção de texto para os elementos iniciais
+  preventTextSelection();
 });
