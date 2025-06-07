@@ -262,3 +262,24 @@ a:hover {
 .categoria-sessao { color: #2980b9 !important; }
 .categoria-janelas { color: #f39c12 !important; }
 .categoria-outros { color: #95a5a6 !important; }
+
+/* Impede a seleção de texto nos ícones */
+.fa-chevron-down, 
+.fa-chevron-left, 
+.fa-chevron-right,
+.collapse-icon,
+.snippet-title i,
+.category-controls button i {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Opcionalmente, você pode aplicar a todos os ícones Font Awesome */
+.fa, .fas, .far, .fal, .fab, .fa-solid {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
