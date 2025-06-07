@@ -27,8 +27,8 @@ $(document).ready(function() {
     // Substituir ícones plus por chevron-right em todos os snippets
     $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-chevron-right');
     
-    // Converter chevron-down para chevron-left ao carregar
-    $(this).find('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
+    // Converter para chevron-down ao carregar (inicialmente expandido)
+    $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     
     hljs.highlightAll();
     setupSnippetInteractions();
@@ -39,8 +39,8 @@ $(document).ready(function() {
     // Substituir ícones plus por chevron-right em todos os snippets
     $(this).find('.snippet-title i:first-child').removeClass('fa-plus').addClass('fa-chevron-right');
     
-    // Converter chevron-down para chevron-left ao carregar
-    $(this).find('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
+    // Converter para chevron-down ao carregar (inicialmente expandido)
+    $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     
     hljs.highlightAll();
     setupSnippetInteractions();
@@ -79,11 +79,11 @@ $(document).ready(function() {
       // Toggle do conteúdo
       $target.slideToggle();
       
-      // Alternar entre chevron-left e chevron-down
-      if ($(this).hasClass('fa-chevron-left')) {
-        $(this).removeClass('fa-chevron-left').addClass('fa-chevron-down');
-      } else {
+      // Alternar entre chevron-down e chevron-left (invertido)
+      if ($(this).hasClass('fa-chevron-down')) {
         $(this).removeClass('fa-chevron-down').addClass('fa-chevron-left');
+      } else {
+        $(this).removeClass('fa-chevron-left').addClass('fa-chevron-down');
       }
       
       // Alternar botões de expandir/colapsar
@@ -156,8 +156,8 @@ $(document).ready(function() {
       $('.section, .snippet-block').show();
       $('.snippet-content').hide();
       $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
-      // Restaurar todos os ícones para esquerda
-      $('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
+      // Restaurar todos os ícones para baixo (expandido)
+      $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     }
     addCopyButtons();
   });
@@ -174,8 +174,8 @@ $(document).ready(function() {
     $('.section, .snippet-block').show();
     $('.snippet-content').hide();
     $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
-    // Restaurar todos os ícones para esquerda
-    $('.collapse-icon').removeClass('fa-chevron-down').addClass('fa-chevron-left');
+    // Restaurar todos os ícones para baixo (expandido)
+    $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     addCopyButtons();
   });
 
