@@ -79,6 +79,10 @@ $(document).ready(function() {
       // Toggle do conteúdo
       $target.slideToggle();
       
+      // Também esconder/mostrar os botões de controle da categoria
+      const categoryControls = $(this).closest('h3').next('.category-controls');
+      categoryControls.slideToggle();
+      
       // Alternar entre chevron-down e chevron-left (invertido)
       if ($(this).hasClass('fa-chevron-down')) {
         $(this).removeClass('fa-chevron-down').addClass('fa-chevron-left');
@@ -87,7 +91,6 @@ $(document).ready(function() {
       }
       
       // Alternar botões de expandir/colapsar
-      const categoryControls = $(this).closest('h3').next('.category-controls');
       categoryControls.find('.expand-all, .collapse-all').toggle();
     });
 
@@ -147,6 +150,8 @@ $(document).ready(function() {
           $(this).show();
           // Mudar o ícone para baixo para categorias que ficam visíveis
           $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+          // Mostrar os controles da categoria
+          $(this).find('.category-controls').show();
         } else {
           $(this).hide();
         }
@@ -158,6 +163,8 @@ $(document).ready(function() {
       $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
       // Restaurar todos os ícones para baixo (expandido)
       $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      // Mostrar todos os controles de categoria
+      $('.category-controls').show();
     }
     addCopyButtons();
   });
@@ -176,6 +183,8 @@ $(document).ready(function() {
     $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
     // Restaurar todos os ícones para baixo (expandido)
     $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+    // Mostrar todos os controles de categoria
+    $('.category-controls').show();
     addCopyButtons();
   });
 
