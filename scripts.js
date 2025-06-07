@@ -22,18 +22,6 @@ $(document).ready(function() {
     });
   }
 
-  // Função para prevenir seleção de texto em ícones
-  function preventTextSelection() {
-    // Aplica user-select: none a todos os ícones
-    $('.fa-chevron-down, .fa-chevron-left, .fa-chevron-right, .collapse-icon, .snippet-title i, .category-controls button i, .fa, .fas, .far, .fal, .fab, .fa-solid, .filter-btn')
-      .css({
-        '-webkit-user-select': 'none',
-        '-moz-user-select': 'none',
-        '-ms-user-select': 'none',
-        'user-select': 'none'
-      });
-  }
-
   // Carrega os conteúdos iniciais
   $('#madbuilder-content').load('snippets_madbuilder.html', function() {
     // Substituir ícones plus por chevron-right em todos os snippets
@@ -44,9 +32,7 @@ $(document).ready(function() {
     
     hljs.highlightAll();
     setupSnippetInteractions();
-    setupCategoryFilters();
     addCopyButtons();
-    preventTextSelection();
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
@@ -59,7 +45,6 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Sistema de abas
@@ -69,47 +54,7 @@ $(document).ready(function() {
     $('.tab-content').removeClass('active');
     $('#' + $(this).data('target')).addClass('active');
     addCopyButtons();
-    preventTextSelection();
   });
-
-  // Configurar os filtros de categoria do Mad.Builder
-  function setupCategoryFilters() {
-    $('.filter-btn:not(.filter-reset)').click(function() {
-      // Alternar estado ativo
-      $(this).toggleClass('active');
-      
-      // Filtrar categorias baseado nos filtros ativos
-      const activeFilters = $('.filter-btn.active').map(function() {
-        return $(this).data('tag');
-      }).get();
-      
-      if (activeFilters.length > 0) {
-        // Esconder todas as seções de categoria
-        $('.section[id!="madbuilder"]').hide();
-        
-        // Mostrar apenas as categorias selecionadas
-        activeFilters.forEach(function(filter) {
-          $('.section[data-tags*="' + filter + '"]').show();
-        });
-      } else {
-        // Se nenhum filtro estiver ativo, mostrar todas as categorias
-        $('.section').show();
-      }
-      
-      addCopyButtons();
-    });
-    
-    // Botão para limpar filtros
-    $('.filter-btn.filter-reset').click(function() {
-      // Remover classe ativa de todos os filtros
-      $('.filter-btn').removeClass('active');
-      
-      // Mostrar todas as seções
-      $('.section').show();
-      
-      addCopyButtons();
-    });
-  }
 
   // Função para configurar as interações dos snippets
   function setupSnippetInteractions() {
@@ -211,9 +156,6 @@ $(document).ready(function() {
           $(this).hide();
         }
       });
-      
-      // Remover classe ativa dos filtros de categoria quando pesquisando
-      $('.filter-btn').removeClass('active');
     } else {
       // Restaurar a visibilidade padrão
       $('.section, .snippet-block').show();
@@ -225,7 +167,6 @@ $(document).ready(function() {
       $('.category-controls').show();
     }
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Filtros rápidos
@@ -244,15 +185,9 @@ $(document).ready(function() {
     $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     // Mostrar todos os controles de categoria
     $('.category-controls').show();
-    // Remover classe ativa dos filtros de categoria
-    $('.filter-btn').removeClass('active');
     addCopyButtons();
-    preventTextSelection();
   });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
-  
-  // Aplica a prevenção de seleção de texto para os elementos iniciais
-  preventTextSelection();
 });
