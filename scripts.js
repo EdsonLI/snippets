@@ -174,6 +174,17 @@ $(document).ready(function() {
     $('#search').val($(this).data('tag')).trigger('input');
   });
 
+('.filter-button').on('click', function() {
+    const target = $(this).data('filter');
+
+    // Oculta todas as seções
+    $('#madbuilder .section[data-tags]').addClass('hidden');
+
+    // Mostra apenas a seção correspondente
+    $('#' + target).removeClass('hidden');
+  });
+
+
   // Botão de atualizar/limpar filtros
   $('#refresh-list').click(function() {
     $('#search').val('');
