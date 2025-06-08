@@ -14,8 +14,11 @@ h1 {
   letter-spacing: 0.5px;
 }
 
+/* Corrige o campo de busca para ser responsivo */
 input[type="text"] {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   margin-bottom: 28px;
   border-radius: 6px;
