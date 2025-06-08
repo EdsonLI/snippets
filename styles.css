@@ -265,3 +265,53 @@ a:hover {
 .categoria-sessao { color: #2980b9 !important; }
 .categoria-janelas { color: #f39c12 !important; }
 .categoria-outros { color: #95a5a6 !important; }
+
+
+/* 
+Incluindo filtros por titulo da categoria Mad.Builder
+*/
+
+.snippet-filters {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.filter-button:hover {
+  transform: scale(1.05);
+}
+
+/* Cores de categoria */
+.categoria-bancos {
+  background-color: #5c6bc0;
+  color: #fff;
+}
+
+.categoria-codigos {
+  background-color: #26a69a;
+  color: #fff;
+}
+
+.categoria-campos {
+  background-color: #ec407a;
+  color: #fff;
+}
+
+/* Ocultação por filtro */
+.section[data-tags] {
+  display: block;
+}
+
+.section[data-tags].hidden {
+  display: none;
+}
