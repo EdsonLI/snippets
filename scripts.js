@@ -31,8 +31,8 @@ $(document).ready(function() {
     $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     
     // Substituir ícones + e - por expand e compress
-    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand-alt');
-    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress-alt');
+    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
+    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
     
     hljs.highlightAll();
     setupSnippetInteractions();
@@ -47,8 +47,8 @@ $(document).ready(function() {
     $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     
     // Substituir ícones + e - por expand e compress
-    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand-alt');
-    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress-alt');
+    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
+    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
     
     hljs.highlightAll();
     setupSnippetInteractions();
