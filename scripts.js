@@ -134,28 +134,48 @@ $(document).ready(function() {
 
   // Busca
   $('#search').on('input', function() {
-    const searchText = $(this).val().toLowerCase();
+  const searchText = $(this).val().toLowerCase();
 
-    if (searchText.length > 1) {
-      $('.snippet-block').each(function() {
-        const tags = $(this).data('tags') || '';
-        const title = $(this).find('.snippet-title strong').text().toLowerCase();
-      });
+  if (searchText.length > 1) {
+    $('.snippet-block').each(function() {
+      const tags = $(this).data('tags') || '';
+      const title = $(this).find('.snippet-title strong').text().toLowerCase();
+      const content = $(this).find('.snippet-content').text().toLowerCase();
 
-      // Mostrar apenas categorias com snippets visíveis
-      $('.section[id!="madbuilder"][id!="vscode"]').each(function() {…});
-    } else {
-      // Restaurar a visibilidade padrão
-      $('.section, .snippet-block').show();
-      $('.snippet-content').hide();
-      $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
-      // Restaurar todos os ícones para baixo (expandido)
-      $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-      // Mostrar todos os controles de categoria
-      $('.category-controls').show();
-    }
-    addCopyButtons();
-  });
+      if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
+        $(this).show();
+        // Expandir o snippet para mostrar o resultado
+        $(this).find('.snippet-content').slideDown();
+        $(this).find('.snippet-title i:first-child').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+      } else {
+        $(this).hide();
+      }
+    });
+
+    // Mostrar apenas categorias com snippets visíveis
+    $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
+      if ($(this).find('.snippet-block:visible').length > 0) {
+        $(this).show();
+        // Mudar o ícone para baixo para categorias que ficam visíveis
+        $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+        // Mostrar os controles da categoria
+        $(this).find('.category-controls').show();
+      } else {
+        $(this).hide();
+      }
+    });
+  } else {
+    // Restaurar a visibilidade padrão
+    $('.section, .snippet-block').show();
+    $('.snippet-content').hide();
+    $('.snippet-title i:first-child').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+    // Restaurar todos os ícones para baixo (expandido)
+    $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+    // Mostrar todos os controles de categoria
+    $('.category-controls').show();
+  }
+  addCopyButtons();
+});
 
   // Filtros rápidos
   $('.suggestions span').click(function() {
