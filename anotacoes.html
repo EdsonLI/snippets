@@ -1,6 +1,64 @@
 # Selecionar todas as tabelas que possuem a coluna `company_id` no esquema `mini_erp`:
+SELECT DISTINCT TABLE_NAME FROM information_schema.columns WHERE column_name = 'company_id' AND table_schema = 'mini_erp';
 
-SELECT DISTINCT TABLE_NAME
-FROM information_schema.columns
-WHERE column_name = 'company_id'
-  AND table_schema = 'mini_erp';
+# Selecionar todas as tabelas que possuem a coluna `system_user_id` no esquema `mini_erp`:
+SELECT DISTINCT TABLE_NAME FROM information_schema.columns WHERE column_name = 'system_user_id' AND table_schema = 'mini_erp';
+
+# Selecionar todas as tabelas que possuem a coluna `system_users_id` no esquema `mini_erp`:
+SELECT DISTINCT TABLE_NAME FROM information_schema.columns WHERE column_name = 'system_users_id' AND table_schema = 'mini_erp';
+
+# REFERÊNCIA DOS COMANDOS DE CRIAÇÃO DA PROCEDURE DE LIMPEZA DE DADOS DE TESTES
+        /*
+        DELIMITER //
+
+            CREATE PROCEDURE CleanupDataTests(
+                IN companyId INT,
+                IN ignoreTables TEXT
+            )
+            BEGIN
+                DECLARE done INT DEFAULT FALSE;
+                DECLARE tableName VARCHAR(64);
+                DECLARE deleteCommand TEXT;
+
+                DECLARE cur CURSOR FOR
+                    SELECT DISTINCT TABLE_NAME
+                    FROM information_schema.columns
+                    WHERE table_schema = DATABASE()
+                    AND column_name = 'company_id';
+
+                DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+                -- Agora sim: comandos executáveis só após DECLAREs
+                SET FOREIGN_KEY_CHECKS = 0;
+
+                OPEN cur;
+
+                read_loop: LOOP
+                    FETCH cur INTO tableName;
+                    IF done THEN
+                        LEAVE read_loop;
+                    END IF;
+
+                    -- Ignora tabelas listadas
+                    IF FIND_IN_SET(tableName, ignoreTables) THEN
+                        ITERATE read_loop;
+                    END IF;
+
+                    -- Monta e executa o DELETE baseado apenas no company_id
+                    SET @deleteCommand = CONCAT(
+                        'DELETE FROM `', tableName, '` WHERE company_id = ', companyId
+                    );
+
+                    PREPARE stmt FROM @deleteCommand;
+                    EXECUTE stmt;
+                    DEALLOCATE PREPARE stmt;
+
+                END LOOP;
+
+                CLOSE cur;
+
+                SET FOREIGN_KEY_CHECKS = 1;
+            END //
+
+        DELIMITER ;
+        */
