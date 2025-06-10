@@ -246,6 +246,10 @@ $(document).ready(function() {
     // Abre a categoria e mostra controles
     $('#' + filter).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     $('#' + filter).find('.category-controls').show();
+
+    // --- NOVO: Expandir todos os snippets da categoria filtrada ---
+    $('#' + filter + '-snippets .snippet-content').slideDown();
+    $('#' + filter + '-snippets .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
   });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
