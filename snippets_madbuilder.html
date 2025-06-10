@@ -46,8 +46,8 @@
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-  TTransaction::open('mini_erp');
-  TTransaction::close();
+    TTransaction::open('mini_erp');
+    TTransaction::close();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -59,14 +59,14 @@
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$conn = TTransaction::get();
-$result = $conn->query('SELECT id FROM bank ORDER BY id');
-$objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
-if($objects) {
-  foreach($objects as $object) { 
-    echo $object->id;
-  }    
-}
+    $conn = TTransaction::get();
+    $result = $conn->query('SELECT id FROM bank ORDER BY id');
+    $objects = $result->fetchAll(PDO::FETCH_CLASS, "stdClass");
+    if($objects) {
+        foreach($objects as $object) { 
+            echo $object->id;
+        }    
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -78,9 +78,9 @@ if($objects) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objeto = new Bank();
-$objeto->campo = 'valor';
-$objeto->store();
+    $objeto = new Bank();
+    $objeto->campo = 'valor';
+    $objeto->store();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -91,7 +91,9 @@ $objeto->store();
           <strong>Carregar registro pelo id:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $objeto = Bank::find( $id ); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $objeto = Bank::find( $id );
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -101,7 +103,9 @@ $objeto->store();
           <strong>Carregar registro por outra coluna:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $objeto = Bank::where('coluna', '=', $valor)->first(); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $objeto = Bank::where('coluna', '=', $valor)->first();
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -112,11 +116,11 @@ $objeto->store();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objeto = Bank::find( $id );
-if($objeto) {
-  $objeto->coluna = 'valor';
-  $objeto->store();    
-}
+    $objeto = Bank::find( $id );
+    if($objeto) {
+        $objeto->coluna = 'valor';
+        $objeto->store();    
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -128,10 +132,10 @@ if($objeto) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objeto = Bank::find( $id );
-if($objeto) {
-  $objeto->delete();    
-}
+    $objeto = Bank::find( $id );
+    if($objeto) {
+        $objeto->delete();    
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -143,10 +147,10 @@ if($objeto) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objeto = Bank::find( $id );
-if($objeto) {
-  $array = $objeto->toArray();    
-}
+    $objeto = Bank::find( $id );
+    if($objeto) {
+        $array = $objeto->toArray();    
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -158,10 +162,10 @@ if($objeto) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objeto = Bank::find( $id );
-if($objeto) {
-  $array = $objeto->toJson();    
-}
+    $objeto = Bank::find( $id );
+    if($objeto) {
+        $array = $objeto->toJson();    
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -173,10 +177,10 @@ if($objeto) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objs = Bank::where('coluna', '=', $valor)
-          ->where('coluna2', '=', $valor2)
-          ->orderBy('id')
-          ->load();
+    $objs = Bank::where('coluna', '=', $valor)
+                ->where('coluna2', '=', $valor2)
+                ->orderBy('id')
+                ->load();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -188,10 +192,10 @@ $objs = Bank::where('coluna', '=', $valor)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objs = Bank::where('coluna',  '=', $valor)
-          ->where('coluna2', '=', $valor2)
-          ->orderBy('id')
-          ->first();
+    $objs = Bank::where('coluna',  '=', $valor)
+                ->where('coluna2', '=', $valor2)
+                ->orderBy('id')
+                ->first();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -203,10 +207,10 @@ $objs = Bank::where('coluna',  '=', $valor)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$objs = Bank::where('coluna',  '=', $valor)
-          ->orderBy('id')
-          ->take(10)
-          ->load();
+    $objs = Bank::where('coluna',  '=', $valor)
+                ->orderBy('id')
+                ->take(10)
+                ->load();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -218,10 +222,10 @@ $objs = Bank::where('coluna',  '=', $valor)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-Bank::where('id', 'IN', [1,2,3,4]) // id in (1,2,3,4)
-    ->where('coluna1', '=', 'valor1') // coluna1 = 'valor1'
-    ->set('coluna2', '50') // set coluna2 = '50'
-    ->update();
+    Bank::where('id', 'IN', [1,2,3,4]) // id in (1,2,3,4)
+        ->where('coluna1', '=', 'valor1') // coluna1 = 'valor1'
+        ->set('coluna2', '50') // set coluna2 = '50'
+        ->update();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -233,9 +237,9 @@ Bank::where('id', 'IN', [1,2,3,4]) // id in (1,2,3,4)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-Bank::where('coluna', '=', $valor)
-    ->where('coluna2', '=', $valor2)
-    ->delete();
+    Bank::where('coluna', '=', $valor)
+        ->where('coluna2', '=', $valor2)
+        ->delete();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -247,9 +251,9 @@ Bank::where('coluna', '=', $valor)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-Bank::where('coluna',  '=', $valor)
-    ->where('coluna2', '=', $valor2)
-    ->count();
+    Bank::where('coluna',  '=', $valor)
+        ->where('coluna2', '=', $valor2)
+        ->count();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -261,10 +265,10 @@ Bank::where('coluna',  '=', $valor)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$array = Bank::where('coluna',  '=', $valor)
-             ->where('coluna2', '=', $valor2)
-             ->orderBy('id')
-             ->getIndexedArray('primaryKey', 'coluna3');
+    $array = Bank::where('coluna',  '=', $valor)
+                 ->where('coluna2', '=', $valor2)
+                 ->orderBy('id')
+                 ->getIndexedArray('primaryKey', 'coluna3');
 ?&gt;</code></pre>
         </div>
       </div>
@@ -275,7 +279,9 @@ $array = Bank::where('coluna',  '=', $valor)
           <strong>Habilitar logs de sql:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TTransaction::setLogger(new TLoggerSTD); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TTransaction::setLogger(new TLoggerSTD);
+?&gt;</code></pre>
         </div>
       </div>
     </div>
@@ -306,11 +312,11 @@ $array = Bank::where('coluna',  '=', $valor)
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-     $bank = new Bank($check_id);
-  }
-}
+    if($param['builder_datagrid_check']) {
+        foreach($param['builder_datagrid_check'] as $check_id) {
+            $bank = new Bank($check_id);
+        }
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -322,12 +328,12 @@ if($param['builder_datagrid_check']) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-     $bank = new Bank($check_id);
-     $bank->delete();
-   }
-}
+    if($param['builder_datagrid_check']) {
+        foreach($param['builder_datagrid_check'] as $check_id) {
+            $bank = new Bank($check_id);
+            $bank->delete();
+        }
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -339,14 +345,14 @@ if($param['builder_datagrid_check']) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {
-  foreach($param['builder_datagrid_check'] as $check_id) {
-      $bank = new Bank($check_id);
-      $bank->nome_da_coluna1 = 'novo valor';
-      $bank->nome_da_coluna2 = 'novo valor';
-      $bank->store();
-  }
-}
+    if($param['builder_datagrid_check']) {
+        foreach($param['builder_datagrid_check'] as $check_id) {
+            $bank = new Bank($check_id);
+            $bank->nome_da_coluna1 = 'novo valor';
+            $bank->nome_da_coluna2 = 'novo valor';
+            $bank->store();
+        }
+    }
 ?&gt;</code></pre>
         </div>
       </div>
@@ -358,10 +364,10 @@ if($param['builder_datagrid_check']) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$bank = new Bank();
-$bankClone = clone $bank;
-unset($bankClone->id);
-$bankClone->store();
+    $bank = new Bank();
+    $bankClone = clone $bank;
+    unset($bankClone->id);
+    $bankClone->store();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -392,7 +398,9 @@ $bankClone->store();
           <strong>Habilitar campo:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TEntry::enableField(self::$formName, 'bank_id'); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TEntry::enableField(self::$formName, 'bank_id');
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -402,7 +410,9 @@ $bankClone->store();
           <strong>Desabilitar campo:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TEntry::disableField(self::$formName, 'bank_id'); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TEntry::disableField(self::$formName, 'bank_id');
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -413,9 +423,9 @@ $bankClone->store();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$increaseFieldList = new TFieldList('increase_field_list');
-$this->increaseFieldList = $increaseFieldList;
-$this->increaseFieldList->enableSorting();
+    $increaseFieldList = new TFieldList('increase_field_list');
+    $this->increaseFieldList = $increaseFieldList;
+    $this->increaseFieldList->enableSorting();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -427,10 +437,10 @@ $this->increaseFieldList->enableSorting();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$object = new stdClass();
-$object->bank_id = 'insira o novo valor aqui';
-//$object->fieldName = 'insira o novo valor aqui'; //sample
-TForm::sendData(self::$formName, $object);
+    $object = new stdClass();
+    $object->bank_id = 'insira o novo valor aqui';
+    //$object->fieldName = 'insira o novo valor aqui'; //sample
+    TForm::sendData(self::$formName, $object);
 ?&gt;</code></pre>
         </div>
       </div>
@@ -442,9 +452,9 @@ TForm::sendData(self::$formName, $object);
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$items = array();
-$items['chave'] = 'valor';
-TCombo::reload(self::$formName, 'stages_id', $items, true);
+    $items = array();
+    $items['chave'] = 'valor';
+    TCombo::reload(self::$formName, 'stages_id', $items, true);
 ?&gt;</code></pre>
         </div>
       </div>
@@ -455,7 +465,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Esconder campo:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').hide()"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').hide()");
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -465,7 +477,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Mostrar campo:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').show()"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').show()");
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -475,7 +489,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Mostrar rótulo pelo texto:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TScript::create("$('label:contains(\"Título\")').show();"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TScript::create("$('label:contains(\"Título\")').show();");
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -485,7 +501,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Esconder rótulo pelo texto:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TScript::create("$('label:contains(\"Título\")').hide();"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TScript::create("$('label:contains(\"Título\")').hide();");
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -495,7 +513,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Trocar rótulo pelo texto:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TScript::create("$('label:contains(\"Título 1\")').html('Título 2')"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TScript::create("$('label:contains(\"Título 1\")').html('Título 2')");
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -505,7 +525,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Trocar máscara do TEntry:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500'); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500');
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -515,7 +537,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Validar campos CPF:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php (new TCPFValidator())->validate('CPF', $data->cpf); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    (new TCPFValidator())->validate('CPF', $data->cpf);
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -525,7 +549,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Validar campos CNPJ:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php (new TCNPJValidator())->validate('CNPJ', $data->cnpj); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    (new TCNPJValidator())->validate('CNPJ', $data->cnpj);
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -535,7 +561,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Validar campos E-mail:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php (new TEmailValidator())->validate('E-mail', $data->email); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    (new TEmailValidator())->validate('E-mail', $data->email);
+?&gt;</code></pre>
         </div>
       </div>
     </div>
@@ -565,7 +593,9 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
           <strong>Obter valor da sessão:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $valor = TSession::getValue('nome_posicao'); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $valor = TSession::getValue('nome_posicao');
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -576,8 +606,8 @@ TCombo::reload(self::$formName, 'stages_id', $items, true);
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$var = [1,2,3,4];
-$valor = TSession::setValue('nome_posicao', $var);
+    $var = [1,2,3,4];
+    $valor = TSession::setValue('nome_posicao', $var);
 ?&gt;</code></pre>
         </div>
       </div>
@@ -588,7 +618,9 @@ $valor = TSession::setValue('nome_posicao', $var);
           <strong>Obter valor da sessão do sistema:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $valor = TSession::getValue('userid'); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $valor = TSession::getValue('userid');
+?&gt;</code></pre>
         </div>
       </div>
     </div>
@@ -619,8 +651,8 @@ $valor = TSession::setValue('nome_posicao', $var);
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$pageParam = []; // ex.: = ['key' => 10]
-TApplication::loadPage('BankList', 'onShow', $pageParam);
+    $pageParam = []; // ex.: = ['key' => 10]
+    TApplication::loadPage('BankList', 'onShow', $pageParam);
 ?&gt;</code></pre>
         </div>
       </div>
@@ -632,10 +664,10 @@ TApplication::loadPage('BankList', 'onShow', $pageParam);
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$object = new TLabel('Teste');
-$window = TWindow::create('Janela sob demanda', 0.8, 650);
-$window->add($object);
-$window->show();
+    $object = new TLabel('Teste');
+    $window = TWindow::create('Janela sob demanda', 0.8, 650);
+    $window->add($object);
+    $window->show();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -647,13 +679,13 @@ $window->show();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$window = TWindow::create('PDF', 0.8, 0.8);
-$object = new TElement('iframe');
-$object->src  = 'http://www.adianti.com.br/framework_files/adianti_framework.pdf';
-$object->type  = 'application/pdf';
-$object->style = "width: 100%; height:calc(100% - 10px)";
-$window->add($object);
-$window->show();
+    $window = TWindow::create('PDF', 0.8, 0.8);
+    $object = new TElement('iframe');
+    $object->src  = 'http://www.adianti.com.br/framework_files/adianti_framework.pdf';
+    $object->type  = 'application/pdf';
+    $object->style = "width: 100%; height:calc(100% - 10px)";
+    $window->add($object);
+    $window->show();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -665,16 +697,16 @@ $window->show();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$window = TWindow::create('Adianti', 0.8, 0.8);
-$iframe = new TElement('iframe');
-$iframe->id = "iframe_external";
-$iframe->src = "http://www.adianti.com.br/framework_files/template-material/";
-$iframe->frameborder = "0";
-$iframe->scrolling = "yes";
-$iframe->width = "100%";
-$iframe->height = "600px";
-$window->add($iframe);
-$window->show();
+    $window = TWindow::create('Adianti', 0.8, 0.8);
+    $iframe = new TElement('iframe');
+    $iframe->id = "iframe_external";
+    $iframe->src = "http://www.adianti.com.br/framework_files/template-material/";
+    $iframe->frameborder = "0";
+    $iframe->scrolling = "yes";
+    $iframe->width = "100%";
+    $iframe->height = "600px";
+    $window->add($iframe);
+    $window->show();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -705,14 +737,14 @@ $window->show();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-public function onSave($param = null) {
-    try {
-        $jsonParam = json_encode($param, JSON_UNESCAPED_UNICODE);
-        TScript::create('console.log('.$jsonParam.');');
-    } catch (Exception $e) {
-        SweetAlertDialogs::showAlert('error', $e->getMessage());
+    public function onSave($param = null) {
+        try {
+            $jsonParam = json_encode($param, JSON_UNESCAPED_UNICODE);
+            TScript::create('console.log('.$jsonParam.');');
+        } catch (Exception $e) {
+            SweetAlertDialogs::showAlert('error', $e->getMessage());
+        }
     }
-}
 ?&gt;</code></pre>
         </div>
       </div>
@@ -724,8 +756,8 @@ public function onSave($param = null) {
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$this->datagrid = new TDataGrid;
-$this->datagrid->disableDefaultClick();
+    $this->datagrid = new TDataGrid;
+    $this->datagrid->disableDefaultClick();
 ?&gt;</code></pre>
         </div>
       </div>
@@ -737,8 +769,8 @@ $this->datagrid->disableDefaultClick();
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$this->filter_criteria->add(new TFilter('company_id', '=', UserService::getOwner()));
-$this->filter_criteria->add(new TFilter('company_id', '=', Company::DinaBox), TExpression::OR_OPERATOR);
+    $this->filter_criteria->add(new TFilter('company_id', '=', UserService::getOwner()));
+    $this->filter_criteria->add(new TFilter('company_id', '=', Company::DinaBox), TExpression::OR_OPERATOR);
 ?&gt;</code></pre>
         </div>
       </div>
@@ -750,8 +782,8 @@ $this->filter_criteria->add(new TFilter('company_id', '=', Company::DinaBox), TE
         </div>
         <div class="snippet-content">
           <pre><code class="language-php">&lt;?php
-$this->filter_criteria->add(new TFilter('system_users_id', '!=', $filterVar), TExpression::AND_OPERATOR);
-$this->filter_criteria->add(new TFilter('system_users_id', '=', TSession::getValue('userid')), TExpression::AND_OPERATOR);
+    $this->filter_criteria->add(new TFilter('system_users_id', '!=', $filterVar), TExpression::AND_OPERATOR);
+    $this->filter_criteria->add(new TFilter('system_users_id', '=', TSession::getValue('userid')), TExpression::AND_OPERATOR);
 ?&gt;</code></pre>
         </div>
       </div>
@@ -762,7 +794,9 @@ $this->filter_criteria->add(new TFilter('system_users_id', '=', TSession::getVal
           <strong>Colocar um title em um objeto de um formulário:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $cpf->setTip("999.999.999-99"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $cpf->setTip("999.999.999-99");
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -772,7 +806,9 @@ $this->filter_criteria->add(new TFilter('system_users_id', '=', TSession::getVal
           <strong>Manter a paginação:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $this->pageNavigation->keepLastPagination(__CLASS__); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $this->pageNavigation->keepLastPagination(__CLASS__);
+?&gt;</code></pre>
         </div>
       </div>
       
@@ -782,7 +818,9 @@ $this->filter_criteria->add(new TFilter('system_users_id', '=', TSession::getVal
           <strong>Agrupamento na datagrid:</strong>
         </div>
         <div class="snippet-content">
-          <pre><code class="language-php">&lt;?php $this->datagrid->setGroupColumn('company_id', "&lt;b&gt;{company->id} - {company->name}&lt;/b&gt;"); ?&gt;</code></pre>
+          <pre><code class="language-php">&lt;?php
+    $this->datagrid->setGroupColumn('company_id', "&lt;b&gt;{company->id} - {company->name}&lt;/b&gt;");
+?&gt;</code></pre>
         </div>
       </div>
     </div>
