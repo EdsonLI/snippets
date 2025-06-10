@@ -75,6 +75,12 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
+  $('#bancosdedados-content').load('snippets_bancos_de_dados.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
   // Sistema de abas
   $('.tab').click(function() {
     $('.tab').removeClass('active');
