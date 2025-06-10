@@ -207,6 +207,26 @@ $(document).ready(function() {
       $('.category-controls').show();
     }
     addCopyButtons();
+
+    // Filtro por categoria ao clicar nos botões coloridos
+    $(document).on('click', '.cat-btn', function() {
+      var filter = $(this).data('filter');
+      // Esconde todas as seções de categoria
+      $('.section[id]').not('#madbuilder').hide();
+      // Mostra só a seção da categoria clicada
+      $('#' + filter).show();
+      // Esconde todos os blocos de snippet
+      $('.snippet-block').hide();
+      // Mostra todos os snippets da categoria
+      $('#' + filter + '-snippets .snippet-block').show();
+      // Fecha todos os conteúdos de snippet
+      $('.snippet-content').hide();
+      // Reseta ícones dos snippets
+      $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+      // Abre a categoria e mostra controles
+      $('#' + filter).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      $('#' + filter).find('.category-controls').show();
+    });
   });
 
   // Filtros rápidos
