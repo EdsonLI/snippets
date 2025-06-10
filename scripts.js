@@ -258,6 +258,16 @@ $(document).ready(function() {
     // $('#' + filter + '-snippets .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
   });
 
+  $(document).on('click', '.copy-btn-title', function(e) {
+    e.stopPropagation();
+    const text = $(this).siblings('strong').text().trim();
+    navigator.clipboard.writeText(text);
+    $(this).find('i').removeClass('fa-copy').addClass('fa-check');
+    setTimeout(() => {
+      $(this).find('i').removeClass('fa-check').addClass('fa-copy');
+    }, 1200);
+  });
+
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
 });

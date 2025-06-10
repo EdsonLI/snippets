@@ -286,3 +286,21 @@ a:hover {
 .categoria-sessao { color: #2980b9 !important; }
 .categoria-janelas { color: #f39c12 !important; }
 .categoria-outros { color: #95a5a6 !important; }
+
+.sql-keyword { color: #2ecc71; font-weight: bold; font-family: 'Roboto Mono', monospace; }
+.sql-func    { color: #3498db; font-family: 'Roboto Mono', monospace; }
+.sql-string  { color: #e67e22; font-family: 'Roboto Mono', monospace; }
+.copy-btn-title {
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+  color: #fff;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
+}
+.copy-btn-title:hover {
+  background: #30363d;
+  color: #2ecc71;
+}
