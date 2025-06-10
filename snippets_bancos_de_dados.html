@@ -1,24 +1,50 @@
 <div class="section" id="bancosdedados" data-tags="banco bancosdedados sql">
   <h2>Snippets Banco de dados</h2>
 
-  <!-- Exemplo de snippet -->
-  <div class="snippet-block" data-tags="sql banco select">
+  <!-- Snippet: CALL CleanCompanyData -->
+  <div class="snippet-block" data-tags="sql banco procedure cleancompanydata">
     <div class="snippet-title">
       <i class="fa-solid fa-expand"></i>
-      <strong>Exemplo de SELECT:</strong>
+      <strong>CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');</strong>
     </div>
     <div class="snippet-content" style="display:none;">
-      <pre><code class="language-sql">SELECT * FROM tabela WHERE condicao;</code></pre>
-    </div>
-  </div>
+      <pre><code class="language-sql">
+DELIMITER //
 
-  <div class="snippet-block" data-tags="sql banco insert">
-    <div class="snippet-title">
-      <i class="fa-solid fa-expand"></i>
-      <strong>Exemplo de INSERT:</strong>
-    </div>
-    <div class="snippet-content" style="display:none;">
-      <pre><code class="language-sql">INSERT INTO tabela (coluna1, coluna2) VALUES ('valor1', 'valor2');</code></pre>
+CREATE PROCEDURE CleanCompanyData(
+    IN companyId INT,
+    IN ignoreTables VARCHAR(255)
+)
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE tableName VARCHAR(64);
+    DECLARE deleteCommand VARCHAR(255);
+    DECLARE cur CURSOR FOR
+        SELECT TABLE_NAME
+        FROM information_schema.columns
+        WHERE table_schema = 'mini_erp'
+        AND column_name = 'company_id';
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    OPEN cur;
+    read_loop: LOOP
+        FETCH cur INTO tableName;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+        IF FIND_IN_SET(tableName, ignoreTables) THEN
+            ITERATE read_loop;
+        END IF;
+        SET deleteCommand = CONCAT('DELETE FROM ', tableName, ' WHERE company_id = ', companyId);
+        SET @deleteCommand = deleteCommand;
+        PREPARE stmt FROM @deleteCommand;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+    END LOOP;
+    CLOSE cur;
+END //
+
+DELIMITER ;
+</code></pre>
     </div>
   </div>
 
