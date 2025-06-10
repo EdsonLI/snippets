@@ -301,7 +301,24 @@ a:hover {
   font-size: 1em;
   transition: background 0.2s, color 0.2s;
 }
+
 .copy-btn-title:hover {
   background: #30363d;
   color: #2ecc71;
+}
+
+.snippet-content pre {
+  white-space: pre;
+  overflow-x: auto;
+  max-width: 100%;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-size: 0.98em;
+  border-radius: 0;
+}
+
+.snippet-content {
+  width: 100%;
+  overflow-x: auto;
 }
