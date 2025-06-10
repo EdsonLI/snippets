@@ -115,6 +115,8 @@ input[type="text"]:focus {
 .snippet-content {
   display: none;
   margin-top: 8px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .tabs {
@@ -228,6 +230,25 @@ a:hover {
   opacity: 1;
 }
 
+/* Ícone de check verdinho e sem sobreposição */
+.copy-btn i.fa-check,
+.copy-btn-title i.fa-check {
+  color: #2ecc71 !important;
+  background: #21262d;
+  border-radius: 50%;
+  padding: 2px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 2px #21262d;
+}
+
+.copy-btn,
+.copy-btn-title {
+  background: #21262d;
+  position: relative;
+  z-index: 1;
+}
+
 .download-btn {
   margin-left: 10px;
   color: #8b949e;
@@ -265,6 +286,7 @@ a:hover {
   cursor: pointer;
   transition: filter 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  color: #fff !important;
 }
 
 .cat-btn.categoria-bancos   { background: #1abc9c; }
@@ -277,6 +299,11 @@ a:hover {
 .cat-btn:hover {
   filter: brightness(1.1) contrast(1.1);
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
+}
+
+.cat-btn i {
+  color: #fff !important;
+  margin-right: 8px;
 }
 
 /* Cores dos títulos das categorias de snippets do mad.builder */
@@ -300,6 +327,8 @@ a:hover {
   cursor: pointer;
   font-size: 1em;
   transition: background 0.2s, color 0.2s;
+  position: relative;
+  z-index: 1;
 }
 
 .copy-btn-title:hover {
@@ -321,27 +350,6 @@ a:hover {
   max-width: 100vw;         /* Nunca ultrapassa a tela */
   box-sizing: border-box;
   display: block;
-}
-
-/* Corrige sobreposição e deixa o check verdinho no botão de copiar */
-.copy-btn i.fa-check,
-.copy-btn-title i.fa-check {
-  color: #2ecc71 !important;      /* Verde GitHub */
-  background: #21262d;            /* Fundo igual ao botão */
-  border-radius: 50%;
-  padding: 2px 4px;
-  z-index: 2;
-  position: relative;
-  box-shadow: 0 0 0 2px #21262d;
-  /* O box-shadow garante que o fundo cubra o que está atrás */
-}
-
-.copy-btn,
-.copy-btn-title {
-  background: #21262d;
-  position: relative;
-  z-index: 1;
-  overflow: visible;
 }
 
 @media (max-width: 600px) {
