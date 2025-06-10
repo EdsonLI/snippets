@@ -290,12 +290,13 @@ a:hover {
 .sql-keyword { color: #2ecc71; font-weight: bold; font-family: 'Roboto Mono', monospace; }
 .sql-func    { color: #3498db; font-family: 'Roboto Mono', monospace; }
 .sql-string  { color: #e67e22; font-family: 'Roboto Mono', monospace; }
+
 .copy-btn-title {
   background: #21262d;
   border: 1px solid #30363d;
   border-radius: 5px;
   color: #fff;
-  padding: 4px 8px;
+  padding: 5px 2px 5px 10px;
   cursor: pointer;
   font-size: 1em;
   transition: background 0.2s, color 0.2s;
