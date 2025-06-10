@@ -34,8 +34,8 @@ $(document).ready(function() {
       }
     });
 
-    // Substituir ícones plus/chevron por fa-expand nos snippets
-    $(this).find('.snippet-title i:first-child').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
+    // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
+    $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
 
     // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
     $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
@@ -60,8 +60,8 @@ $(document).ready(function() {
       }
     });
 
-    // Substituir ícones plus/chevron por fa-expand nos snippets
-    $(this).find('.snippet-title i:first-child').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
+    // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
+    $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
 
     // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
     $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
       // Aplicar a operação apenas dentro dessa seção
       $('#' + targetId + ' .snippet-content').slideDown();
-      $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-expand').addClass('fa-compress');
+      $('#' + targetId + ' .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
 
       // Alternar a visibilidade dos botões dentro dessa seção
       $(this).hide();
@@ -153,7 +153,7 @@ $(document).ready(function() {
 
       // Aplicar a operação apenas dentro dessa seção
       $('#' + targetId + ' .snippet-content').slideUp();
-      $('#' + targetId + ' .snippet-title i:first-child').removeClass('fa-compress').addClass('fa-expand');
+      $('#' + targetId + ' .snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
 
       // Alternar a visibilidade dos botões dentro dessa seção
       $(this).hide();
@@ -178,7 +178,7 @@ $(document).ready(function() {
           $(this).show();
           // Expandir o snippet para mostrar o resultado
           $(this).find('.snippet-content').slideDown();
-          $(this).find('.snippet-title i:first-child').removeClass('fa-expand').addClass('fa-compress');
+          $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
         } else {
           $(this).hide();
         }
@@ -200,7 +200,7 @@ $(document).ready(function() {
       // Restaurar a visibilidade padrão
       $('.section, .snippet-block').show();
       $('.snippet-content').hide();
-      $('.snippet-title i:first-child').removeClass('fa-compress').addClass('fa-expand');
+      $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
       // Restaurar todos os ícones para baixo (expandido)
       $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
       // Mostrar todos os controles de categoria
@@ -220,7 +220,7 @@ $(document).ready(function() {
     // Restaurar a visibilidade padrão
     $('.section, .snippet-block').show();
     $('.snippet-content').hide();
-    $('.snippet-title i:first-child').removeClass('fa-compress').addClass('fa-expand');
+    $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
     // Restaurar todos os ícones para baixo (expandido)
     $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     // Mostrar todos os controles de categoria
