@@ -323,29 +323,6 @@ a:hover {
   display: block;
 }
 
-.copy-btn i.fa-check,
-.copy-btn-title i.fa-check {
-  color: #2ecc71 !important; /* Verde GitHub */
-  background: #21262d;       /* Fundo igual ao botão */
-  border-radius: 4px;
-  padding: 2px 4px;
-  transition: color 0.2s;
-  z-index: 2;
-  position: relative;
-}
-
-.copy-btn:active i.fa-check,
-.copy-btn-title:active i.fa-check {
-  background: #21262d;
-}
-
-.copy-btn,
-.copy-btn-title {
-  position: relative;
-  z-index: 1;
-  /* Garante que o ícone fique acima do conteúdo atrás */
-}
-
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
