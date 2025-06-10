@@ -141,8 +141,8 @@ $(document).ready(function() {
       $(this).siblings('.collapse-all').show();
       
       // Muda o ícone de colapso para chevron-down quando expandir todos
-      const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
-      collapseIcon.removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      // const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
+      // collapseIcon.removeClass('fa-chevron-left').addClass('fa-chevron-down');
     });
 
     // Botões de colapsar todos
@@ -164,8 +164,8 @@ $(document).ready(function() {
       $(this).siblings('.expand-all').show();
       
       // Muda o ícone de colapso para chevron-left quando colapsar todos
-      const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
-      collapseIcon.removeClass('fa-chevron-down').addClass('fa-chevron-left');
+      // const collapseIcon = $(this).closest('.category-controls').prev('h3').find('.collapse-icon');
+      // collapseIcon.removeClass('fa-chevron-down').addClass('fa-chevron-left');
     });
 
     // Adiciona botões de copiar código sempre que interações são configuradas
