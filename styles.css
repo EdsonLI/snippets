@@ -234,7 +234,7 @@ a:hover {
   background: #21262d;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 4px 10px;
+  padding: 5px 2px 5px 10px;
   font-size: 0.95em;
   cursor: pointer;
   opacity: 0.7;
