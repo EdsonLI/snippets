@@ -248,8 +248,8 @@ $(document).ready(function() {
     $('#' + filter).find('.category-controls').show();
 
     // --- NOVO: Expandir todos os snippets da categoria filtrada ---
-    $('#' + filter + '-snippets .snippet-content').slideDown();
-    $('#' + filter + '-snippets .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
+    // $('#' + filter + '-snippets .snippet-content').slideDown();
+    // $('#' + filter + '-snippets .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
   });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
