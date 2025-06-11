@@ -1,5 +1,5 @@
 {
-  "Formulário Mestre Detalhe (rótulo acima) Adianti": {
+  "Formulário mestre detalhe (rótulo acima) Adianti": {
     "prefix": "adianti_form_mestre_detalhe_rotulo_acima",
     "body": [
       "class VendaFormRotulo extends TPage {",
@@ -381,7 +381,7 @@
       "    }",
       "}"
     ],
-    "description": "Formulário Mestre Detalhe Adianti com rótulos acima dos campos",
+    "description": "Formulário mestre detalhe com rótulos acima dos campos Adianti",
     "link": "https://www.madbuilder.com.br/exemplo-mestre-detalhe-rotulo-acima"
   }
 }

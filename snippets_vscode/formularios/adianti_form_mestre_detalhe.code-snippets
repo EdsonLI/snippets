@@ -1,5 +1,5 @@
 {
-  "Formulário Mestre Detalhe Adianti": {
+  "Formulário mestre detalhe Adianti": {
     "prefix": "adianti_form_mestre_detalhe",
     "body": [
       "class VendaForm extends TPage {",
