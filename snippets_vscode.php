@@ -1,5 +1,5 @@
 <div class="section" id="vscode" data-tags="vscode">
-  <h2>Snippets VS Code</h2>
+  <h2>Snippets VS Codes</h2>
 
   <!-- Categoria: Formulários -->
   <div class="section" id="formularios" data-tags="categoria formularios php adianti">
