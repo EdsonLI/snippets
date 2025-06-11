@@ -1,5 +1,5 @@
 {
-  "Formulário conta com geração automática de parcelas Adianti": {
+  "Formulário Conta com geração automática de parcelas Adianti": {
     "prefix": "adianti_form_conta_parcelas",
     "body": [
       "class ContaDetalheForm extends TPage {",
