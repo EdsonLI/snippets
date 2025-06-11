@@ -1,0 +1,57 @@
+<div class="section" id="bancosdedados" data-tags="banco bancosdedados sql">
+  <h2>Snippets Banco de dados</h2>
+
+  <!-- Snippet: CALL CleanCompanyData -->
+  <div class="snippet-block" data-tags="sql banco procedure cleancompanydata">
+    <div class="snippet-title">
+      <i class="fa-solid fa-expand"></i>
+      <strong>
+        <span class="sql-keyword">CALL</span> <span class="sql-func">CleanCompanyData</span>(13433, <span class="sql-string">'product_stock_balance,bank_summary'</span>);
+      </strong>
+      <button class="copy-btn-title" title="Copiar comando" style="margin-left:10px;vertical-align:middle;">
+        <i class="fa fa-copy"></i>
+      </button>
+    </div>
+    <div class="snippet-content" style="display:none;">
+      <pre><code class="language-sql">
+DELIMITER //
+
+CREATE PROCEDURE CleanCompanyData(
+    IN companyId INT,
+    IN ignoreTables VARCHAR(255)
+)
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE tableName VARCHAR(64);
+    DECLARE deleteCommand VARCHAR(255);
+    DECLARE cur CURSOR FOR
+        SELECT TABLE_NAME
+        FROM information_schema.columns
+        WHERE table_schema = 'mini_erp'
+        AND column_name = 'company_id';
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    OPEN cur;
+    read_loop: LOOP
+        FETCH cur INTO tableName;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+        IF FIND_IN_SET(tableName, ignoreTables) THEN
+            ITERATE read_loop;
+        END IF;
+        SET deleteCommand = CONCAT('DELETE FROM ', tableName, ' WHERE company_id = ', companyId);
+        SET @deleteCommand = deleteCommand;
+        PREPARE stmt FROM @deleteCommand;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+    END LOOP;
+    CLOSE cur;
+END //
+
+DELIMITER ;
+</code></pre>
+    </div>
+  </div>
+
+  <!-- Adicione outros snippets conforme desejar -->
+</div>
