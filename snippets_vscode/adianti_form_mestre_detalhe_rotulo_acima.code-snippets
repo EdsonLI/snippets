@@ -1,5 +1,5 @@
 {
-  "Formulário Mestre Detalhe Adianti (rótulo acima)": {
+  "Formulário Mestre Detalhe (rótulo acima) Adianti": {
     "prefix": "adianti_form_mestre_detalhe_rotulo_acima",
     "body": [
       "class VendaFormRotulo extends TPage {",

@@ -1,5 +1,5 @@
 {
-  "Formulário Adianti simples": {
+  "Formulário simples Adianti": {
     "prefix": "adianti_form_simples",
     "body": [
       "class FuncionarioForm extends TPage {",
