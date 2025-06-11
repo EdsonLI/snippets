@@ -1,5 +1,5 @@
 {
-  "Formulário Adianti (rótulo acima)": {
+  "Formulário (rótulo acima) Adianti": {
     "prefix": "adianti_form_rotulo_acima",
     "body": [
       "class FuncionarioFormRotulo extends TPage {",
