@@ -49,7 +49,7 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
-  $('#vscode-content').load('snippets_vscode.php', function() {
+  $('#vscode-content').load('snippets_vscode.html', function() {
     // Corrigir targets dos botões
     $(this).find('.section').each(function() {
       const sectionId = $(this).attr('id');
