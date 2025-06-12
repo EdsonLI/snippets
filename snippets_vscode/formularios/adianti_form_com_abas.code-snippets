@@ -1,5 +1,5 @@
 {
-  "Formulário com abas Adianti": {
+  "Formulário com abas Adiantis": {
     "prefix": "adianti_form_abas",
     "body": [
       "class FuncionarioAbasForm extends TPage {",
