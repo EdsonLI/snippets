@@ -268,28 +268,28 @@ $(document).ready(function() {
     }, 1200);
   });
 
-  $('.snippet-content[data-src]').each(function () {
-    const $container = $(this);
-    const url = $container.data('src');
-    const lang = $container.data('lang') || 'text'; // <-- 👈 capturar linguagem
+  // $('.snippet-content[data-src]').each(function () {
+  //   const $container = $(this);
+  //   const url = $container.data('src');
+  //   const lang = $container.data('lang') || 'text'; // <-- 👈 capturar linguagem
 
-    $.ajax({
-      url: url,
-      dataType: 'text',
-      success: function (data) {
-        $container.find('code')
-          .attr('class', 'language-' + lang) // <-- 👈 aplicar classe correta
-          .text(data); // <-- 👈 incluir o texto do código
+  //   $.ajax({
+  //     url: url,
+  //     dataType: 'text',
+  //     success: function (data) {
+  //       $container.find('code')
+  //         .attr('class', 'language-' + lang) // <-- 👈 aplicar classe correta
+  //         .text(data); // <-- 👈 incluir o texto do código
 
-        if (typeof hljs !== 'undefined') {
-          hljs.highlightElement($container.find('code')[0]);
-        }
-      },
-      error: function () {
-        $container.find('code').text('// Erro ao carregar snippet: ' + url);
-      }
-    });
-  });
+  //       if (typeof hljs !== 'undefined') {
+  //         hljs.highlightElement($container.find('code')[0]);
+  //       }
+  //     },
+  //     error: function () {
+  //       $container.find('code').text('// Erro ao carregar snippet: ' + url);
+  //     }
+  //   });
+  // });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
