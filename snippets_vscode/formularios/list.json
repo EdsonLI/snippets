@@ -1,9 +1,9 @@
 [
-  "formulario_simples.code-snippets",
-  "formulario_rotulo_acima.code-snippets",
-  "formulario_abas.code-snippets",
-  "formulario_mestre_detalhe.code-snippets",
-  "formulario_mestre_detalhe_rotulo_acima.code-snippets",
-  "formulario_parcelas_botao.code-snippets",
-  "formulario_tdbcombo_dinamico.code-snippets"
+  "adianti_form_com_abas.code-snippets",
+  "adianti_form_gerar_parcelas_com_botao.code-snippets",
+  "adianti_form_mestre_detalhe_rotulo_acima.code-snippets",
+  "adianti_form_mestre_detalhe.code-snippets",
+  "adianti_form_rotulo_acima.code-snippets",
+  "adianti_form_simples.code-snippets",
+  "adianti_form_simples.code-snippets"
 ]
