@@ -299,39 +299,47 @@ $(document).ready(function() {
   function loadSnippetsListings() {
     const container = document.getElementById('listagens-snippets');
     if (!container) return;
-    const snippetUrl = 'https://raw.githubusercontent.com/EdsonLI/snippets/main/snippets_vscode/listagens/adianti_dropdown_actionlist.code-snippets';
+    const listUrl = 'snippets_vscode/listagens/list.json'; // local path
 
-    fetch(snippetUrl)
-      .then(response => response.text())
-      .then(snippetText => {
-        // Cria o bloco visual do snippet
-        const snippetBlock = document.createElement('div');
-        snippetBlock.className = 'snippet-block';
-        snippetBlock.dataset.tags = 'adianti php dropdown actionlist listagem';
+    fetch(listUrl)
+      .then(response => response.json())
+      .then(files => {
+        container.innerHTML = ''; // Limpa antes de adicionar
+        files.forEach(filename => {
+          const snippetUrl = `snippets_vscode/listagens/${filename}`;
+          fetch(snippetUrl)
+            .then(response => response.text())
+            .then(snippetText => {
+              // Extrai nome amigável do arquivo para o título
+              const title = filename.replace('.code-snippets', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              const snippetBlock = document.createElement('div');
+              snippetBlock.className = 'snippet-block';
+              snippetBlock.dataset.tags = 'adianti php listagem';
 
-        snippetBlock.innerHTML = `
-          <div class="snippet-title">
-            <i class="fa-solid fa-plus"></i>
-            <strong>Dropdown ActionList:</strong>
-            <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
-              <i class="fa fa-download"></i>
-            </a>
-          </div>
-          <div class="snippet-content">
-            <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
-          </div>
-        `;
+              snippetBlock.innerHTML = `
+                <div class="snippet-title">
+                  <i class="fa-solid fa-plus"></i>
+                  <strong>${title}:</strong>
+                  <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+                <div class="snippet-content">
+                  <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+                </div>
+              `;
+              container.appendChild(snippetBlock);
 
-        container.appendChild(snippetBlock);
-
-        // Aplica o highlight apenas no novo bloco adicionado
-        const codeEl = snippetBlock.querySelector('code');
-        if (window.hljs && codeEl) {
-          hljs.highlightElement(codeEl);
-        }
+              // Aplica o highlight apenas no novo bloco adicionado
+              const codeEl = snippetBlock.querySelector('code');
+              if (window.hljs && codeEl) {
+                hljs.highlightElement(codeEl);
+              }
+            });
+        });
       })
       .catch(error => {
-        container.innerHTML = '<p>Erro ao carregar snippet de Listagens.</p>';
+        container.innerHTML = '<p>Erro ao carregar snippets de Listagens.</p>';
         console.error(error);
       });
 
