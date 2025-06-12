@@ -1,5 +1,5 @@
 {
-  "Dropdown ActionList Adianti TESTING": {
+  "Dropdown ActionList Adianti": {
     "prefix": "adianti_dropdown_actionlist",
     "body": [
       "class DropDownActionList extends TPage",
