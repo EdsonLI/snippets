@@ -105,7 +105,6 @@ input[type="text"]:focus {
   background: none;
   border: none;
   padding: 0;
-  gap: 10px;
 }
 
 .snippet-title i {
@@ -303,12 +302,6 @@ a:hover {
   transition: background 0.2s, color 0.2s;
 }
 
-.copy-btn-title {
-  margin-left: auto;
-  /* Remove o margin-left fixo do HTML, se quiser */
-  vertical-align: middle;
-}
-
 .copy-btn-title:hover {
   background: #30363d;
   color: #2ecc71;
@@ -336,10 +329,4 @@ a:hover {
     font-size: 0.92em;
     max-width: 98vw;
   }
-}
-
-.snippet-title strong {
-  flex: 1;
-  min-width: 0;
-  word-break: break-word;
 }
