@@ -73,6 +73,7 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
+    loadSnippetsFormularios();
     loadSnippetsListings();
   });
 
@@ -294,6 +295,63 @@ $(document).ready(function() {
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
+  function loadSnippetsFormularios() {
+    const container = document.getElementById('formularios-snippets');
+    if (!container) return;
+    const listUrl = 'snippets_vscode/formularios/list.json';
+
+    fetch(listUrl)
+      .then(response => response.json())
+      .then(files => {
+        container.innerHTML = '';
+        const fetches = files.map(filename => {
+          const snippetUrl = `snippets_vscode/formularios/${filename}`;
+          return fetch(snippetUrl)
+            .then(response => response.text())
+            .then(snippetText => {
+              const title = filename.replace('.code-snippets', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              const snippetBlock = document.createElement('div');
+              snippetBlock.className = 'snippet-block';
+              snippetBlock.dataset.tags = 'adianti php form';
+
+              snippetBlock.innerHTML = `
+                <div class="snippet-title">
+                  <i class="fa-solid fa-expand"></i>
+                  <strong>${title}:</strong>
+                  <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+                <div class="snippet-content" style="display:none;">
+                  <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+                </div>
+              `;
+              container.appendChild(snippetBlock);
+
+              const codeEl = snippetBlock.querySelector('code');
+              if (window.hljs && codeEl) {
+                hljs.highlightElement(codeEl);
+              }
+            });
+        });
+
+        Promise.all(fetches).then(() => {
+          if (typeof setupSnippetInteractions === 'function') setupSnippetInteractions();
+          if (typeof addCopyButtons === 'function') addCopyButtons();
+        });
+      })
+      .catch(error => {
+        container.innerHTML = '<p>Erro ao carregar snippets de Formulários.</p>';
+        console.error(error);
+      });
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+  }
 
   /* ESPAÇO DAS FUNÇÕES JS */
   function loadSnippetsListings() {
