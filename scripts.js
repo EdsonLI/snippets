@@ -65,6 +65,17 @@ $(document).ready(function() {
     }, 1200);
   });
 
+  // Botão de copiar código do snippet
+  $(document).on('click', '.copy-btn-code', function(e) {
+    e.stopPropagation();
+    const code = $(this).siblings('pre').find('code').text();
+    navigator.clipboard.writeText(code);
+    $(this).find('i').removeClass('fa-copy').addClass('fa-check');
+    setTimeout(() => {
+      $(this).find('i').removeClass('fa-check').addClass('fa-copy');
+    }, 1200);
+  });
+
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
 });
@@ -101,7 +112,10 @@ function loadSnippetsFormularios() {
                   <i class="fa fa-download"></i>
                 </a>
               </div>
-              <div class="snippet-content" style="display:none;">
+              <div class="snippet-content" style="display:none; position:relative;">
+                <button class="copy-btn-code" title="Copiar código" style="position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;color:#8b949e;z-index:2;">
+                  <i class="fa fa-copy"></i>
+                </button>
                 <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
               </div>
             `;
@@ -153,7 +167,10 @@ function loadSnippetsListings() {
                   <i class="fa fa-download"></i>
                 </a>
               </div>
-              <div class="snippet-content" style="display:none;">
+              <div class="snippet-content" style="display:none; position:relative;">
+                <button class="copy-btn-code" title="Copiar código" style="position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;color:#8b949e;z-index:2;">
+                  <i class="fa fa-copy"></i>
+                </button>
                 <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
               </div>
             `;
