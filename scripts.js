@@ -47,6 +47,7 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
+    carregarSnippetListagens();
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
@@ -293,4 +294,49 @@ $(document).ready(function() {
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
+
+  /* ESPAÇO DAS FUNÇÕES JS */
+  function carregarSnippetListagens() {
+    const container = document.getElementById('listagens-snippets');
+    if (!container) return;
+    const snippetUrl = 'https://raw.githubusercontent.com/EdsonLI/snippets/main/snippets_vscode/listagens/adianti_dropdown_actionlist.code-snippets';
+
+    fetch(snippetUrl)
+      .then(response => response.text())
+      .then(snippetText => {
+        // Cria o bloco visual do snippet
+        const snippetBlock = document.createElement('div');
+        snippetBlock.className = 'snippet-block';
+        snippetBlock.dataset.tags = 'adianti php dropdown actionlist listagem';
+
+        snippetBlock.innerHTML = `
+          <div class="snippet-title">
+            <i class="fa-solid fa-plus"></i>
+            <strong>Dropdown ActionList:</strong>
+            <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+              <i class="fa fa-download"></i>
+            </a>
+          </div>
+          <div class="snippet-content">
+            <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+          </div>
+        `;
+
+        container.appendChild(snippetBlock);
+      })
+      .catch(error => {
+        container.innerHTML = '<p>Erro ao carregar snippet de Listagens.</p>';
+        console.error(error);
+      });
+
+    // Função para escapar caracteres especiais HTML
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+  }
+
+
 });
