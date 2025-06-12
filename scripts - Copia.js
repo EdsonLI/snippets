@@ -46,7 +46,7 @@ $(document).ready(function() {
 
     hljs.highlightAll();
     setupSnippetInteractions();
-    addCopyButtons();
+    addCopyButtons();    
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
@@ -73,6 +73,8 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
+    loadSnippetsFormularios();
+    loadSnippetsListings();
   });
 
   $('#bancosdedados-content').load('snippets_bancos_de_dados.html', function() {
@@ -268,27 +270,149 @@ $(document).ready(function() {
     }, 1200);
   });
 
-  $('.snippet-content[data-src]').each(function () {
-      const $container = $(this);
-      const url = $container.data('src');
+  // $('.snippet-content[data-src]').each(function () {
+  //   const $container = $(this);
+  //   const url = $container.data('src');
+  //   const lang = $container.data('lang') || 'text'; // <-- 👈 capturar linguagem
 
-      $.ajax({
-        url: url,
-        dataType: 'text',
-        success: function (data) {
-          $container.find('code').text(data);
+  //   $.ajax({
+  //     url: url,
+  //     dataType: 'text',
+  //     success: function (data) {
+  //       $container.find('code')
+  //         .attr('class', 'language-' + lang) // <-- 👈 aplicar classe correta
+  //         .text(data); // <-- 👈 incluir o texto do código
 
-          // Se estiver usando Highlight.js
-          if (typeof hljs !== 'undefined') {
-            hljs.highlightElement($container.find('code')[0]);
-          }
-        },
-        error: function () {
-          $container.find('code').text('// Erro ao carregar snippet: ' + url);
-        }
-      });
-    });
+  //       if (typeof hljs !== 'undefined') {
+  //         hljs.highlightElement($container.find('code')[0]);
+  //       }
+  //     },
+  //     error: function () {
+  //       $container.find('code').text('// Erro ao carregar snippet: ' + url);
+  //     }
+  //   });
+  // });
 
   // Garante que os botões de copiar estejam presentes ao iniciar
   addCopyButtons();
+  function loadSnippetsFormularios() {
+    const container = document.getElementById('formularios-snippets');
+    if (!container) return;
+    const listUrl = 'snippets_vscode/formularios/list.json';
+
+    fetch(listUrl)
+      .then(response => response.json())
+      .then(files => {
+        container.innerHTML = '';
+        const fetches = files.map(filename => {
+          const snippetUrl = `snippets_vscode/formularios/${filename}`;
+          return fetch(snippetUrl)
+            .then(response => response.text())
+            .then(snippetText => {
+              const title = filename.replace('.code-snippets', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              const snippetBlock = document.createElement('div');
+              snippetBlock.className = 'snippet-block';
+              snippetBlock.dataset.tags = 'adianti php form';
+
+              snippetBlock.innerHTML = `
+                <div class="snippet-title">
+                  <i class="fa-solid fa-expand"></i>
+                  <strong>${title}:</strong>
+                  <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+                <div class="snippet-content" style="display:none;">
+                  <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+                </div>
+              `;
+              container.appendChild(snippetBlock);
+
+              const codeEl = snippetBlock.querySelector('code');
+              if (window.hljs && codeEl) {
+                hljs.highlightElement(codeEl);
+              }
+            });
+        });
+
+        Promise.all(fetches).then(() => {
+          if (typeof setupSnippetInteractions === 'function') setupSnippetInteractions();
+          if (typeof addCopyButtons === 'function') addCopyButtons();
+        });
+      })
+      .catch(error => {
+        container.innerHTML = '<p>Erro ao carregar snippets de Formulários.</p>';
+        console.error(error);
+      });
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+  }
+
+  /* ESPAÇO DAS FUNÇÕES JS */
+  function loadSnippetsListings() {
+    const container = document.getElementById('listagens-snippets');
+    if (!container) return;
+    const listUrl = 'snippets_vscode/listagens/list.json'; // local path
+
+    fetch(listUrl)
+      .then(response => response.json())
+      .then(files => {
+        container.innerHTML = ''; // Limpa antes de adicionar
+        const fetches = files.map(filename => {
+          const snippetUrl = `snippets_vscode/listagens/${filename}`;
+          return fetch(snippetUrl)
+            .then(response => response.text())
+            .then(snippetText => {
+              // Extrai nome amigável do arquivo para o título
+              const title = filename.replace('.code-snippets', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              const snippetBlock = document.createElement('div');
+              snippetBlock.className = 'snippet-block';
+              snippetBlock.dataset.tags = 'adianti php listagem';
+
+              snippetBlock.innerHTML = `
+                <div class="snippet-title">
+                  <i class="fa-solid fa-expand"></i>
+                  <strong>${title}:</strong>
+                  <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+                <div class="snippet-content" style="display:none;">
+                  <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+                </div>
+              `;
+              container.appendChild(snippetBlock);
+
+              // Aplica o highlight apenas no novo bloco adicionado
+              const codeEl = snippetBlock.querySelector('code');
+              if (window.hljs && codeEl) {
+                hljs.highlightElement(codeEl);
+              }
+            });
+        });
+
+        // Quando todos os snippets forem carregados, ativa interações e botões de copiar
+        Promise.all(fetches).then(() => {
+          if (typeof setupSnippetInteractions === 'function') setupSnippetInteractions();
+          if (typeof addCopyButtons === 'function') addCopyButtons();
+        });
+      })
+      .catch(error => {
+        container.innerHTML = '<p>Erro ao carregar snippets de Listagens.</p>';
+        console.error(error);
+      });
+
+    // Função para escapar caracteres especiais HTML
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+  }
 });
