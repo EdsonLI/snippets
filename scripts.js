@@ -305,9 +305,9 @@ $(document).ready(function() {
       .then(response => response.json())
       .then(files => {
         container.innerHTML = ''; // Limpa antes de adicionar
-        files.forEach(filename => {
+        const fetches = files.map(filename => {
           const snippetUrl = `snippets_vscode/listagens/${filename}`;
-          fetch(snippetUrl)
+          return fetch(snippetUrl)
             .then(response => response.text())
             .then(snippetText => {
               // Extrai nome amigável do arquivo para o título
@@ -318,13 +318,13 @@ $(document).ready(function() {
 
               snippetBlock.innerHTML = `
                 <div class="snippet-title">
-                  <i class="fa-solid fa-plus"></i>
+                  <i class="fa-solid fa-expand"></i>
                   <strong>${title}:</strong>
                   <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
                     <i class="fa fa-download"></i>
                   </a>
                 </div>
-                <div class="snippet-content">
+                <div class="snippet-content" style="display:none;">
                   <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
                 </div>
               `;
@@ -336,6 +336,12 @@ $(document).ready(function() {
                 hljs.highlightElement(codeEl);
               }
             });
+        });
+
+        // Quando todos os snippets forem carregados, ativa interações e botões de copiar
+        Promise.all(fetches).then(() => {
+          if (typeof setupSnippetInteractions === 'function') setupSnippetInteractions();
+          if (typeof addCopyButtons === 'function') addCopyButtons();
         });
       })
       .catch(error => {
@@ -351,6 +357,4 @@ $(document).ready(function() {
         .replace(/>/g, '&gt;');
     }
   }
-
-
 });
