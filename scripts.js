@@ -46,8 +46,7 @@ $(document).ready(function() {
 
     hljs.highlightAll();
     setupSnippetInteractions();
-    addCopyButtons();
-    carregarSnippetListagens();
+    addCopyButtons();    
   });
 
   $('#vscode-content').load('snippets_vscode.html', function() {
@@ -74,6 +73,7 @@ $(document).ready(function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
+    loadSnippetsListings();
   });
 
   $('#bancosdedados-content').load('snippets_bancos_de_dados.html', function() {
@@ -296,7 +296,7 @@ $(document).ready(function() {
   addCopyButtons();
 
   /* ESPAÇO DAS FUNÇÕES JS */
-  function carregarSnippetListagens() {
+  function loadSnippetsListings() {
     const container = document.getElementById('listagens-snippets');
     if (!container) return;
     const snippetUrl = 'https://raw.githubusercontent.com/EdsonLI/snippets/main/snippets_vscode/listagens/adianti_dropdown_actionlist.code-snippets';
