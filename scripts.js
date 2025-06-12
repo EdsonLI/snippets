@@ -323,6 +323,12 @@ $(document).ready(function() {
         `;
 
         container.appendChild(snippetBlock);
+
+        // Aplica o highlight apenas no novo bloco adicionado
+        const codeEl = snippetBlock.querySelector('code');
+        if (window.hljs && codeEl) {
+          hljs.highlightElement(codeEl);
+        }
       })
       .catch(error => {
         container.innerHTML = '<p>Erro ao carregar snippet de Listagens.</p>';
