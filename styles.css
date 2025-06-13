@@ -323,6 +323,16 @@ a:hover {
   display: block;
 }
 
+.tab.madbuilder-tab {
+  color: #F2911D;
+  border-bottom: 2px solid #F2911D;
+}
+.tab.madbuilder-tab.active {
+  background: #0d1117;
+  color: #F2911D;
+  border-bottom: 2.5px solid #F2911D;
+}
+
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
