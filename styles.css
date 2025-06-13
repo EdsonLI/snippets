@@ -267,12 +267,12 @@ a:hover {
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
 }
 
-.cat-btn.categoria-bancos   { background: #1abc9c; }
+/* .cat-btn.categoria-bancos   { background: #1abc9c; }
 .cat-btn.categoria-codigos  { background: #e67e22; }
 .cat-btn.categoria-campos   { background: #9b59b6; }
 .cat-btn.categoria-sessao   { background: #2980b9; }
 .cat-btn.categoria-janelas  { background: #f39c12; }
-.cat-btn.categoria-outros   { background: #95a5a6; }
+.cat-btn.categoria-outros   { background: #95a5a6; } */
 
 .cat-btn:hover {
   filter: brightness(1.1) contrast(1.1);
@@ -280,12 +280,12 @@ a:hover {
 }
 
 /* Cores dos títulos das categorias de snippets do mad.builder */
-.categoria-bancos { color: #1abc9c !important; }
+/* .categoria-bancos { color: #1abc9c !important; }
 .categoria-codigos { color: #e67e22 !important; }
 .categoria-campos { color: #9b59b6 !important; }
 .categoria-sessao { color: #2980b9 !important; }
 .categoria-janelas { color: #f39c12 !important; }
-.categoria-outros { color: #95a5a6 !important; }
+.categoria-outros { color: #95a5a6 !important; } */
 
 .sql-keyword { color: #2ecc71; font-weight: bold; font-family: 'Roboto Mono', monospace; }
 .sql-func    { color: #3498db; font-family: 'Roboto Mono', monospace; }
