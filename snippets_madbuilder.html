@@ -28,13 +28,21 @@
       </button>
     </div>
     <div class="snippets-list" id="bancos-de-dados-snippets">
-
-      <div class="snippet-block">
+      <div class="snippet-block" data-tags="php sql banco transacao">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Abrir/fechar transação:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
+TTransaction::open('mini_erp');
 TTransaction::close();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Selecionar todos os registros:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $conn = TTransaction::get();
 $result = $conn->query('SELECT id FROM bank ORDER BY id');
@@ -43,6 +51,10 @@ if($objects) {…}
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Inserir novo registro:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $objeto = new Bank();
 $objeto->campo = 'valor';
@@ -50,82 +62,80 @@ $objeto->store();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Buscar registro por ID:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $objeto = Bank::find( $id );
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Buscar primeiro registro que corresponde ao critério:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $objeto = Bank::where('coluna', '=', $valor)->first();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Verificar se o registro existe:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $objeto = Bank::find( $id );
 if($objeto) {…}
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Atualizar registro:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $objeto = Bank::find( $id );
-if($objeto) {…}
+$objeto->campo = 'novo_valor';
+$objeto->store();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Excluir registro:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $objeto = Bank::find( $id );
-if($objeto) {…}
+if($objeto) {
+    $objeto->delete();
+}
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Contar registros:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$objeto = Bank::find( $id );
-if($objeto) {…}
+$total = Bank::count();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$objs = Bank::where('coluna', '=', $valor)
-            ->load();
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$objs = Bank::where('coluna',  '=', $valor)
-            ->first();
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$objs = Bank::where('coluna',  '=', $valor)
-            ->load();
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-Bank::where('id', 'IN', [1,2,3,4]) // id in (1,2,3,4)
-    ->update();
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-Bank::where('coluna', '=', $valor)
-    ->delete();
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-Bank::where('coluna',  '=', $valor)
-    ->count();
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter array indexado:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $array = Bank::where('coluna',  '=', $valor)
              ->getIndexedArray('primaryKey', 'coluna3');
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Definir logger:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TTransaction::setLogger(new TLoggerSTD);
 ?&gt;</code></pre></div>
@@ -152,16 +162,19 @@ TTransaction::setLogger(new TLoggerSTD);
     </div>
     <div class="snippets-list" id="codigos-snippets">
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Verificar condição:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 if($param['builder_datagrid_check']) {…}
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {…}
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Clonar objeto e armazenar:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $bank = new Bank();
 $bankClone = clone $bank;
@@ -191,66 +204,118 @@ $bankClone->store();
     </div>
     <div class="snippets-list" id="campos-snippets">
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Desabilitar campo:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TEntry::disableField(self::$formName, 'bank_id');
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Habilitar ordenação:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $this->increaseFieldList->enableSorting();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Enviar dados para o formulário:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TForm::sendData(self::$formName, $object);
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Recarregar combo:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TCombo::reload(self::$formName, 'stages_id', $items, true);
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Ocultar campo com jQuery:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').hide()");
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar campo com jQuery:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TScript::create("$(\"[name='stages_id']\").closest('.fb-inline-field-container').show()");
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar rótulo do campo:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TScript::create("$('label:contains(\"Título\")').show();");
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Ocultar rótulo do campo:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TScript::create("$('label:contains(\"Título\")').hide();");
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Alterar texto do rótulo:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TScript::create("$('label:contains(\"Título 1\")').html('Título 2')");
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Alterar máscara do campo:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500');
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar CPF:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 (new TCPFValidator())->validate('CPF', $data->cpf);
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar CNPJ:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 (new TCNPJValidator())->validate('CNPJ', $data->cnpj);
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Validar E-mail:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 (new TEmailValidator())->validate('E-mail', $data->email);
 ?&gt;</code></pre></div>
@@ -277,11 +342,19 @@ TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500');
     </div>
     <div class="snippets-list" id="sessao-snippets">
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Definir valor na sessão:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $valor = TSession::setValue('nome_posicao', $var);
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter valor da sessão:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $valor = TSession::getValue('userid');
 ?&gt;</code></pre></div>
@@ -308,16 +381,28 @@ $valor = TSession::getValue('userid');
     </div>
     <div class="snippets-list" id="janelas-snippets">
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar janela:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $window->show();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar janela:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $window->show();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Mostrar janela:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $window->show();
 ?&gt;</code></pre></div>
@@ -344,11 +429,19 @@ $window->show();
     </div>
     <div class="snippets-list" id="outros-snippets">
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Desabilitar clique padrão:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $this->datagrid->disableDefaultClick();
 ?&gt;</code></pre></div>
       </div>
       <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Adicionar critério de filtro:</strong>
+        </div>
         <div class="snippet-content"><pre><code class="language-php">&lt;?php
 $this->filter_criteria->add(new TFilter('company_id', '=', Company::DinaBox), TExpression::OR_OPERATOR);
 ?&gt;</code></pre></div>
