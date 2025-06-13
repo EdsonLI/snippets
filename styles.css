@@ -333,6 +333,16 @@ a:hover {
   border-bottom: 2.5px solid #F2911D;
 }
 
+.tab.vscode-tab {
+  color: #ADD8E6;
+  border-bottom: 2px solid #F2911D;
+}
+.tab.vscode-tab.active {
+  background: #0d1117;
+  color: #ADD8E6;
+  border-bottom: 2.5px solid #F2911D;
+}
+
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
