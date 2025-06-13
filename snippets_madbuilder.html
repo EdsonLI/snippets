@@ -5,31 +5,29 @@
     <button style="color:#fff !important; background:#6A0DAD !important;" class="cat-btn categoria-todas" data-filter="todas">
       <i class="fa-solid fa-list" style="color:#fff"></i> Todas
     </button>
-    <button style="color:#fff !important; background:#4BA3D2 !important;" class="cat-btn categoria-bancos" data-filter="bancos-de-dados">
+    <button style="color:#fff !important;" class="cat-btn categoria-bancos" data-filter="bancos-de-dados">
       <i class="fa-solid fa-database" style="color:#fff"></i> Bancos de dados
+    </button>
+    <button style="color:#fff !important;" class="cat-btn categoria-codigos" data-filter="codigos">
+      <i class="fa-solid fa-code" style="color:#fff"></i> Códigos
     </button>
     <button style="color:#fff !important; background:#1B4F72 !important;" class="cat-btn categoria-campos" data-filter="campos">
       <i class="fa-solid fa-keyboard" style="color:#fff"></i> Campos
     </button>
-    <button style="color:#fff !important; background:#FF7043 !important;" class="cat-btn categoria-sessao" data-filter="sessao">
+    <button style="color:#fff !important;" class="cat-btn categoria-sessao" data-filter="sessao">
       <i class="fa-solid fa-user-circle" style="color:#fff"></i> Sessão
     </button>
-    <button style="color:#fff !important; background:#1B4F72 !important;" class="cat-btn categoria-codigos" data-filter="codigos">
-      <i class="fa-solid fa-code" style="color:#fff"></i> Códigos
-    </button>
-    <button style="color:#fff !important; background:#FFC107 !important;" class="cat-btn categoria-janelas" data-filter="janelas">
+    <button style="color:#fff !important;" class="cat-btn categoria-janelas" data-filter="janelas">
       <i class="fa-solid fa-window-maximize" style="color:#fff"></i> Janelas
     </button>
-    <button style="color:#fff !important; background:#707070 !important;" class="cat-btn categoria-outros" data-filter="outros">
-      Outros
-    </button>
+    <button style="color:#fff !important;" class="cat-btn categoria-outros" data-filter="outros"> Outros</button>
   </div>
 
   <!-- Categoria: Bancos de dados -->
   <div class="section" id="bancos-de-dados" data-tags="categoria bancos sql php madbuilder">
     <h3>
-      <i class="categoria-bancos fa-solid fa-database" style="color:#4BA3D2"></i>
-      <span class="categoria-bancos" style="color:#4BA3D2">Bancos de dados</span>
+      <i class="categoria-bancos fa-solid fa-database"></i>
+      <span class="categoria-bancos">Bancos de dados</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="bancos-de-dados-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -158,11 +156,53 @@ TTransaction::setLogger(new TLoggerSTD);
     </div>
   </div>
 
+  <!-- Categoria: Códigos -->
+  <div class="section" id="codigos" data-tags="categoria codigos php">
+    <h3>
+      <i class="categoria-codigos fa-solid fa-code"></i>
+      <span class="categoria-codigos">Códigos</span>
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="codigos-snippets">
+        <i class="fa-solid fa-expand"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
+        <i class="fa-solid fa-compress"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div class="snippets-list" id="codigos-snippets">
+      <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Verificar condição:</strong>
+        </div>
+        <div class="snippet-content"><pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {…}
+?&gt;</code></pre></div>
+      </div>
+      <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Clonar objeto e armazenar:</strong>
+        </div>
+        <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$bank = new Bank();
+$bankClone = clone $bank;
+unset($bankClone->id);
+$bankClone->store();
+?&gt;</code></pre></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Categoria: Campos -->
   <div class="section" id="campos" data-tags="categoria campos php">
     <h3>
-      <i class="categoria-campos fa-solid fa-keyboard" style="color:#1B4F72"></i>
-      <span class="categoria-campos" style="color:#1B4F72">Campos</span>
+      <i class="categoria-campos fa-solid fa-list"></i>
+      <span class="categoria-campos">Campos</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="campos-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -299,8 +339,8 @@ TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500');
   <!-- Categoria: Sessão -->
   <div class="section" id="sessao" data-tags="categoria sessao php">
     <h3>
-      <i class="categoria-sessao fa-solid fa-user-circle" style="color:#FF7043"></i>
-      <span class="categoria-sessao" style="color:#FF7043">Sessão</span>
+      <i class="categoria-sessao fa-solid fa-user-lock"></i>
+      <span class="categoria-sessao">Sessão</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="sessao-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -335,53 +375,11 @@ $valor = TSession::getValue('userid');
     </div>
   </div>
 
-  <!-- Categoria: Códigos -->
-  <div class="section" id="codigos" data-tags="categoria codigos php">
-    <h3>
-      <i class="categoria-codigos fa-solid fa-code" style="color:#1B4F72"></i>
-      <span class="categoria-codigos" style="color:#1B4F72">Códigos</span>
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="codigos-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="codigos-snippets">
-        <i class="fa-solid fa-expand"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="codigos-snippets" style="display:none;">
-        <i class="fa-solid fa-compress"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div class="snippets-list" id="codigos-snippets">
-      <div class="snippet-block">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Verificar condição:</strong>
-        </div>
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-if($param['builder_datagrid_check']) {…}
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Clonar objeto e armazenar:</strong>
-        </div>
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$bank = new Bank();
-$bankClone = clone $bank;
-unset($bankClone->id);
-$bankClone->store();
-?&gt;</code></pre></div>
-      </div>
-    </div>
-  </div>
-
   <!-- Categoria: Janelas -->
   <div class="section" id="janelas" data-tags="categoria janelas php">
     <h3>
-      <i class="categoria-janelas fa-solid fa-window-maximize" style="color:#FFC107"></i>
-      <span class="categoria-janelas" style="color:#FFC107">Janelas</span>
+      <i class="categoria-janelas fa-solid fa-window-restore"></i>
+      <span class="categoria-janelas">Janelas</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="janelas-snippets"></i>
     </h3>
     <div class="category-controls">
@@ -428,7 +426,8 @@ $window->show();
   <!-- Categoria: Outros -->
   <div class="section" id="outros" data-tags="categoria outros php">
     <h3>
-      <span class="categoria-outros" style="color:#707070">Outros</span>
+      <i class="categoria-outros fa-solid fa-ellipsis-h"></i>
+      <span class="categoria-outros">Outros</span>
       <i class="fa-solid fa-chevron-down collapse-icon" data-target="outros-snippets"></i>
     </h3>
     <div class="category-controls">
