@@ -334,13 +334,13 @@ a:hover {
 }
 
 .tab.vscode-tab {
-  color: #ADD8E6;
-  border-bottom: 2px solid #F2911D;
+  color: #0000FF;
+  border-bottom: 2px solid #0000FF;
 }
 .tab.vscode-tab.active {
   background: #0d1117;
-  color: #ADD8E6;
-  border-bottom: 2.5px solid #F2911D;
+  color: #0000FF;
+  border-bottom: 2.5px solid #0000FF;
 }
 
 @media (max-width: 600px) {
