@@ -324,13 +324,13 @@ a:hover {
 }
 
 .tab.madbuilder-tab {
-  color: #F2911D;
-  border-bottom: 2px solid #F2911D;
+  color: #F68B4E;
+  border-bottom: 2px solid #F68B4E;
 }
 .tab.madbuilder-tab.active {
   background: #0d1117;
-  color: #F2911D;
-  border-bottom: 2.5px solid #F2911D;
+  color: #F68B4E;
+  border-bottom: 2.5px solid #F68B4E;
 }
 
 .tab.vscode-tab {
