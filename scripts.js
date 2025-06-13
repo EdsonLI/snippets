@@ -239,6 +239,16 @@ $(document).ready(function() {
   // Filtro por categoria ao clicar nos botões coloridos
   $(document).on('click', '.cat-btn', function() {
     var filter = $(this).data('filter');
+    if (filter === 'todas') {
+      // Restaurar a visibilidade padrão de todas as categorias e snippets
+      $('.section[id]').not('#madbuilder').show();
+      $('.snippet-block').show();
+      $('.snippet-content').hide();
+      $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+      $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      $('.category-controls').show();
+      return;
+    }
     // Esconde todas as seções de categoria
     $('.section[id]').not('#madbuilder').hide();
     // Mostra só a seção da categoria clicada
