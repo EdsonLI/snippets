@@ -294,6 +294,45 @@ TEntry::changeMask(self::$formName, 'whatsapp', '(54) 99708-1500');
     </div>
   </div>
 
+  <!-- Categoria: Sessão -->
+  <div class="section" id="sessao" data-tags="categoria sessao php">
+    <h3>
+      <i class="categoria-sessao fa-solid fa-user-circle" style="color:#FF7043"></i>
+      <span class="categoria-sessao" style="color:#FF7043">Sessão</span>
+      <i class="fa-solid fa-chevron-down collapse-icon" data-target="sessao-snippets"></i>
+    </h3>
+    <div class="category-controls">
+      <button class="expand-all" data-target="sessao-snippets">
+        <i class="fa-solid fa-expand"></i>
+        <strong>Mostrar todos</strong>
+      </button>
+      <button class="collapse-all" data-target="sessao-snippets" style="display:none;">
+        <i class="fa-solid fa-compress"></i>
+        <strong>Ocultar todos</strong>
+      </button>
+    </div>
+    <div class="snippets-list" id="sessao-snippets">
+      <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Definir valor na sessão:</strong>
+        </div>
+        <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$valor = TSession::setValue('nome_posicao', $var);
+?&gt;</code></pre></div>
+      </div>
+      <div class="snippet-block">
+        <div class="snippet-title">
+          <i class="fa-solid fa-plus"></i>
+          <strong>Obter valor da sessão:</strong>
+        </div>
+        <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$valor = TSession::getValue('userid');
+?&gt;</code></pre></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Categoria: Códigos -->
   <div class="section" id="codigos" data-tags="categoria codigos php">
     <h3>
@@ -331,45 +370,6 @@ $bank = new Bank();
 $bankClone = clone $bank;
 unset($bankClone->id);
 $bankClone->store();
-?&gt;</code></pre></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categoria: Sessão -->
-  <div class="section" id="sessao" data-tags="categoria sessao php">
-    <h3>
-      <i class="categoria-sessao fa-solid fa-user-circle" style="color:#FF7043"></i>
-      <span class="categoria-sessao" style="color:#FF7043">Sessão</span>
-      <i class="fa-solid fa-chevron-down collapse-icon" data-target="sessao-snippets"></i>
-    </h3>
-    <div class="category-controls">
-      <button class="expand-all" data-target="sessao-snippets">
-        <i class="fa-solid fa-expand"></i>
-        <strong>Mostrar todos</strong>
-      </button>
-      <button class="collapse-all" data-target="sessao-snippets" style="display:none;">
-        <i class="fa-solid fa-compress"></i>
-        <strong>Ocultar todos</strong>
-      </button>
-    </div>
-    <div class="snippets-list" id="sessao-snippets">
-      <div class="snippet-block">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Definir valor na sessão:</strong>
-        </div>
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$valor = TSession::setValue('nome_posicao', $var);
-?&gt;</code></pre></div>
-      </div>
-      <div class="snippet-block">
-        <div class="snippet-title">
-          <i class="fa-solid fa-plus"></i>
-          <strong>Obter valor da sessão:</strong>
-        </div>
-        <div class="snippet-content"><pre><code class="language-php">&lt;?php
-$valor = TSession::getValue('userid');
 ?&gt;</code></pre></div>
       </div>
     </div>
