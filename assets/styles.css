@@ -411,6 +411,17 @@ a:hover {
   border-bottom: 2.5px solid #007ACC;
 }
 
+/* PHP tab cor */
+.tab.php-tab {
+  color: #787CB5;
+  border-bottom: 2px solid #787CB5;
+}
+.tab.php-tab.active {
+  background: #0d1117;
+  color: #787CB5;
+  border-bottom: 2.5px solid #787CB5;
+}
+
 /* Banco de dados tab cor (verde) */
 .tab:not(.madbuilder-tab):not(.vscode-tab) {
   color: #2ecc71;
