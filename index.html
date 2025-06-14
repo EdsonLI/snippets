@@ -11,7 +11,6 @@
 
   <!-- Highlight.js (tema escuro) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
@@ -42,13 +41,12 @@
   </div>
   
   <!-- Abas -->
-
   <div class="tabs">
-   <div class="tab madbuilder-tab active" data-target="madbuilder-content">
-    <img src="assets/images/madbuilder.png" alt="Mad Builder Logo" class="tab-icon-madbuilder">
-    <div>Mad Builder</div>
-    <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
-  </div>
+    <div class="tab madbuilder-tab active" data-target="madbuilder-content">
+      <img src="assets/images/madbuilder.png" alt="Mad Builder Logo" class="tab-icon-madbuilder">
+      <div>Mad Builder</div>
+      <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
+    </div>
     <div class="tab vscode-tab" data-target="vscode-content">
       <img src="assets/images/vscode.png" alt="VS Code Logo" class="tab-icon">
       <div>VS Code</div>
@@ -57,6 +55,11 @@
     <div class="tab" data-target="bancosdedados-content">
       <i class="fas fa-database tab-icon"></i>
       <div>Banco de dados</div>
+      <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
+    </div>
+    <div class="tab" data-target="php-content">
+      <i class="fab fa-php tab-icon"></i>
+      <div>PHP</div>
       <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
     </div>
   </div>
@@ -71,6 +74,10 @@
   </div>
 
   <div id="bancosdedados-content" class="tab-content">
+    <!-- O conteúdo será carregado via AJAX -->
+  </div>
+
+  <div id="php-content" class="tab-content">
     <!-- O conteúdo será carregado via AJAX -->
   </div>
 
