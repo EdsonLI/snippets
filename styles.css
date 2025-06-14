@@ -161,12 +161,27 @@ input[type="text"]:focus {
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  color: #F2911D;
+  color: #F2911D; /* cor padrão, sobrescrita abaixo */
   box-shadow: 0 1px 3px #0002;
   z-index: 2;
 }
 .tab.active .tab-check {
   display: flex;
+}
+
+/* Check cor MadBuilder */
+.tab.madbuilder-tab.active .tab-check {
+  color: #F2911D;
+}
+
+/* Check cor VSCode */
+.tab.vscode-tab.active .tab-check {
+  color: #007ACC;
+}
+
+/* Check cor Banco de dados (verde) */
+.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
+  color: #2ecc71;
 }
 
 .tab-content {
@@ -367,9 +382,21 @@ a:hover {
   border-bottom: 2.5px solid #007ACC;
 }
 
+/* Banco de dados tab cor (verde) */
+.tab:not(.madbuilder-tab):not(.vscode-tab) {
+  color: #2ecc71;
+  border-bottom: 2px solid #2ecc71;
+}
+.tab:not(.madbuilder-tab):not(.vscode-tab).active {
+  background: #0d1117;
+  color: #2ecc71;
+  border-bottom: 2.5px solid #2ecc71;
+}
+
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
     font-size: 0.92em;
     max-width: 98vw;
   }
+}
