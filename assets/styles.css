@@ -123,7 +123,15 @@ input[type="text"]:focus {
   border-bottom: 1px solid #21262d;
 }
 
+/* --- INÍCIO DO AJUSTE PARA TODAS AS ABAS --- */
 .tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinha conteúdo na base da aba */
+  align-items: stretch;      /* Ocupa toda a largura da aba */
+  text-align: center;
+  min-height: 70px;          /* Ajuste conforme necessário */
+  padding-bottom: 6px;       /* Espaço extra na base */
   padding: 10px 22px;
   cursor: pointer;
   background: #161b22;
@@ -191,6 +199,13 @@ input[type="text"]:focus {
 .tab-content.active {
   display: block;
 }
+
+.tab-icon {
+  height: 2.2rem !important;
+  margin: 0 auto 2px auto;
+  display: block;
+}
+/* --- FIM DO AJUSTE PARA TODAS AS ABAS --- */
 
 .collapse-icon {
   margin-left: auto;
@@ -391,17 +406,6 @@ a:hover {
   background: #0d1117;
   color: #2ecc71;
   border-bottom: 2.5px solid #2ecc71;
-}
-.vscode-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.tab-icon {
-  height: 24px !important;
-  /*margin-bottom: 4px;*/
 }
 
 @media (max-width: 600px) {
