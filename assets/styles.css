@@ -201,8 +201,8 @@ input[type="text"]:focus {
 }
 
 .tab-icon {
-  width: 2rem !important;
-  height: 2rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
   margin: 0 auto 2px auto;
   display: block;
   object-fit: contain;
