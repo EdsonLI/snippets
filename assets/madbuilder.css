@@ -388,7 +388,7 @@ a:hover {
   display: block;
 }
 
-/* MadBuilder tab cor */
+/*
 .tab.madbuilder-tab {
   color: #F2911D;
   border-bottom: 2px solid #F2911D;
@@ -399,7 +399,6 @@ a:hover {
   border-bottom: 2.5px solid #F2911D;
 }
 
-/* VSCode tab cor */
 .tab.vscode-tab {
   color: #007ACC;
   border-bottom: 2px solid #007ACC;
@@ -410,7 +409,6 @@ a:hover {
   border-bottom: 2.5px solid #007ACC;
 }
 
-/* Banco de dados tab cor (verde) */
 .tab:not(.madbuilder-tab):not(.vscode-tab) {
   color: #2ecc71;
   border-bottom: 2px solid #2ecc71;
@@ -419,7 +417,7 @@ a:hover {
   background: #0d1117;
   color: #2ecc71;
   border-bottom: 2.5px solid #2ecc71;
-}
+}*/
 
 @media (max-width: 600px) {
   .snippet-content pre,
