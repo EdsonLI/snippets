@@ -178,14 +178,15 @@ input[type="text"]:focus {
   display: flex;
 }
 
-/* Check cor MadBuilder */
+/* Tabs */
 .tab.madbuilder-tab.active .tab-check {
   color: #F2911D;
 }
-
-/* Check cor VSCode */
 .tab.vscode-tab.active .tab-check {
   color: #007ACC;
+}
+.tab.php-tab.active .tab-check {
+  color: #787CB5;
 }
 
 /* Check cor Banco de dados (verde) */
