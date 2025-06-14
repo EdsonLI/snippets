@@ -393,6 +393,12 @@ a:hover {
   border-bottom: 2.5px solid #2ecc71;
 }
 
+.tab-icon {
+  height: 16px;         /* ou 12px, se quiser menor ainda */
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
