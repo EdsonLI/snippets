@@ -217,6 +217,29 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
+  // Esconde o botão ao recolher, mostra ao expandir
+  $(document).on('click', '.collapse-icon', function() {
+    var $section = $(this).closest('.section');
+    var $expandBtn = $section.find('.expand-all');
+
+    // Se está aberto, vai recolher
+    if ($section.hasClass('expanded')) {
+      $expandBtn.hide(); // Esconde imediatamente
+      // Recolhe a listagem (exemplo com slideUp)
+      $section.find('.snippet-block').slideUp(250, function() {
+        $section.removeClass('expanded');
+      });
+      $(this).removeClass('fa-chevron-down').addClass('fa-chevron-right');
+    } else {
+      // Vai expandir
+      $section.find('.snippet-block').slideDown(250, function() {
+        $expandBtn.show(); // Mostra ao terminar de expandir
+        $section.addClass('expanded');
+      });
+      $(this).removeClass('fa-chevron-right').addClass('fa-chevron-down');
+    }
+  });
+
   // Filtros rápidos (sugestões acima da busca)
   $('.suggestions span').click(function() {
     $('#search').val($(this).data('tag')).trigger('input');
