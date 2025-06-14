@@ -236,6 +236,13 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
+  $('.tab').on('click', function() {
+    $('.tab').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').removeClass('active');
+    $('#' + $(this).data('target')).addClass('active');
+  });
+
   // Filtro por categoria ao clicar nos botões coloridos
   $(document).on('click', '.cat-btn', function() {
     var filter = $(this).data('filter');
