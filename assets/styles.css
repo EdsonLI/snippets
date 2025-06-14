@@ -201,9 +201,13 @@ input[type="text"]:focus {
 }
 
 .tab-icon {
-  height: 2.2rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
   margin: 0 auto 2px auto;
   display: block;
+  object-fit: contain;
+  font-size: 3rem !important; /* Para ícones FontAwesome */
+  line-height: 3rem !important;
 }
 /* --- FIM DO AJUSTE PARA TODAS AS ABAS --- */
 
