@@ -336,9 +336,31 @@ a:hover {
   color: #007ACC;
   border-bottom: 2px solid #007ACC;
 }
+.tab:not(.madbuilder-tab):not(.vscode-tab) {
+  color: #2ecc71;
+  border-bottom: 2px solid #2ecc71;
+}
+.tab:not(.madbuilder-tab):not(.vscode-tab).active {
+  background: #0d1117;
+  color: #2ecc71;
+  border-bottom: 2.5px solid #2ecc71;
+}
+.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
+  color: #2ecc71;
+}
+
+/* PHP tab cor - deve vir depois para sobrescrever! */
 .tab.php-tab {
-  color: #787CB5;
-  border-bottom: 2px solid #787CB5;
+  color: #787CB5 !important;
+  border-bottom: 2px solid #787CB5 !important;
+}
+.tab.php-tab.active {
+  background: #0d1117;
+  color: #787CB5 !important;
+  border-bottom: 2.5px solid #787CB5 !important;
+}
+.tab.php-tab.active .tab-check {
+  color: #787CB5 !important;
 }
 
 .tab.madbuilder-tab.active {
