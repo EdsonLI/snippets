@@ -5,7 +5,6 @@ body {
   color: #c9d1d9;
   padding: 1px;
 }
-
 h1 {
   text-align: center;
   color: #f0f6fc;
@@ -13,7 +12,6 @@ h1 {
   margin-bottom: 32px;
   letter-spacing: 0.5px;
 }
-
 input[type="text"] {
   width: 100%;
   padding: 12px;
@@ -26,13 +24,11 @@ input[type="text"] {
   transition: border 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
 }
-
 input[type="text"]:focus {
   outline: none;
   border: 1.5px solid #388bfd;
   box-shadow: 0 0 0 2px #388bfd33;
 }
-
 .suggestions {
   margin-bottom: 18px;
   font-size: 0.98em;
@@ -40,7 +36,6 @@ input[type="text"]:focus {
   gap: 10px;
   flex-wrap: wrap;
 }
-
 .suggestions span {
   background: #21262d;
   border-radius: 4px;
@@ -50,13 +45,11 @@ input[type="text"]:focus {
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
-
 .suggestions span:hover {
   background: #30363d;
   color: #f0f6fc;
   border-color: #388bfd;
 }
-
 .section {
   margin-bottom: 10px;
   background: #161b22;
@@ -65,17 +58,14 @@ input[type="text"]:focus {
   border: 1px solid #30363d;
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
-
 /* Ajuste global para espaçamento das categorias em todas as seções de snippets */
 .section h3 {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-
 .section {
   padding: 10px !important;
 }
-
 .section h2,
 .section h3 {
   border-bottom: 1px solid #21262d;
@@ -85,16 +75,13 @@ input[type="text"]:focus {
   color: #f0f6fc;
   font-weight: 500;
 }
-
 .section h3 i {
   margin-right: 10px;
   color: #8b949e;
 }
-
 .snippet-block {
   margin: 20px 0;
 }
-
 .snippet-title {
   cursor: pointer;
   user-select: none;
@@ -106,24 +93,21 @@ input[type="text"]:focus {
   border: none;
   padding: 0;
 }
-
 .snippet-title i {
   margin-right: 8px;
   color: #8b949e;
 }
-
 .snippet-content {
   display: none;
   margin-top: 8px;
 }
 
+/* Tabs */
 .tabs {
   display: flex;
   margin-bottom: 20px;
   border-bottom: 1px solid #21262d;
 }
-
-/* --- INÍCIO DO AJUSTE PARA TODAS AS ABAS --- */
 .tab {
   display: flex;
   flex-direction: column;
@@ -144,19 +128,15 @@ input[type="text"]:focus {
   font-weight: 500;
   position: relative; /* Necessário para o ícone check */
 }
-
 .tab:hover {
   background: #21262d;
   color: #f0f6fc;
 }
-
 .tab.active {
   background: #0d1117;
   color: #f0f6fc;
   border-bottom: 2px solid #388bfd;
 }
-
-/* Check redondinho no topo direito da tab ativa */
 .tab .tab-check {
   display: none;
   position: absolute;
@@ -177,31 +157,12 @@ input[type="text"]:focus {
 .tab.active .tab-check {
   display: flex;
 }
-
-/* Tabs */
-.tab.madbuilder-tab.active .tab-check {
-  color: #F2911D;
-}
-.tab.vscode-tab.active .tab-check {
-  color: #007ACC;
-}
-.tab.php-tab.active .tab-check {
-  color: #787CB5;
-}
-
-/* Check cor Banco de dados (verde) */
-.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
-  color: #2ecc71;
-}
-
 .tab-content {
   display: none;
 }
-
 .tab-content.active {
   display: block;
 }
-
 .tab-icon {
   width: 2rem;
   height: 2rem;
@@ -211,30 +172,17 @@ input[type="text"]:focus {
   font-size: 2rem;          /* Para ícones FontAwesome */
   line-height: 2rem;
 }
-
-.tab-icon-madbuilder {
-  width: 2.6rem;
-  height: 2.6rem;
-  display: block;
-  margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
-  object-fit: contain;        /* Para imagens não distorcerem */
-  line-height: 2.2rem;
-}
-/* --- FIM DO AJUSTE PARA TODAS AS ABAS --- */
-
 .collapse-icon {
   margin-left: auto;
   cursor: pointer;
   transition: transform 0.3s;
   color: #8b949e;
 }
-
 .category-controls {
   margin-top: 10px;
   display: flex;
   gap: 10px;
 }
-
 .expand-all,
 .collapse-all {
   background: #21262d;
@@ -249,26 +197,22 @@ input[type="text"]:focus {
   gap: 5px;
   transition: background 0.2s, border 0.2s, color 0.2s;
 }
-
 .expand-all:hover,
 .collapse-all:hover {
   background: #30363d;
   color: #f0f6fc;
   border-color: #388bfd;
 }
-
 /* Remove marrom e outros tons indesejados */
 a, a:visited {
   color: #58a6ff;
   text-decoration: none;
   transition: color 0.2s;
 }
-
 a:hover {
   color: #1f6feb;
   text-decoration: underline;
 }
-
 /* Botão copiar estilo GitHub */
 .copy-btn {
   position: absolute;
@@ -288,13 +232,11 @@ a:hover {
   align-items: center;
   gap: 6px;
 }
-
 .copy-btn:hover {
   background: #30363d;
   color: #f0f6fc;
   opacity: 1;
 }
-
 .download-btn {
   margin-left: 10px;
   color: #8b949e;
@@ -311,17 +253,14 @@ a:hover {
   gap: 6px;
   text-decoration: none;
 }
-
 .download-btn:hover {
   background: #30363d;
   color: #f0f6fc;
   opacity: 1;
 }
-
 .code-block-wrapper {
   position: relative;
 }
-
 .cat-btn {
   border: none;
   border-radius: 6px;
@@ -368,7 +307,6 @@ a:hover {
   font-size: 1em;
   transition: background 0.2s, color 0.2s;
 }
-
 .copy-btn-title:hover {
   background: #30363d;
   color: #2ecc71;
@@ -390,32 +328,28 @@ a:hover {
   display: block;
 }
 
-/* MadBuilder tab cor */
 .tab.madbuilder-tab {
   color: #F2911D;
   border-bottom: 2px solid #F2911D;
 }
+.tab.vscode-tab {
+  color: #007ACC;
+  border-bottom: 2px solid #007ACC;
+}
+.tab.php-tab {
+  color: #787CB5;
+  border-bottom: 2px solid #787CB5;
+}
+
 .tab.madbuilder-tab.active {
   background: #0d1117;
   color: #F2911D;
   border-bottom: 2.5px solid #F2911D;
 }
-
-/* VSCode tab cor */
-.tab.vscode-tab {
-  color: #007ACC;
-  border-bottom: 2px solid #007ACC;
-}
 .tab.vscode-tab.active {
   background: #0d1117;
   color: #007ACC;
   border-bottom: 2.5px solid #007ACC;
-}
-
-/* PHP tab cor */
-.tab.php-tab {
-  color: #787CB5;
-  border-bottom: 2px solid #787CB5;
 }
 .tab.php-tab.active {
   background: #0d1117;
@@ -423,7 +357,24 @@ a:hover {
   border-bottom: 2.5px solid #787CB5;
 }
 
-/* Banco de dados tab cor (verde) */
+.tab.madbuilder-tab.active .tab-check {
+  color: #F2911D;
+}
+.tab.vscode-tab.active .tab-check {
+  color: #007ACC;
+}
+.tab.php-tab.active .tab-check {
+  color: #787CB5;
+}
+
+.tab-icon-madbuilder {
+  width: 2.6rem;
+  height: 2.6rem;
+  display: block;
+  margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
+  object-fit: contain;        /* Para imagens não distorcerem */
+  line-height: 2.2rem;
+}
 .tab:not(.madbuilder-tab):not(.vscode-tab) {
   color: #2ecc71;
   border-bottom: 2px solid #2ecc71;
@@ -433,7 +384,9 @@ a:hover {
   color: #2ecc71;
   border-bottom: 2.5px solid #2ecc71;
 }
-
+.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
+  color: #2ecc71;
+}
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
