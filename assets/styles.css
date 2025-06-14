@@ -201,13 +201,13 @@ input[type="text"]:focus {
 }
 
 .tab-icon {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2rem;
+  height: 2rem;
   display: block;
   margin: 0 auto 0.5rem auto; /* Espaço uniforme abaixo do ícone */
   object-fit: contain;        /* Para imagens não distorcerem */
-  font-size: 2.2rem;          /* Para ícones FontAwesome */
-  line-height: 2.2rem;
+  font-size: 2rem;          /* Para ícones FontAwesome */
+  line-height: 2rem;
 }
 
 .tab-icon-madbuilder {
