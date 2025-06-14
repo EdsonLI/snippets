@@ -400,7 +400,7 @@ a:hover {
 }
 
 .tab-icon {
-  height: 24px; /* pouco maior que antes */
+  height: 24px !important; /* pouco maior que antes */
   margin-bottom: 4px;
 }
 
