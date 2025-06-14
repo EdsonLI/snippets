@@ -392,11 +392,16 @@ a:hover {
   color: #2ecc71;
   border-bottom: 2.5px solid #2ecc71;
 }
+.vscode-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
 .tab-icon {
-  height: 16px;         /* ou 12px, se quiser menor ainda */
-  margin-right: 6px;
-  vertical-align: middle;
+  height: 24px; /* pouco maior que antes */
+  margin-bottom: 4px;
 }
 
 @media (max-width: 600px) {
