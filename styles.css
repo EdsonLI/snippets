@@ -399,10 +399,10 @@ a:hover {
   text-align: center;
 }
 
-.tab-icon {
-  height: 24px !important; /* pouco maior que antes */
+/*.tab-icon {
+  height: 24px !important;
   margin-bottom: 4px;
-}
+}*/
 
 @media (max-width: 600px) {
   .snippet-content pre,
