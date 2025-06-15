@@ -83,37 +83,6 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
-  // Adiciona carregamento para as novas abas
-  $('#php-content').load('snippets_php.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#jquery-content').load('snippets_jquery.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#bootstrap-content').load('snippets_bootstrap.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#html-content').load('snippets_html.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#css-content').load('snippets_css.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
   // Sistema de abas
   $('.tab').click(function() {
     $('.tab').removeClass('active');
