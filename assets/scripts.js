@@ -108,6 +108,12 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
+  $('#css-content').load('snippets_css.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
   // Sistema de abas
   $('.tab').click(function() {
     $('.tab').removeClass('active');
