@@ -1,56 +1,150 @@
-<div class="section" id="bancosdedados" data-tags="banco bancosdedados sql">
-  <h2>Snippets Banco de dados</h2>
-
-  <!-- Snippet: CALL CleanCompanyData -->
-  <div class="snippet-block" data-tags="sql banco procedure cleancompanydata">
+<div class="section" id="bootstrap" data-tags="bootstrap">
+  <div class="snippet-block" data-tags="bootstrap">
     <div class="snippet-title">
-      <i class="fa-solid fa-expand"></i>
-      <strong>
-        <span class="sql-keyword">CALL</span> <span class="sql-func">CleanCompanyData</span>(13433, <span class="sql-string">'product_stock_balance,bank_summary'</span>);
-      </strong>
-      <button class="copy-btn-title" title="Copiar comando" style="margin-left:10px;vertical-align:middle;">
-        <i class="fa fa-copy"></i>
-      </button>
     </div>
-    <div class="snippet-content" style="display:none;">
-      <pre><code class="language-sql">
-DELIMITER //
+    <div class="container mt-4">
+  <div class="row">
 
-CREATE PROCEDURE CleanCompanyData(
-    IN companyId INT,
-    IN ignoreTables VARCHAR(255)
-)
-BEGIN
-    DECLARE done INT DEFAULT FALSE;
-    DECLARE tableName VARCHAR(64);
-    DECLARE deleteCommand VARCHAR(255);
-    DECLARE cur CURSOR FOR
-        SELECT TABLE_NAME
-        FROM information_schema.columns
-        WHERE table_schema = 'mini_erp'
-        AND column_name = 'company_id';
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-    OPEN cur;
-    read_loop: LOOP
-        FETCH cur INTO tableName;
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
-        IF FIND_IN_SET(tableName, ignoreTables) THEN
-            ITERATE read_loop;
-        END IF;
-        SET deleteCommand = CONCAT('DELETE FROM ', tableName, ' WHERE company_id = ', companyId);
-        SET @deleteCommand = deleteCommand;
-        PREPARE stmt FROM @deleteCommand;
-        EXECUTE stmt;
-        DEALLOCATE PREPARE stmt;
-    END LOOP;
-    CLOSE cur;
-END //
-
-DELIMITER ;
-</code></pre>
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📦 Container com grid</h5>
+        <pre><code>
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
+    &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+      </div>
     </div>
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🎯 Botão com ícone</h5>
+        <pre><code>
+&lt;button class="btn btn-primary"&gt;
+  &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt; Confirmar
+&lt;/button&gt;
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📄 Card com imagem e texto</h5>
+        <pre><code>
+&lt;div class="card"&gt;
+  &lt;img src="img.jpg" class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Descrição breve.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🧭 Navbar básica</h5>
+        <pre><code>
+&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Logo&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔽 Accordion (colapsável)</h5>
+        <pre><code>
+&lt;div class="accordion" id="exemplo"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h2 class="accordion-header"&gt;
+      &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#item1"&gt;
+        Item 1
+      &lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="item1" class="accordion-collapse collapse show"&gt;
+      &lt;div class="accordion-body"&gt;
+        Conteúdo do item 1.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📢 Alerta com botão de fechar</h5>
+        <pre><code>
+&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+  Aviso importante!
+  &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📝 Formulário com validação</h5>
+        <pre><code>
+&lt;form class="needs-validation" novalidate&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
+    &lt;input type="email" class="form-control" id="email" required&gt;
+    &lt;div class="invalid-feedback"&gt;Campo obrigatório.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>💾 Modal</h5>
+        <pre><code>
+&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal"&gt;
+  Abrir modal
+&lt;/button&gt;
+
+&lt;div class="modal fade" id="meuModal" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Título&lt;/h5&gt;
+        &lt;button class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        Conteúdo do modal.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-12 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>⚙️ Spinner (carregando)</h5>
+        <pre><code>
+&lt;div class="spinner-border text-primary" role="status"&gt;
+  &lt;span class="visually-hidden"&gt;Carregando...&lt;/span&gt;
+&lt;/div&gt;
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+</div>
   </div>
 
   <!-- Adicione outros snippets conforme desejar -->
