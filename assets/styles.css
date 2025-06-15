@@ -362,6 +362,10 @@ a:hover {
   color: #563d7c !important;
   border-bottom: 2px solid #563d7c !important;
 }
+.tab.css-tab {
+  color: #264DE4 !important;
+  border-bottom: 2px solid #264DE4 !important;
+}
 .tab.html-tab {
   color: #F06529 !important;
   border-bottom: 2px solid #F06529 !important;
