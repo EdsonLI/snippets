@@ -509,7 +509,7 @@ $(document).ready(function() {
     }
   });
 
-  // Ao trocar de aba, se houver termo, muda para botão de filtrar
+  // Ao trocar de aba, se houver termo, muda para botão de filtrar e executa a ação do botão
   $('.tab').on('click', function() {
     $('.tab').removeClass('active');
     $(this).addClass('active');
@@ -517,11 +517,14 @@ $(document).ready(function() {
     $('#' + $(this).data('target')).addClass('active');
     addCopyButtons();
 
-    // Se houver termo no input, mostra botão de filtrar
+    // Se houver termo no input, mostra botão de filtrar, senão mostra limpar
     if ($('#search').val().length > 0) {
       setRefreshButtonMode('filter');
     } else {
       setRefreshButtonMode('clear');
     }
+
+    // Executa a ação do botão (filtrar ou limpar)
+    $('#refresh-list').trigger('click');
   });
 });
