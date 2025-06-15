@@ -114,12 +114,6 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
-  $('#codepen-content').load('snippets_odepen.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
   // Sistema de abas
   $('.tab').click(function() {
     $('.tab').removeClass('active');
@@ -469,68 +463,4 @@ $(document).ready(function() {
         .replace(/>/g, '&gt;');
     }
   }
-
-  function setRefreshButtonMode(mode) {
-    // mode: 'clear' | 'filter'
-    const $btn = $('#refresh-list');
-    const $icon = $btn.find('i');
-    if (mode === 'clear') {
-      $icon.removeClass('fa-rotate-right').addClass('fa-circle-xmark');
-      $btn.attr('title', 'Limpar busca e filtros');
-      $btn.data('mode', 'clear');
-    } else {
-      $icon.removeClass('fa-circle-xmark').addClass('fa-rotate-right');
-      $btn.attr('title', 'Filtrar novamente');
-      $btn.data('mode', 'filter');
-    }
-  }
-
-  // Ao digitar, sempre mostra o botão X (limpar)
-  $('#search').on('input', function() {
-    // ...existing code...
-    if ($(this).val().length > 0) {
-      setRefreshButtonMode('clear');
-    } else {
-      setRefreshButtonMode('clear');
-    }
-  });
-
-  // Botão multifunção: limpar ou filtrar novamente
-  $('#refresh-list').off('click').on('click', function() {
-    const mode = $(this).data('mode') || 'clear';
-    if (mode === 'clear') {
-      $('#search').val('');
-      // ...restaurar a visibilidade padrão...
-      $('.section, .snippet-block').show();
-      $('.snippet-content').hide();
-      $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
-      $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-      $('.category-controls').show();
-      setRefreshButtonMode('clear');
-      addCopyButtons();
-    } else if (mode === 'filter') {
-      // Dispara o filtro normalmente
-      $('#search').trigger('input');
-      setRefreshButtonMode('clear');
-    }
-  });
-
-  // Ao trocar de aba, se houver termo, muda para botão de filtrar e executa a ação do botão
-  $('.tab').on('click', function() {
-    $('.tab').removeClass('active');
-    $(this).addClass('active');
-    $('.tab-content').removeClass('active');
-    $('#' + $(this).data('target')).addClass('active');
-    addCopyButtons();
-
-    // Se houver termo no input, mostra botão de filtrar, senão mostra limpar
-    if ($('#search').val().length > 0) {
-      setRefreshButtonMode('filter');
-    } else {
-      setRefreshButtonMode('clear');
-    }
-
-    // Executa a ação do botão (filtrar ou limpar)
-    $('#refresh-list').trigger('click');
-  });
 });
