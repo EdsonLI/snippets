@@ -34,7 +34,7 @@ input[type="text"]:focus {
   border: 1.5px solid #388bfd;
   box-shadow: 0 0 0 2px #388bfd33;
 }
-.suggestions {
+/* .suggestions {
   margin-bottom: 18px;
   font-size: 0.98em;
   display: flex;
@@ -54,7 +54,7 @@ input[type="text"]:focus {
   background: #30363d;
   color: #f0f6fc;
   border-color: #388bfd;
-}
+} */
 .section {
   margin-bottom: 10px;
   background: #161b22;

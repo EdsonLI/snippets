@@ -249,9 +249,9 @@ $(document).ready(function() {
   });
 
   // Filtros rápidos (sugestões acima da busca)
-  $('.suggestions span').click(function() {
-    $('#search').val($(this).data('tag')).trigger('input');
-  });
+  // $('.suggestions span').click(function() {
+  //   $('#search').val($(this).data('tag')).trigger('input');
+  // });
 
   // Botão de atualizar/limpar filtros
   $('#refresh-list').click(function() {
