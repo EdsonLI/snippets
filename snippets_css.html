@@ -1,13 +1,169 @@
 <div class="section" id="css" data-tags="css">
   <div class="snippet-block" data-tags="css">
     <div class="snippet-title">
-      
     </div>
-    <div class="snippet-content" style="display:none;">
-      <pre><code class="language-css">
+    <div class="container mt-4">
+  <div class="row">
 
-</code></pre>
+    <!-- Gradiente no texto -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🎨 Texto com gradiente</h5>
+        <pre><code class="language-css">
+.gradient-text {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+        </code></pre>
+      </div>
     </div>
+
+    <!-- Botão com hover suave -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🌈 Botão com efeito hover</h5>
+        <pre><code class="language-css">
+.button {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.button:hover {
+  background: #4338ca;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Scroll invisível -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🪄 Scroll invisível</h5>
+        <pre><code class="language-css">
+.scroll-hidden {
+  overflow: auto;
+  scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Flexbox centralizador -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📐 Centralizar com Flexbox</h5>
+        <pre><code class="language-css">
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Ellipsis no texto -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>✂️ Texto com reticências</h5>
+        <pre><code class="language-css">
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Grid de cards -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🧱 Grid de cards</h5>
+        <pre><code class="language-css">
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Fade-in simples -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🎥 Fade-in</h5>
+        <pre><code class="language-css">
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Brilho animado -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>✨ Efeito de brilho</h5>
+        <pre><code class="language-css">
+.shine {
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shine 1.2s linear infinite;
+}
+@keyframes shine {
+  100% {
+    background-position: -200% 0;
+  }
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Sticky header -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🧭 Cabeçalho fixo (sticky)</h5>
+        <pre><code class="language-css">
+header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 999;
+}
+        </code></pre>
+      </div>
+    </div>
+
+    <!-- Media Query básica -->
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📱 Media query para mobile</h5>
+        <pre><code class="language-css">
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+</div>
   </div>
 
   <!-- Adicione outros snippets conforme desejar -->
