@@ -114,6 +114,12 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
+  $('#codepen-content').load('snippets_odepen.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
   // Sistema de abas
   $('.tab').click(function() {
     $('.tab').removeClass('active');
