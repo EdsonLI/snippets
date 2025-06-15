@@ -503,12 +503,11 @@ a:hover {
 .tab.bootstrap-tab .tab-icon,
 .tab.jquery-tab .tab-icon,
 .tab.php-tab .tab-icon {
-  /* Efeito de brilho/luz para ícones das abas */
+  /* Brilho sutil e nítido para ícones das abas */
   text-shadow:
-    0 0 6px #fff,
-    0 0 12px currentColor,
-    0 0 18px currentColor;
-  filter: brightness(1.5) saturate(1.7) drop-shadow(0 0 6px currentColor);
+    0 0 2px #fff,
+    0 0 6px currentColor;
+  /* Removido filter para evitar desfoque/borrado */
 }
 
 .tab.css-tab {
@@ -553,4 +552,5 @@ a:hover {
   color: #b8aaff !important;
   border-bottom: 2.5px solid #b8aaff !important;
   background: #0d1117;
+}
 }
