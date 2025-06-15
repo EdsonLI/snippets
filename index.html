@@ -26,7 +26,12 @@
 <body>
   <h1>Snippets</h1>
   
-  <input type="text" id="search" placeholder="Buscar snippets (ex: php banco, select, transação, etc)">
+  <div class="search-wrapper">
+    <input type="text" id="search" placeholder="Buscar snippets (ex: store, find, card, etc)">
+    <button id="refresh-list" title="Limpar busca e filtros">
+      <i class="fa-regular fa-circle-xmark"></i>
+    </button>
+  </div>
   
   <!-- <div class="suggestions">
     <span data-tag="php">PHP</span>

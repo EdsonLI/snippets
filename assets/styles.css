@@ -544,3 +544,63 @@ a:hover {
     min-width: 0;
   }
 }
+
+/* Novas regras para .search-wrapper */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 18px auto;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper input[type="text"] {
+  width: 100%;
+  padding-right: 38px; /* espaço para o botão */
+  margin-bottom: 0;
+}
+
+#refresh-list {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 1.3em;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#refresh-list:hover {
+  color: #f87171;
+  background: #23272e;
+  opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .search-wrapper {
+    max-width: 98vw;
+  }
+  .search-wrapper input[type="text"] {
+    padding-right: 36px;
+  }
+  #refresh-list {
+    right: 4px;
+    font-size: 1.1em;
+    height: 28px;
+    width: 28px;
+  }
+}
