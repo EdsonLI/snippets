@@ -611,3 +611,62 @@ a:hover {
     width: 28px;
   }
 }
+
+/* Neumorphism para cards/snippet-block */
+.snippet-block,
+.card,
+.section {
+  box-shadow:
+    6px 6px 16px #0a0c10,
+    -6px -6px 16px #181c22;
+  background: #161b22;
+  border: none;
+}
+
+/* Neumorphism para input de busca */
+input[type="text"] {
+  box-shadow:
+    3px 3px 8px #0a0c10,
+    -3px -3px 8px #181c22;
+  background: #161b22;
+  border: none;
+}
+
+/* Neumorphism para botões principais */
+button,
+.copy-btn,
+.download-btn,
+.cat-btn,
+.expand-all,
+.collapse-all,
+.copy-btn-title {
+  box-shadow:
+    2px 2px 6px #0a0c10,
+    -2px -2px 6px #181c22;
+  background: #161b22;
+  border: none;
+}
+
+/* Efeito de botão pressionado (afundado) */
+button:active,
+.copy-btn:active,
+.download-btn:active,
+.cat-btn:active,
+.expand-all:active,
+.collapse-all:active,
+.copy-btn-title:active {
+  box-shadow:
+    inset 2px 2px 6px #0a0c10,
+    inset -2px -2px 6px #181c22;
+}
+
+/* Opcional: efeito hover mais claro */
+button:hover,
+.copy-btn:hover,
+.download-btn:hover,
+.cat-btn:hover,
+.expand-all:hover,
+.collapse-all:hover,
+.copy-btn-title:hover {
+  background: #23272e;
+}
