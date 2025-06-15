@@ -354,13 +354,25 @@ a:hover {
   color: #787CB5 !important;
   border-bottom: 2px solid #787CB5 !important;
 }
+.tab.jquery-tab {
+  color: #0868AC !important;
+  border-bottom: 2px solid #0868AC !important;
+}
 .tab.php-tab.active {
   background: #0d1117;
   color: #787CB5 !important;
   border-bottom: 2.5px solid #787CB5 !important;
 }
+.tab.jquery-tab.active {
+  background: #0d1117;
+  color: #0868AC !important;
+  border-bottom: 2.5px solid #0868AC !important;
+}
 .tab.php-tab.active .tab-check {
   color: #787CB5 !important;
+}
+.tab.jquery-tab.active .tab-check {
+  color: #0868AC !important;
 }
 
 .tab.madbuilder-tab.active {
@@ -378,6 +390,12 @@ a:hover {
   color: #787CB5;
   border-bottom: 2.5px solid #787CB5;
 }
+.tab.jquery-tab.active {
+  background: #0d1117;
+  color: #0868AC;
+  border-bottom: 2.5px solid #0868AC;
+}
+
 
 .tab.madbuilder-tab.active .tab-check {
   color: #F2911D;
@@ -387,6 +405,9 @@ a:hover {
 }
 .tab.php-tab.active .tab-check {
   color: #787CB5;
+}
+.tab.jquery-tab.active .tab-check {
+  color: #0868AC;
 }
 
 .tab-icon-madbuilder {
