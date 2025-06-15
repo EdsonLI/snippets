@@ -395,6 +395,10 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2px solid #F06529 !important;
 }
+.tab.codepen-tab {
+  color: #fff !important;
+  border-bottom: 2px solid #fff;
+}
 
 .tab.php-tab.active {
   background: #0d1117;
@@ -421,6 +425,11 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2.5px solid #F06529 !important;
 }
+.tab.codepen-tab.active {
+  background: #0d1117;
+  color: #Fff !important;
+  border-bottom: 2.5px solid #Fff !important;
+}
 
 .tab.php-tab.active .tab-check {
   color: #787CB5 !important;
@@ -436,6 +445,9 @@ a:hover {
 }
 .tab.html-tab.active .tab-check {
   color: #F06529 !important;
+}
+.tab.codepen-tab.active .tab-check {
+  color: #Fff !important;
 }
 
 .tab.madbuilder-tab.active {
@@ -473,6 +485,11 @@ a:hover {
   color: #F06529;
   border-bottom: 2.5px solid #F06529;
 }
+.tab.codepen-tab.active {
+  background: #0d1117;
+  color: #Fff;
+  border-bottom: 2.5px solid #Fff;
+}
 
 .tab.madbuilder-tab.active .tab-check {
   color: #F2911D;
@@ -494,6 +511,9 @@ a:hover {
 }
 .tab.html-tab.active .tab-check {
   color: #F06529;
+}
+.tab.codepen-tab.active .tab-check {
+  color: #Fff;
 }
 
 .tab-icon-madbuilder {
@@ -612,7 +632,7 @@ a:hover {
   }
 }
 
-.tab[data-target="codepen-content"],
+/* .tab[data-target="codepen-content"],
 .tab.codepen-tag {
   color: #000 !important;
   border-bottom: 2px solid #000 !important;
@@ -644,4 +664,4 @@ a:hover {
 }
 .tab.codepen-tag.active .tab-check {
   color: #fff !important;
-}
+} */
