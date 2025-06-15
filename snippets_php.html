@@ -13,42 +13,15 @@
       </button>
     </div>
     <div class="snippet-content" style="display:none;">
-      <pre><code class="language-sql">
-DELIMITER //
-
-CREATE PROCEDURE CleanCompanyData(
-    IN companyId INT,
-    IN ignoreTables VARCHAR(255)
-)
-BEGIN
-    DECLARE done INT DEFAULT FALSE;
-    DECLARE tableName VARCHAR(64);
-    DECLARE deleteCommand VARCHAR(255);
-    DECLARE cur CURSOR FOR
-        SELECT TABLE_NAME
-        FROM information_schema.columns
-        WHERE table_schema = 'mini_erp'
-        AND column_name = 'company_id';
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-    OPEN cur;
-    read_loop: LOOP
-        FETCH cur INTO tableName;
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
-        IF FIND_IN_SET(tableName, ignoreTables) THEN
-            ITERATE read_loop;
-        END IF;
-        SET deleteCommand = CONCAT('DELETE FROM ', tableName, ' WHERE company_id = ', companyId);
-        SET @deleteCommand = deleteCommand;
-        PREPARE stmt FROM @deleteCommand;
-        EXECUTE stmt;
-        DEALLOCATE PREPARE stmt;
-    END LOOP;
-    CLOSE cur;
-END //
-
-DELIMITER ;
+      <pre><code class="language-php">
+        <?php
+$senha = 'minhasenha123';
+$hash = password_hash($senha, PASSWORD_DEFAULT);
+// Para verificar depois:
+if (password_verify('minhasenha123', $hash)) {
+    echo 'Senha correta!';
+}
+?>
 </code></pre>
     </div>
   </div>
