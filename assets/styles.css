@@ -612,15 +612,18 @@ a:hover {
   }
 }
 
-.tab[data-target="codepen-content"] {
-  color: #222 !important;
-  border-bottom: 2px solid #222 !important;
+.tab[data-target="codepen-content"],
+.tab.codepen-tag {
+  color: #000 !important;
+  border-bottom: 2px solid #000 !important;
 }
-.tab[data-target="codepen-content"].active {
-  background: #0d1117;
-  color: #fff !important;
-  border-bottom: 2.5px solid #222 !important;
+.tab[data-target="codepen-content"].active,
+.tab.codepen-tag.active {
+  background: #fff;
+  color: #000 !important;
+  border-bottom: 2.5px solid #000 !important;
 }
-.tab[data-target="codepen-content"] .tab-icon {
-  color: #222;
+.tab[data-target="codepen-content"] .tab-icon,
+.tab.codepen-tag .tab-icon {
+  color: #000 !important;
 }
