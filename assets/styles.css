@@ -589,6 +589,13 @@ a:hover {
   opacity: 1;
 }
 
+#refresh-list .fa-rotate-right {
+  transition: transform 0.3s;
+}
+#refresh-list:active .fa-rotate-right {
+  transform: rotate(360deg);
+}
+
 /* Responsivo */
 @media (max-width: 600px) {
   .search-wrapper {
