@@ -2,25 +2,65 @@
   <h2>Snippets PHP</h2>
   <div class="snippet-block" data-tags="php">
     <div class="snippet-title">
-      <i class="fa-solid fa-expand"></i>
-      <strong>
-        <span class="sql-keyword">CALL</span> <span class="sql-func">CleanCompanyData</span>(13433, <span class="sql-string">'product_stock_balance,bank_summary'</span>);
-      </strong>
-      <button class="copy-btn-title" title="Copiar comando" style="margin-left:10px;vertical-align:middle;">
-        <i class="fa fa-copy"></i>
-      </button>
-    </div>
-    <div class="snippet-content" style="display:none;">
-      <pre><code class="language-php">
-        <?php
+      <ul>
+  <li>
+    <strong>🔐 Senha segura com hash</strong>
+    <pre><code>
 $senha = 'minhasenha123';
 $hash = password_hash($senha, PASSWORD_DEFAULT);
 // Para verificar depois:
 if (password_verify('minhasenha123', $hash)) {
     echo 'Senha correta!';
 }
-?>
-</code></pre>
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>📦 Conectar ao MySQL com PDO</strong>
+    <pre><code>
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=meubanco", "usuario", "senha");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Conectado com sucesso!";
+} catch (PDOException $e) {
+    echo "Erro: " . $e->getMessage();
+}
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>📬 Enviar e-mail simples com <code>mail()</code></strong>
+    <pre><code>
+$para = "exemplo@email.com";
+$assunto = "Assunto do e-mail";
+$mensagem = "Olá! Isso é um teste.";
+$headers = "From: contato@seudominio.com";
+
+mail($para, $assunto, $mensagem, $headers);
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>📆 Data e hora atual formatada</strong>
+    <pre><code>
+echo date("d/m/Y H:i:s"); // Ex: 15/06/2025 14:35:21
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>📂 Listar arquivos de um diretório</strong>
+    <pre><code>
+$arquivos = scandir("uploads/");
+foreach ($arquivos as $arquivo) {
+    if ($arquivo !== '.' && $arquivo !== '..') {
+        echo $arquivo . "&lt;br&gt;";
+    }
+}
+    </code></pre>
+  </li>
+
+  <li>
+    <strong>💾 Salvar dados em arquivo <code
     </div>
   </div>
 
