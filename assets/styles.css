@@ -107,8 +107,28 @@ input[type="text"]:focus {
   display: flex;
   margin-bottom: 20px;
   border-bottom: 1px solid #21262d;
+  overflow-x: auto;         /* Permite rolagem horizontal */
+  flex-wrap: nowrap;        /* Não quebra linha */
+  -webkit-overflow-scrolling: touch; /* Suaviza rolagem no iOS */
+  scrollbar-width: thin;    /* Firefox: barra fina */
+  scrollbar-color: #30363d #161b22;
 }
+/* Barra de rolagem customizada para Chrome */
+.tabs::-webkit-scrollbar {
+  height: 6px;
+}
+.tabs::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+.tabs::-webkit-scrollbar-track {
+  background: #161b22;
+}
+
+/* As abas não encolhem demais, mas podem ser menores no mobile */
 .tab {
+  flex: 0 0 auto; /* Não cresce, não encolhe, largura automática */
+  min-width: 90px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Alinha conteúdo na base da aba */
@@ -496,5 +516,19 @@ a:hover {
   .snippet-content code {
     font-size: 0.92em;
     max-width: 98vw;
+  }
+  .tabs {
+    margin-bottom: 12px;
+  }
+  .tab {
+    padding: 7px 10px;
+    min-width: 70px;
+    font-size: 0.98em;
+  }
+  .tab-icon, .tab-icon-madbuilder {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
   }
 }
