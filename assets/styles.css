@@ -14,6 +14,8 @@ h1 {
 }
 input[type="text"] {
   width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
   padding: 12px;
   margin-bottom: 28px;
   border-radius: 6px;
@@ -23,6 +25,9 @@ input[type="text"] {
   font-size: 1em;
   transition: border 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 input[type="text"]:focus {
   outline: none;
@@ -530,5 +535,12 @@ a:hover {
     height: 1.5rem;
     font-size: 1.5rem;
     margin-bottom: 0.2rem;
+  }
+  input[type="text"] {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 18px;
+    max-width: 98vw;
+    min-width: 0;
   }
 }
