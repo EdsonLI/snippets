@@ -2,65 +2,133 @@
   <h2>Snippets PHP</h2>
   <div class="snippet-block" data-tags="php">
     <div class="snippet-title">
-      <ul>
-  <li>
-    <strong>🔐 Senha segura com hash</strong>
-    <pre><code>
-$senha = 'minhasenha123';
-$hash = password_hash($senha, PASSWORD_DEFAULT);
-// Para verificar depois:
-if (password_verify('minhasenha123', $hash)) {
-    echo 'Senha correta!';
+<div class="container mt-4">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔒 Evitar erros de variáveis indefinidas</h5>
+        <pre><code>
+$nome = $_GET['nome'] ?? 'Visitante';
+echo "Olá, $nome!";
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📥 Verificar se formulário foi enviado</h5>
+        <pre><code>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // processar dados
 }
-    </code></pre>
-  </li>
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🧹 Limpar dados do formulário (sanitização)</h5>
+        <pre><code>
+$nome = htmlspecialchars(trim($_POST['nome']));
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📦 Criar e ler sessão</h5>
+        <pre><code>
+session_start();
+$_SESSION['usuario'] = 'Edson';
 
-  <li>
-    <strong>📦 Conectar ao MySQL com PDO</strong>
-    <pre><code>
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=meubanco", "usuario", "senha");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conectado com sucesso!";
-} catch (PDOException $e) {
-    echo "Erro: " . $e->getMessage();
+echo $_SESSION['usuario'];
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📧 Enviar e-mail simples</h5>
+        <pre><code>
+mail("destino@email.com", "Assunto", "Mensagem");
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📁 Criar diretório se não existir</h5>
+        <pre><code>
+$dir = "uploads";
+if (!is_dir($dir)) {
+  mkdir($dir, 0755, true);
 }
-    </code></pre>
-  </li>
-
-  <li>
-    <strong>📬 Enviar e-mail simples com <code>mail()</code></strong>
-    <pre><code>
-$para = "exemplo@email.com";
-$assunto = "Assunto do e-mail";
-$mensagem = "Olá! Isso é um teste.";
-$headers = "From: contato@seudominio.com";
-
-mail($para, $assunto, $mensagem, $headers);
-    </code></pre>
-  </li>
-
-  <li>
-    <strong>📆 Data e hora atual formatada</strong>
-    <pre><code>
-echo date("d/m/Y H:i:s"); // Ex: 15/06/2025 14:35:21
-    </code></pre>
-  </li>
-
-  <li>
-    <strong>📂 Listar arquivos de um diretório</strong>
-    <pre><code>
-$arquivos = scandir("uploads/");
-foreach ($arquivos as $arquivo) {
-    if ($arquivo !== '.' && $arquivo !== '..') {
-        echo $arquivo . "&lt;br&gt;";
-    }
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📝 Escrever em arquivo</h5>
+        <pre><code>
+file_put_contents("log.txt", "Nova linha\n", FILE_APPEND);
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔐 Hash de senha seguro</h5>
+        <pre><code>
+$senhaHash = password_hash("minhaSenha123", PASSWORD_DEFAULT);
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔑 Verificar senha com hash</h5>
+        <pre><code>
+if (password_verify($senhaDigitada, $senhaHash)) {
+  echo "Senha correta!";
 }
-    </code></pre>
-  </li>
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📆 Data e hora formatada</h5>
+        <pre><code>
+echo date("d/m/Y H:i:s");
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📚 Autoload de classes (PSR-4)</h5>
+        <pre><code>
+spl_autoload_register(function($classe) {
+  require_once "classes/{$classe}.php";
+});
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔄 Redirecionamento</h5>
+        <pre><code>
+header("Location: outra-pagina.php");
+exit;
+        </code></pre>
+      </div>
+    </div>
 
-  <li>
-    <strong>💾 Salvar dados em arquivo <code
+  </div>
+</div>
     </div>
   </div>
 
