@@ -58,7 +58,6 @@ input[type="text"]:focus {
   border: 1px solid #30363d;
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
-/* Ajuste global para espaçamento das categorias em todas as seções de snippets */
 .section h3 {
   margin-top: 5px;
   margin-bottom: 10px;
@@ -111,11 +110,11 @@ input[type="text"]:focus {
 .tab {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Alinha conteúdo na base da aba */
-  align-items: stretch;      /* Ocupa toda a largura da aba */
+  justify-content: flex-end;
+  align-items: stretch;
   text-align: center;
-  min-height: 70px;          /* Ajuste conforme necessário */
-  padding-bottom: 6px;       /* Espaço extra na base */
+  min-height: 70px;
+  padding-bottom: 6px;
   padding: 10px 22px;
   cursor: pointer;
   background: #161b22;
@@ -126,7 +125,7 @@ input[type="text"]:focus {
   border: 1px solid #21262d;
   border-bottom: none;
   font-weight: 500;
-  position: relative; /* Necessário para o ícone check */
+  position: relative;
 }
 .tab:hover {
   background: #21262d;
@@ -141,8 +140,8 @@ input[type="text"]:focus {
   display: none;
   position: absolute;
   top: 3px;
-  left: 3px;    /* Alterado de right: 3px para left: 3px */
-  right: auto;  /* Garante que não fique à direita */
+  left: 3px;
+  right: auto;
   background: #161b22;
   border-radius: 50%;
   width: 20px;
@@ -150,7 +149,7 @@ input[type="text"]:focus {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: #F2911D; /* cor padrão, sobrescrita abaixo */
+  color: #F2911D;
   box-shadow: 0 1px 3px #0002;
   z-index: 2;
 }
@@ -167,9 +166,9 @@ input[type="text"]:focus {
   width: 2rem;
   height: 2rem;
   display: block;
-  margin: 0 auto 0.5rem auto; /* Espaço uniforme abaixo do ícone */
-  object-fit: contain;        /* Para imagens não distorcerem */
-  font-size: 2rem;          /* Para ícones FontAwesome */
+  margin: 0 auto 0.5rem auto;
+  object-fit: contain;
+  font-size: 2rem;
   line-height: 2rem;
 }
 .collapse-icon {
@@ -203,7 +202,6 @@ input[type="text"]:focus {
   color: #f0f6fc;
   border-color: #388bfd;
 }
-/* Remove marrom e outros tons indesejados */
 a, a:visited {
   color: #58a6ff;
   text-decoration: none;
@@ -213,7 +211,6 @@ a:hover {
   color: #1f6feb;
   text-decoration: underline;
 }
-/* Botão copiar estilo GitHub */
 .copy-btn {
   position: absolute;
   top: 10px;
@@ -272,26 +269,10 @@ a:hover {
   transition: filter 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
 }
-
-/* .cat-btn.categoria-bancos   { background: #1abc9c; }
-.cat-btn.categoria-codigos  { background: #e67e22; }
-.cat-btn.categoria-campos   { background: #9b59b6; }
-.cat-btn.categoria-sessao   { background: #2980b9; }
-.cat-btn.categoria-janelas  { background: #f39c12; }
-.cat-btn.categoria-outros   { background: #95a5a6; } */
-
 .cat-btn:hover {
   filter: brightness(1.1) contrast(1.1);
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
 }
-
-/* Cores dos títulos das categorias de snippets do mad.builder */
-/* .categoria-bancos { color: #1abc9c !important; }
-.categoria-codigos { color: #e67e22 !important; }
-.categoria-campos { color: #9b59b6 !important; }
-.categoria-sessao { color: #2980b9 !important; }
-.categoria-janelas { color: #f39c12 !important; }
-.categoria-outros { color: #95a5a6 !important; } */
 
 .sql-keyword { color: #2ecc71; font-weight: bold; font-family: 'Roboto Mono', monospace; }
 .sql-func    { color: #3498db; font-family: 'Roboto Mono', monospace; }
@@ -312,18 +293,16 @@ a:hover {
   color: #2ecc71;
 }
 
-/* Responsividade máxima para blocos de código */
 .snippet-content {
   width: 100%;
   overflow-x: auto;
 }
-
 .snippet-content pre,
 .snippet-content code {
-  white-space: pre;         /* Não quebra linha */
-  overflow-x: auto;         /* Rolagem horizontal */
-  min-width: 0;             /* Permite encolher */
-  max-width: 100vw;         /* Nunca ultrapassa a tela */
+  white-space: pre;
+  overflow-x: auto;
+  min-width: 0;
+  max-width: 100vw;
   box-sizing: border-box;
   display: block;
 }
@@ -349,7 +328,7 @@ a:hover {
   color: #2ecc71;
 }
 
-/* PHP tab cor - deve vir depois para sobrescrever! */
+/* PHP tab */
 .tab.php-tab {
   color: #787CB5 !important;
   border-bottom: 2px solid #787CB5 !important;
@@ -359,8 +338,8 @@ a:hover {
   border-bottom: 2px solid #0868AC !important;
 }
 .tab.bootstrap-tab {
-  color: #563d7c !important;
-  border-bottom: 2px solid #563d7c !important;
+  color: #8e44ad !important;
+  border-bottom: 2px solid #8e44ad !important;
 }
 .tab.css-tab {
   color: #264DE4 !important;
@@ -370,7 +349,6 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2px solid #F06529 !important;
 }
-
 .tab.php-tab.active {
   background: #0d1117;
   color: #787CB5 !important;
@@ -383,8 +361,8 @@ a:hover {
 }
 .tab.bootstrap-tab.active {
   background: #0d1117;
-  color: #563d7c !important;
-  border-bottom: 2.5px solid #563d7c !important;
+  color: #8e44ad !important;
+  border-bottom: 2.5px solid #8e44ad !important;
 }
 .tab.css-tab.active {
   background: #0d1117;
@@ -396,23 +374,6 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2.5px solid #F06529 !important;
 }
-
-.tab.php-tab.active .tab-check {
-  color: #787CB5 !important;
-}
-.tab.jquery-tab.active .tab-check {
-  color: #0868AC !important;
-}
-.tab.bootstrap-tab.active .tab-check {
-  color: #563d7c !important;
-}
-.tab.css-tab.active .tab-check {
-  color: #264DE4 !important;
-}
-.tab.html-tab.active .tab-check {
-  color: #F06529 !important;
-}
-
 .tab.madbuilder-tab.active {
   background: #0d1117;
   color: #F2911D;
@@ -423,37 +384,8 @@ a:hover {
   color: #007ACC;
   border-bottom: 2.5px solid #007ACC;
 }
-.tab.php-tab.active {
-  background: #0d1117;
-  color: #787CB5;
-  border-bottom: 2.5px solid #787CB5;
-}
-.tab.jquery-tab.active {
-  background: #0d1117;
-  color: #0868AC;
-  border-bottom: 2.5px solid #0868AC;
-}
-.tab.bootstrap-tab.active {
-  background: #0d1117;
-  color: #563d7c;
-  border-bottom: 2.5px solid #563d7c;
-}
-.tab.css-tab.active {
-  background: #0d1117;
-  color: #264DE4;
-  border-bottom: 2.5px solid #264DE4;
-}
-.tab.html-tab.active {
-  background: #0d1117;
-  color: #F06529;
-  border-bottom: 2.5px solid #F06529;
-}
-
-.tab.madbuilder-tab.active .tab-check {
-  color: #F2911D;
-}
-.tab.vscode-tab.active .tab-check {
-  color: #007ACC;
+.tab.bootstrap-tab.active .tab-check {
+  color: #8e44ad !important;
 }
 .tab.php-tab.active .tab-check {
   color: #787CB5;
@@ -461,36 +393,28 @@ a:hover {
 .tab.jquery-tab.active .tab-check {
   color: #0868AC;
 }
-.tab.bootstrap-tab.active .tab-check {
-  color: #563d7c;
-}
 .tab.css-tab.active .tab-check {
   color: #264DE4;
 }
 .tab.html-tab.active .tab-check {
   color: #F06529;
 }
+.tab.madbuilder-tab.active .tab-check {
+  color: #F2911D;
+}
+.tab.vscode-tab.active .tab-check {
+  color: #007ACC;
+}
 
 .tab-icon-madbuilder {
   width: 2.6rem;
   height: 2.6rem;
   display: block;
-  margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
-  object-fit: contain;        /* Para imagens não distorcerem */
+  margin: 0 auto 0.2rem auto;
+  object-fit: contain;
   line-height: 2.2rem;
 }
-.tab:not(.madbuilder-tab):not(.vscode-tab) {
-  color: #2ecc71;
-  border-bottom: 2px solid #2ecc71;
-}
-.tab:not(.madbuilder-tab):not(.vscode-tab).active {
-  background: #0d1117;
-  color: #2ecc71;
-  border-bottom: 2.5px solid #2ecc71;
-}
-.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
-  color: #2ecc71;
-}
+
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
