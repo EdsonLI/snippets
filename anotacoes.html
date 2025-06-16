@@ -1,3 +1,36 @@
+idéia boa para retornar valor dentro de um método setTransformer:
+$column_movement_description_transformed->setTransformer(function($value, $object, $row, $cell = null, $last_row = null) {
+    # var_dump('$object 133:::', $object);
+    # var_dump('$object 134:::', $object->conta);
+    # var_dump('$object 135:::', $object->conta->pessoa_id);
+    
+    if(!is_null($object->conta->pessoa_id)) {
+        $object_people = Pessoa::find($object->conta->pessoa_id);
+        if($object_people) {
+            $value = '<b>Fornecedor: </b>'.trim($object_people->nome);
+            return $value;
+        }
+    }
+
+    if(!empty(trim($value))) {
+        return $value;
+    } else {
+        return ' - ';
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Selecionar todas as tabelas que possuem a coluna `company_id` no esquema `mini_erp`:
 SELECT DISTINCT TABLE_NAME FROM information_schema.columns WHERE column_name = 'company_id' AND table_schema = 'mini_erp';
 
