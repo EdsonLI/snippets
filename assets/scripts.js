@@ -114,7 +114,7 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
-  $('#sweetalert-content').load('snippets_sweetalert.html', function() {
+  $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
