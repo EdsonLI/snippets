@@ -156,10 +156,10 @@ input[type="text"]:focus {
   margin-bottom: 0; /* Removido margem inferior para evitar espaços */
   z-index: 1; /* Nível de empilhamento padrão */
 }
-/*.tab:hover {
+.tab:hover {
   background: #21262d;
   color: #f0f6fc;
-}*/
+}
 .tab.active {
   background: #0d1117;
   color: #f0f6fc;
@@ -201,6 +201,10 @@ input[type="text"]:focus {
 
 .tab.php-tab.active::after {
   background-color: #787CB5;
+}
+.tab.php-tab:hover {
+  background: #21262d;
+  color: #787CB5;
 }
 
 .tab.jquery-tab.active::after {
