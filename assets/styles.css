@@ -117,6 +117,7 @@ input[type="text"]:focus {
   -webkit-overflow-scrolling: touch; /* Suaviza rolagem no iOS */
   scrollbar-width: thin;    /* Firefox: barra fina */
   scrollbar-color: #30363d #161b22;
+  position: relative; /* Importante para contexto posicional correto */
 }
 /* Barra de rolagem customizada para Chrome */
 .tabs::-webkit-scrollbar {
@@ -161,6 +162,8 @@ input[type="text"]:focus {
   background: #0d1117;
   color: #f0f6fc;
   border-bottom: 2px solid #388bfd;
+  position: relative;
+  z-index: 5; /* Garante que a aba ativa fique acima de outras */
 }
 .tab .tab-check {
   display: none;
@@ -353,167 +356,151 @@ a:hover {
   display: block;
 }
 
+/* Cores personalizadas para as tabs */
 .tab.madbuilder-tab {
   color: #F2911D;
-  border-bottom: 2px solid #F2911D !important;
+  border-bottom: 3px solid transparent !important; /* Inicialmente transparente */
 }
-.tab.vscode-tab {
-  color: #007ACC;
-  border-bottom: 2px solid #007ACC;
-}
-.tab.sql-tab {
-  color: #2ecc71 !important;
-  border-bottom: 2px solid #2ecc71 !important;
-}
-.tab.sql-tab.active {
-  background: #0d1117;
-  color: #2ecc71 !important;
-  border-bottom: 2.5px solid #2ecc71 !important;
-}
-.tab.sql-tab.active .tab-check {
-  color: #2ecc71 !important;
-}
-
-/* PHP tab cor - deve vir depois para sobrescrever! */
-.tab.php-tab {
-  color: #787CB5 !important;
-  border-bottom: 2px solid #787CB5 !important;
-}
-.tab.jquery-tab {
-  color: #0868AC !important;
-  border-bottom: 2px solid #0868AC !important;
-}
-.tab.bootstrap-tab {
-  color: #8e44ad !important;
-  border-bottom: 2px solid #8e44ad !important;
-}
-.tab.css-tab {
-  color: #264DE4 !important;
-  border-bottom: 2px solid #264DE4 !important;
-}
-.tab.html-tab {
-  color: #F06529 !important;
-  border-bottom: 2px solid #F06529 !important;
-}
-.tab.codepen-tab {
-  color: #fff !important;
-  border-bottom: 2px solid #fff;
-}
-
-.tab.php-tab.active {
-  background: #0d1117;
-  color: #787CB5 !important;
-  border-bottom: 2.5px solid #787CB5 !important;
-}
-.tab.jquery-tab.active {
-  background: #0d1117;
-  color: #0868AC !important;
-  border-bottom: 2.5px solid #0868AC !important;
-}
-.tab.bootstrap-tab.active {
-  background: #0d1117;
-  color: #8e44ad !important;
-  border-bottom: 2.5px solid #8e44ad !important;
-}
-.tab.css-tab.active {
-  background: #0d1117;
-  color: #264DE4 !important;
-  border-bottom: 2.5px solid #264DE4 !important;
-}
-.tab.html-tab.active {
-  background: #0d1117;
-  color: #F06529 !important;
-  border-bottom: 2.5px solid #F06529 !important;
-}
-.tab.codepen-tab.active {
-  background: #0d1117;
-  color: #Fff !important;
-  border-bottom: 2.5px solid #Fff !important;
-}
-
-.tab.php-tab.active .tab-check {
-  color: #787CB5 !important;
-}
-.tab.jquery-tab.active .tab-check {
-  color: #0868AC !important;
-}
-.tab.bootstrap-tab.active .tab-check {
-  color: #8e44ad !important;
-}
-.tab.css-tab.active .tab-check {
-  color: #264DE4 !important;
-}
-.tab.html-tab.active .tab-check {
-  color: #F06529 !important;
-}
-.tab.codepen-tab.active .tab-check {
-  color: #Fff !important;
-}
-
+/* Definição explícita para a tab madbuilder ativa */
 .tab.madbuilder-tab.active {
   background: #0d1117;
-  color: #F2911D;
-  border-bottom: 2.5px solid #F2911D !important;
+  color: #F2911D !important;
+  border-bottom: 3px solid #F2911D !important;
+}
+
+.tab.vscode-tab {
+  color: #007ACC;
+  border-bottom: 2px solid transparent;
 }
 .tab.vscode-tab.active {
   background: #0d1117;
   color: #007ACC;
-  border-bottom: 2.5px solid #007ACC;
+  border-bottom: 3px solid #007ACC !important;
+}
+
+.tab.sql-tab {
+  color: #2ecc71;
+  border-bottom: 2px solid transparent;
+}
+.tab.sql-tab.active {
+  background: #0d1117;
+  color: #2ecc71 !important;
+  border-bottom: 3px solid #2ecc71 !important;
+}
+
+.tab.php-tab {
+  color: #787CB5;
+  border-bottom: 2px solid transparent;
 }
 .tab.php-tab.active {
   background: #0d1117;
-  color: #787CB5;
-  border-bottom: 2.5px solid #787CB5;
+  color: #787CB5 !important;
+  border-bottom: 3px solid #787CB5 !important;
+}
+
+.tab.jquery-tab {
+  color: #0868AC;
+  border-bottom: 2px solid transparent;
 }
 .tab.jquery-tab.active {
   background: #0d1117;
-  color: #0868AC;
-  border-bottom: 2.5px solid #0868AC;
+  color: #0868AC !important;
+  border-bottom: 3px solid #0868AC !important;
+}
+
+.tab.bootstrap-tab {
+  color: #8e44ad;
+  border-bottom: 2px solid transparent;
 }
 .tab.bootstrap-tab.active {
   background: #0d1117;
-  color: #8e44ad;
-  border-bottom: 2.5px solid #8e44ad;
+  color: #8e44ad !important;
+  border-bottom: 3px solid #8e44ad !important;
+}
+
+.tab.css-tab {
+  color: #264DE4;
+  border-bottom: 2px solid transparent;
 }
 .tab.css-tab.active {
   background: #0d1117;
-  color: #264DE4;
-  border-bottom: 2.5px solid #264DE4;
+  color: #264DE4 !important;
+  border-bottom: 3px solid #264DE4 !important;
+}
+
+.tab.html-tab {
+  color: #F06529;
+  border-bottom: 2px solid transparent;
 }
 .tab.html-tab.active {
   background: #0d1117;
-  color: #F06529;
-  border-bottom: 2.5px solid #F06529;
+  color: #F06529 !important;
+  border-bottom: 3px solid #F06529 !important;
+}
+
+.tab.codepen-tab {  
+  color: #FFFFFF;
+  border-bottom: 2px solid transparent;
 }
 .tab.codepen-tab.active {
   background: #0d1117;
-  color: #Fff;
-  border-bottom: 2.5px solid #Fff;
+  color: #FFFFFF !important;
+  border-bottom: 3px solid #FFFFFF !important;
 }
 
+.tab.sweetalert2-tab {  
+  color: #f27474;
+  border-bottom: 2px solid transparent;
+}
+.tab.sweetalert2-tab.active {
+  background: #0d1117;
+  color: #f27474 !important;
+  border-bottom: 3px solid #f27474 !important;
+}
+
+.tab.fontawesome-tab {  
+  color: #528dd7;
+  border-bottom: 2px solid transparent;
+}
+.tab.fontawesome-tab.active {
+  background: #0d1117;
+  color: #528dd7 !important;
+  border-bottom: 3px solid #528dd7 !important;
+}
+
+/* Cores dos check marks */
 .tab.madbuilder-tab.active .tab-check {
   color: #F2911D !important;
 }
 .tab.vscode-tab.active .tab-check {
-  color: #007ACC;
+  color: #007ACC !important;
+}
+.tab.sql-tab.active .tab-check {
+  color: #2ecc71 !important;
 }
 .tab.php-tab.active .tab-check {
-  color: #787CB5;
+  color: #787CB5 !important;
 }
 .tab.jquery-tab.active .tab-check {
-  color: #0868AC;
+  color: #0868AC !important;
 }
 .tab.bootstrap-tab.active .tab-check {
-  color: #8e44ad;
+  color: #8e44ad !important;
 }
 .tab.css-tab.active .tab-check {
-  color: #264DE4;
+  color: #264DE4 !important;
 }
 .tab.html-tab.active .tab-check {
-  color: #F06529;
+  color: #F06529 !important;
 }
 .tab.codepen-tab.active .tab-check {
-  color: #Fff;
+  color: #FFFFFF !important;
+}
+.tab.sweetalert2-tab.active .tab-check {
+  color: #f27474 !important;
+}
+.tab.fontawesome-tab.active .tab-check {
+  color: #528dd7 !important;
 }
 
 .tab-icon-madbuilder {
@@ -618,38 +605,45 @@ a:hover {
     height: 28px;
     width: 28px;
   }
+  
+  /* Reforçar borda para mobile */
+  .tab.madbuilder-tab.active {
+    border-bottom: 3px solid #F2911D !important;
+  }
 }
 
-/* .tab[data-target="codepen-content"],
-.tab.codepen-tag {
-  color: #000 !important;
-  border-bottom: 2px solid #000 !important;
+/* Correção específica para Chrome em dispositivos Android */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .tab.active {
+    border-bottom-width: 3px !important;
+    border-bottom-style: solid !important;
+  }
+  
+  .tab.madbuilder-tab.active {
+    border-bottom: 3px solid #F2911D !important;
+    background-color: #0d1117 !important;
+  }
+  
+  /* Hack para forçar repintura no Chrome */
+  .tabs {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Garantir que a borda inferior fique visível */
+  .tab {
+    position: relative;
+  }
+  
+  /* Borda alternativa através de pseudo-elemento */
+  .tab.madbuilder-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #F2911D;
+    z-index: 20;
+  }
 }
-.tab[data-target="codepen-content"].active,
-.tab.codepen-tag.active {
-  background: #fff;
-  color: #000 !important;
-  border-bottom: 2.5px solid #000 !important;
-}
-.tab[data-target="codepen-content"] .tab-icon,
-.tab.codepen-tag .tab-icon {
-  color: #000 !important;
-}
-.tab.codepen-tag {
-  color: #000 !important;
-  border-bottom: 2px solid #000 !important;
-}
-.tab.codepen-tag .tab-icon {
-  color: #000 !important;
-}
-.tab.codepen-tag.active {
-  background: #000 !important;
-  color: #fff !important;
-  border-bottom: 2.5px solid #fff !important;
-}
-.tab.codepen-tag.active .tab-icon {
-  color: #fff !important;
-}
-.tab.codepen-tag.active .tab-check {
-  color: #fff !important;
-} */
