@@ -395,7 +395,7 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2px solid #F06529 !important;
 }
-.tab.codepen-tab {
+.tab.codepen-tab {  
   color: #FFFFFF !important;
   border-bottom: 2px solid #FFFFFF;
 }
