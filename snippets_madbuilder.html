@@ -1,4 +1,4 @@
-  <!-- Filtros de Categoria -->
+<!-- Filtros de Categoria -->
   <div class="category-buttons" style="margin-bottom: 24px;">
     <button style="color:#fff !important; background:#F2911D !important;" class="cat-btn categoria-todas active" data-filter="todas">
       <i class="fa-solid fa-list" style="color:#fff"></i> Todas
@@ -464,3 +464,27 @@ $this->filter_criteria->add(new TFilter('company_id', '=', Company::DinaBox), TE
 
 <!-- Importa o JS específico do madbuilder -->
 <!-- <script src="madbuilder.js"></script> -->
+
+<div class="snippets-helper" style="position:relative; padding-right:40px;">
+  <button class="close-helper-btn" title="Fechar dica" style="
+    position:absolute;
+    top:8px;
+    right:8px;
+    width:28px;
+    height:28px;
+    border:none;
+    border-radius:50%;
+    background:#eee;
+    color:#888;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+    transition:background 0.2s;
+  " onclick="this.parentElement.remove()">
+    &times;
+  </button>
+  <!-- ...conteúdo do helper... -->
+</div>
