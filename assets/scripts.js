@@ -462,23 +462,30 @@ $(document).ready(function() {
         .replace(/>/g, '&gt;');
     }
   }
-  
+
   const backToTopButton = $('#back-to-top');
   const scrollThreshold = 300; // Pixels de rolagem para mostrar o botão
+  let buttonVisible = false;
   
   // Função para verificar a posição do scroll
   function checkScrollPosition() {
     if ($(window).scrollTop() > scrollThreshold) {
-      if (!backToTopButton.hasClass('show')) {
-        backToTopButton.removeClass('hide').addClass('show');
+      if (!buttonVisible) {
+        backToTopButton.css('display', 'block')
+                       .removeClass('hide')
+                       .addClass('show');
+        buttonVisible = true;
       }
     } else {
-      if (backToTopButton.hasClass('show')) {
-        backToTopButton.removeClass('show').addClass('hide');
-        // Remove a classe hide após a animação terminar
+      if (buttonVisible) {
+        backToTopButton.removeClass('show')
+                       .addClass('hide');
+        buttonVisible = false;
+        
+        // Esconde completamente após a animação
         setTimeout(() => {
-          if ($(window).scrollTop() <= scrollThreshold) {
-            backToTopButton.removeClass('hide').css('display', 'none');
+          if (!buttonVisible) {
+            backToTopButton.css('display', 'none');
           }
         }, 300);
       }
