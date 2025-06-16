@@ -114,6 +114,18 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
+  $('#sweetalert-content').load('snippets_sweetalert.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#fontawesome-content').load('snippets_fontawesome.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
   // Sistema de abas
   $('.tab').click(function() {
     $('.tab').removeClass('active');
