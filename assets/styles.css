@@ -186,7 +186,58 @@ input[type="text"]:focus {
   background-color: #388bfd; /* Cor padrão, sobrescrita abaixo por classes específicas */
 }
 
-/* Cores específicas para cada aba */
+/* Efeito hover para todas as abas (mostra uma borda fina) */
+.tab:hover::after {
+  height: 2px; /* Um pouco mais fino que a borda da aba ativa */
+  background-color: #30363d; /* Cor padrão para hover */
+}
+
+/* Cores específicas para cada aba no hover */
+.tab.madbuilder-tab:hover::after {
+  background-color: rgba(242, 145, 29, 0.7); /* Versão mais clara do laranja */
+}
+
+.tab.vscode-tab:hover::after {
+  background-color: rgba(0, 122, 204, 0.7);
+}
+
+.tab.sql-tab:hover::after {
+  background-color: rgba(46, 204, 113, 0.7);
+}
+
+.tab.php-tab:hover::after {
+  background-color: rgba(120, 124, 181, 0.7);
+}
+
+.tab.jquery-tab:hover::after {
+  background-color: rgba(8, 104, 172, 0.7);
+}
+
+.tab.bootstrap-tab:hover::after {
+  background-color: rgba(142, 68, 173, 0.7);
+}
+
+.tab.css-tab:hover::after {
+  background-color: rgba(38, 77, 228, 0.7);
+}
+
+.tab.html-tab:hover::after {
+  background-color: rgba(240, 101, 41, 0.7);
+}
+
+.tab.codepen-tab:hover::after {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.tab.sweetalert2-tab:hover::after {
+  background-color: rgba(242, 116, 116, 0.7);
+}
+
+.tab.fontawesome-tab:hover::after {
+  background-color: rgba(82, 141, 215, 0.7);
+}
+
+/* Cores específicas para cada aba quando ativa */
 .tab.madbuilder-tab.active::after {
   background-color: #F2911D;
 }
@@ -224,11 +275,67 @@ input[type="text"]:focus {
 }
 
 .tab.sweetalert2-tab.active::after {
-  background-color: #d4c1f9;
+  background-color: #f27474;
 }
 
 .tab.fontawesome-tab.active::after {
-  background-color: #fcc419;
+  background-color: #528dd7;
+}
+
+/* Hover efeito para os ícones */
+.tab.madbuilder-tab:hover .tab-icon-madbuilder,
+.tab.madbuilder-tab:hover div {
+  color: #F2911D;
+}
+
+.tab.vscode-tab:hover .tab-icon,
+.tab.vscode-tab:hover div {
+  color: #007ACC;
+}
+
+.tab.sql-tab:hover .tab-icon,
+.tab.sql-tab:hover div {
+  color: #2ecc71;
+}
+
+.tab.php-tab:hover .tab-icon,
+.tab.php-tab:hover div {
+  color: #787CB5;
+}
+
+.tab.jquery-tab:hover .tab-icon,
+.tab.jquery-tab:hover div {
+  color: #0868AC;
+}
+
+.tab.bootstrap-tab:hover .tab-icon,
+.tab.bootstrap-tab:hover div {
+  color: #8e44ad;
+}
+
+.tab.css-tab:hover .tab-icon,
+.tab.css-tab:hover div {
+  color: #264DE4;
+}
+
+.tab.html-tab:hover .tab-icon,
+.tab.html-tab:hover div {
+  color: #F06529;
+}
+
+.tab.codepen-tab:hover .tab-icon,
+.tab.codepen-tab:hover div {
+  color: #FFFFFF;
+}
+
+.tab.sweetalert2-tab:hover .tab-icon,
+.tab.sweetalert2-tab:hover div {
+  color: #f27474;
+}
+
+.tab.fontawesome-tab:hover .tab-icon,
+.tab.fontawesome-tab:hover div {
+  color: #528dd7;
 }
 
 .tab .tab-check {
@@ -265,6 +372,7 @@ input[type="text"]:focus {
   object-fit: contain;        /* Para imagens não distorcerem */
   font-size: 2rem;          /* Para ícones FontAwesome */
   line-height: 2rem;
+  transition: color 0.2s;   /* Adicionada transição suave para a cor */
 }
 .collapse-icon {
   margin-left: auto;
@@ -468,11 +576,11 @@ a:hover {
 }
 
 .tab.sweetalert2-tab {  
-  color: #d4c1f9;
+  color: #f27474;
 }
 
 .tab.fontawesome-tab {  
-  color: #fcc419;
+  color: #528dd7;
 }
 
 /* Cores dos check marks */
@@ -504,10 +612,10 @@ a:hover {
   color: #FFFFFF !important;
 }
 .tab.sweetalert2-tab.active .tab-check {
-  color: #d4c1f9 !important;
+  color: #f27474 !important;
 }
 .tab.fontawesome-tab.active .tab-check {
-  color: #fcc419 !important;
+  color: #528dd7 !important;
 }
 
 .tab-icon-madbuilder {
@@ -517,6 +625,7 @@ a:hover {
   margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
   object-fit: contain;        /* Para imagens não distorcerem */
   line-height: 2.2rem;
+  transition: color 0.2s;   /* Adicionada transição suave para a cor */
 }
 @media (max-width: 600px) {
   .snippet-content pre,
