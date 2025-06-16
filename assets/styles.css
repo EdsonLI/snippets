@@ -355,7 +355,7 @@ a:hover {
 
 .tab.madbuilder-tab {
   color: #F2911D;
-  border-bottom: 2px solid #F2911D;
+  border-bottom: 2px solid #F2911D !important;
 }
 .tab.vscode-tab {
   color: #007ACC;
@@ -453,7 +453,7 @@ a:hover {
 .tab.madbuilder-tab.active {
   background: #0d1117;
   color: #F2911D;
-  border-bottom: 2.5px solid #F2911D;
+  border-bottom: 2.5px solid #F2911D !important;
 }
 .tab.vscode-tab.active {
   background: #0d1117;
@@ -492,7 +492,7 @@ a:hover {
 }
 
 .tab.madbuilder-tab.active .tab-check {
-  color: #F2911D;
+  color: #F2911D !important;
 }
 .tab.vscode-tab.active .tab-check {
   color: #007ACC;
