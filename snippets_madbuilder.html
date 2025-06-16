@@ -1,4 +1,16 @@
 <div class="snippets-wrapper" id="madbuilder" data-tags="madbuilder">
+  <style>
+    /* Garante que a border-bottom da aba ativa apareça no mobile */
+    .tab-active, .tab-active:focus, .tab-active:active {
+      border-bottom: 3px solid #FFA500 !important; /* laranja */
+      /* Ajuste o seletor conforme o nome da classe da aba ativa */
+    }
+    @media (max-width: 600px) {
+      .tab-active, .tab-active:focus, .tab-active:active {
+        border-bottom: 3px solid #FFA500 !important;
+      }
+    }
+  </style>
   <!-- Filtros de Categoria -->
   <div class="category-buttons" style="margin-bottom: 24px;">
     <button style="color:#fff !important; background:#6A0DAD !important;" class="cat-btn categoria-todas" data-filter="todas">
