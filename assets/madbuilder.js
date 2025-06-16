@@ -77,7 +77,7 @@ $(document).ready(function() {
     loadSnippetsListings();
   });
 
-  $('#bancosdedados-content').load('snippets_bancos_de_dados.html', function() {
+  $('#sql-content').load('snippets_bancos_de_dados.html', function() {
     hljs.highlightAll();
     setupSnippetInteractions();
     addCopyButtons();
