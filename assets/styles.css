@@ -361,17 +361,17 @@ a:hover {
   color: #007ACC;
   border-bottom: 2px solid #007ACC;
 }
-.tab.sql-tab {
-  color: #2ecc71 !important;
-  border-bottom: 2px solid #2ecc71 !important;
+.tab:not(.madbuilder-tab):not(.vscode-tab) {
+  color: #2ecc71;
+  border-bottom: 2px solid #2ecc71;
 }
-.tab.sql-tab.active {
+.tab:not(.madbuilder-tab):not(.vscode-tab).active {
   background: #0d1117;
-  color: #2ecc71 !important;
-  border-bottom: 2.5px solid #2ecc71 !important;
+  color: #2ecc71;
+  border-bottom: 2.5px solid #2ecc71;
 }
-.tab.sql-tab.active .tab-check {
-  color: #2ecc71 !important;
+.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
+  color: #2ecc71;
 }
 
 /* PHP tab cor - deve vir depois para sobrescrever! */
@@ -396,8 +396,8 @@ a:hover {
   border-bottom: 2px solid #F06529 !important;
 }
 .tab.codepen-tab {
-  color: #FFFFFF !important;
-  border-bottom: 2px solid #FFFFFF;
+  color: #fff !important;
+  border-bottom: 2px solid #fff;
 }
 
 .tab.php-tab.active {
@@ -427,8 +427,8 @@ a:hover {
 }
 .tab.codepen-tab.active {
   background: #0d1117;
-  color: #FFFFFF !important;
-  border-bottom: 2.5px solid #FFFFFF !important;
+  color: #Fff !important;
+  border-bottom: 2.5px solid #Fff !important;
 }
 
 .tab.php-tab.active .tab-check {
@@ -447,7 +447,7 @@ a:hover {
   color: #F06529 !important;
 }
 .tab.codepen-tab.active .tab-check {
-  color: #FFFFFF !important;
+  color: #Fff !important;
 }
 
 .tab.madbuilder-tab.active {
@@ -487,8 +487,8 @@ a:hover {
 }
 .tab.codepen-tab.active {
   background: #0d1117;
-  color: #FFFFFF;
-  border-bottom: 2.5px solid #FFFFFF;
+  color: #Fff;
+  border-bottom: 2.5px solid #Fff;
 }
 
 .tab.madbuilder-tab.active .tab-check {
@@ -513,7 +513,7 @@ a:hover {
   color: #F06529;
 }
 .tab.codepen-tab.active .tab-check {
-  color: #FFFFFF;
+  color: #Fff;
 }
 
 .tab-icon-madbuilder {
@@ -523,6 +523,18 @@ a:hover {
   margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
   object-fit: contain;        /* Para imagens não distorcerem */
   line-height: 2.2rem;
+}
+.tab:not(.madbuilder-tab):not(.vscode-tab) {
+  color: #2ecc71;
+  border-bottom: 2px solid #2ecc71;
+}
+.tab:not(.madbuilder-tab):not(.vscode-tab).active {
+  background: #0d1117;
+  color: #2ecc71;
+  border-bottom: 2.5px solid #2ecc71;
+}
+.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
+  color: #2ecc71;
 }
 @media (max-width: 600px) {
   .snippet-content pre,
