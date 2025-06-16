@@ -611,37 +611,3 @@ a:hover {
     width: 28px;
   }
 }
-
-.tab[data-target="codepen-content"],
-.tab.codepen-tag {
-  color: #000 !important;
-  border-bottom: 2px solid #000 !important;
-}
-.tab[data-target="codepen-content"].active,
-.tab.codepen-tag.active {
-  background: #fff;
-  color: #000 !important;
-  border-bottom: 2.5px solid #000 !important;
-}
-.tab[data-target="codepen-content"] .tab-icon,
-.tab.codepen-tag .tab-icon {
-  color: #000 !important;
-}
-.tab.codepen-tag {
-  color: #000 !important;
-  border-bottom: 2px solid #000 !important;
-}
-.tab.codepen-tag .tab-icon {
-  color: #000 !important;
-}
-.tab.codepen-tag.active {
-  background: #000 !important;
-  color: #fff !important;
-  border-bottom: 2.5px solid #fff !important;
-}
-.tab.codepen-tag.active .tab-icon {
-  color: #fff !important;
-}
-.tab.codepen-tag.active .tab-check {
-  color: #fff !important;
-}
