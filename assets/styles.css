@@ -203,8 +203,8 @@ input[type="text"]:focus {
   background-color: #787CB5;
 }
 .tab.php-tab:hover {
-  background: #21262d;
-  color: #787CB5;
+  background: #21262d !important;
+  color: #787CB5 !important;
 }
 
 .tab.jquery-tab.active::after {
