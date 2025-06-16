@@ -524,7 +524,7 @@ a:hover {
   object-fit: contain;        /* Para imagens não distorcerem */
   line-height: 2.2rem;
 }
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
     font-size: 0.92em;
@@ -551,7 +551,7 @@ a:hover {
     max-width: 98vw;
     min-width: 0;
   }
-}
+} */
 
 /* Novas regras para .search-wrapper */
 .search-wrapper {
@@ -606,6 +606,32 @@ a:hover {
 
 /* Responsivo */
 @media (max-width: 600px) {
+  .snippet-content pre,
+  .snippet-content code {
+    font-size: 0.92em;
+    max-width: 98vw;
+  }
+  .tabs {
+    margin-bottom: 12px;
+  }
+  .tab {
+    padding: 7px 10px;
+    min-width: 70px;
+    font-size: 0.98em;
+  }
+  .tab-icon, .tab-icon-madbuilder {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+  }
+  input[type="text"] {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 18px;
+    max-width: 98vw;
+    min-width: 0;
+  }
   .search-wrapper {
     max-width: 98vw;
   }
@@ -618,8 +644,10 @@ a:hover {
     height: 28px;
     width: 28px;
   }
+  .tab.madbuilder-tab.active {
+    border-bottom: 3px solid #F2911D !important;
+  }
 }
-
 /* .tab[data-target="codepen-content"],
 .tab.codepen-tag {
   color: #000 !important;
