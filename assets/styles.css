@@ -224,11 +224,11 @@ input[type="text"]:focus {
 }
 
 .tab.sweetalert2-tab.active::after {
-  background-color: #5468ff;
+  background-color: #d4c1f9;
 }
 
 .tab.fontawesome-tab.active::after {
-  background-color: #528dd7;
+  background-color: #fcc419;
 }
 
 .tab .tab-check {
@@ -468,11 +468,11 @@ a:hover {
 }
 
 .tab.sweetalert2-tab {  
-  color: #5468ff;
+  color: #d4c1f9;
 }
 
 .tab.fontawesome-tab {  
-  color: #528dd7;
+  color: #fcc419;
 }
 
 /* Cores dos check marks */
@@ -504,10 +504,10 @@ a:hover {
   color: #FFFFFF !important;
 }
 .tab.sweetalert2-tab.active .tab-check {
-  color: #5468ff !important;
+  color: #d4c1f9 !important;
 }
 .tab.fontawesome-tab.active .tab-check {
-  color: #528dd7 !important;
+  color: #fcc419 !important;
 }
 
 .tab-icon-madbuilder {
