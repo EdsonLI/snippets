@@ -118,6 +118,7 @@ input[type="text"]:focus {
   scrollbar-width: thin;    /* Firefox: barra fina */
   scrollbar-color: #30363d #161b22;
   position: relative; /* Importante para contexto posicional correto */
+  padding-bottom: 4px; /* Espaço abaixo das abas para não cobrir a borda */
 }
 /* Barra de rolagem customizada para Chrome */
 .tabs::-webkit-scrollbar {
@@ -141,8 +142,7 @@ input[type="text"]:focus {
   align-items: stretch;      /* Ocupa toda a largura da aba */
   text-align: center;
   min-height: 70px;          /* Ajuste conforme necessário */
-  padding-bottom: 6px;       /* Espaço extra na base */
-  padding: 10px 22px;
+  padding: 10px 22px 10px 22px; /* Aumentado padding-bottom para dar espaço à borda */
   cursor: pointer;
   background: #161b22;
   color: #8b949e;
@@ -153,6 +153,8 @@ input[type="text"]:focus {
   border-bottom: none;
   font-weight: 500;
   position: relative; /* Necessário para o ícone check */
+  margin-bottom: 0; /* Removido margem inferior para evitar espaços */
+  z-index: 1; /* Nível de empilhamento padrão */
 }
 .tab:hover {
   background: #21262d;
@@ -161,10 +163,74 @@ input[type="text"]:focus {
 .tab.active {
   background: #0d1117;
   color: #f0f6fc;
-  border-bottom: 2px solid #388bfd;
+  border-bottom: none; /* Removido para usar o after */
   position: relative;
-  z-index: 5; /* Garante que a aba ativa fique acima de outras */
+  z-index: 10; /* Aumentado para ficar acima do scrollbar */
 }
+
+/* Usar pseudo-elemento para a borda colorida */
+.tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background-color: transparent;
+  transition: background-color 0.2s, height 0.2s;
+  z-index: 15; /* Acima do scrollbar (que normalmente é z-index: 10) */
+}
+
+.tab.active::after {
+  height: 3px;
+  background-color: #388bfd; /* Cor padrão, sobrescrita abaixo por classes específicas */
+}
+
+/* Cores específicas para cada aba */
+.tab.madbuilder-tab.active::after {
+  background-color: #F2911D;
+}
+
+.tab.vscode-tab.active::after {
+  background-color: #007ACC;
+}
+
+.tab.sql-tab.active::after {
+  background-color: #2ecc71;
+}
+
+.tab.php-tab.active::after {
+  background-color: #787CB5;
+}
+
+.tab.jquery-tab.active::after {
+  background-color: #0868AC;
+}
+
+.tab.bootstrap-tab.active::after {
+  background-color: #8e44ad;
+}
+
+.tab.css-tab.active::after {
+  background-color: #264DE4;
+}
+
+.tab.html-tab.active::after {
+  background-color: #F06529;
+}
+
+.tab.codepen-tab.active::after {
+  background-color: #FFFFFF;
+}
+
+.tab.sweetalert2-tab.active::after {
+  background-color: #f27474;
+}
+
+.tab.fontawesome-tab.active::after {
+  background-color: #528dd7;
+}
+
 .tab .tab-check {
   display: none;
   position: absolute;
@@ -180,7 +246,7 @@ input[type="text"]:focus {
   font-size: 18px;
   color: #F2911D; /* cor padrão, sobrescrita abaixo */
   box-shadow: 0 1px 3px #0002;
-  z-index: 2;
+  z-index: 20; /* Acima da borda colorida */
 }
 .tab.active .tab-check {
   display: flex;
@@ -359,113 +425,54 @@ a:hover {
 /* Cores personalizadas para as tabs */
 .tab.madbuilder-tab {
   color: #F2911D;
-  border-bottom: 3px solid transparent !important; /* Inicialmente transparente */
 }
-/* Definição explícita para a tab madbuilder ativa */
 .tab.madbuilder-tab.active {
   background: #0d1117;
   color: #F2911D !important;
-  border-bottom: 3px solid #F2911D !important;
 }
 
 .tab.vscode-tab {
   color: #007ACC;
-  border-bottom: 2px solid transparent;
 }
 .tab.vscode-tab.active {
   background: #0d1117;
-  color: #007ACC;
-  border-bottom: 3px solid #007ACC !important;
+  color: #007ACC !important;
 }
 
 .tab.sql-tab {
   color: #2ecc71;
-  border-bottom: 2px solid transparent;
-}
-.tab.sql-tab.active {
-  background: #0d1117;
-  color: #2ecc71 !important;
-  border-bottom: 3px solid #2ecc71 !important;
 }
 
 .tab.php-tab {
   color: #787CB5;
-  border-bottom: 2px solid transparent;
-}
-.tab.php-tab.active {
-  background: #0d1117;
-  color: #787CB5 !important;
-  border-bottom: 3px solid #787CB5 !important;
 }
 
 .tab.jquery-tab {
   color: #0868AC;
-  border-bottom: 2px solid transparent;
-}
-.tab.jquery-tab.active {
-  background: #0d1117;
-  color: #0868AC !important;
-  border-bottom: 3px solid #0868AC !important;
 }
 
 .tab.bootstrap-tab {
   color: #8e44ad;
-  border-bottom: 2px solid transparent;
-}
-.tab.bootstrap-tab.active {
-  background: #0d1117;
-  color: #8e44ad !important;
-  border-bottom: 3px solid #8e44ad !important;
 }
 
 .tab.css-tab {
   color: #264DE4;
-  border-bottom: 2px solid transparent;
-}
-.tab.css-tab.active {
-  background: #0d1117;
-  color: #264DE4 !important;
-  border-bottom: 3px solid #264DE4 !important;
 }
 
 .tab.html-tab {
   color: #F06529;
-  border-bottom: 2px solid transparent;
-}
-.tab.html-tab.active {
-  background: #0d1117;
-  color: #F06529 !important;
-  border-bottom: 3px solid #F06529 !important;
 }
 
 .tab.codepen-tab {  
   color: #FFFFFF;
-  border-bottom: 2px solid transparent;
-}
-.tab.codepen-tab.active {
-  background: #0d1117;
-  color: #FFFFFF !important;
-  border-bottom: 3px solid #FFFFFF !important;
 }
 
 .tab.sweetalert2-tab {  
   color: #f27474;
-  border-bottom: 2px solid transparent;
-}
-.tab.sweetalert2-tab.active {
-  background: #0d1117;
-  color: #f27474 !important;
-  border-bottom: 3px solid #f27474 !important;
 }
 
 .tab.fontawesome-tab {  
   color: #528dd7;
-  border-bottom: 2px solid transparent;
-}
-.tab.fontawesome-tab.active {
-  background: #0d1117;
-  color: #528dd7 !important;
-  border-bottom: 3px solid #528dd7 !important;
 }
 
 /* Cores dos check marks */
@@ -606,44 +613,33 @@ a:hover {
     width: 28px;
   }
   
-  /* Reforçar borda para mobile */
-  .tab.madbuilder-tab.active {
-    border-bottom: 3px solid #F2911D !important;
+  /* Aumentar espaço para evitar que o scrollbar sobreponha a borda */
+  .tabs {
+    padding-bottom: 8px;
+  }
+  
+  /* Aumentar z-index no mobile */
+  .tab.active::after {
+    z-index: 30;
   }
 }
 
 /* Correção específica para Chrome em dispositivos Android */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .tab.active {
-    border-bottom-width: 3px !important;
-    border-bottom-style: solid !important;
-  }
-  
-  .tab.madbuilder-tab.active {
-    border-bottom: 3px solid #F2911D !important;
-    background-color: #0d1117 !important;
-  }
-  
-  /* Hack para forçar repintura no Chrome */
+  /* Ajustes específicos para o Chrome */
   .tabs {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    transform: translateZ(0); /* Hack para forçar repintura */
+    padding-bottom: 8px; /* Espaçamento extra para o scrollbar */
   }
   
-  /* Garantir que a borda inferior fique visível */
-  .tab {
-    position: relative;
+  /* Aumentar z-index para garantir que esteja acima do scrollbar */
+  .tab::after {
+    z-index: 30;
   }
   
-  /* Borda alternativa através de pseudo-elemento */
-  .tab.madbuilder-tab.active::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-color: #F2911D;
-    z-index: 20;
+  /* Força a tela a repintar o conteúdo, ajudando a mostrar a borda */
+  .tab.active {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 }
