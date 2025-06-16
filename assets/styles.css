@@ -361,14 +361,26 @@ a:hover {
   color: #007ACC;
   border-bottom: 2px solid #007ACC;
 }
-.tab:not(.madbuilder-tab):not(.vscode-tab) {
+.tab.sql-tab {
+  color: #2ecc71 !important;
+  border-bottom: 2px solid #2ecc71 !important;
+}
+/* .tab:not(.madbuilder-tab):not(.vscode-tab) {
   color: #2ecc71;
   border-bottom: 2px solid #2ecc71;
-}
-.tab:not(.madbuilder-tab):not(.vscode-tab).active {
+} */
+/* .tab:not(.madbuilder-tab):not(.vscode-tab).active {
   background: #0d1117;
   color: #2ecc71;
   border-bottom: 2.5px solid #2ecc71;
+} */
+.tab.sql-tab.active {
+  background: #0d1117;
+  color: #2ecc71 !important;
+  border-bottom: 2.5px solid #2ecc71 !important;
+}
+.tab.sql-tab.active .tab-check {
+  color: #2ecc71 !important;
 }
 .tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
   color: #2ecc71;
@@ -532,9 +544,6 @@ a:hover {
   background: #0d1117;
   color: #2ecc71;
   border-bottom: 2.5px solid #2ecc71;
-}
-.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
-  color: #2ecc71;
 }
 @media (max-width: 600px) {
   .snippet-content pre,
