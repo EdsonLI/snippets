@@ -123,19 +123,6 @@ $(document).ready(function() {
     addCopyButtons();
   });
 
-  $('.tab').on('click', function() {
-    $('.tab').removeClass('active');
-    $(this).addClass('active');
-    $('.tab-content').removeClass('active');
-    $('#' + $(this).data('target')).addClass('active');
-    addCopyButtons();
-
-    // Só executa o filtro se houver texto no campo de busca
-    if ($('#search').val().trim().length > 0) {
-      $('#search').trigger('input');
-    }
-  });
-
   // Função para configurar as interações dos snippets
   function setupSnippetInteractions() {
     // Expandir/colapsar snippets ao clicar no título
@@ -285,12 +272,6 @@ $(document).ready(function() {
     $(this).addClass('active');
     $('.tab-content').removeClass('active');
     $('#' + $(this).data('target')).addClass('active');
-    addCopyButtons();
-
-    // Só executa o filtro se houver texto no campo de busca
-    if ($('#search').val().trim().length > 0) {
-      $('#search').trigger('input');
-    }
   });
 
   // Filtro por categoria ao clicar nos botões coloridos
