@@ -22,6 +22,15 @@ $(document).ready(function() {
     });
   }
 
+  // Função para resetar visualização dos snippets/categorias
+  function resetSnippetsView() {
+    $('.section, .snippet-block').show();
+    $('.snippet-content').hide();
+    $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+    $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+    $('.category-controls').show();
+  }
+
   // Carrega os conteúdos iniciais
   $('#madbuilder-content').load('snippets_madbuilder.html', function() {
     // Corrigir targets dos botões
@@ -132,6 +141,7 @@ $(document).ready(function() {
     $(this).addClass('active');
     $('.tab-content').removeClass('active');
     $('#' + $(this).data('target')).addClass('active');
+    resetSnippetsView(); // Resetar filtros ao trocar de aba
     addCopyButtons();
   });
 
@@ -268,22 +278,8 @@ $(document).ready(function() {
   // Botão de atualizar/limpar filtros
   $('#refresh-list').click(function() {
     $('#search').val('');
-    // Restaurar a visibilidade padrão
-    $('.section, .snippet-block').show();
-    $('.snippet-content').hide();
-    $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
-    // Restaurar todos os ícones para baixo (expandido)
-    $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-    // Mostrar todos os controles de categoria
-    $('.category-controls').show();
+    resetSnippetsView();
     addCopyButtons();
-  });
-
-  $('.tab').on('click', function() {
-    $('.tab').removeClass('active');
-    $(this).addClass('active');
-    $('.tab-content').removeClass('active');
-    $('#' + $(this).data('target')).addClass('active');
   });
 
   // Filtro por categoria ao clicar nos botões coloridos
@@ -291,12 +287,7 @@ $(document).ready(function() {
     var filter = $(this).data('filter');
     if (filter === 'todas') {
       // Restaurar a visibilidade padrão de todas as categorias e snippets
-      $('.section[id]').not('#madbuilder').show();
-      $('.snippet-block').show();
-      $('.snippet-content').hide();
-      $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
-      $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-      $('.category-controls').show();
+      resetSnippetsView();
       return;
     }
     // Esconde todas as seções de categoria
@@ -314,10 +305,6 @@ $(document).ready(function() {
     // Abre a categoria e mostra controles
     $('#' + filter).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
     $('#' + filter).find('.category-controls').show();
-
-    // --- NOVO: Expandir todos os snippets da categoria filtrada ---
-    // $('#' + filter + '-snippets .snippet-content').slideDown();
-    // $('#' + filter + '-snippets .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
   });
 
   $(document).on('click', '.copy-btn-title', function(e) {
