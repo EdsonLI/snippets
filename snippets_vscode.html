@@ -1,20 +1,25 @@
 <!-- Helper de uso dos snippets no VS Code -->
-<div style="background: linear-gradient(90deg,#6A0DAD 0,#20B2AA 100%); color: #fff; border-radius: 8px; padding: 20px 24px; margin-bottom: 30px; font-size: 0.8em; box-shadow: 0 2px 8px #0001;">
+<div id="vscode-helper" style="background: linear-gradient(90deg,#6A0DAD 0,#20B2AA 100%); color: #fff; border-radius: 8px; padding: 20px 24px; margin-bottom: 30px; font-size: 0.8em; box-shadow: 0 2px 8px #0001; position: relative;">
+  <button onclick="document.getElementById('vscode-helper').style.display='none';" 
+    title="Fechar" 
+    style="position: absolute; top: 10px; right: 14px; background: transparent; border: none; color: #fff; font-size: 22px; cursor: pointer; line-height: 1;">
+    &times;
+  </button>
   <h2 style="margin-top:0; font-weight: 700; letter-spacing: 1px;">
     Como usar estes snippets no VS Code:
   </h2>  
-      - Acesse a <strong>pasta de snippets</strong> do VS Code: 
-      <span style="background:#fff2; padding: 2px; border-radius: 4px; font-family: monospace;">
-        <b>Windows+R</b></span> e cole: 
-      <span style="background:#fff2; padding: 2px; border-radius: 4px; font-family: monospace;">
-        <b>%APPDATA%\Code\User\snippets</b>
-      </span>
-      <span>
-      <br/>- Cole ou mova os arquivos <b>.code-snippets</b> para a pasta...<br/>
-      </span>
-      - Para <strong>utilizar</strong> no VS Code é simples:<br>
-      ao começar a digitar, o autocompletar do VS Code já vai trazer sugestões de acordo com os snippets que você já tem,<br/>
-      ao visualizar o 'prefixo' do qual quer utilizar, selecione e confirme com <strong>Enter</strong> para gerar o código...
+    - Acesse a <strong>pasta de snippets</strong> do VS Code: 
+    <span style="background:#fff2; padding: 2px; border-radius: 4px; font-family: monospace;">
+      <b>Windows+R</b></span> e cole: 
+    <span style="background:#fff2; padding: 2px; border-radius: 4px; font-family: monospace;">
+      <b>%APPDATA%\Code\User\snippets</b>
+    </span>
+    <span>
+    <br/>- Cole ou mova os arquivos <b>.code-snippets</b> para a pasta...<br/>
+    </span>
+    - Para <strong>utilizar</strong> no VS Code é simples:<br>
+    ao começar a digitar, o autocompletar do VS Code já vai trazer sugestões de acordo com os snippets que você já tem,<br/>
+    ao visualizar o 'prefixo' do qual quer utilizar, selecione e confirme com <strong>Enter</strong> para gerar o código.
 </div>
 <!-- Categoria: Formulários -->
 <div class="section" id="formularios" data-tags="categoria formularios php adianti">
