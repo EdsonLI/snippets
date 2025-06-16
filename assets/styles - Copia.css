@@ -14,6 +14,8 @@ h1 {
 }
 input[type="text"] {
   width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
   padding: 12px;
   margin-bottom: 28px;
   border-radius: 6px;
@@ -23,13 +25,16 @@ input[type="text"] {
   font-size: 1em;
   transition: border 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 input[type="text"]:focus {
   outline: none;
   border: 1.5px solid #388bfd;
   box-shadow: 0 0 0 2px #388bfd33;
 }
-.suggestions {
+/* .suggestions {
   margin-bottom: 18px;
   font-size: 0.98em;
   display: flex;
@@ -49,7 +54,7 @@ input[type="text"]:focus {
   background: #30363d;
   color: #f0f6fc;
   border-color: #388bfd;
-}
+} */
 .section {
   margin-bottom: 10px;
   background: #161b22;
@@ -58,6 +63,7 @@ input[type="text"]:focus {
   border: 1px solid #30363d;
   box-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
+/* Ajuste global para espaçamento das categorias em todas as seções de snippets */
 .section h3 {
   margin-top: 5px;
   margin-bottom: 10px;
@@ -106,15 +112,35 @@ input[type="text"]:focus {
   display: flex;
   margin-bottom: 20px;
   border-bottom: 1px solid #21262d;
+  overflow-x: auto;         /* Permite rolagem horizontal */
+  flex-wrap: nowrap;        /* Não quebra linha */
+  -webkit-overflow-scrolling: touch; /* Suaviza rolagem no iOS */
+  scrollbar-width: thin;    /* Firefox: barra fina */
+  scrollbar-color: #30363d #161b22;
 }
+/* Barra de rolagem customizada para Chrome */
+.tabs::-webkit-scrollbar {
+  height: 6px;
+}
+.tabs::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+.tabs::-webkit-scrollbar-track {
+  background: #161b22;
+}
+
+/* As abas não encolhem demais, mas podem ser menores no mobile */
 .tab {
+  flex: 0 0 auto; /* Não cresce, não encolhe, largura automática */
+  min-width: 90px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: stretch;
+  justify-content: flex-end; /* Alinha conteúdo na base da aba */
+  align-items: stretch;      /* Ocupa toda a largura da aba */
   text-align: center;
-  min-height: 70px;
-  padding-bottom: 6px;
+  min-height: 70px;          /* Ajuste conforme necessário */
+  padding-bottom: 6px;       /* Espaço extra na base */
   padding: 10px 22px;
   cursor: pointer;
   background: #161b22;
@@ -125,7 +151,7 @@ input[type="text"]:focus {
   border: 1px solid #21262d;
   border-bottom: none;
   font-weight: 500;
-  position: relative;
+  position: relative; /* Necessário para o ícone check */
 }
 .tab:hover {
   background: #21262d;
@@ -140,8 +166,8 @@ input[type="text"]:focus {
   display: none;
   position: absolute;
   top: 3px;
-  left: 3px;
-  right: auto;
+  left: 3px;    /* Alterado de right: 3px para left: 3px */
+  right: auto;  /* Garante que não fique à direita */
   background: #161b22;
   border-radius: 50%;
   width: 20px;
@@ -149,7 +175,7 @@ input[type="text"]:focus {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: #F2911D;
+  color: #F2911D; /* cor padrão, sobrescrita abaixo */
   box-shadow: 0 1px 3px #0002;
   z-index: 2;
 }
@@ -166,9 +192,9 @@ input[type="text"]:focus {
   width: 2rem;
   height: 2rem;
   display: block;
-  margin: 0 auto 0.5rem auto;
-  object-fit: contain;
-  font-size: 2rem;
+  margin: 0 auto 0.5rem auto; /* Espaço uniforme abaixo do ícone */
+  object-fit: contain;        /* Para imagens não distorcerem */
+  font-size: 2rem;          /* Para ícones FontAwesome */
   line-height: 2rem;
 }
 .collapse-icon {
@@ -202,6 +228,7 @@ input[type="text"]:focus {
   color: #f0f6fc;
   border-color: #388bfd;
 }
+/* Remove marrom e outros tons indesejados */
 a, a:visited {
   color: #58a6ff;
   text-decoration: none;
@@ -211,6 +238,7 @@ a:hover {
   color: #1f6feb;
   text-decoration: underline;
 }
+/* Botão copiar estilo GitHub */
 .copy-btn {
   position: absolute;
   top: 10px;
@@ -269,10 +297,26 @@ a:hover {
   transition: filter 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
 }
+
+/* .cat-btn.categoria-bancos   { background: #1abc9c; }
+.cat-btn.categoria-codigos  { background: #e67e22; }
+.cat-btn.categoria-campos   { background: #9b59b6; }
+.cat-btn.categoria-sessao   { background: #2980b9; }
+.cat-btn.categoria-janelas  { background: #f39c12; }
+.cat-btn.categoria-outros   { background: #95a5a6; } */
+
 .cat-btn:hover {
   filter: brightness(1.1) contrast(1.1);
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
 }
+
+/* Cores dos títulos das categorias de snippets do mad.builder */
+/* .categoria-bancos { color: #1abc9c !important; }
+.categoria-codigos { color: #e67e22 !important; }
+.categoria-campos { color: #9b59b6 !important; }
+.categoria-sessao { color: #2980b9 !important; }
+.categoria-janelas { color: #f39c12 !important; }
+.categoria-outros { color: #95a5a6 !important; } */
 
 .sql-keyword { color: #2ecc71; font-weight: bold; font-family: 'Roboto Mono', monospace; }
 .sql-func    { color: #3498db; font-family: 'Roboto Mono', monospace; }
@@ -293,16 +337,18 @@ a:hover {
   color: #2ecc71;
 }
 
+/* Responsividade máxima para blocos de código */
 .snippet-content {
   width: 100%;
   overflow-x: auto;
 }
+
 .snippet-content pre,
 .snippet-content code {
-  white-space: pre;
-  overflow-x: auto;
-  min-width: 0;
-  max-width: 100vw;
+  white-space: pre;         /* Não quebra linha */
+  overflow-x: auto;         /* Rolagem horizontal */
+  min-width: 0;             /* Permite encolher */
+  max-width: 100vw;         /* Nunca ultrapassa a tela */
   box-sizing: border-box;
   display: block;
 }
@@ -315,20 +361,20 @@ a:hover {
   color: #007ACC;
   border-bottom: 2px solid #007ACC;
 }
-.tab:not(.madbuilder-tab):not(.vscode-tab) {
-  color: #2ecc71;
-  border-bottom: 2px solid #2ecc71;
+.tab.sql-tab {
+  color: #2ecc71 !important;
+  border-bottom: 2px solid #2ecc71 !important;
 }
-.tab:not(.madbuilder-tab):not(.vscode-tab).active {
+.tab.sql-tab.active {
   background: #0d1117;
-  color: #2ecc71;
-  border-bottom: 2.5px solid #2ecc71;
+  color: #2ecc71 !important;
+  border-bottom: 2.5px solid #2ecc71 !important;
 }
-.tab:not(.madbuilder-tab):not(.vscode-tab).active .tab-check {
-  color: #2ecc71;
+.tab.sql-tab.active .tab-check {
+  color: #2ecc71 !important;
 }
 
-/* PHP tab */
+/* PHP tab cor - deve vir depois para sobrescrever! */
 .tab.php-tab {
   color: #787CB5 !important;
   border-bottom: 2px solid #787CB5 !important;
@@ -349,6 +395,11 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2px solid #F06529 !important;
 }
+.tab.codepen-tab {  
+  color: #FFFFFF !important;
+  border-bottom: 2px solid #FFFFFF;
+}
+
 .tab.php-tab.active {
   background: #0d1117;
   color: #787CB5 !important;
@@ -374,6 +425,31 @@ a:hover {
   color: #F06529 !important;
   border-bottom: 2.5px solid #F06529 !important;
 }
+.tab.codepen-tab.active {
+  background: #0d1117;
+  color: #FFFFFF !important;
+  border-bottom: 2.5px solid #FFFFFF !important;
+}
+
+.tab.php-tab.active .tab-check {
+  color: #787CB5 !important;
+}
+.tab.jquery-tab.active .tab-check {
+  color: #0868AC !important;
+}
+.tab.bootstrap-tab.active .tab-check {
+  color: #8e44ad !important;
+}
+.tab.css-tab.active .tab-check {
+  color: #264DE4 !important;
+}
+.tab.html-tab.active .tab-check {
+  color: #F06529 !important;
+}
+.tab.codepen-tab.active .tab-check {
+  color: #FFFFFF !important;
+}
+
 .tab.madbuilder-tab.active {
   background: #0d1117;
   color: #F2911D;
@@ -384,8 +460,42 @@ a:hover {
   color: #007ACC;
   border-bottom: 2.5px solid #007ACC;
 }
-.tab.bootstrap-tab.active .tab-check {
-  color: #8e44ad !important;
+.tab.php-tab.active {
+  background: #0d1117;
+  color: #787CB5;
+  border-bottom: 2.5px solid #787CB5;
+}
+.tab.jquery-tab.active {
+  background: #0d1117;
+  color: #0868AC;
+  border-bottom: 2.5px solid #0868AC;
+}
+.tab.bootstrap-tab.active {
+  background: #0d1117;
+  color: #8e44ad;
+  border-bottom: 2.5px solid #8e44ad;
+}
+.tab.css-tab.active {
+  background: #0d1117;
+  color: #264DE4;
+  border-bottom: 2.5px solid #264DE4;
+}
+.tab.html-tab.active {
+  background: #0d1117;
+  color: #F06529;
+  border-bottom: 2.5px solid #F06529;
+}
+.tab.codepen-tab.active {
+  background: #0d1117;
+  color: #FFFFFF;
+  border-bottom: 2.5px solid #FFFFFF;
+}
+
+.tab.madbuilder-tab.active .tab-check {
+  color: #F2911D;
+}
+.tab.vscode-tab.active .tab-check {
+  color: #007ACC;
 }
 .tab.php-tab.active .tab-check {
   color: #787CB5;
@@ -393,32 +503,153 @@ a:hover {
 .tab.jquery-tab.active .tab-check {
   color: #0868AC;
 }
+.tab.bootstrap-tab.active .tab-check {
+  color: #8e44ad;
+}
 .tab.css-tab.active .tab-check {
   color: #264DE4;
 }
 .tab.html-tab.active .tab-check {
   color: #F06529;
 }
-.tab.madbuilder-tab.active .tab-check {
-  color: #F2911D;
-}
-.tab.vscode-tab.active .tab-check {
-  color: #007ACC;
+.tab.codepen-tab.active .tab-check {
+  color: #FFFFFF;
 }
 
 .tab-icon-madbuilder {
   width: 2.6rem;
   height: 2.6rem;
   display: block;
-  margin: 0 auto 0.2rem auto;
-  object-fit: contain;
+  margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
+  object-fit: contain;        /* Para imagens não distorcerem */
   line-height: 2.2rem;
 }
-
 @media (max-width: 600px) {
   .snippet-content pre,
   .snippet-content code {
     font-size: 0.92em;
     max-width: 98vw;
   }
+  .tabs {
+    margin-bottom: 12px;
+  }
+  .tab {
+    padding: 7px 10px;
+    min-width: 70px;
+    font-size: 0.98em;
+  }
+  .tab-icon, .tab-icon-madbuilder {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+  }
+  input[type="text"] {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 18px;
+    max-width: 98vw;
+    min-width: 0;
+  }
 }
+
+/* Novas regras para .search-wrapper */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 18px auto;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper input[type="text"] {
+  width: 100%;
+  padding-right: 38px; /* espaço para o botão */
+  margin-bottom: 0;
+}
+
+#refresh-list {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 1.3em;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#refresh-list:hover {
+  color: #f87171;
+  background: #23272e;
+  opacity: 1;
+}
+
+#refresh-list .fa-rotate-right {
+  transition: transform 0.3s;
+}
+#refresh-list:active .fa-rotate-right {
+  transform: rotate(360deg);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .search-wrapper {
+    max-width: 98vw;
+  }
+  .search-wrapper input[type="text"] {
+    padding-right: 36px;
+  }
+  #refresh-list {
+    right: 4px;
+    font-size: 1.1em;
+    height: 28px;
+    width: 28px;
+  }
+}
+
+/* .tab[data-target="codepen-content"],
+.tab.codepen-tag {
+  color: #000 !important;
+  border-bottom: 2px solid #000 !important;
+}
+.tab[data-target="codepen-content"].active,
+.tab.codepen-tag.active {
+  background: #fff;
+  color: #000 !important;
+  border-bottom: 2.5px solid #000 !important;
+}
+.tab[data-target="codepen-content"] .tab-icon,
+.tab.codepen-tag .tab-icon {
+  color: #000 !important;
+}
+.tab.codepen-tag {
+  color: #000 !important;
+  border-bottom: 2px solid #000 !important;
+}
+.tab.codepen-tag .tab-icon {
+  color: #000 !important;
+}
+.tab.codepen-tag.active {
+  background: #000 !important;
+  color: #fff !important;
+  border-bottom: 2.5px solid #fff !important;
+}
+.tab.codepen-tag.active .tab-icon {
+  color: #fff !important;
+}
+.tab.codepen-tag.active .tab-check {
+  color: #fff !important;
+} */

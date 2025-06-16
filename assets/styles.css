@@ -117,6 +117,7 @@ input[type="text"]:focus {
   -webkit-overflow-scrolling: touch; /* Suaviza rolagem no iOS */
   scrollbar-width: thin;    /* Firefox: barra fina */
   scrollbar-color: #30363d #161b22;
+  position: relative; /* Importante para contexto posicional correto */
 }
 /* Barra de rolagem customizada para Chrome */
 .tabs::-webkit-scrollbar {
@@ -161,6 +162,8 @@ input[type="text"]:focus {
   background: #0d1117;
   color: #f0f6fc;
   border-bottom: 2px solid #388bfd;
+  position: relative;
+  z-index: 5; /* Garante que a aba ativa fique acima de outras */
 }
 .tab .tab-check {
   display: none;
@@ -653,3 +656,39 @@ a:hover {
 .tab.codepen-tag.active .tab-check {
   color: #fff !important;
 } */
+
+/* Ajustes para resolver o problema da borda da tab ativa no Chrome mobile */
+/* Garante que as abas ativas sempre mostrem a borda, especialmente em mobile */
+.tab.active {
+  border-bottom-width: 3px !important;
+  border-bottom-style: solid !important;
+  z-index: 10 !important; 
+  position: relative !important;
+}
+
+/* Específico para a primeira tab (MadBuilder) que é ativa por padrão */
+.tab.madbuilder-tab.active {
+  border-bottom: 3px solid #F2911D !important;
+}
+
+/* Regras específicas para dispositivos móveis */
+@media (max-width: 768px) {
+  /* Fortalece a visualização da borda em dispositivos móveis */
+  .tab.active {
+    border-bottom-width: 3px !important;
+    border-bottom-style: solid !important;
+  }
+  
+  /* Específico para a primeira tab no mobile */
+  .tab.madbuilder-tab.active {
+    border-bottom: 3px solid #F2911D !important;
+  }
+  
+  /* Garante que o contêiner de tabs não tenha overflow ou posicionamento que afete as bordas */
+  .tabs {
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}

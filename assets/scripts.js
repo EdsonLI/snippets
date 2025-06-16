@@ -1,694 +1,465 @@
-/* Tema escuro inspirado no GitHub Dark */
-body {
-  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
-  background: #0d1117;
-  color: #c9d1d9;
-  padding: 1px;
-}
-h1 {
-  text-align: center;
-  color: #f0f6fc;
-  font-weight: 600;
-  margin-bottom: 32px;
-  letter-spacing: 0.5px;
-}
-input[type="text"] {
-  width: 100%;
-  max-width: 600px;
-  box-sizing: border-box;
-  padding: 12px;
-  margin-bottom: 28px;
-  border-radius: 6px;
-  background: #161b22;
-  border: 1px solid #30363d;
-  color: #c9d1d9;
-  font-size: 1em;
-  transition: border 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-input[type="text"]:focus {
-  outline: none;
-  border: 1.5px solid #388bfd;
-  box-shadow: 0 0 0 2px #388bfd33;
-}
-/* .suggestions {
-  margin-bottom: 18px;
-  font-size: 0.98em;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.suggestions span {
-  background: #21262d;
-  border-radius: 4px;
-  padding: 3px 12px;
-  color: #8b949e;
-  border: 1px solid #30363d;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-}
-.suggestions span:hover {
-  background: #30363d;
-  color: #f0f6fc;
-  border-color: #388bfd;
-} */
-.section {
-  margin-bottom: 10px;
-  background: #161b22;
-  padding: 22px 20px 20px 20px;
-  border-radius: 10px;
-  border: 1px solid #30363d;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
-}
-/* Ajuste global para espaçamento das categorias em todas as seções de snippets */
-.section h3 {
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-.section {
-  padding: 10px !important;
-}
-.section h2,
-.section h3 {
-  border-bottom: 1px solid #21262d;
-  padding-bottom: 7px;
-  display: flex;
-  align-items: center;
-  color: #f0f6fc;
-  font-weight: 500;
-}
-.section h3 i {
-  margin-right: 10px;
-  color: #8b949e;
-}
-.snippet-block {
-  margin: 20px 0;
-}
-.snippet-title {
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  color: #f0f6fc;
-  font-weight: 500;
-  background: none;
-  border: none;
-  padding: 0;
-}
-.snippet-title i {
-  margin-right: 8px;
-  color: #8b949e;
-}
-.snippet-content {
-  display: none;
-  margin-top: 8px;
-}
+$(document).ready(function() {
+  // Função para adicionar botões de copiar código
+  function addCopyButtons() {
+    $('pre code.hljs').each(function () {
+      // Evita duplicar botões
+      if ($(this).parent().hasClass('code-block-wrapper')) return;
 
-/* Tabs */
-.tabs {
-  display: flex;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #21262d;
-  overflow-x: auto;         /* Permite rolagem horizontal */
-  flex-wrap: nowrap;        /* Não quebra linha */
-  -webkit-overflow-scrolling: touch; /* Suaviza rolagem no iOS */
-  scrollbar-width: thin;    /* Firefox: barra fina */
-  scrollbar-color: #30363d #161b22;
-  position: relative; /* Importante para contexto posicional correto */
-}
-/* Barra de rolagem customizada para Chrome */
-.tabs::-webkit-scrollbar {
-  height: 6px;
-}
-.tabs::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 4px;
-}
-.tabs::-webkit-scrollbar-track {
-  background: #161b22;
-}
+      var $pre = $(this).parent();
+      $pre.wrap('<div class="code-block-wrapper" style="position:relative"></div>');
+      var $wrapper = $pre.parent();
 
-/* As abas não encolhem demais, mas podem ser menores no mobile */
-.tab {
-  flex: 0 0 auto; /* Não cresce, não encolhe, largura automática */
-  min-width: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Alinha conteúdo na base da aba */
-  align-items: stretch;      /* Ocupa toda a largura da aba */
-  text-align: center;
-  min-height: 70px;          /* Ajuste conforme necessário */
-  padding-bottom: 6px;       /* Espaço extra na base */
-  padding: 10px 22px;
-  cursor: pointer;
-  background: #161b22;
-  color: #8b949e;
-  border-radius: 6px 6px 0 0;
-  margin-right: 5px;
-  transition: all 0.2s;
-  border: 1px solid #21262d;
-  border-bottom: none;
-  font-weight: 500;
-  position: relative; /* Necessário para o ícone check */
-}
-.tab:hover {
-  background: #21262d;
-  color: #f0f6fc;
-}
-.tab.active {
-  background: #0d1117;
-  color: #f0f6fc;
-  border-bottom: 2px solid #388bfd;
-  position: relative;
-  z-index: 5; /* Garante que a aba ativa fique acima de outras */
-}
-.tab .tab-check {
-  display: none;
-  position: absolute;
-  top: 3px;
-  left: 3px;    /* Alterado de right: 3px para left: 3px */
-  right: auto;  /* Garante que não fique à direita */
-  background: #161b22;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #F2911D; /* cor padrão, sobrescrita abaixo */
-  box-shadow: 0 1px 3px #0002;
-  z-index: 2;
-}
-.tab.active .tab-check {
-  display: flex;
-}
-.tab-content {
-  display: none;
-}
-.tab-content.active {
-  display: block;
-}
-.tab-icon {
-  width: 2rem;
-  height: 2rem;
-  display: block;
-  margin: 0 auto 0.5rem auto; /* Espaço uniforme abaixo do ícone */
-  object-fit: contain;        /* Para imagens não distorcerem */
-  font-size: 2rem;          /* Para ícones FontAwesome */
-  line-height: 2rem;
-}
-.collapse-icon {
-  margin-left: auto;
-  cursor: pointer;
-  transition: transform 0.3s;
-  color: #8b949e;
-}
-.category-controls {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-.expand-all,
-.collapse-all {
-  background: #21262d;
-  border: 1px solid #30363d;
-  color: #c9d1d9;
-  padding: 5px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9em;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: background 0.2s, border 0.2s, color 0.2s;
-}
-.expand-all:hover,
-.collapse-all:hover {
-  background: #30363d;
-  color: #f0f6fc;
-  border-color: #388bfd;
-}
-/* Remove marrom e outros tons indesejados */
-a, a:visited {
-  color: #58a6ff;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: #1f6feb;
-  text-decoration: underline;
-}
-/* Botão copiar estilo GitHub */
-.copy-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #21262d;
-  color: #8b949e;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 0.95em;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: background 0.2s, color 0.2s, opacity 0.2s;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.copy-btn:hover {
-  background: #30363d;
-  color: #f0f6fc;
-  opacity: 1;
-}
-.download-btn {
-  margin-left: 10px;
-  color: #8b949e;
-  background: #21262d;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  padding: 5px 2px 5px 10px;
-  font-size: 0.95em;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: background 0.2s, color 0.2s, opacity 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-}
-.download-btn:hover {
-  background: #30363d;
-  color: #f0f6fc;
-  opacity: 1;
-}
-.code-block-wrapper {
-  position: relative;
-}
-.cat-btn {
-  border: none;
-  border-radius: 6px;
-  padding: 7px 8px 6px 8px;
-  margin-right: 10px;
-  margin-bottom: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: filter 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-}
-
-/* .cat-btn.categoria-bancos   { background: #1abc9c; }
-.cat-btn.categoria-codigos  { background: #e67e22; }
-.cat-btn.categoria-campos   { background: #9b59b6; }
-.cat-btn.categoria-sessao   { background: #2980b9; }
-.cat-btn.categoria-janelas  { background: #f39c12; }
-.cat-btn.categoria-outros   { background: #95a5a6; } */
-
-.cat-btn:hover {
-  filter: brightness(1.1) contrast(1.1);
-  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
-}
-
-/* Cores dos títulos das categorias de snippets do mad.builder */
-/* .categoria-bancos { color: #1abc9c !important; }
-.categoria-codigos { color: #e67e22 !important; }
-.categoria-campos { color: #9b59b6 !important; }
-.categoria-sessao { color: #2980b9 !important; }
-.categoria-janelas { color: #f39c12 !important; }
-.categoria-outros { color: #95a5a6 !important; } */
-
-.sql-keyword { color: #2ecc71; font-weight: bold; font-family: 'Roboto Mono', monospace; }
-.sql-func    { color: #3498db; font-family: 'Roboto Mono', monospace; }
-.sql-string  { color: #e67e22; font-family: 'Roboto Mono', monospace; }
-
-.copy-btn-title {
-  background: #21262d;
-  border: 1px solid #30363d;
-  border-radius: 5px;
-  color: #fff;
-  padding: 5px 2px 5px 10px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background 0.2s, color 0.2s;
-}
-.copy-btn-title:hover {
-  background: #30363d;
-  color: #2ecc71;
-}
-
-/* Responsividade máxima para blocos de código */
-.snippet-content {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.snippet-content pre,
-.snippet-content code {
-  white-space: pre;         /* Não quebra linha */
-  overflow-x: auto;         /* Rolagem horizontal */
-  min-width: 0;             /* Permite encolher */
-  max-width: 100vw;         /* Nunca ultrapassa a tela */
-  box-sizing: border-box;
-  display: block;
-}
-
-.tab.madbuilder-tab {
-  color: #F2911D;
-  border-bottom: 2px solid #F2911D;
-}
-.tab.vscode-tab {
-  color: #007ACC;
-  border-bottom: 2px solid #007ACC;
-}
-.tab.sql-tab {
-  color: #2ecc71 !important;
-  border-bottom: 2px solid #2ecc71 !important;
-}
-.tab.sql-tab.active {
-  background: #0d1117;
-  color: #2ecc71 !important;
-  border-bottom: 2.5px solid #2ecc71 !important;
-}
-.tab.sql-tab.active .tab-check {
-  color: #2ecc71 !important;
-}
-
-/* PHP tab cor - deve vir depois para sobrescrever! */
-.tab.php-tab {
-  color: #787CB5 !important;
-  border-bottom: 2px solid #787CB5 !important;
-}
-.tab.jquery-tab {
-  color: #0868AC !important;
-  border-bottom: 2px solid #0868AC !important;
-}
-.tab.bootstrap-tab {
-  color: #8e44ad !important;
-  border-bottom: 2px solid #8e44ad !important;
-}
-.tab.css-tab {
-  color: #264DE4 !important;
-  border-bottom: 2px solid #264DE4 !important;
-}
-.tab.html-tab {
-  color: #F06529 !important;
-  border-bottom: 2px solid #F06529 !important;
-}
-.tab.codepen-tab {  
-  color: #FFFFFF !important;
-  border-bottom: 2px solid #FFFFFF;
-}
-
-.tab.php-tab.active {
-  background: #0d1117;
-  color: #787CB5 !important;
-  border-bottom: 2.5px solid #787CB5 !important;
-}
-.tab.jquery-tab.active {
-  background: #0d1117;
-  color: #0868AC !important;
-  border-bottom: 2.5px solid #0868AC !important;
-}
-.tab.bootstrap-tab.active {
-  background: #0d1117;
-  color: #8e44ad !important;
-  border-bottom: 2.5px solid #8e44ad !important;
-}
-.tab.css-tab.active {
-  background: #0d1117;
-  color: #264DE4 !important;
-  border-bottom: 2.5px solid #264DE4 !important;
-}
-.tab.html-tab.active {
-  background: #0d1117;
-  color: #F06529 !important;
-  border-bottom: 2.5px solid #F06529 !important;
-}
-.tab.codepen-tab.active {
-  background: #0d1117;
-  color: #FFFFFF !important;
-  border-bottom: 2.5px solid #FFFFFF !important;
-}
-
-.tab.php-tab.active .tab-check {
-  color: #787CB5 !important;
-}
-.tab.jquery-tab.active .tab-check {
-  color: #0868AC !important;
-}
-.tab.bootstrap-tab.active .tab-check {
-  color: #8e44ad !important;
-}
-.tab.css-tab.active .tab-check {
-  color: #264DE4 !important;
-}
-.tab.html-tab.active .tab-check {
-  color: #F06529 !important;
-}
-.tab.codepen-tab.active .tab-check {
-  color: #FFFFFF !important;
-}
-
-.tab.madbuilder-tab.active {
-  background: #0d1117;
-  color: #F2911D;
-  border-bottom: 2.5px solid #F2911D;
-}
-.tab.vscode-tab.active {
-  background: #0d1117;
-  color: #007ACC;
-  border-bottom: 2.5px solid #007ACC;
-}
-.tab.php-tab.active {
-  background: #0d1117;
-  color: #787CB5;
-  border-bottom: 2.5px solid #787CB5;
-}
-.tab.jquery-tab.active {
-  background: #0d1117;
-  color: #0868AC;
-  border-bottom: 2.5px solid #0868AC;
-}
-.tab.bootstrap-tab.active {
-  background: #0d1117;
-  color: #8e44ad;
-  border-bottom: 2.5px solid #8e44ad;
-}
-.tab.css-tab.active {
-  background: #0d1117;
-  color: #264DE4;
-  border-bottom: 2.5px solid #264DE4;
-}
-.tab.html-tab.active {
-  background: #0d1117;
-  color: #F06529;
-  border-bottom: 2.5px solid #F06529;
-}
-.tab.codepen-tab.active {
-  background: #0d1117;
-  color: #FFFFFF;
-  border-bottom: 2.5px solid #FFFFFF;
-}
-
-.tab.madbuilder-tab.active .tab-check {
-  color: #F2911D;
-}
-.tab.vscode-tab.active .tab-check {
-  color: #007ACC;
-}
-.tab.php-tab.active .tab-check {
-  color: #787CB5;
-}
-.tab.jquery-tab.active .tab-check {
-  color: #0868AC;
-}
-.tab.bootstrap-tab.active .tab-check {
-  color: #8e44ad;
-}
-.tab.css-tab.active .tab-check {
-  color: #264DE4;
-}
-.tab.html-tab.active .tab-check {
-  color: #F06529;
-}
-.tab.codepen-tab.active .tab-check {
-  color: #FFFFFF;
-}
-
-.tab-icon-madbuilder {
-  width: 2.6rem;
-  height: 2.6rem;
-  display: block;
-  margin: 0 auto 0.2rem auto; /* Espaço uniforme abaixo do ícone */
-  object-fit: contain;        /* Para imagens não distorcerem */
-  line-height: 2.2rem;
-}
-@media (max-width: 600px) {
-  .snippet-content pre,
-  .snippet-content code {
-    font-size: 0.92em;
-    max-width: 98vw;
+      var $btn = $('<button class="copy-btn" title="Copiar código"><i class="fa fa-copy"></i></button>');
+      $btn.on('click', function () {
+        var code = $pre.text();
+        navigator.clipboard.writeText(code);
+        $btn.html('<i class="fa fa-check"></i>');
+        setTimeout(function () {
+          $btn.html('<i class="fa fa-copy"></i>');
+        }, 1200);
+      });
+      $wrapper.append($btn);
+    });
   }
-  .tabs {
-    margin-bottom: 12px;
-  }
-  .tab {
-    padding: 7px 10px;
-    min-width: 70px;
-    font-size: 0.98em;
-  }
-  .tab-icon, .tab-icon-madbuilder {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1.5rem;
-    margin-bottom: 0.2rem;
-  }
-  input[type="text"] {
-    font-size: 1em;
-    padding: 10px;
-    margin-bottom: 18px;
-    max-width: 98vw;
-    min-width: 0;
-  }
-}
 
-/* Novas regras para .search-wrapper */
-.search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 18px auto;
-  display: flex;
-  align-items: center;
-}
-
-.search-wrapper input[type="text"] {
-  width: 100%;
-  padding-right: 38px; /* espaço para o botão */
-  margin-bottom: 0;
-}
-
-#refresh-list {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #8b949e;
-  font-size: 1.3em;
-  cursor: pointer;
-  padding: 0;
-  z-index: 2;
-  opacity: 0.7;
-  transition: color 0.2s, opacity 0.2s;
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#refresh-list:hover {
-  color: #f87171;
-  background: #23272e;
-  opacity: 1;
-}
-
-#refresh-list .fa-rotate-right {
-  transition: transform 0.3s;
-}
-#refresh-list:active .fa-rotate-right {
-  transform: rotate(360deg);
-}
-
-/* Responsivo */
-@media (max-width: 600px) {
-  .search-wrapper {
-    max-width: 98vw;
+  // Função para resetar visualização dos snippets/categorias
+  function resetSnippetsView() {
+    $('.section, .snippet-block').show();
+    $('.snippet-content').hide();
+    $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+    $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+    $('.category-controls').show();
   }
-  .search-wrapper input[type="text"] {
-    padding-right: 36px;
-  }
-  #refresh-list {
-    right: 4px;
-    font-size: 1.1em;
-    height: 28px;
-    width: 28px;
-  }
-}
 
-/* .tab[data-target="codepen-content"],
-.tab.codepen-tag {
-  color: #000 !important;
-  border-bottom: 2px solid #000 !important;
-}
-.tab[data-target="codepen-content"].active,
-.tab.codepen-tag.active {
-  background: #fff;
-  color: #000 !important;
-  border-bottom: 2.5px solid #000 !important;
-}
-.tab[data-target="codepen-content"] .tab-icon,
-.tab.codepen-tag .tab-icon {
-  color: #000 !important;
-}
-.tab.codepen-tag {
-  color: #000 !important;
-  border-bottom: 2px solid #000 !important;
-}
-.tab.codepen-tag .tab-icon {
-  color: #000 !important;
-}
-.tab.codepen-tag.active {
-  background: #000 !important;
-  color: #fff !important;
-  border-bottom: 2.5px solid #fff !important;
-}
-.tab.codepen-tag.active .tab-icon {
-  color: #fff !important;
-}
-.tab.codepen-tag.active .tab-check {
-  color: #fff !important;
-} */
+  // Carrega os conteúdos iniciais
+  $('#madbuilder-content').load('snippets_madbuilder.html', function() {
+    // Corrigir targets dos botões
+    $(this).find('.section').each(function() {
+      const sectionId = $(this).attr('id');
+      if (sectionId) {
+        // Encontrar os botões dentro desta seção e definir o target correto
+        const contentId = sectionId + '-snippets';
+        $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
+      }
+    });
 
-/* Ajustes para resolver o problema da borda da tab ativa no Chrome mobile */
-/* Garante que as abas ativas sempre mostrem a borda, especialmente em mobile */
-.tab.active {
-  border-bottom-width: 3px !important;
-  border-bottom-style: solid !important;
-  z-index: 10 !important; 
-  position: relative !important;
-}
+    // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
+    $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
 
-/* Específico para a primeira tab (MadBuilder) que é ativa por padrão */
-.tab.madbuilder-tab.active {
-  border-bottom: 3px solid #F2911D !important;
-}
+    // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
+    $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
 
-/* Regras específicas para dispositivos móveis */
-@media (max-width: 768px) {
-  /* Fortalece a visualização da borda em dispositivos móveis */
-  .tab.active {
-    border-bottom-width: 3px !important;
-    border-bottom-style: solid !important;
+    // Substituir ícones + e - por expand e compress nos botões de categoria
+    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
+    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
+
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();    
+  });
+
+  $('#vscode-content').load('snippets_vscode.html', function() {
+    // Corrigir targets dos botões
+    $(this).find('.section').each(function() {
+      const sectionId = $(this).attr('id');
+      if (sectionId) {
+        // Encontrar os botões dentro desta seção e definir o target correto
+        const contentId = sectionId + '-snippets';
+        $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
+      }
+    });
+
+    // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
+    $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
+
+    // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
+    $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+
+    // Substituir ícones + e - por expand e compress nos botões de categoria
+    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
+    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
+
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+    loadSnippetsFormularios();
+    loadSnippetsListings();
+  });
+
+  $('#sql-content').load('snippets_sql.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  // Adiciona carregamento para as novas abas
+  $('#php-content').load('snippets_php.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#jquery-content').load('snippets_jquery.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#bootstrap-content').load('snippets_bootstrap.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#html-content').load('snippets_html.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#css-content').load('snippets_css.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  $('#fontawesome-content').load('snippets_fontawesome.html', function() {
+    hljs.highlightAll();
+    setupSnippetInteractions();
+    addCopyButtons();
+  });
+
+  // Sistema de abas
+  $('.tab').click(function() {
+    $('.tab').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').removeClass('active');
+    $('#' + $(this).data('target')).addClass('active');
+    resetSnippetsView(); // Resetar filtros ao trocar de aba
+    addCopyButtons();
+  });
+
+  // Função para configurar as interações dos snippets
+  function setupSnippetInteractions() {
+    // Expandir/colapsar snippets ao clicar no título
+    $('.snippet-title').off('click').on('click', function() {
+      $(this).next('.snippet-content').slideToggle();
+      // Alternar o ícone de fa-expand para fa-compress e vice-versa
+      const icon = $(this).find('i:first');
+      if (icon.hasClass('fa-expand')) {
+        icon.removeClass('fa-expand').addClass('fa-compress');
+      } else {
+        icon.removeClass('fa-compress').addClass('fa-expand');
+      }
+    });
+
+    // Expandir/colapsar categorias 
+    $('.collapse-icon').off('click').on('click', function(e) {
+      e.stopPropagation(); // Prevenir propagação do evento
+      const targetId = $(this).data('target');
+      const $target = $('#' + targetId);
+
+      // Toggle do conteúdo
+      $target.slideToggle();
+
+      // Também esconder/mostrar os botões de controle da categoria
+      const categoryControls = $(this).closest('h3').next('.category-controls');
+      categoryControls.slideToggle();
+
+      // Alternar entre chevron-down e chevron-left (invertido)
+      if ($(this).hasClass('fa-chevron-down')) {
+        $(this).removeClass('fa-chevron-down').addClass('fa-chevron-left');
+      } else {
+        $(this).removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      }
+
+      // Alternar botões de expandir/colapsar
+      categoryControls.find('.expand-all, .collapse-all').toggle();
+    });
+
+    // Botões de expandir todos
+    $('.expand-all').off('click').on('click', function() {
+      // Pegar o target correto com base no contexto do botão
+      const targetId = $(this).data('target');
+
+      if (!targetId) {
+        console.error('Botão expand-all sem target definido!');
+        return;
+      }
+
+      // Aplicar a operação apenas dentro dessa seção
+      $('#' + targetId + ' .snippet-content').slideDown();
+      $('#' + targetId + ' .snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
+
+      // Alternar a visibilidade dos botões dentro dessa seção
+      $(this).hide();
+      $(this).siblings('.collapse-all').show();
+    });
+
+    // Botões de colapsar todos
+    $('.collapse-all').off('click').on('click', function() {
+      // Pegar o target correto com base no contexto do botão
+      const targetId = $(this).data('target');
+
+      if (!targetId) {
+        console.error('Botão collapse-all sem target definido!');
+        return;
+      }
+
+      // Aplicar a operação apenas dentro dessa seção
+      $('#' + targetId + ' .snippet-content').slideUp();
+      $('#' + targetId + ' .snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+
+      // Alternar a visibilidade dos botões dentro dessa seção
+      $(this).hide();
+      $(this).siblings('.expand-all').show();
+    });
+
+    // Adiciona botões de copiar código sempre que interações são configuradas
+    addCopyButtons();
   }
-  
-  /* Específico para a primeira tab no mobile */
-  .tab.madbuilder-tab.active {
-    border-bottom: 3px solid #F2911D !important;
+
+  // Busca
+  // $('#search').on('input', function() {
+  //   const searchText = $(this).val().toLowerCase();
+
+  //   if (searchText.length > 1) {
+  //     $('.snippet-block').each(function() {
+  //       const tags = $(this).data('tags') || '';
+  //       const title = $(this).find('.snippet-title strong').text().toLowerCase();
+  //       const content = $(this).find('.snippet-content').text().toLowerCase();
+
+  //       if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
+  //         $(this).show();
+  //         // Expandir o snippet para mostrar o resultado
+  //         $(this).find('.snippet-content').slideDown();
+  //         $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
+  //       } else {
+  //         $(this).hide();
+  //       }
+  //     });
+
+  //     // Mostrar apenas categorias com snippets visíveis
+  //     $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
+  //       if ($(this).find('.snippet-block:visible').length > 0) {
+  //         $(this).show();
+  //         // Mudar o ícone para baixo para categorias que ficam visíveis
+  //         $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+  //         // Mostrar os controles da categoria
+  //         $(this).find('.category-controls').show();
+  //       } else {
+  //         $(this).hide();
+  //       }
+  //     });
+  //   } else {
+  //     // Restaurar a visibilidade padrão
+  //     $('.section, .snippet-block').show();
+  //     $('.snippet-content').hide();
+  //     $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+  //     // Restaurar todos os ícones para baixo (expandido)
+  //     $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+  //     // Mostrar todos os controles de categoria
+  //     $('.category-controls').show();
+  //   }
+  //   addCopyButtons();
+  // });
+
+  // Filtros rápidos (sugestões acima da busca)
+  // $('.suggestions span').click(function() {
+  //   $('#search').val($(this).data('tag')).trigger('input'); 
+  // });
+
+  // Botão de atualizar/limpar filtros
+  $('#refresh-list').click(function() {
+    $('#search').val('');
+    resetSnippetsView();
+    addCopyButtons();
+  });
+
+  // Filtro por categoria ao clicar nos botões coloridos
+  $(document).on('click', '.cat-btn', function() {
+    var filter = $(this).data('filter');
+    if (filter === 'todas') {
+      // Restaurar a visibilidade padrão de todas as categorias e snippets
+      resetSnippetsView();
+      return;
+    }
+    // Esconde todas as seções de categoria
+    $('.section[id]').not('#madbuilder').hide();
+    // Mostra só a seção da categoria clicada
+    $('#' + filter).show();
+    // Esconde todos os blocos de snippet
+    $('.snippet-block').hide();
+    // Mostra todos os snippets da categoria
+    $('#' + filter + '-snippets .snippet-block').show();
+    // Fecha todos os conteúdos de snippet
+    $('.snippet-content').hide();
+    // Reseta ícones dos snippets
+    $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+    // Abre a categoria e mostra controles
+    $('#' + filter).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+    $('#' + filter).find('.category-controls').show();
+  });
+
+  $(document).on('click', '.copy-btn-title', function(e) {
+    e.stopPropagation();
+    const text = $(this).siblings('strong').text().trim();
+    navigator.clipboard.writeText(text);
+    $(this).find('i').removeClass('fa-copy').addClass('fa-check');
+    setTimeout(() => {
+      $(this).find('i').removeClass('fa-check').addClass('fa-copy');
+    }, 1200);
+  });
+
+  // $('.snippet-content[data-src]').each(function () {
+  //   const $container = $(this);
+  //   const url = $container.data('src');
+  //   const lang = $container.data('lang') || 'text'; // <-- 👈 capturar linguagem
+
+  //   $.ajax({
+  //     url: url,
+  //     dataType: 'text',
+  //     success: function (data) {
+  //       $container.find('code')
+  //         .attr('class', 'language-' + lang) // <-- 👈 aplicar classe correta
+  //         .text(data); // <-- 👈 incluir o texto do código
+
+  //       if (typeof hljs !== 'undefined') {
+  //         hljs.highlightElement($container.find('code')[0]);
+  //       }
+  //     },
+  //     error: function () {
+  //       $container.find('code').text('// Erro ao carregar snippet: ' + url);
+  //     }
+  //   });
+  // });
+
+  // Garante que os botões de copiar estejam presentes ao iniciar
+  addCopyButtons();
+  function loadSnippetsFormularios() {
+    const container = document.getElementById('formularios-snippets');
+    if (!container) return;
+    const listUrl = 'snippets_vscode/formularios/list.json';
+
+    fetch(listUrl)
+      .then(response => response.json())
+      .then(files => {
+        container.innerHTML = '';
+        const fetches = files.map(filename => {
+          const snippetUrl = `snippets_vscode/formularios/${filename}`;
+          return fetch(snippetUrl)
+            .then(response => response.text())
+            .then(snippetText => {
+              const title = filename.replace('.code-snippets', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              const snippetBlock = document.createElement('div');
+              snippetBlock.className = 'snippet-block';
+              snippetBlock.dataset.tags = 'adianti php form';
+
+              snippetBlock.innerHTML = `
+                <div class="snippet-title">
+                  <i class="fa-solid fa-expand"></i>
+                  <strong>${title}:</strong>
+                  <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+                <div class="snippet-content" style="display:none;">
+                  <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+                </div>
+              `;
+              container.appendChild(snippetBlock);
+
+              const codeEl = snippetBlock.querySelector('code');
+              if (window.hljs && codeEl) {
+                hljs.highlightElement(codeEl);
+              }
+            });
+        });
+
+        Promise.all(fetches).then(() => {
+          if (typeof setupSnippetInteractions === 'function') setupSnippetInteractions();
+          if (typeof addCopyButtons === 'function') addCopyButtons();
+        });
+      })
+      .catch(error => {
+        container.innerHTML = '<p>Erro ao carregar snippets de Formulários.</p>';
+        console.error(error);
+      });
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
   }
-  
-  /* Garante que o contêiner de tabs não tenha overflow ou posicionamento que afete as bordas */
-  .tabs {
-    overflow-x: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
+
+  /* ESPAÇO DAS FUNÇÕES JS */
+  function loadSnippetsListings() {
+    const container = document.getElementById('listagens-snippets');
+    if (!container) return;
+    const listUrl = 'snippets_vscode/listagens/list.json'; // local path
+
+    fetch(listUrl)
+      .then(response => response.json())
+      .then(files => {
+        container.innerHTML = ''; // Limpa antes de adicionar
+        const fetches = files.map(filename => {
+          const snippetUrl = `snippets_vscode/listagens/${filename}`;
+          return fetch(snippetUrl)
+            .then(response => response.text())
+            .then(snippetText => {
+              // Extrai nome amigável do arquivo para o título
+              const title = filename.replace('.code-snippets', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+              const snippetBlock = document.createElement('div');
+              snippetBlock.className = 'snippet-block';
+              snippetBlock.dataset.tags = 'adianti php listagem';
+
+              snippetBlock.innerHTML = `
+                <div class="snippet-title">
+                  <i class="fa-solid fa-expand"></i>
+                  <strong>${title}:</strong>
+                  <a class="download-btn" href="${snippetUrl}" download title="Baixar snippet">
+                    <i class="fa fa-download"></i>
+                  </a>
+                </div>
+                <div class="snippet-content" style="display:none;">
+                  <pre><code class="language-json">${escapeHtml(snippetText)}</code></pre>
+                </div>
+              `;
+              container.appendChild(snippetBlock);
+
+              // Aplica o highlight apenas no novo bloco adicionado
+              const codeEl = snippetBlock.querySelector('code');
+              if (window.hljs && codeEl) {
+                hljs.highlightElement(codeEl);
+              }
+            });
+        });
+
+        // Quando todos os snippets forem carregados, ativa interações e botões de copiar
+        Promise.all(fetches).then(() => {
+          if (typeof setupSnippetInteractions === 'function') setupSnippetInteractions();
+          if (typeof addCopyButtons === 'function') addCopyButtons();
+        });
+      })
+      .catch(error => {
+        container.innerHTML = '<p>Erro ao carregar snippets de Listagens.</p>';
+        console.error(error);
+      });
+
+    // Função para escapar caracteres especiais HTML
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
   }
-}
+});
