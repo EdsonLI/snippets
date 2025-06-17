@@ -528,6 +528,42 @@ $(document).ready(function() {
     handleScrollBarVisibility($('.category-tabs'));
   }
 
+  // --- BLOCO: Arrastar horizontal com mouse nas tabs (desktop) ---
+  function setupTabsDragScroll() {
+    const $tabs = $('.tabs');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    $tabs.on('mousedown', function(e) {
+      // Só botão esquerdo
+      if (e.button !== 0) return;
+      isDown = true;
+      $tabs.addClass('dragging');
+      startX = e.pageX - $tabs.offset().left;
+      scrollLeft = $tabs.scrollLeft();
+      e.preventDefault();
+    });
+
+    $(document).on('mousemove', function(e) {
+      if (!isDown) return;
+      const x = e.pageX - $tabs.offset().left;
+      const walk = (startX - x);
+      $tabs.scrollLeft(scrollLeft + walk);
+    });
+
+    $(document).on('mouseup', function() {
+      isDown = false;
+      $tabs.removeClass('dragging');
+    });
+
+    // Evita seleção de texto durante o drag
+    $tabs.on('mouseleave', function() {
+      isDown = false;
+      $tabs.removeClass('dragging');
+    });
+  }
+
   // --- CHAMADAS INICIAIS ---
   loadTabContents();
   setupTabs();
@@ -535,5 +571,6 @@ $(document).ready(function() {
   setupBackToTopButton();
   setupSearch();
   setupTabScrollbars();
+  setupTabsDragScroll();
   addCopyButtons();
 });

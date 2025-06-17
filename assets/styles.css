@@ -749,3 +749,12 @@ a:hover {
   margin-bottom: 10px;
   color: #c9d1d9;
 }
+
+/* Arrastar horizontal nas tabs (desktop) */
+.tabs.dragging {
+  cursor: grabbing !important;
+  user-select: none;
+}
+.tabs {
+  cursor: grab;
+}
