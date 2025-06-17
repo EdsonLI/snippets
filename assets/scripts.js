@@ -430,10 +430,58 @@ $(document).ready(function() {
     });
   }
 
+  // --- BLOCO: Busca ---
+  function setupSearch() {
+    $('#search').on('input', function() {
+      const searchText = $(this).val().toLowerCase();
+
+      if (searchText.length > 1) {
+        $('.snippet-block').each(function() {
+          const tags = $(this).data('tags') || '';
+          const title = $(this).find('.snippet-title strong').text().toLowerCase();
+          const content = $(this).find('.snippet-content').text().toLowerCase();
+
+          if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
+            $(this).show();
+            // Expandir o snippet para mostrar o resultado
+            $(this).find('.snippet-content').slideDown();
+            $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
+          } else {
+            $(this).hide();
+          }
+        });
+
+        // Mostrar apenas categorias com snippets visíveis
+        $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
+          if ($(this).find('.snippet-block:visible').length > 0) {
+            $(this).show();
+            // Mudar o ícone para baixo para categorias que ficam visíveis
+            $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+            // Mostrar os controles da categoria
+            $(this).find('.category-controls').show();
+          } else {
+            $(this).hide();
+          }
+        });
+      } else {
+        // Restaurar a visibilidade padrão
+        $('.section, .snippet-block').show();
+        $('.snippet-content').hide();
+        $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+        // Restaurar todos os ícones para baixo (expandido)
+        $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+        // Mostrar todos os controles de categoria
+        $('.category-controls').show();
+      }
+      addCopyButtons();
+    });
+  }
+
   // --- CHAMADAS INICIAIS ---
   loadTabContents();
   setupTabs();
   setupCategoryFilters();
   setupBackToTopButton();
+  setupSearch();
   addCopyButtons();
 });
