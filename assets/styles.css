@@ -228,7 +228,7 @@ input[type="text"]:focus {
 }
 
 .tab.sweetalert2-tab.active::after {
-  background-color: #5468ff;
+  background-color: #d19a66;
 }
 
 .tab.fontawesome-tab.active::after {
@@ -472,7 +472,7 @@ a:hover {
 }
 
 .tab.sweetalert2-tab {  
-  color: #5468ff;
+  color: #d19a66;
 }
 
 .tab.fontawesome-tab {  
@@ -508,7 +508,7 @@ a:hover {
   color: #FFFFFF !important;
 }
 .tab.sweetalert2-tab.active .tab-check {
-  color: #5468ff !important;
+  color: #d19a66 !important;
 }
 .tab.fontawesome-tab.active .tab-check {
   color: #fcc419 !important;
