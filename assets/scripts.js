@@ -232,9 +232,13 @@ $(document).ready(function() {
       addCopyButtons();
     });
 
-    // Filtro por categoria ao clicar nos botões coloridos
-    $(document).on('click', '.cat-btn', function() {
+    // Filtro por categoria ao clicar nas abas de categoria
+    $(document).on('click', '.category-tab', function() {
       var filter = $(this).data('filter');
+      // Troca visual do ativo
+      $('.category-tab').removeClass('active');
+      $(this).addClass('active');
+
       if (filter === 'todas') {
         // Restaurar a visibilidade padrão de todas as categorias e snippets
         resetSnippetsView();
