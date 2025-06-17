@@ -628,7 +628,7 @@ a:hover {
   border: none;
   outline: none;
   border-bottom: 3px solid transparent;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, background 0.2s;
   font-weight: 500;
   color: #8b949e;
   user-select: none;
@@ -683,11 +683,9 @@ a:hover {
 .category-tab.categoria-outros .category-tab-label { color: #707070; }
 .category-tab.categoria-outros.active { border-bottom: 3px solid #707070; }
 
-/* Hover: reforça a cor */
-.category-tab:not(.active):hover .category-tab-label,
-.category-tab:not(.active):hover .category-tab-icon {
-  color: #fff;
-  opacity: 0.85;
+/* Hover: fundo sutilmente mais claro, sem alterar cor do ícone/nome */
+.category-tab:not(.active):hover {
+  background: #161b22;
 }
 
 /* Responsivo */
