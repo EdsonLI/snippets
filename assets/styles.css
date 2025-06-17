@@ -792,18 +792,6 @@ a:hover {
     color: #3084f2b3;
   }
 
-.tab-icon,
-.tab-label {
-  transition: color 0.2s, transform 0.2s;
-}
-
-/* Aplica o efeito apenas no ícone e no nome quando o mouse passar por cima do container */
-.tab-item:hover .tab-icon,
-.tab-item:hover .tab-label {
-  color: #f0f0f0; /* cor de destaque */
-  transform: scale(1.1);
-}
-
   /* Ajuste para dispositivos móveis */
   @media (max-width: 600px) {
     #back-to-top {
