@@ -705,14 +705,18 @@ a:hover {
   }
 }
 
-/* Esconde a scrollbar por padrão */
+/* Esconde a scrollbar das tabs e das categorias em todos os navegadores */
 .tabs,
 .category-tabs {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE/Edge */
 }
 .tabs::-webkit-scrollbar,
 .category-tabs::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none !important; /* Chrome/Safari/Opera */
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 /* Mostra a scrollbar só enquanto está rolando */
