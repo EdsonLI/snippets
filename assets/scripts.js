@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // Função para adicionar botões de copiar código
+  // --- BLOCO: Botão de copiar código ---
   function addCopyButtons() {
     $('pre code.hljs').each(function () {
       // Evita duplicar botões
@@ -22,7 +22,7 @@ $(document).ready(function() {
     });
   }
 
-  // Função para resetar visualização dos snippets/categorias
+  // --- BLOCO: Resetar visualização dos snippets/categorias ---
   function resetSnippetsView() {
     $('.section, .snippet-block').show();
     $('.snippet-content').hide();
@@ -31,121 +31,119 @@ $(document).ready(function() {
     $('.category-controls').show();
   }
 
-  // Carrega os conteúdos iniciais
-  $('#madbuilder-content').load('snippets_madbuilder.html', function() {
-    // Corrigir targets dos botões
-    $(this).find('.section').each(function() {
-      const sectionId = $(this).attr('id');
-      if (sectionId) {
-        // Encontrar os botões dentro desta seção e definir o target correto
-        const contentId = sectionId + '-snippets';
-        $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
-      }
+  // --- BLOCO: Carregamento de abas e conteúdos iniciais ---
+  function loadTabContents() {
+    $('#madbuilder-content').load('snippets_madbuilder.html', function() {
+      // Corrigir targets dos botões
+      $(this).find('.section').each(function() {
+        const sectionId = $(this).attr('id');
+        if (sectionId) {
+          // Encontrar os botões dentro desta seção e definir o target correto
+          const contentId = sectionId + '-snippets';
+          $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
+        }
+      });
+
+      // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
+      $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
+
+      // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
+      $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+
+      // Substituir ícones + e - por expand e compress nos botões de categoria
+      $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
+      $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
+
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();    
     });
 
-    // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
-    $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
+    $('#vscode-content').load('snippets_vscode.html', function() {
+      // Corrigir targets dos botões
+      $(this).find('.section').each(function() {
+        const sectionId = $(this).attr('id');
+        if (sectionId) {
+          // Encontrar os botões dentro desta seção e definir o target correto
+          const contentId = sectionId + '-snippets';
+          $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
+        }
+      });
 
-    // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
-    $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
+      $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
 
-    // Substituir ícones + e - por expand e compress nos botões de categoria
-    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
-    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
+      // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
+      $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
 
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();    
-  });
+      // Substituir ícones + e - por expand e compress nos botões de categoria
+      $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
+      $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
 
-  $('#vscode-content').load('snippets_vscode.html', function() {
-    // Corrigir targets dos botões
-    $(this).find('.section').each(function() {
-      const sectionId = $(this).attr('id');
-      if (sectionId) {
-        // Encontrar os botões dentro desta seção e definir o target correto
-        const contentId = sectionId + '-snippets';
-        $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
-      }
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+      loadSnippetsFormularios();
+      loadSnippetsListings();
     });
 
-    // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
-    $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
+    $('#sql-content').load('snippets_sql.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
 
-    // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
-    $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+    // Adiciona carregamento para as novas abas
+    $('#php-content').load('snippets_php.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+    $('#jquery-content').load('snippets_jquery.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+    $('#bootstrap-content').load('snippets_bootstrap.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+    $('#html-content').load('snippets_html.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+    $('#css-content').load('snippets_css.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+    $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+    $('#fontawesome-content').load('snippets_fontawesome.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+  }
 
-    // Substituir ícones + e - por expand e compress nos botões de categoria
-    $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
-    $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
+  // --- BLOCO: Sistema de abas ---
+  function setupTabs() {
+    $('.tab').click(function() {
+      $('.tab').removeClass('active');
+      $(this).addClass('active');
+      $('.tab-content').removeClass('active');
+      $('#' + $(this).data('target')).addClass('active');
+      resetSnippetsView();
+      addCopyButtons();
+    });
+  }
 
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-    loadSnippetsFormularios();
-    loadSnippetsListings();
-  });
-
-  $('#sql-content').load('snippets_sql.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  // Adiciona carregamento para as novas abas
-  $('#php-content').load('snippets_php.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#jquery-content').load('snippets_jquery.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#bootstrap-content').load('snippets_bootstrap.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#html-content').load('snippets_html.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#css-content').load('snippets_css.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  $('#fontawesome-content').load('snippets_fontawesome.html', function() {
-    hljs.highlightAll();
-    setupSnippetInteractions();
-    addCopyButtons();
-  });
-
-  // Sistema de abas
-  $('.tab').click(function() {
-    $('.tab').removeClass('active');
-    $(this).addClass('active');
-    $('.tab-content').removeClass('active');
-    $('#' + $(this).data('target')).addClass('active');
-    resetSnippetsView(); // Resetar filtros ao trocar de aba
-    addCopyButtons();
-  });
-
-  // Função para configurar as interações dos snippets
+  // --- BLOCO: Interações dos snippets (expandir, colapsar, copiar, etc) ---
   function setupSnippetInteractions() {
     // Expandir/colapsar snippets ao clicar no título
     $('.snippet-title').off('click').on('click', function() {
@@ -225,123 +223,52 @@ $(document).ready(function() {
     addCopyButtons();
   }
 
-  // Busca
-  // $('#search').on('input', function() {
-  //   const searchText = $(this).val().toLowerCase();
-
-  //   if (searchText.length > 1) {
-  //     $('.snippet-block').each(function() {
-  //       const tags = $(this).data('tags') || '';
-  //       const title = $(this).find('.snippet-title strong').text().toLowerCase();
-  //       const content = $(this).find('.snippet-content').text().toLowerCase();
-
-  //       if (tags.includes(searchText) || title.includes(searchText) || content.includes(searchText)) {
-  //         $(this).show();
-  //         // Expandir o snippet para mostrar o resultado
-  //         $(this).find('.snippet-content').slideDown();
-  //         $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-expand').addClass('fa-compress');
-  //       } else {
-  //         $(this).hide();
-  //       }
-  //     });
-
-  //     // Mostrar apenas categorias com snippets visíveis
-  //     $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
-  //       if ($(this).find('.snippet-block:visible').length > 0) {
-  //         $(this).show();
-  //         // Mudar o ícone para baixo para categorias que ficam visíveis
-  //         $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-  //         // Mostrar os controles da categoria
-  //         $(this).find('.category-controls').show();
-  //       } else {
-  //         $(this).hide();
-  //       }
-  //     });
-  //   } else {
-  //     // Restaurar a visibilidade padrão
-  //     $('.section, .snippet-block').show();
-  //     $('.snippet-content').hide();
-  //     $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
-  //     // Restaurar todos os ícones para baixo (expandido)
-  //     $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-  //     // Mostrar todos os controles de categoria
-  //     $('.category-controls').show();
-  //   }
-  //   addCopyButtons();
-  // });
-
-  // Filtros rápidos (sugestões acima da busca)
-  // $('.suggestions span').click(function() {
-  //   $('#search').val($(this).data('tag')).trigger('input'); 
-  // });
-
-  // Botão de atualizar/limpar filtros
-  $('#refresh-list').click(function() {
-    $('#search').val('');
-    resetSnippetsView();
-    addCopyButtons();
-  });
-
-  // Filtro por categoria ao clicar nos botões coloridos
-  $(document).on('click', '.cat-btn', function() {
-    var filter = $(this).data('filter');
-    if (filter === 'todas') {
-      // Restaurar a visibilidade padrão de todas as categorias e snippets
+  // --- BLOCO: Filtros rápidos e categorias ---
+  function setupCategoryFilters() {
+    // Botão de atualizar/limpar filtros
+    $('#refresh-list').click(function() {
+      $('#search').val('');
       resetSnippetsView();
-      return;
-    }
-    // Esconde todas as seções de categoria
-    $('.section[id]').not('#madbuilder').hide();
-    // Mostra só a seção da categoria clicada
-    $('#' + filter).show();
-    // Esconde todos os blocos de snippet
-    $('.snippet-block').hide();
-    // Mostra todos os snippets da categoria
-    $('#' + filter + '-snippets .snippet-block').show();
-    // Fecha todos os conteúdos de snippet
-    $('.snippet-content').hide();
-    // Reseta ícones dos snippets
-    $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
-    // Abre a categoria e mostra controles
-    $('#' + filter).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-    $('#' + filter).find('.category-controls').show();
-  });
+      addCopyButtons();
+    });
 
-  $(document).on('click', '.copy-btn-title', function(e) {
-    e.stopPropagation();
-    const text = $(this).siblings('strong').text().trim();
-    navigator.clipboard.writeText(text);
-    $(this).find('i').removeClass('fa-copy').addClass('fa-check');
-    setTimeout(() => {
-      $(this).find('i').removeClass('fa-check').addClass('fa-copy');
-    }, 1200);
-  });
+    // Filtro por categoria ao clicar nos botões coloridos
+    $(document).on('click', '.cat-btn', function() {
+      var filter = $(this).data('filter');
+      if (filter === 'todas') {
+        // Restaurar a visibilidade padrão de todas as categorias e snippets
+        resetSnippetsView();
+        return;
+      }
+      // Esconde todas as seções de categoria
+      $('.section[id]').not('#madbuilder').hide();
+      // Mostra só a seção da categoria clicada
+      $('#' + filter).show();
+      // Esconde todos os blocos de snippet
+      $('.snippet-block').hide();
+      // Mostra todos os snippets da categoria
+      $('#' + filter + '-snippets .snippet-block').show();
+      // Fecha todos os conteúdos de snippet
+      $('.snippet-content').hide();
+      // Reseta ícones dos snippets
+      $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
+      // Abre a categoria e mostra controles
+      $('#' + filter).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
+      $('#' + filter).find('.category-controls').show();
+    });
 
-  // $('.snippet-content[data-src]').each(function () {
-  //   const $container = $(this);
-  //   const url = $container.data('src');
-  //   const lang = $container.data('lang') || 'text'; // <-- 👈 capturar linguagem
+    $(document).on('click', '.copy-btn-title', function(e) {
+      e.stopPropagation();
+      const text = $(this).siblings('strong').text().trim();
+      navigator.clipboard.writeText(text);
+      $(this).find('i').removeClass('fa-copy').addClass('fa-check');
+      setTimeout(() => {
+        $(this).find('i').removeClass('fa-check').addClass('fa-copy');
+      }, 1200);
+    });
+  }
 
-  //   $.ajax({
-  //     url: url,
-  //     dataType: 'text',
-  //     success: function (data) {
-  //       $container.find('code')
-  //         .attr('class', 'language-' + lang) // <-- 👈 aplicar classe correta
-  //         .text(data); // <-- 👈 incluir o texto do código
-
-  //       if (typeof hljs !== 'undefined') {
-  //         hljs.highlightElement($container.find('code')[0]);
-  //       }
-  //     },
-  //     error: function () {
-  //       $container.find('code').text('// Erro ao carregar snippet: ' + url);
-  //     }
-  //   });
-  // });
-
-  // Garante que os botões de copiar estejam presentes ao iniciar
-  addCopyButtons();
+  // --- BLOCO: Carregamento dinâmico de snippets (Formulários e Listagens) ---
   function loadSnippetsFormularios() {
     const container = document.getElementById('formularios-snippets');
     if (!container) return;
@@ -400,7 +327,6 @@ $(document).ready(function() {
     }
   }
 
-  /* ESPAÇO DAS FUNÇÕES JS */
   function loadSnippetsListings() {
     const container = document.getElementById('listagens-snippets');
     if (!container) return;
@@ -463,43 +389,51 @@ $(document).ready(function() {
     }
   }
 
-  const backToTopButton = $('#back-to-top');
-  const scrollThreshold = 300; // Pixels de rolagem para mostrar o botão
-  let buttonVisible = false;
-  
-  // Função para verificar a posição do scroll
-  function checkScrollPosition() {
-    if ($(window).scrollTop() > scrollThreshold) {
-      if (!buttonVisible) {
-        backToTopButton.css('display', 'block')
-                       .removeClass('hide')
-                       .addClass('show');
-        buttonVisible = true;
-      }
-    } else {
-      if (buttonVisible) {
-        backToTopButton.removeClass('show')
-                       .addClass('hide');
-        buttonVisible = false;
-        
-        // Esconde completamente após a animação
-        setTimeout(() => {
-          if (!buttonVisible) {
-            backToTopButton.css('display', 'none');
-          }
-        }, 300);
+  // --- BLOCO: Botão "Voltar ao Topo" ---
+  function setupBackToTopButton() {
+    const backToTopButton = $('#back-to-top');
+    const scrollThreshold = 300;
+    let buttonVisible = false;
+
+    function checkScrollPosition() {
+      if ($(window).scrollTop() > scrollThreshold) {
+        if (!buttonVisible) {
+          backToTopButton.css('display', 'block')
+                         .removeClass('hide')
+                         .addClass('show');
+          buttonVisible = true;
+        }
+      } else {
+        if (buttonVisible) {
+          backToTopButton.removeClass('show')
+                         .addClass('hide');
+          buttonVisible = false;
+          
+          // Esconde completamente após a animação
+          setTimeout(() => {
+            if (!buttonVisible) {
+              backToTopButton.css('display', 'none');
+            }
+          }, 300);
+        }
       }
     }
+    
+    // Verificar posição ao carregar e ao rolar
+    $(window).scroll(checkScrollPosition);
+    checkScrollPosition(); // Verificar posição inicial
+    
+    // Ação de clique no botão
+    backToTopButton.click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop: 0}, 400);
+    });
   }
-  
-  // Verificar posição ao carregar e ao rolar
-  $(window).scroll(checkScrollPosition);
-  checkScrollPosition(); // Verificar posição inicial
-  
-  // Ação de clique no botão
-  backToTopButton.click(function(e) {
-    e.preventDefault();
-    $('html, body').animate({scrollTop: 0}, 400);
-  });
-  
+
+  // --- CHAMADAS INICIAIS ---
+  loadTabContents();
+  setupTabs();
+  setupCategoryFilters();
+  setupBackToTopButton();
+  addCopyButtons();
 });
