@@ -792,6 +792,25 @@ a:hover {
     color: #3084f2b3;
   }
 
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .tab-item:hover {
+    background: #f0f0f0;
+    color: #222;
+  }
+
+  .tab-item:hover .tab-icon {
+    color: #f0f0f0; /* Ou qualquer cor de destaque */
+  }
+
   /* Ajuste para dispositivos móveis */
   @media (max-width: 600px) {
     #back-to-top {
