@@ -800,7 +800,7 @@ a:hover {
 /* Aplica o efeito apenas no ícone e no nome quando o mouse passar por cima do container */
 .tab-item:hover .tab-icon,
 .tab-item:hover .tab-label {
-  color: #007bff; /* cor de destaque */
+  color: #f0f0f0; /* cor de destaque */
   transform: scale(1.1);
 }
 
