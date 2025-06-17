@@ -232,7 +232,7 @@ input[type="text"]:focus {
 }
 
 .tab.fontawesome-tab.active::after {
-  background-color: #fcc419;
+  background-color: #fab005;
 }
 
 .tab .tab-check {
@@ -476,7 +476,7 @@ a:hover {
 }
 
 .tab.fontawesome-tab {  
-  color: #fcc419;
+  color: #fab005;
 }
 
 /* Cores dos check marks */
@@ -511,7 +511,7 @@ a:hover {
   color: #d19a66 !important;
 }
 .tab.fontawesome-tab.active .tab-check {
-  color: #fcc419 !important;
+  color: #fab005 !important;
 }
 
 .tab-icon-madbuilder {
