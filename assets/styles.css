@@ -660,9 +660,10 @@ a:hover {
 }
 
 /* Cores por categoria */
+/* Roxinho NuBank: #8A05BE */
 .category-tab.categoria-todas .category-tab-icon,
-.category-tab.categoria-todas .category-tab-label { color: #F29111D; }
-.category-tab.categoria-todas.active { border-bottom: 3px solid #F29111D; }
+.category-tab.categoria-todas .category-tab-label { color: #8A05BE; }
+.category-tab.categoria-todas.active { border-bottom: 3px solid #8A05BE; }
 
 .category-tab.categoria-bancos .category-tab-icon,
 .category-tab.categoria-bancos .category-tab-label { color: #10a37f; }
