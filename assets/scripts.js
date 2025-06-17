@@ -492,7 +492,7 @@ $(document).ready(function() {
             $snippetsList.append(
               '<div class="no-results-message">' +
               '<i class="fa fa-search"></i>' +
-              'Nenhum resultado encontrado para sua busca.' +
+              'Nenhum resultado encontrado para sua busca' +
               '</div>'
             );
           } else {

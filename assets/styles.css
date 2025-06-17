@@ -730,7 +730,7 @@ a:hover {
 .no-results-message {
   padding: 32px 0 24px 0;
   text-align: center;
-  color: #F2911D;
+  color: #c9d1d9;
   font-size: 1.15em;
   font-weight: 500;
   opacity: 0.92;
@@ -747,4 +747,5 @@ a:hover {
   opacity: 0.5;
   display: block;
   margin-bottom: 10px;
-  color: #F29111
+  color: #c9d1d9;
+}
