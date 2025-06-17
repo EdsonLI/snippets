@@ -725,3 +725,26 @@ a:hover {
   display: block;
   height: 6px;
 }
+
+/* Mensagem de nenhum resultado encontrado na busca */
+.no-results-message {
+  padding: 32px 0 24px 0;
+  text-align: center;
+  color: #8A05BE;
+  font-size: 1.15em;
+  font-weight: 500;
+  opacity: 0.92;
+  letter-spacing: 0.2px;
+  background: none;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: color 0.2s, background 0.2s;
+}
+.no-results-message i {
+  font-size: 2em;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 10px;
+}

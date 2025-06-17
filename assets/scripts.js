@@ -438,17 +438,22 @@ $(document).ready(function() {
   function setupSearch() {
     $('#search').on('input', function() {
       const searchText = $(this).val().toLowerCase();
-      // Detecta categoria ativa (apenas na página madbuilder)
       const $activeCat = $('.category-tab.active');
       const activeFilter = $activeCat.length ? $activeCat.data('filter') : 'todas';
 
       // Define o escopo dos snippets a buscar
       let $snippets;
+      let $snippetsList;
       if (activeFilter && activeFilter !== 'todas') {
         $snippets = $('#' + activeFilter + '-snippets .snippet-block');
+        $snippetsList = $('#' + activeFilter + '-snippets');
       } else {
         $snippets = $('.snippet-block');
+        $snippetsList = null;
       }
+
+      // Remove mensagem anterior, se houver
+      $('.no-results-message').remove();
 
       if (searchText.length > 1) {
         $snippets.each(function() {
@@ -480,6 +485,16 @@ $(document).ready(function() {
           // Esconde todas as seções, mostra só a da categoria ativa
           $('.section[id]').not('#madbuilder').hide();
           $('#' + activeFilter).show();
+
+          // Se nenhum snippet visível, mostra mensagem bonita
+          if ($snippets.filter(':visible').length === 0 && $snippetsList && $snippetsList.length) {
+            $snippetsList.append(
+              '<div class="no-results-message" style="padding:32px 0;text-align:center;color:#8A05BE;font-size:1.15em;font-weight:500;">' +
+              '<i class="fa fa-search" style="font-size:2em;opacity:0.5;display:block;margin-bottom:10px;"></i>' +
+              'Nenhum resultado encontrado para sua busca.' +
+              '</div>'
+            );
+          }
         }
       } else {
         // Restaurar a visibilidade padrão
@@ -488,6 +503,7 @@ $(document).ready(function() {
         $('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-compress').addClass('fa-expand');
         $('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
         $('.category-controls').show();
+        $('.no-results-message').remove();
       }
       addCopyButtons();
     });
