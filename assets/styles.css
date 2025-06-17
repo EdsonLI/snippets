@@ -632,11 +632,13 @@ a:hover {
   font-weight: 500;
   color: #8b949e;
   user-select: none;
+  text-align: center; /* Centraliza o conteúdo dentro do tab */
 }
 .category-tab .category-tab-icon {
   font-size: 1.7em;
   margin-bottom: 4px;
   display: block;
+  text-align: center; /* Centraliza o ícone */
 }
 .category-tab .category-tab-label {
   font-size: 1em;
@@ -644,6 +646,9 @@ a:hover {
   margin-bottom: 2px;
   display: block;
   letter-spacing: 0.2px;
+  text-align: center; /* Centraliza o texto do label */
+  white-space: normal; /* Permite quebra de linha */
+  word-break: break-word; /* Quebra palavras longas */
 }
 .category-tab.active {
   color: #fff;
@@ -693,6 +698,10 @@ a:hover {
   .category-tabs { gap: 2px; }
   .category-tab { min-width: 70px; padding: 6px 6px 0 6px; font-size: 0.98em; }
   .category-tab .category-tab-icon { font-size: 1.2em; }
+  .category-tab .category-tab-label {
+    font-size: 0.95em;
+    text-align: center;
+  }
 }
 
 /* Esconde a scrollbar por padrão */
