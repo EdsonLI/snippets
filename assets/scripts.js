@@ -470,7 +470,6 @@ $(document).ready(function() {
           }
         });
 
-        // Mostrar apenas categorias com snippets visíveis (se estiver em "todas")
         if (activeFilter === 'todas') {
           $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
             if ($(this).find('.snippet-block:visible').length > 0) {
@@ -484,16 +483,20 @@ $(document).ready(function() {
         } else {
           // Esconde todas as seções, mostra só a da categoria ativa
           $('.section[id]').not('#madbuilder').hide();
-          $('#' + activeFilter).show();
+          const $section = $('#' + activeFilter);
+          $section.show();
 
-          // Se nenhum snippet visível, mostra mensagem bonita
+          // Se nenhum snippet visível, mostra mensagem bonita e esconde controles
           if ($snippets.filter(':visible').length === 0 && $snippetsList && $snippetsList.length) {
+            $section.find('.category-controls').hide();
             $snippetsList.append(
-              '<div class="no-results-message" style="padding:32px 0;text-align:center;color:#8A05BE;font-size:1.15em;font-weight:500;">' +
-              '<i class="fa fa-search" style="font-size:2em;opacity:0.5;display:block;margin-bottom:10px;"></i>' +
+              '<div class="no-results-message">' +
+              '<i class="fa fa-search"></i>' +
               'Nenhum resultado encontrado para sua busca.' +
               '</div>'
             );
+          } else {
+            $section.find('.category-controls').show();
           }
         }
       } else {
