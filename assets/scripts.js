@@ -481,11 +481,28 @@ $(document).ready(function() {
     });
   }
 
+  // --- BLOCO: Scrollbar visível só durante rolagem ---
+  function setupTabScrollbars() {
+    function handleScrollBarVisibility($el) {
+      let timeout;
+      $el.on('scroll', function() {
+        $el.addClass('scrolling');
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          $el.removeClass('scrolling');
+        }, 600);
+      });
+    }
+    handleScrollBarVisibility($('.tabs'));
+    handleScrollBarVisibility($('.category-tabs'));
+  }
+
   // --- CHAMADAS INICIAIS ---
   loadTabContents();
   setupTabs();
   setupCategoryFilters();
   setupBackToTopButton();
   setupSearch();
+  setupTabScrollbars();
   addCopyButtons();
 });

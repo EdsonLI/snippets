@@ -656,8 +656,8 @@ a:hover {
 
 /* Cores por categoria */
 .category-tab.categoria-todas .category-tab-icon,
-.category-tab.categoria-todas .category-tab-label { color: #F2911D; }
-.category-tab.categoria-todas.active { border-bottom: 3px solid #F2911D; }
+.category-tab.categoria-todas .category-tab-label { color: #F29111D; }
+.category-tab.categoria-todas.active { border-bottom: 3px solid #F29111D; }
 
 .category-tab.categoria-bancos .category-tab-icon,
 .category-tab.categoria-bancos .category-tab-label { color: #10a37f; }
@@ -693,4 +693,25 @@ a:hover {
   .category-tabs { gap: 2px; }
   .category-tab { min-width: 70px; padding: 6px 6px 0 6px; font-size: 0.98em; }
   .category-tab .category-tab-icon { font-size: 1.2em; }
+}
+
+/* Esconde a scrollbar por padrão */
+.tabs,
+.category-tabs {
+  scrollbar-width: none; /* Firefox */
+}
+.tabs::-webkit-scrollbar,
+.category-tabs::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Mostra a scrollbar só enquanto está rolando */
+.tabs.scrolling,
+.category-tabs.scrolling {
+  scrollbar-width: thin;
+}
+.tabs.scrolling::-webkit-scrollbar,
+.category-tabs.scrolling::-webkit-scrollbar {
+  display: block;
+  height: 6px;
 }
