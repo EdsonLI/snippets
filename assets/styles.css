@@ -764,7 +764,44 @@ a:hover {
 }
 
 /* O que vem a seguir */
-.snippet-gradient-box {
+.snippet-news-box {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeInUp 0.5s ease;
+}
+
+.snippet-news-box h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #4fd1c5;
+}
+
+.snippet-news-box ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);  
+  }
+}
+
+
+/* Ajustar para os helpers */
+/* .snippet-gradient-box {
   background: linear-gradient(135deg, #1e293b, #0f172a);
   color: #f8fafc;
   padding: 20px;
@@ -786,15 +823,4 @@ a:hover {
   list-style: disc;
   padding-left: 20px;
   margin: 0;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);  
-  }
-}
+} */
