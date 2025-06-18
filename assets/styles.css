@@ -112,7 +112,7 @@ input[type="text"]:focus {
 /* Cores específicas para cada aba */
 .tab.madbuilder-tab.active::after { background-color: #F2911D; }
 .tab.vscode-tab.active::after { background-color: #007ACC; }
-.tab.sql-tab.active::after { background-color: #2ecc71; }
+.tab.sql-tab.active::after { background-color: #10a37f; }
 .tab.php-tab.active::after { background-color: #777bb3; }
 .tab.php-tab:hover { background: #21262d !important; color: #777bb3 !important; }
 .tab.jquery-tab.active::after { background-color: #0769ad; }
@@ -158,7 +158,7 @@ input[type="text"]:focus {
 .tab.madbuilder-tab.active { background: #0d1117; color: #F2911D !important; }
 .tab.vscode-tab { color: #007ACC; }
 .tab.vscode-tab.active { background: #0d1117; color: #007ACC !important; }
-.tab.sql-tab { color: #2ecc71; }
+.tab.sql-tab { color: #10a37f; }
 .tab.php-tab { color: #777bb3; }
 .tab.jquery-tab { color: #0769ad; }
 .tab.bootstrap-tab { color: #0d6efd; }
@@ -171,7 +171,7 @@ input[type="text"]:focus {
 /* Cores dos check marks */
 .tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
 .tab.vscode-tab.active .tab-check { color: #007ACC !important; }
-.tab.sql-tab.active .tab-check { color: #2ecc71 !important; }
+.tab.sql-tab.active .tab-check { color: #10a37f !important; }
 .tab.php-tab.active .tab-check { color: #777bb3 !important; }
 .tab.jquery-tab.active .tab-check { color: #0769ad !important; }
 .tab.bootstrap-tab.active .tab-check { color: #0d6efd !important; }
