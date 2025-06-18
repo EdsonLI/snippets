@@ -788,7 +788,7 @@ a:hover {
   margin: 0;
 }
 
-.fontawesome-link {
+/* .fontawesome-link {
   display: inline-block;
   font-size: 1.1em;
   font-weight: 500;
@@ -799,7 +799,7 @@ a:hover {
   text-decoration: none;
   box-shadow: 0 2px 8px #3084f233;
   transition: background 0.2s, box-shadow 0.2s;
-}
+} */
 
 .fontawesome-title {
   margin: 0 0 6px 0;
