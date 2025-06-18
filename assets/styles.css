@@ -118,7 +118,7 @@ input[type="text"]:focus {
 .tab.jquery-tab.active::after { background-color: #0769ad; }
 .tab.bootstrap-tab.active::after { background-color: #0d6efd; }
 .tab.css-tab.active::after { background-color: #663399; }
-.tab.html-tab.active::after { background-color: #F06529; }
+.tab.html-tab.active::after { background-color: #Ec6231; }
 .tab.codepen-tab.active::after { background-color: #FFFFFF; }
 .tab.sweetalert2-tab.active::after { background-color: #d19a66; }
 .tab.fontawesome-tab.active::after { background-color: #fab005; }
@@ -163,7 +163,7 @@ input[type="text"]:focus {
 .tab.jquery-tab { color: #0769ad; }
 .tab.bootstrap-tab { color: #0d6efd; }
 .tab.css-tab { color: #663399; }
-.tab.html-tab { color: #F06529; }
+.tab.html-tab { color: #Ec6231; }
 .tab.codepen-tab { color: #FFFFFF; }
 .tab.sweetalert2-tab { color: #d19a66; }
 .tab.fontawesome-tab { color: #fab005; }
@@ -176,7 +176,7 @@ input[type="text"]:focus {
 .tab.jquery-tab.active .tab-check { color: #0769ad !important; }
 .tab.bootstrap-tab.active .tab-check { color: #0d6efd !important; }
 .tab.css-tab.active .tab-check { color: #663399 !important; }
-.tab.html-tab.active .tab-check { color: #F06529 !important; }
+.tab.html-tab.active .tab-check { color: #Ec6231 !important; }
 .tab.codepen-tab.active .tab-check { color: #FFFFFF !important; }
 .tab.sweetalert2-tab.active .tab-check { color: #d19a66 !important; }
 .tab.fontawesome-tab.active .tab-check { color: #fab005 !important; }
