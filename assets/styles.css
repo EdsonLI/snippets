@@ -801,7 +801,7 @@ a:hover {
   transition: background 0.2s, box-shadow 0.2s;
 } */
 
-.fontawesome-title {
+.branding-title {
   margin: 0 0 6px 0;
   font-size: 1.5em;
   font-weight: 700;
@@ -822,13 +822,13 @@ a:hover {
   transition: background 0.2s, box-shadow 0.2s;
 }
 
-.swal2-title {
+/* .swal2-title {
   margin: 0 0 6px 0;
   font-size: 1.5em;
   font-weight: 700;
   color: #d19a66;
   letter-spacing: 0.5px;
-}
+} */
 
 @keyframes fadeInUp {
   from {
