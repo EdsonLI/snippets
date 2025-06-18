@@ -182,12 +182,37 @@ input[type="text"]:focus {
 .tab.fontawesome-tab.active .tab-check { color: #fab005 !important; }
 
 .tab-icon-madbuilder {
-  width: 2.6rem;
-  height: 2.6rem;
   display: block;
-  margin: 0 auto 0.2rem auto;
+  margin: 0 auto 10px auto !important;
+  max-width: 2.2em;
+  max-height: 2.2em;
+  width: 2.2em;
+  height: 2.2em;
   object-fit: contain;
-  line-height: 2.2rem;
+  /* Centraliza e iguala o espaçamento dos outros ícones */
+}
+
+.tab.madbuilder-tab > div {
+  text-align: center;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .tab-icon-madbuilder {
+    max-width: 1.5em;
+    max-height: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    margin-bottom: 8px !important;
+  }
+  .tab.madbuilder-tab > div {
+    font-size: 0.95em;
+    margin-bottom: 0.15em;
+  }
 }
 
 /* =========================
