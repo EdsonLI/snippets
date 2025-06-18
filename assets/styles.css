@@ -670,8 +670,8 @@ a:hover {
 .category-tab.categoria-bancos.active { border-bottom: 3px solid #10a37f; }
 
 .category-tab.categoria-campos .category-tab-icon,
-.category-tab.categoria-campos .category-tab-label { color: #FF4040; }
-.category-tab.categoria-campos.active { border-bottom: 3px solid #FF4040; }
+.category-tab.categoria-campos .category-tab-label { color: #2E003E; }
+.category-tab.categoria-campos.active { border-bottom: 3px solid #2E003E; }
 
 .category-tab.categoria-sessao .category-tab-icon,
 .category-tab.categoria-sessao .category-tab-label { color: #da4c66; }
