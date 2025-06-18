@@ -115,7 +115,7 @@ input[type="text"]:focus {
 .tab.sql-tab.active::after { background-color: #2ecc71; }
 .tab.php-tab.active::after { background-color: #787CB5; }
 .tab.php-tab:hover { background: #21262d !important; color: #787CB5 !important; }
-.tab.jquery-tab.active::after { background-color: #0868AC; }
+.tab.jquery-tab.active::after { background-color: #0769ad; }
 .tab.bootstrap-tab.active::after { background-color: #0d6efd; }
 .tab.css-tab.active::after { background-color: #663399; }
 .tab.html-tab.active::after { background-color: #F06529; }
@@ -160,7 +160,7 @@ input[type="text"]:focus {
 .tab.vscode-tab.active { background: #0d1117; color: #007ACC !important; }
 .tab.sql-tab { color: #2ecc71; }
 .tab.php-tab { color: #787CB5; }
-.tab.jquery-tab { color: #0868AC; }
+.tab.jquery-tab { color: #0769ad; }
 .tab.bootstrap-tab { color: #0d6efd; }
 .tab.css-tab { color: #663399; }
 .tab.html-tab { color: #F06529; }
@@ -173,7 +173,7 @@ input[type="text"]:focus {
 .tab.vscode-tab.active .tab-check { color: #007ACC !important; }
 .tab.sql-tab.active .tab-check { color: #2ecc71 !important; }
 .tab.php-tab.active .tab-check { color: #787CB5 !important; }
-.tab.jquery-tab.active .tab-check { color: #0868AC !important; }
+.tab.jquery-tab.active .tab-check { color: #0769ad !important; }
 .tab.bootstrap-tab.active .tab-check { color: #0d6efd !important; }
 .tab.css-tab.active .tab-check { color: #663399 !important; }
 .tab.html-tab.active .tab-check { color: #F06529 !important; }
