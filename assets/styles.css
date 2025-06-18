@@ -788,6 +788,48 @@ a:hover {
   margin: 0;
 }
 
+.fontawesome-link {
+  display: inline-block;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #fab005;
+  background: #183153;
+  padding: 8px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #3084f233;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.fontawesome-title {
+  margin: 0 0 6px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #fab005;
+  letter-spacing: 0.5px;
+}
+
+.swal2-link {
+  display: inline-block;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #d19a66;
+  background: linear-gradient(90deg, #3084f2 60%, #4fd1c5 100%);
+  padding: 8px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #3084f233;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.swal2-title {
+  margin: 0 0 6px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #d19a66;
+  letter-spacing: 0.5px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
