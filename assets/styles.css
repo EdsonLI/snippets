@@ -866,3 +866,20 @@ a:hover {
   padding-left: 20px;
   margin: 0;
 } */
+
+.tab svg {
+  display: block;
+  margin: 0 auto 10px auto;
+  /* Centraliza horizontalmente e afasta do texto */
+  max-width: 2.2em;
+  max-height: 2.2em;
+}
+
+.tab > div {
+  text-align: center;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+  /* Garante centralização do texto abaixo do ícone */
+}
