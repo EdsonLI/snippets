@@ -116,7 +116,7 @@ input[type="text"]:focus {
 .tab.php-tab.active::after { background-color: #777bb3; }
 .tab.php-tab:hover { background: #21262d !important; color: #777bb3 !important; }
 .tab.jquery-tab.active::after { background-color: #0769ad; }
-.tab.bootstrap-tab.active::after { background-color: #0d6efd; }
+.tab.bootstrap-tab.active::after { background-color: #8312FA; }
 .tab.css-tab.active::after { background-color: #264DE4; }
 .tab.html-tab.active::after { background-color: #Ec6231; }
 .tab.codepen-tab.active::after { background-color: #FFFFFF; }
@@ -161,7 +161,7 @@ input[type="text"]:focus {
 .tab.sql-tab { color: #10a37f; }
 .tab.php-tab { color: #777bb3; }
 .tab.jquery-tab { color: #0769ad; }
-.tab.bootstrap-tab { color: #0d6efd; }
+.tab.bootstrap-tab { color: #8312FA; }
 .tab.css-tab { color: #264DE4; }
 .tab.html-tab { color: #Ec6231; }
 .tab.codepen-tab { color: #FFFFFF; }
@@ -174,7 +174,7 @@ input[type="text"]:focus {
 .tab.sql-tab.active .tab-check { color: #10a37f !important; }
 .tab.php-tab.active .tab-check { color: #777bb3 !important; }
 .tab.jquery-tab.active .tab-check { color: #0769ad !important; }
-.tab.bootstrap-tab.active .tab-check { color: #0d6efd !important; }
+.tab.bootstrap-tab.active .tab-check { color: #8312FA !important; }
 .tab.css-tab.active .tab-check { color: #264DE4 !important; }
 .tab.html-tab.active .tab-check { color: #Ec6231 !important; }
 .tab.codepen-tab.active .tab-check { color: #FFFFFF !important; }
