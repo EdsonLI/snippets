@@ -203,14 +203,14 @@ input[type="text"]:focus {
 /* Responsivo */
 @media (max-width: 600px) {
   .tab-icon-madbuilder {
-    max-width: 2em;
-    max-height: 2em;
-    width: 2em;
-    height: 2em;
-    margin-bottom: 8px !important;
+    max-width: 2.7em;
+    max-height: 2.7em;
+    width: 2.7em;
+    height: 2.7em;
+    margin-bottom: 10px !important;
   }
   .tab.madbuilder-tab > div {
-    font-size: 0.95em;
+    font-size: 0.98em;
     margin-bottom: 0.15em;
   }
 }
@@ -823,7 +823,6 @@ a:hover {
   border-radius: 6px;
   text-decoration: none;
   box-shadow: 0 2px 8px #3084f233;
-  transition: background 0.2s, box-shadow 0.2s;
 } */
 
 .branding-title {
