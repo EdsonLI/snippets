@@ -655,12 +655,18 @@ $(document).ready(function() {
   
   // Inicializar estado
   setTimeout(updateNavState, 100);
+  $(document).on('click', '.copy-btn', function () {
+    
+    const code = $(this).closest('td').find('code').text().replace(/<br>/g, '\n');
+    const button = $(this);
+    const original = button.text();
 
-  /* USADO NA PÁGINA DOS SNIPPETS GIT */
-  $('.copy-btn').on('click', function() {
-    const command = $(this).data('command');
-    navigator.clipboard.writeText(command).then(() => {
-      alert('Comando copiado: ' + command);
+    navigator.clipboard.writeText(code).then(() => {
+      button.text("Copiado!");
+      setTimeout(() => {
+        button.text(original);
+      }, 2000);
     });
   });
+
 });
