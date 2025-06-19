@@ -33,10 +33,21 @@ $(document).ready(function() {
 
   // --- BLOCO: Carregamento de abas e conteúdos iniciais ---
   function loadTabContents() {
-    $('#git-content').load('snippets_git.html', function() {
+    $('#git-content').load('snippets_git.html', function(response, status, xhr) {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+
+      // Executa scripts inline carregados via .load()
+      $('#git-content').find('script').each(function() {
+        $.globalEval(this.text || this.textContent || this.innerHTML || '');
+      });
+
+      // Move estilos inline para o <head> (evita duplicidade)
+      $('#git-content').find('style').each(function() {
+        $('head').append('<style>' + $(this).html() + '</style>');
+        $(this).remove();
+      });
     });
 
     $('#madbuilder-content').load('snippets_madbuilder.html', function() {
