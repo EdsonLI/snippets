@@ -33,6 +33,13 @@ $(document).ready(function() {
 
   // --- BLOCO: Carregamento de abas e conteúdos iniciais ---
   function loadTabContents() {
+    $('#git-content').load('snippets_git.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+      $('#git-content').addClass('active'); // Certifica que a aba Git está ativa
+    });
+
     $('#madbuilder-content').load('snippets_madbuilder.html', function() {
       // Corrigir targets dos botões
       $(this).find('.section').each(function() {

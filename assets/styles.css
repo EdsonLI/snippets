@@ -157,7 +157,9 @@ input[type="text"]:focus {
 }
 .tab.active .tab-check { display: flex; }
 .tab-content { display: none; }
-.tab-content.active { display: block; }
+.tab-content.active {
+  display: block;
+}
 .tab-icon {
   width: 2rem;
   height: 2rem;
