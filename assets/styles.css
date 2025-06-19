@@ -965,43 +965,44 @@ a:hover {
   width: 36px;
   align-items: center;
   justify-content: center;
-  background: transparent !important; /* fundo transparente */
+  background: none !important;
   border: none !important;
   outline: none !important;
-  z-index: 2;
-  color: #888;
-  font-size: 1.5rem;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 10;
   cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-  pointer-events: auto;
-  box-shadow: none !important;
-  padding: 0;
-  margin: 0;
 }
+
 .tabs-arrow.left {
   left: 0;
 }
+
 .tabs-arrow.right {
   right: 0;
 }
-.tabs-arrow.disabled {
+
+.tabs-arrow i {
+  color: #8b949e;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+  pointer-events: none;
+  background: none !important;
+  padding: 8px !important;
+  border-radius: 50%;
+}
+
+.tabs-arrow:hover i {
+  opacity: 1;
+  color: #f0f6fc;
+}
+
+.tabs-arrow.disabled i {
   opacity: 0.3;
   pointer-events: none;
 }
-.tabs-arrow i {
-  background: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  color: inherit;
-  font-size: inherit;
-  opacity: 1;
-  pointer-events: none;
-}
-.tabs-arrow:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
+
 @media (min-width: 900px) {
   .tabs-arrow {
     display: flex;
