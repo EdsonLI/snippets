@@ -965,9 +965,9 @@ a:hover {
   width: 36px;
   align-items: center;
   justify-content: center;
-  background: none !important; /* totalmente transparente */
-  border: none;
-  outline: none;
+  background: transparent !important; /* totalmente transparente */
+  border: none !important;
+  outline: none !important;
   z-index: 2;
   color: #888;
   font-size: 1.5rem;
@@ -975,6 +975,7 @@ a:hover {
   opacity: 0.7;
   transition: opacity 0.2s;
   pointer-events: auto;
+  box-shadow: none !important;
 }
 .tabs-arrow.left {
   left: 0;
@@ -994,6 +995,10 @@ a:hover {
   font-size: inherit;
   opacity: 1;
   pointer-events: none;
+}
+.tabs-arrow:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 @media (min-width: 900px) {
   .tabs-arrow {
