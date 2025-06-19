@@ -43,11 +43,134 @@
       </a>
     </li> -->
   </ul>
-
-
-
-
-
-
-  
 </div>
+
+<div class="section" id="voltar-commits" data-tags="git comandos">
+  <h3>
+    <i class="fa-solid fa-undo"></i>
+    <span>Voltar commits (desfazer ou reverter)</span>
+  </h3>
+  <div class="snippet-content">
+    <table class="futuristic-table">
+      <thead>
+        <tr>
+          <th>Situação</th>
+          <th>Comando</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Voltar 1 commit local (mantém alterações)</td>
+          <td>
+            <code>git reset --soft HEAD~1</code>
+            <button class="copy-btn" title="Copiar comando" data-command="git reset --soft HEAD~1">
+              <i class="fa fa-copy"></i>
+            </button>
+          </td>
+          <td>Volta 1 commit, mas preserva o código no stage.</td>
+        </tr>
+        <tr>
+          <td>Voltar 1 commit local (mantém no working dir)</td>
+          <td>
+            <code>git reset --mixed HEAD~1</code>
+            <button class="copy-btn" title="Copiar comando" data-command="git reset --mixed HEAD~1">
+              <i class="fa fa-copy"></i>
+            </button>
+          </td>
+          <td>Volta o commit e tira do stage.</td>
+        </tr>
+        <tr>
+          <td>Voltar 1 commit e descartar tudo</td>
+          <td>
+            <code>git reset --hard HEAD~1</code>
+            <button class="copy-btn" title="Copiar comando" data-command="git reset --hard HEAD~1">
+              <i class="fa fa-copy"></i>
+            </button>
+          </td>
+          <td>Cuidado! Apaga commit e alterações.</td>
+        </tr>
+        <tr>
+          <td>Voltar 2, 3 ou mais commits</td>
+          <td>
+            <code>git reset --hard HEAD~2</code>
+            <button class="copy-btn" title="Copiar comando" data-command="git reset --hard HEAD~2">
+              <i class="fa fa-copy"></i>
+            </button>
+          </td>
+          <td>Basta ajustar o número.</td>
+        </tr>
+        <tr>
+          <td>Reverter um commit (sem apagar histórico)</td>
+          <td>
+            <code>git revert &lt;hash&gt;</code>
+            <button class="copy-btn" title="Copiar comando" data-command="git revert <hash>">
+              <i class="fa fa-copy"></i>
+            </button>
+          </td>
+          <td>Cria novo commit que desfaz um anterior. Ideal em repos colaborativos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  // Adiciona funcionalidade aos botões de copiar
+  document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const command = button.getAttribute('data-command');
+      navigator.clipboard.writeText(command).then(() => {
+        alert('Comando copiado: ' + command);
+      });
+    });
+  });
+</script>
+
+<style>
+  .futuristic-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f8fafc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .futuristic-table th, .futuristic-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #30363d;
+  }
+  .futuristic-table th {
+    background: #21262d;
+    color: #f0f6fc;
+    font-weight: 600;
+  }
+  .futuristic-table td {
+    background: #161b22;
+    color: #c9d1d9;
+  }
+  .futuristic-table td code {
+    background: #21262d;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #f0f6fc;
+  }
+  .futuristic-table .copy-btn {
+    margin-left: 8px;
+    background: #21262d;
+    color: #8b949e;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .futuristic-table .copy-btn:hover {
+    background: #30363d;
+    color: #f0f6fc;
+  }
+</style>
