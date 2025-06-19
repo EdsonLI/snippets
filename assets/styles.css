@@ -820,10 +820,10 @@ a:hover {
   letter-spacing: 0.5px;
 }
 
-.branding-title svg {
+.branding-title-sweetalert2 svg {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 
 .swal2-link {
