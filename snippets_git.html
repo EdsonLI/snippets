@@ -1,195 +1,165 @@
-<div class="container my-5" id="git" data-tags="git">
-  <h2 class="section-title mb-4">Voltar commits</h2>
-  <div class="table-responsive mb-5">
-    <table class="table futuristic-table">
-      <thead>
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Voltar 1 commit local (mantém alterações)</td>
-          <td>
-            <code>git reset --soft HEAD~1</code>
-            <button class="btn btn-copy" data-copy="git reset --soft HEAD~1">📋</button>
-          </td>
-          <td>Volta 1 commit, mas preserva o código no stage.</td>
-        </tr>
-        <tr>
-          <td>Voltar 1 commit local (mantém no working dir)</td>
-          <td>
-            <code>git reset --mixed HEAD~1</code>
-            <button class="btn btn-copy" data-copy="git reset --mixed HEAD~1">📋</button>
-          </td>
-          <td>Volta o commit e tira do stage.</td>
-        </tr>
-        <tr>
-          <td>Voltar 1 commit e <strong>descartar tudo</strong></td>
-          <td>
-            <code>git reset --hard HEAD~1</code>
-            <button class="btn btn-copy" data-copy="git reset --hard HEAD~1">📋</button>
-          </td>
-          <td>Cuidado! Apaga commit e alterações.</td>
-        </tr>
-        <tr>
-          <td>Voltar 2, 3 ou mais commits</td>
-          <td>
-            <code>git reset --hard HEAD~2</code>
-            <button class="btn btn-copy" data-copy="git reset --hard HEAD~2">📋</button>
-          </td>
-          <td>Basta ajustar o número (HEAD~3, etc).</td>
-        </tr>
-        <tr>
-          <td>Reverter um commit (sem apagar histórico)</td>
-          <td>
-            <code>git revert &lt;hash&gt;</code>
-            <button class="btn btn-copy" data-copy="git revert <hash>">📋</button>
-          </td>
-          <td>Cria novo commit que desfaz um anterior. Ideal para colaboração.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<style>
+    body {
+      background: #0f0f0f;
+      font-family: 'Roboto', sans-serif;
+      color: #eaeaea;
+    }
 
-  <h2 class="section-title mb-4">Branches</h2>
-  <div class="table-responsive mb-5">
-    <table class="table futuristic-table">
-      <thead>
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Criar branch nova</td>
-          <td>
-            <code>git checkout -b nome-da-branch</code>
-            <button class="btn btn-copy" data-copy="git checkout -b nome-da-branch">📋</button>
-          </td>
-          <td>Usa-se para tarefas novas.</td>
-        </tr>
-        <tr>
-          <td>Alternar entre branches</td>
-          <td>
-            <code>git checkout nome-da-branch</code>
-            <button class="btn btn-copy" data-copy="git checkout nome-da-branch">📋</button>
-          </td>
-          <td>Muda de contexto.</td>
-        </tr>
-        <tr>
-          <td>Subir branch para o repositório</td>
-          <td>
-            <code>git push -u origin nome-da-branch</code>
-            <button class="btn btn-copy" data-copy="git push -u origin nome-da-branch">📋</button>
-          </td>
-          <td><code>-u</code> define upstream para facilitar pushes futuros.</td>
-        </tr>
-        <tr>
-          <td>Deletar branch local</td>
-          <td>
-            <code>git branch -d nome-da-branch</code>
-            <button class="btn btn-copy" data-copy="git branch -d nome-da-branch">📋</button>
-          </td>
-          <td>Use <code>-D</code> para forçar a exclusão.</td>
-        </tr>
-        <tr>
-          <td>Deletar branch remota</td>
-          <td>
-            <code>git push origin --delete nome-da-branch</code>
-            <button class="btn btn-copy" data-copy="git push origin --delete nome-da-branch">📋</button>
-          </td>
-          <td>Para limpar branches antigas do repositório remoto.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    .section-title {
+      color: #DE4C36;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-top: 2rem;
+      text-shadow: 0 0 5px #DE4C36, 0 0 15px #DE4C36;
+    }
 
-  <h2 class="section-title mb-4">Atualizar com <code>development</code></h2>
-  <div class="table-responsive mb-5">
-    <table class="table futuristic-table">
-      <thead>
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Atualizar sua branch com commits da <code>development</code></td>
-          <td>
-            <code>git checkout sua-branch<br>git pull origin development</code>
-            <button class="btn btn-copy" data-copy="git checkout sua-branch
-git pull origin development"></button>
-          </td>
-          <td>Garante que sua branch esteja atualizada antes do PR.</td>
-        </tr>
-        <tr>
-          <td>Rebase para reordenar histórico</td>
-          <td>
-            <code>git rebase development</code>
-            <button class="btn btn-copy" data-copy="git rebase development">📋</button>
-          </td>
-          <td>Cria histórico linear, mas pode gerar conflitos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    .futuristic-table {
+      background: #1c1f26;
+      color: #eee;
+      font-size: 0.95rem;
+      box-shadow: inset 0 0 12px #DE4C36aa, 0 0 10px #DE4C3699;
+      border-radius: 0.75rem;
+    }
 
-  <h2 class="section-title mb-4">Ver histórico e estado</h2>
-  <div class="table-responsive mb-5">
-    <table class="table futuristic-table">
-      <thead>
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ver log resumido e visual</td>
-          <td>
-            <code>git log --oneline --graph --all</code>
-            <button class="btn btn-copy" data-copy="git log --oneline --graph --all">📋</button>
-          </td>
-          <td>Visualização clara do histórico e branches.</td>
-        </tr>
-        <tr>
-          <td>Ver mudanças locais</td>
-          <td>
-            <code>git status</code>
-            <button class="btn btn-copy" data-copy="git status"></button>
-          </td>
-          <td>Mostra alterações e arquivos no stage.</td>
-        </tr>
-        <tr>
-          <td>Ver diferenças no código</td>
-          <td>
-            <code>git diff</code>
-            <button class="btn btn-copy" data-copy="git diff"></button>
-          </td>
-          <td>Compara working dir com o último commit.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    .futuristic-table thead {
+      background: linear-gradient(90deg, #DE4C36cc, #9b1f0dcc);
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
 
-  <h2 class="section-title mb-4">Fluxo prático: branches e PRs</h2>
-  <div class="practical-flow p-4 rounded-3 mb-5">
-    <p><strong>📌 Exemplo de fluxo com a branch <code>development</code>:</strong></p>
-    <ol>
-      <li>Você e outros desenvolvedores criam suas branches a partir da <code>development</code>.</li>
-      <li>Fazem commits, push e abrem Pull Requests (PRs) para <code>development</code>.</li>
-      <li>O gestor aprova um PR. Os commits da branch são incorporados à <code>development</code>.</li>
-      <li>Outros PRs ainda abertos podem ter conflitos se baseados em versões antigas de <code>development</code>.</li>
-      <li><strong>Recomenda-se:</strong> sempre fazer <code>git pull origin development</code> ou <code>git rebase origin/development</code> antes de abrir ou atualizar PRs.</li>
-    </ol>
-    <p>Após aprovação de cada PR, atualize sua branch com os commits mais recentes da <code>development</code> antes de continuar desenvolvendo.</p>
+    .futuristic-table code {
+      background: #292f3a;
+      color: #DE4C36;
+      padding: 0.15rem 0.4rem;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .btn-copy {
+      background: #DE4C36;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      margin-left: 0.5rem;
+      border-radius: 5px;
+      box-shadow: 0 0 6px #DE4C36cc;
+      transition: background 0.3s ease;
+    }
+
+    .btn-copy:hover {
+      background: #f05030;
+      box-shadow: 0 0 12px #f05030aa;
+    }
+
+    .practical-flow {
+      background: #161b22;
+      color: #c9d1d9;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #DE4C36aa;
+    }
+
+    .practical-flow code {
+      background: #22272e;
+      padding: 0.15rem 0.4rem;
+      border-radius: 5px;
+      color: #DE4C36;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .futuristic-table thead {
+        font-size: 0.85rem;
+      }
+      .futuristic-table td,
+      .futuristic-table th {
+        font-size: 0.9rem;
+        padding: 0.75rem 0.5rem;
+      }
+      .btn-copy {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container my-5" id="git" data-tags="git">
+    
+    <h2 class="section-title">🔙 Voltar commits</h2>
+    <div class="table-responsive mb-5">
+      <table class="table futuristic-table">
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>Comando</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Voltar 1 commit local (mantém alterações)</td>
+            <td>
+              <code>git reset --soft HEAD~1</code>
+              <button class="btn btn-copy" data-copy="git reset --soft HEAD~1">📋</button>
+            </td>
+            <td>Volta 1 commit, mas preserva o código no stage.</td>
+          </tr>
+          <tr>
+            <td>Voltar 1 commit local (mantém no working dir)</td>
+            <td>
+              <code>git reset --mixed HEAD~1</code>
+              <button class="btn btn-copy" data-copy="git reset --mixed HEAD~1">📋</button>
+            </td>
+            <td>Volta o commit e tira do stage.</td>
+          </tr>
+          <tr>
+            <td>Voltar 1 commit e <strong>descartar tudo</strong></td>
+            <td>
+              <code>git reset --hard HEAD~1</code>
+              <button class="btn btn-copy" data-copy="git reset --hard HEAD~1">📋</button>
+            </td>
+            <td>Cuidado! Apaga commit e alterações.</td>
+          </tr>
+          <tr>
+            <td>Voltar 2, 3 ou mais commits</td>
+            <td>
+              <code>git reset --hard HEAD~2</code>
+              <button class="btn btn-copy" data-copy="git reset --hard HEAD~2">📋</button>
+            </td>
+            <td>Basta ajustar o número (HEAD~3, etc).</td>
+          </tr>
+          <tr>
+            <td>Reverter um commit (sem apagar histórico)</td>
+            <td>
+              <code>git revert &lt;hash&gt;</code>
+              <button class="btn btn-copy" data-copy="git revert <hash>">📋</button>
+            </td>
+            <td>Cria novo commit que desfaz um anterior. Ideal para colaboração.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">🚀 Fluxo prático: branches e Pull Requests</h2>
+    <div class="practical-flow mb-5">
+      <p><strong>📌 Exemplo de fluxo com a branch <code>development</code>:</strong></p>
+      <ol>
+        <li>Você e outros desenvolvedores criam suas branches a partir da <code>development</code>.</li>
+        <li>Fazem commits, push e abrem Pull Requests (PRs) para <code>development</code>.</li>
+        <li>O gestor aprova um PR. Os commits da branch são incorporados à <code>development</code>.</li>
+        <li>Outros PRs ainda abertos podem ter conflitos se baseados em versões antigas de <code>development</code>.</li>
+        <li><strong>Recomenda-se:</strong> sempre fazer <code>git pull origin development</code> ou <code>git rebase origin/development</code> antes de abrir ou atualizar PRs.</li>
+      </ol>
+      <p>✅ Após aprovação de cada PR, atualize sua branch com os commits mais recentes da <code>development</code> antes de continuar desenvolvendo.</p>
+    </div>
+
   </div>
-</div>
