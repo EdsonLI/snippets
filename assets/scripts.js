@@ -585,29 +585,63 @@ $(document).ready(function() {
   setupTabsDragScroll();
   addCopyButtons();
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const wrapper = document.querySelector('.tabs-carousel-wrapper');
-    if (!wrapper) return;
-    const tabs = wrapper.querySelector('.tabs');
-    const left = wrapper.querySelector('.tabs-arrow.left');
-    const right = wrapper.querySelector('.tabs-arrow.right');
-
-    // Event listeners
-    left.addEventListener('click', function() {
-      tabs.scrollBy({ left: -200, behavior: 'smooth' });
-    });
-    right.addEventListener('click', function() {
-      tabs.scrollBy({ left: 200, behavior: 'smooth' });
-    });
-    
-    // Atualizar visibilidade das setas
-    function updateArrows() {
-      left.classList.toggle('disabled', tabs.scrollLeft <= 0);
-      right.classList.toggle('disabled', tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 2);
+  // Script de navegação ULTRA-MINIMALISTA
+  const tabs = $('.tabs');
+  const leftBtn = $('#scroll-left-btn');
+  const rightBtn = $('#scroll-right-btn');
+  
+  function updateNavState() {
+    leftBtn.toggleClass('disabled', tabs.scrollLeft() <= 0);
+    rightBtn.toggleClass('disabled', 
+      tabs.scrollLeft() + tabs.width() >= tabs.get(0).scrollWidth - 5);
+  }
+  
+  leftBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() - 200}, 300);
     }
-    
-    tabs.addEventListener('scroll', updateArrows);
-    window.addEventListener('resize', updateArrows);
-    updateArrows();
   });
+  
+  rightBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() + 200}, 300);
+    }
+  });
+  
+  tabs.scroll(updateNavState);
+  $(window).resize(updateNavState);
+  
+  // Inicializar estado
+  setTimeout(updateNavState, 100);
+});
+
+// Script para navegação das tabs com setas transparentes
+$(document).ready(function() {
+  const tabs = $('.tabs');
+  const leftBtn = $('#scroll-left-btn');
+  const rightBtn = $('#scroll-right-btn');
+  
+  function updateNavState() {
+    leftBtn.toggleClass('disabled', tabs.scrollLeft() <= 0);
+    rightBtn.toggleClass('disabled', 
+      tabs.scrollLeft() + tabs.width() >= tabs.get(0).scrollWidth - 5);
+  }
+  
+  leftBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() - 200}, 300);
+    }
+  });
+  
+  rightBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() + 200}, 300);
+    }
+  });
+  
+  tabs.scroll(updateNavState);
+  $(window).resize(updateNavState);
+  
+  // Inicializar estado
+  setTimeout(updateNavState, 100);
 });
