@@ -410,28 +410,7 @@
       <strong>Ocultar todos</strong>
     </button>
   </div>
-  <div class="snippets-list" id="codigos-snippets">
-    <div class="snippet-block">
-      <div class="snippet-title">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Verificar condição</strong>
-      </div>
-      <div class="snippet-content"><pre><code class="language-php">&lt;?php
-   if($param['builder_datagrid_check']) {…}
-?&gt;</code></pre></div>
-    </div>
-    <div class="snippet-block">
-      <div class="snippet-title">
-        <i class="fa-solid fa-plus"></i>
-        <strong>Clonar objeto e armazenar</strong>
-      </div>
-      <div class="snippet-content"><pre><code class="language-php">&lt;?php
-   $bank = new Bank();
-   $bankClone = clone $bank;
-   unset($bankClone->id);
-   $bankClone->store();
-?&gt;</code></pre></div>
-    </div>
+  <div class="snippets-list" id="codigos-snippets">    
     <div class="snippet-block">
       <div class="snippet-title">
         <i class="fa-solid fa-plus"></i>
@@ -534,6 +513,66 @@ $contaClone->store();
       </div>
       <div class="snippet-content"><pre><code class="language-php">&lt;?php
    $window->show();
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Embarcar sistema em janela</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$window = TWindow::create('Adianti', 0.8, 0.8);
+
+$iframe = new TElement('iframe');
+$iframe->id = "iframe_external";
+$iframe->src = "http://www.adianti.com.br/framework_files/template-material/";
+$iframe->frameborder = "0";
+$iframe->scrolling = "yes";
+$iframe->width = "100%";
+$iframe->height = "600px";
+
+$window->add($iframe);
+$window->show();
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Ir para a página</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$pageParam = []; // ex.: = ['key' => 10]
+TApplication::loadPage('ContaPagarList', 'onShow', $pageParam);
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Janela sob demanda</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$object = new TLabel('Teste');
+
+$window = TWindow::create('Janela sob demanda', 0.8, 650);
+$window->add($object);
+$window->show();
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Embed PDF</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$window = TWindow::create('PDF', 0.8, 0.8);
+
+$object = new TElement('iframe');
+$object->src  = 'http://www.adianti.com.br/framework_files/adianti_framework.pdf';
+$object->type  = 'application/pdf';
+$object->style = "width: 100%; height:calc(100% - 10px)";
+
+$window->add($object);
+$window->show();
 ?&gt;</code></pre></div>
     </div>
   </div>
