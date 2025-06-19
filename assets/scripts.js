@@ -655,18 +655,4 @@ $(document).ready(function() {
   
   // Inicializar estado
   setTimeout(updateNavState, 100);
-  $(document).on('click', '.copy-btn', function () {
-    
-    const code = $(this).closest('td').find('code').text().replace(/<br>/g, '\n');
-    const button = $(this);
-    const original = button.text();
-
-    navigator.clipboard.writeText(code).then(() => {
-      button.text("Copiado!");
-      setTimeout(() => {
-        button.text(original);
-      }, 2000);
-    });
-  });
-
 });
