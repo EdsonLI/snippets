@@ -301,3 +301,18 @@ git pull origin development" aria-label="Copiar comando">📋</button>
     }
   }
 </style>
+
+<script>
+  $(function() {
+    $('.btn-copy').click(function() {
+      const btn = $(this);
+      const text = btn.data('copy');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.text('✔️');
+        setTimeout(() => btn.text('📋'), 1500);
+      }).catch(() => {
+        alert('Falha ao copiar');
+      });
+    });
+  });
+</script>
