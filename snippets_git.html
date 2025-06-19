@@ -301,18 +301,3 @@ git pull origin development" aria-label="Copiar comando">📋</button>
     }
   }
 </style>
-
-<script>
-  // Função copiar texto ao clicar no botão
-  document.querySelectorAll('.btn-copy').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const text = btn.getAttribute('data-copy');
-      navigator.clipboard.writeText(text).then(() => {
-        btn.textContent = '✔️';
-        setTimeout(() => btn.textContent = '📋', 1500);
-      }).catch(() => {
-        alert('Falha ao copiar');
-      });
-    });
-  });
-</script>

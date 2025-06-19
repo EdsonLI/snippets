@@ -655,4 +655,22 @@ $(document).ready(function() {
   
   // Inicializar estado
   setTimeout(updateNavState, 100);
+  
+  /* ESSE AQUI ESTÁ SENDO USADO NA PÁGINA DOS SNIPPETS GIT */
+  $('.btn-copy').click(function() {
+    const btn = $(this);
+    const icon = btn.find('i');
+    const text = btn.data('copy');
+
+    navigator.clipboard.writeText(text).then(() => {
+      // Troca o ícone para check
+      icon.removeClass('fa-clipboard').addClass('fa-check').css('color', '#28a745');
+      // Depois de 1.5s volta para o ícone original
+      setTimeout(() => {
+        icon.removeClass('fa-check').addClass('fa-clipboard').css('color', '');
+      }, 1500);
+    }).catch(() => {
+      alert('Falha ao copiar');
+    });
+  });
 });
