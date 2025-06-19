@@ -825,6 +825,19 @@ a:hover {
   margin: 0 -2px 6px 0 !important;
 }
 
+.branding-title-git {
+  margin: 0 0 6px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #DE4C36;
+  letter-spacing: 0.5px;
+}
+
+.branding-title-git svg {
+  vertical-align: middle !important;
+  margin: 0 -2px 6px 0 !important;
+}
+
 .swal2-link {
   display: inline-block;
   font-size: 1.1em;
