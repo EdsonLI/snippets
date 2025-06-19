@@ -812,6 +812,12 @@ a:hover {
   letter-spacing: 0.5px;
 }
 
+.branding-title svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
 .swal2-link {
   display: inline-block;
   font-size: 1.1em;
