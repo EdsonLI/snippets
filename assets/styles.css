@@ -200,13 +200,6 @@ input[type="text"]:focus {
 
 /* Responsivo */
 @media (max-width: 600px) {
-  .tab-icon-madbuilder {
-    max-width: 2.7em;
-    max-height: 2.7em;
-    width: 2.7em;
-    height: 2.7em;
-    margin-bottom: 10px !important;
-  }
   .tab.madbuilder-tab > div {
     font-size: 0.98em;
     margin-bottom: 0.15em;
@@ -589,7 +582,7 @@ a:hover {
   }
   .tabs { margin-bottom: 12px; }
   .tab { padding: 7px 10px; min-width: 70px; font-size: 0.98em; }
-  .tab-icon, .tab-icon-madbuilder {
+  .tab-icon {
     width: 1.5rem;
     height: 1.5rem;
     font-size: 1.5rem;
