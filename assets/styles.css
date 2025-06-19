@@ -965,7 +965,7 @@ a:hover {
   width: 36px;
   align-items: center;
   justify-content: center;
-  background: transparent; /* <-- ajuste aqui */
+  background: none !important; /* totalmente transparente */
   border: none;
   outline: none;
   z-index: 2;
@@ -984,6 +984,15 @@ a:hover {
 }
 .tabs-arrow.disabled {
   opacity: 0.3;
+  pointer-events: none;
+}
+.tabs-arrow i {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: inherit;
+  font-size: inherit;
+  opacity: 1;
   pointer-events: none;
 }
 @media (min-width: 900px) {
