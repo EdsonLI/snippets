@@ -87,44 +87,55 @@ $(document).ready(function() {
       loadSnippetsListings();
     });
 
-    $('#sql-content').load('snippets_sql.html', function() {
+    $('#git-content').load('snippets_git.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    // Adiciona carregamento para as novas abas
-    $('#php-content').load('snippets_php.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-    });
-    $('#jquery-content').load('snippets_jquery.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-    });
-    $('#bootstrap-content').load('snippets_bootstrap.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-    });
-    $('#html-content').load('snippets_html.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-    });
-    $('#css-content').load('snippets_css.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-    });
     $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
+
     $('#fontawesome-content').load('snippets_fontawesome.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#css-content').load('snippets_css.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#bootstrap-content').load('snippets_bootstrap.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#jquery-content').load('snippets_jquery.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#html-content').load('snippets_html.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#php-content').load('snippets_php.html', function() {
+      hljs.highlightAll();
+      setupSnippetInteractions();
+      addCopyButtons();
+    });
+
+    $('#sql-content').load('snippets_sql.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
