@@ -655,4 +655,12 @@ $(document).ready(function() {
   
   // Inicializar estado
   setTimeout(updateNavState, 100);
+
+  /* USADO NA PÁGINA DOS SNIPPETS GIT */
+  $('.copy-btn').on('click', function() {
+    const command = $(this).data('command');
+    navigator.clipboard.writeText(command).then(() => {
+      alert('Comando copiado: ' + command);
+    });
+  });
 });
