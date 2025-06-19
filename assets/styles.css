@@ -958,18 +958,14 @@ a:hover {
 }
 
 .tabs-arrow {
-  display: none;
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 36px;
+  width: 40px;
+  display: none;
   align-items: center;
   justify-content: center;
-  background: none !important;
-  border: none !important;
-  outline: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  background: transparent;
   z-index: 10;
   cursor: pointer;
 }
@@ -986,21 +982,18 @@ a:hover {
   color: #8b949e;
   font-size: 1.5rem;
   opacity: 0.7;
-  transition: opacity 0.2s, color 0.2s;
-  pointer-events: none;
-  background: none !important;
-  padding: 8px !important;
-  border-radius: 50%;
+  transition: opacity 0.2s, color 0.2s, transform 0.2s;
 }
 
 .tabs-arrow:hover i {
   opacity: 1;
   color: #f0f6fc;
+  transform: scale(1.2);
 }
 
 .tabs-arrow.disabled i {
   opacity: 0.3;
-  pointer-events: none;
+  cursor: default;
 }
 
 @media (min-width: 900px) {
@@ -1008,7 +1001,7 @@ a:hover {
     display: flex;
   }
   .tabs {
-    margin: 0 36px;
+    margin: 0 40px;
   }
 }
 @media (max-width: 899px) {
