@@ -183,11 +183,9 @@ input[type="text"]:focus {
 
 .tab-icon-madbuilder {
   display: block;
-  margin: 0 auto 10px auto !important;
-  max-width: 2.2em;
-  max-height: 2.2em;
-  width: 2.2em;
-  height: 2.2em;
+  margin: 0 auto 9px auto !important;  
+  width: 2.5rem;
+  height: 2.2rem;
   object-fit: contain;
   /* Centraliza e iguala o espaçamento dos outros ícones */
 }
