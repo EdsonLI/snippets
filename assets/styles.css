@@ -935,3 +935,72 @@ a:hover {
 .categoria-todas {
    color: #888 !important;
 }
+
+/* =========================
+   TABS CAROUSEL (NOVO)
+   ========================= */
+.tabs-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.tabs {
+  overflow-x: auto;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs-arrow {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0));
+  border: none;
+  outline: none;
+  z-index: 2;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  pointer-events: auto;
+}
+.tabs-arrow.left {
+  left: 0;
+  background: linear-gradient(to right, #fff 70%, rgba(255,255,255,0));
+}
+.tabs-arrow.right {
+  right: 0;
+  background: linear-gradient(to left, #fff 70%, rgba(255,255,255,0));
+}
+.tabs-arrow.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+@media (min-width: 900px) {
+  .tabs-arrow {
+    display: flex;
+  }
+  .tabs {
+    margin: 0 36px;
+  }
+}
+@media (max-width: 899px) {
+  .tabs-arrow {
+    display: none !important;
+  }
+  .tabs {
+    margin: 0;
+  }
+}
