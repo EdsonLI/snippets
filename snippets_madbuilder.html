@@ -58,6 +58,22 @@ TTransaction::open('mini_erp');
 TTransaction::close();
 ?&gt;</code></pre></div>
     </div>
+    <div class="snippet-block" data-tags="php sql banco consulta select">
+  <div class="snippet-title">
+    <i class="fa-solid fa-plus"></i>
+    <strong>SQL Manual</strong>
+  </div>
+  <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$conn = TTransaction::get();
+$result = $conn-&gt;query('SELECT id FROM conta ORDER BY id');
+$objects = $result-&gt;fetchAll(PDO::FETCH_CLASS, "stdClass");
+if ($objects) {
+    foreach ($objects as $object) {
+        echo $object-&gt;id;
+    }
+}
+?&gt;</code></pre></div>
+</div>
     <div class="snippet-block">
       <div class="snippet-title">
         <i class="fa-solid fa-plus"></i>
