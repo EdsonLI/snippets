@@ -1,4 +1,129 @@
-<div id="git-helper" class="info-box">
+<div class="section" id="git" data-tags="git">
+
+  <style>
+    .git-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 2fr;
+      gap: 12px;
+      padding: 16px;
+      background: #1e1e2f;
+      color: #eee;
+      border-radius: 12px;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-bottom: 32px;
+    }
+    .git-grid.header {
+      font-weight: bold;
+      background: #292942;
+      color: #ffd700;
+      border-bottom: 2px solid #444;
+    }
+    .git-grid code {
+      background: #2c2c3f;
+      color: #9efeff;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+  </style>
+
+  <h2>🔙 Voltar commits</h2>
+  <div class="git-grid header">
+    <div>Situação</div>
+    <div>Comando</div>
+    <div>Descrição</div>
+  </div>
+  <div class="git-grid">
+    <div>Voltar 1 commit local (mantém alterações)</div>
+    <div><code>git reset --soft HEAD~1</code></div>
+    <div>Volta 1 commit, mas preserva o código no stage.</div>
+
+    <div>Voltar 1 commit local (mantém no working dir)</div>
+    <div><code>git reset --mixed HEAD~1</code></div>
+    <div>Volta o commit e tira do stage.</div>
+
+    <div>Voltar 1 commit e <strong>descartar tudo</strong></div>
+    <div><code>git reset --hard HEAD~1</code></div>
+    <div>Cuidado! Apaga commit e alterações.</div>
+
+    <div>Voltar 2, 3 ou mais commits</div>
+    <div><code>git reset --hard HEAD~2</code></div>
+    <div>Basta ajustar o número (HEAD~3, etc).</div>
+
+    <div>Reverter um commit (sem apagar histórico)</div>
+    <div><code>git revert &lt;hash&gt;</code></div>
+    <div>Cria novo commit que desfaz um anterior. Ideal para colaboração.</div>
+  </div>
+
+  <h2>📂 Branches</h2>
+  <div class="git-grid header">
+    <div>Situação</div>
+    <div>Comando</div>
+    <div>Descrição</div>
+  </div>
+  <div class="git-grid">
+    <div>Criar branch nova</div>
+    <div><code>git checkout -b nome-da-branch</code></div>
+    <div>Usa-se para tarefas novas.</div>
+
+    <div>Alternar entre branches</div>
+    <div><code>git checkout nome-da-branch</code></div>
+    <div>Muda de contexto.</div>
+
+    <div>Subir branch para o repositório</div>
+    <div><code>git push -u origin nome-da-branch</code></div>
+    <div><code>-u</code> define upstream para facilitar pushes futuros.</div>
+
+    <div>Deletar branch local</div>
+    <div><code>git branch -d nome-da-branch</code></div>
+    <div>Use <code>-D</code> para forçar a exclusão.</div>
+
+    <div>Deletar branch remota</div>
+    <div><code>git push origin --delete nome-da-branch</code></div>
+    <div>Para limpar branches antigas do repositório remoto.</div>
+  </div>
+
+  <h2>🔄 Atualizar com <code>development</code></h2>
+  <div class="git-grid header">
+    <div>Situação</div>
+    <div>Comando</div>
+    <div>Descrição</div>
+  </div>
+  <div class="git-grid">
+    <div>Atualizar sua branch com commits da <code>development</code></div>
+    <div><code>git checkout sua-branch<br>git pull origin development</code></div>
+    <div>Garante que sua branch esteja atualizada antes do PR.</div>
+
+    <div>Rebase para reordenar histórico</div>
+    <div><code>git rebase development</code></div>
+    <div>Cria histórico linear, mas pode gerar conflitos.</div>
+  </div>
+
+  <h2>🔍 Ver histórico e estado</h2>
+  <div class="git-grid header">
+    <div>Situação</div>
+    <div>Comando</div>
+    <div>Descrição</div>
+  </div>
+  <div class="git-grid">
+    <div>Ver log resumido e visual</div>
+    <div><code>git log --oneline --graph --all</code></div>
+    <div>Visualização clara do histórico e branches.</div>
+
+    <div>Ver mudanças locais</div>
+    <div><code>git status</code></div>
+    <div>Mostra alterações e arquivos no stage.</div>
+
+    <div>Ver diferenças no código</div>
+    <div><code>git diff</code></div>
+    <div>Compara working dir com o último commit.</div>
+  </div>
+
+</div>
+
+<!-- <div id="git-helper" class="info-box">
   <button onclick="document.getElementById('git-helper').style.display='none';" 
           title="Fechar" class="info-box-close">
     &times;
@@ -87,4 +212,4 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->
