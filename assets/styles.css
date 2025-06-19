@@ -821,9 +821,8 @@ a:hover {
 }
 
 .branding-title-sweetalert2 svg {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 8px;
+  vertical-align: middle !important;
+  margin-right: 8px !important;
 }
 
 .swal2-link {
