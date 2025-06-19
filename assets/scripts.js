@@ -585,36 +585,32 @@ $(document).ready(function() {
   setupTabsDragScroll();
   addCopyButtons();
 
-  // Scripts para as navegação das abas - SUBSTITUIR o script existente por este
-  document.addEventListener('DOMContentLoaded', function() {
-    // Setup das setas de navegação
-    const tabs = document.querySelector('.tabs');
-    const leftArrow = document.querySelector('.nav-arrow-left');
-    const rightArrow = document.querySelector('.nav-arrow-right');
-    
-    if (tabs && leftArrow && rightArrow) {
-      // Função para atualizar visibilidade das setas
-      function updateArrowsState() {
-        leftArrow.classList.toggle('disabled', tabs.scrollLeft <= 0);
-        rightArrow.classList.toggle('disabled', 
-          tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 2);
-      }
-      
-      // Event listeners
-      leftArrow.addEventListener('click', function(e) {
-        e.preventDefault();
-        tabs.scrollBy({left: -200, behavior: 'smooth'});
-      });
-      
-      rightArrow.addEventListener('click', function(e) {
-        e.preventDefault();
-        tabs.scrollBy({left: 200, behavior: 'smooth'});
-      });
-      
-      // Atualizar quando rolar ou mudar tamanho
-      tabs.addEventListener('scroll', updateArrowsState);
-      window.addEventListener('resize', updateArrowsState);
-      updateArrowsState();
+  // Script de navegação ULTRA-MINIMALISTA
+  const tabs = $('.tabs');
+  const leftBtn = $('#scroll-left-btn');
+  const rightBtn = $('#scroll-right-btn');
+  
+  function updateNavState() {
+    leftBtn.toggleClass('disabled', tabs.scrollLeft() <= 0);
+    rightBtn.toggleClass('disabled', 
+      tabs.scrollLeft() + tabs.width() >= tabs.get(0).scrollWidth - 5);
+  }
+  
+  leftBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() - 200}, 300);
     }
   });
+  
+  rightBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() + 200}, 300);
+    }
+  });
+  
+  tabs.scroll(updateNavState);
+  $(window).resize(updateNavState);
+  
+  // Inicializar estado
+  setTimeout(updateNavState, 100);
 });
