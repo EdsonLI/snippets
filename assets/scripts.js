@@ -585,29 +585,36 @@ $(document).ready(function() {
   setupTabsDragScroll();
   addCopyButtons();
 
+  // Scripts para as navegação das abas - SUBSTITUIR o script existente por este
   document.addEventListener('DOMContentLoaded', function() {
-    const wrapper = document.querySelector('.tabs-carousel-wrapper');
-    if (!wrapper) return;
-    const tabs = wrapper.querySelector('.tabs');
-    const left = wrapper.querySelector('.tabs-arrow.left');
-    const right = wrapper.querySelector('.tabs-arrow.right');
-
-    // Event listeners
-    left.addEventListener('click', function() {
-      tabs.scrollBy({ left: -200, behavior: 'smooth' });
-    });
-    right.addEventListener('click', function() {
-      tabs.scrollBy({ left: 200, behavior: 'smooth' });
-    });
+    // Setup das setas de navegação
+    const tabs = document.querySelector('.tabs');
+    const leftArrow = document.querySelector('.nav-arrow-left');
+    const rightArrow = document.querySelector('.nav-arrow-right');
     
-    // Atualizar visibilidade das setas
-    function updateArrows() {
-      left.classList.toggle('disabled', tabs.scrollLeft <= 0);
-      right.classList.toggle('disabled', tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 2);
+    if (tabs && leftArrow && rightArrow) {
+      // Função para atualizar visibilidade das setas
+      function updateArrowsState() {
+        leftArrow.classList.toggle('disabled', tabs.scrollLeft <= 0);
+        rightArrow.classList.toggle('disabled', 
+          tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 2);
+      }
+      
+      // Event listeners
+      leftArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        tabs.scrollBy({left: -200, behavior: 'smooth'});
+      });
+      
+      rightArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        tabs.scrollBy({left: 200, behavior: 'smooth'});
+      });
+      
+      // Atualizar quando rolar ou mudar tamanho
+      tabs.addEventListener('scroll', updateArrowsState);
+      window.addEventListener('resize', updateArrowsState);
+      updateArrowsState();
     }
-    
-    tabs.addEventListener('scroll', updateArrows);
-    window.addEventListener('resize', updateArrows);
-    updateArrows();
   });
 });
