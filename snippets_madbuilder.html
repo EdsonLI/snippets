@@ -353,6 +353,43 @@ $valor = TSession::setValue('nome_posicao', $var);
 $valor = TSession::getValue('userid');
 ?&gt;</code></pre></div>
     </div>
+    <div class="snippet-block" data-tags="php sessao usuario">
+  <div class="snippet-title">
+    <i class="fa-solid fa-plus"></i>
+    <strong>Dados da sessão do usuário</strong>
+  </div>
+  <div class="snippet-content"><pre><code class="language-php">&lt;?php
+// Id do usuário logado:
+$userid = TSession::getValue('userid');
+
+// Unidade do usuário logado:
+$userunitid = TSession::getValue('userunitid');
+
+// Login do usuário logado:
+$userlogin = TSession::getValue('login');
+
+// Usuário está logado?
+$userlogged = TSession::getValue('logged');
+
+// Ids dos grupos do usuário logado:
+$user_groups = TSession::getValue('usergroupids');
+
+// Unidades do usuário logado:
+$user_units = TSession::getValue('userunitids');
+
+// Nome do usuário logado:
+$username = TSession::getValue('username');
+
+// E-mail do usuário logado:
+$user_email = TSession::getValue('usermail');
+
+// Id do programa inicial:
+$frontpage = TSession::getValue('frontpage');
+
+// Ids dos programas que o usuário logado pode acessar:
+$userprograms = TSession::getValue('programs');
+?&gt;</code></pre></div>
+</div>
   </div>
 </div>
 
