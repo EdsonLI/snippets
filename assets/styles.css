@@ -121,7 +121,7 @@ input[type="text"]:focus {
 .tab.html-tab.active::after { background-color: #Ec6231; }
 .tab.codepen-tab.active::after { background-color: #FFFFFF; }
 .tab.sweetalert2-tab.active::after { background-color: #d19a66; }
-.tab.fontawesome-tab.active::after { background-color: #fab005; }
+.tab.fontawesome-tab.active::after { background-color: #feb602; }
 
 .tab .tab-check {
   display: none;
@@ -166,7 +166,7 @@ input[type="text"]:focus {
 .tab.html-tab { color: #Ec6231; }
 .tab.codepen-tab { color: #FFFFFF; }
 .tab.sweetalert2-tab { color: #d19a66; }
-.tab.fontawesome-tab { color: #fab005; }
+.tab.fontawesome-tab { color: #feb602; }
 
 /* Cores dos check marks */
 .tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
@@ -179,7 +179,7 @@ input[type="text"]:focus {
 .tab.html-tab.active .tab-check { color: #Ec6231 !important; }
 .tab.codepen-tab.active .tab-check { color: #FFFFFF !important; }
 .tab.sweetalert2-tab.active .tab-check { color: #d19a66 !important; }
-.tab.fontawesome-tab.active .tab-check { color: #fab005 !important; }
+.tab.fontawesome-tab.active .tab-check { color: #feb602 !important; }
 
 .tab-icon-madbuilder {
   display: block;
@@ -803,18 +803,6 @@ a:hover {
   padding-left: 20px;
   margin: 0;
 }
-
-/* .fontawesome-link {
-  display: inline-block;
-  font-size: 1.1em;
-  font-weight: 500;
-  color: #fab005;
-  background: #183153;
-  padding: 8px 22px;
-  border-radius: 6px;
-  text-decoration: none;
-  box-shadow: 0 2px 8px #3084f233;
-} */
 
 .branding-title {
   margin: 0 0 6px 0;
