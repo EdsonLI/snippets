@@ -804,7 +804,7 @@ a:hover {
   margin: 0;
 }
 
-.branding-title {
+.branding-title-fontawesome {
   margin: 0 0 6px 0;
   font-size: 1.5em;
   font-weight: 700;
@@ -812,10 +812,18 @@ a:hover {
   letter-spacing: 0.5px;
 }
 
+.branding-title-sweetalert2 {
+  margin: 0 0 6px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #d19a66;
+  letter-spacing: 0.5px;
+}
+
 .branding-title svg {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 8px; 
 }
 
 .swal2-link {
