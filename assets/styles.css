@@ -686,8 +686,8 @@ a:hover {
 .category-tab.categoria-bancos.active { border-bottom: 3px solid #10a37f; }
 
 .category-tab.categoria-campos .category-tab-icon,
-.category-tab.categoria-campos .category-tab-label { color: #00F0FF; }
-.category-tab.categoria-campos.active { border-bottom: 3px solid #00F0FF; }
+.category-tab.categoria-campos .category-tab-label { color: #Ec6231; }
+.category-tab.categoria-campos.active { border-bottom: 3px solid #Ec6231; }
 
 .category-tab.categoria-sessao .category-tab-icon,
 .category-tab.categoria-sessao .category-tab-label { color: #da4c66; }
@@ -898,4 +898,27 @@ a:hover {
   font-weight: 500;
   margin-bottom: 0.2em;
   /* Garante centralização do texto abaixo do ícone */
+}
+
+/* Cores das categorias */
+.categoria-bancos {
+   color: #10a37f !important;
+}
+.categoria-campos {
+   color: #FF4040 !important;
+}
+.categoria-sessao {
+   color: #da4c66 !important;
+}
+.categoria-codigos {
+   color: #20B2AA !important;
+}
+.categoria-janelas {
+   color: #1E90FF !important;
+}
+.categoria-outros {
+   color: #707070 !important;
+}
+.categoria-todas {
+   color: #888 !important;
 }
