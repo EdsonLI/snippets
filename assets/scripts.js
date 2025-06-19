@@ -37,7 +37,6 @@ $(document).ready(function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
-      $('#git-content').addClass('active'); // Certifica que a aba Git está ativa
     });
 
     $('#madbuilder-content').load('snippets_madbuilder.html', function() {
@@ -92,12 +91,6 @@ $(document).ready(function() {
       addCopyButtons();
       loadSnippetsFormularios();
       loadSnippetsListings();
-    });
-
-    $('#git-content').load('snippets_git.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
     });
 
     $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
