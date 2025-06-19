@@ -110,7 +110,7 @@ input[type="text"]:focus {
   background-color: #388bfd;
 }
 /* Cores específicas para cada aba */
-.tab.madbuilder-tab.active::after { background-color: #F2911D; }
+/* .tab.madbuilder-tab.active::after { background-color: #F2911D; }
 .tab.vscode-tab.active::after { background-color: #007ACC; }
 .tab.sql-tab.active::after { background-color: #10a37f; }
 .tab.php-tab.active::after { background-color: #777bb3; }
@@ -121,7 +121,22 @@ input[type="text"]:focus {
 .tab.html-tab.active::after { background-color: #Ec6231; }
 .tab.codepen-tab.active::after { background-color: #FFFFFF; }
 .tab.sweetalert2-tab.active::after { background-color: #d19a66; }
+.tab.fontawesome-tab.active::after { background-color: #feb602; } */
+
+/* Cores específicas para cada aba */
+.tab.madbuilder-tab.active::after { background-color: #F2911D; }
+.tab.vscode-tab.active::after { background-color: #007ACC; }
+.tab.git-tab.active::after { background-color: #DE4C36; }
+.tab.sweetalert2-tab.active::after { background-color: #d19a66; }
 .tab.fontawesome-tab.active::after { background-color: #feb602; }
+.tab.jquery-tab.active::after { background-color: #0769ad; }
+.tab.css-tab.active::after { background-color: #1572B6; }
+.tab.bootstrap-tab.active::after { background-color: #7952b3; }
+.tab.html-tab.active::after { background-color: #Ec6231; }
+.tab.php-tab.active::after { background-color: #777bb3; }
+.tab.php-tab:hover { background: #21262d !important; color: #777bb3 !important; }
+.tab.sql-tab.active::after { background-color: #10a37f; }
+.tab.codepen-tab.active::after { background-color: #FFFFFF; }
 
 .tab .tab-check {
   display: none;
@@ -154,7 +169,7 @@ input[type="text"]:focus {
 }
 
 /* Cores dos títulos das tabs */
-.tab.madbuilder-tab { color: #F2911D; }
+/* .tab.madbuilder-tab { color: #F2911D; }
 .tab.madbuilder-tab.active { background: #0d1117; color: #F2911D !important; }
 .tab.vscode-tab { color: #007ACC; }
 .tab.vscode-tab.active { background: #0d1117; color: #007ACC !important; }
@@ -166,10 +181,25 @@ input[type="text"]:focus {
 .tab.html-tab { color: #Ec6231; }
 .tab.codepen-tab { color: #FFFFFF; }
 .tab.sweetalert2-tab { color: #d19a66; }
+.tab.fontawesome-tab { color: #feb602; } */
+.tab.madbuilder-tab { color: #F2911D; }
+.tab.madbuilder-tab.active { background: #0d1117; color: #F2911D !important; }
+.tab.vscode-tab { color: #007ACC; }
+.tab.vscode-tab.active { background: #0d1117; color: #007ACC !important; }
+.tab.git-tab { color: #DE4C36; }
+.tab.git-tab.active { background: #0d1117; color: #DE4C36 !important; }
+.tab.sweetalert2-tab { color: #d19a66; }
 .tab.fontawesome-tab { color: #feb602; }
+.tab.jquery-tab { color: #0769ad; }
+.tab.css-tab { color: #1572B6; }
+.tab.bootstrap-tab { color: #7952b3; }
+.tab.html-tab { color: #Ec6231; }
+.tab.php-tab { color: #777bb3; }
+.tab.sql-tab { color: #10a37f; }
+.tab.codepen-tab { color: #FFFFFF; }
 
 /* Cores dos check marks */
-.tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
+/* .tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
 .tab.vscode-tab.active .tab-check { color: #007ACC !important; }
 .tab.sql-tab.active .tab-check { color: #10a37f !important; }
 .tab.php-tab.active .tab-check { color: #777bb3 !important; }
@@ -179,7 +209,20 @@ input[type="text"]:focus {
 .tab.html-tab.active .tab-check { color: #Ec6231 !important; }
 .tab.codepen-tab.active .tab-check { color: #FFFFFF !important; }
 .tab.sweetalert2-tab.active .tab-check { color: #d19a66 !important; }
+.tab.fontawesome-tab.active .tab-check { color: #feb602 !important; } */
+
+.tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
+.tab.vscode-tab.active .tab-check { color: #007ACC !important; }
+.tab.git-tab.active .tab-check { color: #DE4C36 !important; }
+.tab.sweetalert2-tab.active .tab-check { color: #d19a66 !important; }
 .tab.fontawesome-tab.active .tab-check { color: #feb602 !important; }
+.tab.jquery-tab.active .tab-check { color: #0769ad !important; }
+.tab.css-tab.active .tab-check { color: #1572B6 !important; }
+.tab.bootstrap-tab.active .tab-check { color: #7952b3 !important; }
+.tab.html-tab.active .tab-check { color: #Ec6231 !important; }
+.tab.php-tab.active .tab-check { color: #777bb3 !important; }
+.tab.sql-tab.active .tab-check { color: #10a37f !important; }
+.tab.codepen-tab.active .tab-check { color: #FFFFFF !important; }
 
 .tab-icon-madbuilder {
   display: block;
