@@ -152,7 +152,7 @@ input[type="text"]:focus {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: #F2911D;
+  color: #F29111D;
   box-shadow: 0 1px 3px #0002;
   z-index: 20;
 }
@@ -172,8 +172,8 @@ input[type="text"]:focus {
 }
 
 /* Cores dos títulos das tabs */
-.tab.madbuilder-tab { color: #F2911D; }
-.tab.madbuilder-tab.active { background: #0d1117; color: #F2911D !important; }
+.tab.madbuilder-tab { color: #F29111D; }
+.tab.madbuilder-tab.active { background: #0d1117; color: #F29111D !important; }
 .tab.vscode-tab { color: #007ACC; }
 .tab.vscode-tab.active { background: #0d1117; color: #007ACC !important; }
 .tab.git-tab { color: #DE4C36; }
@@ -196,7 +196,7 @@ input[type="text"]:focus {
 
 
 /* Cores dos check marks */
-.tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
+.tab.madbuilder-tab.active .tab-check { color: #F29111D !important; }
 .tab.vscode-tab.active .tab-check { color: #007ACC !important; }
 .tab.git-tab.active .tab-check { color: #DE4C36 !important; }
 .tab.sweetalert2-tab.active .tab-check { color: #d19a66 !important; }

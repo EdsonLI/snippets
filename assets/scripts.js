@@ -614,3 +614,34 @@ $(document).ready(function() {
   // Inicializar estado
   setTimeout(updateNavState, 100);
 });
+
+// Script para navegação das tabs com setas transparentes
+$(document).ready(function() {
+  const tabs = $('.tabs');
+  const leftBtn = $('#scroll-left-btn');
+  const rightBtn = $('#scroll-right-btn');
+  
+  function updateNavState() {
+    leftBtn.toggleClass('disabled', tabs.scrollLeft() <= 0);
+    rightBtn.toggleClass('disabled', 
+      tabs.scrollLeft() + tabs.width() >= tabs.get(0).scrollWidth - 5);
+  }
+  
+  leftBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() - 200}, 300);
+    }
+  });
+  
+  rightBtn.click(function() {
+    if (!$(this).hasClass('disabled')) {
+      tabs.animate({scrollLeft: tabs.scrollLeft() + 200}, 300);
+    }
+  });
+  
+  tabs.scroll(updateNavState);
+  $(window).resize(updateNavState);
+  
+  // Inicializar estado
+  setTimeout(updateNavState, 100);
+});
