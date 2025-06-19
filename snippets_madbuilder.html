@@ -432,6 +432,62 @@
    $bankClone->store();
 ?&gt;</code></pre></div>
     </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Obter array de registros selecionados na listagem</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+    foreach($param['builder_datagrid_check'] as $check_id) {
+        $conta = new minha_tabela($check_id);
+    }
+}
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Deletar registros selecionados na listagem</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+    foreach($param['builder_datagrid_check'] as $check_id) {
+        $conta = new minha_tabela($check_id);
+        $conta->delete();
+    }
+}
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Editar registros selecionados na listagem</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+if($param['builder_datagrid_check']) {
+    foreach($param['builder_datagrid_check'] as $check_id) {
+        $conta = new minha_tabela($check_id);
+        $conta->nome_da_coluna1 = 'novo valor';
+        $conta->nome_da_coluna2 = 'novo valor';
+        $conta->store();
+    }
+}
+?&gt;</code></pre></div>
+    </div>
+    <div class="snippet-block">
+      <div class="snippet-title">
+        <i class="fa-solid fa-plus"></i>
+        <strong>Clonar registro</strong>
+      </div>
+      <div class="snippet-content"><pre><code class="language-php">&lt;?php
+$conta = new minha_tabela();
+
+$contaClone = clone $conta;
+unset($contaClone->id);
+$contaClone->store();
+?&gt;</code></pre></div>
+    </div>
   </div>
 </div>
 
