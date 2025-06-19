@@ -965,7 +965,7 @@ a:hover {
   width: 36px;
   align-items: center;
   justify-content: center;
-  background: transparent !important; /* totalmente transparente */
+  background: transparent !important; /* fundo transparente */
   border: none !important;
   outline: none !important;
   z-index: 2;
@@ -976,6 +976,8 @@ a:hover {
   transition: opacity 0.2s;
   pointer-events: auto;
   box-shadow: none !important;
+  padding: 0;
+  margin: 0;
 }
 .tabs-arrow.left {
   left: 0;
