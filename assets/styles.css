@@ -54,7 +54,7 @@ input[type="text"]:focus {
   scrollbar-width: thin;
   scrollbar-color: #30363d #161b22;
   position: relative;
-  padding-bottom: 4px;
+  padding-bottom: 2px !important;
 }
 .tabs::-webkit-scrollbar { height: 6px; }
 .tabs::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
@@ -69,7 +69,7 @@ input[type="text"]:focus {
   align-items: stretch;
   text-align: center;
   min-height: 70px;
-  padding: 10px 22px 10px 22px;
+  padding: 15px 22px 5px 22px !important;
   cursor: pointer;
   background: #161b22;
   color: #8b949e;
