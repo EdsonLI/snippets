@@ -1,4 +1,4 @@
-/* =========================
+se/* =========================
    CORE / BODY / TIPOGRAFIA
    ========================= */
 body {
@@ -62,7 +62,7 @@ input[type="text"]:focus {
 
 .tab {
   flex: 0 0 auto;
-  width: 6rem !important;
+  width: 7rem !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
