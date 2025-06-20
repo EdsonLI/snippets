@@ -62,7 +62,8 @@ input[type="text"]:focus {
 
 .tab {
   flex: 0 0 auto;
-  min-width: 140px;
+  min-width: 180px;
+  width: 3rem !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
