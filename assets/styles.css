@@ -151,7 +151,7 @@ input[type="text"]:focus {
   width: 2rem;
   height: 2rem;
   display: block;
-  margin: 0 auto 0.5rem auto;
+  margin: 0 auto 0.2rem auto;
   object-fit: contain;
   font-size: 2rem;
   line-height: 2rem;
