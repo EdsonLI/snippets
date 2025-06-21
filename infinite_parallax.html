@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll Infinito com Parallax</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .parallax-section {
+      position: relative;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      text-shadow: 0 0 10px #000;
+      transition: transform 0.2s ease-out;
+      margin-bottom: 20px;
+    }
+
+    #sentinel {
+      height: 80px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content">
+    <!-- Blocos iniciais -->
+  </div>
+
+  <div id="sentinel"></div>
+
+  <script>
+    const imageSources = [
+      'https://picsum.photos/id/1015/1200/800',
+      'https://picsum.photos/id/1018/1200/800',
+      'https://picsum.photos/id/1025/1200/800',
+      'https://picsum.photos/id/1035/1200/800',
+      'https://picsum.photos/id/1050/1200/800',
+      'https://picsum.photos/id/1069/1200/800',
+      'https://picsum.photos/id/1074/1200/800',
+      'https://picsum.photos/id/1084/1200/800'
+    ];
+
+    function createParallaxBlock(index) {
+      const div = document.createElement('div');
+      div.className = 'parallax-section';
+      div.dataset.speed = (1 + Math.random() * 1.5).toFixed(2);
+      div.style.backgroundImage = `url(${imageSources[index % imageSources.length]})`;
+      div.innerHTML = `<div class="overlay"></div>Bloco #${index + 1}`;
+      return div;
+    }
+
+    let count = 0;
+    function loadMoreContent() {
+      for (let i = 0; i < 3; i++) {
+        const block = createParallaxBlock(count);
+        document.getElementById('content').appendChild(block);
+        count++;
+      }
+      updateParallaxElements();
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        loadMoreContent();
+      }
+    }, { threshold: 1.0 });
+
+    observer.observe(document.getElementById('sentinel'));
+
+    function updateParallaxElements() {
+      const elements = document.querySelectorAll('.parallax-section');
+
+      function onScroll() {
+        const scrollY = window.scrollY;
+        elements.forEach(el => {
+          const speed = parseFloat(el.dataset.speed);
+          const offsetTop = el.offsetTop;
+          const yPos = (scrollY - offsetTop) * speed * 0.05;
+          el.style.transform = `translateY(${yPos}px)`;
+        });
+      }
+
+      window.removeEventListener('scroll', onScroll); // evitar múltiplos
+      window.addEventListener('scroll', onScroll);
+      onScroll(); // aplicar na carga inicial
+    }
+
+    // Inicializa com alguns blocos
+    loadMoreContent();
+  </script>
+
+</body>
+</html>
