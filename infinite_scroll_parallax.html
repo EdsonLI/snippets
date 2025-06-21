@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinite Scroll + Parallax</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #111;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .parallax-section {
+      position: relative;
+      height: 400px;
+      background: linear-gradient(#333, #000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      transform: translateY(0);
+      transition: transform 0.1s ease-out;
+    }
+
+    #sentinel {
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content">
+    <!-- Blocos iniciais -->
+    <div class="parallax-section" data-speed="2">Bloco Inicial 1</div>
+    <div class="parallax-section" data-speed="1.5">Bloco Inicial 2</div>
+    <div class="parallax-section" data-speed="2.5">Bloco Inicial 3</div>
+  </div>
+
+  <div id="sentinel"></div>
+
+  <script>
+    function loadMoreContent() {
+      for (let i = 0; i < 3; i++) {
+        const div = document.createElement('div');
+        div.className = 'parallax-section';
+        div.textContent = 'Novo bloco ' + Math.random().toFixed(3);
+        div.dataset.speed = (1 + Math.random() * 2).toFixed(2);
+        document.getElementById('content').appendChild(div);
+      }
+      updateParallaxElements();
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        loadMoreContent();
+      }
+    }, { threshold: 1.0 });
+
+    observer.observe(document.getElementById('sentinel'));
+
+    let ticking = false;
+    function updateParallaxElements() {
+      const elements = document.querySelectorAll('.parallax-section');
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const offset = window.pageYOffset;
+            elements.forEach(el => {
+              const speed = parseFloat(el.dataset.speed);
+              const rect = el.getBoundingClientRect();
+              const yPos = rect.top * speed * 0.05;
+              el.style.transform = `translateY(${yPos}px)`;
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // Inicializar
+    updateParallaxElements();
+  </script>
+
+</body>
+</html>
