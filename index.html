@@ -191,6 +191,21 @@
     .navmenu ul li .nav-snippets-link[style*="align-items:center"] {
       align-items: center !important;
     }
+
+    /* Reduz altura e padding do hero */
+    #hero.hero.section {
+      min-height: 340px;
+      padding-bottom: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    @media (max-width: 991px) {
+      #hero.hero.section {
+        min-height: 220px;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+    }
   </style>
 
   <!-- =======================================================
