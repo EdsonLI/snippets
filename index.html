@@ -186,6 +186,11 @@
         align-items: flex-start;
       }
     }
+
+    /* Centraliza o item "Snippets Mais vistos" no menu */
+    .navmenu ul li .nav-snippets-link[style*="align-items:center"] {
+      align-items: center !important;
+    }
   </style>
 
   <!-- =======================================================
@@ -216,10 +221,10 @@
               <i class="fa-regular fa-moon"></i>
             </button>
           </li>          
-          <li>
-            <a href="#portfolio" class="nav-snippets-link">
+          <li style="width:100%;display:flex;justify-content:center;">
+            <a href="#portfolio" class="nav-snippets-link" style="align-items:center;">
               <span class="nav-snippets-label">Snippets</span>
-              <span class="nav-snippets-desc">mais vistos</span>
+              <span class="nav-snippets-desc">Mais vistos</span>
             </a>
           </li>
           <li>
