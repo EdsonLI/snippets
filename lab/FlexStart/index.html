@@ -4,68 +4,40 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Snippets Bootstrap</title>
+  <title>Index - FlexStart Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
   <!-- Prism.js CSS for syntax highlight -->
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
   <!-- FontAwesome for copy icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
-    body {
-      background: #f8f9fa;
-      font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-      padding: 2rem 2rem 1rem 2rem;
-    }
-
-    .snippet-title {
-      margin-bottom: 2rem;
-    }
-
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .col-sm-12,
-    .col-md-6 {
-      flex: 1 1 350px;
-      min-width: 300px;
-      max-width: 100%;
-    }
-
-    .card {
-      background: #f8f9fa;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-
-    h5 {
-      margin-top: 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
+    /* Opcional: ajuste para o código não ultrapassar o card */
     pre[class*="language-"] {
-      background: #272822;
-      color: #f8f8f2;
+      background: #f8f9fa;
       border-radius: 6px;
       padding: 1em;
       font-size: 0.95em;
       overflow-x: auto;
-      margin-bottom: 0.5em;
     }
 
     .copy-btn {
@@ -85,223 +57,251 @@
     .copy-btn.copied {
       color: #198754;
     }
-
-    .snippet-news-box {
-      max-width: 900px;
-      margin: 2rem auto 2rem auto;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-      padding: 1.5rem 2rem;
-    }
-
-    .snippet-news-box h4 {
-      margin-top: 0;
-    }
-
-    .snippet-news-box ul {
-      padding-left: 1.2em;
-    }
-
-    .snippet-news-box li {
-      margin-bottom: 0.5em;
-    }
   </style>
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Updated: Nov 01 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body>
-  <div class="section" id="bootstrap" data-tags="bootstrap">
-    <div class="snippet-block" data-tags="bootstrap">
-      <div class="snippet-title">
-        <h2>Snippets Bootstrap</h2>
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/logo.png" alt="">
+        <h1 class="sitename">FlexStart</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home<br></a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li class="listing-dropdown"><a href="#"><span>Listing Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li>
+                <a href="#">Column 1 link 1</a>
+                <a href="#">Column 1 link 2</a>
+                <a href="#">Column 1 link 3</a>
+              </li>
+              <li>
+                <a href="#">Column 2 link 1</a>
+                <a href="#">Column 2 link 2</a>
+                <a href="#">Column 3 link 3</a>
+              </li>
+              <li>
+                <a href="#">Column 3 link 1</a>
+                <a href="#">Column 3 link 2</a>
+                <a href="#">Column 3 link 3</a>
+              </li>
+              <li>
+                <a href="#">Column 4 link 1</a>
+                <a href="#">Column 4 link 2</a>
+                <a href="#">Column 4 link 3</a>
+              </li>
+              <li>
+                <a href="#">Column 5 link 1</a>
+                <a href="#">Column 5 link 2</a>
+                <a href="#">Column 5 link 3</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted flex-md-shrink-0" href="index.html#about">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
+            <p data-aos="fade-up" data-aos-delay="100">We are team of talented designers making websites with Bootstrap</p>
+            <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
+              <a href="#about" class="btn-get-started">Get Started <i class="bi bi-arrow-right"></i></a>
+              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+            <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+          </div>
+        </div>
       </div>
-      <div class="container mt-4">
-        <div class="row">
 
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>📦 Container com grid</h5>
-              <pre><code class="language-html">&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-    &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Who We Are</h3>
+              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+              <p>
+                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Read More</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>🎯 Botão com ícone</h5>
-              <pre><code class="language-html">&lt;button class="btn btn-primary"&gt;
-  &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt; Confirmar
-&lt;/button&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>📄 Card com imagem e texto</h5>
-              <pre><code class="language-html">&lt;div class="card"&gt;
-  &lt;img src="img.jpg" class="card-img-top" alt="..."&gt;
-  &lt;div class="card-body"&gt;
-    &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
-    &lt;p class="card-text"&gt;Descrição breve.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>🧭 Navbar básica</h5>
-              <pre><code class="language-html">&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
-  &lt;div class="container-fluid"&gt;
-    &lt;a class="navbar-brand" href="#"&gt;Logo&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>🔽 Accordion (colapsável)</h5>
-              <pre><code class="language-html">&lt;div class="accordion" id="exemplo"&gt;
-  &lt;div class="accordion-item"&gt;
-    &lt;h2 class="accordion-header"&gt;
-      &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#item1"&gt;
-        Item 1
-      &lt;/button&gt;
-    &lt;/h2&gt;
-    &lt;div id="item1" class="accordion-collapse collapse show"&gt;
-      &lt;div class="accordion-body"&gt;
-        Conteúdo do item 1.
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>📢 Alerta com botão de fechar</h5>
-              <pre><code class="language-html">&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
-  Aviso importante!
-  &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
-&lt;/div&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>📝 Formulário com validação</h5>
-              <pre><code class="language-html">&lt;form class="needs-validation" novalidate&gt;
-  &lt;div class="mb-3"&gt;
-    &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
-    &lt;input type="email" class="form-control" id="email" required&gt;
-    &lt;div class="invalid-feedback"&gt;Campo obrigatório.&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>💾 Modal</h5>
-              <pre><code class="language-html">&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal"&gt;
-  Abrir modal
-&lt;/button&gt;
-
-&lt;div class="modal fade" id="meuModal" tabindex="-1"&gt;
-  &lt;div class="modal-dialog"&gt;
-    &lt;div class="modal-content"&gt;
-      &lt;div class="modal-header"&gt;
-        &lt;h5 class="modal-title"&gt;Título&lt;/h5&gt;
-        &lt;button class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
-      &lt;/div&gt;
-      &lt;div class="modal-body"&gt;
-        Conteúdo do modal.
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 mb-4">
-            <div class="card p-3 shadow-sm">
-              <h5>⚙️ Spinner (carregando)</h5>
-              <pre><code class="language-html">&lt;div class="spinner-border text-primary" role="status"&gt;
-  &lt;span class="visually-hidden"&gt;Carregando...&lt;/span&gt;
-&lt;/div&gt;
-              </code></pre>
-              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-            </div>
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
           </div>
 
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="snippet-news-box">
-    <h4>O que vem a seguir <i class="fa-solid fa-bullhorn"></i></h4>
-    <ul>
-      <li><i class="fa-solid fa-sparkles"></i> Estruturas de grid (ex: linhas e colunas com classes <code>row</code>, <code>col</code>, <code>col-md-6</code>, etc.)</li>
-      <li><i class="fa-solid fa-sparkles"></i> Cards prontos com header, body e footer</li>
-      <li><i class="fa-solid fa-sparkles"></i> Botões customizados com diferentes cores e tamanhos (<code>btn</code>, <code>btn-primary</code>, <code>btn-lg</code>, etc.)</li>
-      <li><i class="fa-solid fa-sparkles"></i> Alertas (<code>alert alert-success</code>, <code>alert alert-danger</code>, etc.)</li>
-      <li><i class="fa-solid fa-sparkles"></i> Navbars responsivas completas</li>
-      <li><i class="fa-solid fa-sparkles"></i> Formulários com validação usando classes Bootstrap</li>
-      <li><i class="fa-solid fa-sparkles"></i> Modais prontos para copiar e colar</li>
-      <li><i class="fa-solid fa-sparkles"></i> Tabelas estilizadas (<code>table</code>, <code>table-striped</code>, <code>table-hover</code>)</li>
-      <li><i class="fa-solid fa-sparkles"></i> Badges, breadcrumbs e paginations</li>
-      <li><i class="fa-solid fa-sparkles"></i> Snippets para collapse/accordion</li>
-      <li><i class="fa-solid fa-sparkles"></i> Snippets para tooltips e popovers</li>
-    </ul>
-  </div>
+    </section><!-- /About Section -->
 
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.copy-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          const code = btn.parentElement.querySelector('pre code');
-          if (code) {
-            let text = code.textContent.replace(/^\s+|\s+$/g, '');
-            navigator.clipboard.writeText(text).then(function() {
-              btn.classList.add('copied');
-              btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
-              setTimeout(function() {
-                btn.classList.remove('copied');
-                btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
-              }, 1200);
-            });
-          }
-        });
-      });
-    });
-  </script>
-</body>
+    <!-- Values Section -->
+    <section id="values" class="values section">
 
-</html>
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Values</h2>
+        <p>What we value most<br></p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card">
+              <img src="assets/img/values-1.png" class="img-fluid" alt="">
+              <h3>Ad cupiditate sed est odio</h3>
+              <p>Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit. Et veritatis id.</p>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card">
+              <img src="assets/img/values-2.png" class="img-fluid" alt="">
+              <h3>Voluptatem voluptatum alias</h3>
+              <p>Repudiandae amet nihil natus in distinctio suscipit id. Doloremque ducimus ea sit non.</p>
+            </div>
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card">
+              <img src="assets/img/values-3.png" class="img-fluid" alt="">
+              <h3>Fugit cupiditate alias nobis.</h3>
+              <p>Quam rem vitae est autem molestias explicabo debitis sint. Vero aliquid quidem commodi.</p>
+            </div>
+          </div><!-- End Card Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Values Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Happy Clients</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-journal-richtext color-orange flex-shrink-0" style="color: #ee6c20;"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Projects</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-headset color-green flex-shrink-0" style="color: #15be56;"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Hours Of Support</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-people color-pink flex-shrink-0" style="color: #bb0852;"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Hard Workers</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Our Advacedd Features<br></p>
+      </div><!-- End Section Title -->
+
       <div class="container">
 
         <div class="row gy-5">
