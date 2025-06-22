@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - FlexStart Bootstrap Template</title>
+  <title>EdsonLI - Snippets | Skill</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -61,7 +61,7 @@
     .theme-toggle-btn {
       background: none;
       border: none;
-      font-size: 1.6em;
+      font-size: 1.3em;
       color: #fff;
       opacity: 1 !important;
       transition: color 0.2s;
@@ -69,11 +69,14 @@
       align-items: center;
       display: inline-flex;
       justify-content: center;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 12px;
-      z-index: 1050;
+      /* Remove absolute/centralizado */
+      position: static;
+      left: unset;
+      top: unset;
+      transform: none;
+      z-index: auto;
+      min-width: 44px;
+      min-height: 44px;
     }
 
     .theme-toggle-btn:focus {
@@ -97,6 +100,37 @@
     /* Garante que o header tenha position:relative para centralizar */
     .header {
       position: relative;
+    }
+
+    /* Ajuste para o botão ocupar toda a largura no mobile menu */
+    @media (max-width: 1199px) {
+      .navmenu ul li {
+        width: 100%;
+      }
+
+      .theme-toggle-btn {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.5em;
+        min-width: 44px;
+        min-height: 44px;
+      }
+    }
+
+    /* No desktop, botão fica igual aos outros links */
+    @media (min-width: 1200px) {
+      .theme-toggle-btn {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 1.3em;
+        width: auto;
+        min-width: 44px;
+        min-height: 44px;
+      }
+
+      .navmenu ul li {
+        width: auto;
+      }
     }
   </style>
 
@@ -122,20 +156,19 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home<br></a></li>
+          <!-- Substitui o Home pelo botão de tema -->
+          <li>
+            <button id="theme-toggle" class="btn btn-sm theme-toggle-btn nav-link" type="button" title="Alternar tema" aria-label="Alternar tema">
+              <i class="fa-regular fa-moon"></i>
+            </button>
+          </li>
           <li><a href="./coding">Snippets</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#portfolio" class="">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="blog.html">Blog</a></li>
-            </ul>
-          </li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <!-- Centralize o botão de tema no header, fora do nav -->
-      <button id="theme-toggle" class="btn btn-sm theme-toggle-btn" type="button" title="Alternar tema" aria-label="Alternar tema">
-        <i class="fa-regular fa-moon"></i>
-      </button>
     </div>
   </header>
 
@@ -589,12 +622,10 @@
         document.body.classList.toggle('dark-theme', dark);
         icon.className = dark ? 'fa-solid fa-sun' : 'fa-regular fa-moon';
         themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
-        // Always white icon
         themeBtn.style.color = '#fff';
         icon.style.color = '#fff';
         localStorage.setItem('theme', dark ? 'dark' : 'light');
       }
-      // Inicializa tema
       const saved = localStorage.getItem('theme');
       setTheme(saved === 'dark');
       themeBtn.addEventListener('click', function () {
