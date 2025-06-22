@@ -2795,3 +2795,10 @@ section,
   filter: brightness(0.7);
 }
 */
+
+/* Corrige header no tema escuro ao rolar a página */
+.dark-theme .header,
+.dark-theme.index-page.scrolled .header {
+  --background-color: #181c22 !important;
+  background-color: #181c22 !important;
+}
