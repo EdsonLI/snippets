@@ -2765,3 +2765,19 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+/* Tema escuro ativado via classe .dark-theme no <body> ou <html> */
+.dark-theme {
+  --background-color: #060606;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
+  --contrast-color: #ffffff;
+  --accent-color: #0dcaf0;
+  --nav-color: #ffffff;
+  --nav-hover-color: #0dcaf0;
+  --nav-mobile-background-color: #252525;
+  --nav-dropdown-background-color: #252525;
+  --nav-dropdown-color: #ffffff;
+  --nav-dropdown-hover-color: #0dcaf0;
+}
