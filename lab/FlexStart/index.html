@@ -26,6 +26,18 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Prism.js CSS for syntax highlight -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <style>
+    /* Opcional: ajuste para o código não ultrapassar o card */
+    pre[class*="language-"] {
+      background: #f8f9fa;
+      border-radius: 6px;
+      padding: 1em;
+      font-size: 0.95em;
+      overflow-x: auto;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -422,15 +434,13 @@
             <div class="service-item item-cyan position-relative">
               <i class="bi bi-activity icon"></i>
               <h3>Container com grid</h3>
-              <p>
-                <pre><code>&lt;div class="container"&gt;
+              <pre><code class="language-html">&lt;div class="container"&gt;
   &lt;div class="row"&gt;
     &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
     &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -439,12 +449,10 @@
             <div class="service-item item-orange position-relative">
               <i class="bi bi-broadcast icon"></i>
               <h3>Botão com ícone</h3>
-              <p>
-                <pre><code>&lt;button class="btn btn-primary"&gt;
+              <pre><code class="language-html">&lt;button class="btn btn-primary"&gt;
   &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt; Confirmar
 &lt;/button&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -453,16 +461,14 @@
             <div class="service-item item-teal position-relative">
               <i class="bi bi-easel icon"></i>
               <h3>Card com imagem e texto</h3>
-              <p>
-                <pre><code>&lt;div class="card"&gt;
+              <pre><code class="language-html">&lt;div class="card"&gt;
   &lt;img src="img.jpg" class="card-img-top" alt="..."&gt;
   &lt;div class="card-body"&gt;
     &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
     &lt;p class="card-text"&gt;Descrição breve.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -471,14 +477,12 @@
             <div class="service-item item-red position-relative">
               <i class="bi bi-bounding-box-circles icon"></i>
               <h3>Navbar básica</h3>
-              <p>
-                <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+              <pre><code class="language-html">&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
   &lt;div class="container-fluid"&gt;
     &lt;a class="navbar-brand" href="#"&gt;Logo&lt;/a&gt;
   &lt;/div&gt;
 &lt;/nav&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -487,8 +491,7 @@
             <div class="service-item item-indigo position-relative">
               <i class="bi bi-calendar4-week icon"></i>
               <h3>Accordion (colapsável)</h3>
-              <p>
-                <pre><code>&lt;div class="accordion" id="exemplo"&gt;
+              <pre><code class="language-html">&lt;div class="accordion" id="exemplo"&gt;
   &lt;div class="accordion-item"&gt;
     &lt;h2 class="accordion-header"&gt;
       &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#item1"&gt;
@@ -502,8 +505,7 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -512,13 +514,11 @@
             <div class="service-item item-pink position-relative">
               <i class="bi bi-chat-square-text icon"></i>
               <h3>Alerta com botão de fechar</h3>
-              <p>
-                <pre><code>&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+              <pre><code class="language-html">&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
   Aviso importante!
   &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
 &lt;/div&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -527,16 +527,14 @@
             <div class="service-item item-cyan position-relative">
               <i class="bi bi-activity icon"></i>
               <h3>Formulário com validação</h3>
-              <p>
-                <pre><code>&lt;form class="needs-validation" novalidate&gt;
+              <pre><code class="language-html">&lt;form class="needs-validation" novalidate&gt;
   &lt;div class="mb-3"&gt;
     &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
     &lt;input type="email" class="form-control" id="email" required&gt;
     &lt;div class="invalid-feedback"&gt;Campo obrigatório.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -545,8 +543,7 @@
             <div class="service-item item-orange position-relative">
               <i class="bi bi-broadcast icon"></i>
               <h3>Modal</h3>
-              <p>
-                <pre><code>&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal"&gt;
+              <pre><code class="language-html">&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal"&gt;
   Abrir modal
 &lt;/button&gt;
 
@@ -563,8 +560,7 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -573,12 +569,10 @@
             <div class="service-item item-teal position-relative">
               <i class="bi bi-easel icon"></i>
               <h3>Spinner (carregando)</h3>
-              <p>
-                <pre><code>&lt;div class="spinner-border text-primary" role="status"&gt;
+              <pre><code class="language-html">&lt;div class="spinner-border text-primary" role="status"&gt;
   &lt;span class="visually-hidden"&gt;Carregando...&lt;/span&gt;
 &lt;/div&gt;
-                </code></pre>
-              </p>
+              </code></pre>
               <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -1527,6 +1521,8 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <!-- Prism.js JS for syntax highlight -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 
 </body>
 
