@@ -591,10 +591,6 @@ h6 {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-.footer .footer-top {
-  padding-top: 50px;
-}
-
 .footer .social-links a {
   display: flex;
   align-items: center;
