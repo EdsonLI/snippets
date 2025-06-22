@@ -62,14 +62,13 @@
       background: none;
       border: none;
       font-size: 1.3em;
-      color: #fff;
+      color: #222;
       opacity: 1 !important;
       transition: color 0.2s;
       padding: 0.15em 0.5em;
       align-items: center;
       display: inline-flex;
       justify-content: center;
-      /* Remove absolute/centralizado */
       position: static;
       left: unset;
       top: unset;
@@ -83,9 +82,14 @@
       outline: 2px solid #0dcaf0;
     }
 
-    /* Remove yellow on dark, always white */
+    /* Ícone sempre visível: escuro no tema claro, branco no tema escuro */
+    .theme-toggle-btn i {
+      color: #222;
+      transition: color 0.2s;
+    }
+
     .dark-theme .theme-toggle-btn,
-    .theme-toggle-btn {
+    .dark-theme .theme-toggle-btn i {
       color: #fff;
     }
 
@@ -622,8 +626,7 @@
         document.body.classList.toggle('dark-theme', dark);
         icon.className = dark ? 'fa-solid fa-sun' : 'fa-regular fa-moon';
         themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
-        themeBtn.style.color = '#fff';
-        icon.style.color = '#fff';
+        // Não força cor via JS, deixa o CSS controlar
         localStorage.setItem('theme', dark ? 'dark' : 'light');
       }
       const saved = localStorage.getItem('theme');
