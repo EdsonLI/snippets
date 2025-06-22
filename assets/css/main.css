@@ -2781,3 +2781,17 @@ section,
   --nav-dropdown-color: #ffffff;
   --nav-dropdown-hover-color: #0dcaf0;
 }
+
+/* Hero background para tema escuro */
+.dark-theme .hero {
+  background: #181c22 !important;
+  /* Remove imagem clara do tema padrão */
+  background-image: none !important;
+}
+
+/* Hero imagem (opcional: escurecer a imagem se quiser manter) */
+/*
+.dark-theme .hero-img img {
+  filter: brightness(0.7);
+}
+*/
