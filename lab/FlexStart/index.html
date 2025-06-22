@@ -28,6 +28,8 @@
   <link href="assets/css/main.css" rel="stylesheet">
   <!-- Prism.js CSS for syntax highlight -->
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <!-- FontAwesome for copy icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     /* Opcional: ajuste para o código não ultrapassar o card */
     pre[class*="language-"] {
@@ -36,6 +38,24 @@
       padding: 1em;
       font-size: 0.95em;
       overflow-x: auto;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 0.95em;
+      border: none;
+      background: none;
+      color: #0d6efd;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.5em;
+      transition: color 0.2s;
+    }
+
+    .copy-btn.copied {
+      color: #198754;
     }
   </style>
 
@@ -441,7 +461,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -453,7 +473,7 @@
   &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt; Confirmar
 &lt;/button&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -469,7 +489,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -483,7 +503,7 @@
   &lt;/div&gt;
 &lt;/nav&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -506,7 +526,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -519,7 +539,7 @@
   &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
 &lt;/div&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -535,7 +555,7 @@
   &lt;/div&gt;
 &lt;/form&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -561,7 +581,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -573,7 +593,7 @@
   &lt;span class="visually-hidden"&gt;Carregando...&lt;/span&gt;
 &lt;/div&gt;
               </code></pre>
-              <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+              <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
             </div>
           </div><!-- End Service Item -->
 
@@ -1523,6 +1543,29 @@
   <script src="assets/js/main.js"></script>
   <!-- Prism.js JS for syntax highlight -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <!-- Copy to clipboard logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.copy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const code = btn.parentElement.querySelector('pre code');
+          if (code) {
+            // Remove leading/trailing whitespace and decode HTML entities
+            let text = code.textContent.replace(/^\s+|\s+$/g, '');
+            // Copy to clipboard
+            navigator.clipboard.writeText(text).then(function() {
+              btn.classList.add('copied');
+              btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+              setTimeout(function() {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
+              }, 1200);
+            });
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 
