@@ -46,6 +46,10 @@
   .portfolio-content .position-absolute {
     z-index: 2;
   }
+
+  .portfolio-content h5 {
+    margin-top: 0.5rem;
+  }
 </style>>
 
   <!-- =======================================================
@@ -148,6 +152,9 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
   <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative">
 
+    <!-- Título centralizado -->
+    <h5 class="text-info text-center mb-3">Container com grid</h5>
+
     <!-- Botões no canto superior direito -->
     <div class="position-absolute top-0 end-0 m-2 d-flex gap-2 align-items-center z-3">
       <!-- Linguagem -->
@@ -165,9 +172,6 @@
         <i class="bi bi-clipboard"></i>
       </button>
     </div>
-
-    <!-- Título do snippet -->
-    <h5 class="text-info mt-4 mb-2">Container com grid</h5>
 
     <!-- Snippet -->
     <div class="snippet-code mb-3" style="max-height: 220px; overflow: auto;">
@@ -192,6 +196,7 @@
 
   </div>
 </div>
+
 
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
@@ -605,7 +610,7 @@
         setTheme(!document.body.classList.contains('dark-theme'));
       });
     });
-    
+
     // Lightbox customizado para snippets
     document.querySelectorAll('.show-result').forEach(button => {
       button.addEventListener('click', () => {
