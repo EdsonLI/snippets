@@ -2767,13 +2767,13 @@ section,
   --heading-color: #ffffff;
   --surface-color: #252525;
   --contrast-color: #ffffff;
-  --accent-color: #0dcaf0;
+  --accent-color: #7952b3;
   --nav-color: #ffffff;
-  --nav-hover-color: #0dcaf0;
+  --nav-hover-color: #7952b3;
   --nav-mobile-background-color: #252525;
   --nav-dropdown-background-color: #252525;
   --nav-dropdown-color: #ffffff;
-  --nav-dropdown-hover-color: #0dcaf0;
+  --nav-dropdown-hover-color: #7952b3;
 }
 
 /* Hero background para tema escuro */
