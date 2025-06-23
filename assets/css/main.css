@@ -2760,126 +2760,35 @@ section,
   font-size: 14px;
 }
 
-/* Tema escuro ativado via classe .dark-theme no <body> ou <html> */
-.dark-theme {
-  --background-color: #060606;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #252525;
-  --contrast-color: #ffffff;
-  --accent-color: #7952b3;
-  --nav-color: #ffffff;
-  --nav-hover-color: #7952b3;
-  --nav-mobile-background-color: #252525;
-  --nav-dropdown-background-color: #252525;
-  --nav-dropdown-color: #ffffff;
-  --nav-dropdown-hover-color: #7952b3;
-}
-
-/* Hero background para tema escuro */
-.dark-theme .hero {
-  background: #181c22 !important;
-  /* Remove imagem clara do tema padrão */
-  background-image: none !important;
-}
-
-/* Hero imagem (opcional: escurecer a imagem se quiser manter) */
-/*
-.dark-theme .hero-img img {
-  filter: brightness(0.7);
-}
-*/
-
-/* Corrige header no tema escuro ao rolar a página */
-.dark-theme .header,
-.dark-theme.index-page.scrolled .header {
-  --background-color: #181c22 !important;
-  background-color: #181c22 !important;
-}
-
-/* Corrige alinhamento e cor do menu "Snippets Mais vistos" */
-.nav-snippets-link {
-  display: flex;
-  flex-direction: column;
+/* Botão de copiar ajustado para fundo #7952b3 e fonte branca */
+.copy-btn {
+  display: inline-flex;
   align-items: center;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  line-height: 1.1;
-  text-decoration: none;
-}
-
-.nav-snippets-label {
-  font-size: 0.75em;
-  letter-spacing: 1px;
-  font-weight: 700;
-  padding: 2px 12px 2px 0;
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
-  color: var(--accent-color);
-  border-radius: 50px;
-  text-transform: uppercase;
-  font-family: var(--default-font, inherit);
-  margin-bottom: 2px;
-  display: inline-block;
-}
-
-.nav-snippets-desc {
-  font-size: 1em;
-  color: var(--heading-color);
-  font-weight: 500;
-  margin-left: 0;
-  margin-top: 1px;
-  font-family: var(--heading-font, inherit);
-  text-align: center;
-}
-
-@media (max-width: 1199px) {
-  .nav-snippets-link {
-    width: 100%;
-    align-items: center;
-  }
-}
-
-/* Snippet/pre fundo escuro no tema escuro */
-pre[class*="language-"] {
-  background: #f8f9fa;
-  border-radius: 6px;
-  padding: 1em;
+  gap: 0.4em;
   font-size: 0.95em;
-  overflow-x: auto;
-  box-shadow: none;
-}
-
-.dark-theme pre[class*="language-"] {
-  background: #23272e !important;
-  color: #f8f8f2;
-  box-shadow: none;
-}
-
-/* Corrige scrollbar do snippet no tema escuro */
-.dark-theme pre[class*="language-"]::-webkit-scrollbar {
-  height: 8px;
-  background: #23272e;
-}
-.dark-theme pre[class*="language-"]::-webkit-scrollbar-thumb {
-  background: #444950;
+  border: none;
+  background: #7952b3;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.45em 1.1em;
+  margin-top: 0.5em;
   border-radius: 4px;
-}
-.dark-theme pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
-  background: #555b65;
-}
-.dark-theme pre[class*="language-"] {
-  scrollbar-color: #444950 #23272e;
-  scrollbar-width: thin;
+  transition: background 0.2s, color 0.2s;
+  font-family: var(--default-font, inherit);
 }
 
-/* Remove background e sombra dos tokens do Prism */
-.dark-theme code[class*="language-"] span,
-.dark-theme code[class*="language-"] .token {
-  background: none !important;
-  box-shadow: none !important;
+.copy-btn i {
+  color: #fff;
+  font-size: 1em;
+  transition: color 0.2s;
 }
-code[class*="language-"] span,
-code[class*="language-"] .token {
-  background: none !important;
-  box-shadow: none !important;
+
+.copy-btn.copied {
+  background: #5a3a8a;
+  color: #fff;
+}
+
+.copy-btn:focus {
+  outline: 2px solid #7952b3;
+  outline-offset: 2px;
 }
