@@ -2121,10 +2121,10 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+/*.starter-section {
+   Add your styles here 
 }
-
+*/
 /*--------------------------------------------------------------
 # Blog Posts Section
 --------------------------------------------------------------*/
@@ -2872,12 +2872,14 @@ pre[class*="language-"] {
   scrollbar-width: thin;
 }
 
-/* Remove background e sombra dos tokens do Prism e força cor herdada */
+/* Remove background e sombra dos tokens do Prism */
 .dark-theme code[class*="language-"] span,
-.dark-theme code[class*="language-"] .token,
+.dark-theme code[class*="language-"] .token {
+  background: none !important;
+  box-shadow: none !important;
+}
 code[class*="language-"] span,
 code[class*="language-"] .token {
   background: none !important;
   box-shadow: none !important;
-  color: inherit !important;
 }
