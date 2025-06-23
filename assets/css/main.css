@@ -1112,7 +1112,7 @@ section,
   background-color: var(--surface-color);
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
   height: 100%;
-  padding: 60px 30px;
+  padding: 5px;
   text-align: center;
   transition: 0.3s;
   border-radius: 5px;
@@ -2855,21 +2855,30 @@ pre[class*="language-"] {
   box-shadow: none;
 }
 
-/* Corrige scrollbar do snippet no tema escuro */
-.dark-theme pre[class*="language-"]::-webkit-scrollbar {
+/* Corrige scrollbar do highlight.js/pre no tema escuro */
+.dark-theme pre,
+.dark-theme pre[class*="language-"],
+.dark-theme pre code {
+  scrollbar-color: #444950 #23272e;
+  scrollbar-width: thin;
+}
+
+.dark-theme pre::-webkit-scrollbar,
+.dark-theme pre[class*="language-"]::-webkit-scrollbar,
+.dark-theme pre code::-webkit-scrollbar {
   height: 8px;
   background: #23272e;
 }
-.dark-theme pre[class*="language-"]::-webkit-scrollbar-thumb {
+.dark-theme pre::-webkit-scrollbar-thumb,
+.dark-theme pre[class*="language-"]::-webkit-scrollbar-thumb,
+.dark-theme pre code::-webkit-scrollbar-thumb {
   background: #444950;
   border-radius: 4px;
 }
-.dark-theme pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+.dark-theme pre::-webkit-scrollbar-thumb:hover,
+.dark-theme pre[class*="language-"]::-webkit-scrollbar-thumb:hover,
+.dark-theme pre code::-webkit-scrollbar-thumb:hover {
   background: #555b65;
-}
-.dark-theme pre[class*="language-"] {
-  scrollbar-color: #444950 #23272e;
-  scrollbar-width: thin;
 }
 
 /* Remove background e sombra dos tokens do Prism */
