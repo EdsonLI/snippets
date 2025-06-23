@@ -50,6 +50,11 @@
   .portfolio-content h5 {
     margin-top: 0.5rem;
   }
+
+  .snippet-code pre {
+    margin: 0;
+    font-size: 0.85rem;
+  }
 </style>>
 
   <!-- =======================================================
@@ -149,31 +154,33 @@
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
   <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative">
 
-    <!-- Título centralizado -->
-    <h5 class="text-info text-center mb-3">Container com grid</h5>
+    <!-- TÍTULO CENTRALIZADO -->
+    <div class="text-center mb-2">
+      <h5 class="text-info mb-1">Container com grid</h5>
+    </div>
 
-    <!-- Botões no canto superior direito -->
-    <div class="position-absolute top-0 end-0 m-2 d-flex gap-2 align-items-center z-3">
+    <!-- BOTÕES ALINHADOS À DIREITA -->
+    <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
       <!-- Linguagem -->
       <span class="badge bg-secondary small d-flex align-items-center">
         <i class="bi bi-code-slash me-1"></i> HTML
       </span>
 
-      <!-- Botão Resultado -->
+      <!-- Resultado -->
       <button class="btn btn-sm btn-outline-light py-0 px-2 show-result" data-snippet-id="snippet1">
         <i class="bi bi-search-plus me-1"></i> Resultado
       </button>
 
-      <!-- Botão copiar -->
+      <!-- Copiar -->
       <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn" data-target="snippet1">
         <i class="bi bi-clipboard"></i>
       </button>
     </div>
 
-    <!-- Snippet -->
+    <!-- BLOCO DO CÓDIGO -->
     <div class="snippet-code mb-3" style="max-height: 220px; overflow: auto;">
       <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
   &lt;div class="row"&gt;
@@ -183,6 +190,20 @@
 &lt;/div&gt;
 </code></pre>
     </div>
+
+    <!-- RESULTADO OCULTO -->
+    <template id="result-snippet1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">Coluna 1</div>
+          <div class="col-md-6">Coluna 2</div>
+        </div>
+      </div>
+    </template>
+
+  </div>
+</div>
+
 
     <!-- Resultado oculto -->
     <template id="result-snippet1">
