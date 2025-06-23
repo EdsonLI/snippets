@@ -33,7 +33,20 @@
   <!-- Mover todo o CSS customizado para main.css -->
   <style>
     /* ...remover todo o CSS customizado daqui, manter apenas seções de comentários ou imports de terceiros... */
-  </style>
+  .portfolio-content .btn,
+  .portfolio-content .badge {
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+
+  .portfolio-content .btn i {
+    vertical-align: middle;
+  }
+
+  .portfolio-content .position-absolute {
+    z-index: 2;
+  }
+</style>>
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -133,14 +146,32 @@
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-  <div class="portfolio-content h-100 p-3 bg-dark text-light rounded">
-    
-    <!-- Título do snippet -->
-    <h4 class="text-info mb-3">Container com grid</h4>
+  <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative">
 
-    <!-- Snippet de código -->
+    <!-- Botões no canto superior direito -->
+    <div class="position-absolute top-0 end-0 m-2 d-flex gap-2 align-items-center z-3">
+      <!-- Linguagem -->
+      <span class="badge bg-secondary small d-flex align-items-center">
+        <i class="bi bi-code-slash me-1"></i> HTML
+      </span>
+
+      <!-- Botão Resultado -->
+      <button class="btn btn-sm btn-outline-light py-0 px-2 show-result" data-snippet-id="snippet1">
+        <i class="bi bi-search-plus me-1"></i> Resultado
+      </button>
+
+      <!-- Botão copiar -->
+      <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn" data-target="snippet1">
+        <i class="bi bi-clipboard"></i>
+      </button>
+    </div>
+
+    <!-- Título do snippet -->
+    <h5 class="text-info mt-4 mb-2">Container com grid</h5>
+
+    <!-- Snippet -->
     <div class="snippet-code mb-3" style="max-height: 220px; overflow: auto;">
-      <pre><code class="language-html">&lt;div class="container"&gt;
+      <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
   &lt;div class="row"&gt;
     &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
     &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
@@ -149,18 +180,15 @@
 </code></pre>
     </div>
 
-    <!-- Ações do card -->
-    <div class="portfolio-info d-flex justify-content-between align-items-center">
-      <span><i class="bi bi-code-slash me-1"></i>HTML</span>
-      <div>
-        <a href="#previewModal" title="Preview" class="glightbox preview-link">
-          <i class="bi bi-zoom-in"></i>
-        </a>
-        <a href="portfolio-details.html" title="Mais detalhes" class="details-link">
-          <i class="bi bi-link-45deg"></i>
-        </a>
+    <!-- Resultado oculto -->
+    <template id="result-snippet1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">Coluna 1</div>
+          <div class="col-md-6">Coluna 2</div>
+        </div>
       </div>
-    </div>
+    </template>
 
   </div>
 </div>
@@ -178,53 +206,17 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100 p-3 bg-dark text-light rounded">
-
-                <!-- Título do snippet -->
-                <h4 class="text-info mb-3">Container com grid</h4>
-
-                <!-- Snippet -->
-                <div class="snippet-code mb-3" style="max-height: 220px; overflow: auto;">
-                  <pre><code class="language-html">&lt;div class="container"&gt;
-              &lt;div class="row"&gt;
-                &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-                &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-            </code></pre>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Branding 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
-
-                <!-- Barra de ações -->
-                <div class="portfolio-info d-flex justify-content-between align-items-center">
-                  <span><i class="bi bi-code-slash me-1"></i>HTML</span>
-
-                  <div class="d-flex gap-2">
-                    <!-- Botão Resultado -->
-                    <button class="btn btn-sm btn-outline-light show-result" data-snippet-id="snippet1">
-                      <i class="bi bi-search-plus me-1"></i> Resultado
-                    </button>
-
-                    <!-- Botão Copiar -->
-                    <button class="btn btn-sm btn-outline-light copy-btn" data-target="snippet1">
-                      <i class="bi bi-clipboard"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Resultado oculto (HTML executável) -->
-                <template id="result-snippet1">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-6">Coluna 1</div>
-                      <div class="col-md-6">Coluna 2</div>
-                    </div>
-                  </div>
-                </template>
-
               </div>
-            </div>
-<!-- End Portfolio Item -->
+            </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
               <div class="portfolio-content h-100">
@@ -595,6 +587,7 @@
         });
       });
     });
+
     // Theme toggle logic
     document.addEventListener('DOMContentLoaded', function () {
       const themeBtn = document.getElementById('theme-toggle');
@@ -612,42 +605,41 @@
         setTheme(!document.body.classList.contains('dark-theme'));
       });
     });
-      // Lightbox customizado para snippets
-  document.querySelectorAll('.show-result').forEach(button => {
-    button.addEventListener('click', () => {
-      const id = button.getAttribute('data-snippet-id');
-      const template = document.getElementById('result-' + id);
-      const html = template.innerHTML;
+    
+    // Lightbox customizado para snippets
+    document.querySelectorAll('.show-result').forEach(button => {
+      button.addEventListener('click', () => {
+        const id = button.getAttribute('data-snippet-id');
+        const template = document.getElementById('result-' + id);
+        const html = template.innerHTML;
 
-      const lightbox = GLightbox({
-        elements: [{
-          content: html,
-          width: '800px',
-          height: 'auto'
-        }]
-      });
+        const lightbox = GLightbox({
+          elements: [{
+            content: html,
+            width: '800px',
+            height: 'auto'
+          }]
+        });
 
-      lightbox.open();
-    });
-  });
-
-  // Botão copiar estilo GitHub
-  document.querySelectorAll('.copy-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const id = button.getAttribute('data-target');
-      const codeBlock = document.querySelector(`[data-snippet-id="${id}"]`).closest('.portfolio-content').querySelector('code');
-      const text = codeBlock.innerText;
-
-      navigator.clipboard.writeText(text).then(() => {
-        button.innerHTML = '<i class="bi bi-check2"></i>';
-        setTimeout(() => {
-          button.innerHTML = '<i class="bi bi-clipboard"></i>';
-        }, 1500);
+        lightbox.open();
       });
     });
-  });
+
+    // Botão copiar estilo GitHub
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const id = button.getAttribute('data-target');
+        const codeBlock = document.querySelector(`[data-snippet-id="${id}"]`).closest('.portfolio-content').querySelector('code');
+        const text = codeBlock.innerText;
+
+        navigator.clipboard.writeText(text).then(() => {
+          button.innerHTML = '<i class="bi bi-check2"></i>';
+          setTimeout(() => {
+            button.innerHTML = '<i class="bi bi-clipboard"></i>';
+          }, 1500);
+        });
+      });
+    });
   </script>
-
 </body>
-
 </html>
