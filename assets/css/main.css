@@ -2883,3 +2883,60 @@ code[class*="language-"] .token {
   background: none !important;
   box-shadow: none !important;
 }
+
+/* Ajuste visual para botões de copiar código */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1em;
+  border: none;
+  background: #7952b3;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.4em 1.1em;
+  margin: 0.5em 0 0.5em 0;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-family: var(--default-font, inherit);
+  box-shadow: 0 2px 8px rgba(121,82,179,0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.copy-btn i {
+  color: #fff;
+  font-size: 1.1em;
+  margin-right: 0.3em;
+  transition: color 0.2s;
+}
+
+.copy-btn:active,
+.copy-btn.copied {
+  background: #5a3a8a;
+  color: #fff;
+}
+
+.copy-btn:focus {
+  outline: 2px solid #7952b3;
+  outline-offset: 2px;
+}
+
+.copy-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Para evitar sobreposição com <pre> */
+pre .copy-btn {
+  position: absolute;
+  top: 0.7em;
+  right: 1em;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Container para posicionar botão no canto do <pre> */
+.code-block-wrapper {
+  position: relative;
+}
