@@ -2872,14 +2872,12 @@ pre[class*="language-"] {
   scrollbar-width: thin;
 }
 
-/* Remove background e sombra dos tokens do Prism */
+/* Remove background e sombra dos tokens do Prism e força cor herdada */
 .dark-theme code[class*="language-"] span,
-.dark-theme code[class*="language-"] .token {
-  background: none !important;
-  box-shadow: none !important;
-}
+.dark-theme code[class*="language-"] .token,
 code[class*="language-"] span,
 code[class*="language-"] .token {
   background: none !important;
   box-shadow: none !important;
+  color: inherit !important;
 }
