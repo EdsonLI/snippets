@@ -2993,6 +2993,15 @@ pre .copy-btn {
     gap: 0.5em !important;
     width: auto !important;
   }
+
+  /* Ajustar o LinkedIn no menu mobile */
+  .navmenu a[href*="linkedin"] {
+    gap: 0.3em !important; /* Reduz o espaço entre ícone e texto */
+  }
+  
+  .navmenu a[href*="linkedin"] i.bi-linkedin {
+    font-size: 1.3em !important; /* Aumenta o tamanho do ícone */
+  }
   
   /* Centralizar labels e descrições */
   .nav-snippets-link {
@@ -3002,5 +3011,12 @@ pre .copy-btn {
   .nav-snippets-desc,
   .nav-snippets-label {
     text-align: center !important;
+  }
+}
+
+/* Para desktop também */
+@media (min-width: 1200px) {
+  .navmenu a[href*="linkedin"] i.bi-linkedin {
+    font-size: 1.2em !important;
   }
 }
