@@ -2949,3 +2949,44 @@ pre .copy-btn {
 .code-block-wrapper {
   position: relative;
 }
+
+/* Customizados */
+.portfolio-content .btn,
+.portfolio-content .badge {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.portfolio-content .btn i {
+  vertical-align: middle;
+}
+
+.portfolio-content .position-absolute {
+  z-index: 2;
+}
+
+.portfolio-content h5 {
+  margin-top: 0.5rem;
+}
+
+/* Centralizar menu mobile à esquerda */
+@media (max-width: 1199px) {
+  .navmenu ul {
+    align-items: flex-start !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+
+  .navmenu ul li {
+    width: 100%;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    display: flex;
+  }
+  
+  .navmenu a,
+  .navmenu a:focus {
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+}
