@@ -19,10 +19,8 @@
 
     if (window.scrollY > 100) {
       selectBody.classList.add('scrolled');
-      selectHeader.style.transform = 'translateY(0)';
     } else {
       selectBody.classList.remove('scrolled');
-      selectHeader.style.transform = 'translateY(-10px)';
     }
   }
 
