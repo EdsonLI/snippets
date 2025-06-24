@@ -2969,24 +2969,41 @@ pre .copy-btn {
   margin-top: 0.5rem;
 }
 
-/* Centralizar menu mobile à esquerda */
+/* Centralizar itens do menu mobile à esquerda */
 @media (max-width: 1199px) {
-  .navmenu ul {
-    align-items: flex-start !important;
-    text-align: left !important;
-    justify-content: flex-start !important;
-  }
-
+  /* Reset forçado para alinhamento à esquerda de TODOS os itens do menu mobile */
   .navmenu ul li {
-    width: 100%;
-    text-align: left !important;
     justify-content: flex-start !important;
-    display: flex;
+    width: 100% !important;
   }
   
-  .navmenu a,
-  .navmenu a:focus {
+  /* Sobrescreve estilos inline de centralização */
+  .navmenu ul li[style*="justify-content:center"],
+  .navmenu ul li[style*="justify-content: center"] {
     justify-content: flex-start !important;
+  }
+  
+  /* Alinha conteúdo interno dos links à esquerda */
+  .navmenu a, 
+  .navmenu a:focus,
+  .nav-snippets-link[style*="align-items:center"],
+  .nav-snippets-link[style*="align-items: center"] {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
     text-align: left !important;
+    width: 100% !important;
+  }
+  
+  /* Garante que os textos fiquem alinhados à esquerda */
+  .navmenu span,
+  .nav-snippets-desc,
+  .nav-snippets-label {
+    text-align: left !important;
+    align-self: flex-start !important;
+  }
+  
+  /* Botão de tema também alinhado à esquerda */
+  .navmenu .theme-toggle-btn {
+    margin-left: 0 !important;
   }
 }
