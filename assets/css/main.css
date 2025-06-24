@@ -146,7 +146,7 @@ h6 {
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 15px 0 0 0 !important;
-  transition: all 0.5s;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   z-index: 997;
 }
 
@@ -201,6 +201,7 @@ h6 {
 }
 
 .scrolled .header {
+  transform: translateY(0);
   box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
 }
 
@@ -2685,7 +2686,7 @@ section,
 .categories-widget ul a span {
   padding-left: 5px;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 14px;
+  font-size:  14px;
 }
 
 .recent-posts-widget .post-item {
