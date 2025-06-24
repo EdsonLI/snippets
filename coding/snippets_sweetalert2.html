@@ -69,3 +69,28 @@
     <li><i class="fa-solid fa-sparkles"></i> Alerta com callback para ações após confirmação ou cancelamento</li>
   </ul>
 </div>
+
+<div>
+<span>
+  $action = new TAction(array($this, 'onDelete'));
+  $action->setParameters($param);
+  $action->setParameter('delete', 1);
+  $params = [
+      'title' => 'Deseja realmente excluir a Conta?',
+      'text' => 'Esta ação não pode ser desfeita',
+      'icon' => 'warning',
+      'showCancelButton' => true,
+      'confirmButtonText' => 'Sim, continuar',
+      'cancelButtonText' => 'Não, cancelar',
+  ];
+  
+  $callback = '
+      if (result.isConfirmed) {
+          __adianti_post_data("'.trim($param['class']).'", "class='.trim($param['class']).'&method='.trim($param['method']).'&register_state=false&delete=1&key='.trim($param['key']).'");
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+          
+      }
+  ';
+  SweetAlertDialogs::showAlertWithCallback($params, $callback);
+</span>
+</div>
