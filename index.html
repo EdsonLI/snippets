@@ -26,13 +26,186 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-  <!-- Highlight.js (tema escuro) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
+  <!-- Prism.js CSS for syntax highlight -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
   <!-- FontAwesome for copy icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <!-- Mover todo o CSS customizado para main.css -->
   <style>
-    /* ...remover todo o CSS customizado daqui, manter apenas seções de comentários ou imports de terceiros... */
+    /* Opcional: ajuste para o código não ultrapassar o card */
+    pre[class*="language-"] {
+      background: #f8f9fa;
+      border-radius: 6px;
+      padding: 1em;
+      font-size: 0.95em;
+      overflow-x: auto;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 0.95em;
+      border: none;
+      background: none;
+      color: #0d6efd;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.5em;
+      transition: color 0.2s;
+    }
+
+    .copy-btn.copied {
+      color: #198754;
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      font-size: 1.3em;
+      color: #222;
+      opacity: 1 !important;
+      transition: color 0.2s;
+      padding: 0.15em 0.5em;
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      position: static;
+      left: unset;
+      top: unset;
+      transform: none;
+      z-index: auto;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .theme-toggle-btn:focus {
+      outline: 2px solid #0dcaf0;
+    }
+
+    /* Ícone sempre visível: escuro no tema claro, branco no tema escuro */
+    .theme-toggle-btn i {
+      color: #222;
+      transition: color 0.2s;
+    }
+
+    .dark-theme .theme-toggle-btn,
+    .dark-theme .theme-toggle-btn i {
+      color: #fff;
+    }
+
+    /* Ajuste para header menor em mobile */
+    @media (max-width: 991px) {
+      .theme-toggle-btn {
+        top: 10px;
+        font-size: 2em;
+      }
+    }
+
+    /* Garante que o header tenha position:relative para centralizar */
+    .header {
+      position: relative;
+    }
+
+    /* Ajuste para o botão ocupar toda a largura no mobile menu */
+    @media (max-width: 1199px) {
+      .navmenu ul li {
+        width: 100%;
+      }
+
+      .theme-toggle-btn {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.5em;
+        min-width: 44px;
+        min-height: 44px;
+      }
+    }
+
+    /* No desktop, botão fica igual aos outros links */
+    @media (min-width: 1200px) {
+      .theme-toggle-btn {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 1.3em;
+        width: auto;
+        min-width: 44px;
+        min-height: 44px;
+      }
+
+      .navmenu ul li {
+        width: auto;
+      }
+    }
+
+    .nav-snippets-link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+      line-height: 1.1;
+      text-decoration: none;
+    }
+
+    .nav-snippets-label {
+      font-size: 0.75em;
+      letter-spacing: 1px;
+      font-weight: 700;
+      padding: 2px 12px 2px 0;
+      background: color-mix(in srgb, var(--accent-color), transparent 90%);
+      color: var(--accent-color);
+      border-radius: 50px;
+      text-transform: uppercase;
+      font-family: var(--default-font, inherit);
+      margin-bottom: 2px;
+      display: inline-block;
+    }
+
+    .nav-snippets-desc {
+      font-size: 1em;
+      color: var(--heading-color);
+      font-weight: 500;
+      margin-left: 0;
+      margin-top: 1px;
+      font-family: var(--heading-font, inherit);
+    }
+
+    /* Removido hover customizado */
+    /* .nav-snippets-link:hover .nav-snippets-label {
+      background: var(--accent-color);
+      color: var(--contrast-color);
+    }
+    .nav-snippets-link:hover .nav-snippets-desc {
+      color: var(--accent-color);
+    } */
+
+    /* Ajuste para menu mobile ocupar largura total */
+    @media (max-width: 1199px) {
+      .nav-snippets-link {
+        width: 100%;
+        align-items: flex-start;
+      }
+    }
+
+    /* Centraliza o item "Snippets Mais vistos" no menu */
+    .navmenu ul li .nav-snippets-link[style*="align-items:center"] {
+      align-items: center !important;
+    }
+
+    /* Reduz altura e padding do hero */
+    #hero.hero.section {
+      min-height: 340px;
+      padding-bottom: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    @media (max-width: 991px) {
+      #hero.hero.section {
+        min-height: 220px;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+    }
   </style>
 
   <!-- =======================================================
@@ -70,7 +243,7 @@
             </a>
           </li>       
           <li style="width:100%;display:flex;justify-content:center;">
-            <a href="coding" class="nav-snippets-link" style="align-items:center;">
+            <a href="#portfolio" class="nav-snippets-link" style="align-items:center;">
               <span class="nav-snippets-label">Snippets</span>
               <span class="nav-snippets-desc">Mais vistos</span>
             </a>
@@ -110,7 +283,7 @@
     </section><!-- /Hero Section -->
 
   <!-- Portfolio Section -->
-    <section id="coding" class="portfolio section">
+    <section id="portfolio" class="portfolio section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -133,38 +306,16 @@
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-  <div class="portfolio-content h-100 p-3 bg-dark text-light rounded">
-    
-    <!-- Título do snippet -->
-    <h4 class="text-info mb-3">Container com grid</h4>
-
-    <!-- Snippet de código -->
-    <div class="snippet-code mb-3" style="max-height: 220px; overflow: auto;">
-      <pre><code class="language-html">&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-    &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-    </div>
-
-    <!-- Ações do card -->
-    <div class="portfolio-info d-flex justify-content-between align-items-center">
-      <span><i class="bi bi-code-slash me-1"></i>HTML</span>
-      <div>
-        <a href="#previewModal" title="Preview" class="glightbox preview-link">
-          <i class="bi bi-zoom-in"></i>
-        </a>
-        <a href="portfolio-details.html" title="Mais detalhes" class="details-link">
-          <i class="bi bi-link-45deg"></i>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>App 1</h4>
+                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
@@ -321,7 +472,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item item-cyan position-relative">
-              <!-- <i class="bi bi-activity icon"></i> -->
+              <i class="bi bi-activity icon"></i>
               <h3>Container com grid</h3>
               <pre><code class="language-html">&lt;div class="container"&gt;
   &lt;div class="row"&gt;
@@ -336,7 +487,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item item-orange position-relative">
-              <!-- <i class="bi bi-broadcast icon"></i> -->
+              <i class="bi bi-broadcast icon"></i>
               <h3>Botão com ícone</h3>
               <pre><code class="language-html">&lt;button class="btn btn-primary"&gt;
   &lt;i class="bi bi-check-circle"&gt;&lt;/i&gt; Confirmar
@@ -348,7 +499,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item item-teal position-relative">
-              <!-- <i class="bi bi-easel icon"></i> -->
+              <i class="bi bi-easel icon"></i>
               <h3>Card com imagem e texto</h3>
               <pre><code class="language-html">&lt;div class="card"&gt;
   &lt;img src="img.jpg" class="card-img-top" alt="..."&gt;
@@ -364,7 +515,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item item-red position-relative">
-              <!-- <i class="bi bi-bounding-box-circles icon"></i> -->
+              <i class="bi bi-bounding-box-circles icon"></i>
               <h3>Navbar básica</h3>
               <pre><code class="language-html">&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
   &lt;div class="container-fluid"&gt;
@@ -378,7 +529,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-item item-indigo position-relative">
-              <!-- <i class="bi bi-calendar4-week icon"></i> -->
+              <i class="bi bi-calendar4-week icon"></i>
               <h3>Accordion (colapsável)</h3>
               <pre><code class="language-html">&lt;div class="accordion" id="exemplo"&gt;
   &lt;div class="accordion-item"&gt;
@@ -401,7 +552,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-item item-pink position-relative">
-              <!-- <i class="bi bi-chat-square-text icon"></i> -->
+              <i class="bi bi-chat-square-text icon"></i>
               <h3>Alerta com botão de fechar</h3>
               <pre><code class="language-html">&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
   Aviso importante!
@@ -414,7 +565,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
             <div class="service-item item-cyan position-relative">
-              <!-- <i class="bi bi-activity icon"></i> -->
+              <i class="bi bi-activity icon"></i>
               <h3>Formulário com validação</h3>
               <pre><code class="language-html">&lt;form class="needs-validation" novalidate&gt;
   &lt;div class="mb-3"&gt;
@@ -430,7 +581,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="800">
             <div class="service-item item-orange position-relative">
-              <!-- <i class="bi bi-broadcast icon"></i> -->
+              <i class="bi bi-broadcast icon"></i>
               <h3>Modal</h3>
               <pre><code class="language-html">&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal"&gt;
   Abrir modal
@@ -456,7 +607,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="900">
             <div class="service-item item-teal position-relative">
-              <!-- <i class="bi bi-easel icon"></i> -->
+              <i class="bi bi-easel icon"></i>
               <h3>Spinner (carregando)</h3>
               <pre><code class="language-html">&lt;div class="spinner-border text-primary" role="status"&gt;
   &lt;span class="visually-hidden"&gt;Carregando...&lt;/span&gt;
@@ -466,22 +617,7 @@
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-            <div class="portfolio-content h-100 d-flex flex-column justify-content-between">
-              <div class="portfolio-info" style="padding: 1.5rem 1rem 0.5rem 1rem;">
-                <h4>Container com grid</h4>
-                <pre><code class="language-html">&lt;div class="container"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-    &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-                </code></pre>
-                <button class="copy-btn" type="button"><i class="fa-regular fa-copy"></i> Copiar</button>
-              </div>
-            </div>
-          </div>
-
+          <!-- ...existing code for any remaining service cards... -->
         </div>
 
       </div>
@@ -532,11 +668,8 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  <!-- Highlight.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <!-- Prism.js JS for syntax highlight -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <!-- Copy to clipboard logic -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
