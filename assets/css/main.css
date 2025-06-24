@@ -3043,17 +3043,3 @@ pre .copy-btn {
     font-size: 1.2em !important;
   }
 }
-
-/* Centralizar o nome no topo em dispositivos móveis */
-@media (max-width: 991px) {
-  .logo {
-    justify-content: center !important;
-    text-align: center;
-  }
-  .logo h1 {
-    margin: 0 auto;
-  }
-  .logo img {
-    display: none; /* Opcional: oculta o logo nos dispositivos móveis */
-  }
-}
