@@ -2691,6 +2691,8 @@ section,
 .recent-posts-widget .post-item {
   display: flex;
 
+
+
   margin-bottom: 15px;
 }
 
@@ -2831,6 +2833,32 @@ section,
   .nav-snippets-desc {
     text-align: center !important;
     width: 100% !important;
+  }
+}
+
+/* Centraliza o texto "Snippets" com "Mais Vistos" no menu mobile */
+@media (max-width: 1199px) {
+  .nav-snippets-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .nav-snippets-label {
+    display: block;
+    text-align: center !important;
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .nav-snippets-desc {
+    display: block;
+    text-align: center !important;
+    width: auto !important;
+    margin: 0 auto !important;
   }
 }
 
