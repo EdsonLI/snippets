@@ -2690,6 +2690,7 @@ section,
 
 .recent-posts-widget .post-item {
   display: flex;
+
   margin-bottom: 15px;
 }
 
@@ -2801,41 +2802,35 @@ section,
 .nav-snippets-link {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center !important;
+  justify-content: center;
+  width: 100%;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   line-height: 1.1;
   text-decoration: none;
 }
 
-.nav-snippets-label {
-  font-size: 0.75em;
-  letter-spacing: 1px;
-  font-weight: 700;
-  padding: 2px 12px 2px 0;
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
-  color: var(--accent-color);
-  border-radius: 50px;
-  text-transform: uppercase;
-  font-family: var(--default-font, inherit);
-  margin-bottom: 2px;
-  display: inline-block;
-}
-
+.nav-snippets-label,
 .nav-snippets-desc {
-  font-size: 1em;
-  color: var(--heading-color);
-  font-weight: 500;
-  margin-left: 0;
-  margin-top: 1px;
-  font-family: var(--heading-font, inherit);
-  text-align: center;
+  display: block;
+  width: 100%;
+  text-align: center !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
+/* Remove alinhamento à esquerda em mobile */
 @media (max-width: 1199px) {
   .nav-snippets-link {
-    width: 100%;
-    align-items: center;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .nav-snippets-label,
+  .nav-snippets-desc {
+    text-align: center !important;
+    width: 100% !important;
   }
 }
 
