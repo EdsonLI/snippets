@@ -32,6 +32,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('pre code').forEach((block) => {
@@ -300,77 +301,60 @@
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-            <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative border border-secondary">
+  <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative border border-secondary">
 
-              <!-- Título centralizado -->
-              <h5 class="text-info text-center mb-4">Container com grid</h5>
+    <!-- Título centralizado -->
+    <h5 class="text-info text-center mb-3">Container com grid</h5>
 
-              <!-- Top-right actions -->
-              <div class="position-absolute top-0 end-0 m-2 d-flex flex-wrap gap-2 align-items-center z-3">
+    <!-- Top-right actions -->
+    <div class="position-absolute top-0 end-0 mt-1 me-2 d-flex flex-wrap gap-2 align-items-center z-3">
 
-                <!-- Linguagem -->
-                <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
-                  <i class="bi bi-code-slash me-1"></i> HTML
-                </span>
+      <!-- Linguagem -->
+      <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+        <i class="bi bi-code-slash me-1"></i> HTML
+      </span>
 
-                <!-- Botão Resultado -->
-                <button class="btn btn-sm btn-outline-light py-0 px-2 show-result" data-snippet-id="snippet1">
-                  <i class="bi bi-search-plus me-1"></i> Resultado
-                </button>
+      <!-- Botão Resultado -->
+      <button class="btn btn-sm btn-outline-light py-0 px-2 show-result" data-snippet-id="snippet1">
+        <i class="bi bi-search-plus me-1"></i> Resultado
+      </button>
 
-                <!-- Botão copiar -->
-                <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn" data-target="snippet1">
-                  <i class="bi bi-clipboard me-1"></i> Copiar
-                </button>
+      <!-- Botão copiar -->
+      <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn" data-target="snippet1">
+        <i class="bi bi-clipboard me-1"></i> Copiar
+      </button>
 
-                <!-- Botão Snippet para VSCode -->
-                <button class="btn btn-sm btn-outline-info py-0 px-2">
-                  <i class="bi bi-code me-1"></i> Snippet para VSCode
-                </button>
+      <!-- Botão Snippet VSCode com Iconify -->
+      <button class="btn btn-sm btn-outline-info py-0 px-2">
+        <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
+        Snippet VSCode
+      </button>
 
-              </div>
+    </div>
 
-              <!-- Snippet -->
-              <div class="snippet-code mt-5 mb-3" style="max-height: 220px; overflow: auto;">
-                <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
-            &lt;div class="row"&gt;
-              &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-              &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          </code></pre>
-              </div>
-
-              <!-- Resultado oculto -->
-              <template id="result-snippet1">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">Coluna 1</div>
-                    <div class="col-md-6">Coluna 2</div>
-                  </div>
-                </div>
-              </template>
-
-            </div>
-          </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <!-- <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt=""> -->
-                 <h3>Container com grid</h3>
-              <pre><code class="language-html">&lt;div class="container"&gt;
+    <!-- Snippet -->
+    <div class="snippet-code mt-5 mb-3" style="max-height: 220px; overflow: auto;">
+      <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
   &lt;div class="row"&gt;
     &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
     &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-              </code></pre>
-                <!-- <div class="portfolio-info">
-                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div> -->
-              </div>
-            </div><!-- End Portfolio Item -->
+</code></pre>
+    </div>
+
+    <!-- Resultado oculto -->
+    <template id="result-snippet1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">Coluna 1</div>
+          <div class="col-md-6">Coluna 2</div>
+        </div>
+      </div>
+    </template>
+
+  </div>
+</div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
               <div class="portfolio-content h-100">
