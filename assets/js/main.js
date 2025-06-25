@@ -218,7 +218,7 @@
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         e.preventDefault();
-        const offset = 20; // Ajuste o valor para descer mais
+        const offset = 40; // Ajuste para descer um pouco mais
         const targetPosition = targetElement.offsetTop - offset;
         window.scrollTo({
           top: targetPosition,
