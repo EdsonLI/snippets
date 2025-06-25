@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     /* Opcional: ajuste para o código não ultrapassar o card */
-    pre[class*="language-"] {
+    /* pre[class*="language-"] {
       background: #f8f9fa;
       border-radius: 6px;
       padding: 1em;
@@ -93,7 +93,6 @@
       outline: 2px solid #0dcaf0;
     }
 
-    /* Ícone sempre visível: escuro no tema claro, branco no tema escuro */
     .theme-toggle-btn i {
       color: #222;
       transition: color 0.2s;
@@ -104,7 +103,6 @@
       color: #fff;
     }
 
-    /* Ajuste para header menor em mobile */
     @media (max-width: 991px) {
       .theme-toggle-btn {
         top: 10px;
@@ -112,12 +110,10 @@
       }
     }
 
-    /* Garante que o header tenha position:relative para centralizar */
     .header {
       position: relative;
     }
 
-    /* Ajuste para o botão ocupar toda a largura no mobile menu */
     @media (max-width: 1199px) {
       .navmenu ul li {
         width: 100%;
@@ -132,7 +128,6 @@
       }
     }
 
-    /* No desktop, botão fica igual aos outros links */
     @media (min-width: 1200px) {
       .theme-toggle-btn {
         margin-left: 0;
@@ -178,18 +173,8 @@
       margin-left: 0;
       margin-top: 1px;
       font-family: var(--heading-font, inherit);
-    }
+    }   
 
-    /* Removido hover customizado */
-    /* .nav-snippets-link:hover .nav-snippets-label {
-      background: var(--accent-color);
-      color: var(--contrast-color);
-    }
-    .nav-snippets-link:hover .nav-snippets-desc {
-      color: var(--accent-color);
-    } */
-
-    /* Ajuste para menu mobile ocupar largura total */
     @media (max-width: 1199px) {
       .nav-snippets-link {
         width: 100%;
@@ -197,12 +182,10 @@
       }
     }
 
-    /* Centraliza o item "Snippets Mais vistos" no menu */
     .navmenu ul li .nav-snippets-link[style*="align-items:center"] {
       align-items: center !important;
     }
 
-    /* Reduz altura e padding do hero */
     #hero.hero.section {
       min-height: 340px;
       padding-bottom: 1.5rem;
@@ -215,7 +198,7 @@
         padding-bottom: 0.5rem;
         padding-top: 0.5rem;
       }
-    }
+    } */
   </style>
 
   <!-- =======================================================
