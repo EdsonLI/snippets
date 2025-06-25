@@ -41,166 +41,7 @@
     });
   </script>
   <!-- FontAwesome for copy icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <style>
-    /* Opcional: ajuste para o código não ultrapassar o card */
-    /* pre[class*="language-"] {
-      background: #f8f9fa;
-      border-radius: 6px;
-      padding: 1em;
-      font-size: 0.95em;
-      overflow-x: auto;
-    }
-
-    .copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4em;
-      font-size: 0.95em;
-      border: none;
-      background: none;
-      color: #0d6efd;
-      cursor: pointer;
-      padding: 0;
-      margin-top: 0.5em;
-      transition: color 0.2s;
-    }
-
-    .copy-btn.copied {
-      color: #198754;
-    }
-
-    .theme-toggle-btn {
-      background: none;
-      border: none;
-      font-size: 1.3em;
-      color: #222;
-      opacity: 1 !important;
-      transition: color 0.2s;
-      padding: 0.15em 0.5em;
-      align-items: center;
-      display: inline-flex;
-      justify-content: center;
-      position: static;
-      left: unset;
-      top: unset;
-      transform: none;
-      z-index: auto;
-      min-width: 44px;
-      min-height: 44px;
-    }
-
-    .theme-toggle-btn:focus {
-      outline: 2px solid #0dcaf0;
-    }
-
-    .theme-toggle-btn i {
-      color: #222;
-      transition: color 0.2s;
-    }
-
-    .dark-theme .theme-toggle-btn,
-    .dark-theme .theme-toggle-btn i {
-      color: #fff;
-    }
-
-    @media (max-width: 991px) {
-      .theme-toggle-btn {
-        top: 10px;
-        font-size: 2em;
-      }
-    }
-
-    .header {
-      position: relative;
-    }
-
-    @media (max-width: 1199px) {
-      .navmenu ul li {
-        width: 100%;
-      }
-
-      .theme-toggle-btn {
-        width: 100%;
-        justify-content: flex-start;
-        font-size: 1.5em;
-        min-width: 44px;
-        min-height: 44px;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .theme-toggle-btn {
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 1.3em;
-        width: auto;
-        min-width: 44px;
-        min-height: 44px;
-      }
-
-      .navmenu ul li {
-        width: auto;
-      }
-    }
-
-    .nav-snippets-link {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-top: 0.2em;
-      padding-bottom: 0.2em;
-      line-height: 1.1;
-      text-decoration: none;
-    }
-
-    .nav-snippets-label {
-      font-size: 0.75em;
-      letter-spacing: 1px;
-      font-weight: 700;
-      background: color-mix(in srgb, var(--accent-color), transparent 90%);
-      color: var(--accent-color);
-      border-radius: 50px;
-      text-transform: uppercase;
-      font-family: var(--default-font, inherit);
-      margin-bottom: 2px;
-      display: inline-block;
-    }
-
-    .nav-snippets-desc {
-      font-size: 1em;
-      color: var(--heading-color);
-      font-weight: 500;
-      margin-left: 0;
-      margin-top: 1px;
-      font-family: var(--heading-font, inherit);
-    }   
-
-    @media (max-width: 1199px) {
-      .nav-snippets-link {
-        width: 100%;
-        align-items: flex-start;
-      }
-    }
-
-    .navmenu ul li .nav-snippets-link[style*="align-items:center"] {
-      align-items: center !important;
-    }
-
-    #hero.hero.section {
-      min-height: 340px;
-      padding-bottom: 1.5rem;
-      padding-top: 1.5rem;
-    }
-
-    @media (max-width: 991px) {
-      #hero.hero.section {
-        min-height: 220px;
-        padding-bottom: 0.5rem;
-        padding-top: 0.5rem;
-      }
-    } */
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -325,12 +166,12 @@
 
                 <div class="position-absolute top-0 end-0 mt-1 me-2 d-flex gap-2 align-items-center z-3">
                   <!-- Botão Visualizar -->
-                  <button class="btn btn-sm btn-outline-light py-0 px-2 show-result" data-snippet-id="snippet1" style="border-color: #8171e2;">
+                  <button class="btn btn-sm btn-outline-light py-0 px-2 show-result btn-custom" data-snippet-id="snippet1">
                     <i class="bi bi-eye"></i>
                   </button>
 
                   <!-- Botão Copiar -->
-                  <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn" data-target="snippet1" style="border-color: #8171e2;">
+                  <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn btn-custom" data-target="snippet1">
                     <i class="bi bi-files"></i>
                   </button>
                 </div>

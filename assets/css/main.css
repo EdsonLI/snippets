@@ -2994,6 +2994,26 @@ pre .copy-btn {
   margin-top: 0.5rem;
 }
 */
+/* Estilo padronizado para botões com borda e ícones */
+.btn-custom {
+  border-color: #8171e2 !important;
+  color: #8171e2 !important;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.btn-custom i {
+  color: #8171e2 !important;
+  transition: color 0.3s;
+}
+
+.btn-custom:hover {
+  color: #5a3a8a !important;
+  border-color: #5a3a8a !important;
+}
+
+.btn-custom:hover i {
+  color: #5a3a8a !important;
+}
 @media (max-width: 1199px) {
   .navmenu ul li {
     display: flex !important;
@@ -3002,7 +3022,7 @@ pre .copy-btn {
     text-align: center !important;
   }
   
-  /* Centralizar o conteúdo dos links */
+  /* Centraliza o conteúdo dos links */
   .navmenu a,
   .navmenu a:focus,
   .theme-toggle-btn {
