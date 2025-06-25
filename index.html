@@ -308,13 +308,21 @@
 
               <!-- Snippet -->
               <div class="snippet-code mt-5 mb-3 position-relative" style="max-height: 220px; overflow: auto;">
-                <!-- Ícones no topo à direita -->
-                <div class="position-absolute top-0 end-0 mt-1 me-2 d-flex flex-wrap gap-2 align-items-center z-3">
+                <!-- Ícones e botões -->
+                <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
                   <!-- Linguagem -->
                   <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
                     <i class="bi bi-code-slash me-1"></i> HTML
                   </span>
 
+                  <!-- Botão VSCode -->
+                  <button class="btn btn-sm btn-outline-info py-0 px-2">
+                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
+                    VSCode
+                  </button>
+                </div>
+
+                <div class="position-absolute top-0 end-0 mt-1 me-2 d-flex gap-2 align-items-center z-3">
                   <!-- Botão Visualizar -->
                   <button class="btn btn-sm btn-outline-light py-0 px-2 show-result" data-snippet-id="snippet1">
                     <i class="bi bi-eye"></i>
@@ -323,12 +331,6 @@
                   <!-- Botão Copiar -->
                   <button class="btn btn-sm btn-outline-light py-0 px-2 copy-btn" data-target="snippet1">
                     <i class="bi bi-clipboard"></i>
-                  </button>
-
-                  <!-- Botão Snippet VSCode com Iconify -->
-                  <button class="btn btn-sm btn-outline-info py-0 px-2">
-                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
-                    Snippet VSCode
                   </button>
                 </div>
 
