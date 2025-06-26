@@ -90,13 +90,11 @@
    * Animation on scroll function and init
    */
   function aosInit() {
-    const isMobile = window.innerWidth <= 768; // Define breakpoint for mobile
     AOS.init({
       duration: 600,
       easing: 'ease-in-out',
       once: true,
-      mirror: false,
-      disable: isMobile // Disable AOS on mobile
+      mirror: false
     });
   }
   window.addEventListener('load', aosInit);
