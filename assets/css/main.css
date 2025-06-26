@@ -2941,7 +2941,6 @@ code[class*="language-"] .token {
 .copy-btn i {
   color: #fff;
   font-size: 1.1em;
-  margin-right: 0.3em;
   transition: color 0.2s;
 }
 
@@ -3239,4 +3238,8 @@ pre[class*="language-"] {
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
   }
+}
+
+pre code.hljs {
+  padding: 2.5em 0 0 0 !important;
 }
