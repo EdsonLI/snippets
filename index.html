@@ -131,15 +131,26 @@
 
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
+          <!-- Ini Snippet Filters -->
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-sweetalert2">SweetAlert2</li>
+<li data-filter=".filter-jquery">jQuery</li>
+<li data-filter=".filter-css">CSS</li>
+<li data-filter=".filter-html">HTML</li>
+<li data-filter=".filter-php">PHP</li>
+<li data-filter=".filter-sql">SQL</li>
+<li data-filter=".filter-madbuilder">MadBuilder</li>
             <li data-filter=".filter-app">App</li>
             <li data-filter=".filter-product">Product</li>
             <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
-          </ul><!-- End Portfolio Filters -->
+            <li data-filter=".filter-books">Books</li>S
+          </ul>
+          <!-- End Snippet Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+          <!-- Ini Snippet Item -->  
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
 
@@ -195,286 +206,239 @@
               </template>
 
             </div>
-          </div><!-- End Portfolio Item -->
-          
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+          </div>
+          <!-- End Snippet Item -->
 
-              <!-- Título centralizado -->
-              <h5 class="text-info text-center mb-2">Container com grid</h5>
+          <!-- SweetAlert2 Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sweetalert2">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Alerta de confirmação</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> SweetAlert2
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-swal">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-swal">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-javascript" data-snippet-id="snippet-swal">Swal.fire({
+  title: 'Tem certeza?',
+  text: 'Essa ação é irreversível!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Sim, apagar!'
+})</code></pre>
+    </div>
+  </div>
+</div>
 
-              <!-- Snippet -->
-              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-                <!-- Ícones e botões -->
-                <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
-                  <!-- Linguagem -->
-                  <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
-                    <i class="bi bi-code-slash me-1"></i> HTML
-                  </span>
+<!-- jQuery Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-jquery">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Toggle com jQuery</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> jQuery
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-jquery">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-jquery">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-javascript" data-snippet-id="snippet-jquery">$(document).ready(function() {
+  $('#btnToggle').click(function() {
+    $('#box').toggle();
+  });
+});</code></pre>
+    </div>
+  </div>
+</div>
 
-                  <!-- Botão VSCode -->
-                  <button class="btn btn-sm btn-outline-info py-0 px-2" style="border-color: #8171e2; display: flex; align-items: center;">
-                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
-                    VSCode
-                    <i class="bi bi-download ms-1"></i>
-                  </button>
-                </div>
+<!-- CSS Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-css">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Botão com efeito hover</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> CSS
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-css">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-css">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-css" data-snippet-id="snippet-css">.btn-hover {
+  background-color: #333;
+  color: white;
+  transition: background-color 0.3s;
+}
 
-                <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-                  <!-- Botão Visualizar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-snippet-id="snippet1">
-                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-                  </button>
+.btn-hover:hover {
+  background-color: #555;
+}</code></pre>
+    </div>
+  </div>
+</div>
 
-                  <!-- Botão Copiar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-target="snippet1">
-                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
-                  </button>
-                </div>
+<!-- HTML Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-html">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Estrutura básica HTML5</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> HTML
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-html">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-html">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-html" data-snippet-id="snippet-html"><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documento</title>
+</head>
+<body>
+  <h1>Olá, mundo!</h1>
+</body>
+</html></code></pre>
+    </div>
+  </div>
+</div>
 
-                <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-          &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      </code></pre>
-              </div>
+<!-- PHP Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Olá Mundo em PHP</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-php">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-php">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-php"><?php
+  echo "Olá, mundo!";
+?></code></pre>
+    </div>
+  </div>
+</div>
 
-              <!-- Resultado oculto -->
-              <template id="result-snippet1">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">Coluna 1</div>
-                    <div class="col-md-6">Coluna 2</div>
-                  </div>
-                </div>
-              </template>
+<!-- SQL Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Consulta simples</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> SQL
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-sql">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-sql" data-snippet-id="snippet-sql">SELECT * FROM usuarios WHERE ativo = 1;</code></pre>
+    </div>
+  </div>
+</div>
 
-            </div>
-          </div><!-- End Portfolio Item --><div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+<!-- MadBuilder Snippet -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-madbuilder">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
+    <h5 class="text-info text-center mb-2">Formulário simples MadBuilder</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
+        <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
+          <i class="bi bi-code-slash me-1"></i> MadBuilder
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-mad">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-mad">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-mad">\$this-&gt;form-&gt;addField('name', new TEntry('name'), 'Nome:', '100%', true);
+\$this-&gt;form-&gt;addField('email', new TEntry('email'), 'Email:', '100%', true);</code></pre>
+    </div>
+  </div>
+</div>
 
-              <!-- Título centralizado -->
-              <h5 class="text-info text-center mb-2">Container com grid</h5>
 
-              <!-- Snippet -->
-              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-                <!-- Ícones e botões -->
-                <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
-                  <!-- Linguagem -->
-                  <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
-                    <i class="bi bi-code-slash me-1"></i> HTML
-                  </span>
 
-                  <!-- Botão VSCode -->
-                  <button class="btn btn-sm btn-outline-info py-0 px-2" style="border-color: #8171e2; display: flex; align-items: center;">
-                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
-                    VSCode
-                    <i class="bi bi-download ms-1"></i>
-                  </button>
-                </div>
 
-                <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-                  <!-- Botão Visualizar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-snippet-id="snippet1">
-                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-                  </button>
 
-                  <!-- Botão Copiar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-target="snippet1">
-                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
-                  </button>
-                </div>
 
-                <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-          &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      </code></pre>
-              </div>
 
-              <!-- Resultado oculto -->
-              <template id="result-snippet1">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">Coluna 1</div>
-                    <div class="col-md-6">Coluna 2</div>
-                  </div>
-                </div>
-              </template>
 
-            </div>
-          </div><!-- End Portfolio Item -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
 
-              <!-- Título centralizado -->
-              <h5 class="text-info text-center mb-2">Container com grid</h5>
 
-              <!-- Snippet -->
-              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-                <!-- Ícones e botões -->
-                <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
-                  <!-- Linguagem -->
-                  <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
-                    <i class="bi bi-code-slash me-1"></i> HTML
-                  </span>
 
-                  <!-- Botão VSCode -->
-                  <button class="btn btn-sm btn-outline-info py-0 px-2" style="border-color: #8171e2; display: flex; align-items: center;">
-                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
-                    VSCode
-                    <i class="bi bi-download ms-1"></i>
-                  </button>
-                </div>
 
-                <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-                  <!-- Botão Visualizar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-snippet-id="snippet1">
-                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-                  </button>
 
-                  <!-- Botão Copiar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-target="snippet1">
-                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
-                  </button>
-                </div>
 
-                <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-          &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      </code></pre>
-              </div>
 
-              <!-- Resultado oculto -->
-              <template id="result-snippet1">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">Coluna 1</div>
-                    <div class="col-md-6">Coluna 2</div>
-                  </div>
-                </div>
-              </template>
 
-            </div>
-          </div><!-- End Portfolio Item --><div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
 
-              <!-- Título centralizado -->
-              <h5 class="text-info text-center mb-2">Container com grid</h5>
-
-              <!-- Snippet -->
-              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-                <!-- Ícones e botões -->
-                <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
-                  <!-- Linguagem -->
-                  <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
-                    <i class="bi bi-code-slash me-1"></i> HTML
-                  </span>
-
-                  <!-- Botão VSCode -->
-                  <button class="btn btn-sm btn-outline-info py-0 px-2" style="border-color: #8171e2; display: flex; align-items: center;">
-                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
-                    VSCode
-                    <i class="bi bi-download ms-1"></i>
-                  </button>
-                </div>
-
-                <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-                  <!-- Botão Visualizar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-snippet-id="snippet1">
-                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-                  </button>
-
-                  <!-- Botão Copiar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-target="snippet1">
-                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
-                  </button>
-                </div>
-
-                <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-          &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      </code></pre>
-              </div>
-
-              <!-- Resultado oculto -->
-              <template id="result-snippet1">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">Coluna 1</div>
-                    <div class="col-md-6">Coluna 2</div>
-                  </div>
-                </div>
-              </template>
-
-            </div>
-          </div><!-- End Portfolio Item --><div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary">
-
-              <!-- Título centralizado -->
-              <h5 class="text-info text-center mb-2">Container com grid</h5>
-
-              <!-- Snippet -->
-              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-                <!-- Ícones e botões -->
-                <div class="position-absolute top-0 start-0 mt-1 ms-2 d-flex gap-2 align-items-center z-3">
-                  <!-- Linguagem -->
-                  <span class="badge bg-secondary small d-flex align-items-center px-2 py-1">
-                    <i class="bi bi-code-slash me-1"></i> HTML
-                  </span>
-
-                  <!-- Botão VSCode -->
-                  <button class="btn btn-sm btn-outline-info py-0 px-2" style="border-color: #8171e2; display: flex; align-items: center;">
-                    <iconify-icon icon="mdi:visual-studio-code" class="me-1" style="font-size: 1rem;"></iconify-icon>
-                    VSCode
-                    <i class="bi bi-download ms-1"></i>
-                  </button>
-                </div>
-
-                <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-                  <!-- Botão Visualizar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-snippet-id="snippet1">
-                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-                  </button>
-
-                  <!-- Botão Copiar -->
-                  <button class="btn btn-sm btn-outline-light show-result btn-custom" data-target="snippet1">
-                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
-                  </button>
-                </div>
-
-                <pre><code class="language-html" data-snippet-id="snippet1">&lt;div class="container"&gt;
-        &lt;div class="row"&gt;
-          &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
-          &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      </code></pre>
-              </div>
-
-              <!-- Resultado oculto -->
-              <template id="result-snippet1">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">Coluna 1</div>
-                    <div class="col-md-6">Coluna 2</div>
-                  </div>
-                </div>
-              </template>
-
-            </div>
-          </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
               <div class="portfolio-content h-100">
