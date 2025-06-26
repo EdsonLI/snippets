@@ -3250,3 +3250,7 @@ pre {
 pre code.hljs {
   padding: 2.5em 0 0 0 !important;
 }
+
+.text-info {
+  color: var(--accent-color) !important;
+}
