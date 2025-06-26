@@ -2866,18 +2866,24 @@ section,
 
 /* Snippet/pre fundo escuro no tema escuro */
 pre[class*="language-"] {
-  background: #f8f9fa;
-  border-radius: 6px;
-  padding: 1em;
-  font-size: 0.95em;
-  overflow-x: auto;
-  box-shadow: none;
+  background: var(--surface-color);
+  color: var(--default-color);
+  scrollbar-color: var(--default-color) var(--surface-color);
+  scrollbar-width: thin;
 }
 
-.dark-theme pre[class*="language-"] {
-  background: #23272e !important;
-  color: #f8f8f2;
-  box-shadow: none;
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 8px;
+  background: var(--surface-color);
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: var(--default-color);
+  border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
 /* Corrige scrollbar do highlight.js/pre no tema escuro */
