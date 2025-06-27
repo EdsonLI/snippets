@@ -3254,3 +3254,7 @@ pre code.hljs {
 .text-info {
   color: var(--accent-color) !important;
 }
+
+.border-secondary-custom {
+  border-color: var(--accent-color) !important;
+}
