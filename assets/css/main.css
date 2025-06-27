@@ -3001,7 +3001,7 @@ pre .copy-btn {
   transition: color 0.3s, border-color 0.3s;
   max-height: 1.5em !important;
   padding-top: .95px !important;
-  margin-right: .2em .2em 0 0 ! important;
+  margin: .2em .2em 0 0 !important;
 }
 
 .btn-custom i {
