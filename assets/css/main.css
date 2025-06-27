@@ -2999,9 +2999,9 @@ pre .copy-btn {
   border: 1px solid #8171e2 !important; /* Adiciona a borda */
   color: #8171e2 !important;
   transition: color 0.3s, border-color 0.3s;
-  margin-top: .2em !important;
   max-height: 1.5em !important;
   padding-top: .95px !important;
+  margin-right: .2em .2em 0 0 ! important;
 }
 
 .btn-custom i {
