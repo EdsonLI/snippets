@@ -300,6 +300,59 @@ if (typeof(Storage) !== "undefined") {
 
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Cookies com PHP (básico ao avançado)</h5>
+    <div class="snippet-code position-relative" style="max-height: 420px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-cookies">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-cookies" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-cookies">&lt;?php
+
+// Criar um cookie simples (dura 1 hora)
+setcookie('usuario', 'Edson', time() + 3600);
+
+// Verificar se o cookie existe
+if (isset($_COOKIE['usuario'])) {
+  echo "Bem-vindo, " . $_COOKIE['usuario'];
+} else {
+  echo "Usuário desconhecido.";
+}
+
+// Apagar um cookie (expira no passado)
+setcookie('usuario', '', time() - 3600);
+
+// Cookie com parâmetros avançados (segurança + domínio)
+setcookie(
+  name: 'sessao_segura',
+  value: 'abc123',
+  expires_or_options: [
+    'expires' =&gt; time() + 3600,
+    'path' =&gt; '/',
+    'domain' =&gt; 'exemplo.com.br',
+    'secure' =&gt; true,      // Só HTTPS
+    'httponly' =&gt; true,    // Inacessível via JavaScript
+    'samesite' =&gt; 'Strict' // Proteção contra CSRF
+  ]
+);
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h5 class="text-info text-center mb-2">Métodos Estáticos vs Não Estáticos</h5>
     <div class="snippet-code position-relative" style="max-height: 300px; overflow: auto;">
       <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
