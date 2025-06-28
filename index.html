@@ -1100,21 +1100,22 @@ if (typeof(Storage) !== "undefined") {
  
   let loadedIsotope = false;
 
-  function loadIsotope() {
-    if (loadedIsotope) return; // Evita recarregar mais de uma vez
-    fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
-      .then(res => res.text())
-      .then(html => {
-        console.log('teste');
-        console.log(html);
-        document.querySelector('#preview-isotope').innerHTML = html;
-        loadedIsotope = true;
-      })
-      .catch(err => {
-        document.querySelector('#preview-isotope').innerHTML = '<p class="text-danger">Erro ao carregar snippet.</p>';
-        console.error(err);
-      });
-  }
+function loadIsotope() {
+  if (loadedIsotope) return;
+
+  fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
+    .then(res => res.text())
+    .then(html => {
+      document.querySelector('#preview-isotope').innerHTML = html;
+      loadedIsotope = true;
+
+      // Só agora adiciona a classe e ativa o lightbox
+      document.querySelector('#preview-link').classList.add('glightbox');
+
+      const lightbox = GLightbox({ selector: '#preview-link' });
+      lightbox.open(); // abre direto
+    });
+}
 </script>
 </body>
 
