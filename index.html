@@ -136,11 +136,12 @@
           <!-- Ini Snippet Filters -->
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
+ <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
             <li data-filter=".filter-sweetalert2" style="cursor: pointer;">SweetAlert2</li>
             <li data-filter=".filter-jquery" style="cursor: pointer;">jQuery</li>
             <li data-filter=".filter-css" style="cursor: pointer;">CSS</li>
             <li data-filter=".filter-html" style="cursor: pointer;">HTML</li>
-            <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
+           
             <li data-filter=".filter-sql" style="cursor: pointer;">SQL</li>
             <li data-filter=".filter-madbuilder" style="cursor: pointer;">MadBuilder</li>
             <li data-filter=".filter-app">App</li>
@@ -151,6 +152,189 @@
           <!-- End Snippet Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+
+<!-- Ini Snippets PHP -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Cookies com PHP (básico ao avançado)</h5>
+    <div class="snippet-code position-relative" style="max-height: 420px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-cookies">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-cookies" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-cookies">&lt;?php
+
+   // Criar um cookie simples (dura 1 hora)
+   setcookie('usuario', 'Edson', time() + 3600);
+
+   // Verificar se o cookie existe
+   if (isset($_COOKIE['usuario'])) {
+      echo "Bem-vindo, " . $_COOKIE['usuario'];
+   } else {
+      echo "Usuário desconhecido.";
+   }
+
+   // Apagar um cookie (expira no passado)
+   setcookie('usuario', '', time() - 3600);
+
+   // Cookie com parâmetros avançados (segurança + domínio)
+   setcookie(
+      name: 'sessao_segura',
+      value: 'abc123',
+      expires_or_options: [
+         'expires' =&gt; time() + 3600,
+         'path' =&gt; '/',
+         'domain' =&gt; 'exemplo.com.br',
+         'secure' =&gt; true,      // Só HTTPS
+         'httponly' =&gt; true,    // Inacessível via JavaScript
+         'samesite' =&gt; 'Strict' // Proteção contra CSRF
+      ]
+   );
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Métodos Estáticos vs Não Estáticos</h5>
+    <div class="snippet-code position-relative" style="max-height: 300px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-metodos-static">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-metodos-static" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-metodos-static">&lt;?php
+
+   class Saudacao {
+      public function ola() {
+         return "Olá do método NÃO estático!";
+      }
+
+      public static function olaStatic() {
+         return "Olá do método ESTÁTICO!";
+      }
+   }
+
+   // Método não estático → requer instância
+   $exemplo = new Saudacao();
+   echo $exemplo-&gt;ola(); // OK
+
+   // Método estático → chamado diretamente da classe
+   echo Saudacao::olaStatic(); // OK
+
+   // echo Saudacao::ola(); // Erro: não estático chamado estaticamente
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">isset vs empty em PHP</h5>
+    <div class="snippet-code position-relative" style="max-height: 280px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-isset-empty">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-isset-empty" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-isset-empty">&lt;?php
+   $variavel1 = '';
+   $variavel2 = 0;
+   $variavel3 = null;
+
+   // isset verifica se a variável existe e não é null
+   var_dump(isset($variavel1)); // true
+   var_dump(isset($variavel2)); // true
+   var_dump(isset($variavel3)); // false
+
+   // empty verifica se a variável é vazia ou inexistente
+   var_dump(empty($variavel1)); // true
+   var_dump(empty($variavel2)); // true
+   var_dump(empty($variavel3)); // true
+
+   // variável não definida
+   // var_dump(isset($nao_definida)); // false
+   // var_dump(empty($nao_definida)); // true
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Convertendo a partir de float</h5>
+    <div class="snippet-code position-relative" style="max-height: 280px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-float-conversion">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-float-conversion" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-float-conversion">&lt;?php
+
+   function foo($value): int {
+      return $value;
+   }
+
+   var_dump(foo(8.1)); // Descontinuado: conversão implícita de float 8.1 para int perdendo precisão a partir do PHP 8.1.0
+   var_dump(foo(8.1)); // 8 antes do PHP 8.1.0
+   var_dump(foo(8.0)); // 8 em ambos os casos
+
+   var_dump((int) 8.1);     // 8 em ambos os casos
+   var_dump(intval(8.1));   // 8 em ambos os casos
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- End Snippets PHP -->
 
 <!-- Ini Snippets SweetAlert2 -->
 
@@ -296,185 +480,7 @@ if (typeof(Storage) !== "undefined") {
           </div>
 <!-- End Snippets HTML -->
 
-<!-- Ini Snippets PHP -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h5 class="text-info text-center mb-2">Cookies com PHP (básico ao avançado)</h5>
-    <div class="snippet-code position-relative" style="max-height: 420px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
-          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-cookies">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-cookies" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre><code class="language-php" data-snippet-id="snippet-cookies">&lt;?php
-
-// Criar um cookie simples (dura 1 hora)
-setcookie('usuario', 'Edson', time() + 3600);
-
-// Verificar se o cookie existe
-if (isset($_COOKIE['usuario'])) {
-  echo "Bem-vindo, " . $_COOKIE['usuario'];
-} else {
-  echo "Usuário desconhecido.";
-}
-
-// Apagar um cookie (expira no passado)
-setcookie('usuario', '', time() - 3600);
-
-// Cookie com parâmetros avançados (segurança + domínio)
-setcookie(
-  name: 'sessao_segura',
-  value: 'abc123',
-  expires_or_options: [
-    'expires' =&gt; time() + 3600,
-    'path' =&gt; '/',
-    'domain' =&gt; 'exemplo.com.br',
-    'secure' =&gt; true,      // Só HTTPS
-    'httponly' =&gt; true,    // Inacessível via JavaScript
-    'samesite' =&gt; 'Strict' // Proteção contra CSRF
-  ]
-);
-?&gt;</code></pre>
-    </div>
-  </div>
-</div>
-
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h5 class="text-info text-center mb-2">Métodos Estáticos vs Não Estáticos</h5>
-    <div class="snippet-code position-relative" style="max-height: 300px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
-          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-metodos-static">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-metodos-static" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre><code class="language-php" data-snippet-id="snippet-metodos-static">&lt;?php
-
-class Saudacao {
-  public function ola() {
-    return "Olá do método NÃO estático!";
-  }
-
-  public static function olaStatic() {
-    return "Olá do método ESTÁTICO!";
-  }
-}
-
-// Método não estático → requer instância
-$exemplo = new Saudacao();
-echo $exemplo-&gt;ola(); // OK
-
-// Método estático → chamado diretamente da classe
-echo Saudacao::olaStatic(); // OK
-
-// echo Saudacao::ola(); // Erro: não estático chamado estaticamente
-?&gt;</code></pre>
-    </div>
-  </div>
-</div>
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h5 class="text-info text-center mb-2">isset vs empty em PHP</h5>
-    <div class="snippet-code position-relative" style="max-height: 280px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
-          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-isset-empty">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-isset-empty" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre><code class="language-php" data-snippet-id="snippet-isset-empty">&lt;?php
-$variavel1 = '';
-$variavel2 = 0;
-$variavel3 = null;
-
-// isset verifica se a variável existe e não é null
-var_dump(isset($variavel1)); // true
-var_dump(isset($variavel2)); // true
-var_dump(isset($variavel3)); // false
-
-// empty verifica se a variável é vazia ou inexistente
-var_dump(empty($variavel1)); // true
-var_dump(empty($variavel2)); // true
-var_dump(empty($variavel3)); // true
-
-// variável não definida
-// var_dump(isset($nao_definida)); // false
-// var_dump(empty($nao_definida)); // true
-?&gt;</code></pre>
-    </div>
-  </div>
-</div>
-<!-------->    
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h5 class="text-info text-center mb-2">Convertendo a partir de float</h5>
-    <div class="snippet-code position-relative" style="max-height: 280px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
-          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-float-conversion">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-float-conversion" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre><code class="language-php" data-snippet-id="snippet-float-conversion">&lt;?php
-
-function foo($value): int {
-  return $value;
-}
-
-var_dump(foo(8.1)); // Descontinuado: conversão implícita de float 8.1 para int perdendo precisão a partir do PHP 8.1.0
-var_dump(foo(8.1)); // 8 antes do PHP 8.1.0
-var_dump(foo(8.0)); // 8 em ambos os casos
-
-var_dump((int) 8.1);     // 8 em ambos os casos
-var_dump(intval(8.1));   // 8 em ambos os casos
-?&gt;</code></pre>
-    </div>
-  </div>
-</div>
-<!-- End Snippets PHP -->
 
 <!-- Ini Snippets SQL -->
 
