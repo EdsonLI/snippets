@@ -824,12 +824,14 @@ if (typeof(Storage) !== "undefined") {
                 <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Books 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  
+<!-- Link de preview -->
+<a href="#preview-isotope" id="preview-link" class="preview-link" onclick="loadIsotope()">Pré-visualizar</a>
 
-
-<a id="preview-link" href="#preview-isotope" onclick="loadIsotope()">Preview dinâmico</a>
-
-
+<!-- Container escondido que será preenchido dinamicamente -->
+<div id="preview-isotope" style="display:none;" class="glightbox-content">
+  <div class="loading text-light p-5">Carregando snippet...</div>
+</div>
 
 
 
@@ -1104,23 +1106,27 @@ if (typeof(Storage) !== "undefined") {
  
   let loadedIsotope = false;
 
-function loadIsotope() {
-  if (loadedIsotope) return;
+  function loadIsotope() {
+    if (loadedIsotope) return;
 
-  fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
-    .then(res => res.text())
-    .then(html => {
-      document.querySelector('#preview-isotope').innerHTML = html;
-      loadedIsotope = true;
+    $.get(
+      'https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html',
+      function (data) {
+        $('#preview-isotope').html(data);
+        loadedIsotope = true;
 
-      // Só agora adiciona a classe e ativa o lightbox
-      document.querySelector('#preview-link').classList.add('glightbox');
+        // Só agora aplica a classe e ativa o Glightbox
+        $('#preview-link').addClass('glightbox');
 
-      const lightbox = GLightbox({ selector: '#preview-link' });
-      lightbox.open(); // abre direto
+        const lightbox = GLightbox({ selector: '#preview-link' });
+        lightbox.open(); // Abre direto após carregar
+      }
+    ).fail(function () {
+      $('#preview-isotope').html('<p class="text-danger">Erro ao carregar snippet.</p>');
     });
-}
+  }
 </script>
+
 </body>
 
 </html>
