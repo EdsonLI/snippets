@@ -155,6 +155,80 @@
 
 
 <!-- Ini Snippets PHP -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Manipulação de JSON com PHP (básico ao god)</h5>
+    <div class="snippet-code position-relative" style="max-height: 540px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+        <span class="badge small d-flex align-items-center py-1" style="margin-top: 2.5px !important; background-color: #f16529; color: #fff;">
+          <iconify-icon icon="mdi:code-json" class="me-1" style=" font-size: 18px;"></iconify-icon> JSON
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-json">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-json" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-json">&lt;?php
+
+   // JSON string (vindo de API, arquivo, etc.)
+   $json = '{
+      "nome": "Edson",
+      "idade": 28,
+      "skills": ["PHP", "JS", "SQL"],
+      "ativo": true
+   }';
+
+   // Decodificar JSON para array associativo
+   $dados = json_decode($json, true);
+
+   echo $dados['nome']; // Edson
+   echo $dados['skills'][0]; // PHP
+
+   // Decodificar como objeto (padrão)
+   $dadosObj = json_decode($json);
+   echo $dadosObj-&gt;skills[1]; // JS
+
+   // Criar array e codificar para JSON
+   $usuario = [
+      "nome" =&gt; "Daiane",
+      "idade" =&gt; 30,
+      "admin" =&gt; false
+   ];
+
+   $jsonGerado = json_encode($usuario, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+   echo $jsonGerado;
+
+   // Validar JSON
+   $invalido = '{ nome: "teste" '; // Erro proposital
+   json_decode($invalido);
+   if (json_last_error() !== JSON_ERROR_NONE) {
+      echo "JSON inválido: " . json_last_error_msg();
+   }
+
+   // Convertendo para objetos tipados (PHP 8.1+)
+   class Perfil {
+      public string $nome;
+      public int $idade;
+   }
+
+   $perfil = json_decode($json, false, 512, JSON_THROW_ON_ERROR);
+   // Para mapear em objetos reais, use libs como symfony/serializer ou liga\fractal
+
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h5 class="text-info text-center mb-2">Cookies, Sessões e Preferências</h5>
