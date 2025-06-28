@@ -228,4 +228,21 @@
     });
   });
 
+  /**
+   * Ajusta a altura dos quadros de snippets
+   */
+  function adjustSnippetHeights() {
+    document.querySelectorAll('.snippet-code').forEach(snippet => {
+      snippet.style.height = 'auto'; // Reseta a altura para calcular corretamente
+      const contentHeight = snippet.scrollHeight; // Obtém a altura do conteúdo
+      snippet.style.height = `${contentHeight}px`; // Define a altura com base no conteúdo
+    });
+  }
+
+  // Chama a função ao carregar a página
+  adjustSnippetHeights();
+
+  // Recalcula a altura ao redimensionar a janela
+  window.addEventListener('resize', adjustSnippetHeights);
+
 })();
