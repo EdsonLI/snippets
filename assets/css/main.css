@@ -3059,6 +3059,7 @@ pre .copy-btn {
   .nav-snippets-desc,
   .nav-snippets-label {
     text-align: center !important;
+    width: 100% !important;
   }
 }
 
@@ -3174,87 +3175,22 @@ pre[class*="language-"] {
   }
 }
 
-.nav-snippets-link {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  line-height: 1.1;
-  text-decoration: none;
+ /* Estilo para barras de rolagem verticais */
+pre[class*="language-"] {
+  scrollbar-color: var(--default-color) var(--surface-color);
+  scrollbar-width: thin;
 }
 
-.nav-snippets-label {
-  font-size: 0.75em;
-  letter-spacing: 1px;
-  font-weight: 700;
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
-  color: var(--accent-color);
-  border-radius: 50px;
-  text-transform: uppercase;
-  font-family: var(--default-font, inherit);
-  margin-bottom: 2px;
-  display: inline-block;
+pre[class*="language-"]::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem vertical */
+  background: var(--surface-color);
 }
 
-.nav-snippets-desc {
-  font-size: 1em;
-  color: var(--heading-color);
-  font-weight: 500;
-  margin-left: 0;
-  margin-top: 1px;
-  font-family: var(--heading-font, inherit);
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: var(--default-color);
+  border-radius: 4px;
 }
 
-/* Removido hover customizado */
-/* .nav-snippets-link:hover .nav-snippets-label {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-.nav-snippets-link:hover .nav-snippets-desc {
-  color: var(--accent-color);
-} */
-
-/* Ajuste para menu mobile ocupar largura total */
-@media (max-width: 1199px) {
-  .nav-snippets-link {
-    width: 100%;
-    align-items: flex-start;
-  }
-}
-
-/* Centraliza o item "Snippets Mais vistos" no menu */
-.navmenu ul li .nav-snippets-link[style*="align-items:center"] {
-  align-items: center !important;
-}
-
-/* Reduz altura e padding do hero */
-#hero.hero.section {
-  min-height: 340px;
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
-}
-
-@media (max-width: 991px) {
-  #hero.hero.section {
-    min-height: 220px;
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
-  }
-}
-
-pre { 
-  margin-bottom: 0 !important;
-}
-
-pre code.hljs {
-  padding: 2.5em 0 0 0 !important;
-}
-
-.text-info {
-  color: var(--accent-color) !important;
-}
-
-.border-secondary-custom {
-  border-color: var(--accent-color) !important;
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--default-color), transparent 70%);
 }
