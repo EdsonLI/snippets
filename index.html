@@ -1105,6 +1105,7 @@ if (typeof(Storage) !== "undefined") {
     fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
       .then(res => res.text())
       .then(html => {
+        console.log('teste');
         document.querySelector('#preview-isotope').innerHTML = html;
         loadedIsotope = true;
       })
