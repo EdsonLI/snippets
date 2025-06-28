@@ -1106,6 +1106,7 @@ if (typeof(Storage) !== "undefined") {
       .then(res => res.text())
       .then(html => {
         console.log('teste');
+        console.log(html);
         document.querySelector('#preview-isotope').innerHTML = html;
         loadedIsotope = true;
       })
