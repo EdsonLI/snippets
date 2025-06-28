@@ -113,6 +113,20 @@
       type: 'iframe', // Permite carregar páginas standalone
       width: '90%',
       height: '90%',
+      openEffect: 'fade', // Efeito de abertura
+      closeEffect: 'fade', // Efeito de fechamento
+      touchNavigation: true, // Habilita navegação por toque
+      onOpen: () => {
+        // Remove aria-hidden de elementos que podem causar conflitos
+        document.querySelectorAll('[aria-hidden="true"]').forEach(el => el.removeAttribute('aria-hidden'));
+      },
+      onClose: () => {
+        // Restaura o foco no elemento correto após fechar o modal
+        const lastFocusedElement = document.activeElement;
+        if (lastFocusedElement) {
+          lastFocusedElement.blur();
+        }
+      }
     });
   });
 
