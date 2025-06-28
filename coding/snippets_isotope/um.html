@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Snippets com Isotope</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teste Isotope Standalone</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Iconify (para ícones nos badges, se quiser usar) -->
-  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
-
-  <!-- jQuery + Isotope -->
+  <!-- jQuery e Isotope -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
@@ -22,12 +19,19 @@
       padding: 2rem;
     }
     .card {
-      background-color: #1e1e1e;
-      border: 1px solid #333;
+      background-color: #1f1f1f;
+      border: 1px solid #444;
     }
     .filter-button-group .btn.active {
       background-color: #0dcaf0;
       color: #000;
+    }
+    .isotope-info {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      background-color: #222;
+      padding: 1rem;
+      border-radius: 5px;
     }
     pre {
       background-color: #2d2d2d;
@@ -35,81 +39,103 @@
       padding: 1rem;
       border-radius: 5px;
       overflow-x: auto;
-      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <h2 class="mb-4">Snippets com Isotope (standalone)</h2>
+  <h1 class="mb-4">Demonstração completa do Isotope.js + jQuery</h1>
+
+  <div class="isotope-info">
+    <p><strong>Objetivo:</strong> Testar visualmente o funcionamento do Isotope.js com filtros dinâmicos usando jQuery e cards de exemplo.</p>
+    <p>Cada card abaixo pertence a uma "categoria" (HTML, CSS ou JS). Clique nos botões para filtrar!</p>
+  </div>
 
   <!-- Botões de filtro -->
   <div class="mb-4 filter-button-group">
-    <button class="btn btn-sm btn-outline-light active" data-filter="*">Todos</button>
-    <button class="btn btn-sm btn-outline-info" data-filter=".filter-php">PHP</button>
-    <button class="btn btn-sm btn-outline-warning" data-filter=".filter-js">JavaScript</button>
+    <button class="btn btn-outline-light btn-sm active" data-filter="*">Todos</button>
+    <button class="btn btn-outline-danger btn-sm" data-filter=".html">HTML</button>
+    <button class="btn btn-outline-primary btn-sm" data-filter=".css">CSS</button>
+    <button class="btn btn-outline-warning btn-sm" data-filter=".js">JS</button>
   </div>
 
-  <!-- Container dos cards -->
-  <div class="row grid" id="snippet-container"></div>
+  <!-- Grid de cards -->
+  <div class="row grid">
+    <div class="col-sm-6 col-lg-4 mb-4 html">
+      <div class="card p-3 h-100">
+        <h5>HTML Básico</h5>
+        <p>Exemplo de estrutura de documento HTML.</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;Olá Mundo&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
 
-  <!-- Script -->
+    <div class="col-sm-6 col-lg-4 mb-4 css">
+      <div class="card p-3 h-100">
+        <h5>CSS Flexbox</h5>
+        <p>Exemplo de layout com flex.</p>
+        <pre><code>.container {
+  display: flex;
+  justify-content: center;
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 mb-4 js">
+      <div class="card p-3 h-100">
+        <h5>JavaScript Console</h5>
+        <p>Usando console.log para depuração.</p>
+        <pre><code>console.log("Teste Isotope");</code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 mb-4 js">
+      <div class="card p-3 h-100">
+        <h5>Evento Click</h5>
+        <p>Evento em botão usando jQuery.</p>
+        <pre><code>$("#btn").on("click", function() {
+  alert("Clicado!");
+});</code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 mb-4 css">
+      <div class="card p-3 h-100">
+        <h5>CSS Grid</h5>
+        <p>Exemplo de uso básico do grid layout.</p>
+        <pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4 mb-4 html">
+      <div class="card p-3 h-100">
+        <h5>Link e imagem</h5>
+        <p>Exemplo de tags &lt;a&gt; e &lt;img&gt;.</p>
+        <pre><code>&lt;a href="https://exemplo.com"&gt;Visitar&lt;/a&gt;
+&lt;img src="imagem.jpg" alt="imagem"&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para ativar Isotope -->
   <script>
-    const snippets = [
-      {
-        id: "s1",
-        title: "Exemplo PHP",
-        language: "php",
-        code: `<?php echo "Olá mundo"; ?>`
-      },
-      {
-        id: "s2",
-        title: "Console Log JS",
-        language: "js",
-        code: `console.log("Hello jQuery");`
-      },
-      {
-        id: "s3",
-        title: "Array e loop em PHP",
-        language: "php",
-        code: `<?php 
-$itens = ["A", "B", "C"];
-foreach ($itens as $item) {
-  echo $item . "<br>";
-}
-?>`
-      }
-    ];
-
     $(document).ready(function () {
-      const $container = $('#snippet-container');
-
-      snippets.forEach(function (snippet) {
-        const filterClass = "filter-" + snippet.language;
-        const card = $(\`
-          <div class="col-md-6 col-lg-4 mb-4 portfolio-item \${filterClass}">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title text-info">\${snippet.title}</h5>
-                <span class="badge bg-secondary mb-2">\${snippet.language.toUpperCase()}</span>
-                <pre><code>\${snippet.code}</code></pre>
-              </div>
-            </div>
-          </div>
-        \`);
-        $container.append(card);
-      });
-
-      const iso = new Isotope('.grid', {
-        itemSelector: '.portfolio-item',
+      const $grid = $('.grid').isotope({
+        itemSelector: '.col-lg-4',
         layoutMode: 'fitRows'
       });
 
       $('.filter-button-group button').on('click', function () {
         $('.filter-button-group button').removeClass('active');
         $(this).addClass('active');
-        const filtro = $(this).attr('data-filter');
-        iso.arrange({ filter: filtro });
+        const filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
       });
     });
   </script>
