@@ -155,6 +155,84 @@
 
 
 <!-- Ini Snippets PHP -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Manipulação avançada de datas com PHP</h5>
+    <div class="snippet-code position-relative" style="max-height: 540px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style="font-size: 18px;"></iconify-icon> PHP
+        </span>
+        <span class="badge small d-flex align-items-center py-1" style="margin-top: 2.5px !important; background-color: #4caf50; color: #fff;">
+          <iconify-icon icon="mdi:calendar-clock" class="me-1" style="font-size: 18px;"></iconify-icon> Date/Time
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-date">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-date" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-date">&lt;?php
+
+// Data atual
+$agora = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
+echo "Agora (BR): " . $agora-&gt;format('d/m/Y H:i:s') . "&lt;br&gt;";
+echo "ISO: " . $agora-&gt;format(DateTime::ATOM) . "&lt;br&gt;&lt;br&gt;";
+
+// Criando a partir de string
+$nascimento = DateTime::createFromFormat('d/m/Y', '05/08/1990');
+echo "Nascimento: " . $nascimento-&gt;format('Y-m-d') . "&lt;br&gt;";
+
+// Diferença entre datas
+$diff = $nascimento-&gt;diff($agora);
+echo "Idade: " . $diff-&gt;y . " anos, " . $diff-&gt;m . " meses&lt;br&gt;&lt;br&gt;";
+
+// Adição e subtração
+$hoje = new DateTime();
+$hoje-&gt;add(new DateInterval('P10D')); // +10 dias
+echo "10 dias no futuro: " . $hoje-&gt;format('d/m/Y') . "&lt;br&gt;";
+
+$hoje-&gt;sub(new DateInterval('P1M')); // -1 mês
+echo "Menos 1 mês: " . $hoje-&gt;format('d/m/Y') . "&lt;br&gt;&lt;br&gt;";
+
+// Loop de datas (DatePeriod)
+$inicio = new DateTime('2025-01-01');
+$fim = new DateTime('2025-01-10');
+$intervalo = new DateInterval('P2D');
+
+$periodo = new DatePeriod($inicio, $intervalo, $fim);
+foreach ($periodo as $data) {
+   echo "Dia: " . $data-&gt;format('d/m/Y') . "&lt;br&gt;";
+}
+
+echo "&lt;br&gt;";
+
+// Timezones
+$utc = new DateTime('now', new DateTimeZone('UTC'));
+echo "UTC: " . $utc-&gt;format('H:i:s \\U\\T\\C') . "&lt;br&gt;";
+
+// Timestamp para DateTime
+$dataUnix = (new DateTime())-&gt;setTimestamp(1720000000);
+echo "Convertido de timestamp: " . $dataUnix-&gt;format('d/m/Y H:i') . "&lt;br&gt;";
+
+// DateTimeImmutable
+$dataFixa = new DateTimeImmutable('2025-06-28');
+$nova = $dataFixa-&gt;add(new DateInterval('P1Y'));
+echo "Data original: " . $dataFixa-&gt;format('d/m/Y') . "&lt;br&gt;";
+echo "Mais 1 ano (immutável): " . $nova-&gt;format('d/m/Y') . "&lt;br&gt;";
+
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h5 class="text-info text-center mb-2">Consulta avançada com PDO e filtro LIKE</h5>
