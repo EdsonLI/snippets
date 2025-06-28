@@ -248,7 +248,7 @@
           <!-- Ini Snippet -->
           <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-html">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-              <h5 class="text-info text-center mb-2">Estrutura básica HTML5</h5>
+              <h5 class="text-info text-center mb-2">Local Storage</h5>
               <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
                 <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
                   <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #e34c26; color: #fff;"><iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 14px;"></iconify-icon> HTML</span>
@@ -264,17 +264,28 @@
                     <iconify-icon icon="mdi:content-copy"></iconify-icon>
                   </button>
                 </div>
-                <pre><code class="language-html" data-snippet-id="snippet-html"><!DOCTYPE html>
-          <html lang="pt-BR">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Documento</title>
-          </head>
-          <body>
-            <h1>Olá, mundo!</h1>
-          </body>
-          </html></code></pre>
+                <pre><code class="language-html" data-snippet-id="snippet-html">
+<!DOCTYPE html>
+   <html>
+      <body>
+      <div id="result"></div>
+      <script>
+         const x = document.getElementById("result");
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Smith");
+  localStorage.setItem("bgcolor", "yellow");
+  // Retrieve
+  x.innerHTML = localStorage.getItem("lastname");
+  x.style.backgroundColor = localStorage.getItem("bgcolor");
+} else {
+  x.innerHTML = "Sorry, no Web storage support!";
+}
+</script>
+</body>
+</html>
+</code></pre>
               </div>
             </div>
           </div>
