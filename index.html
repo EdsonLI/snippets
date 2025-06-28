@@ -767,12 +767,11 @@
     // Theme toggle logic
     document.addEventListener('DOMContentLoaded', function () {
       const themeBtn = document.getElementById('theme-toggle');
-      const icon = themeBtn.querySelector('i');
+      const icon = themeBtn.querySelector('iconify-icon'); // Corrigido para selecionar o elemento correto
       function setTheme(dark) {
         document.body.classList.toggle('dark-theme', dark);
-        icon.className = dark ? 'fa-solid fa-sun' : 'fa-regular fa-moon';
+        icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
         themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
-        // Não força cor via JS, deixa o CSS controlar
         localStorage.setItem('theme', dark ? 'dark' : 'light');
       }
       const saved = localStorage.getItem('theme');
