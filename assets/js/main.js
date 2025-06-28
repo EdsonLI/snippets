@@ -119,6 +119,9 @@
       onOpen: () => {
         // Remove aria-hidden de elementos que podem causar conflitos
         document.querySelectorAll('[aria-hidden="true"]').forEach(el => el.removeAttribute('aria-hidden'));
+
+        // Adiciona o atributo `inert` ao body para evitar foco em elementos fora do modal
+        document.body.setAttribute('inert', '');
       },
       onClose: () => {
         // Restaura o foco no elemento correto após fechar o modal
@@ -126,6 +129,9 @@
         if (lastFocusedElement) {
           lastFocusedElement.blur();
         }
+
+        // Remove o atributo `inert` do body
+        document.body.removeAttribute('inert');
       }
     });
   });
