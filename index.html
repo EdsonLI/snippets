@@ -300,6 +300,50 @@ if (typeof(Storage) !== "undefined") {
 
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Métodos Estáticos vs Não Estáticos</h5>
+    <div class="snippet-code position-relative" style="max-height: 300px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style=" font-size: 18px;"></iconify-icon> PHP
+        </span>
+      </div>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-metodos-static">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-metodos-static" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-metodos-static">&lt;?php
+
+class Saudacao {
+  public function ola() {
+    return "Olá do método NÃO estático!";
+  }
+
+  public static function olaStatic() {
+    return "Olá do método ESTÁTICO!";
+  }
+}
+
+// Método não estático → requer instância
+$exemplo = new Saudacao();
+echo $exemplo-&gt;ola(); // OK
+
+// Método estático → chamado diretamente da classe
+echo Saudacao::olaStatic(); // OK
+
+// echo Saudacao::ola(); // Erro: não estático chamado estaticamente
+?&gt;</code></pre>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h5 class="text-info text-center mb-2">isset vs empty em PHP</h5>
     <div class="snippet-code position-relative" style="max-height: 280px; overflow: auto;">
       <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
