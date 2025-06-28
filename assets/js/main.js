@@ -106,6 +106,16 @@
     selector: '.glightbox'
   });
 
+  // Inicializa o Glightbox para suportar links de pré-visualização
+  document.addEventListener('DOMContentLoaded', function () {
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      type: 'iframe', // Permite carregar páginas standalone
+      width: '90%',
+      height: '90%',
+    });
+  });
+
   /**
    * Initiate Pure Counter
    */
