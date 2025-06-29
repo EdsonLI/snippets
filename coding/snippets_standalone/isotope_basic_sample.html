@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Isotope Avançado - Exemplo HTML</title>
+  <title>Isotope Avançado - Responsivo</title>
 
-  <!-- Bootstrap + jQuery + Isotope CDN -->
+  <!-- Bootstrap + jQuery + Isotope -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
@@ -29,20 +29,26 @@
       border: 1px solid #333;
       border-radius: 8px;
       padding: 1rem;
-      width: 200px;
+      width: calc(25% - 1rem);
+      min-width: 200px;
+      flex: 1 1 auto;
     }
 
     .grid-item h5 {
-      color: #0dcafe;
+      color: #0dcaf0;
       margin-bottom: 0.5rem;
     }
 
     .controls {
       margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
     }
 
     .btn-group .btn.active {
-      background-color: #0dcafe;
+      background-color: #0dcaf0;
       color: #000;
     }
 
@@ -51,23 +57,22 @@
     }
 
     @media (max-width: 768px) {
-      .controls {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
       .grid-item {
         width: 100%;
+      }
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
       }
     }
   </style>
 </head>
 <body>
 
-  <h2>Exemplo Avançado - Isotope com jQuery</h2>
+  <h2 class="mb-4">Exemplo Avançado - Isotope com jQuery</h2>
 
   <!-- Controles -->
-  <div class="controls d-flex flex-wrap gap-3 align-items-center mb-4">
+  <div class="controls">
     <div class="btn-group" id="filters">
       <button class="btn btn-outline-light active" data-filter="*">Todos</button>
       <button class="btn btn-outline-light" data-filter=".categoria-1">Categoria 1</button>
@@ -125,19 +130,19 @@
       }
     });
 
-    // Filtros
     $('#filters').on('click', 'button', function () {
       $('#filters button').removeClass('active');
       $(this).addClass('active');
       const filterValue = $(this).attr('data-filter');
-      $grid.isotope({ filter: function () {
-        const matchesSearch = qsRegex ? $(this).text().match(qsRegex) : true;
-        const matchesFilter = filterValue === '*' || $(this).is(filterValue);
-        return matchesSearch && matchesFilter;
-      }});
+      $grid.isotope({
+        filter: function () {
+          const matchesSearch = qsRegex ? $(this).text().match(qsRegex) : true;
+          const matchesFilter = filterValue === '*' || $(this).is(filterValue);
+          return matchesSearch && matchesFilter;
+        }
+      });
     });
 
-    // Ordenação
     $('#sorts').on('click', 'button', function () {
       $('#sorts button').removeClass('active');
       $(this).addClass('active');
@@ -145,13 +150,12 @@
       $grid.isotope({ sortBy: sortValue });
     });
 
-    // Busca
     $('#search').on('keyup', debounce(function () {
-      qsRegex = new RegExp($('#search').val(), 'gi');
+      const val = $('#search').val();
+      qsRegex = new RegExp(val, 'gi');
       $grid.isotope();
     }, 200));
 
-    // Resetar filtros e busca
     $('#reset').on('click', function () {
       $('#filters button').removeClass('active').first().addClass('active');
       $('#search').val('');
@@ -159,7 +163,6 @@
       $grid.isotope({ filter: '*' });
     });
 
-    // Adicionar novo item
     $('#add-item').on('click', function () {
       const newItem = $(`
         <div class="grid-item categoria-3" data-name="Zeta" data-number="6">
@@ -170,7 +173,6 @@
       $grid.append(newItem).isotope('appended', newItem);
     });
 
-    // Função debounce
     function debounce(fn, delay) {
       let timeout;
       return function () {
