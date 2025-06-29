@@ -241,27 +241,6 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
-
-    // Preview via iframe com jQuery
-    $('.btn-preview').on('click', function () {
-      const file = $(this).data('snippet');
-      const url = `https://edsonli.github.io/snippets/coding/standalone_snippets/${file}`;
-      $('#previewFrame').attr('src', url);
-    });
-
-    // Botão copiar nome do arquivo
-    $('.btn-copy').on('click', function () {
-      const $btn = $(this);
-      const file = $btn.data('file');
-
-      navigator.clipboard.writeText(file).then(() => {
-        $btn.html('<iconify-icon icon="mdi:check-bold"></iconify-icon>');
-        setTimeout(() => {
-          $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>');
-        }, 1500);
-      });
-    });
-  });
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href').substring(1);
