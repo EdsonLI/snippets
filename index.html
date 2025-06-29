@@ -159,24 +159,19 @@
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h5 class="text-info text-center mb-2">Exemplo com Isotope</h5>
     <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #795548; color: #fff;">
-          <iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> Exemplo isotope
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <a href="https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </a>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModal">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-mad" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <!-- HTML -->
-<pre><code class="language-html" id="snippet-html">&lt;!-- Estrutura HTML para Isotope --&gt;
+      <!-- HTML Block -->
+      <div class="position-relative mb-3">
+        <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+          <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #e34c26; color: #fff;">
+            <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 14px;"></iconify-icon> HTML
+          </span>
+        </div>
+        <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+          <button class="btn btn-sm btn-outline-info btn-custom copy-btn">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>
+        <pre><code class="language-html" id="snippet-html">&lt;!-- Estrutura HTML para Isotope --&gt;
 &lt;div class="controls"&gt;
   &lt;button data-filter="*"&gt;Todos&lt;/button&gt;
   &lt;button data-filter=".categoria-1"&gt;Categoria 1&lt;/button&gt;
@@ -189,9 +184,22 @@
   &lt;div class="grid-item categoria-1" data-name="Gamma" data-number="2"&gt;Gamma - 2&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
+      </div>
+      <hr class="my-3 border-secondary-custom">
 
-<!-- CSS -->
-<pre><code class="language-css" id="snippet-css">.grid {
+      <!-- CSS Block -->
+      <div class="position-relative mb-3">
+        <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+          <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #264de4; color: #fff;">
+            <iconify-icon icon="mdi:language-css3" class="me-1" style="font-size: 14px;"></iconify-icon> CSS
+          </span>
+        </div>
+        <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+          <button class="btn btn-sm btn-outline-info btn-custom copy-btn">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>
+        <pre><code class="language-css" id="snippet-css">.grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -213,9 +221,22 @@
   color: black;
 }
 </code></pre>
+      </div>
+      <hr class="my-3 border-secondary-custom">
 
-<!-- jQuery -->
-<pre><code class="language-js" id="snippet-js">$(function() {
+      <!-- jQuery Block -->
+      <div class="position-relative">
+        <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+          <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #0769ad; color: #fff;">
+            <iconify-icon icon="mdi:jquery" class="me-1" style="font-size: 14px;"></iconify-icon> jQuery
+          </span>
+        </div>
+        <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+          <button class="btn btn-sm btn-outline-info btn-custom copy-btn">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>
+        <pre><code class="language-js" id="snippet-js">$(function() {
   var $grid = $('.grid').isotope({
     itemSelector: '.grid-item',
     layoutMode: 'fitRows',
@@ -229,6 +250,7 @@
   });
 });
 </code></pre>
+      </div>
     </div>
   </div>
 </div>
