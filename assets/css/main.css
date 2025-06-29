@@ -3261,13 +3261,13 @@ pre code.hljs {
 
 /* Estilo para barras de rolagem */
 .snippet-code::-webkit-scrollbar {
-  width: 6px; /* Largura da barra de rolagem vertical */
-  height: 6px; /* Altura da barra de rolagem horizontal */
+  width: 4px; /* Largura da barra de rolagem vertical */
+  height: 4px; /* Altura da barra de rolagem horizontal */
 }
 
 .snippet-code::-webkit-scrollbar-thumb {
   background-color: #444; /* Cor discreta para o "polegar" da barra */
-  border-radius: 3px; /* Bordas arredondadas */
+  border-radius: 0; /* Remove os cantos arredondados */
 }
 
 .snippet-code::-webkit-scrollbar-thumb:hover {
@@ -3276,5 +3276,5 @@ pre code.hljs {
 
 .snippet-code::-webkit-scrollbar-track {
   background-color: #222; /* Cor do fundo da barra */
-  border-radius: 3px; /* Bordas arredondadas */
+  border-radius: 0; /* Remove os cantos arredondados */
 }
