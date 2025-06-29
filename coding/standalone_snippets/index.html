@@ -42,70 +42,27 @@
 
   <!-- Script principal -->
   <script>
-  let qsRegex; // <-- adiciona isso no início
-  let loadedIsotope = false;
+    let loadedIsotope = false;
 
-function loadIsotope() {
-  if (loadedIsotope) return;
+    function loadIsotope() {
+      if (loadedIsotope) return;
 
-  fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
-    .then(res => res.text())
-    .then(html => {
-      const container = document.querySelector('#preview-isotope');
-      container.innerHTML = html;
+      $.get(
+        'https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html',
+        function (data) {
+          $('#preview-isotope').html(data);
+          loadedIsotope = true;
 
-      const $grid = $('.grid', container).isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows',
-        getSortData: {
-          name: '[data-name]',
-          number: '[data-number] parseInt'
-        },
-        filter: function () {
-          return qsRegex ? $(this).text().match(qsRegex) : true;
+          // Adiciona a classe glightbox e ativa
+          $('#preview-link').addClass('glightbox');
+
+          const lightbox = GLightbox({ selector: '#preview-link' });
+          lightbox.open();
         }
+      ).fail(function () {
+        $('#preview-isotope').html('<p class="text-danger">Erro ao carregar snippet do GitHub.</p>');
       });
-
-      $('#filters button', container).on('click', function () {
-        $('#filters button', container).removeClass('active');
-        $(this).addClass('active');
-        const filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: function () {
-          const matchesSearch = qsRegex ? $(this).text().match(qsRegex) : true;
-          const matchesFilter = filterValue === '*' || $(this).is(filterValue);
-          return matchesSearch && matchesFilter;
-        }});
-      });
-
-      $('#sorts button', container).on('click', function () {
-        $('#sorts button', container).removeClass('active');
-        $(this).addClass('active');
-        const sortValue = $(this).attr('data-sort-by');
-        $grid.isotope({ sortBy: sortValue });
-      });
-
-      $('#search', container).on('keyup', debounce(function () {
-        qsRegex = new RegExp($('#search', container).val(), 'gi');
-        $grid.isotope();
-      }, 200));
-
-      loadedIsotope = true;
-    })
-    .catch(err => {
-      document.querySelector('#preview-isotope').innerHTML = '<p class="text-danger">Erro ao carregar snippet.</p>';
-      console.error(err);
-    });
-}
-
-// debounce já pode estar fora
-function debounce(fn, delay) {
-  let timeout;
-  return function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(fn.bind(this), delay);
-  };
-}
-
+    }
   </script>
 
   <!-- Iconify (opcional) -->
