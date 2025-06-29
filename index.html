@@ -1003,28 +1003,6 @@ if (typeof(Storage) !== "undefined") {
         setTheme(!document.body.classList.contains('dark-theme'));
       });
     });
- 
-  let loadedIsotope = false;
-
-  function loadIsotope() {
-    if (loadedIsotope) return;
-
-    $.get(
-      'https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html',
-      function (data) {
-        $('#preview-isotope').html(data);
-        loadedIsotope = true;
-
-        // Só agora aplica a classe e ativa o Glightbox
-        $('#preview-link').addClass('glightbox');
-
-        const lightbox = GLightbox({ selector: '#preview-link' });
-        lightbox.open(); // Abre direto após carregar
-      }
-    ).fail(function () {
-      $('#preview-isotope').html('<p class="text-danger">Erro ao carregar snippet.</p>');
-    });
-  }
 </script>
 
 <!-- Modal Preview -->
