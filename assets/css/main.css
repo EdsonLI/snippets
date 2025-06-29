@@ -3266,12 +3266,12 @@ pre code.hljs {
 }
 
 .snippet-code::-webkit-scrollbar-thumb {
-  background-color: #0dcafe; /* Cor do "polegar" da barra */
+  background-color: #444; /* Cor mais discreta para o "polegar" da barra */
   border-radius: 4px; /* Bordas arredondadas */
 }
 
 .snippet-code::-webkit-scrollbar-thumb:hover {
-  background-color: #0bb5e0; /* Cor ao passar o mouse */
+  background-color: #555; /* Cor ao passar o mouse, ainda discreta */
 }
 
 .snippet-code::-webkit-scrollbar-track {
