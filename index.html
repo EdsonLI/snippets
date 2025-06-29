@@ -154,6 +154,37 @@
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
 <!-- Ini Snippets Isotope -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-html">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded border border-secondary-custom position-relative">
+
+    <h5 class="text-info text-center mb-3">Exemplo com Isotope</h5>
+
+    <!-- Botões de ação -->
+    <div class="d-flex justify-content-between px-2 mb-2">
+      <span class="badge bg-primary"><iconify-icon icon="mdi:language-html5" class="me-1"></iconify-icon> HTML</span>
+      <div class="btn-group btn-group-sm" role="group">
+        <!-- Preview -->
+        <button class="btn btn-outline-info btn-preview" data-bs-toggle="modal"
+          data-bs-target="#modalPreview" data-snippet="isotope_sample_1.html">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <!-- Download -->
+        <a href="coding/standalone_snippets/isotope_sample_1.html" download class="btn btn-outline-success">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </a>
+        <!-- Copiar nome -->
+        <button class="btn btn-outline-secondary btn-copy" data-file="isotope_sample_1.html">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="small text-muted px-2">Um exemplo funcional de grid filtrável com Isotope.js e jQuery.</div>
+
+  </div>
+</div>
+
 <!-- End Snippets Isotope -->
 
 <!-- Ini Snippets PHP -->
@@ -1127,6 +1158,20 @@ if (typeof(Storage) !== "undefined") {
   }
 </script>
 
+<!-- Modal Preview -->
+<div class="modal fade" id="modalPreview" tabindex="-1" aria-labelledby="modalPreviewLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-md-down">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title" id="modalPreviewLabel">Pré-visualização do Snippet</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body p-0" style="height: 85vh;">
+        <iframe id="previewFrame" width="100%" height="100%" frameborder="0" style="border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
