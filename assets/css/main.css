@@ -2772,13 +2772,13 @@ section,
   --heading-color: #ffffff;
   --surface-color: #252525;
   --contrast-color: #ffffff;
-  --accent-color: #8171e2;
+  --accent-color: #0dcaf0
   --nav-color: #ffffff;
-  --nav-hover-color: #8171e2;
+  --nav-hover-color: #0dcaf0
   --nav-mobile-background-color: #252525;
   --nav-dropdown-background-color: #252525;
   --nav-dropdown-color: #ffffff;
-  --nav-dropdown-hover-color: #8171e2;
+  --nav-dropdown-hover-color: #0dcaf0
 }
 
 /* Hero background para tema escuro */
@@ -2925,7 +2925,7 @@ code[class*="language-"] .token {
   gap: 0.5em;
   font-size: 1em;
   border: none;
-  background: #8171e2;
+  background: #0dcaf0
   color: #fff;
   cursor: pointer;
   padding: 0.4em 1.1em;
@@ -2951,7 +2951,7 @@ code[class*="language-"] .token {
 }
 
 .copy-btn:focus {
-  outline: 2px solid #8171e2;
+  outline: 2px solid #0dcaf0
   outline-offset: 2px;
 }
 
