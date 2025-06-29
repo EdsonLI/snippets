@@ -1152,20 +1152,20 @@ section,
 }
 
 .services .service-item.item-cyan {
-  border-bottom: 3px solid #0dcaf0;
+  border-bottom: 3px solid #517ace;
 }
 
 .services .service-item.item-cyan .icon {
-  color: #0dcaf0;
+  color: #517ace;
   background: rgba(13, 202, 240, 0.1);
 }
 
 .services .service-item.item-cyan .read-more {
-  color: #0dcaf0;
+  color: #517ace;
 }
 
 .services .service-item.item-cyan:hover {
-  background: #0dcaf0;
+  background: #517ace;
 }
 
 .services .service-item.item-orange {
@@ -2772,13 +2772,13 @@ section,
   --heading-color: #ffffff;
   --surface-color: #252525;
   --contrast-color: #ffffff;
-  --accent-color: #0dcaf0;
+  --accent-color: #517ace;
   --nav-color: #ffffff;
-  --nav-hover-color: #0dcaf0;
+  --nav-hover-color: #517ace;
   --nav-mobile-background-color: #252525;
   --nav-dropdown-background-color: #252525;
   --nav-dropdown-color: #ffffff;
-  --nav-dropdown-hover-color: #0dcaf0;
+  --nav-dropdown-hover-color: #517ace;
 }
 
 /* Hero background para tema escuro */
@@ -2925,7 +2925,7 @@ code[class*="language-"] .token {
   gap: 0.5em;
   font-size: 1em;
   border: none;
-  background: #0dcaf0;
+  background: #517ace;
   color: #fff;
   cursor: pointer;
   padding: 0.4em 1.1em;
@@ -2951,7 +2951,7 @@ code[class*="language-"] .token {
 }
 
 .copy-btn:focus {
-  outline: 2px solid #0dcaf0;
+  outline: 2px solid #517ace;
   outline-offset: 2px;
 }
 
@@ -2995,9 +2995,9 @@ pre .copy-btn {
 */
 /* Estilo padronizado para botões com borda e ícones */
 .btn-custom {
-  border-color: #0dcaf0 !important;
-  border: 1px solid #0dcaf0 !important; /* Adiciona a borda */
-  color: #0dcaf0 !important;
+  border-color: #517ace !important;
+  border: 1px solid #517ace !important; /* Adiciona a borda */
+  color: #517ace !important;
   transition: color 0.3s, border-color 0.3s;
   max-height: 1.5em !important;
   padding-top: .95px !important;
@@ -3005,7 +3005,7 @@ pre .copy-btn {
 }
 
 .btn-custom i {
-  color: #0dcaf0 !important;
+  color: #517ace !important;
   transition: color 0.3s;
 }
 
@@ -3116,7 +3116,7 @@ pre[class*="language-"] {
 }
 
 .theme-toggle-btn:focus {
-  outline: 2px solid #0dcaf0;
+  outline: 2px solid #517ace;
 }
 
 /* Ícone sempre visível: escuro no tema claro, branco no tema escuro */
