@@ -3278,3 +3278,9 @@ pre code.hljs {
   background-color: #222; /* Cor do fundo da barra */
   border-radius: 0; /* Remove os cantos arredondados */
 }
+
+@media (max-width: 768px) {
+  .modal-content {
+    border-radius: 8px !important; /* Adiciona bordas arredondadas */
+  }
+}
