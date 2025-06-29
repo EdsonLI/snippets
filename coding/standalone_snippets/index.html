@@ -42,9 +42,9 @@
 
   <!-- Script principal -->
   <script>
-    let loadedIsotope = false;
+  let qsRegex; // <-- adiciona isso no início
 
-    function loadIsotope() {
+function loadIsotope() {
   if (loadedIsotope) return;
 
   fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
@@ -53,7 +53,6 @@
       const container = document.querySelector('#preview-isotope');
       container.innerHTML = html;
 
-      // Agora você executa o script manualmente
       const $grid = $('.grid', container).isotope({
         itemSelector: '.grid-item',
         layoutMode: 'fitRows',
@@ -96,6 +95,16 @@
       console.error(err);
     });
 }
+
+// debounce já pode estar fora
+function debounce(fn, delay) {
+  let timeout;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(fn.bind(this), delay);
+  };
+}
+
   </script>
 
   <!-- Iconify (opcional) -->
