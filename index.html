@@ -155,6 +155,33 @@
 
 <!-- Ini Snippets Isotope -->
 
+
+    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
+            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+              <h5 class="text-info text-center mb-2">Exemplo com Isotope</h5>
+              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+                <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+                  <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #795548; color: #fff;"><iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> MadBuilder</span>
+                </div>
+                <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+                  <button class="btn btn-sm btn-outline-info btn-custom">
+                    <iconify-icon icon="mdi:download"></iconify-icon>
+                  </button>
+                  <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-mad">
+                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+                  </button>
+                  <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-mad" style="margin-right: .45em !important;">
+                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
+                  </button>
+                </div>
+                <pre><code class="language-php" data-snippet-id="snippet-mad">\$this-&gt;form-&gt;addField('name', new TEntry('name'), 'Nome:', '100%', true);
+          \$this-&gt;form-&gt;addField('email', new TEntry('email'), 'Email:', '100%', true);</code></pre>
+              </div>
+            </div>
+          </div>
+
+
+
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded border border-secondary-custom position-relative">
 
@@ -850,32 +877,7 @@ if (typeof(Storage) !== "undefined") {
           </div>
 <!-- End Snippets MadBuilder -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 3</h4>
-                  
-<!-- Link de preview -->
-<a href="#preview-isotope" id="preview-link" class="preview-link" onclick="loadIsotope()">Pré-visualizar</a>
-
-<!-- Container escondido que será preenchido dinamicamente -->
-<div id="preview-isotope" style="display:none;" class="glightbox-content">
-  <div class="loading text-light p-5">Carregando snippet...</div>
-</div>
-
-
-
-
-
-
-
-
-
-                  
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
+    
 
           </div><!-- End Portfolio Container -->
 
