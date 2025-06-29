@@ -7,7 +7,9 @@
 
   <!-- Bootstrap + jQuery + Glightbox -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
@@ -43,24 +45,57 @@
     let loadedIsotope = false;
 
     function loadIsotope() {
-      if (loadedIsotope) return;
+  if (loadedIsotope) return;
 
-      $.get(
-        'https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html',
-        function (data) {
-          $('#preview-isotope').html(data);
-          loadedIsotope = true;
+  fetch('https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html')
+    .then(res => res.text())
+    .then(html => {
+      const container = document.querySelector('#preview-isotope');
+      container.innerHTML = html;
 
-          // Adiciona a classe glightbox e ativa
-          $('#preview-link').addClass('glightbox');
-
-          const lightbox = GLightbox({ selector: '#preview-link' });
-          lightbox.open();
+      // Agora você executa o script manualmente
+      const $grid = $('.grid', container).isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows',
+        getSortData: {
+          name: '[data-name]',
+          number: '[data-number] parseInt'
+        },
+        filter: function () {
+          return qsRegex ? $(this).text().match(qsRegex) : true;
         }
-      ).fail(function () {
-        $('#preview-isotope').html('<p class="text-danger">Erro ao carregar snippet do GitHub.</p>');
       });
-    }
+
+      $('#filters button', container).on('click', function () {
+        $('#filters button', container).removeClass('active');
+        $(this).addClass('active');
+        const filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: function () {
+          const matchesSearch = qsRegex ? $(this).text().match(qsRegex) : true;
+          const matchesFilter = filterValue === '*' || $(this).is(filterValue);
+          return matchesSearch && matchesFilter;
+        }});
+      });
+
+      $('#sorts button', container).on('click', function () {
+        $('#sorts button', container).removeClass('active');
+        $(this).addClass('active');
+        const sortValue = $(this).attr('data-sort-by');
+        $grid.isotope({ sortBy: sortValue });
+      });
+
+      $('#search', container).on('keyup', debounce(function () {
+        qsRegex = new RegExp($('#search', container).val(), 'gi');
+        $grid.isotope();
+      }, 200));
+
+      loadedIsotope = true;
+    })
+    .catch(err => {
+      document.querySelector('#preview-isotope').innerHTML = '<p class="text-danger">Erro ao carregar snippet.</p>';
+      console.error(err);
+    });
+}
   </script>
 
   <!-- Iconify (opcional) -->
