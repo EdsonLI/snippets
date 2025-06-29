@@ -175,8 +175,59 @@
           <iconify-icon icon="mdi:content-copy"></iconify-icon>
         </button>
       </div>
-      <pre><code class="language-html" id="codigo-isotope">
-// aqui entra o conteúdo carregado dinamicamente
+      <!-- HTML -->
+<pre><code class="language-html" id="snippet-html">&lt;!-- Estrutura HTML para Isotope --&gt;
+&lt;div class="controls"&gt;
+  &lt;button data-filter="*"&gt;Todos&lt;/button&gt;
+  &lt;button data-filter=".categoria-1"&gt;Categoria 1&lt;/button&gt;
+  &lt;button data-filter=".categoria-2"&gt;Categoria 2&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="grid"&gt;
+  &lt;div class="grid-item categoria-1" data-name="Alpha" data-number="3"&gt;Alpha - 3&lt;/div&gt;
+  &lt;div class="grid-item categoria-2" data-name="Beta" data-number="1"&gt;Beta - 1&lt;/div&gt;
+  &lt;div class="grid-item categoria-1" data-name="Gamma" data-number="2"&gt;Gamma - 2&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<!-- CSS -->
+<pre><code class="language-css" id="snippet-css">.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.grid-item {
+  background: #222;
+  color: #0dcaf0;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 120px;
+}
+.controls button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+.controls button.active {
+  background: #0dcaf0;
+  color: black;
+}
+</code></pre>
+
+<!-- jQuery -->
+<pre><code class="language-js" id="snippet-js">$(function() {
+  var $grid = $('.grid').isotope({
+    itemSelector: '.grid-item',
+    layoutMode: 'fitRows',
+  });
+
+  $('.controls').on('click', 'button', function() {
+    $('.controls button').removeClass('active');
+    $(this).addClass('active');
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+  });
+});
 </code></pre>
     </div>
   </div>
@@ -1145,25 +1196,5 @@ if (typeof(Storage) !== "undefined") {
   </div>
 </div>
 </body>
-<script>
-  $(document).ready(function () {
-    const urlRaw = 'https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/standalone_snippets/isotope_sample_1.html';
 
-    $.get(urlRaw, function (data) {
-      // Escapa HTML para exibir corretamente no <code>
-      const escaped = $('<div>').text(data).html();
-      $('#codigo-isotope').html(escaped);
-
-      // Se estiver usando highlight.js ou Prism, reativa a sintaxe
-      if (typeof hljs !== 'undefined') {
-        hljs.highlightElement(document.getElementById('codigo-isotope'));
-      }
-      if (typeof Prism !== 'undefined') {
-        Prism.highlightElement(document.getElementById('codigo-isotope'));
-      }
-    }).fail(function () {
-      $('#codigo-isotope').html('<span class="text-danger">Erro ao carregar snippet do GitHub</span>');
-    });
-  });
-</script>
 </html>
