@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChatGPT Frontend</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      max-width: 600px;
+      width: 100%;
+      background: #222;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px #000;
+    }
+    h2 { text-align: center; color: #00ffcc; }
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      background: #000;
+      border: 1px solid #444;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .user { text-align: right; color: #00f; margin: 5px 0; }
+    .bot { text-align: left; color: #0f0; margin: 5px 0; }
+    form { display: flex; gap: 10px; }
+    input {
+      flex: 1;
+      padding: 10px;
+      background: #333;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    }
+    button {
+      padding: 10px 20px;
+      background: #00ffcc;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+    }
+    button:hover { background: #00ddaa; }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <h2>Mini ChatGPT</h2>
+    <div id="chat-box" class="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Digite sua pergunta..." autocomplete="off" required />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const OPENAI_API_KEY = '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'; // ⚠️ Só para testes pessoais
+
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+    const chatBox = document.getElementById('chat-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userMessage = input.value.trim();
+      if (!userMessage) return;
+
+      appendMessage('user', userMessage);
+      input.value = '';
+      appendMessage('bot', 'Pensando...');
+
+      const messages = [
+        { role: 'system', content: 'Você é um assistente útil.' },
+        { role: 'user', content: userMessage }
+      ];
+
+      try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${OPENAI_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: 'gpt-4o',
+            messages: messages,
+            temperature: 0.7
+          })
+        });
+
+        const data = await response.json();
+        const reply = data.choices?.[0]?.message?.content?.trim() || '[Sem resposta]';
+        document.querySelectorAll('.bot:last-child')[0].textContent = reply;
+      } catch (err) {
+        document.querySelectorAll('.bot:last-child')[0].textContent = '[Erro na requisição]';
+        console.error(err);
+      }
+    });
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement('div');
+      msg.className = sender;
+      msg.textContent = text;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
