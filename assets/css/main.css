@@ -3284,3 +3284,9 @@ pre code.hljs {
     border-radius: 8px !important; /* Adiciona bordas arredondadas */
   }
 }
+
+pre,
+code {
+  white-space: pre-wrap !important;    /* Força a quebra de linha dentro do <pre> */
+  word-break: break-all !important;    /* Quebra palavras longas se necessário */
+}
