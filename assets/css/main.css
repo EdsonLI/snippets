@@ -1,10 +1,10 @@
 /**
-* Template Name: FlexStart
-* Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-* Updated: Nov 01 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Template Name: FlexStart
+ * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+ * Updated: Nov 01 2024 with Bootstrap v5.3.3
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 
 /*--------------------------------------------------------------
 # Font & Color Variables
@@ -12,39 +12,55 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Nunito",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  /* Default font stack for the website */
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Font for headings */
+  --heading-font: "Nunito", sans-serif;
+  /* Font for navigation menu */
+  --nav-font: "Poppins", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+/* Global Colors - Define the main color scheme for the website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #012970; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #1f6feb; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  /* Background color for the entire website */
+  --background-color: #ffffff;
+  /* Default text color */
+  --default-color: #444444;
+  /* Color for headings and titles */
+  --heading-color: #012970;
+  /* Accent color for buttons, links, etc. */
+  --accent-color: #1f6feb;
+  /* Background color for boxed elements */
+  --surface-color: #ffffff;
+  /* Contrast color for text on colored backgrounds */
+  --contrast-color: #ffffff;
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+/* Nav Menu Colors - Specific colors for the navigation menu */
 :root {
-  --nav-color: #012970;  /* The default color of the main navmenu links */
-  --nav-hover-color: #1f6feb; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #1f6feb; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  /* Default color for navigation links */
+  --nav-color: #012970;
+  /* Hover and active state color for navigation links */
+  --nav-hover-color: #1f6feb;
+  /* Background color for mobile navigation menu */
+  --nav-mobile-background-color: #ffffff;
+  /* Background color for dropdown items */
+  --nav-dropdown-background-color: #ffffff;
+  /* Text color for dropdown items */
+  --nav-dropdown-color: #212529;
+  /* Hover color for dropdown items */
+  --nav-dropdown-hover-color: #1f6feb;
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
+/* Color Presets - Alternative color schemes for specific sections */
 .light-background {
+  /* Light background preset */
   --background-color: #f9f9f9;
   --surface-color: #ffffff;
 }
 
 .dark-background {
+  /* Dark background preset */
   --background-color: #060606;
   --default-color: #ffffff;
   --heading-color: #ffffff;
@@ -52,7 +68,7 @@
   --contrast-color: #ffffff;
 }
 
-/* Smooth scroll */
+/* Smooth scroll behavior for the entire website */
 :root {
   scroll-behavior: smooth;
 }
@@ -61,18 +77,21 @@
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
 body {
+  /* Default text color and background for the body */
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
 }
 
 a {
+  /* Default link color and transition effect */
   color: var(--accent-color);
   text-decoration: none;
   transition: 0.3s;
 }
 
 a:hover {
+  /* Slightly transparent hover effect for links */
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
 }
@@ -83,13 +102,14 @@ h3,
 h4,
 h5,
 h6 {
+  /* Styling for all heading levels */
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
 
-/* PHP Email Form Messages
-------------------------------*/
+/* PHP Email Form Messages */
 .php-email-form .error-message {
+  /* Error message styling */
   display: none;
   background: #df1529;
   color: #ffffff;
@@ -100,6 +120,7 @@ h6 {
 }
 
 .php-email-form .sent-message {
+  /* Success message styling */
   display: none;
   color: #ffffff;
   background: #059652;
@@ -110,6 +131,7 @@ h6 {
 }
 
 .php-email-form .loading {
+  /* Loading message styling */
   display: none;
   background: var(--surface-color);
   text-align: center;
@@ -118,6 +140,7 @@ h6 {
 }
 
 .php-email-form .loading:before {
+  /* Loading spinner animation */
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -130,10 +153,10 @@ h6 {
 }
 
 @keyframes php-email-form-loading {
+  /* Keyframes for loading spinner */
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -143,6 +166,7 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
+  /* Header styling */
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 15px 0 0 0 !important;
@@ -151,15 +175,18 @@ h6 {
 }
 
 .header .logo {
+  /* Logo styling */
   line-height: 1;
 }
 
 .header .logo img {
+  /* Logo image styling */
   max-height: 36px;
   margin-right: 8px;
 }
 
 .header .logo h1 {
+  /* Logo text styling */
   font-size: 30px;
   margin: 0 0 0 20px;
   font-weight: 700;
@@ -168,6 +195,7 @@ h6 {
 
 .header .btn-getstarted,
 .header .btn-getstarted:focus {
+  /* Get Started button styling */
   color: var(--contrast-color);
   background: var(--accent-color);
   font-size: 15px;
@@ -180,41 +208,42 @@ h6 {
 
 .header .btn-getstarted:hover,
 .header .btn-getstarted:focus:hover {
+  /* Hover effect for Get Started button */
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
 @media (max-width: 1200px) {
+  /* Responsive adjustments for header on smaller screens */
   .header .logo {
     order: 1;
   }
-
   .header .btn-getstarted {
     order: 2;
     margin: 0 15px 0 0;
     padding: 6px 15px;
   }
-
   .header .navmenu {
     order: 3;
   }
 }
 
 .scrolled .header {
+  /* Header styling when scrolled */
   transform: translateY(0);
-  background-color: #fff; /* Ajuste conforme necessário */
+  background-color: #fff; /* Adjust as needed */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Index Page Header
-------------------------------*/
+/* Index Page Header */
 .index-page .header {
+  /* Transparent header for index page */
   --background-color: rgba(255, 255, 255, 0);
 }
 
-/* Index Page Header on Scroll
-------------------------------*/
+/* Index Page Header on Scroll */
 .index-page.scrolled .header {
+  /* Solid background for index page header when scrolled */
   --background-color: #ffffff;
 }
 
@@ -224,23 +253,24 @@ h6 {
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
   .navmenu {
+    /* Desktop navigation menu styling */
     padding: 0;
   }
-
   .navmenu ul {
+    /* Navigation menu list styling */
     margin: 0;
     padding: 0;
     display: flex;
     list-style: none;
     align-items: center;
   }
-
   .navmenu li {
+    /* Navigation menu item styling */
     position: relative;
   }
-
   .navmenu a,
   .navmenu a:focus {
+    /* Navigation link styling */
     color: var(--nav-color);
     padding: 18px 12px;
     font-size: 15px;
@@ -252,26 +282,26 @@ h6 {
     white-space: nowrap;
     transition: 0.3s;
   }
-
   .navmenu a i,
   .navmenu a:focus i {
+    /* Icon styling for navigation links */
     font-size: 12px;
     line-height: 0;
     margin-left: 5px;
     transition: 0.3s;
   }
-
   .navmenu li:last-child a {
+    /* Remove padding for the last navigation link */
     padding-right: 0;
   }
-
   .navmenu li:hover>a,
   .navmenu .active,
   .navmenu .active:focus {
+    /* Hover and active state styling for navigation links */
     color: var(--nav-hover-color);
   }
-
   .navmenu .dropdown ul {
+    /* Dropdown menu styling */
     margin: 0;
     padding: 10px 0;
     background: var(--nav-dropdown-background-color);
@@ -286,41 +316,41 @@ h6 {
     z-index: 99;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
-
   .navmenu .dropdown ul li {
+    /* Dropdown menu item styling */
     min-width: 200px;
   }
-
   .navmenu .dropdown ul a {
+    /* Dropdown link styling */
     padding: 10px 20px;
     font-size: 15px;
     text-transform: none;
     color: var(--nav-dropdown-color);
   }
-
   .navmenu .dropdown ul a i {
+    /* Icon styling for dropdown links */
     font-size: 12px;
   }
-
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
   .navmenu .dropdown ul li:hover>a {
+    /* Hover effect for dropdown links */
     color: var(--nav-dropdown-hover-color);
   }
-
   .navmenu .dropdown:hover>ul {
+    /* Show dropdown menu on hover */
     opacity: 1;
     top: 100%;
     visibility: visible;
   }
-
   .navmenu .dropdown .dropdown ul {
+    /* Nested dropdown menu styling */
     top: 0;
     left: -90%;
     visibility: hidden;
   }
-
   .navmenu .dropdown .dropdown:hover>ul {
+    /* Show nested dropdown menu on hover */
     opacity: 1;
     top: 0;
     left: -100%;
@@ -331,6 +361,7 @@ h6 {
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
+    /* Mobile navigation toggle button styling */
     color: var(--nav-color);
     font-size: 28px;
     line-height: 0;
@@ -338,13 +369,13 @@ h6 {
     cursor: pointer;
     transition: color 0.3s;
   }
-
   .navmenu {
+    /* Mobile navigation menu styling */
     padding: 0;
     z-index: 9997;
   }
-
   .navmenu ul {
+    /* Mobile navigation menu list styling */
     display: none;
     list-style: none;
     position: absolute;
@@ -358,9 +389,9 @@ h6 {
     z-index: 9998;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
-
   .navmenu a,
   .navmenu a:focus {
+    /* Mobile navigation link styling */
     color: var(--nav-dropdown-color);
     padding: 10px 20px;
     font-family: var(--nav-font);
@@ -372,9 +403,9 @@ h6 {
     white-space: nowrap;
     transition: 0.3s;
   }
-
   .navmenu a i,
   .navmenu a:focus i {
+    /* Icon styling for mobile navigation links */
     font-size: 12px;
     line-height: 0;
     margin-left: 5px;
@@ -387,27 +418,27 @@ h6 {
     transition: 0.3s;
     background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
   }
-
   .navmenu a i:hover,
   .navmenu a:focus i:hover {
+    /* Hover effect for icons in mobile navigation links */
     background-color: var(--accent-color);
     color: var(--contrast-color);
   }
-
   .navmenu a:hover,
   .navmenu .active,
   .navmenu .active:focus {
+    /* Hover and active state styling for mobile navigation links */
     color: var(--nav-dropdown-hover-color);
   }
-
   .navmenu .active i,
   .navmenu .active:focus i {
+    /* Active state styling for icons in mobile navigation links */
     background-color: var(--accent-color);
     color: var(--contrast-color);
     transform: rotate(180deg);
   }
-
   .navmenu .dropdown ul {
+    /* Dropdown menu styling for mobile */
     position: static;
     display: none;
     z-index: 99;
@@ -418,21 +449,21 @@ h6 {
     box-shadow: none;
     transition: all 0.5s ease-in-out;
   }
-
   .navmenu .dropdown ul ul {
+    /* Nested dropdown menu styling for mobile */
     background-color: rgba(33, 37, 41, 0.1);
   }
-
   .navmenu .dropdown>.dropdown-active {
+    /* Active state styling for dropdown menu in mobile */
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
-
   .mobile-nav-active {
+    /* Styling for active mobile navigation menu */
     overflow: hidden;
   }
-
   .mobile-nav-active .mobile-nav-toggle {
+    /* Styling for mobile navigation toggle button when active */
     color: #fff;
     position: absolute;
     font-size: 32px;
@@ -441,16 +472,16 @@ h6 {
     margin-right: 0;
     z-index: 9999;
   }
-
   .mobile-nav-active .navmenu {
+    /* Styling for active mobile navigation menu */
     position: fixed;
     overflow: hidden;
     inset: 0;
     background: rgba(33, 37, 41, 0.8);
     transition: 0.3s;
   }
-
   .mobile-nav-active .navmenu>ul {
+    /* Show mobile navigation menu list when active */
     display: block;
   }
 }
@@ -460,7 +491,6 @@ h6 {
   .navmenu .listing-dropdown {
     position: static;
   }
-
   .navmenu .listing-dropdown ul {
     margin: 0;
     padding: 10px;
@@ -477,11 +507,9 @@ h6 {
     border-radius: 4px;
     z-index: 99;
   }
-
   .navmenu .listing-dropdown ul li {
     flex: 1;
   }
-
   .navmenu .listing-dropdown ul li a,
   .navmenu .listing-dropdown ul li:hover>a {
     padding: 10px 20px;
@@ -489,14 +517,12 @@ h6 {
     color: var(--nav-dropdown-color);
     background-color: var(--nav-dropdown-background-color);
   }
-
   .navmenu .listing-dropdown ul li a:hover,
   .navmenu .listing-dropdown ul li .active,
   .navmenu .listing-dropdown ul li .active:hover {
     color: var(--nav-dropdown-hover-color);
     background-color: var(--nav-dropdown-background-color);
   }
-
   .navmenu .listing-dropdown:hover>ul {
     opacity: 1;
     top: 100%;
@@ -517,11 +543,9 @@ h6 {
     box-shadow: none;
     transition: all 0.5s ease-in-out;
   }
-
   .navmenu .listing-dropdown ul ul {
     background-color: rgba(33, 37, 41, 0.1);
   }
-
   .navmenu .listing-dropdown>.dropdown-active {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
@@ -781,7 +805,6 @@ section,
 }
 
 @media (max-width: 1199px) {
-
   section,
   .section {
     scroll-margin-top: 56px;
@@ -927,7 +950,6 @@ section,
   0% {
     transform: translateY(10px);
   }
-
   100% {
     transform: translateY(-10px);
   }
@@ -3317,5 +3339,5 @@ pre {
 }
 
 .hljs-variable {
-  color: #1f6feb;
+  color: #1f6feb !important; /* Cor personalizada para variáveis */
 }
