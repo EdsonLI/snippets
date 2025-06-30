@@ -169,8 +169,8 @@
 <!-- Ini Snippet Filters -->
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-git" style="cursor: pointer;">Git</li>
             <li data-filter=".filter-isotope" style="cursor: pointer;">Isotope</li>
+            <li data-filter=".filter-git" style="cursor: pointer;">Git</li>            
             <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
             <li data-filter=".filter-sweetalert2" style="cursor: pointer;">SweetAlert2</li>
             <li data-filter=".filter-jquery" style="cursor: pointer;">jQuery</li>
@@ -187,86 +187,7 @@
 
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-<!-- Ini Snippets Git -->
-
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h5 class="text-info text-center mb-2">Git - Branches</h5>
-    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #f34f29; color: #fff;">
-          <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-git-branches">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-git-branches" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 1. Baixar o conteúdo de uma branch remota:
-# Use o comando `git fetch` para baixar os dados da branch remota sem alternar para ela imediatamente:
-git fetch origin nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git fetch origin nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-
-# Ou, se você deseja baixar os dados e já alternar para a branch remota, use o comando `git checkout` (ou `git switch`):
-git checkout nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-
-# Se a branch ainda não existir localmente, o Git irá criar uma branch local que rastreia a branch remota.
-        </code>
-      </pre>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 2. Criar a branch e alternar para ela de forma explícita:
-# Para criar a branch localmente antes de alternar para ela, utilize:
-git branch nome-da-branch origin/nome-da-branch
-git checkout nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git branch nome-da-branch origin/nome-da-branch && git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-
-# Ou em um único comando:
-git checkout -b nome-da-branch origin/nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout -b nome-da-branch origin/nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-
-# A partir do Git 2.23, pode-se usar `git switch`:
-git switch -c nome-da-branch origin/nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git switch -c nome-da-branch origin/nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-        </code>
-      </pre>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 3. Alternar entre branches existentes:
-# Se a branch já existir localmente, utilize:
-git checkout nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-
-# Ou:
-git switch nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git switch nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-        </code>
-      </pre>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 4. Atualizar a branch local com os dados remotos:
-# Para garantir que a branch está atualizada:
-git pull
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git pull" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-        </code>
-      </pre>
-    </div>
-  </div>
-</div>
-
-<!-- End Snippets Git -->
-
-<!-- Ini Snippets Isotope -->
+  <!-- Ini Snippets Isotope -->
 
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
@@ -407,27 +328,86 @@ git pull
   </div>
 </div>
 
-<!-- <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-md-down">
-    <div class="modal-content bg-dark text-white border-secondary-custom">
-      <div class="modal-header border-secondary-custom">
-        <h5 class="modal-title text-info" id="previewModalLabel">Pré-visualização</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+<!-- End Snippets Isotope -->
+
+<!-- Ini Snippets Git -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h5 class="text-info text-center mb-2">Git - Branches</h5>
+    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
+      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #f34f29; color: #fff;">
+          <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
+        </span>
       </div>
-      <div class="modal-body p-0" style="height: 85vh; overflow: hidden;">
-        <iframe 
-          src="https://edsonli.github.io/snippets/coding/snippets_standalone/isotope_basic_sample.html" 
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          style="border:none; overflow-y: auto;">
-        </iframe>
+      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-git-branches">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-git-branches" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
       </div>
+      <pre>
+        <code class="language-bash" data-snippet-id="snippet-git-branches">
+# 1. Baixar o conteúdo de uma branch remota:
+# Use o comando `git fetch` para baixar os dados da branch remota sem alternar para ela imediatamente:
+git fetch origin nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git fetch origin nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+
+# Ou, se você deseja baixar os dados e já alternar para a branch remota, use o comando `git checkout` (ou `git switch`):
+git checkout nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+
+# Se a branch ainda não existir localmente, o Git irá criar uma branch local que rastreia a branch remota.
+        </code>
+      </pre>
+      <pre>
+        <code class="language-bash" data-snippet-id="snippet-git-branches">
+# 2. Criar a branch e alternar para ela de forma explícita:
+# Para criar a branch localmente antes de alternar para ela, utilize:
+git branch nome-da-branch origin/nome-da-branch
+git checkout nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git branch nome-da-branch origin/nome-da-branch && git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+
+# Ou em um único comando:
+git checkout -b nome-da-branch origin/nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout -b nome-da-branch origin/nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+
+# A partir do Git 2.23, pode-se usar `git switch`:
+git switch -c nome-da-branch origin/nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git switch -c nome-da-branch origin/nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+        </code>
+      </pre>
+      <pre>
+        <code class="language-bash" data-snippet-id="snippet-git-branches">
+# 3. Alternar entre branches existentes:
+# Se a branch já existir localmente, utilize:
+git checkout nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+
+# Ou:
+git switch nome-da-branch
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git switch nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+        </code>
+      </pre>
+      <pre>
+        <code class="language-bash" data-snippet-id="snippet-git-branches">
+# 4. Atualizar a branch local com os dados remotos:
+# Para garantir que a branch está atualizada:
+git pull
+<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git pull" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
+        </code>
+      </pre>
     </div>
   </div>
-</div> -->
+</div>
 
-<!-- End Snippets Isotope -->
+<!-- End Snippets Git -->
 
 <!-- Ini Snippets PHP -->
 
