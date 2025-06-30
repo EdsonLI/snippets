@@ -3341,3 +3341,7 @@ pre {
 .hljs-title, .hljs-title.class_, .hljs-title.class_.inherited__, .hljs-title.function_ {
     color: #d63384 !important; /* Cor personalizada para títulos */
 }
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin: .5rem 0 .5rem 0 !important; /* Ajusta o espaçamento superior e inferior dos títulos */
+}
