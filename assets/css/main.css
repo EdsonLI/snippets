@@ -3292,7 +3292,7 @@ code {
 }
 
 pre {
-  padding: 1rem; /* Adiciona um espaçamento interno de 1rem */
+  padding: .5rem; /* Adiciona um espaçamento interno de .5rem */
 }
 
 .snippet-code {
@@ -3307,7 +3307,7 @@ pre {
 */
 
 .portfolio-content h5 {
-  margin-bottom: 0.2rem; /* Ajusta o espaço abaixo do título */
+  margin-bottom: 0.2em; /* Ajusta o espaço abaixo do título */
 }
 
 .portfolio-content {
