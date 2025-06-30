@@ -3337,3 +3337,7 @@ pre {
 .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {
   color: #e44d26 !important; /* Cor personalizada para palavras-chave */
 }
+
+.hljs-title, .hljs-title.class_, .hljs-title.class_.inherited__, .hljs-title.function_ {
+    color: #d63384 !important; /* Cor personalizada para títulos */
+}
