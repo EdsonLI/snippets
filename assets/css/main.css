@@ -3322,7 +3322,7 @@ pre {
   padding-top: 0; /* Remove preenchimento superior */
 }
 
-.position-absolute.top-0 {
+.top-02 {
   top: 2px !important; /* Ajusta a posição do botão de copiar */
 }
 
