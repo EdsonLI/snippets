@@ -172,6 +172,7 @@
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-isotope" style="cursor: pointer;">Isotope</li>
+            <li data-filter=".filter-bootstrap" style="cursor: pointer;">Bootstrap</li>
             <li data-filter=".filter-git" style="cursor: pointer;">Git</li>            
             <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
             <li data-filter=".filter-sweetalert2" style="cursor: pointer;">SweetAlert2</li>
@@ -189,17 +190,123 @@
 
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-  <!-- Ini Snippets Isotope -->
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-info text-center">Validação de formulários</h6>
+    <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
+      <!-- <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-020" style="margin: 2.5px 0 0 2.5px !important; background-color: #795548; color: #fff;">
+          <iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> Exemplo isotope
+        </span>
+      </div> -->
+      <div class="position-absolute top-5 end-0 d-flex align-items-center z-3">
+        <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </a>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-mad" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+
+      <!-- HTML Block -->
+      <div class="position-relative mb-3" style="margin-top: 3rem;">
+        <div class="position-absolute d-flex gap-030 align-items-center z-3" style="top: 0.5rem; left: 0.5rem;">
+          <span class="badge small d-flex align-items-center py-020" style="background-color: #e34c26; color: #fff;">
+            <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 14px;"></iconify-icon> HTML
+          </span>
+        </div>
+        <div class="position-absolute d-flex gap-1 align-items-center z-3" style="top: 0.5rem; right: 0.5rem;">
+          <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-html">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>
+        <pre>
+          <code class="language-html" id="snippet-html">
+
+          </code>
+        </pre>
+      </div>
+      <hr class="my-3 border-secondary-custom">
+
+      <!-- CSS Block -->
+      <div class="position-relative mb-3">
+        <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
+          <span class="badge small d-flex align-items-center py-020" style="margin: 2.5px 0 0 2.5px !important; background-color: #264de4; color: #fff;">
+            <iconify-icon icon="mdi:language-css3" class="me-1" style="font-size: 14px;"></iconify-icon> CSS
+          </span>
+        </div>
+        <div class="position-absolute top-5 end-0 d-flex align-items-center z-3">
+          <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-css">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>
+        <pre>
+          <code class="language-css" id="snippet-css">
+          
+          </code>
+        </pre>
+      </div>
+      <hr class="my-3 border-secondary-custom">
+
+      <!-- jQuery Block -->
+      <div class="position-relative">
+        <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
+          <span class="badge small d-flex align-items-center py-020" style="margin: 2.5px 0 0 2.5px !important; background-color: #0769ad; color: #fff;">
+            <iconify-icon icon="mdi:jquery" class="me-1" style="font-size: 14px;"></iconify-icon> jQuery
+          </span>
+        </div>
+        <div class="position-absolute top-5 end-0 d-flex align-items-center z-3">
+          <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-js">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>
+        <pre>
+          <code class="language-js" id="snippet-js">
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Preview -->
+<div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border border-secondary-custom"> <!-- Adicionada a borda padrão -->
+      <div class="modal-header border-secondary-custom">
+        <h6 class="modal-title text-info" id="previewModalBootstrapLabel">Pré-visualização</h6>
+        <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button> -->
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
+      </div>
+      <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;"> <!-- Adicionada borda ao corpo -->
+        <iframe 
+          src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" 
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          style="border:none; overflow-y: auto; border-radius: 0.5rem;"> <!-- Adicionado border-radius -->
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Snippets Isotope -->
+
+<!-- Ini Snippets Isotope -->
 
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Exemplo com Isotope</h6>
     <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
-      <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
+      <!-- <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
         <span class="badge small d-flex align-items-center py-020" style="margin: 2.5px 0 0 2.5px !important; background-color: #795548; color: #fff;">
           <iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> Exemplo isotope
         </span>
-      </div>
+      </div> -->
       <div class="position-absolute top-5 end-0 d-flex align-items-center z-3">
         <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/isotope_basic_sample.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
           <iconify-icon icon="mdi:download"></iconify-icon>
@@ -224,7 +331,9 @@
             <iconify-icon icon="mdi:content-copy"></iconify-icon>
           </button>
         </div>
-        <pre><code class="language-html" id="snippet-html">&lt;!-- Estrutura HTML para Isotope --&gt;
+        <pre>
+          <code class="language-html" id="snippet-html">
+            &lt;!-- Estrutura HTML para Isotope --&gt;
 &lt;div class="controls"&gt;
   &lt;button data-filter="*"&gt;Todos&lt;/button&gt;
   &lt;button data-filter=".categoria-1"&gt;Categoria 1&lt;/button&gt;
