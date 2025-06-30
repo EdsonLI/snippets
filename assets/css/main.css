@@ -3315,3 +3315,7 @@ pre {
 .portfolio-content {
   padding: .5rem; /* Ajuste uniforme do preenchimento */
 }
+
+.hljs-variable {
+  color: #1f6feb;
+}
