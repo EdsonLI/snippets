@@ -3286,7 +3286,28 @@ pre code.hljs {
 }
 
 pre,
-code {
+code {  
   white-space: pre-wrap !important;    /* Força a quebra de linha dentro do <pre> */
   word-break: break-all !important;    /* Quebra palavras longas se necessário */
+}
+
+pre {
+  padding: 1rem; /* Adiciona um espaçamento interno de 1rem */
+}
+
+.snippet-code {
+  margin-top: 0; /* Remove margens superiores */
+  padding-top: 0; /* Remove preenchimento superior */
+}
+
+.position-absolute.top-0 {
+  top: 0.5rem; /* Ajusta a posição superior */
+}
+
+.portfolio-content h5 {
+  margin-bottom: 0.5rem; /* Ajusta o espaço abaixo do título */
+}
+
+.portfolio-content {
+  padding: 1rem; /* Ajuste uniforme do preenchimento */
 }
