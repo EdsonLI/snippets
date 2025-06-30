@@ -3300,14 +3300,16 @@ pre {
   padding-top: 0; /* Remove preenchimento superior */
 }
 
+/*
 .position-absolute.top-0 {
-  top: 0.5rem; /* Ajusta a posição superior */
+  top: 0.5rem; 
 }
+*/
 
 .portfolio-content h5 {
-  margin-bottom: 0.5rem; /* Ajusta o espaço abaixo do título */
+  margin-bottom: 0.2rem; /* Ajusta o espaço abaixo do título */
 }
 
 .portfolio-content {
-  padding: 1rem; /* Ajuste uniforme do preenchimento */
+  padding: .5rem; /* Ajuste uniforme do preenchimento */
 }
