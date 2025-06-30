@@ -3327,7 +3327,7 @@ pre {
 }
 
 .portfolio-content {
-  padding: 0 2px 2px 2px !important; /* Ajuste uniforme do preenchimento */
+  padding: 0 1px 1px 1px !important; /* Ajuste uniforme do preenchimento */
 }
 
 .hljs-variable {
