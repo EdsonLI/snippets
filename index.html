@@ -189,79 +189,94 @@
 
 <!-- Ini Snippets Git -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h5 class="text-info text-center mb-2">Git - Branches</h5>
-    <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-      <div class="position-absolute top-0 d-flex gap-2 align-items-center z-3">
-        <span class="badge small d-flex align-items-center py-1" style="margin: 2.5px 0 0 2.5px !important; background-color: #f34f29; color: #fff;">
-          <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
-        </span>
-      </div>
-      <div class="position-absolute top-0 end-0 d-flex gap-1 align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-git-branches">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-git-branches" style="margin-right: .45em !important;">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 1. Baixar o conteúdo de uma branch remota:
+<!-- Baixar o conteúdo de uma branch remota -->
+<div class="position-relative mb-3" style="margin-top: 3rem;">
+  <div class="position-absolute d-flex gap-2 align-items-center z-3" style="top: 0.5rem; left: 0.5rem;">
+    <span class="badge small d-flex align-items-center py-1" style="background-color: #f34f29; color: #fff;">
+      <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
+    </span>
+  </div>
+  <div class="position-absolute d-flex gap-1 align-items-center z-3" style="top: 0.5rem; right: 0.5rem;">
+    <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-git-fetch">
+      <iconify-icon icon="mdi:content-copy"></iconify-icon>
+    </button>
+  </div>
+  <pre><code class="language-bash" id="snippet-git-fetch"># 1. Baixar o conteúdo de uma branch remota:
 # Use o comando `git fetch` para baixar os dados da branch remota sem alternar para ela imediatamente:
 git fetch origin nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git fetch origin nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
 
 # Ou, se você deseja baixar os dados e já alternar para a branch remota, use o comando `git checkout` (ou `git switch`):
 git checkout nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
 
 # Se a branch ainda não existir localmente, o Git irá criar uma branch local que rastreia a branch remota.
-        </code>
-      </pre>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 2. Criar a branch e alternar para ela de forma explícita:
+</code></pre>
+</div>
+<hr class="my-3 border-secondary-custom">
+
+<!-- Criar a branch e alternar para ela de forma explícita -->
+<div class="position-relative mb-3">
+  <div class="position-absolute d-flex gap-2 align-items-center z-3" style="top: 0.5rem; left: 0.5rem;">
+    <span class="badge small d-flex align-items-center py-1" style="background-color: #f34f29; color: #fff;">
+      <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
+    </span>
+  </div>
+  <div class="position-absolute d-flex gap-1 align-items-center z-3" style="top: 0.5rem; right: 0.5rem;">
+    <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-git-create">
+      <iconify-icon icon="mdi:content-copy"></iconify-icon>
+    </button>
+  </div>
+  <pre><code class="language-bash" id="snippet-git-create"># 2. Criar a branch e alternar para ela de forma explícita:
 # Para criar a branch localmente antes de alternar para ela, utilize:
 git branch nome-da-branch origin/nome-da-branch
 git checkout nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git branch nome-da-branch origin/nome-da-branch && git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
 
 # Ou em um único comando:
 git checkout -b nome-da-branch origin/nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout -b nome-da-branch origin/nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
 
 # A partir do Git 2.23, pode-se usar `git switch`:
 git switch -c nome-da-branch origin/nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git switch -c nome-da-branch origin/nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-        </code>
-      </pre>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 3. Alternar entre branches existentes:
+</code></pre>
+</div>
+<hr class="my-3 border-secondary-custom">
+
+<!-- Alternar entre branches existentes -->
+<div class="position-relative mb-3">
+  <div class="position-absolute d-flex gap-2 align-items-center z-3" style="top: 0.5rem; left: 0.5rem;">
+    <span class="badge small d-flex align-items-center py-1" style="background-color: #f34f29; color: #fff;">
+      <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
+    </span>
+  </div>
+  <div class="position-absolute d-flex gap-1 align-items-center z-3" style="top: 0.5rem; right: 0.5rem;">
+    <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-git-switch">
+      <iconify-icon icon="mdi:content-copy"></iconify-icon>
+    </button>
+  </div>
+  <pre><code class="language-bash" id="snippet-git-switch"># 3. Alternar entre branches existentes:
 # Se a branch já existir localmente, utilize:
 git checkout nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git checkout nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
 
 # Ou:
 git switch nome-da-branch
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git switch nome-da-branch" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-        </code>
-      </pre>
-      <pre>
-        <code class="language-bash" data-snippet-id="snippet-git-branches">
-# 4. Atualizar a branch local com os dados remotos:
+</code></pre>
+</div>
+<hr class="my-3 border-secondary-custom">
+
+<!-- Atualizar a branch local com os dados remotos -->
+<div class="position-relative">
+  <div class="position-absolute d-flex gap-2 align-items-center z-3" style="top: 0.5rem; left: 0.5rem;">
+    <span class="badge small d-flex align-items-center py-1" style="background-color: #f34f29; color: #fff;">
+      <iconify-icon icon="mdi:git" class="me-1" style="font-size: 14px;"></iconify-icon> Git
+    </span>
+  </div>
+  <div class="position-absolute d-flex gap-1 align-items-center z-3" style="top: 0.5rem; right: 0.5rem;">
+    <button class="btn btn-sm btn-outline-info btn-custom copy-btn" data-target="snippet-git-pull">
+      <iconify-icon icon="mdi:content-copy"></iconify-icon>
+    </button>
+  </div>
+  <pre><code class="language-bash" id="snippet-git-pull"># 4. Atualizar a branch local com os dados remotos:
 # Para garantir que a branch está atualizada:
 git pull
-<button class="btn btn-sm btn-outline-info btn-copy" data-copy="git pull" style="float: right; margin-top: -22px;"><iconify-icon icon="mdi:content-copy"></iconify-icon></button>
-        </code>
-      </pre>
-    </div>
-  </div>
+</code></pre>
 </div>
 
 <!-- End Snippets Git -->
