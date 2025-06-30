@@ -3335,9 +3335,13 @@ pre {
 */
 
 .portfolio-content {
-  padding: .5rem; /* Ajuste uniforme do preenchimento */
+  padding: .2em; /* Ajuste uniforme do preenchimento */
 }
 
 .hljs-variable {
   color: #1f6feb !important; /* Cor personalizada para variáveis */
+}
+
+.hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {
+  color: #e44d26 !important; /* Cor personalizada para palavras-chave */
 }
