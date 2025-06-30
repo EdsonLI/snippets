@@ -3021,7 +3021,7 @@ pre .copy-btn {
   border: 1px solid #1f6feb !important; /* Adiciona a borda */
   color: #1f6feb !important;
   transition: color 0.3s, border-color 0.3s;
-  height: 1.25em !important;
+  height: 1.35em !important;
   padding-top: .25px !important;
   margin: .2em .2em 0 0 !important;
 }
