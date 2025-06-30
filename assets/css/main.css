@@ -3322,20 +3322,12 @@ pre {
   padding-top: 0; /* Remove preenchimento superior */
 }
 
-/*
 .position-absolute.top-0 {
-  top: 0.5rem; 
+  top: 2px !important; /* Ajusta a posição do botão de copiar */
 }
-*/
-
-/*
-.portfolio-content h5 {
-  margin-bottom: 0.2em;
-}
-*/
 
 .portfolio-content {
-  padding: .2em; /* Ajuste uniforme do preenchimento */
+  padding: 0 2px 2px 2px !important; /* Ajuste uniforme do preenchimento */
 }
 
 .hljs-variable {
