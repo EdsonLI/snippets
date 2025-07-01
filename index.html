@@ -67,7 +67,25 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #888; /* Cor ao passar o mouse */
-  }
+  } /* Garante que o container pai tenha posição relativa */
+.snippet-code {
+  position: relative;
+}
+
+/* O grupo dos botões flutuantes */
+.snippet-actions-float {
+  position: sticky !important;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  margin-left: auto; /* empurra para direita se necessário */
+  display: flex;
+  gap: 0.3em;
+  background: rgba(34,34,34,0.85); /* opcional: fundo para destacar */
+  border-radius: .5em;
+  padding: .25em .4em;
+  box-shadow: 0px 2px 5px 0px #0002; /* opcional */
+}
   </style>
 </head>
 
@@ -199,7 +217,7 @@
           <iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> Exemplo isotope
         </span>
       </div> -->
-      <div class="position-absolute top-5 end-0 d-flex align-items-center z-3">
+      <div class="snippet-actions-float d-flex align-items-center z-3">
         <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
           <iconify-icon icon="mdi:download"></iconify-icon>
         </a>
