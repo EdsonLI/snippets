@@ -171,15 +171,15 @@
 <!-- Ini Snippet Filters -->
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-isotope" style="cursor: pointer;">Isotope</li>
             <li data-filter=".filter-bootstrap" style="cursor: pointer;">Bootstrap</li>
+            <li data-filter=".filter-sql" style="cursor: pointer;">SQL</li>
+            <li data-filter=".filter-isotope" style="cursor: pointer;">Isotope</li>            
             <li data-filter=".filter-git" style="cursor: pointer;">Git</li>            
             <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
             <li data-filter=".filter-sweetalert2" style="cursor: pointer;">SweetAlert2</li>
             <li data-filter=".filter-jquery" style="cursor: pointer;">jQuery</li>
             <li data-filter=".filter-css" style="cursor: pointer;">CSS</li>
-            <li data-filter=".filter-html" style="cursor: pointer;">HTML</li>
-            <li data-filter=".filter-sql" style="cursor: pointer;">SQL</li>
+            <li data-filter=".filter-html" style="cursor: pointer;">HTML</li>            
             <li data-filter=".filter-madbuilder" style="cursor: pointer;">MadBuilder</li>
             <li data-filter=".filter-app">App</li>
             <!--li data-filter=".filter-product">Product</li>
@@ -189,6 +189,45 @@
 <!-- End Snippet Filters -->
 
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+<!-- Ini Snippets SQL -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-info text-center">Procedure CleanCompanyData - SQL</h6>
+    <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
+      <div class="snippet-actions-float d-flex align-items-center z-3">
+        <!-- <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </a> -->
+        <!-- <button class="btn btn-sm btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button> -->
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company" >
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+        <span class="badge small d-flex align-items-center label-tech" style="background-color: #e34c26; color: #fff;">
+          <iconify-icon icon="mdi:database-outline" class="me-1" style="font-size: 14px;"></iconify-icon> SQL
+        </span>
+      </div>
+
+      <!-- DIV - PRE - CODE - INI -->
+      <div class="position-relative mb-3" style="margin-top: 3rem;">
+        <pre>
+          <code class="language-sql">
+            CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
+          </code>
+        </pre>
+      </div>
+      <!-- DIV - PRE - CODE - END -->
+
+    </div>
+  </div>
+</div>
+
+<!-- End Snippets SQL -->
+
+<!-- Ini Snippets Bootstrap -->
 
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
@@ -1152,32 +1191,6 @@ if (typeof(Storage) !== "undefined") {
             </div>
           </div>
 <!-- End Snippets HTML -->
-
-<!-- Ini Snippets SQL -->
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
-            <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-              <h6 class="text-info text-center">Consulta simples</h6>
-              <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
-                <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
-                  <span class="badge small d-flex align-items-center label-tech" style="margin: 2.5px 0 0 4px !important; background-color: #00618a; color: #fff;"><iconify-icon icon="mdi:database-outline" class="me-1" style="font-size: 14px;"></iconify-icon> SQL</span>
-                </div>
-                <div class="snippet-actions-float d-flex align-items-center z-3">
-                  <button class="btn btn-sm btn-outline-info btn-custom">
-                    <iconify-icon icon="mdi:download"></iconify-icon>
-                  </button>
-                  <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-sql">
-                    <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-                  </button>
-                  <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql" >
-                    <iconify-icon icon="mdi:content-copy"></iconify-icon>
-                  </button>
-                </div>
-                <pre><code class="language-sql" data-snippet-id="snippet-sql">SELECT * FROM usuarios WHERE ativo = 1;</code></pre>
-              </div>
-            </div>
-          </div>
-<!-- End Snippets SQL -->
 
 <!-- Ini Snippets MadBuilder -->
 
