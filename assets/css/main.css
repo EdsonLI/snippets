@@ -3357,5 +3357,5 @@ pre {
 }
 
 pre code.hljs {
-  padding-left: 1px !important;
+  padding: 0 0 0 1px !important;
 }

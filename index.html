@@ -172,10 +172,11 @@
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-sql" style="cursor: pointer;">SQL</li>
+            <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
             <li data-filter=".filter-bootstrap" style="cursor: pointer;">Bootstrap</li>            
             <li data-filter=".filter-isotope" style="cursor: pointer;">Isotope</li>            
             <li data-filter=".filter-git" style="cursor: pointer;">Git</li>            
-            <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
+            
             <li data-filter=".filter-sweetalert2" style="cursor: pointer;">SweetAlert2</li>
             <li data-filter=".filter-jquery" style="cursor: pointer;">jQuery</li>
             <li data-filter=".filter-css" style="cursor: pointer;">CSS</li>
@@ -192,7 +193,7 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Procedure CleanCompanyData - SQL</h6>
-    <div class="snippet-code position-relative" style="height: 150px !important;">
+    <div class="snippet-code position-relative" style="height: 130px !important;">
       <div class="snippet-actions-float d-flex align-items-center z-3">
         <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company" >
           <iconify-icon icon="mdi:content-copy"></iconify-icon>
@@ -203,11 +204,7 @@
       </div>
 
       <!-- DIV - PRE - CODE - INI -->      
-        <pre>
-          <code class="language-sql">
-            CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
-          </code>
-        </pre>
+        <pre><code class="language-sql">CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');</code></pre>
       <!-- DIV - PRE - CODE - END -->
 
     </div>
@@ -223,7 +220,7 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Validação de formulários - Bootstrap</h6>
-    <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
+    <div class="snippet-code position-relative" style="max-height: 450px; overflow: auto;">
       <div class="snippet-actions-float d-flex align-items-center z-3">
         <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
           <iconify-icon icon="mdi:download"></iconify-icon>
@@ -368,6 +365,64 @@
 </div>
 
 <!-- End Snippets Bootstrap -->
+
+<!-- Ini Snippets PHP -->
+
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-info text-center">Cookies, Sessões e Preferências</h6>
+    <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
+      <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
+        <span class="badge small d-flex align-items-center label-tech" style="margin: 2.5px 0 0 4px !important; background-color: #8892be; color: #fff;">
+          <iconify-icon icon="mdi:language-php" class="me-1" style="font-size: 18px;"></iconify-icon> PHP
+        </span>
+        <span class="badge small d-flex align-items-center label-tech" style="margin-top: 2.5px !important; background-color: #e44d26; color: #fff;">
+          <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 18px;"></iconify-icon> HTML
+        </span>
+      </div>
+      <div class="snippet-actions-float d-flex align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom">
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-preferencias">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-preferencias" >
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>
+      <pre><code class="language-php" data-snippet-id="snippet-preferencias">&lt;?php
+   session_start();
+
+   // Aceite de cookies recebido via POST
+   if (isset($_POST['aceitar'])) {
+      setcookie('aceite_cookie', '1', time() + (86400 * 30), '/'); // 30 dias
+      $_SESSION['tema'] = 'escuro'; // Exemplo de preferência
+   }
+
+   // Mostrar sessão e cookie (debug/uso)
+   if (isset($_COOKIE['aceite_cookie'])) {
+      echo "Cookie aceite_cookie: " . $_COOKIE['aceite_cookie'] . "&lt;br&gt;";
+   }
+
+   if (isset($_SESSION['tema'])) {
+      echo "Sessão tema: " . $_SESSION['tema'] . "&lt;br&gt;";
+   }
+?&gt;
+
+&lt;!-- Mostrar aviso se cookie ainda não aceito --&gt;
+&lt;?php if (!isset($_COOKIE['aceite_cookie'])): ?&gt;
+   &lt;form method="post" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #222; color: #fff; padding: 1rem; border-radius: .5rem; z-index: 1000;"&gt;
+      Este site usa cookies para salvar suas preferências.
+      &lt;button type="submit" name="aceitar" class="btn btn-sm btn-success ms-2"&gt;Aceitar&lt;/button&gt;
+   &lt;/form&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- End Snippets PHP -->
 
 <!-- Ini Snippets Isotope -->
 
@@ -803,61 +858,7 @@ try {
   </div>
 </div>
 
-<!-- Ini Snippets PHP -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-info text-center">Cookies, Sessões e Preferências</h6>
-    <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
-      <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
-        <span class="badge small d-flex align-items-center label-tech" style="margin: 2.5px 0 0 4px !important; background-color: #8892be; color: #fff;">
-          <iconify-icon icon="mdi:language-php" class="me-1" style="font-size: 18px;"></iconify-icon> PHP
-        </span>
-        <span class="badge small d-flex align-items-center label-tech" style="margin-top: 2.5px !important; background-color: #e44d26; color: #fff;">
-          <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 18px;"></iconify-icon> HTML
-        </span>
-      </div>
-      <div class="snippet-actions-float d-flex align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-preferencias">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-preferencias" >
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre><code class="language-php" data-snippet-id="snippet-preferencias">&lt;?php
-   session_start();
-
-   // Aceite de cookies recebido via POST
-   if (isset($_POST['aceitar'])) {
-      setcookie('aceite_cookie', '1', time() + (86400 * 30), '/'); // 30 dias
-      $_SESSION['tema'] = 'escuro'; // Exemplo de preferência
-   }
-
-   // Mostrar sessão e cookie (debug/uso)
-   if (isset($_COOKIE['aceite_cookie'])) {
-      echo "Cookie aceite_cookie: " . $_COOKIE['aceite_cookie'] . "&lt;br&gt;";
-   }
-
-   if (isset($_SESSION['tema'])) {
-      echo "Sessão tema: " . $_SESSION['tema'] . "&lt;br&gt;";
-   }
-?&gt;
-
-&lt;!-- Mostrar aviso se cookie ainda não aceito --&gt;
-&lt;?php if (!isset($_COOKIE['aceite_cookie'])): ?&gt;
-   &lt;form method="post" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #222; color: #fff; padding: 1rem; border-radius: .5rem; z-index: 1000;"&gt;
-      Este site usa cookies para salvar suas preferências.
-      &lt;button type="submit" name="aceitar" class="btn btn-sm btn-success ms-2"&gt;Aceitar&lt;/button&gt;
-   &lt;/form&gt;
-&lt;?php endif; ?&gt;
-</code></pre>
-    </div>
-  </div>
-</div>
 
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
