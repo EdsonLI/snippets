@@ -3247,14 +3247,6 @@ pre[class*="language-"] {
   }
 }
 
-pre { 
-  margin-bottom: 0 !important;
-}
-
-pre code.hljs {
-  padding: 2.5em 0 0 0 !important;
-}
-
 .text-info {
   color: var(--accent-color) !important;
 }
@@ -3289,16 +3281,7 @@ pre code.hljs {
   }
 }
 
-pre,
-code {  
-  white-space: pre-wrap !important;    /* Força a quebra de linha dentro do <pre> */
-  word-break: break-all !important;    /* Quebra palavras longas se necessário */
-}
 
-pre {
-  background-color: transparent !important;
-  padding: 0 2px 5px 5px !important; /* Adiciona um espaçamento interno de .5rem */
-}
 
 .snippet-code {
   margin-top: 0; /* Remove margens superiores */
@@ -3357,3 +3340,25 @@ pre {
   padding: .25em .4em;
   box-shadow: 0px 2px 5px 0px #0002; /* opcional */
 }
+
+/*pre { 
+  margin: 0 !important;
+}
+*/
+/*
+pre code.hljs {
+  padding: 2.5em 0 0 0 !important;
+}
+*/
+
+pre {
+  background-color: transparent !important;
+  padding: 0 2px 5px 5px !important;
+}
+
+pre,
+code {  
+  white-space: pre-wrap !important;    /* Força a quebra de linha dentro do <pre> */
+  word-break: break-all !important;    /* Quebra palavras longas se necessário */
+}
+
