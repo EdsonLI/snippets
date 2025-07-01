@@ -1,0 +1,55 @@
+Forma interessante de colocar o contexto no GitHub Copilot no VSCode:
+
+1. Como colocar 2 arquivos apenas em contexto?
+No Copilot Chat do VS Code, para adicionar dois arquivos específicos ao contexto, use o comando:
+
+Code
+#file:path/para/arquivo1
+#file:path/para/arquivo2
+Exemplo:
+
+Code
+#file:src/utils/helpers.js
+#file:src/main.js
+Você pode colar esses comandos na sua pergunta ou na caixa de contexto do Copilot Chat.
+
+2. Como colocar todos os arquivos de uma pasta em contexto?
+Para adicionar todos os arquivos de uma pasta (mas não recursivamente), use:
+
+Code
+#folder:path/para/pasta
+Exemplo:
+
+Code
+#folder:src/utils
+Para incluir todos os arquivos de uma pasta e de suas subpastas (recursivamente), use:
+
+Code
+#folder:path/para/pasta/**
+Exemplo:
+
+Code
+#folder:src/utils/**
+3. Como colocar o projeto todo em contexto?
+Para adicionar todo o projeto (todos os arquivos e subpastas), posicione-se na raiz do projeto e use:
+
+Code
+#folder:.
+ou, de forma recursiva e explícita:
+
+Code
+#folder:./**
+Atenção:
+Adicionar o projeto inteiro pode consumir muitos recursos e, dependendo do tamanho, pode não ser permitido ou pode ser truncado pelo Copilot/VS Code. É recomendável adicionar apenas o que for necessário para sua pergunta.
+
+4. Como exatamente funciona o contexto no Copilot Chat?
+O contexto é o conjunto de arquivos/trechos de código/documentos que o Copilot irá considerar para gerar respostas mais precisas.
+
+Quando você adiciona arquivos com #file ou pastas com #folder, o Copilot lê esses arquivos e usa suas informações para responder.
+Sem contexto, o Copilot tenta responder só com base nos arquivos abertos e no histórico do chat.
+Com contexto, você consegue “forçar” o Copilot a considerar partes específicas do seu projeto, melhorando a qualidade e precisão das respostas.
+Resumo dos comandos:
+
+#file:path/para/arquivo → Adiciona um arquivo.
+#folder:path/para/pasta → Adiciona todos arquivos da pasta (não recursivo).
+#folder:path/para/pasta/** → Adiciona todos arquivos da pasta e subpastas (recursivo).
