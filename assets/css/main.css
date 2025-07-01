@@ -3314,7 +3314,7 @@ code {
 }
 
 pre {
-  padding: 2px !important; /* Adiciona um espaçamento interno de .5rem */
+  padding: 0 2px 3px 8px !important; /* Adiciona um espaçamento interno de .5rem */
 }
 
 .snippet-code {
