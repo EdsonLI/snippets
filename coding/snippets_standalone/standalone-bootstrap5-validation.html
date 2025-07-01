@@ -212,11 +212,100 @@
     <!-- Formulário Já Validado -->
     <div class="preview-section">
       <h2 class="h5 mb-4 text-secondary">Exemplo de formulário já validado</h2>
-      <!-- ... manter igual ao seu código original ... -->
-      <!-- Você pode copiar e colar aqui os campos da segunda demo -->
-      <!-- (Por limitação de espaço, não repito, mas é igual ao seu.) -->
-      <!-- ... -->
-      <!-- COPIE O SEGUNDO FORMULARIO INTEIRO AQUI ... -->
+      <form class="row g-3 was-validated" autocomplete="off">
+        <div class="col-md-4">
+          <label for="firstNameV" class="form-label">First name</label>
+          <input type="text" class="form-control is-valid" id="firstNameV" value="Mark" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4">
+          <label for="lastNameV" class="form-label">Last name</label>
+          <input type="text" class="form-control is-valid" id="lastNameV" value="Otto" required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4">
+          <label for="usernameV" class="form-label">Username</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrependV">@</span>
+            <input type="text" class="form-control is-invalid" id="usernameV" aria-describedby="inputGroupPrependV usernameFeedbackV" required>
+            <div id="usernameFeedbackV" class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="cityV" class="form-label">City</label>
+          <input type="text" class="form-control is-invalid" id="cityV" aria-describedby="cityFeedbackV" required>
+          <div id="cityFeedbackV" class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="stateV" class="form-label">State</label>
+          <select class="form-select is-valid" id="stateV" aria-describedby="stateFeedbackV" required>
+            <option>SP</option>
+            <option selected>RJ</option>
+            <option>MG</option>
+          </select>
+          <div id="stateFeedbackV" class="invalid-feedback">
+            Please select a valid state.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="zipV" class="form-label">Zip</label>
+          <input type="text" class="form-control is-invalid" id="zipV" aria-describedby="zipFeedbackV" required value="">
+          <div id="zipFeedbackV" class="invalid-feedback">
+            Please provide a valid zip (e.g. 12345-678).
+          </div>
+        </div>
+        <div class="col-12">
+          <label for="textareaV" class="form-label">Observations</label>
+          <textarea class="form-control is-valid" id="textareaV" required>Everything looks fine!</textarea>
+          <div class="invalid-feedback">
+            Please enter a message in the textarea.
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-check mb-2">
+            <input class="form-check-input is-valid" type="checkbox" id="checkTermosV" required checked>
+            <label class="form-check-label" for="checkTermosV">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-check mb-2">
+            <input type="radio" class="form-check-input is-valid" name="radioExampleV" id="radio1V" checked required>
+            <label class="form-check-label" for="radio1V">Option 1 (required)</label>
+          </div>
+          <div class="form-check mb-2">
+            <input type="radio" class="form-check-input is-valid" name="radioExampleV" id="radio2V" required>
+            <label class="form-check-label" for="radio2V">Option 2</label>
+            <div class="invalid-feedback">Select one radio option</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <label for="selectExampleV" class="form-label">Example select</label>
+          <select class="form-select is-valid" id="selectExampleV" required aria-label="select example">
+            <option value="">Open this select menu</option>
+            <option value="1" selected>One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="invalid-feedback">Example invalid select feedback</div>
+        </div>
+        <div class="col-12">
+          <label for="fileInputV" class="form-label">File input (required)</label>
+          <input type="file" class="form-control is-valid" id="fileInputV" disabled>
+          <div class="invalid-feedback">Please choose a file.</div>
+        </div>
+        <div class="col-12 mt-3">
+          <button class="btn btn-primary" type="button" disabled>Submit form</button>
+        </div>
+      </form>
     </div>
   </div>
 
