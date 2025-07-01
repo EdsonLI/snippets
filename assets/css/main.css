@@ -3351,9 +3351,9 @@ pre {
   gap: .30rem !important;
 }
 
-.py-020 {
-  padding-top: .20px !important;
-  padding-bottom: .20px !important;
+.label-tech {
+  padding: 2px 5px 2px 2px !important;
+  margin-top: 2px !important;
 }
 
 .snippet-code {
