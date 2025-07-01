@@ -242,14 +242,14 @@
       document.body.classList.toggle('dark-mode', on);
       localStorage.setItem('darkMode', on ? '1' : '0');
     }
-    // Inicializa com preferência salva ou sistema
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedDark = localStorage.getItem('darkMode');
-    setDarkMode(savedDark === null ? prefersDark : savedDark === '1');
 
+    // Sempre inicia com dark mode ativado (padrão)
+    setDarkMode(true);
+
+    // Permite alternância normalmente
     themeToggleBtn.addEventListener('click', () => {
       setDarkMode(!document.body.classList.contains('dark-mode'));
     });
   </script>
 </body>
-  </html>
+</html>
