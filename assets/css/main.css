@@ -3351,7 +3351,8 @@ pre {
   margin-left: auto; /* empurra para direita se necessário */
   display: flex;
   gap: 0.3em;
-  background: rgba(34,34,34,0.85); /* opcional: fundo para destacar */
+  /* background: rgba(34,34,34,0.85); */
+  background: transparent !important;
   border-radius: .5em;
   padding: .25em .4em;
   box-shadow: 0px 2px 5px 0px #0002; /* opcional */
