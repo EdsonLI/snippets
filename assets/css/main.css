@@ -2997,24 +2997,6 @@ pre .copy-btn {
 }
 
 /* Customizados */
-/* .portfolio-content .btn,
-.portfolio-content .badge {
-  font-size: 0.75rem;
-  line-height: 1;
-}
-
-.portfolio-content .btn i {
-  vertical-align: middle;
-}
-
-.portfolio-content .position-absolute {
-  z-index: 2;
-}
-
-.portfolio-content h5 {
-  margin-top: 0.5rem;
-}
-*/
 /* Estilo padronizado para botões com borda e ícones */
 .btn-custom {
   border-color: #1f6feb !important;
@@ -3023,7 +3005,7 @@ pre .copy-btn {
   transition: color 0.3s, border-color 0.3s;
   height: 1.35em !important;
   padding-top: .25px !important;
-  margin: .2em .2em 0 0 !important;
+  margin: .2em .40em 0 0 !important;
 }
 
 .btn-custom i {
