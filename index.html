@@ -68,24 +68,6 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #888; /* Cor ao passar o mouse */
   } /* Garante que o container pai tenha posição relativa */
-.snippet-code {
-  position: relative;
-}
-
-/* O grupo dos botões flutuantes */
-.snippet-actions-float {
-  position: sticky !important;
-  top: 0 !important;
-  right: 0.4rem;
-  z-index: 10;
-  margin-left: auto; /* empurra para direita se necessário */
-  display: flex;
-  gap: 0.3em;
-  background: rgba(34,34,34,0.85); /* opcional: fundo para destacar */
-  border-radius: .5em;
-  padding: .25em .4em;
-  box-shadow: 0px 2px 5px 0px #0002; /* opcional */
-}
   </style>
 </head>
 
@@ -208,154 +190,159 @@
 
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
-    <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-      <h6 class="text-info text-center">Validação de formulários - Bootstrap</h6>
-      <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
-        <div class="snippet-actions-float d-flex align-items-center z-3">
-          <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
-            <iconify-icon icon="mdi:download"></iconify-icon>
-          </a>
-          <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
-            <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-          </button>
-          <button class="btn btn-sm btn-outline-info" data-target="snippet-mad" style="margin-right: .45em !important;">
-            <iconify-icon icon="mdi:content-copy"></iconify-icon>
-          </button>
-          <span class="badge small d-flex align-items-center py-020" style="background-color: #e34c26; color: #fff;">
-            <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 14px;"></iconify-icon> HTML
-          </span>
-        </div>
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-info text-center">Validação de formulários - Bootstrap</h6>
+    <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
+      <!-- <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
+        <span class="badge small d-flex align-items-center py-020" style="margin: 2.5px 0 0 4px !important; background-color: #795548; color: #fff;">
+          <iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> Exemplo isotope
+        </span>
+      </div> -->
+      <div class="snippet-actions-float d-flex align-items-center z-3">
+        <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
+          <iconify-icon icon="mdi:download"></iconify-icon>
+        </a>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
+          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-mad" style="margin-right: .45em !important;">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+        <span class="badge small d-flex align-items-center py-020" style="background-color: #e34c26; color: #fff;">
+          <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 14px;"></iconify-icon> HTML
+        </span>
+      </div>
 
-        <!-- PRE - CODE - BLOCK - INI -->
-        <div class="position-relative mb-3" style="margin-top: 3rem;">
-          <pre>
-            <code class="language-html" id="snippet-html">
-              &lt;form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off"&gt;
-                &lt;div class="col-md-4"&gt;
-                  &lt;label for="firstName" class="form-label"&gt;First name&lt;/label&gt;
-                  &lt;input type="text" class="form-control" id="firstName" required&gt;
-                  &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-md-4"&gt;
-                  &lt;label for="lastName" class="form-label"&gt;Last name&lt;/label&gt;
-                  &lt;input type="text" class="form-control" id="lastName" required&gt;
-                  &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-md-4"&gt;
-                  &lt;label for="username" class="form-label"&gt;Username&lt;/label&gt;
-                  &lt;div class="input-group has-validation"&gt;
-                    &lt;span class="input-group-text" id="inputGroupPrepend"&gt;@&lt;/span&gt;
-                    &lt;input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend usernameFeedback" required&gt;
-                    &lt;div id="usernameFeedback" class="invalid-feedback"&gt;
-                      Please choose a username.
-                    &lt;/div&gt;
+      <!-- PRE - CODE - BLOCK - INI -->
+      <div class="position-relative mb-3" style="margin-top: 3rem;">
+        <pre>
+          <code class="language-html" id="snippet-html">
+            &lt;form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off"&gt;
+              &lt;div class="col-md-4"&gt;
+                &lt;label for="firstName" class="form-label"&gt;First name&lt;/label&gt;
+                &lt;input type="text" class="form-control" id="firstName" required&gt;
+                &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-4"&gt;
+                &lt;label for="lastName" class="form-label"&gt;Last name&lt;/label&gt;
+                &lt;input type="text" class="form-control" id="lastName" required&gt;
+                &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-4"&gt;
+                &lt;label for="username" class="form-label"&gt;Username&lt;/label&gt;
+                &lt;div class="input-group has-validation"&gt;
+                  &lt;span class="input-group-text" id="inputGroupPrepend"&gt;@&lt;/span&gt;
+                  &lt;input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend usernameFeedback" required&gt;
+                  &lt;div id="usernameFeedback" class="invalid-feedback"&gt;
+                    Please choose a username.
                   &lt;/div&gt;
                 &lt;/div&gt;
-                &lt;div class="col-md-6"&gt;
-                  &lt;label for="city" class="form-label"&gt;City&lt;/label&gt;
-                  &lt;input type="text" class="form-control" id="city" required&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-6"&gt;
+                &lt;label for="city" class="form-label"&gt;City&lt;/label&gt;
+                &lt;input type="text" class="form-control" id="city" required&gt;
+                &lt;div class="invalid-feedback"&gt;
+                  Please provide a valid city.
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-3"&gt;
+                &lt;label for="state" class="form-label"&gt;State&lt;/label&gt;
+                &lt;select class="form-select" id="state" required&gt;
+                  &lt;option selected disabled value=""&gt;Choose...&lt;/option&gt;
+                  &lt;option&gt;SP&lt;/option&gt;
+                  &lt;option&gt;RJ&lt;/option&gt;
+                  &lt;option&gt;MG&lt;/option&gt;
+                &lt;/select&gt;
+                &lt;div class="invalid-feedback"&gt;
+                  Please select a valid state.
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-md-3"&gt;
+                &lt;label for="zip" class="form-label"&gt;Zip&lt;/label&gt;
+                &lt;input type="text" class="form-control" id="zip" required pattern="^\d{5}-?\d{3}$"&gt;
+                &lt;div class="invalid-feedback"&gt;
+                  Please provide a valid zip (e.g. 12345-678).
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-12"&gt;
+                &lt;label for="textarea" class="form-label"&gt;Observations&lt;/label&gt;
+                &lt;textarea class="form-control" id="textarea" placeholder="Required example textarea" required&gt;&lt;/textarea&gt;
+                &lt;div class="invalid-feedback"&gt;
+                  Please enter a message in the textarea.
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-12"&gt;
+                &lt;div class="form-check mb-2"&gt;
+                  &lt;input class="form-check-input" type="checkbox" id="checkTermos" required&gt;
+                  &lt;label class="form-check-label" for="checkTermos"&gt;
+                    Agree to terms and conditions
+                  &lt;/label&gt;
                   &lt;div class="invalid-feedback"&gt;
-                    Please provide a valid city.
+                    You must agree before submitting.
                   &lt;/div&gt;
                 &lt;/div&gt;
-                &lt;div class="col-md-3"&gt;
-                  &lt;label for="state" class="form-label"&gt;State&lt;/label&gt;
-                  &lt;select class="form-select" id="state" required&gt;
-                    &lt;option selected disabled value=""&gt;Choose...&lt;/option&gt;
-                    &lt;option&gt;SP&lt;/option&gt;
-                    &lt;option&gt;RJ&lt;/option&gt;
-                    &lt;option&gt;MG&lt;/option&gt;
-                  &lt;/select&gt;
-                  &lt;div class="invalid-feedback"&gt;
-                    Please select a valid state.
-                  &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-12"&gt;
+                &lt;div class="form-check mb-2"&gt;
+                  &lt;input type="radio" class="form-check-input" name="radioExample" id="radio1" required&gt;
+                  &lt;label class="form-check-label" for="radio1"&gt;Option 1 (required)&lt;/label&gt;
                 &lt;/div&gt;
-                &lt;div class="col-md-3"&gt;
-                  &lt;label for="zip" class="form-label"&gt;Zip&lt;/label&gt;
-                  &lt;input type="text" class="form-control" id="zip" required pattern="^\d{5}-?\d{3}$"&gt;
-                  &lt;div class="invalid-feedback"&gt;
-                    Please provide a valid zip (e.g. 12345-678).
-                  &lt;/div&gt;
+                &lt;div class="form-check mb-2"&gt;
+                  &lt;input type="radio" class="form-check-input" name="radioExample" id="radio2" required&gt;
+                  &lt;label class="form-check-label" for="radio2"&gt;Option 2&lt;/label&gt;
+                  &lt;div class="invalid-feedback"&gt;Select one radio option&lt;/div&gt;
                 &lt;/div&gt;
-                &lt;div class="col-12"&gt;
-                  &lt;label for="textarea" class="form-label"&gt;Observations&lt;/label&gt;
-                  &lt;textarea class="form-control" id="textarea" placeholder="Required example textarea" required&gt;&lt;/textarea&gt;
-                  &lt;div class="invalid-feedback"&gt;
-                    Please enter a message in the textarea.
-                  &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-12"&gt;
-                  &lt;div class="form-check mb-2"&gt;
-                    &lt;input class="form-check-input" type="checkbox" id="checkTermos" required&gt;
-                    &lt;label class="form-check-label" for="checkTermos"&gt;
-                      Agree to terms and conditions
-                    &lt;/label&gt;
-                    &lt;div class="invalid-feedback"&gt;
-                      You must agree before submitting.
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-12"&gt;
-                  &lt;div class="form-check mb-2"&gt;
-                    &lt;input type="radio" class="form-check-input" name="radioExample" id="radio1" required&gt;
-                    &lt;label class="form-check-label" for="radio1"&gt;Option 1 (required)&lt;/label&gt;
-                  &lt;/div&gt;
-                  &lt;div class="form-check mb-2"&gt;
-                    &lt;input type="radio" class="form-check-input" name="radioExample" id="radio2" required&gt;
-                    &lt;label class="form-check-label" for="radio2"&gt;Option 2&lt;/label&gt;
-                    &lt;div class="invalid-feedback"&gt;Select one radio option&lt;/div&gt;
-                  &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-12"&gt;
-                  &lt;label for="selectExample" class="form-label"&gt;Example select&lt;/label&gt;
-                  &lt;select class="form-select" id="selectExample" required aria-label="select example"&gt;
-                    &lt;option value=""&gt;Open this select menu&lt;/option&gt;
-                    &lt;option value="1"&gt;One&lt;/option&gt;
-                    &lt;option value="2"&gt;Two&lt;/option&gt;
-                    &lt;option value="3"&gt;Three&lt;/option&gt;
-                  &lt;/select&gt;
-                  &lt;div class="invalid-feedback"&gt;Example invalid select feedback&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-12"&gt;
-                  &lt;label for="fileInput" class="form-label"&gt;File input (required)&lt;/label&gt;
-                  &lt;input type="file" class="form-control" id="fileInput" required&gt;
-                  &lt;div class="invalid-feedback"&gt;Please choose a file.&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="col-12 mt-3"&gt;
-                  &lt;button class="btn btn-primary" type="submit"&gt;Submit form&lt;/button&gt;
-                &lt;/div&gt;
-              &lt;/form&gt;
-            </code>
-          </pre>
-        </div>
+              &lt;/div&gt;
+              &lt;div class="col-12"&gt;
+                &lt;label for="selectExample" class="form-label"&gt;Example select&lt;/label&gt;
+                &lt;select class="form-select" id="selectExample" required aria-label="select example"&gt;
+                  &lt;option value=""&gt;Open this select menu&lt;/option&gt;
+                  &lt;option value="1"&gt;One&lt;/option&gt;
+                  &lt;option value="2"&gt;Two&lt;/option&gt;
+                  &lt;option value="3"&gt;Three&lt;/option&gt;
+                &lt;/select&gt;
+                &lt;div class="invalid-feedback"&gt;Example invalid select feedback&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-12"&gt;
+                &lt;label for="fileInput" class="form-label"&gt;File input (required)&lt;/label&gt;
+                &lt;input type="file" class="form-control" id="fileInput" required&gt;
+                &lt;div class="invalid-feedback"&gt;Please choose a file.&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="col-12 mt-3"&gt;
+                &lt;button class="btn btn-primary" type="submit"&gt;Submit form&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          </code>
+        </pre>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal for Preview -->
-  <div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content bg-dark text-white border border-secondary-custom"> <!-- Adicionada a borda padrão -->
-        <div class="modal-header border-secondary-custom">
-          <h6 class="modal-title text-info" id="previewModalBootstrapLabel">Pré-visualização</h6>
-          <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button> -->
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
-        </div>
-        <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;"> <!-- Adicionada borda ao corpo -->
-          <iframe 
-            src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" 
-            width="100%" 
-            height="100%" 
-            frameborder="0" 
-            style="border:none; overflow-y: auto; border-radius: 0.5rem;"> <!-- Adicionado border-radius -->
-          </iframe>
-        </div>
+<!-- Modal for Preview -->
+<div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border border-secondary-custom"> <!-- Adicionada a borda padrão -->
+      <div class="modal-header border-secondary-custom">
+        <h6 class="modal-title text-info" id="previewModalBootstrapLabel">Pré-visualização</h6>
+        <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button> -->
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
+      </div>
+      <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;"> <!-- Adicionada borda ao corpo -->
+        <iframe 
+          src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" 
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          style="border:none; overflow-y: auto; border-radius: 0.5rem;"> <!-- Adicionado border-radius -->
+        </iframe>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- End Snippets Bootstrap -->
+<!-- End Snippets Bootstrap -->
 
 <!-- Ini Snippets Isotope -->
 
