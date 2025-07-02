@@ -3327,9 +3327,11 @@ pre[class*="language-"] {
 
 .snippet-code pre,
 .snippet-code code {
-  background-color: transparent !important;
+  background-color: #151b23 !important;
   box-shadow: none !important;
   border: none !important;
+  height: auto !important;
+  padding: 6px !important;
 }
 
 /* O grupo dos botões flutuantes */
