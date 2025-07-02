@@ -1189,21 +1189,6 @@ if (typeof(Storage) !== "undefined") {
         setTheme(!document.body.classList.contains('dark-theme'));
       });
     });
-</script>
+  </script>
 </body>
-
-</html>
-        //icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
-        themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
-      }
-      const saved = localStorage.getItem('theme');
-      setTheme(saved === 'dark');
-      themeBtn.addEventListener('click', function () {
-        setTheme(!document.body.classList.contains('dark-theme'));
-      });
-    });
-</script>
-</body>
-
 </html>
