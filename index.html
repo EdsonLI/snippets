@@ -195,12 +195,9 @@
     <h6 class="text-info text-center">Procedure CleanCompanyData - SQL</h6>
     <div class="snippet-code position-relative">
       <div class="snippet-actions-float d-flex align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company" >
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company">
           <iconify-icon icon="mdi:content-copy"></iconify-icon>
         </button>
-        <span class="badge small d-flex align-items-center label-tech" style="background-color: #10a37f; color: #fff;">
-          <iconify-icon icon="mdi:database-outline" class="me-1" style="font-size: 14px;"></iconify-icon> SQL
-        </span>
       </div>
 
       <!-- DIV - PRE - CODE - INI -->      
@@ -231,9 +228,6 @@
         <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-mad" >
           <iconify-icon icon="mdi:content-copy"></iconify-icon>
         </button>
-        <span class="badge small d-flex align-items-center label-tech" style="background-color: #e34c26; color: #fff;">
-          <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 14px;"></iconify-icon> HTML
-        </span>
       </div>
 
       <!-- PRE - CODE - BLOCK - INI -->
@@ -372,14 +366,6 @@
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Cookies, Sessões e Preferências</h6>
     <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
-      <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
-        <span class="badge small d-flex align-items-center label-tech" style="margin: 2.5px 0 0 4px !important; background-color: #8892be; color: #fff;">
-          <iconify-icon icon="mdi:language-php" class="me-1" style="font-size: 18px;"></iconify-icon> PHP
-        </span>
-        <span class="badge small d-flex align-items-center label-tech" style="margin-top: 2.5px !important; background-color: #e44d26; color: #fff;">
-          <iconify-icon icon="mdi:language-html5" class="me-1" style="font-size: 18px;"></iconify-icon> HTML
-        </span>
-      </div>
       <div class="snippet-actions-float d-flex align-items-center z-3">
         <button class="btn btn-sm btn-outline-info btn-custom">
           <iconify-icon icon="mdi:download"></iconify-icon>
@@ -1287,6 +1273,20 @@ if (typeof(Storage) !== "undefined") {
       const icon = themeBtn.querySelector('iconify-icon'); // Corrigido para selecionar o elemento correto
       function setTheme(dark) {
         document.body.classList.toggle('dark-theme', dark);
+        //icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
+        themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      }
+      const saved = localStorage.getItem('theme');
+      setTheme(saved === 'dark');
+      themeBtn.addEventListener('click', function () {
+        setTheme(!document.body.classList.contains('dark-theme'));
+      });
+    });
+</script>
+</body>
+
+</html>
         //icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
         themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
         localStorage.setItem('theme', dark ? 'dark' : 'light');
