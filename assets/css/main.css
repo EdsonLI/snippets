@@ -3368,17 +3368,3 @@ pre {
 pre code.hljs {
   padding: 0 0 0 1px !important;
 }
-
-/* Portfolio Item Border Themes */
-.portfolio-item.theme-red {
-  border: 2px solid red;
-}
-
-.portfolio-item.theme-blue {
-  border: 2px solid blue;
-}
-
-.portfolio-item.theme-green {
-  border: 2px solid green;
-}
-

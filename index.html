@@ -1189,28 +1189,21 @@ if (typeof(Storage) !== "undefined") {
         setTheme(!document.body.classList.contains('dark-theme'));
       });
     });
-  </script>
-
-  <script>
-  // Function to toggle themes for portfolio items
-  function setPortfolioTheme(theme) {
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-      item.classList.remove('theme-red', 'theme-blue', 'theme-green');
-      if (theme) {
-        item.classList.add(`theme-${theme}`);
-      }
-    });
-  }
 </script>
+</body>
 
-<!-- Example buttons to switch themes -->
-<div>
-  <button onclick="setPortfolioTheme('red')">Red Theme</button>
-  <button onclick="setPortfolioTheme('blue')">Blue Theme</button>
-  <button onclick="setPortfolioTheme('green')">Green Theme</button>
-  <button onclick="setPortfolioTheme('')">Default</button>
-</div>
+</html>
+        //icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
+        themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      }
+      const saved = localStorage.getItem('theme');
+      setTheme(saved === 'dark');
+      themeBtn.addEventListener('click', function () {
+        setTheme(!document.body.classList.contains('dark-theme'));
+      });
+    });
+</script>
 </body>
 
 </html>
