@@ -3,8 +3,6 @@ pesquisar por palavra nas issues no GitHub:
 in:title,body sua_palavra
 in:title,body orçamento
 
---accent-color: #1f6feb;
-
 isso é interessante também:
 reverter um commit recém realizado e feito push:
 git revert <hash_do_commit>
@@ -12,7 +10,542 @@ git push origin <nome_da_branch>
 
 +++++++ Criar um template que vai ser o padrão para os snippets de conteúdo bem curto, bem baixos...
 
-idéia boa para retornar valor dentro de um método setTransformer:
+Idéias de comentários para separar blocos de códigos:
+
+       ___ _ _                   _
+      | _ |_) |_ _ _  __ _ _ __ (_)
+      | _ \ |  _| ' \/ _` | '  \| |
+      |___/_|\__|_|_|\__,_|_|_|_|_|
+
+  *** Welcome to the Bitnami WordPress 5.6-0                          ***
+  *** Documentation:  https://docs.bitnami.com/google/apps/wordpress/ ***
+  ***                 https://docs.bitnami.com/google/                ***
+  *** Bitnami Forums: https://community.bitnami.com/                  ***
+
+#######################################################
+###    For frequently used commands, please run:    ###
+###         sudo /opt/bitnami/bnhelper-tool         ###
+#######################################################
+
+Exemplo de prompt consistente para atualização de interface de orçamento após atualização de estrutura de banco de dados:
+aqui eu tenho um bloco que foi preparado para discriminar projetos em um orçamento:
+
+<div class="title">Orçamento</div>
+    <div class="bloco">
+        <h3>Projetos incluídos</h3>
+        <table>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+          </tr>
+          <!--[projects_info_array]-->
+          <tr>
+            <td style="width: 60% !important">{$project_description}</td>
+            <td>{$project_value}</td> 
+          </tr>
+          <!--[/projects_info_array]-->
+        </table>
+      </div>
+
+como essas informações são 'montadas' para enviar para a iteração 
+<!--[projects_info_array]-->
+          <tr>
+            <td style="width: 60% !important">{$project_description}</td>
+            <td>{$project_value}</td> 
+          </tr>
+          <!--[/projects_info_array]-->
+:
+$replace = array();
+            $replace['order_id'] = $orderId;
+            
+            // Obtém os projetos do pedido
+            $projects_info_array = [];
+            $total_projects = 0;
+            $items = PedidoVendaItem::where('pedido_venda_id', '=', $orderId)
+                                    ->where('company_id', '=', $companyId)
+                                    ->where('item_type', '=', 'project')
+                                    ->load();
+            
+            foreach ($items as $item) {
+                $project_value = (float)$item->valor_total;
+                $total_projects += $project_value;
+                
+                // Tenta obter mais informações do projeto se for do DinaBox
+                $project_description = $item->nome;
+                $project_id = $item->project_id ?? $item->id;
+                
+                if ($item->item_source === 'plugin_dinabox' && !empty($item->project_id)) {
+                    $endpoint_projects = '/company_management/projects/projects';
+                    $method = 'GET';
+                    $options["conditions"] = [["project_id", "=", $item->project_id]];
+                    $response = DinaBoxAPI::call($endpoint_projects, $method, $options);
+                    
+                    if ($response && !empty($response['results'][0])) {
+                        $project_object = (object)$response['results'][0];
+                        $project_description = $project_object->description ?? $item->nome;
+                    }
+                }
+                
+                $projects_info_array[] = [
+                    'project_id' => $project_id ?? ' - ',
+                    'project_description' => $project_description,
+                    'project_value' => number_format($project_value, 2, ',', '.'),
+                ];
+            }
+
+agora vai ter modificações na estrutura, vai ser assim:
+No orçamento vai ter os itens pai que são os projetos:
+Projetos:
+item_type: 'project':
+Colunas: 'nome' (descrição: 'Descrição'), 'item_source' (descrição: 'Origem: 'Plugin DinaBox' ou 'ERP') e 'valor_total' (descrição: 'Total')  
+
+'Projetos' tem que ser o 'wrapper', o 'registro pai' dos itens que vem a seguir:
+
+Módulos:
+item_type: 'woodwork' -> ligado ao projeto pela coluna 'parent_id' (que é um registro (chave primária - id) da tabela 'pedido_venda_item'...
+a composição das informações para os módulos é: (colunas) 'nome' (descrição: 'Descrição'), 'quantidade' (descrição: 'Quantidade'), 'valor' (descrição: '') e 'valor_total' (descrição: 'Total')
+
+Componentes:
+item_type: 'component' -> ligado ao projeto pela coluna 'parent_id' (que é um registro da tabela 'pedido_venda_item' também  (chave primária - id) ...
+a composição das informações para os componentes é: (colunas) 'nome' (descrição: 'Descrição'), 'quantidade' (descrição: 'Quantidade'), 'valor' (descrição: '') e 'valor_total' (descrição: 'Total')
+
+Adicionais:
+item_type: 'additional' -> ligado ao projeto pela coluna 'parent_id' (que é um registro da tabela 'pedido_venda_item' também  (chave primária - id) ...
+a composição das informações para os adicionais é: (colunas) 'nome' (descrição: 'Descrição'), 'quantidade' (descrição: 'Quantidade'), 'valor' (descrição: '') e 'valor_total' (descrição: 'Total')
+
+Chapas:
+item_type: 'sheet' -> ligado ao projeto pela coluna 'parent_id' (que é um registro da tabela 'pedido_venda_item' também  (chave primária - id) ...
+a composição das informações para as chapas é: (colunas) 'nome' (descrição: 'Descrição'), 'quantidade' (descrição: 'Quantidade'), 'valor' (descrição: '') e 'valor_total' (descrição: 'Total')
+
+Dispositivos de montagem:
+item_type: 'mounting' -> ligado ao projeto pela coluna 'parent_id' (que é um registro da tabela 'pedido_venda_item' também  (chave primária - id) ...
+a composição das informações para os dispositivos de montagem é: (colunas) 'nome' (descrição: 'Descrição'), 'item_code' (descrição: 'Ref') 'quantidade' (descrição: 'Quantidade'), 'valor' (descrição: '') e 'valor_total' (descrição: 'Total')
+
+E a nova estrutura, se baseie nesse exemplo para organizar as informações para o orçamento:
+<div class="project-section">
+        <div class="project-info">
+            <div>Projeto: Tutopria</div>
+            <div>ID: 0051196930</div>
+        </div>
+
+
+    <div class="materials-info">
+        <div class="materials-title">Informações dos Materiais</div>
+        <table class="material-table">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Material</th>
+                    <th>Quantia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aéreo</td>
+                    <td class="value-column">Canela</td>
+                    <td class="value-column">1</td>
+                </tr>
+                <tr>
+                    <td>Aéreo</td>
+                    <td class="value-column">Canela</td>
+                    <td class="value-column">1</td>
+                </tr>
+                <tr>
+                    <td>Balcão</td>
+                    <td class="value-column">Carvalho</td>
+                    <td class="value-column">1</td>
+                </tr>
+                <tr>
+                    <td>Balcão</td>
+                    <td class="value-column">Carvalho</td>
+                    <td class="value-column">1</td>
+                </tr>
+                <tr>
+                    <td>Balcão</td>
+                    <td class="value-column">Carvalho</td>
+                    <td class="value-column">1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="project-section">
+        <div class="project-info">
+            <div>Projeto: Móveis Fictícios</div>
+            <div>ID: 0051200001</div>
+        </div>
+    
+        <div class="materials-info">
+            <div class="materials-title">Informações dos Móveis</div>
+            <table class="material-table">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Material</th>
+                        <th>Quantia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Armário</td>
+                        <td class="value-column">Mogno</td>
+                        <td class="value-column">1</td>
+                    </tr>
+                    <tr>
+                        <td>Estante</td>
+                        <td class="value-column">Cedro</td>
+                        <td class="value-column">1</td>
+                    </tr>
+                    <tr>
+                        <td>Prateleira</td>
+                        <td class="value-column">Pinheiro</td>
+                        <td class="value-column">1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+Outro prompt interessante:
+preciso de auxílio nisso:
+tenho essa estrutura de orçamento que trabalha através de variáveis de substituição que vem de um método php:
+
+<body>
+    <div class="header">
+        <div>
+            <div><strong>Pedido:</strong> {$order_id}</div>
+            <div><strong>Cliente:</strong> {$customer_name}</div>
+            <div><strong>WhatsApp:</strong> {$customer_whatsapp}</div>
+        </div>
+        <div class="company-info">
+            <div><strong>{$company_name}</strong></div>
+            <div><strong>WhatsApp:</strong> {$company_phone}</div>
+            <div><strong>E-mail:</strong> {$company_email}</div>
+        </div>
+    </div>
+
+    <div class="title">Orçamento</div>
+
+    <div class="bloco">
+        <h3>Projetos</h3>
+        <!--[projects_info_array]-->
+        <div class="project-section">
+            <div class="project-info">
+                <div><strong>Projeto:</strong> {$project_description}</div>
+                <div><strong>ID:</strong> {$project_id}</div>
+                <div><strong>Origem:</strong> {$project_source}</div>
+                <div><strong>Valor:</strong> R$ {$project_value}</div>
+            </div>
+
+            <div class="materials-info">
+                <div class="materials-title">Módulos</div>
+                <table class="material-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[modules]-->
+                        <tr>
+                            <td>{$description}</td>
+                            <td>{$quantity}</td>
+                            <td>{$value}</td>
+                            <td>{$total}</td>
+                        </tr>
+                        <!--[/modules]-->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="materials-info">
+                <div class="materials-title">Componentes</div>
+                <table class="material-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[components]-->
+                        <tr>
+                            <td>{$description}</td>
+                            <td>{$quantity}</td>
+                            <td>{$value}</td>
+                            <td>{$total}</td>
+                        </tr>
+                        <!--[/components]-->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="materials-info">
+                <div class="materials-title">Adicionais</div>
+                <table class="material-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[additionals]-->
+                        <tr>
+                            <td>{$description}</td>
+                            <td>{$quantity}</td>
+                            <td>{$value}</td>
+                            <td>{$total}</td>
+                        </tr>
+                        <!--[/additionals]-->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="materials-info">
+                <div class="materials-title">Chapas</div>
+                <table class="material-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[sheets]-->
+                        <tr>
+                            <td>{$description}</td>
+                            <td>{$quantity}</td>
+                            <td>{$value}</td>
+                            <td>{$total}</td>
+                        </tr>
+                        <!--[/sheets]-->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="materials-info">
+                <div class="materials-title">Dispositivos de montagem</div>
+                <table class="material-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Ref</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[mountings]-->
+                        <tr>
+                            <td>{$description}</td>
+                            <td>{$ref}</td>
+                            <td>{$quantity}</td>
+                            <td>{$value}</td>
+                            <td>{$total}</td>
+                        </tr>
+                        <!--[/mountings]-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--[/projects_info_array]-->
+    </div>
+
+    <div class="bloco">
+        <h3>Adicionais</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--[adjustments_info_array]-->
+                <tr>
+                    <td>{$adjustment_description}</td>
+                    <td>{$adjustment_value}</td>
+                </tr>
+                <!--[/adjustments_info_array]-->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bloco">
+        <h3>Totais</h3>
+        <table>
+            <tr class="total-row">
+                <td><strong>Total</strong></td>
+                <td><strong>R$ {$total_final}</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <div>Orçamento gerado em {$created_at_date} às {$created_at_hour} | Válido até {$valid_until_date} às {$valid_until_hour}</div>
+        <div>{$company_name} | {$company_street} {$company_number}, {$company_city}/{$company_state} | Telefone/WhatsApp: {$company_phone}</div>
+        <div>© {$company_name}. Todos os direitos reservados</div>
+    </div>
+</body>
+
+cada bloco desses (exemplo)
+<!--[modules]-->...aqui as colunas...<!--[/modules]--> 
+faz uma iteração para trazer as informações encontradas
+
+a lógica do método que faz a coleta e monta os arrays com as informações para iteração para geração do corpo do orçamento é esta:
+
+$projects_info_array = [];
+            $total_projects = 0;
+
+            $items = PedidoVendaItem::where('pedido_venda_id', '=', $orderId)
+                                    ->where('company_id', '=', $companyId)
+                                    ->where('item_type', '=', 'project')
+                                    ->load();
+
+            foreach ($items as $item) {
+                $project_value = (float)$item->valor_total;
+                $total_projects += $project_value;
+
+                // Tenta obter mais informações do projeto se for do DinaBox
+                $project_description = $item->nome;
+                $project_id = $item->project_id ?? $item->id;
+                $project_source = $item->item_source === 'plugin_dinabox' ? 'Plugin DinaBox' : 'ERP';
+
+                if ($item->item_source === 'plugin_dinabox' && !empty($item->project_id)) {
+                    $endpoint_projects = '/company_management/projects/projects';
+                    $method = 'GET';
+                    $options["conditions"] = [["project_id", "=", $item->project_id]];
+                    $response = DinaBoxAPI::call($endpoint_projects, $method, $options);
+
+                    if ($response && !empty($response['results'][0])) {
+                        $project_object = (object)$response['results'][0];
+                        $project_description = $project_object->description ?? $item->nome;
+                    }
+                }
+
+                # Adiciona informações do projeto
+                $project_data = [
+                    'project_id' => $project_id ?? ' - ',
+                    'project_description' => $project_description,
+                    'project_value' => number_format($project_value, 2, ',', '.'),
+                    'project_source' => $project_source, # Adiciona a origem do projeto
+                    'modules' => [],
+                    'components' => [],
+                    'additionals' => [],
+                    'sheets' => [],
+                    'mountings' => []
+                ];
+
+                # Obtém os módulos do projeto
+                $modules = PedidoVendaItem::where('parent_id', '=', $item->id)
+                                        ->where('item_type', '=', 'woodwork')
+                                        ->load();
+                foreach ($modules as $module) {
+                    $project_data['modules'][] = [
+                        'description' => $module->nome,
+                        'quantity' => $module->quantidade,
+                        'value' => number_format($module->valor, 2, ',', '.'),
+                        'total' => number_format($module->valor_total, 2, ',', '.')
+                    ];
+                }
+
+                # Obtém os componentes do projeto
+                $components = PedidoVendaItem::where('parent_id', '=', $item->id)
+                                            ->where('item_type', '=', 'component')
+                                            ->load();
+                foreach ($components as $component) {
+                    $project_data['components'][] = [
+                        'description' => $component->nome,
+                        'quantity' => $component->quantidade,
+                        'value' => number_format($component->valor, 2, ',', '.'),
+                        'total' => number_format($component->valor_total, 2, ',', '.')
+                    ];
+                }
+
+                # Obtém os adicionais do projeto
+                $additionals = PedidoVendaItem::where('parent_id', '=', $item->id)
+                                            ->where('item_type', '=', 'additional')
+                                            ->load();
+                foreach ($additionals as $additional) {
+                    $project_data['additionals'][] = [
+                        'description' => $additional->nome,
+                        'quantity' => $additional->quantidade,
+                        'value' => number_format($additional->valor, 2, ',', '.'),
+                        'total' => number_format($additional->valor_total, 2, ',', '.')
+                    ];
+                }
+
+                # Obtém as chapas do projeto
+                $sheets = PedidoVendaItem::where('parent_id', '=', $item->id)
+                                        ->where('item_type', '=', 'sheet')
+                                        ->load();
+                foreach ($sheets as $sheet) {
+                    $project_data['sheets'][] = [
+                        'description' => $sheet->nome,
+                        'quantity' => $sheet->quantidade,
+                        'value' => number_format($sheet->valor, 2, ',', '.'),
+                        'total' => number_format($sheet->valor_total, 2, ',', '.')
+                    ];
+                }
+
+                # Obtém os dispositivos de montagem do projeto
+                $mountings = PedidoVendaItem::where('parent_id', '=', $item->id)
+                                            ->where('item_type', '=', 'mounting')
+                                            ->load();
+                foreach ($mountings as $mounting) {
+                    $project_data['mountings'][] = [
+                        'description' => $mounting->nome,
+                        'ref' => $mounting->item_code,
+                        'quantity' => $mounting->quantidade,
+                        'value' => number_format($mounting->valor, 2, ',', '.'),
+                        'total' => number_format($mounting->valor_total, 2, ',', '.')
+                    ];
+                }
+
+                $projects_info_array[] = $project_data;
+            }
+
+            $replace['projects_info_array'] = $projects_info_array;
+
+o que eu preciso é adicionar uma forma de controle para decidir quando mostrar ou não mostrar determinados blocos, por exemplo, supondo que o projeto não tenha módulos, não faz sentido colocar essa div na estrutura do html para gerar o orçamento:
+<div class="materials-info">
+                <div class="materials-title">Módulos</div>
+                <table class="material-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[modules]-->
+                        <tr>
+                            <td>{$description}</td>
+                            <td>{$quantity}</td>
+                            <td>{$value}</td>
+                            <td>{$total}</td>
+                        </tr>
+                        <!--[/modules]-->
+                    </tbody>
+                </table>
+            </div>
+
+o mesmo acontece com as demais informações... preciso de ajuda para fazer esse controle...
+
+Idéia boa para retornar valor dentro de um método setTransformer:
 $column_movement_description_transformed->setTransformer(function($value, $object, $row, $cell = null, $last_row = null) {
     # var_dump('$object 133:::', $object);
     # var_dump('$object 134:::', $object->conta);
