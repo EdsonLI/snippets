@@ -258,22 +258,22 @@
   });
 
   /**
-   * Função para adicionar funcionalidade de copiar código nos snippets usando jQuery
+   * Função para adicionar funcionalidade de copiar código nos snippets usando JavaScript nativo
    */
   function setupCopyButtons() {
-    $('.btn-custom[data-target]').each(function () {
-      $(this).on('click', function () {
-        const targetId = $(this).data('target');
-        const $codeBlock = $('#' + targetId);
+    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const codeBlock = document.getElementById(targetId);
 
-        if ($codeBlock.length) {
-          const text = $codeBlock.text().trim();
+        if (codeBlock) {
+          const text = codeBlock.textContent.trim();
           navigator.clipboard.writeText(text).then(() => {
-            const $icon = $(this).find('iconify-icon');
-            if ($icon.length) {
-              $icon.attr('icon', 'mdi:check'); // Troca para ícone de check
+            const icon = button.querySelector('iconify-icon');
+            if (icon) {
+              icon.setAttribute('icon', 'mdi:check'); // Troca para ícone de check
               setTimeout(() => {
-                $icon.attr('icon', 'mdi:content-copy'); // Restaura o ícone original
+                icon.setAttribute('icon', 'mdi:content-copy'); // Restaura o ícone original
               }, 1200);
             }
           }).catch(err => {
@@ -287,6 +287,6 @@
   }
 
   // Chamar a função ao carregar a página
-  $(document).ready(setupCopyButtons);
+  window.addEventListener('load', setupCopyButtons);
 
 })();
