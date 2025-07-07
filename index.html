@@ -234,101 +234,101 @@
       <div class="position-relative" >
         <pre>
           <code id="snippet-bootstrap-form-validation-feedback" class="language-html">
-            &lt;form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off"&gt;
-              &lt;div class="col-md-4"&gt;
-                &lt;label for="firstName" class="form-label"&gt;First name&lt;/label&gt;
-                &lt;input type="text" class="form-control" id="firstName" required&gt;
-                &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-md-4"&gt;
-                &lt;label for="lastName" class="form-label"&gt;Last name&lt;/label&gt;
-                &lt;input type="text" class="form-control" id="lastName" required&gt;
-                &lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-md-4"&gt;
-                &lt;label for="username" class="form-label"&gt;Username&lt;/label&gt;
-                &lt;div class="input-group has-validation"&gt;
-                  &lt;span class="input-group-text" id="inputGroupPrepend"&gt;@&lt;/span&gt;
-                  &lt;input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend usernameFeedback" required&gt;
-                  &lt;div id="usernameFeedback" class="invalid-feedback"&gt;
-                    Please choose a username.
-                  &lt;/div&gt;
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-md-6"&gt;
-                &lt;label for="city" class="form-label"&gt;City&lt;/label&gt;
-                &lt;input type="text" class="form-control" id="city" required&gt;
-                &lt;div class="invalid-feedback"&gt;
-                  Please provide a valid city.
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-md-3"&gt;
-                &lt;label for="state" class="form-label"&gt;State&lt;/label&gt;
-                &lt;select class="form-select" id="state" required&gt;
-                  &lt;option selected disabled value=""&gt;Choose...&lt;/option&gt;
-                  &lt;option&gt;SP&lt;/option&gt;
-                  &lt;option&gt;RJ&lt;/option&gt;
-                  &lt;option&gt;MG&lt;/option&gt;
-                &lt;/select&gt;
-                &lt;div class="invalid-feedback"&gt;
-                  Please select a valid state.
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-md-3"&gt;
-                &lt;label for="zip" class="form-label"&gt;Zip&lt;/label&gt;
-                &lt;input type="text" class="form-control" id="zip" required pattern="^\d{5}-?\d{3}$"&gt;
-                &lt;div class="invalid-feedback"&gt;
-                  Please provide a valid zip (e.g. 12345-678).
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-12"&gt;
-                &lt;label for="textarea" class="form-label"&gt;Observations&lt;/label&gt;
-                &lt;textarea class="form-control" id="textarea" placeholder="Required example textarea" required&gt;&lt;/textarea&gt;
-                &lt;div class="invalid-feedback"&gt;
-                  Please enter a message in the textarea.
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-12"&gt;
-                &lt;div class="form-check mb-2"&gt;
-                  &lt;input class="form-check-input" type="checkbox" id="checkTermos" required&gt;
-                  &lt;label class="form-check-label" for="checkTermos"&gt;
-                    Agree to terms and conditions
-                  &lt;/label&gt;
-                  &lt;div class="invalid-feedback"&gt;
-                    You must agree before submitting.
-                  &lt;/div&gt;
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-12"&gt;
-                &lt;div class="form-check mb-2"&gt;
-                  &lt;input type="radio" class="form-check-input" name="radioExample" id="radio1" required&gt;
-                  &lt;label class="form-check-label" for="radio1"&gt;Option 1 (required)&lt;/label&gt;
-                &lt;/div&gt;
-                &lt;div class="form-check mb-2"&gt;
-                  &lt;input type="radio" class="form-check-input" name="radioExample" id="radio2" required&gt;
-                  &lt;label class="form-check-label" for="radio2"&gt;Option 2&lt;/label&gt;
-                  &lt;div class="invalid-feedback"&gt;Select one radio option&lt;/div&gt;
-                &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-12"&gt;
-                &lt;label for="selectExample" class="form-label"&gt;Example select&lt;/label&gt;
-                &lt;select class="form-select" id="selectExample" required aria-label="select example"&gt;
-                  &lt;option value=""&gt;Open this select menu&lt;/option&gt;
-                  &lt;option value="1"&gt;One&lt;/option&gt;
-                  &lt;option value="2"&gt;Two&lt;/option&gt;
-                  &lt;option value="3"&gt;Three&lt;/option&gt;
-                &lt;/select&gt;
-                &lt;div class="invalid-feedback"&gt;Example invalid select feedback&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-12"&gt;
-                &lt;label for="fileInput" class="form-label"&gt;File input (required)&lt;/label&gt;
-                &lt;input type="file" class="form-control" id="fileInput" required&gt;
-                &lt;div class="invalid-feedback"&gt;Please choose a file.&lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class="col-12 mt-3"&gt;
-                &lt;button class="btn btn-primary" type="submit"&gt;Submit form&lt;/button&gt;
-              &lt;/div&gt;
-            &lt;/form&gt;
+<form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off">
+   <div class="col-md-4">
+      <label for="firstName" class="form-label">First name</label>
+      <input type="text" class="form-control" id="firstName" required>
+      <div class="valid-feedback">Looks good!</div>
+   </div>
+   <div class="col-md-4">
+      <label for="lastName" class="form-label">Last name</label>
+      <input type="text" class="form-control" id="lastName" required>
+      <div class="valid-feedback">Looks good!</div>
+   </div>
+   <div class="col-md-4">
+      <label for="username" class="form-label">Username</label>
+      <div class="input-group has-validation">
+         <span class="input-group-text" id="inputGroupPrepend">@</span>
+         <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend usernameFeedback" required>
+         <div id="usernameFeedback" class="invalid-feedback">
+            Please choose a username.
+         </div>
+      </div>
+   </div>
+   <div class="col-md-6">
+      <label for="city" class="form-label">City</label>
+      <input type="text" class="form-control" id="city" required>
+      <div class="invalid-feedback">
+         Please provide a valid city.
+      </div>
+   </div>
+   <div class="col-md-3">
+      <label for="state" class="form-label">State</label>
+      <select class="form-select" id="state" required>
+         <option selected disabled value="">Choose...</option>
+         <option>SP</option>
+         <option>RJ</option>
+         <option>MG</option>
+      </select>
+      <div class="invalid-feedback">
+         Please select a valid state.
+      </div>
+   </div>
+   <div class="col-md-3">
+      <label for="zip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="zip" required pattern="^\d{5}-?\d{3}$">
+      <div class="invalid-feedback">
+         Please provide a valid zip (e.g. 12345-678).
+      </div>
+   </div>
+   <div class="col-12">
+      <label for="textarea" class="form-label">Observations</label>
+      <textarea class="form-control" id="textarea" placeholder="Required example textarea" required></textarea>
+      <div class="invalid-feedback">
+         Please enter a message in the textarea.
+      </div>
+   </div>
+   <div class="col-12">
+      <div class="form-check mb-2">
+         <input class="form-check-input" type="checkbox" id="checkTermos" required>
+         <label class="form-check-label" for="checkTermos">
+            Agree to terms and conditions
+         </label>
+         <div class="invalid-feedback">
+            You must agree before submitting.
+         </div>
+      </div>
+   </div>
+   <div class="col-12">
+      <div class="form-check mb-2">
+         <input type="radio" class="form-check-input" name="radioExample" id="radio1" required>
+         <label class="form-check-label" for="radio1">Option 1 (required)</label>
+      </div>
+      <div class="form-check mb-2">
+         <input type="radio" class="form-check-input" name="radioExample" id="radio2" required>
+         <label class="form-check-label" for="radio2">Option 2</label>
+         <div class="invalid-feedback">Select one radio option</div>
+      </div>
+   </div>
+   <div class="col-12">
+      <label for="selectExample" class="form-label">Example select</label>
+      <select class="form-select" id="selectExample" required aria-label="select example">
+         <option value="">Open this select menu</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+         <option value="3">Three</option>
+      </select>
+      <div class="invalid-feedback">Example invalid select feedback</div>
+   </div>
+   <div class="col-12">
+      <label for="fileInput" class="form-label">File input (required)</label>
+      <input type="file" class="form-control" id="fileInput" required>
+      <div class="invalid-feedback">Please choose a file.</div>
+   </div>
+   <div class="col-12 mt-3">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+   </div>
+</form>
           </code>
         </pre>
       </div>
@@ -1192,3 +1192,5 @@ if (typeof(Storage) !== "undefined") {
   </script>
 </body>
 </html>
+
+
