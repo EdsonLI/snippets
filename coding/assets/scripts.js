@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // --- BLOCO: Botão de copiar código ---
   function addCopyButtons() {
-    $('pre code.hljs').each(function () {
+    $('pre code').each(function () {
       // Evita duplicar botões
       if ($(this).parent().hasClass('code-block-wrapper')) return;
 
@@ -12,11 +12,14 @@ $(document).ready(function() {
       var $btn = $('<button class="copy-btn" title="Copiar código"><i class="fa fa-copy"></i></button>');
       $btn.on('click', function () {
         var code = $pre.text();
-        navigator.clipboard.writeText(code);
-        $btn.html('<i class="fa fa-check"></i>');
-        setTimeout(function () {
-          $btn.html('<i class="fa fa-copy"></i>');
-        }, 1200);
+        navigator.clipboard.writeText(code).then(function () {
+          $btn.find('i').removeClass('fa-copy').addClass('fa-check'); // Troca o ícone para check
+          setTimeout(function () {
+            $btn.find('i').removeClass('fa-check').addClass('fa-copy'); // Restaura o ícone original
+          }, 1200);
+        }).catch(function () {
+          console.error('Falha ao copiar o texto para a área de transferência.');
+        });
       });
       $wrapper.append($btn);
     });
