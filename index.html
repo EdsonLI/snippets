@@ -201,7 +201,11 @@
       </div>
 
       <!-- DIV - PRE - CODE - INI -->      
-        <pre><code id="snippet-sql-procedure-clear-company" class="language-sql">CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');</code></pre>
+      <pre>
+<code id="snippet-sql-procedure-clear-company" class="language-sql">
+  CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
+</code>
+      </pre>
       <!-- DIV - PRE - CODE - END -->
 
     </div>
@@ -232,8 +236,8 @@
 
       <!-- PRE - CODE - BLOCK - INI -->
       <div class="position-relative" >
-        <pre>
-          <code id="snippet-bootstrap-form-validation-feedback" class="language-html">
+      <pre>
+<code id="snippet-bootstrap-form-validation-feedback" class="language-html">
 <form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off">
    <div class="col-md-4">
       <label for="firstName" class="form-label">First name</label>
@@ -329,8 +333,8 @@
       <button class="btn btn-primary" type="submit">Submit form</button>
    </div>
 </form>
-          </code>
-        </pre>
+</code>
+      </pre>
       </div>
     </div>
   </div>
@@ -377,23 +381,24 @@
           <iconify-icon icon="mdi:content-copy"></iconify-icon>
         </button>
       </div>
-      <pre><code class="language-php" data-snippet-id="snippet-cookies-sessions">&lt;?php
-   session_start();
+      <pre>
+<code class="language-php" data-snippet-id="snippet-cookies-sessions">&lt;?php
+  session_start();
 
-   // Aceite de cookies recebido via POST
-   if (isset($_POST['aceitar'])) {
-      setcookie('aceite_cookie', '1', time() + (86400 * 30), '/'); // 30 dias
-      $_SESSION['tema'] = 'escuro'; // Exemplo de preferência
-   }
+  # Aceite de cookies recebido via POST
+  if (isset($_POST['aceitar'])) {
+    setcookie('aceite_cookie', '1', time() + (86400 * 30), '/'); // 30 dias
+    $_SESSION['tema'] = 'escuro'; // Exemplo de preferência
+  }
 
-   // Mostrar sessão e cookie (debug/uso)
-   if (isset($_COOKIE['aceite_cookie'])) {
-      echo "Cookie aceite_cookie: " . $_COOKIE['aceite_cookie'] . "&lt;br&gt;";
-   }
+  # Mostrar sessão e cookie (debug/uso)
+  if (isset($_COOKIE['aceite_cookie'])) {
+    echo "Cookie aceite_cookie: " . $_COOKIE['aceite_cookie'] . "&lt;br&gt;";
+  }
 
-   if (isset($_SESSION['tema'])) {
+  if (isset($_SESSION['tema'])) {
       echo "Sessão tema: " . $_SESSION['tema'] . "&lt;br&gt;";
-   }
+  }
 ?&gt;
 
 &lt;!-- Mostrar aviso se cookie ainda não aceito --&gt;
@@ -403,7 +408,8 @@
       &lt;button type="submit" name="aceitar" class="btn btn-sm btn-success ms-2"&gt;Aceitar&lt;/button&gt;
    &lt;/form&gt;
 &lt;?php endif; ?&gt;
-</code></pre>
+</code>
+    </pre>
     </div>
   </div>
 </div>
@@ -993,11 +999,15 @@ try {
                     <iconify-icon icon="mdi:content-copy"></iconify-icon>
                   </button>
                 </div>
-                <pre><code class="language-javascript" data-snippet-id="snippet-jquery">$(document).ready(function() {
-            $('#btnToggle').click(function() {
-              $('#box').toggle();
-            });
-          });</code></pre>
+                <pre>
+<code class="language-javascript" data-snippet-id="snippet-jquery">
+$(document).ready(function() {
+  $('#btnToggle').click(function() {
+    $('#box').toggle();
+  });
+});
+</code> 
+              </pre>
               </div>
             </div>
           </div>
@@ -1020,15 +1030,18 @@ try {
                     <iconify-icon icon="mdi:content-copy"></iconify-icon>
                   </button>
                 </div>
-                <pre><code class="language-css" data-snippet-id="snippet-css">.btn-hover {
-            background-color: #333;
-            color: white;
-            transition: background-color 0.3s;
-          }
-
-          .btn-hover:hover {
-            background-color: #555;
-          }</code></pre>
+                <pre>
+<code class="language-css" data-snippet-id="snippet-css">
+.btn-hover {
+  background-color: #333;
+  color: white;
+  transition: background-color 0.3s;
+}
+.btn-hover:hover {
+  background-color: #555;
+}
+</code>
+              </pre>
               </div>
             </div>
           </div>
@@ -1095,14 +1108,16 @@ if (typeof(Storage) !== "undefined") {
                     <iconify-icon icon="mdi:content-copy"></iconify-icon>
                   </button>
                 </div>
-                <pre><code class="language-php" data-snippet-id="snippet-mad">\$this-&gt;form-&gt;addField('name', new TEntry('name'), 'Nome:', '100%', true);
-          \$this-&gt;form-&gt;addField('email', new TEntry('email'), 'Email:', '100%', true);</code></pre>
+                <pre>
+<code class="language-php" data-snippet-id="snippet-mad">
+\$this-&gt;form-&gt;addField('name', new TEntry('name'), 'Nome:', '100%', true);
+\$this-&gt;form-&gt;addField('email', new TEntry('email'), 'Email:', '100%', true);
+</code>
+                </pre>
               </div>
             </div>
           </div>
 <!-- End Snippets MadBuilder -->
-
-    
 
           </div><!-- End Portfolio Container -->
         </div>
