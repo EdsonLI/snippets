@@ -1142,19 +1142,30 @@ if (typeof(Storage) !== "undefined") {
 </section>
 
 <script>
-  $(document).ready(function() {
-    // Load the snippet content dynamically using jQuery
-    $('#snippet-content').load('./coding/main/bootstrap/snippet_form_validation.html', function(response, status, xhr) {
-      if (status === 'error') {
-        console.error('Error loading snippet:', xhr.status, xhr.statusText);
-        $('#snippet-content').html('<p>Error loading snippet content.</p>');
-      } else {
+  document.addEventListener('DOMContentLoaded', function () {
+    const snippetContainer = document.getElementById('snippet-content');
+
+    // Load the snippet content dynamically using native JavaScript
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', './coding/main/bootstrap/snippet_form_validation.html', true);
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        snippetContainer.innerHTML = xhr.responseText;
+
         // Reinitialize any required functionality (e.g., syntax highlighting)
-        $('pre code').each(function() {
-          hljs.highlightElement(this);
+        document.querySelectorAll('pre code').forEach(function (block) {
+          hljs.highlightElement(block);
         });
+      } else {
+        console.error('Error loading snippet:', xhr.status, xhr.statusText);
+        snippetContainer.innerHTML = '<p>Error loading snippet content.</p>';
       }
-    });
+    };
+    xhr.onerror = function () {
+      console.error('Network error while loading snippet.');
+      snippetContainer.innerHTML = '<p>Error loading snippet content.</p>';
+    };
+    xhr.send();
   });
 </script>
   </main>
