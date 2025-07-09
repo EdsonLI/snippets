@@ -550,6 +550,12 @@
       </div>
       <pre>
         <code class="language-php" data-snippet-id="snippet-git-branches">
+          # Muito úteis:
+          - Push para a branch remota forçando a substituir tudo pelo conteúdo do local:
+
+          # Força o Git a reescrever o histórico remoto com o que você tem localmente na branch main:
+          git push origin main --force
+
           # 1. Baixar o conteúdo de uma branch remota:
           # Use o comando `git fetch` para baixar os dados da branch remota sem alternar para ela imediatamente:
           git fetch origin nome-da-branch
