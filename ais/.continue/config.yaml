@@ -1,0 +1,23 @@
+name: Local Assistant
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Gemma 2B (Local)
+    provider: ollama
+    model: gemma:2b
+    chatOptions:
+      temperature: 0.4
+      maxTokens: 2048
+      topP: 0.9
+      stopSequences: []
+
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
+
