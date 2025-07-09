@@ -1,23 +1,23 @@
-name: Local Assistant
+name: Dev Assistant (GPT-4 Turbo)
 version: 1.0.0
 schema: v1
 
 models:
-  - name: Gemma 2B (Local)
-    provider: ollama
-    model: gemma:2b
+  - name: GPT-4 Turbo (Programação)
+    provider: openai
+    model: gpt-4
+    apiKey: sk-...SUA_CHAVE_AQUI...
     chatOptions:
-      temperature: 0.4
-      maxTokens: 2048
-      topP: 0.9
+      temperature: 0.1
+      maxTokens: 8192
+      topP: 0.95
       stopSequences: []
 
 context:
-  - provider: code
-  - provider: docs
-  - provider: diff
-  - provider: terminal
-  - provider: problems
-  - provider: folder
-  - provider: codebase
-
+  - provider: code         # Código atual
+  - provider: docs         # Documentação dos arquivos
+  - provider: diff         # Alterações no código
+  - provider: terminal     # Acesso ao terminal (opcional)
+  - provider: problems     # Problemas e erros
+  - provider: folder       # Estrutura de pastas
+  - provider: codebase     # Todo o contexto da base de código

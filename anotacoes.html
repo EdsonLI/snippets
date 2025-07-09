@@ -1,4 +1,19 @@
 Isso é interessante também:
+
+na estrutura da pasta 'coding' eu consegui fazer uma lógica legal onde o conteúdo dos snippets é injetado dinamicamente no index.html...
+
+os arquivos snippets_jquery.html, snippets_php.html, etc. contém as estruturas html e trechos de códigos que são injetados na interface via index.html...
+
+eu gostaria de fazer isso agora nessa estrutura inicial, na raiz, na pasta snippets, mas com algumas diferenças:
+
+nesse caso o index.html está na pasta snippets e os arquivos de conteúdo (exemplo: snippet_form_validation.html) vão estar na pasta coding/main
+
+cada arquivo vai ter uma estrutura parecida com a que o snippet_form_validation.html que está dentro da pasta coding/main/bootstrap tem, eu coloquei ele lá para a gente fazer um teste...
+
+mas olha só, eu quero preservar todo o trabalho que tive até agora fazendo o frontend no index.html, toda a estrutura visual da página, então tem que refatorar a forma de colocar o conteúdo, mas preservar a interface e as funcionalidades existentes como os botões de copiar, download e visualizar
+
+mas vamos por partes, faça os ajustes necessários para carregar dinamicamente o conteúdo do arquivo snippet_form_validation.html que está na pasta coding/main/bootstrap e vamos ver como fica
+
 pesquisar por palavra nas issues no GitHub:
 in:title,body sua_palavra
 in:title,body orçamento

@@ -1040,7 +1040,7 @@ $(document).ready(function() {
 <code class="language-css" data-snippet-id="snippet-css">
 .btn-hover {
   background-color: #333;
-  color: #fff;
+  color: white;
   transition: background-color 0.3s;
 }
 .btn-hover:hover {
@@ -1130,43 +1130,6 @@ if (typeof(Storage) !== "undefined") {
       </div>
 
     </section><!-- /Portfolio Section -->
-
-    <!-- Placeholder for dynamically loaded content -->
-<section id="dynamic-snippet" class="dynamic-snippet section">
-  <div class="container">
-    <h2>Dynamic Snippet</h2>
-    <div id="snippet-content" class="snippet-content">
-      <!-- Content will be loaded here -->
-    </div>
-  </div>
-</section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const snippetContainer = document.getElementById('snippet-content');
-
-    // Fetch and load the snippet content
-    fetch('./coding/main/bootstrap/snippet_form_validation.html')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(html => {
-        snippetContainer.innerHTML = html;
-
-        // Reinitialize any required functionality (e.g., syntax highlighting)
-        document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightElement(block);
-        });
-      })
-      .catch(error => {
-        console.error('Error loading snippet:', error);
-        snippetContainer.innerHTML = '<p>Error loading snippet content.</p>';
-      });
-  });
-</script>
   </main>
 
   <footer id="footer" class="footer">
