@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Sistema de log para facilitar diagnósticos
   const log = {
-    info: (msg) => SNIPPETS_CONFIG.debug && console.info(`📋 [Snippets]: ${msg}`),
+    info: (msg) => SNIPPETS_CONFIG.debug && console.info(`[Snippets]: ${msg}`),
     success: (msg) => SNIPPETS_CONFIG.debug && console.log(`✅ [Snippets]: ${msg}`),
-    warn: (msg) => console.warn(`⚠️ [Snippets]: ${msg}`),
-    error: (msg, err) => console.error(`❌ [Snippets]: ${msg}`, err || '')
+    warn: (msg) => console.warn(`[Snippets]: ${msg}`),
+    error: (msg, err) => console.error(`${msg}`, err || '')
   };
 
   // Estado do carregador - rastreia o que foi carregado
