@@ -197,157 +197,9 @@
   </div>
   <!-- Fim do container dinâmico -->
 
-<!-- Ini Snippets Bootstrap -->
-
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-info text-center">Validação de formulários - Bootstrap</h6>
-    <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
-      <div class="snippet-actions-float d-flex align-items-center z-3">
-        <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </a>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-bootstrap-form-validation-feedback" >
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-
-      <!-- PRE - CODE - BLOCK - INI -->
-      <div class="position-relative" >
-      <pre>
-<code id="snippet-bootstrap-form-validation-feedback" class="language-html">
-<form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off">
-   <div class="col-md-4">
-      <label for="firstName" class="form-label">First name</label>
-      <input type="text" class="form-control" id="firstName" required>
-      <div class="valid-feedback">Looks good!</div>
-   </div>
-   <div class="col-md-4">
-      <label for="lastName" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="lastName" required>
-      <div class="valid-feedback">Looks good!</div>
-   </div>
-   <div class="col-md-4">
-      <label for="username" class="form-label">Username</label>
-      <div class="input-group has-validation">
-         <span class="input-group-text" id="inputGroupPrepend">@</span>
-         <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend usernameFeedback" required>
-         <div id="usernameFeedback" class="invalid-feedback">
-            Please choose a username.
-         </div>
-      </div>
-   </div>
-   <div class="col-md-6">
-      <label for="city" class="form-label">City</label>
-      <input type="text" class="form-control" id="city" required>
-      <div class="invalid-feedback">
-         Please provide a valid city.
-      </div>
-   </div>
-   <div class="col-md-3">
-      <label for="state" class="form-label">State</label>
-      <select class="form-select" id="state" required>
-         <option selected disabled value="">Choose...</option>
-         <option>SP</option>
-         <option>RJ</option>
-         <option>MG</option>
-      </select>
-      <div class="invalid-feedback">
-         Please select a valid state.
-      </div>
-   </div>
-   <div class="col-md-3">
-      <label for="zip" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="zip" required pattern="^\d{5}-?\d{3}$">
-      <div class="invalid-feedback">
-         Please provide a valid zip (e.g. 12345-678).
-      </div>
-   </div>
-   <div class="col-12">
-      <label for="textarea" class="form-label">Observations</label>
-      <textarea class="form-control" id="textarea" placeholder="Required example textarea" required></textarea>
-      <div class="invalid-feedback">
-         Please enter a message in the textarea.
-      </div>
-   </div>
-   <div class="col-12">
-      <div class="form-check mb-2">
-         <input class="form-check-input" type="checkbox" id="checkTermos" required>
-         <label class="form-check-label" for="checkTermos">
-            Agree to terms and conditions
-         </label>
-         <div class="invalid-feedback">
-            You must agree before submitting.
-         </div>
-      </div>
-   </div>
-   <div class="col-12">
-      <div class="form-check mb-2">
-         <input type="radio" class="form-check-input" name="radioExample" id="radio1" required>
-         <label class="form-check-label" for="radio1">Option 1 (required)</label>
-      </div>
-      <div class="form-check mb-2">
-         <input type="radio" class="form-check-input" name="radioExample" id="radio2" required>
-         <label class="form-check-label" for="radio2">Option 2</label>
-         <div class="invalid-feedback">Select one radio option</div>
-      </div>
-   </div>
-   <div class="col-12">
-      <label for="selectExample" class="form-label">Example select</label>
-      <select class="form-select" id="selectExample" required aria-label="select example">
-         <option value="">Open this select menu</option>
-         <option value="1">One</option>
-         <option value="2">Two</option>
-         <option value="3">Three</option>
-      </select>
-      <div class="invalid-feedback">Example invalid select feedback</div>
-   </div>
-   <div class="col-12">
-      <label for="fileInput" class="form-label">File input (required)</label>
-      <input type="file" class="form-control" id="fileInput" required>
-      <div class="invalid-feedback">Please choose a file.</div>
-   </div>
-   <div class="col-12 mt-3">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-   </div>
-</form>
-</code>
-      </pre>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal for Preview -->
-<div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content bg-dark text-white border border-secondary-custom"> <!-- Adicionada a borda padrão -->
-      <div class="modal-header border-secondary-custom">
-        <h6 class="modal-title text-info" id="previewModalBootstrapLabel">Pré-visualização</h6>
-        <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button> -->
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
-      </div>
-      <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;"> <!-- Adicionada borda ao corpo -->
-        <iframe 
-          src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" 
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          style="border:none; overflow-y: auto; border-radius: 0.5rem;"> <!-- Adicionado border-radius -->
-        </iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End Snippets Bootstrap -->
-
 <!-- Ini Snippets PHP -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+<!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Cookies, Sessões e Preferências</h6>
     <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
@@ -393,21 +245,16 @@
     </pre>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- End Snippets PHP -->
 
 <!-- Ini Snippets Isotope -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
+<!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Exemplo com Isotope</h6>
     <div class="snippet-code position-relative" style="max-height: 480px; overflow: auto;">
-      <!-- <div class="position-absolute top-5 d-flex gap-030 align-items-center z-3">
-        <span class="badge small d-flex align-items-center label-tech" style="margin: 2.5px 0 0 4px !important; background-color: #795548; color: #fff;">
-          <iconify-icon icon="mdi:tools" class="me-1" style="font-size: 14px;"></iconify-icon> Exemplo isotope
-        </span>
-      </div> -->
 <div class="snippet-actions-float d-flex align-items-center z-3">
         <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/isotope_basic_sample.html" target="_blank" class="btn btn-sm btn-outline-info btn-custom" download>
           <iconify-icon icon="mdi:download"></iconify-icon>
@@ -419,8 +266,6 @@
           <iconify-icon icon="mdi:content-copy"></iconify-icon>
         </button>
       </div>
-
-      <!-- HTML Block -->
       <div class="position-relative" >
         <pre>
           <code class="language-html" id="snippet-isotope-example">
@@ -439,8 +284,6 @@
 </code></pre>
       </div>
       <hr class="my-3 border-secondary-custom">
-
-      <!-- CSS Block -->
       <div class="position-relative">
         <pre><code class="language-css" id="snippet-css">.grid {
   display: flex;
@@ -466,8 +309,6 @@
 </code></pre>
       </div>
       <hr class="my-3 border-secondary-custom">
-
-      <!-- jQuery Block -->
       <div class="position-relative">
         <pre><code class="language-js" id="snippet-js">$(function() {
   var $grid = $('.grid').isotope({
@@ -488,33 +329,31 @@
   </div>
 </div>
 
-<!-- Modal for Preview -->
 <div class="modal fade px-0 m-0" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content bg-dark text-white border border-secondary-custom"> <!-- Adicionada a borda padrão -->
+    <div class="modal-content bg-dark text-white border border-secondary-custom">
       <div class="modal-header border-secondary-custom">
         <h6 class="modal-title text-info" id="previewModalLabel">Pré-visualização</h6>
-        <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button> -->
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
       </div>
-      <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;"> <!-- Adicionada borda ao corpo -->
+      <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
         <iframe 
           src="https://edsonli.github.io/snippets/coding/snippets_standalone/isotope_basic_sample.html" 
           width="100%" 
           height="100%" 
           frameborder="0" 
-          style="border:none; overflow-y: auto; border-radius: 0.5rem;"> <!-- Adicionado border-radius -->
+          style="border:none; overflow-y: auto; border-radius: 0.5rem;">
         </iframe>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- End Snippets Isotope -->
 
 <!-- Ini Snippets Git -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+<!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Git - Branches</h6>
     <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
@@ -571,13 +410,13 @@
       </pre>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- End Snippets Git -->
 
 <!-- Ini Snippets PHP -->
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
+<!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-info text-center">Manipulação avançada de datas com PHP</h6>
     <div class="snippet-code position-relative" style="max-height: 540px; overflow: auto;">
@@ -935,13 +774,13 @@ try {
 ?&gt;</code></pre>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- End Snippets PHP -->
 
 <!-- Ini Snippets SweetAlert2 -->
 
-          <div class="col-lg-4 col-md-6 mb-2 portfolio-item isotope-item filter-sweetalert2">
+          <!-- <div class="col-lg-4 col-md-6 mb-2 portfolio-item isotope-item filter-sweetalert2">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
               <h6 class="text-info text-center">Alerta de confirmação</h6>
               <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
@@ -966,12 +805,12 @@ try {
                 })</code></pre>
               </div>
             </div>
-          </div>
+          </div> -->
 <!-- End Snippets SweetAlert2 -->
 
 <!-- Ini Snippets jQuery -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-jquery">
+          <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-jquery">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
               <h6 class="text-info text-center">Toggle com jQuery</h6>
               <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
@@ -997,12 +836,12 @@ $(document).ready(function() {
               </pre>
               </div>
             </div>
-          </div>
+          </div> -->
 <!-- End Snippets jQuery -->
 
 <!-- Ini Snippets CSS -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-css">
+          <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-css">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
               <h6 class="text-info text-center">Botão com efeito hover</h6>
               <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
@@ -1031,12 +870,12 @@ $(document).ready(function() {
               </pre>
               </div>
             </div>
-          </div>
+          </div> -->
 <!-- End Snippets CSS -->
 
 <!-- Ini Snippets HTML -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-html">
+          <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-html">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
               <h6 class="text-info text-center">Local Storage</h6>
               <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
@@ -1058,12 +897,9 @@ $(document).ready(function() {
       <div id="result"></div>
       <script>
          const x = document.getElementById("result");
-// Check browser support
 if (typeof(Storage) !== "undefined") {
-  // Store
   localStorage.setItem("lastname", "Smith");
   localStorage.setItem("bgcolor", "yellow");
-  // Retrieve
   x.innerHTML = localStorage.getItem("lastname");
   x.style.backgroundColor = localStorage.getItem("bgcolor");
 } else {
@@ -1075,12 +911,12 @@ if (typeof(Storage) !== "undefined") {
 </code></pre>
               </div>
             </div>
-          </div>
+          </div> -->
 <!-- End Snippets HTML -->
 
 <!-- Ini Snippets MadBuilder -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-madbuilder">
+          <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-madbuilder">
             <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
               <h6 class="text-info text-center">Formulário simples MadBuilder</h6>
               <div class="snippet-code position-relative" style="max-height: 220px; overflow: auto;">
@@ -1103,22 +939,14 @@ if (typeof(Storage) !== "undefined") {
                 </pre>
               </div>
             </div>
-          </div>
+          </div> -->
 <!-- End Snippets MadBuilder -->
 
           </div><!-- End Portfolio Container -->
         </div>
       </div>
 
-    </section><!-- /Portfolio Section -->
-
-    <!-- Placeholder for dynamically loaded content -->
-
-  <div class="container">
-    <h2>Dynamic Snippet</h2>
-    <div id="snippet-bootstrap-form-validation-content" class="snippet-content">
-      <!-- Content will be loaded here -->
-    </div>
+    </section><!-- /Portfolio Section -->  
   </div>
   </main>
 
