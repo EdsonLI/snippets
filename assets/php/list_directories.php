@@ -1,9 +1,9 @@
 <?php
 /**
- * Listar arquivos em um diretório específico
+ * Listar diretórios em um caminho específico
  * 
- * Este script retorna uma lista de todos os arquivos em um diretório,
- * com filtro opcional por extensão.
+ * Este script retorna uma lista de todos os diretórios (pastas) em um 
+ * caminho especificado, útil para o carregador automático de snippets.
  * 
  * @author Edson LI - GitHub Copilot
  * @version 1.0.0
@@ -63,32 +63,20 @@ if (!file_exists($fullPath) || !is_dir($fullPath)) {
     exit;
 }
 
-// Extensão para filtrar (opcional)
-$filterExt = isset($_GET['ext']) ? filter_var($_GET['ext'], FILTER_SANITIZE_STRING) : null;
-
-// Listar todos os arquivos
-$files = [];
+// Listar todos os diretórios
+$directories = [];
 $items = scandir($fullPath);
 
 foreach ($items as $item) {
-    // Ignorar . e .. e diretórios
-    if ($item !== '.' && $item !== '..' && !is_dir($fullPath . '/' . $item)) {
-        // Verificar extensão se um filtro foi especificado
-        if ($filterExt !== null) {
-            $extension = pathinfo($item, PATHINFO_EXTENSION);
-            if (strtolower($extension) !== strtolower($filterExt)) {
-                continue; // Pular se não corresponder à extensão
-            }
-        }
-        
-        // Adicionar à lista de arquivos
-        $files[] = $item;
+    // Ignorar . e .. e arquivos
+    if ($item !== '.' && $item !== '..' && is_dir($fullPath . '/' . $item)) {
+        $directories[] = $item;
     }
 }
 
 // Retornar a lista como JSON
 echo json_encode([
     'success' => true,
-    'files' => $files,
+    'directories' => $directories,
     'path' => $requestedPath
 ]);

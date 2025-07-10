@@ -1,255 +1,321 @@
 /**
- * Gerenciador dinâmico de snippets
- * Carrega automaticamente snippets de subpastas e configura filtros Isotope
+ * AUTO SNIPPETS LOADER
+ * Carrega automaticamente snippets de todas as subpastas em coding/main
+ * Apenas crie pastas e adicione snippets HTML - o resto é automático!
+ * 
+ * @author Edson LI - GitHub Copilot
+ * @version 1.0.0
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Configuração
-  const snippetsConfig = {
-    baseFolder: 'coding/main', // Pasta base onde estão as subpastas de snippets
-    containerSelector: '#dynamic-snippets-container', // Seletor do container onde os snippets serão carregados
-    filtersContainerSelector: '#dynamic-snippets-filters', // Seletor do container onde os filtros serão adicionados
-    defaultActiveFilter: '*' // Filtro padrão ativo inicialmente
+  // Configuração - tudo o que você precisa ajustar está aqui
+  const SNIPPETS_CONFIG = {
+    baseFolder: 'coding/main',                      // Pasta base onde você coloca suas subpastas de snippets
+    containerSelector: '.isotope-container',        // Onde os snippets serão carregados
+    filtersContainerSelector: '#dynamic-snippets-filters', // Onde os filtros serão atualizados
+    defaultActiveFilter: '*',                       // Filtro padrão ativo
+    scanInterval: 0,                                // 0 para desativar, ou tempo em ms para scanear por novos snippets
+    debug: true                                     // Mostrar mensagens de debug no console
   };
 
-  // Estado interno
+  // Sistema de log para facilitar diagnósticos
+  const log = {
+    info: (msg) => SNIPPETS_CONFIG.debug && console.info(`📋 [Snippets]: ${msg}`),
+    success: (msg) => SNIPPETS_CONFIG.debug && console.log(`✅ [Snippets]: ${msg}`),
+    warn: (msg) => console.warn(`⚠️ [Snippets]: ${msg}`),
+    error: (msg, err) => console.error(`❌ [Snippets]: ${msg}`, err || '')
+  };
+
+  // Estado do carregador - rastreia o que foi carregado
   const state = {
-    folders: [], // Lista de pastas encontradas
-    loadedSnippets: 0, // Contagem de snippets carregados
-    totalSnippets: 0, // Total de snippets a carregar
-    filterMap: {} // Mapeamento de pastas para classes de filtro
+    folders: new Set(),         // Conjunto de pastas descobertas (evita duplicatas)
+    snippets: new Map(),        // Mapeia caminhos de snippets para seu status (carregado/falha)
+    loadedCount: 0,             // Contador de snippets carregados com sucesso
+    totalToLoad: 0,             // Total de snippets a carregar
+    filterMap: new Map(),       // Mapeamento de pastas para classes de filtro
+    isotopeInitialized: false   // Rastrear se o Isotope já foi inicializado
   };
 
   /**
-   * Inicializa o carregamento dinâmico de snippets
+   * Ponto de entrada - inicia o carregamento automático de snippets
    */
-  function initDynamicSnippets() {
-    // Primeiro passo: obter a lista de subpastas
-    fetchFolders(snippetsConfig.baseFolder)
-      .then(folders => {
-        state.folders = folders;
-        return Promise.all(folders.map(folder => fetchSnippetsInFolder(`${snippetsConfig.baseFolder}/${folder}`)));
-      })
-      .then(snippetsLists => {
-        // Criar filtros para cada pasta
-        setupFilters(state.folders);
-        
-        // Calcular o total de snippets para carregar
-        state.totalSnippets = snippetsLists.flat().length;
-        
-        // Carregar todos os snippets
-        return loadAllSnippets(snippetsLists);
-      })
-      .then(() => {
-        console.log('Todos os snippets foram carregados com sucesso!');
-      })
-      .catch(error => {
-        console.error('Erro ao carregar snippets:', error);
-      });
+  function initAutoSnippets() {
+    log.info('Iniciando carregamento automático de snippets...');
+    
+    // Procurar por pastas e snippets
+    discoverFolders()
+      .then(setupPeriodicScan)
+      .catch(err => log.error('Falha na inicialização', err));
   }
 
   /**
-   * Obtém a lista de subpastas na pasta base
-   * @param {string} basePath - Caminho base para buscar subpastas
-   * @returns {Promise<Array<string>>} - Lista de nomes de subpastas
+   * Descobre todas as pastas e snippets disponíveis
+   * @returns {Promise} Resolução quando a descoberta inicial estiver concluída
    */
-  function fetchFolders(basePath) {
+  function discoverFolders() {
     return new Promise((resolve, reject) => {
-      // Usar uma requisição AJAX para obter a lista de pastas
-      // Como estamos em ambiente local, vamos simular com um array predefinido
-      // Em produção, você precisaria de um endpoint PHP que liste as pastas
-      
-      // Simulação:
-      $.ajax({
-        url: 'assets/php/list_folders.php',
-        data: { path: basePath },
-        dataType: 'json',
-        success: function(data) {
-          if (data.success && data.folders) {
-            resolve(data.folders);
-          } else {
-            console.warn('Não foi possível obter a lista de pastas. Usando lista padrão.');
-            // Lista padrão das pastas que sabemos que existem
-            resolve(['sql', 'bootstrap']);
+      // Buscar a lista de pastas no diretório base
+      fetch(`assets/php/list_directories.php?path=${SNIPPETS_CONFIG.baseFolder}`)
+        .then(response => response.json())
+        .then(data => {
+          if (!data.success) {
+            throw new Error(data.message || 'Falha ao listar diretórios');
           }
-        },
-        error: function() {
-          console.warn('Erro ao acessar o endpoint. Usando lista padrão.');
-          // Lista padrão em caso de erro
-          resolve(['sql', 'bootstrap']);
-        }
-      });
-    });
-  }
-
-  /**
-   * Obtém a lista de snippets em uma pasta
-   * @param {string} folderPath - Caminho da pasta para buscar snippets
-   * @returns {Promise<Array<Object>>} - Lista de objetos de snippet
-   */
-  function fetchSnippetsInFolder(folderPath) {
-    return new Promise((resolve, reject) => {
-      // Usar uma requisição AJAX para obter a lista de arquivos na pasta
-      $.ajax({
-        url: 'assets/php/list_files.php',
-        data: { path: folderPath },
-        dataType: 'json',
-        success: function(data) {
-          if (data.success && data.files) {
-            resolve(data.files);
-          } else {
-            console.warn(`Não foi possível obter a lista de arquivos para ${folderPath}. Usando lista padrão.`);
-            
-            // Lista padrão baseada no caminho da pasta
-            if (folderPath.endsWith('sql')) {
-              resolve([{
-                path: `${folderPath}/snippet_procedure_clean_data.html`,
-                name: 'snippet_procedure_clean_data.html',
-                folder: 'sql'
-              }]);
-            } else if (folderPath.endsWith('bootstrap')) {
-              resolve([{
-                path: `${folderPath}/snippet_bootstrap_form_validation.html`,
-                name: 'snippet_bootstrap_form_validation.html',
-                folder: 'bootstrap'
-              }]);
-            } else {
-              // Pasta desconhecida
-              resolve([]);
-            }
-          }
-        },
-        error: function() {
-          console.warn(`Erro ao acessar o endpoint para ${folderPath}. Usando lista padrão.`);
           
-          // Lista padrão em caso de erro
-          if (folderPath.endsWith('sql')) {
-            resolve([{
-              path: `${folderPath}/snippet_procedure_clean_data.html`,
-              name: 'snippet_procedure_clean_data.html',
-              folder: 'sql'
-            }]);
-          } else if (folderPath.endsWith('bootstrap')) {
-            resolve([{
-              path: `${folderPath}/snippet_bootstrap_form_validation.html`,
-              name: 'snippet_bootstrap_form_validation.html',
-              folder: 'bootstrap'
-            }]);
-          } else {
-            // Pasta desconhecida
-            resolve([]);
+          // Processar cada pasta encontrada
+          const folderPromises = data.directories.map(folderName => {
+            // Adicionar à lista de pastas conhecidas
+            state.folders.add(folderName);
+            
+            // Mapear o nome da pasta para a classe de filtro
+            state.filterMap.set(folderName, `filter-${folderName.toLowerCase()}`);
+            
+            // Descobrir snippets nesta pasta
+            return discoverSnippetsInFolder(folderName);
+          });
+          
+          return Promise.all(folderPromises);
+        })
+        .then(() => {
+          // Atualizar a interface com as pastas descobertas
+          updateFiltersUI();
+          
+          // Carregar todos os snippets descobertos
+          return loadAllDiscoveredSnippets();
+        })
+        .then(resolve)
+        .catch(err => {
+          log.error('Erro na descoberta de pastas', err);
+          
+          // Mesmo com erro, tentar usar uma lista padrão
+          const defaultFolders = ['sql', 'bootstrap', 'php'];
+          log.warn(`Usando lista padrão de pastas: ${defaultFolders.join(', ')}`);
+          
+          defaultFolders.forEach(folder => {
+            state.folders.add(folder);
+            state.filterMap.set(folder, `filter-${folder.toLowerCase()}`);
+          });
+          
+          // Continuar com as pastas padrão
+          updateFiltersUI();
+          loadAllDiscoveredSnippets().then(resolve);
+        });
+    });
+  }
+
+  /**
+   * Descobre snippets em uma pasta específica
+   * @param {string} folderName - Nome da pasta para verificar
+   * @returns {Promise} Resolução quando a descoberta de snippets estiver concluída
+   */
+  function discoverSnippetsInFolder(folderName) {
+    return new Promise((resolve, reject) => {
+      const folderPath = `${SNIPPETS_CONFIG.baseFolder}/${folderName}`;
+      
+      fetch(`assets/php/list_files.php?path=${folderPath}&ext=html`)
+        .then(response => response.json())
+        .then(data => {
+          if (!data.success) {
+            throw new Error(data.message || `Falha ao listar arquivos em ${folderPath}`);
           }
+          
+          if (data.files.length === 0) {
+            log.info(`Nenhum snippet encontrado na pasta ${folderName}`);
+            return;
+          }
+          
+          log.info(`Encontrados ${data.files.length} snippets na pasta ${folderName}`);
+          
+          // Adicionar cada arquivo à lista de snippets para carregar
+          data.files.forEach(file => {
+            const snippetPath = `${folderPath}/${file}`;
+            if (!state.snippets.has(snippetPath)) {
+              state.snippets.set(snippetPath, { loaded: false, folder: folderName });
+              state.totalToLoad++;
+            }
+          });
+        })
+        .then(resolve)
+        .catch(err => {
+          log.error(`Erro ao descobrir snippets em ${folderName}`, err);
+          resolve(); // Continuar mesmo com erro
+        });
+    });
+  }
+
+  /**
+   * Atualiza a interface de filtros com as pastas descobertas
+   */
+  function updateFiltersUI() {
+    const filtersContainer = document.querySelector(SNIPPETS_CONFIG.filtersContainerSelector);
+    if (!filtersContainer) {
+      log.warn(`Container de filtros não encontrado: ${SNIPPETS_CONFIG.filtersContainerSelector}`);
+      return;
+    }
+    
+    // Verificar se o filtro "All" já existe
+    let allFilterExists = false;
+    Array.from(filtersContainer.children).forEach(child => {
+      if (child.getAttribute('data-filter') === '*') {
+        allFilterExists = true;
+        // Garantir que tenha a classe filter-active
+        child.classList.add('filter-active');
+      }
+    });
+    
+    // Adicionar filtro "All" se não existir
+    if (!allFilterExists) {
+      const allFilter = document.createElement('li');
+      allFilter.setAttribute('data-filter', '*');
+      allFilter.classList.add('filter-active');
+      allFilter.style.cursor = 'pointer';
+      allFilter.textContent = 'All';
+      filtersContainer.prepend(allFilter);
+    }
+    
+    // Adicionar filtros para cada pasta descoberta
+    state.folders.forEach(folder => {
+      // Verificar se este filtro já existe
+      const filterClass = state.filterMap.get(folder);
+      let filterExists = false;
+      
+      Array.from(filtersContainer.children).forEach(child => {
+        if (child.getAttribute('data-filter') === `.${filterClass}`) {
+          filterExists = true;
         }
       });
-    });
-  }
-
-  /**
-   * Configura os filtros com base nas pastas encontradas
-   * @param {Array<string>} folders - Lista de nomes de pastas
-   */
-  function setupFilters(folders) {
-    // Mapear nomes de pastas para classes de filtro
-    folders.forEach(folder => {
-      state.filterMap[folder] = `filter-${folder.toLowerCase()}`;
-    });
-    
-    // Adicionar filtros ao container de filtros
-    const $filtersContainer = $(snippetsConfig.filtersContainerSelector);
-    
-    // Adicionar o filtro "All"
-    $filtersContainer.append(`
-      <li data-filter="*" class="filter-active" style="cursor: pointer;">All</li>
-    `);
-    
-    // Adicionar um filtro para cada pasta
-    folders.forEach(folder => {
-      const displayName = folder.charAt(0).toUpperCase() + folder.slice(1); // Capitalizar
-      $filtersContainer.append(`
-        <li data-filter=".${state.filterMap[folder]}" style="cursor: pointer;">${displayName}</li>
-      `);
-    });
-  }
-
-  /**
-   * Carrega todos os snippets de todas as pastas
-   * @param {Array<Array<Object>>} snippetsLists - Lista de listas de snippets por pasta
-   */
-  function loadAllSnippets(snippetsLists) {
-    return new Promise((resolve, reject) => {
-      // Manter controle de quantos snippets foram carregados
-      let loadedCount = 0;
-      const totalCount = snippetsLists.flat().length;
       
-      // Se não houver snippets, resolver imediatamente
-      if (totalCount === 0) {
+      // Criar novo filtro se não existir
+      if (!filterExists) {
+        const displayName = folder.charAt(0).toUpperCase() + folder.slice(1); // Capitalizar
+        const filterItem = document.createElement('li');
+        filterItem.setAttribute('data-filter', `.${filterClass}`);
+        filterItem.style.cursor = 'pointer';
+        filterItem.textContent = displayName;
+        filtersContainer.appendChild(filterItem);
+        log.info(`Adicionado novo filtro: ${displayName}`);
+      }
+    });
+  }
+
+  /**
+   * Carrega todos os snippets descobertos
+   * @returns {Promise} Resolução quando todos os snippets forem carregados
+   */
+  function loadAllDiscoveredSnippets() {
+    return new Promise((resolve, reject) => {
+      // Se não há snippets para carregar
+      if (state.totalToLoad === 0) {
+        log.warn('Nenhum snippet encontrado para carregar');
         resolve();
         return;
       }
       
-      // Carregar cada snippet
-      snippetsLists.forEach(snippets => {
-        snippets.forEach(snippet => {
-          // Carregar o snippet
-          $.ajax({
-            url: snippet.path,
-            dataType: 'html',
-            success: function(data) {
+      log.info(`Carregando ${state.totalToLoad} snippets...`);
+      
+      // Array de promessas para carregar todos os snippets
+      const loadPromises = [];
+      
+      // Para cada snippet na lista
+      state.snippets.forEach((snippetInfo, snippetPath) => {
+        if (snippetInfo.loaded) return; // Pular se já foi carregado
+        
+        // Criar uma promessa para carregar este snippet
+        const loadPromise = new Promise((resolveLoad) => {
+          fetch(snippetPath)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+              }
+              return response.text();
+            })
+            .then(html => {
               // Adicionar o snippet ao container
-              $(snippetsConfig.containerSelector).append(data);
-              
-              // Atualizar contador
-              loadedCount++;
-              
-              // Se todos os snippets foram carregados, reinicializar o Isotope
-              if (loadedCount === totalCount) {
-                // Destacar código
-                hljs.highlightAll();
-                
-                // Reinicializar o Isotope
-                reinitializeIsotope();
-                
-                // Resolver a promessa
-                resolve();
+              const container = document.querySelector(SNIPPETS_CONFIG.containerSelector);
+              if (!container) {
+                throw new Error(`Container não encontrado: ${SNIPPETS_CONFIG.containerSelector}`);
               }
-            },
-            error: function() {
-              console.error(`Erro ao carregar snippet: ${snippet.path}`);
-              loadedCount++;
               
-              if (loadedCount === totalCount) {
-                // Mesmo com erro, tentamos inicializar com os snippets que foram carregados
-                reinitializeIsotope();
-                resolve();
-              }
-            }
-          });
+              // Inserir o HTML
+              container.insertAdjacentHTML('beforeend', html);
+              
+              // Marcar como carregado
+              snippetInfo.loaded = true;
+              state.loadedCount++;
+              
+              log.info(`Snippet carregado (${state.loadedCount}/${state.totalToLoad}): ${snippetPath}`);
+              resolveLoad();
+            })
+            .catch(err => {
+              log.error(`Falha ao carregar snippet: ${snippetPath}`, err);
+              resolveLoad(); // Resolver mesmo com erro
+            });
         });
+        
+        loadPromises.push(loadPromise);
       });
+      
+      // Aguardar que todos os snippets sejam carregados
+      Promise.all(loadPromises)
+        .then(() => {
+          // Destacar todos os blocos de código
+          hljs.highlightAll();
+          
+          // Reinicializar o Isotope
+          reinitializeIsotope();
+          
+          log.success(`${state.loadedCount} snippets carregados com sucesso!`);
+          resolve();
+        });
     });
   }
 
   /**
-   * Reinicializa o Isotope após o carregamento de todos os snippets
+   * Configura verificação periódica de novas pastas e snippets
+   */
+  function setupPeriodicScan() {
+    if (SNIPPETS_CONFIG.scanInterval > 0) {
+      log.info(`Escaneamento periódico configurado a cada ${SNIPPETS_CONFIG.scanInterval}ms`);
+      setInterval(() => {
+        log.info('Procurando por novos snippets...');
+        discoverFolders();
+      }, SNIPPETS_CONFIG.scanInterval);
+    }
+  }
+
+  /**
+   * Reinicializa o Isotope após o carregamento dos snippets
    */
   function reinitializeIsotope() {
-    // Encontrar e destruir todas as instâncias do Isotope
-    $('.isotope-container').each(function() {
-      const iso = Isotope.data(this);
-      if (iso) {
-        iso.destroy();
-      }
-    });
+    // Se não houver elementos para organizar, não inicializar
+    const containers = document.querySelectorAll(SNIPPETS_CONFIG.containerSelector);
+    if (!containers.length) {
+      log.warn('Nenhum container Isotope encontrado');
+      return;
+    }
     
-    // Reinicializar o Isotope para todos os containers
-    $('.isotope-layout').each(function() {
-      const layout = $(this).attr('data-layout') || 'masonry';
-      const filter = $(this).attr('data-default-filter') || '*';
-      const sort = $(this).attr('data-sort') || 'original-order';
-      const container = $(this).find('.isotope-container')[0];
+    // Processar cada container
+    containers.forEach(container => {
+      // Se já existe uma instância do Isotope, destruí-la
+      const existingIso = Isotope.data(container);
+      if (existingIso) {
+        existingIso.destroy();
+      }
       
-      // Aguardar o carregamento das imagens
-      $(container).imagesLoaded(function() {
-        // Inicializar uma nova instância do Isotope
+      // Obter opções do elemento pai
+      const parent = container.closest('.isotope-layout');
+      if (!parent) {
+        log.warn(`Container isotope sem elemento pai .isotope-layout`);
+        return;
+      }
+      
+      // Obter configurações
+      const layout = parent.getAttribute('data-layout') || 'masonry';
+      const filter = parent.getAttribute('data-default-filter') || '*';
+      const sort = parent.getAttribute('data-sort') || 'original-order';
+      
+      // Aguardar carregamento de imagens antes de inicializar
+      imagesLoaded(container, function() {
+        // Criar nova instância do Isotope
         const iso = new Isotope(container, {
           itemSelector: '.isotope-item',
           layoutMode: layout,
@@ -258,25 +324,35 @@ document.addEventListener('DOMContentLoaded', function() {
           transitionDuration: '0.4s'
         });
         
-        // Configurar os eventos de filtro
-        const filterBtns = $(container).closest('.isotope-layout').find('.isotope-filters li');
-        filterBtns.off('click').on('click', function() {
-          filterBtns.removeClass('filter-active');
-          $(this).addClass('filter-active');
-          iso.arrange({
-            filter: $(this).attr('data-filter')
-          });
+        // Configurar eventos de filtro
+        const filterBtns = parent.querySelectorAll('.isotope-filters li');
+        filterBtns.forEach(btn => {
+          // Remover eventos anteriores
+          const newBtn = btn.cloneNode(true);
+          btn.parentNode.replaceChild(newBtn, btn);
           
-          // Executar a animação AOS se disponível
-          if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
-            AOS.refresh();
-          }
+          // Adicionar novo evento
+          newBtn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('filter-active'));
+            this.classList.add('filter-active');
+            
+            iso.arrange({
+              filter: this.getAttribute('data-filter')
+            });
+            
+            // Atualizar animações AOS se disponível
+            if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
+              AOS.refresh();
+            }
+          });
         });
         
-        // Executar um layout final após um pequeno atraso
-        setTimeout(function() {
-          iso.arrange();
-        }, 100);
+        // Layout final
+        setTimeout(() => iso.arrange(), 100);
+        
+        // Marcar como inicializado
+        state.isotopeInitialized = true;
+        log.success('Isotope reinicializado com sucesso');
       });
     });
     
@@ -285,14 +361,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Configura os botões de cópia para os snippets
+   * Configura botões de cópia para todos os snippets
    */
   function setupCopyButtons() {
     document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
-      // Verificar se o botão já foi inicializado
+      // Pular se já inicializado
       if (button.hasAttribute('data-copy-initialized')) return;
       
-      // Marcar o botão como inicializado
+      // Marcar como inicializado
       button.setAttribute('data-copy-initialized', 'true');
       
       // Adicionar evento de clique
@@ -301,30 +377,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const codeBlock = document.getElementById(targetId);
 
         if (codeBlock) {
+          // Copiar o texto para a área de transferência
           const text = codeBlock.textContent.trim();
-          navigator.clipboard.writeText(text).then(() => {
-            const icon = button.querySelector('iconify-icon');
-            if (icon) {
-              icon.setAttribute('icon', 'mdi:check');
-              setTimeout(() => {
-                icon.setAttribute('icon', 'mdi:content-copy');
-              }, 1200);
-            }
-          }).catch(err => {
-            console.error('Erro ao copiar o texto:', err);
-          });
+          navigator.clipboard.writeText(text)
+            .then(() => {
+              // Feedback visual
+              const icon = button.querySelector('iconify-icon');
+              if (icon) {
+                const originalIcon = icon.getAttribute('icon');
+                icon.setAttribute('icon', 'mdi:check');
+                setTimeout(() => {
+                  icon.setAttribute('icon', originalIcon || 'mdi:content-copy');
+                }, 1200);
+              }
+            })
+            .catch(err => log.error('Erro ao copiar texto', err));
         } else {
-          console.error('Bloco de código não encontrado para o ID:', targetId);
+          log.error(`Bloco de código não encontrado: ${targetId}`);
         }
       });
     });
   }
 
-  // Inicializar quando o DOM estiver pronto
-  if ($(snippetsConfig.containerSelector).length) {
-    // Se o container existe, inicializar
-    initDynamicSnippets();
-  } else {
-    console.warn(`Container de snippets não encontrado: ${snippetsConfig.containerSelector}`);
-  }
+  // Iniciar o sistema quando o DOM estiver pronto
+  initAutoSnippets();
 });
