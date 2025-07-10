@@ -152,7 +152,9 @@
 
   /**
    * Init isotope layout and filters
+   * Comentado para permitir que a inicialização seja feita após o carregamento dinâmico
    */
+  /*
   document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
     let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
     let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
@@ -180,8 +182,8 @@
         }
       }, false);
     });
-
   });
+  */
 
   /**
    * Init swiper sliders
@@ -292,16 +294,75 @@
 })();
 
 $(document).ready(function() {
-  // Aguardar que a página seja completamente carregada
-  $(window).on('load', function() {
-    // Aguardar um momento para garantir que o Isotope esteja inicializado
-    setTimeout(function() {
-      // Carregar os snippets dinamicamente usando a nova função
-      loadDynamicSnippet('snippet-bootstrap-form-validation-content', 
-                         'coding/main/bootstrap/snippet_bootstrap_form_validation.html');
-                         
-      loadDynamicSnippet('snippet-procedure-clean-data-content', 
-                         'coding/main/sql/snippet_procedure_clean_data.html');
-    }, 500);
+  // Contador para controlar quando todos os conteúdos foram carregados
+  let snippetsLoaded = 0;
+  const totalSnippets = 2;
+  
+  // Função para reinicializar o Isotope após o carregamento de todos os snippets
+  function reinitIsotope() {
+    snippetsLoaded++;
+    
+    if (snippetsLoaded === totalSnippets) {
+      console.log('Todos os snippets carregados, reinicializando Isotope...');
+      
+      // Destacar todos os blocos de código
+      hljs.highlightAll();
+      
+      // Encontrar e destruir todas as instâncias do Isotope
+      $('.isotope-container').each(function() {
+        const iso = Isotope.data(this);
+        if (iso) {
+          iso.destroy();
+        }
+      });
+      
+      // Reinicializar o Isotope para todos os containers, mas primeiro aguardar o carregamento das imagens
+      $('.isotope-container').imagesLoaded(function() {
+        $('.isotope-layout').each(function() {
+          // Obter os atributos de data diretamente do elemento
+          const layout = $(this).attr('data-layout') || 'masonry';
+          const filter = $(this).attr('data-default-filter') || '*';
+          const sort = $(this).attr('data-sort') || 'original-order';
+          const container = $(this).find('.isotope-container')[0];
+          
+          // Inicializar uma nova instância do Isotope
+          const iso = new Isotope(container, {
+            itemSelector: '.isotope-item',
+            layoutMode: layout,
+            filter: filter,
+            sortBy: sort,
+            transitionDuration: '0.4s'
+          });
+          
+          // Configurar os eventos de filtro novamente
+          const filterBtns = $(this).find('.isotope-filters li');
+          filterBtns.on('click', function() {
+            filterBtns.removeClass('filter-active');
+            $(this).addClass('filter-active');
+            iso.arrange({
+              filter: $(this).attr('data-filter')
+            });
+            // Executar a animação AOS se disponível
+            if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
+              AOS.refresh();
+            }
+          });
+          
+          // Executar um layout depois que tudo estiver pronto
+          setTimeout(function() {
+            iso.arrange();
+          }, 100);
+        });
+      });
+    }
+  }
+  
+  // Carregar os snippets
+  $('#snippet-bootstrap-form-validation-content').load('coding/main/bootstrap/snippet_bootstrap_form_validation.html', function() {
+    reinitIsotope();
+  });
+  
+  $('#snippet-procedure-clean-data-content').load('coding/main/sql/snippet_procedure_clean_data.html', function() {
+    reinitIsotope();
   });
 });
