@@ -1145,7 +1145,7 @@ if (typeof(Storage) !== "undefined") {
 <script>
   $(document).ready(function() {
     // Load the snippet content dynamically using jQuery
-    $('#snippet-content').load('./coding/main/bootstrap/snippet_form_validation.html', function(response, status, xhr) {
+    $('#snippet-content').load('snippet_form_validation.html', function(response, status, xhr) {
       if (status === 'error') {
         console.error('Error loading snippet:', xhr.status, xhr.statusText);
         $('#snippet-content').html('<p>Error loading snippet content.</p>');
