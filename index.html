@@ -69,6 +69,9 @@
     background: #888; /* Cor ao passar o mouse */
   } /* Garante que o container pai tenha posição relativa */
   </style>
+
+  <!-- jQuery PARA TESTES -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="index-page">
@@ -1132,32 +1135,13 @@ if (typeof(Storage) !== "undefined") {
     </section><!-- /Portfolio Section -->
 
     <!-- Placeholder for dynamically loaded content -->
-<section id="dynamic-snippet" class="dynamic-snippet section">
+
   <div class="container">
     <h2>Dynamic Snippet</h2>
-    <div id="snippet-content" class="snippet-content">
+    <div id="snippet-bootstrap-form-validation-content" class="snippet-content">
       <!-- Content will be loaded here -->
     </div>
   </div>
-</section>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<script>
-  $(document).ready(function() {
-    // Load the snippet content dynamically using jQuery
-    $('#snippet-content').load('snippet_form_validation.html', function(response, status, xhr) {
-      if (status === 'error') {
-        console.error('Error loading snippet:', xhr.status, xhr.statusText);
-        $('#snippet-content').html('<p>Error loading snippet content.</p>');
-      } else {
-        // Reinitialize any required functionality (e.g., syntax highlighting)
-        $('pre code').each(function() {
-          hljs.highlightElement(this);
-        });
-      }
-    });
-  });
-</script>
   </main>
 
   <footer id="footer" class="footer">

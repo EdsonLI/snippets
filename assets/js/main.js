@@ -290,3 +290,12 @@
   window.addEventListener('load', setupCopyButtons);
 
 })();
+
+$(document).ready(function() {
+  $('#snippet-bootstrap-form-validation-content').load('coding/main/bootstrap/snippet_bootstrap_form_validation.html', function() {
+    hljs.highlightAll();
+    // setupSnippetInteractions();
+    // addCopyButtons();
+  });
+
+});
