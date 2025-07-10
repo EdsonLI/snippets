@@ -292,15 +292,16 @@
 })();
 
 $(document).ready(function() {
-  $('#snippet-bootstrap-form-validation-content').load('coding/main/bootstrap/snippet_bootstrap_form_validation.html', function() {
-    hljs.highlightAll();
-    // setupSnippetInteractions();
-    // addCopyButtons();
+  // Aguardar que a página seja completamente carregada
+  $(window).on('load', function() {
+    // Aguardar um momento para garantir que o Isotope esteja inicializado
+    setTimeout(function() {
+      // Carregar os snippets dinamicamente usando a nova função
+      loadDynamicSnippet('snippet-bootstrap-form-validation-content', 
+                         'coding/main/bootstrap/snippet_bootstrap_form_validation.html');
+                         
+      loadDynamicSnippet('snippet-procedure-clean-data-content', 
+                         'coding/main/sql/snippet_procedure_clean_data.html');
+    }, 500);
   });
-  $('#snippet-procedure-clean-data-content').load('coding/main/sql/snippet_procedure_clean_data.html', function() {
-    hljs.highlightAll();
-    // setupSnippetInteractions();
-    // addCopyButtons();
-  });
-
 });
