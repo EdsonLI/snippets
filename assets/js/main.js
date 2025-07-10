@@ -297,7 +297,7 @@ $(document).ready(function() {
     // setupSnippetInteractions();
     // addCopyButtons();
   });
-  $('#snippet-procedure-clean-data-content').load('coding/main/bootstrap/snippet_procedure_clean_data.html', function() {
+  $('#snippet-procedure-clean-data-content').load('coding/main/sql/snippet_procedure_clean_data.html', function() {
     hljs.highlightAll();
     // setupSnippetInteractions();
     // addCopyButtons();
