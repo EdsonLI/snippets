@@ -67,11 +67,14 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #888; /* Cor ao passar o mouse */
-  } /* Garante que o container pai tenha posição relativa */
+  } 
+  /* Garante que o container pai tenha posição relativa */
   </style>
 
   <!-- jQuery PARA TESTES -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Script para gerenciador dinâmico de snippets -->
+  <script src="assets/js/snippets-manager.js" defer></script>
 </head>
 
 <body class="index-page">
@@ -172,48 +175,27 @@
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
 <!-- Ini Snippet Filters -->
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-sql" style="cursor: pointer;">SQL</li>
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100" id="dynamic-snippets-filters">
+            <!-- Filtros serão adicionados dinamicamente aqui pelo script -->
+            <!-- Filtros estáticos -->
             <li data-filter=".filter-php" style="cursor: pointer;">PHP</li>
-            <li data-filter=".filter-bootstrap" style="cursor: pointer;">Bootstrap</li>            
             <li data-filter=".filter-isotope" style="cursor: pointer;">Isotope</li>            
             <li data-filter=".filter-git" style="cursor: pointer;">Git</li>            
-            
             <li data-filter=".filter-sweetalert2" style="cursor: pointer;">SweetAlert2</li>
             <li data-filter=".filter-jquery" style="cursor: pointer;">jQuery</li>
             <li data-filter=".filter-css" style="cursor: pointer;">CSS</li>
             <li data-filter=".filter-html" style="cursor: pointer;">HTML</li>            
             <li data-filter=".filter-madbuilder" style="cursor: pointer;">MadBuilder</li>
-            <li data-filter=".filter-app">App</li>
           </ul>
 <!-- End Snippet Filters -->
 
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-  <!-- Ini Snippets SQL -->
-  <div id="snippet-procedure-clean-data-content">
-    <!-- Content will be loaded here -->
+  <!-- Container dinâmico para snippets -->
+  <div id="dynamic-snippets-container">
+    <!-- Snippets serão carregados dinamicamente aqui pelo script -->
   </div>
-
-  <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
-    <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-      <h6 class="text-info text-center">Procedure CleanCompanyData - SQL</h6>
-      <div class="snippet-code position-relative">
-        <div class="snippet-actions-float d-flex align-items-center z-3">
-          <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company">
-            <iconify-icon icon="mdi:content-copy"></iconify-icon>
-          </button>
-        </div>      
-        <pre>
-  <code id="snippet-sql-procedure-clear-company" class="language-sql">
-  CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
-  </code>
-        </pre>
-      </div>
-    </div>
-  </div> -->
-  <!-- End Snippets SQL -->
+  <!-- Fim do container dinâmico -->
 
 <!-- Ini Snippets Bootstrap -->
 
