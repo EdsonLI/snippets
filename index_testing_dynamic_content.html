@@ -69,6 +69,9 @@
     background: #888; /* Cor ao passar o mouse */
   } /* Garante que o container pai tenha posição relativa */
   </style>
+
+  <!-- jQuery PARA TESTES -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="index-page">
@@ -188,33 +191,29 @@
 
 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-<!-- Ini Snippets SQL -->
+  <!-- Ini Snippets SQL -->
+  <div id="snippet-procedure-clean-data-content">
+    <!-- Content will be loaded here -->
+  </div>
 
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-info text-center">Procedure CleanCompanyData - SQL</h6>
-    <div class="snippet-code position-relative">
-      <div class="snippet-actions-float d-flex align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company">
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
+  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
+    <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+      <h6 class="text-info text-center">Procedure CleanCompanyData - SQL</h6>
+      <div class="snippet-code position-relative">
+        <div class="snippet-actions-float d-flex align-items-center z-3">
+          <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-clear-company">
+            <iconify-icon icon="mdi:content-copy"></iconify-icon>
+          </button>
+        </div>      
+        <pre>
+  <code id="snippet-sql-procedure-clear-company" class="language-sql">
+  CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
+  </code>
+        </pre>
       </div>
-
-      <!-- DIV - PRE - CODE - INI -->      
-      <pre>
-<code id="snippet-sql-procedure-clear-company" class="language-sql">
-CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
-</code>
-      </pre>
-      <!-- DIV - PRE - CODE - END -->
-
     </div>
   </div>
-</div>
-
-<!-- End Snippets SQL -->
-
-<!-- testar essa cor no fundo dos pre code dos snippets #151b23; -->
+  <!-- End Snippets SQL -->
 
 <!-- Ini Snippets Bootstrap -->
 
@@ -1040,7 +1039,7 @@ $(document).ready(function() {
 <code class="language-css" data-snippet-id="snippet-css">
 .btn-hover {
   background-color: #333;
-  color: white;
+  color: #fff;
   transition: background-color 0.3s;
 }
 .btn-hover:hover {
@@ -1130,6 +1129,15 @@ if (typeof(Storage) !== "undefined") {
       </div>
 
     </section><!-- /Portfolio Section -->
+
+    <!-- Placeholder for dynamically loaded content -->
+
+  <div class="container">
+    <h2>Dynamic Snippet</h2>
+    <div id="snippet-bootstrap-form-validation-content" class="snippet-content">
+      <!-- Content will be loaded here -->
+    </div>
+  </div>
   </main>
 
   <footer id="footer" class="footer">
