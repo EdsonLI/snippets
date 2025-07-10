@@ -54,12 +54,29 @@ document.addEventListener('DOMContentLoaded', function() {
   function discoverFolders() {
     return new Promise((resolve, reject) => {
       // Buscar a lista de pastas no diretório base
-      fetch(`assets/php/list_directories.php?path=${SNIPPETS_CONFIG.baseFolder}`)
-        .then(response => response.json())
+      log.info(`Buscando pastas em: ${SNIPPETS_CONFIG.baseFolder}`);
+      
+      // Usar o timestamp para evitar cache
+      const timestamp = new Date().getTime();
+      
+      fetch(`assets/php/list_directories.php?path=${SNIPPETS_CONFIG.baseFolder}&_t=${timestamp}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Erro HTTP ${response.status}: ${response.statusText}`);
+          }
+          // Verificar o tipo de conteúdo
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            throw new Error(`Resposta inválida (não é JSON): ${contentType}`);
+          }
+          return response.json();
+        })
         .then(data => {
           if (!data.success) {
             throw new Error(data.message || 'Falha ao listar diretórios');
           }
+          
+          log.info(`Pastas encontradas: ${data.directories.join(', ')}`);
           
           // Processar cada pasta encontrada
           const folderPromises = data.directories.map(folderName => {
@@ -86,6 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(err => {
           log.error('Erro na descoberta de pastas', err);
           
+          // Tentar fazer uma solicitação direta via XHR para ver a resposta bruta
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', `assets/php/list_directories.php?path=${SNIPPETS_CONFIG.baseFolder}&debug=1&_t=${timestamp}`, false);
+          xhr.send();
+          
+          log.error('Resposta bruta:', xhr.responseText);
+          
           // Mesmo com erro, tentar usar uma lista padrão
           const defaultFolders = ['sql', 'bootstrap', 'php'];
           log.warn(`Usando lista padrão de pastas: ${defaultFolders.join(', ')}`);
@@ -110,9 +134,22 @@ document.addEventListener('DOMContentLoaded', function() {
   function discoverSnippetsInFolder(folderName) {
     return new Promise((resolve, reject) => {
       const folderPath = `${SNIPPETS_CONFIG.baseFolder}/${folderName}`;
+      const timestamp = new Date().getTime();
       
-      fetch(`assets/php/list_files.php?path=${folderPath}&ext=html`)
-        .then(response => response.json())
+      log.info(`Buscando snippets em: ${folderPath}`);
+      
+      fetch(`assets/php/list_files.php?path=${folderPath}&ext=html&_t=${timestamp}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Erro HTTP ${response.status}: ${response.statusText}`);
+          }
+          // Verificar o tipo de conteúdo
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            throw new Error(`Resposta inválida (não é JSON): ${contentType}`);
+          }
+          return response.json();
+        })
         .then(data => {
           if (!data.success) {
             throw new Error(data.message || `Falha ao listar arquivos em ${folderPath}`);
@@ -123,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
           }
           
-          log.info(`Encontrados ${data.files.length} snippets na pasta ${folderName}`);
+          log.info(`Encontrados ${data.files.length} snippets na pasta ${folderName}: ${data.files.join(', ')}`);
           
           // Adicionar cada arquivo à lista de snippets para carregar
           data.files.forEach(file => {
@@ -137,6 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(resolve)
         .catch(err => {
           log.error(`Erro ao descobrir snippets em ${folderName}`, err);
+          
+          // Tentar fazer uma solicitação direta via XHR para ver a resposta bruta
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', `assets/php/list_files.php?path=${folderPath}&ext=html&debug=1&_t=${timestamp}`, false);
+          xhr.send();
+          
+          log.error(`Resposta bruta para ${folderName}:`, xhr.responseText);
           resolve(); // Continuar mesmo com erro
         });
     });
@@ -221,7 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Criar uma promessa para carregar este snippet
         const loadPromise = new Promise((resolveLoad) => {
-          fetch(snippetPath)
+          const timestamp = new Date().getTime();
+          fetch(`${snippetPath}?_t=${timestamp}`)
             .then(response => {
               if (!response.ok) {
                 throw new Error(`HTTP error ${response.status}`);
@@ -235,18 +280,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`Container não encontrado: ${SNIPPETS_CONFIG.containerSelector}`);
               }
               
-              // Inserir o HTML
-              container.insertAdjacentHTML('beforeend', html);
+              try {
+                // Verificar se o HTML parece válido
+                if (!html.includes('portfolio-item') || !html.includes('isotope-item')) {
+                  log.warn(`HTML do snippet ${snippetPath} parece inválido: ${html.substring(0, 100)}...`);
+                }
+                
+                // Inserir o HTML
+                container.insertAdjacentHTML('beforeend', html);
+                
+                // Marcar como carregado
+                snippetInfo.loaded = true;
+                state.loadedCount++;
+                
+                log.info(`Snippet carregado (${state.loadedCount}/${state.totalToLoad}): ${snippetPath}`);
+              } catch (insertError) {
+                log.error(`Erro ao inserir HTML: ${insertError.message}`, insertError);
+                log.warn(`HTML problemático: ${html.substring(0, 100)}...`);
+              }
               
-              // Marcar como carregado
-              snippetInfo.loaded = true;
-              state.loadedCount++;
-              
-              log.info(`Snippet carregado (${state.loadedCount}/${state.totalToLoad}): ${snippetPath}`);
               resolveLoad();
             })
             .catch(err => {
               log.error(`Falha ao carregar snippet: ${snippetPath}`, err);
+              
+              // Tentar fazer uma solicitação direta via XHR para ver a resposta bruta
+              try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `${snippetPath}?debug=1&_t=${timestamp}`, false);
+                xhr.send();
+                
+                log.error(`Resposta bruta para ${snippetPath}:`, 
+                         xhr.responseText ? xhr.responseText.substring(0, 200) + '...' : 'Vazia');
+              } catch (xhrErr) {
+                log.error('Erro ao fazer requisição XHR:', xhrErr);
+              }
+              
               resolveLoad(); // Resolver mesmo com erro
             });
         });
@@ -257,8 +326,23 @@ document.addEventListener('DOMContentLoaded', function() {
       // Aguardar que todos os snippets sejam carregados
       Promise.all(loadPromises)
         .then(() => {
+          // Verificar se algum snippet foi carregado
+          if (state.loadedCount === 0) {
+            log.warn('Nenhum snippet foi carregado com sucesso. Tentando abordagem alternativa...');
+            
+            // Tentar carregar diretamente os snippets que sabemos que existem
+            return loadFallbackSnippets();
+          }
+          
+          return true;
+        })
+        .then(() => {
           // Destacar todos os blocos de código
-          hljs.highlightAll();
+          try {
+            hljs.highlightAll();
+          } catch (hlErr) {
+            log.error('Erro ao destacar código:', hlErr);
+          }
           
           // Reinicializar o Isotope
           reinitializeIsotope();
@@ -266,6 +350,60 @@ document.addEventListener('DOMContentLoaded', function() {
           log.success(`${state.loadedCount} snippets carregados com sucesso!`);
           resolve();
         });
+    });
+  }
+  
+  /**
+   * Carrega snippets conhecidos como fallback
+   * @returns {Promise} Resolução quando os snippets de fallback forem carregados
+   */
+  function loadFallbackSnippets() {
+    return new Promise((resolve) => {
+      log.warn('Carregando snippets de fallback...');
+      
+      const fallbackSnippets = [
+        {
+          path: 'coding/main/sql/snippet_procedure_clean_data.html',
+          folder: 'sql'
+        },
+        {
+          path: 'coding/main/bootstrap/snippet_bootstrap_form_validation.html',
+          folder: 'bootstrap'
+        },
+        {
+          path: 'coding/main/php/snippet_php_cookies_sessions_preferences.html',
+          folder: 'php'
+        }
+      ];
+      
+      // Tentar carregar cada snippet de fallback
+      const loadPromises = fallbackSnippets.map(snippet => {
+        return fetch(snippet.path)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            }
+            return response.text();
+          })
+          .then(html => {
+            const container = document.querySelector(SNIPPETS_CONFIG.containerSelector);
+            if (container) {
+              container.insertAdjacentHTML('beforeend', html);
+              state.loadedCount++;
+              log.info(`Snippet de fallback carregado: ${snippet.path}`);
+            }
+          })
+          .catch(err => {
+            log.error(`Falha ao carregar snippet de fallback: ${snippet.path}`, err);
+          });
+      });
+      
+      Promise.all(loadPromises)
+        .then(() => {
+          log.info(`${state.loadedCount} snippets de fallback carregados`);
+          resolve();
+        })
+        .catch(resolve); // Continuar mesmo com erros
     });
   }
 
@@ -399,6 +537,68 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Iniciar o sistema quando o DOM estiver pronto
-  initAutoSnippets();
+  // Detectar se estamos no ambiente local ou em produção
+  const isLocalhost = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      window.location.hostname.includes('192.168.');
+                      
+  // Se não conseguirmos acessar a API PHP, usar uma implementação direta
+  function useFallbackImplementation() {
+    log.warn('Usando implementação de fallback para descoberta de pastas');
+    
+    // Pastas conhecidas
+    const knownFolders = ['sql', 'bootstrap', 'php'];
+    
+    // Adicionar pastas conhecidas
+    knownFolders.forEach(folder => {
+      state.folders.add(folder);
+      state.filterMap.set(folder, `filter-${folder.toLowerCase()}`);
+    });
+    
+    // Arquivos conhecidos
+    const knownFiles = {
+      'sql': ['snippet_procedure_clean_data.html'],
+      'bootstrap': ['snippet_bootstrap_form_validation.html'],
+      'php': ['snippet_php_cookies_sessions_preferences.html']
+    };
+    
+    // Adicionar snippets conhecidos
+    knownFolders.forEach(folder => {
+      const files = knownFiles[folder] || [];
+      files.forEach(file => {
+        const snippetPath = `${SNIPPETS_CONFIG.baseFolder}/${folder}/${file}`;
+        state.snippets.set(snippetPath, { loaded: false, folder: folder });
+        state.totalToLoad++;
+      });
+    });
+    
+    // Atualizar a interface
+    updateFiltersUI();
+    
+    // Carregar os snippets
+    loadAllDiscoveredSnippets();
+  }
+  
+  // Verificar primeiro se a API PHP está acessível
+  fetch('assets/php/test.php?_=' + new Date().getTime())
+    .then(response => {
+      if (!response.ok || !response.headers.get('content-type').includes('application/json')) {
+        throw new Error('API PHP indisponível');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data && data.success) {
+        // A API está funcionando, iniciar o sistema normalmente
+        log.info('API PHP detectada, usando descoberta automática');
+        initAutoSnippets();
+      } else {
+        // A API não está funcionando corretamente, usar fallback
+        useFallbackImplementation();
+      }
+    })
+    .catch(() => {
+      // Erro ao acessar a API, usar fallback
+      useFallbackImplementation();
+    });
 });
