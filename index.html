@@ -197,58 +197,6 @@
   </div>
   <!-- Fim do container dinâmico -->
 
-<!-- Ini Snippets PHP -->
-
-<!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-php">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-info text-center">Cookies, Sessões e Preferências</h6>
-    <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
-      <div class="snippet-actions-float d-flex align-items-center z-3">
-        <button class="btn btn-sm btn-outline-info btn-custom">
-          <iconify-icon icon="mdi:download"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-snippet-id="snippet-preferencias">
-          <iconify-icon icon="mdi:eye-outline"></iconify-icon>
-        </button>
-        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-cookies-sessions" >
-          <iconify-icon icon="mdi:content-copy"></iconify-icon>
-        </button>
-      </div>
-      <pre>
-<code class="language-php" data-snippet-id="snippet-cookies-sessions">&lt;?php
-  session_start();
-
-  # Aceite de cookies recebido via POST
-  if (isset($_POST['aceitar'])) {
-    setcookie('aceite_cookie', '1', time() + (86400 * 30), '/'); // 30 dias
-    $_SESSION['tema'] = 'escuro'; // Exemplo de preferência
-  }
-
-  # Mostrar sessão e cookie (debug/uso)
-  if (isset($_COOKIE['aceite_cookie'])) {
-    echo "Cookie aceite_cookie: " . $_COOKIE['aceite_cookie'] . "&lt;br&gt;";
-  }
-
-  if (isset($_SESSION['tema'])) {
-      echo "Sessão tema: " . $_SESSION['tema'] . "&lt;br&gt;";
-  }
-?&gt;
-
-&lt;!-- Mostrar aviso se cookie ainda não aceito --&gt;
-&lt;?php if (!isset($_COOKIE['aceite_cookie'])): ?&gt;
-   &lt;form method="post" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #222; color: #fff; padding: 1rem; border-radius: .5rem; z-index: 1000;"&gt;
-      Este site usa cookies para salvar suas preferências.
-      &lt;button type="submit" name="aceitar" class="btn btn-sm btn-success ms-2"&gt;Aceitar&lt;/button&gt;
-   &lt;/form&gt;
-&lt;?php endif; ?&gt;
-</code>
-    </pre>
-    </div>
-  </div>
-</div> -->
-
-<!-- End Snippets PHP -->
-
 <!-- Ini Snippets Isotope -->
 
 <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-isotope">
