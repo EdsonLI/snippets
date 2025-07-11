@@ -3338,9 +3338,11 @@ pre[class*="language-"] {
 .snippet-actions-float {
   position: sticky !important;
   top: 0 !important;
-  left: 0.4rem;
+  right: 0.4rem;
+  left: auto;
   z-index: 10;
-  margin-right: auto; /* empurra para esquerda se necessário */
+  margin-left: auto; /* empurra para direita */
+  margin-right: 0.4rem; /* distância da borda direita */
   display: flex;
   gap: 0.3em;
   /* background: rgba(34,34,34,0.85); */

@@ -65,8 +65,16 @@ $(document).ready(function() {
   // Expor a função globalmente
   window.loadDynamicSnippet = loadDynamicSnippet;
   
-  // Função auxiliar para configurar botões de cópia
+  // Função auxiliar para configurar botões de cópia e alinhar botões flutuantes
   function setupCopyButtons() {
+    // Garantir que todos os snippet-actions-float estejam alinhados à direita
+    document.querySelectorAll('.snippet-actions-float').forEach(actionBar => {
+      if (!actionBar.classList.contains('justify-content-end')) {
+        actionBar.classList.add('justify-content-end');
+      }
+    });
+    
+    // Configurar botões de cópia
     document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
       if (button.hasAttribute('data-copy-initialized')) return;
       

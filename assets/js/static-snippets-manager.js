@@ -298,9 +298,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Configura botões de cópia para todos os snippets
+   * Configura botões de cópia para todos os snippets e ajusta alinhamento dos botões flutuantes
    */
   function setupCopyButtons() {
+    // Garantir que todos os snippet-actions-float estejam alinhados à direita
+    document.querySelectorAll('.snippet-actions-float').forEach(actionBar => {
+      if (!actionBar.classList.contains('justify-content-end')) {
+        actionBar.classList.add('justify-content-end');
+      }
+    });
+    
+    // Configurar botões de cópia
     document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
       // Pular se já inicializado
       if (button.hasAttribute('data-copy-initialized')) return;
