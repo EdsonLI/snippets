@@ -44,9 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
    * }
    */  const STATIC_DIRECTORY_MAP = {
     'bootstrap': ['snippet_bootstrap_form_validation.html'],
+    'git': ['snippet_git_change_all_message_commits.html'],
     'php': ['snippet_php_cookies_sessions_preferences.html'],
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html']
-    // Última atualização: 11/07/2025 (corrigido manualmente)
+    // Última atualização: 11/07/2025 13:56:12
   };
 
   /**

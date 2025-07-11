@@ -38,7 +38,7 @@ function Get-SnippetsStructure {
     
     foreach ($dir in $directories) {
         $dirName = $dir.Name
-        $htmlFiles = Get-ChildItem -Path "$basePath\$dirName" -Filter "*.html" | Select-Object -ExpandProperty Name
+        $htmlFiles = @(Get-ChildItem -Path "$basePath\$dirName" -Filter "*.html" | Select-Object -ExpandProperty Name)
         
         if ($htmlFiles.Count -gt 0) {
             $structure[$dirName] = $htmlFiles
@@ -101,7 +101,7 @@ function Update-SnippetsMap {
     
     # Verificar se encontrou o padrão
     if ($content -match $pattern) {
-        Write-Host "Padrão STATIC_DIRECTORY_MAP encontrado no arquivo." -ForegroundColor Green
+        Write-Host "Padrao STATIC_DIRECTORY_MAP encontrado no arquivo." -ForegroundColor Green
     } else {
         Write-Host "AVISO: Padrão STATIC_DIRECTORY_MAP não encontrado no arquivo. Tentando padrão alternativo..." -ForegroundColor Yellow
         # Tentar um padrão mais simples como fallback
@@ -202,7 +202,7 @@ function Update-SnippetsDirectory {
     
     if ($result) {
         Write-Host "`nO objeto STATIC_DIRECTORY_MAP foi atualizado com sucesso!" -ForegroundColor Green
-        Write-Host "Você pode verificar o arquivo $jsFilePath" -ForegroundColor Green
+        Write-Host "Voce pode verificar o arquivo $jsFilePath" -ForegroundColor Green
     } else {
         Write-Host "`nOcorreu um erro ao atualizar o arquivo." -ForegroundColor Red
     }
