@@ -1,6 +1,6 @@
-/* 
- * Tech Badges - Estilização dinâmica para badges de tecnologias
+/* Tech Badges - Estilização dinâmica para badges de tecnologias
  * Criado por GitHub Copilot
+ * Última atualização: 11/07/2025
  */
 
 /* Estilo base para todas as badges de tecnologia */
@@ -18,11 +18,13 @@
 }
 
 .tech-badge iconify-icon {
-  margin-left: 0.3rem;
+  margin-right: 0.3rem;
   font-size: 0.85rem;
 }
 
 /* Estilos específicos para cada tecnologia */
+
+/* ===== TECNOLOGIAS JÁ IMPLEMENTADAS ===== */
 
 /* SQL */
 .tech-badge-sql {
@@ -105,6 +107,62 @@
 /* MadBuilder */
 .tech-badge-madbuilder {
   background-color: #5C3A97;
+  color: #fff;
+}
+
+/* ===== TECNOLOGIAS ADICIONAIS ===== */
+
+/* React */
+.tech-badge-react {
+  background-color: #61DAFB;
+  color: #000000;
+}
+
+/* Vue.js */
+.tech-badge-vue {
+  background-color: #4FC08D;
+  color: #fff;
+}
+
+/* Angular */
+.tech-badge-angular {
+  background-color: #DD0031;
+  color: #fff;
+}
+
+/* Node.js */
+.tech-badge-node {
+  background-color: #339933;
+  color: #fff;
+}
+
+/* Python */
+.tech-badge-python {
+  background-color: #3776AB;
+  color: #fff;
+}
+
+/* TypeScript */
+.tech-badge-typescript {
+  background-color: #3178C6;
+  color: #fff;
+}
+
+/* MongoDB */
+.tech-badge-mongodb {
+  background-color: #47A248;
+  color: #fff;
+}
+
+/* MySQL */
+.tech-badge-mysql {
+  background-color: #4479A1;
+  color: #fff;
+}
+
+/* Docker */
+.tech-badge-docker {
+  background-color: #2496ED;
   color: #fff;
 }
 

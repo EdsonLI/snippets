@@ -8,6 +8,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
   const TECH_ICONS = {
+    // Tecnologias já implementadas
     'sql': 'vscode-icons:file-type-sql',
     'html': 'vscode-icons:file-type-html',
     'css': 'vscode-icons:file-type-css',
@@ -22,7 +23,28 @@ document.addEventListener('DOMContentLoaded', function() {
     'vscode': 'vscode-icons:file-type-vscode',
     'sweetalert2': 'ion:alert-circle-outline',
     'codepen': 'logos:codepen-icon',
-    'madbuilder': 'mdi:tools'
+    'madbuilder': 'mdi:tools',
+    
+    // Tecnologias adicionais que você pode usar
+    'react': 'logos:react',
+    'vue': 'logos:vue',
+    'angular': 'logos:angular-icon',
+    'node': 'logos:nodejs-icon',
+    'python': 'logos:python',
+    'java': 'logos:java',
+    'csharp': 'vscode-icons:file-type-csharp',
+    'ruby': 'logos:ruby',
+    'typescript': 'logos:typescript-icon',
+    'graphql': 'logos:graphql',
+    'mongodb': 'vscode-icons:file-type-mongo',
+    'mysql': 'logos:mysql',
+    'postgresql': 'logos:postgresql',
+    'aws': 'logos:aws',
+    'docker': 'logos:docker-icon',
+    'kubernetes': 'logos:kubernetes',
+    'laravel': 'logos:laravel',
+    'dotnet': 'vscode-icons:file-type-dotnet',
+    'flutter': 'logos:flutter'
   };
 
   // Função para transformar spans em badges
@@ -43,11 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
       // Adicionar a classe de badge
       span.classList.add('tech-badge', `tech-badge-${tech}`);
       
-      // Adicionar o ícone ao final do texto
+      // Adicionar o ícone no início do texto
       const iconElement = document.createElement('iconify-icon');
       iconElement.setAttribute('icon', icon);
       iconElement.style.verticalAlign = 'middle';
-      span.appendChild(iconElement);
+      span.insertBefore(iconElement, span.firstChild);
     });
   }
 
