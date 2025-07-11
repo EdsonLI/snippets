@@ -1,0 +1,26 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-info text-center">Procedure para gerar relatório simples - SQL</h6>
+    <div class="snippet-code position-relative">
+      <div class="snippet-actions-float d-flex align-items-center z-3">
+        <button class="btn btn-sm btn-outline-info btn-custom" data-target="snippet-sql-procedure-report-basic">
+          <iconify-icon icon="mdi:content-copy"></iconify-icon>
+        </button>
+      </div>      
+      <pre>
+<code id="snippet-sql-procedure-report-basic" class="language-sql">
+DELIMITER //
+
+CREATE PROCEDURE Relatorio_Clientes_Por_Cidade()
+BEGIN
+    SELECT cidade, COUNT(*) AS total_clientes
+    FROM clientes
+    GROUP BY cidade;
+END //
+
+DELIMITER ;
+</code>
+      </pre>
+    </div>
+  </div>
+</div>

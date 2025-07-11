@@ -42,12 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
    *   'nome-da-pasta': ['snippet1.html', 'snippet2.html', ...],
    *   ...
    * }
-   */
-  const STATIC_DIRECTORY_MAP = {
-    'sql': ['snippet_procedure_clean_data.html'],
-    'bootstrap': ['snippet_bootstrap_form_validation.html'],
-    'php': ['snippet_php_cookies_sessions_preferences.html']
-    // Adicione novas pastas e arquivos aqui conforme necessário
+   */  const STATIC_DIRECTORY_MAP = {
+    'bootstrap': ['s'],
+    'php': ['s'],
+    'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html']
+    // Última atualização: 11/07/2025 10:36:08
   };
 
   /**

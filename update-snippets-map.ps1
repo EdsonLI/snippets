@@ -1,6 +1,3 @@
-# Script PowerShell para atualizar automaticamente o objeto STATIC_DIRECTORY_MAP
-# Versão 1.0.0
-
 # ==== COMO EXECUTAR ESTE SCRIPT ====
 #
 # Opção 1: No Terminal do VSCode (Recomendado)
@@ -156,7 +153,7 @@ function Update-SnippetsDirectory {
     $fullBasePath = Join-Path -Path $currentDir -ChildPath $baseFolder
     $fullJsPath = Join-Path -Path $currentDir -ChildPath $jsFilePath
     
-    Write-Host "Diretório base: $fullBasePath" -ForegroundColor Cyan
+    Write-Host "Diretorio base: $fullBasePath" -ForegroundColor Cyan
     Write-Host "Arquivo JavaScript: $fullJsPath`n" -ForegroundColor Cyan
     
     # Confirmar com o usuário
