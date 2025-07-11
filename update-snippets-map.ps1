@@ -99,8 +99,23 @@ function Update-SnippetsMap {
     # Padrão de regex para encontrar a declaração do STATIC_DIRECTORY_MAP
     $pattern = "(?ms)(\s*const\s+STATIC_DIRECTORY_MAP\s*=\s*\{).*?(\s*\}\;)"
     
+    # Verificar se encontrou o padrão
+    if ($content -match $pattern) {
+        Write-Host "Padrão STATIC_DIRECTORY_MAP encontrado no arquivo." -ForegroundColor Green
+    } else {
+        Write-Host "AVISO: Padrão STATIC_DIRECTORY_MAP não encontrado no arquivo. Tentando padrão alternativo..." -ForegroundColor Yellow
+        # Tentar um padrão mais simples como fallback
+        $pattern = "(?ms)(STATIC_DIRECTORY_MAP\s*=\s*\{).*?(\}\;)"
+    }
+    
     # Substituir no conteúdo
     $newContent = $content -replace $pattern, $mapContent
+    
+    # Verificar se a substituição foi bem-sucedida
+    if ($newContent -eq $content) {
+        Write-Host "ERRO: Falha ao substituir o padrão. Nenhuma alteração feita." -ForegroundColor Red
+        return $false
+    }
     
     # Salvar o arquivo
     try {
