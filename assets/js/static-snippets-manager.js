@@ -262,17 +262,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Configurar eventos de filtro
-        const filterBtns = parent.querySelectorAll('.isotope-filters li');
+        const filterContainer = parent.querySelector('.isotope-filters');
+        if (!filterContainer) {
+          log.warn('Container de filtros .isotope-filters não encontrado');
+          return;
+        }
+        
+        // Clonar toda a lista de filtros para remover todos os eventos atribuídos anteriormente
+        const newFilterList = filterContainer.cloneNode(true);
+        filterContainer.parentNode.replaceChild(newFilterList, filterContainer);
+        
+        // Obter referência aos novos botões
+        const filterBtns = newFilterList.querySelectorAll('li');
+        
+        // Garantir que apenas o botão 'All' (primeiro) tenha a classe filter-active
+        filterBtns.forEach((btn, index) => {
+          if (index === 0) {
+            btn.classList.add('filter-active');
+          } else {
+            btn.classList.remove('filter-active');
+          }
+        });
+        
+        // Adicionar novos eventos de clique
         filterBtns.forEach(btn => {
-          // Remover eventos anteriores
-          const newBtn = btn.cloneNode(true);
-          btn.parentNode.replaceChild(newBtn, btn);
-          
-          // Adicionar novo evento
-          newBtn.addEventListener('click', function() {
+          btn.addEventListener('click', function(e) {
+            // Evitar comportamento padrão e propagação
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Remover classe ativa de todos os botões
             filterBtns.forEach(b => b.classList.remove('filter-active'));
+            
+            // Adicionar classe ativa apenas ao botão clicado
             this.classList.add('filter-active');
             
+            // Filtrar os itens
             iso.arrange({
               filter: this.getAttribute('data-filter')
             });
