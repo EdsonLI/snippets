@@ -20,6 +20,15 @@
 .tech-badge iconify-icon {
   margin-right: 0.3rem;
   font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 2px;
 }
 
 /* Estilos específicos para cada tecnologia */
@@ -170,4 +179,82 @@
 .tech-badge:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== ESTILOS DE ÍCONES PARA MELHOR CONTRASTE ===== */
+
+/* Estilo padrão para ícones (para fundos escuros) */
+.tech-badge iconify-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  padding: 2px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos específicos para tecnologias com fundos claros */
+.tech-badge-javascript iconify-icon,
+.tech-badge-js iconify-icon,
+.tech-badge-python iconify-icon,
+.tech-badge-vue iconify-icon {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste específico para ícones com cores semelhantes ao seu fundo */
+.tech-badge-sql iconify-icon {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.tech-badge-php iconify-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tech-badge-bootstrap iconify-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tech-badge-jquery iconify-icon {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.tech-badge-git iconify-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tech-badge-vscode iconify-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tech-badge-mysql iconify-icon {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Classes de contraste para ícones */
+.tech-badge iconify-icon.icon-default-bg {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.tech-badge iconify-icon.icon-light-bg {
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.tech-badge iconify-icon.icon-dark-bg {
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de destaque ao passar o mouse sobre os ícones */
+.tech-badge iconify-icon:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+/* Classe de acessibilidade para alto contraste */
+.tech-badge.high-contrast iconify-icon {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
 }

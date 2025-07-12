@@ -47,6 +47,24 @@ document.addEventListener('DOMContentLoaded', function() {
     'flutter': 'logos:flutter'
   };
 
+  // Função para calcular o contraste adequado para ícones
+  function getIconContrastClass(tech) {
+    // Tecnologias que precisam de contraste específico
+    // Fundo claro - ícone precisa de fundo escuro
+    const lightBackgrounds = ['javascript', 'js', 'python', 'vue'];
+    // Fundo escuro - ícone precisa de fundo claro
+    const darkBackgrounds = ['php', 'bootstrap', 'git', 'vscode', 'angular', 'react'];
+    
+    if (lightBackgrounds.includes(tech)) {
+      return 'icon-dark-bg';
+    } else if (darkBackgrounds.includes(tech)) {
+      return 'icon-light-bg';
+    }
+    
+    // Padrão
+    return 'icon-default-bg';
+  }
+
   // Função para transformar spans em badges
   function transformTechBadges() {
     // Encontrar todos os spans de tecnologia (formato id-tech-*) que ainda não foram processados
@@ -72,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
+        iconElement.classList.add('icon-tech', `icon-tech-${tech}`, getIconContrastClass(tech));
         span.insertBefore(iconElement, span.firstChild);
       }
       
