@@ -10,25 +10,40 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 1;
   margin-bottom: 0.25rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
+  gap: 0.3rem;
 }
 
 .tech-badge iconify-icon {
   margin-right: 0.3rem;
-  font-size: 0.85rem;
+  font-size: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 2px;
+  color: white; /* Define cor branca como padrão para os ícones */
+  filter: brightness(1) drop-shadow(0 0 1px rgba(0,0,0,0.3));
+}
+
+/* Garantir que os ícones SVG sejam sempre brancos */
+.tech-badge iconify-icon svg * {
+  fill: white !important;
+  stroke: white !important;
+  color: white !important;
+}
+
+/* Aumentar o contraste do background dos ícones para todas as tecnologias */
+.tech-badge iconify-icon {
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Estilos específicos para cada tecnologia */
@@ -194,55 +209,72 @@
 /* Estilos específicos para tecnologias com fundos claros */
 .tech-badge-javascript iconify-icon,
 .tech-badge-js iconify-icon,
-.tech-badge-python iconify-icon,
-.tech-badge-vue iconify-icon {
-  background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+.tech-badge-react iconify-icon {
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 /* Ajuste específico para ícones com cores semelhantes ao seu fundo */
 .tech-badge-sql iconify-icon {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.25);
+  color: white;
 }
 
 .tech-badge-php iconify-icon {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .tech-badge-bootstrap iconify-icon {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .tech-badge-jquery iconify-icon {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.25);
+  color: white;
 }
 
 .tech-badge-git iconify-icon {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .tech-badge-vscode iconify-icon {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .tech-badge-mysql iconify-icon {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.25);
+  color: white;
 }
 
 /* Classes de contraste para ícones */
 .tech-badge iconify-icon.icon-default-bg {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
 .tech-badge iconify-icon.icon-light-bg {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  color: white;
 }
 
 .tech-badge iconify-icon.icon-dark-bg {
-  background-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* Classe adicional para fundos muito escuros */
+.tech-badge iconify-icon.icon-very-dark-bg {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 /* Efeito de destaque ao passar o mouse sobre os ícones */
@@ -257,4 +289,19 @@
   background-color: #ffffff;
   color: #000000;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Garantir exibição correta durante o carregamento do Iconify */
+.tech-badge iconify-icon:not(.ready) {
+  opacity: 0.7;
+}
+
+.tech-badge iconify-icon.ready {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Garantir que os contornos dos ícones sejam visíveis */
+.tech-badge iconify-icon svg {
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
 }

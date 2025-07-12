@@ -49,19 +49,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Função para calcular o contraste adequado para ícones
   function getIconContrastClass(tech) {
-    // Tecnologias que precisam de contraste específico
-    // Fundo claro - ícone precisa de fundo escuro
-    const lightBackgrounds = ['javascript', 'js', 'python', 'vue'];
-    // Fundo escuro - ícone precisa de fundo claro
-    const darkBackgrounds = ['php', 'bootstrap', 'git', 'vscode', 'angular', 'react'];
+    // Todas as tecnologias agora usam o mesmo estilo de fundo escuro
+    // para garantir que os ícones brancos tenham bom contraste
+    
+    // Tecnologias com fundos muito escuros que precisam de ajuste na opacidade
+    const veryDarkBackgrounds = ['codepen', 'typescript', 'angular', 'vscode'];
+    
+    if (veryDarkBackgrounds.includes(tech)) {
+      return 'icon-very-dark-bg';
+    }
+    
+    // Tecnologias com fundos claros que precisam de fundo escuro para contraste
+    const lightBackgrounds = ['javascript', 'js', 'react', 'vue'];
     
     if (lightBackgrounds.includes(tech)) {
       return 'icon-dark-bg';
-    } else if (darkBackgrounds.includes(tech)) {
-      return 'icon-light-bg';
     }
     
-    // Padrão
+    // Padrão para a maioria das tecnologias
     return 'icon-default-bg';
   }
 
@@ -90,6 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
+        iconElement.style.color = 'white'; // Forçar cor branca
+        iconElement.setAttribute('width', '1em'); // Garantir tamanho adequado
+        iconElement.setAttribute('height', '1em'); // Garantir tamanho adequado
         iconElement.classList.add('icon-tech', `icon-tech-${tech}`, getIconContrastClass(tech));
         span.insertBefore(iconElement, span.firstChild);
       }
