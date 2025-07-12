@@ -3,7 +3,7 @@
  * Transforma spans com classes id-tech-* em badges estilizadas com ícones
  * 
  * @author GitHub Copilot
- * @version 1.0.0
+ * @version 1.0.1
  */
 document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
@@ -47,11 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
     'flutter': 'logos:flutter'
   };
 
-  // Função simplificada para trabalhar com ícones
-  function getIconClass(tech) {
-    return `icon-tech-${tech}`;
-  }
-
   // Função para transformar spans em badges
   function transformTechBadges() {
     // Encontrar todos os spans de tecnologia (formato id-tech-*) que ainda não foram processados
@@ -77,11 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
-        // Define tamanho adequado
         iconElement.setAttribute('width', '1em');
         iconElement.setAttribute('height', '1em');
-        // Adiciona classes para estilização
-        iconElement.classList.add('icon-tech', `icon-tech-${tech}`);
         
         // Insere o ícone no DOM
         span.insertBefore(iconElement, span.firstChild);

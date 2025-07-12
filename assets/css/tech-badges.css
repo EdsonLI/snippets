@@ -27,11 +27,9 @@
   width: 1.5em;
   height: 1.5em;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 2px;
-  color: white; /* Define cor branca como padrão para os ícones */
-  filter: brightness(1) drop-shadow(0 0 1px rgba(0,0,0,0.3));
 }
 
 /* Garantir que os ícones SVG sejam sempre brancos */
