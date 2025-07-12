@@ -27,7 +27,7 @@
   width: 1.5em;
   height: 1.5em;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(0, 0, 0, 0.2); */
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 2px;
 }
@@ -45,7 +45,7 @@
 
 /* Aumentar o contraste do background dos ícones para todas as tecnologias */
 .tech-badge iconify-icon {
-  background-color: rgba(0, 0, 0, 0.3) !important;
+  /* background-color: rgba(0, 0, 0, 0.3) !important; */
 }
 
 /* Estilos específicos para cada tecnologia */
