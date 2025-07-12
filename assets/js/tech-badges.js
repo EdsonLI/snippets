@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Função para transformar spans em badges
   function transformTechBadges() {
-    // Encontrar todos os spans de tecnologia (formato id-tech-*)
-    const techSpans = document.querySelectorAll('[class*="id-tech-"]');
+    // Encontrar todos os spans de tecnologia (formato id-tech-*) que ainda não foram processados
+    const techSpans = document.querySelectorAll('[class*="id-tech-"]:not([data-tech-processed])');
     
     techSpans.forEach(span => {
       // Obter o tipo de tecnologia a partir da classe
@@ -65,11 +65,18 @@ document.addEventListener('DOMContentLoaded', function() {
       // Adicionar a classe de badge
       span.classList.add('tech-badge', `tech-badge-${tech}`);
       
-      // Adicionar o ícone no início do texto
-      const iconElement = document.createElement('iconify-icon');
-      iconElement.setAttribute('icon', icon);
-      iconElement.style.verticalAlign = 'middle';
-      span.insertBefore(iconElement, span.firstChild);
+      // Verificar se já existe um ícone antes de adicionar um novo
+      const existingIcon = span.querySelector('iconify-icon');
+      if (!existingIcon) {
+        // Adicionar o ícone no início do texto
+        const iconElement = document.createElement('iconify-icon');
+        iconElement.setAttribute('icon', icon);
+        iconElement.style.verticalAlign = 'middle';
+        span.insertBefore(iconElement, span.firstChild);
+      }
+      
+      // Marcar como processado para evitar processamento duplicado
+      span.setAttribute('data-tech-processed', 'true');
     });
   }
 
@@ -84,8 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
     mutations.forEach(mutation => {
       if (mutation.addedNodes.length > 0) {
         mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1 && node.querySelector('[class*="id-tech-"]')) {
-            shouldTransform = true;
+          if (node.nodeType === 1) {
+            // Verificar se o próprio nó contém a classe id-tech-*
+            if (node.classList && Array.from(node.classList).some(cls => cls.startsWith('id-tech-')) && !node.hasAttribute('data-tech-processed')) {
+              shouldTransform = true;
+            }
+            // Verificar se algum filho contém a classe id-tech-*
+            else if (node.querySelector && node.querySelector('[class*="id-tech-"]:not([data-tech-processed])')) {
+              shouldTransform = true;
+            }
           }
         });
       }
