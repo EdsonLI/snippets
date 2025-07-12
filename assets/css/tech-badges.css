@@ -35,10 +35,14 @@
 }
 
 /* Garantir que os ícones SVG sejam sempre brancos */
+.tech-badge iconify-icon,
+.tech-badge iconify-icon svg,
 .tech-badge iconify-icon svg * {
   fill: white !important;
   stroke: white !important;
   color: white !important;
+  /* Filtro para forçar cores para branco */
+  filter: brightness(0) invert(1) !important;
 }
 
 /* Aumentar o contraste do background dos ícones para todas as tecnologias */
@@ -304,4 +308,48 @@
 /* Garantir que os contornos dos ícones sejam visíveis */
 .tech-badge iconify-icon svg {
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+}
+
+/* Regras mais fortes para garantir ícones brancos */
+.tech-badge iconify-icon.force-white-icon {
+  /* Combinação de filtros para garantir cor branca */
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+  
+  /* Propriedades CSS adicionais para garantir cor branca */
+  color: white !important;
+  fill: white !important;
+}
+
+/* Estilização específica para o elemento SVG dentro do iconify-icon */
+.tech-badge iconify-icon svg {
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+  color: white !important;
+  fill: white !important;
+}
+
+/* Garantir que todos os paths, circles, e outros elementos SVG sejam brancos */
+.tech-badge iconify-icon svg path,
+.tech-badge iconify-icon svg rect,
+.tech-badge iconify-icon svg circle,
+.tech-badge iconify-icon svg polygon,
+.tech-badge iconify-icon svg g {
+  fill: white !important;
+  stroke: white !important;
+  color: white !important;
+}
+
+/* Estilos específicos para ícones que podem precisar de ajustes adicionais */
+.tech-badge-bootstrap iconify-icon,
+.tech-badge-git iconify-icon,
+.tech-badge-javascript iconify-icon,
+.tech-badge-react iconify-icon,
+.tech-badge-vue iconify-icon {
+  filter: brightness(0) invert(1) contrast(1) !important;
+}
+
+/* Garantir que nenhum ícone tenha seu filtro modificado por outras regras */
+.tech-badge iconify-icon[data-force-white="true"] {
+  filter: brightness(0) invert(1) !important;
 }

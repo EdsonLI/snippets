@@ -1,0 +1,121 @@
+/**
+ * Tech Icons Fixes - Ajustes específicos para ícones tecnológicos
+ * Este arquivo contém correções específicas para ícones que podem não ficar brancos com as regras gerais
+ */
+
+/* ===== REGRAS PARA ÍCONES ESPECÍFICOS ===== */
+
+/* Bootstrap */
+.tech-badge-bootstrap iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+.tech-badge-bootstrap iconify-icon svg * {
+  fill: white !important;
+}
+
+/* Git */
+.tech-badge-git iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+.tech-badge-git iconify-icon svg path {
+  fill: white !important;
+}
+
+/* JavaScript */
+.tech-badge-javascript iconify-icon,
+.tech-badge-js iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* React */
+.tech-badge-react iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+.tech-badge-react iconify-icon svg * {
+  fill: white !important;
+  stroke: white !important;
+}
+
+/* PHP */
+.tech-badge-php iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Vue */
+.tech-badge-vue iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* jQuery */
+.tech-badge-jquery iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* FontAwesome */
+.tech-badge-fontawesome iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* VSCode */
+.tech-badge-vscode iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* SQL */
+.tech-badge-sql iconify-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Aplicar para todos os ícones para garantir consistência */
+.tech-badge iconify-icon {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+/* ===== TÉCNICA AVANÇADA DE RECOLORIZAÇÃO SVG ===== */
+
+/* Técnica usando mask-image para garantir que todos os ícones sejam brancos */
+.tech-badge iconify-icon {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-color: white !important;
+}
+
+/* Aplicação de estilos para tornar o SVG em uma máscara */
+.tech-badge iconify-icon svg {
+  visibility: hidden; /* Esconde o SVG original */
+}
+
+/* Define a máscara usando o SVG */
+.tech-badge iconify-icon.masked {
+  position: relative;
+}
+
+.tech-badge iconify-icon.masked::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  -webkit-mask-image: var(--icon-mask);
+  mask-image: var(--icon-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Ajuste para o modo escuro */
+@media (prefers-color-scheme: dark) {
+  .tech-badge iconify-icon {
+    filter: brightness(0) invert(1) !important;
+  }
+}

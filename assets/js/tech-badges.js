@@ -95,11 +95,41 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
-        iconElement.style.color = 'white'; // Forçar cor branca
-        iconElement.setAttribute('width', '1em'); // Garantir tamanho adequado
-        iconElement.setAttribute('height', '1em'); // Garantir tamanho adequado
-        iconElement.classList.add('icon-tech', `icon-tech-${tech}`, getIconContrastClass(tech));
+        // Força cor branca em diferentes propriedades
+        iconElement.style.color = 'white';
+        iconElement.style.fill = 'white';
+        // Define atributos específicos para o Iconify
+        iconElement.setAttribute('width', '1em');
+        iconElement.setAttribute('height', '1em');
+        // Adiciona atributos customizados para controlar cores
+        iconElement.setAttribute('data-force-white', 'true');
+        // Adiciona classes para estilização
+        iconElement.classList.add('icon-tech', `icon-tech-${tech}`, getIconContrastClass(tech), 'force-white-icon');
+        
+        // Insere o ícone no DOM
         span.insertBefore(iconElement, span.firstChild);
+        
+        // Adiciona um evento para quando o ícone for carregado para aplicar filtro de branqueamento
+        iconElement.addEventListener('load', () => {
+          // Obtém o SVG interno
+          const svg = iconElement.querySelector('svg');
+          if (svg) {
+            // Forçar branco em todos os elementos internos do SVG
+            svg.style.color = 'white';
+            svg.style.fill = 'white';
+            
+            // Aplicar atributos diretamente ao SVG
+            svg.setAttribute('fill', 'white');
+            
+            // Aplicar a todos os elementos internos do SVG
+            const elements = svg.querySelectorAll('*');
+            elements.forEach(el => {
+              el.style.fill = 'white';
+              el.style.stroke = 'white';
+              el.setAttribute('fill', 'white');
+            });
+          }
+        });
       }
       
       // Marcar como processado para evitar processamento duplicado
@@ -107,8 +137,72 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Função para processar ícones após o carregamento completo da página
+  function processIcons() {
+    // Processa todos os ícones iconify no documento
+    document.querySelectorAll('.tech-badge iconify-icon').forEach(icon => {
+      // Garante que todos os ícones tenham a classe force-white-icon
+      icon.classList.add('force-white-icon');
+      
+      // Força estilo inline para garantir que seja aplicado
+      icon.style.filter = 'brightness(0) invert(1)';
+      icon.style.webkitFilter = 'brightness(0) invert(1)';
+      icon.style.color = 'white';
+      
+      // Obtém o SVG interno
+      const svg = icon.querySelector('svg');
+      if (svg) {
+        // Aplica estilos diretamente ao SVG
+        svg.style.color = 'white';
+        svg.style.fill = 'white';
+        svg.setAttribute('fill', 'white');
+        svg.style.filter = 'brightness(0) invert(1)';
+        
+        // Aplica a todos os elementos internos
+        const elements = svg.querySelectorAll('*');
+        elements.forEach(el => {
+          el.style.fill = 'white';
+          el.style.stroke = 'white';
+          el.setAttribute('fill', 'white');
+        });
+      }
+    });
+  }
+
+  // Função para aplicar mascaramento nos ícones para garantir cor branca
+  function applyIconMasks() {
+    document.querySelectorAll('.tech-badge iconify-icon').forEach(icon => {
+      // Aguarda o Iconify carregar o ícone
+      icon.addEventListener('load', () => {
+        const svg = icon.querySelector('svg');
+        if (svg) {
+          // Cria uma URL do SVG para usar como máscara
+          const svgString = new XMLSerializer().serializeToString(svg);
+          const svgUrl = 'url("data:image/svg+xml;charset=utf8,' + 
+                          encodeURIComponent(svgString) + '")';
+          
+          // Aplica a máscara diretamente no elemento
+          icon.style.setProperty('--icon-mask', svgUrl);
+          icon.classList.add('masked');
+          
+          // Também força o filtro para garantir
+          icon.style.filter = 'brightness(0) invert(1)';
+        }
+      });
+    });
+  }
+  
   // Inicializar as badges
   transformTechBadges();
+  
+  // Processa os ícones após um pequeno delay para garantir que foram carregados
+  setTimeout(processIcons, 500);
+  
+  // Executa a aplicação de máscaras depois de um tempo para garantir que o Iconify carregou
+  setTimeout(applyIconMasks, 1000);
+  
+  // Também processa quando a página estiver completamente carregada
+  window.addEventListener('load', processIcons);
   
   // Para suportar carregamento dinâmico de conteúdo
   // Observe o DOM para novos elementos
