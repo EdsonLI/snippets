@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'javascript': 'logos:javascript',
     'js': 'logos:javascript',
     'php': 'logos:php',
-    'bootstrap': 'logos:bootstrap',
+    'bootstrap': 'mdi:bootstrap', // Usando versão monocromática para o Bootstrap para que o B fique branco
     'jquery': 'logos:jquery',
     'git': 'logos:git-icon',
     'fontawesome': 'logos:font-awesome',
