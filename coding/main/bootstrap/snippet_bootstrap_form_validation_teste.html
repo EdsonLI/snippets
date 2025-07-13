@@ -1,27 +1,39 @@
-<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-bootstrap">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-center">
-      <span class="id-tech-bootstrap">Bootstrap</span>
-      <div class="snippet-actions-float d-flex align-items-center gap-1">
-        <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-xs btn-outline-info btn-custom" download>
-          <iconify-icon icon="mdi:download" width="16" height="16"></iconify-icon>
-        </a>
-        <button class="btn btn-xs btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
-          <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
-        </button>
-        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-bootstrap-form-validation-feedback">
-          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
-        </button>
-        <a href="https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
-          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
-        </a>
-      </div>
-    </h6>
-  <div class="snippet-title text-center mb-2">Validação de formulários</div>
+<!-- Levar essa idéia em frente -->
+ 
 
-<div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
-<div class="position-relative">
-<pre>
+<!--id-tech-->
+<span class="id-tech-bootstrap">Bootstrap</span>
+<!--/id-tech-->
+      
+<!--href-download-->
+<a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-xs btn-outline-info btn-custom" download>
+  <iconify-icon icon="mdi:download" width="16" height="16"></iconify-icon>
+</a>
+<!--/href-download-->
+      
+<!--btn-previsualization-->
+<button class="btn btn-xs btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
+  <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
+</button>
+<!--/btn-previsualization-->
+
+<!--btn-copy-->
+<button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-bootstrap-form-validation-feedback">
+  <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+</button>
+<!--/btn-copy-->
+
+<!--href-link-->
+<a href="https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+  <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+</a>
+<!--/href-link-->
+
+<!--snippet-title-->
+<div class="snippet-title text-center mb-2">Validação de formulários</div>
+<!--/snippet-title-->
+
+<!--snippet-code-->
 <code id="snippet-bootstrap-form-validation-feedback" class="language-html">&lt;form class="row g-3 needs-validation" id="form-interativo" novalidate autocomplete="off"&gt;
   &lt;div class="col-md-4"&gt;
     &lt;label for="firstName" class="form-label"&gt;First name&lt;/label&gt;
@@ -140,12 +152,7 @@
       })
   })()
 &lt;/script&gt;
-</code>
-</pre>
-</div>
-</div>
-</div>
-</div>
+<!--/snippet-code-->
 
 <!-- Modal de previsualização -->
 <div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
@@ -168,3 +175,20 @@
   </div>
 </div>
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
+
+<!-- Levar essa idéia em frente: -->
+ Prompt:
+ No snippet_bootstrap_form_validation.html tem uma estrutura completa com:
+
+Identificação da tecnologia:
+<span class="id-tech-bootstrap">Bootstrap</span>
+Links e botões de ações:<div class="snippet-actions-float d-flex align-items-center gap-1"> <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-xs btn-outline-info btn-custom" download> <iconify-icon icon="mdi:download" width="16" height="16"></iconify-icon> </a> <button class="btn btn-xs btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap"> <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon> </button> <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-bootstrap-form-validation-feedback"> <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon> </button> <a href="https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link> <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon> </a>
+</div> - Título do snippet: <div class="snippet-title text-center mb-2">Validação de formulários</div> - Código do snippet: <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;"> <div class="position-relative"> <pre> <code id="snippet-bootstrap-form-validation-feedback" class="language-html"> ... código ... </code> </pre> </div> </div>
+já no snippet_bootstrap_form_validation_teste.html eu selecionei trechos que eu gostaria de utilizar para gerar o conteúdo dos snippets dinamicamente a partir de agora... a idéia seria, a partir dos comentários que eu coloquei:
+
+<!--id-tech-->
+...
+<!--/id-tech-->
+indicar a que parte do snippet pertence aquela informação que deve ser injetada dinamicamente dentro de um template que você faria com base no exemplo completo do snippet_bootstrap_form_validation.html
+
+você entendeu? analise para mim, não faça modificações no código ainda, mas me diga se é possível fazer isso dinamicamente de alguma forma para eu passar o conteúdo dos snippets no formato que demonstrei ali no C:\xampp\htdocs\snippets\coding\main\bootstrap\snippet_bootstrap_form_validation_teste.html
