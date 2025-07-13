@@ -5,22 +5,29 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.info('🔄 Recarregando ícones tecnológicos com cores de branding...');
   
-  // Remover atributo data-tech-processed de todos os badges para forçar reprocessamento
-  const techBadges = document.querySelectorAll('.tech-badge');
-  techBadges.forEach(badge => {
-    badge.removeAttribute('data-tech-processed');
-    
-    // Remover iconify-icon existentes para substituí-los
-    const existingIcons = badge.querySelectorAll('iconify-icon');
-    existingIcons.forEach(icon => {
-      icon.remove();
+  function reloadIcons() {
+    // Remover atributo data-tech-processed de todos os badges para forçar reprocessamento
+    const techBadges = document.querySelectorAll('.tech-badge');
+    techBadges.forEach(badge => {
+      badge.removeAttribute('data-tech-processed');
+      
+      // Remover iconify-icon existentes para substituí-los
+      const existingIcons = badge.querySelectorAll('iconify-icon');
+      existingIcons.forEach(icon => {
+        icon.remove();
+      });
     });
-  });
-  
-  // Disparar evento customizado para notificar tech-badges.js para reprocessar
-  setTimeout(() => {
+    
+    // Disparar evento customizado para notificar tech-badges.js para reprocessar
     const event = new CustomEvent('reload-tech-badges');
     document.dispatchEvent(event);
-    console.info('✅ Ícones tecnológicos recarregados com sucesso!');
-  }, 100);
+    console.info('✅ Ícones tecnológicos recarregados');
+  }
+  
+  // Recarregar ícones inicialmente
+  setTimeout(reloadIcons, 100);
+  
+  // Recarregar novamente após um tempo para garantir que todos os ícones sejam atualizados
+  setTimeout(reloadIcons, 500);
+  setTimeout(reloadIcons, 1000);
 });

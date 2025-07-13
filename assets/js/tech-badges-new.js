@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
   const TECH_ICONS = {
     // Tecnologias implementadas - usando versões coloridas (brandings originais)
-    'sql': 'logos:sqlite',
+    'sql': 'teenyicons:sql-outline', // Ícone alternativo para SQL que deve funcionar melhor
     'html': 'logos:html-5',
     'css': 'logos:css-3',
     'javascript': 'logos:javascript',
     'js': 'logos:javascript',
     'php': 'logos:php',
-    'bootstrap': 'mdi:bootstrap', // Usando versão monocromática para o Bootstrap para que o B fique branco
+    'bootstrap': 'logos:bootstrap',
     'jquery': 'logos:jquery',
     'git': 'logos:git-icon',
     'fontawesome': 'logos:font-awesome',
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
-        iconElement.setAttribute('width', '18px');
-        iconElement.setAttribute('height', '18px');
+        iconElement.setAttribute('width', '20px');
+        iconElement.setAttribute('height', '20px');
         
         // Configuração para ícones coloridos - sem manipulação de cores
         // Permitimos que os ícones mantenham suas cores originais de branding
@@ -89,6 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar as badges
   transformTechBadges();
+  
+  // Evento para recarregar ícones quando solicitado
+  document.addEventListener('reload-tech-badges', function() {
+    console.info('🔄 Processando ícones após evento de recarga...');
+    transformTechBadges();
+  });
   
   // Para suportar carregamento dinâmico de conteúdo
   // Observe o DOM para novos elementos
