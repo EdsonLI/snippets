@@ -46,9 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
     'bootstrap': ['snippet_bootstrap_form_validation.html'],
     'git': ['snippet_git_change_all_message_commits.html'],
     'isotope': ['snippet_isotope_basic_example.html'],
+    'jquery': ['snippet_jquery_toggle_example.html'],
     'php': ['snippet_php_cookies_sessions_preferences.html'],
-    'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html']
-    // Última atualização: 13/07/2025 00:02:02
+    'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
+    'sweetalert2': ['snippet_sweetalert2_confirmation_example.html.html']
+    // Última atualização: 13/07/2025 19:21:12
   };
 
   /**
