@@ -2,29 +2,41 @@
  * Tech Icons Fixes - Ajustes simples para ícones tecnológicos
  */
 
-/* Remover todos os filtros e estilos agressivos */
+/* Estilização básica para os círculos dos ícones */
 .tech-badge iconify-icon {
   filter: none !important;
   -webkit-filter: none !important;
-  background-color: transparent !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
   color: inherit !important;
+  border: 1px solid white !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
 }
 
-/* Garantir visibilidade dos SVGs */
-.tech-badge iconify-icon svg,
-.tech-badge iconify-icon svg * {
+/* Garantir que os SVGs fiquem brancos em badges com fundo escuro */
+.tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg,
+.tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg * {
   visibility: visible !important;
-  fill: currentColor !important; 
+  fill: white !important;
+  stroke: white !important;
+  color: white !important;
+}
+
+/* Adicionar filtro para badges com fundo escuro */
+.tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg {
+  filter: brightness(0) invert(1) !important;
 }
 
 /* Bootstrap - Força a cor branca sem técnicas agressivas */
 .tech-badge-bootstrap iconify-icon {
   color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Git */
 .tech-badge-git iconify-icon {
   color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Outros ícones comuns */
@@ -34,6 +46,7 @@
 .tech-badge-css iconify-icon,
 .tech-badge-vscode iconify-icon {
   color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Para badges com fundo claro, usamos cor escura */
@@ -47,4 +60,117 @@
   .tech-badge iconify-icon {
     filter: brightness(0) invert(1) !important;
   }
+}
+
+/* Técnicas específicas para cada tecnologia */
+
+/* Bootstrap - Ajuste para o ícone B */
+.tech-badge-bootstrap iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Git - Ajuste para os detalhes internos */
+.tech-badge-git iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* PHP - Ajuste para o elefante */
+.tech-badge-php iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* HTML */
+.tech-badge-html iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* CSS */
+.tech-badge-css iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* SQL */
+.tech-badge-sql iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* jQuery */
+.tech-badge-jquery iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* VS Code */
+.tech-badge-vscode iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* FontAwesome */
+.tech-badge-fontawesome iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Isotope */
+.tech-badge-isotope iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* SweetAlert2 */
+.tech-badge-sweetalert2 iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* CodePen */
+.tech-badge-codepen iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* MadBuilder */
+.tech-badge-madbuilder iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Vue */
+.tech-badge-vue iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Angular */
+.tech-badge-angular iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Node.js */
+.tech-badge-node iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Python */
+.tech-badge-python iconify-icon {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Solução para ícones específicos com problemas */
+.tech-badge iconify-icon svg path,
+.tech-badge iconify-icon svg rect,
+.tech-badge iconify-icon svg circle,
+.tech-badge iconify-icon svg polygon {
+  fill: white !important;
+  stroke: white !important;
 }

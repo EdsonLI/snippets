@@ -75,6 +75,26 @@ document.addEventListener('DOMContentLoaded', function() {
         iconElement.setAttribute('width', '1em');
         iconElement.setAttribute('height', '1em');
         
+        // Adiciona evento para tratar SVG interno quando carregado
+        iconElement.addEventListener('load', () => {
+          // Somente para badges com fundos escuros
+          if (!['javascript', 'js', 'react'].includes(tech)) {
+            const svg = iconElement.querySelector('svg');
+            if (svg) {
+              // Forçar estilo direto no SVG
+              svg.style.fill = 'white';
+              svg.style.stroke = 'white';
+              svg.style.color = 'white';
+              
+              // Para todos os elementos internos
+              svg.querySelectorAll('*').forEach(el => {
+                el.style.fill = 'white';
+                el.style.stroke = 'white';
+              });
+            }
+          }
+        });
+        
         // Insere o ícone no DOM
         span.insertBefore(iconElement, span.firstChild);
       }
