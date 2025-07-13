@@ -62,3 +62,20 @@
 .tech-badge iconify-icon svg {
   transform: scale(1.2) !important; /* Aumenta um pouco o tamanho do SVG dentro do ícone */
 }
+
+/* Ajuste específico para o Bootstrap - letra B em branco */
+.tech-badge-bootstrap iconify-icon svg path:nth-child(2) {
+  fill: white !important;
+  stroke: white !important;
+}
+
+/* Seletores alternativos para garantir que o B do Bootstrap fique branco */
+.tech-badge-bootstrap iconify-icon svg path[d*="M2"] {
+  fill: white !important;
+}
+.tech-badge-bootstrap iconify-icon svg g path:last-child {
+  fill: white !important;
+}
+.tech-badge-bootstrap iconify-icon svg * {
+  fill-opacity: 1 !important;
+}
