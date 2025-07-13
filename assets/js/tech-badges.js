@@ -8,43 +8,43 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
   const TECH_ICONS = {
-    // Tecnologias já implementadas
-    'sql': 'vscode-icons:file-type-sql',
-    'html': 'vscode-icons:file-type-html',
-    'css': 'vscode-icons:file-type-css',
-    'javascript': 'logos:javascript',
-    'js': 'logos:javascript',
-    'php': 'vscode-icons:file-type-php',
-    'bootstrap': 'logos:bootstrap',
-    'jquery': 'logos:jquery',
-    'git': 'logos:git-icon',
-    'fontawesome': 'logos:font-awesome',
-    'isotope': 'carbon:chart-network',
-    'vscode': 'vscode-icons:file-type-vscode',
-    'sweetalert2': 'ion:alert-circle-outline',
-    'codepen': 'logos:codepen-icon',
+    // Tecnologias já implementadas - usando versões monocromáticas
+    'sql': 'simple-icons:sqlite',
+    'html': 'mdi:language-html5',
+    'css': 'mdi:language-css3',
+    'javascript': 'mdi:language-javascript',
+    'js': 'mdi:language-javascript',
+    'php': 'mdi:language-php',
+    'bootstrap': 'mdi:bootstrap',
+    'jquery': 'simple-icons:jquery',
+    'git': 'mdi:git',
+    'fontawesome': 'mdi:font-awesome',
+    'isotope': 'mdi:view-grid',
+    'vscode': 'mdi:microsoft-visual-studio-code',
+    'sweetalert2': 'mdi:alert-circle-outline',
+    'codepen': 'mdi:codepen',
     'madbuilder': 'mdi:tools',
     
-    // Tecnologias adicionais que você pode usar
-    'react': 'logos:react',
-    'vue': 'logos:vue',
-    'angular': 'logos:angular-icon',
-    'node': 'logos:nodejs-icon',
-    'python': 'logos:python',
-    'java': 'logos:java',
-    'csharp': 'vscode-icons:file-type-csharp',
-    'ruby': 'logos:ruby',
-    'typescript': 'logos:typescript-icon',
-    'graphql': 'logos:graphql',
-    'mongodb': 'vscode-icons:file-type-mongo',
-    'mysql': 'logos:mysql',
-    'postgresql': 'logos:postgresql',
-    'aws': 'logos:aws',
-    'docker': 'logos:docker-icon',
-    'kubernetes': 'logos:kubernetes',
-    'laravel': 'logos:laravel',
-    'dotnet': 'vscode-icons:file-type-dotnet',
-    'flutter': 'logos:flutter'
+    // Tecnologias adicionais que você pode usar - versões monocromáticas
+    'react': 'mdi:react',
+    'vue': 'mdi:vuejs',
+    'angular': 'mdi:angular',
+    'node': 'mdi:nodejs',
+    'python': 'mdi:language-python',
+    'java': 'mdi:language-java',
+    'csharp': 'mdi:language-csharp',
+    'ruby': 'mdi:language-ruby',
+    'typescript': 'mdi:language-typescript',
+    'graphql': 'mdi:graphql',
+    'mongodb': 'simple-icons:mongodb',
+    'mysql': 'mdi:database',
+    'postgresql': 'simple-icons:postgresql',
+    'aws': 'mdi:aws',
+    'docker': 'mdi:docker',
+    'kubernetes': 'mdi:kubernetes',
+    'laravel': 'mdi:laravel',
+    'dotnet': 'mdi:dot-net',
+    'flutter': 'mdi:flutter'
   };
 
   // Função simplificada para trabalhar com ícones
@@ -82,6 +82,13 @@ document.addEventListener('DOMContentLoaded', function() {
         iconElement.setAttribute('height', '1em');
         // Adiciona classes para estilização
         iconElement.classList.add('icon-tech', `icon-tech-${tech}`);
+        
+        // Define a cor do ícone com base na tecnologia
+        if (tech === 'javascript' || tech === 'js') {
+          iconElement.style.color = '#323330';
+        } else {
+          iconElement.style.color = 'white';
+        }
         
         // Insere o ícone no DOM
         span.insertBefore(iconElement, span.firstChild);

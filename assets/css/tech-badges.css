@@ -33,19 +33,16 @@
 }
 
 /* Garantir que os ícones SVG sejam sempre brancos */
-.tech-badge iconify-icon,
-.tech-badge iconify-icon svg,
-.tech-badge iconify-icon svg * {
-  fill: white !important;
-  stroke: white !important;
+.tech-badge iconify-icon {
   color: white !important;
-  /* Filtro para forçar cores para branco */
-  filter: brightness(0) invert(1) !important;
+  --icon-color: white !important;
 }
 
-/* Aumentar o contraste do background dos ícones para todas as tecnologias */
-.tech-badge iconify-icon {
-  /* background-color: rgba(0, 0, 0, 0.3) !important; */
+/* Exceção para JavaScript que precisa de ícones escuros */
+.tech-badge-javascript iconify-icon, 
+.tech-badge-js iconify-icon {
+  color: #323330 !important;
+  --icon-color: #323330 !important;
 }
 
 /* Estilos específicos para cada tecnologia */

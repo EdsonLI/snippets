@@ -31,6 +31,13 @@
   /* background-color: rgba(0, 0, 0, 0.2); */
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 2px;
+  color: white; /* Cor padrão para todos os ícones */
+}
+
+/* Garantir que todos os ícones em badges sejam brancos por padrão */
+.tech-badge iconify-icon {
+  color: white !important;
+  --icon-color: white !important;
 }
 
 /* Efeito hover */
@@ -75,7 +82,8 @@
 }
 .tech-badge-javascript iconify-icon, 
 .tech-badge-js iconify-icon {
-  color: #323330;
+  color: #323330 !important;
+  --icon-color: #323330 !important;
 }
 
 /* PHP */
