@@ -27,7 +27,6 @@
   width: 1.5em;
   height: 1.5em;
   border-radius: 50%;
-  /* background-color: rgba(0, 0, 0, 0.2); */
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   padding: 2px;
   color: white; /* Cor padrão para todos os ícones */
@@ -43,7 +42,6 @@
 
 /* SQL */
 .tech-badge-sql {
-  background-color: #f29111;
   color: #fff;
 }
 .tech-badge-sql iconify-icon {
@@ -52,7 +50,6 @@
 
 /* HTML */
 .tech-badge-html {
-  background-color: #E44D26;
   color: #fff;
 }
 .tech-badge-html iconify-icon {
@@ -61,7 +58,6 @@
 
 /* CSS */
 .tech-badge-css {
-  background-color: #264de4;
   color: #fff;
 }
 .tech-badge-css iconify-icon {
@@ -70,7 +66,6 @@
 
 /* JavaScript */
 .tech-badge-javascript, .tech-badge-js {
-  background-color: #F0DB4F;
   color: #323330;
 }
 .tech-badge-javascript iconify-icon, 
@@ -81,7 +76,6 @@
 
 /* PHP */
 .tech-badge-php {
-  background-color: #777BB3;
   color: #fff;
 }
 .tech-badge-php iconify-icon {
@@ -90,7 +84,6 @@
 
 /* Bootstrap */
 .tech-badge-bootstrap {
-  background-color: #7952B3;
   color: #fff;
 }
 .tech-badge-bootstrap iconify-icon {
@@ -99,7 +92,6 @@
 
 /* jQuery */
 .tech-badge-jquery {
-  background-color: #0769AD;
   color: #fff;
 }
 .tech-badge-jquery iconify-icon {
@@ -108,7 +100,6 @@
 
 /* Git */
 .tech-badge-git {
-  background-color: #F05032;
   color: #fff;
 }
 .tech-badge-git iconify-icon {
@@ -117,7 +108,6 @@
 
 /* FontAwesome */
 .tech-badge-fontawesome {
-  background-color: #339AF0;
   color: #fff;
 }
 .tech-badge-fontawesome iconify-icon {
@@ -126,7 +116,6 @@
 
 /* Isotope */
 .tech-badge-isotope {
-  background-color: #6E4D9B;
   color: #fff;
 }
 .tech-badge-isotope iconify-icon {
@@ -135,7 +124,6 @@
 
 /* VSCode */
 .tech-badge-vscode {
-  background-color: #007ACC;
   color: #fff;
 }
 .tech-badge-vscode iconify-icon {
@@ -144,7 +132,6 @@
 
 /* SweetAlert2 */
 .tech-badge-sweetalert2 {
-  background-color: #F27474;
   color: #fff;
 }
 .tech-badge-sweetalert2 iconify-icon {
@@ -153,7 +140,6 @@
 
 /* CodePen */
 .tech-badge-codepen {
-  background-color: #000000;
   color: #fff;
 }
 .tech-badge-codepen iconify-icon {
@@ -162,7 +148,6 @@
 
 /* MadBuilder */
 .tech-badge-madbuilder {
-  background-color: #5C3A97;
   color: #fff;
 }
 .tech-badge-madbuilder iconify-icon {
@@ -171,7 +156,6 @@
 
 /* React */
 .tech-badge-react {
-  background-color: #61DAFB;
   color: #000000;
 }
 .tech-badge-react iconify-icon {
@@ -180,7 +164,6 @@
 
 /* Vue.js */
 .tech-badge-vue {
-  background-color: #4FC08D;
   color: #fff;
 }
 .tech-badge-vue iconify-icon {
@@ -189,7 +172,6 @@
 
 /* Angular */
 .tech-badge-angular {
-  background-color: #DD0031;
   color: #fff;
 }
 .tech-badge-angular iconify-icon {
