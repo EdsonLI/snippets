@@ -3210,15 +3210,6 @@ pre[class*="language-"] {
   font-family: var(--heading-font, inherit);
 }
 
-/* Removido hover customizado */
-/* .nav-snippets-link:hover .nav-snippets-label {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-}
-.nav-snippets-link:hover .nav-snippets-desc {
-  color: var(--accent-color);
-} */
-
 /* Ajuste para menu mobile ocupar largura total */
 @media (max-width: 1199px) {
   .nav-snippets-link {

@@ -1,8 +1,3 @@
-/**
- * Estilos específicos para ícones em botões
- * Usado para corrigir problemas de alinhamento e tamanho nos botões de ação dos snippets
- */
-
 /* Força alinhamento e tamanho consistente para todos os iconify-icons nos botões de snippet */
 .btn-xs iconify-icon {
   /* Dimensões fixas (exatas) */
