@@ -1,0 +1,50 @@
+/**
+ * Estilos específicos para ícones em botões
+ * Usado para corrigir problemas de alinhamento e tamanho nos botões de ação dos snippets
+ */
+
+/* Força alinhamento e tamanho consistente para todos os iconify-icons nos botões de snippet */
+.btn-xs iconify-icon {
+  /* Dimensões fixas (exatas) */
+  width: 16px !important;
+  height: 16px !important;
+  
+  /* Centralização perfeita */
+  position: relative !important;
+  vertical-align: middle !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  
+  /* Garante renderização adequada */
+  display: inline-block !important;
+}
+
+/* Remove qualquer margem ou padding que possa deslocar o ícone */
+.btn-xs {
+  padding: 0.15rem !important;
+  line-height: 1 !important;
+  position: relative !important;
+}
+
+/* Tamanho exato para botões */
+.snippet-actions-float .btn {
+  width: 22px !important;
+  height: 22px !important;
+  position: relative !important;
+  padding: 0 !important;
+  margin: 0 1px !important;
+}
+
+/* Corrige especificamente o botão de link externo */
+a[data-snippet-external-link] iconify-icon {
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Alinhamento global */
+.snippet-actions-float {
+  display: flex !important;
+  align-items: center !important;
+}

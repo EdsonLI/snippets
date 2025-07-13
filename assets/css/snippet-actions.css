@@ -48,11 +48,35 @@
   background-color: rgba(33, 37, 41, 0.7) !important;
   padding: 2px 4px;
   border-radius: 4px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 24px !important;
 }
 
 /* Ajuste para os ícones nos botões */
 .snippet-actions-float .btn iconify-icon {
   vertical-align: middle;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Força o alinhamento centralizado dos ícones nos botões */
+.btn-xs.btn-outline-info {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.15rem 0.3rem !important;
+  line-height: 1 !important;
+  height: auto !important;
+  min-height: 22px !important;
+  min-width: 22px !important;
+  position: relative !important;
 }
 
 /* Ajusta o espaçamento quando o título fica em duas linhas */

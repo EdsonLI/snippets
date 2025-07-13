@@ -1,0 +1,46 @@
+/* Regras para garantir o posicionamento correto dos ícones nos botões */
+
+/* Reset para iconify-icon */
+iconify-icon {
+  display: inline-flex !important;
+  vertical-align: middle !important;
+  line-height: normal !important;
+  transform: none !important;
+}
+
+/* Centralização específica para ícones em botões de snippet */
+.snippet-actions-float .btn iconify-icon {
+  box-sizing: content-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: none !important;
+  position: static !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Botões com aparência consistente */
+.snippet-actions-float .btn {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 1px !important;
+  overflow: visible !important;
+}
+
+/* Espaçamento interno dos botões para comportar o ícone adequadamente */
+.btn-xs {
+  padding: 0.15rem !important;
+  height: auto !important;
+  width: auto !important;
+  min-height: 22px !important;
+  min-width: 22px !important;
+}
+
+/* Alinhamento correto para ícone de link externo que pode ter comportamento diferente */
+.btn[data-snippet-external-link] iconify-icon,
+a[data-snippet-external-link] iconify-icon {
+  transform: translateY(0) !important;
+}

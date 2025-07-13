@@ -37,9 +37,9 @@
 }
 
 /* Aplicar filtro para badges com fundo escuro para forçar branco */
-.tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg {
+/* .tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg {
   filter: brightness(0) invert(1) !important;
-}
+} */
 
 /* Específico para JavaScript e React (fundo claro) */
 .tech-badge-javascript iconify-icon,
