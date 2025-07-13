@@ -23,9 +23,9 @@
 }
 
 /* Adicionar filtro para badges com fundo escuro */
-.tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg {
+/* .tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg {
   filter: brightness(0) invert(1) !important;
-}
+} */
 
 /* Bootstrap - Força a cor branca sem técnicas agressivas */
 .tech-badge-bootstrap iconify-icon {
@@ -56,11 +56,11 @@
 }
 
 /* Ajuste para o modo escuro */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .tech-badge iconify-icon {
     filter: brightness(0) invert(1) !important;
   }
-}
+} */
 
 /* Técnicas específicas para cada tecnologia */
 

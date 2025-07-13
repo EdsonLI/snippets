@@ -36,11 +36,6 @@
   color: white !important;
 }
 
-/* Aplicar filtro para badges com fundo escuro para forçar branco */
-/* .tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg {
-  filter: brightness(0) invert(1) !important;
-} */
-
 /* Específico para JavaScript e React (fundo claro) */
 .tech-badge-javascript iconify-icon,
 .tech-badge-js iconify-icon,
@@ -51,19 +46,19 @@
 }
 
 /* Ajuste específico para Bootstrap */
-.tech-badge-bootstrap iconify-icon svg {
+/* .tech-badge-bootstrap iconify-icon svg {
   filter: brightness(0) invert(1) !important;
-}
+} */
 
 /* Ajuste específico para Git */
-.tech-badge-git iconify-icon svg {
+/* .tech-badge-git iconify-icon svg {
   filter: brightness(0) invert(1) !important;
-}
+} */
 
 /* Ajuste específico para PHP */
-.tech-badge-php iconify-icon svg {
+/* .tech-badge-php iconify-icon svg {
   filter: brightness(0) invert(1) !important;
-}
+} */
 
 /* Solução para garantir que elementos específicos dentro dos SVGs sejam brancos */
 .tech-badge:not(.tech-badge-javascript):not(.tech-badge-js):not(.tech-badge-react) iconify-icon svg path,
@@ -80,16 +75,16 @@
 .tech-badge-vue iconify-icon,
 .tech-badge-node iconify-icon,
 .tech-badge-vscode iconify-icon,
-.tech-badge-sql iconify-icon {
+/* .tech-badge-sql iconify-icon {
   filter: brightness(0) invert(1) !important;
-}
+} */
 
 /* Ajuste para o modo escuro */
 @media (prefers-color-scheme: dark) {
   .tech-badge-javascript iconify-icon,
   .tech-badge-js iconify-icon,
-  .tech-badge-react iconify-icon {
+  /* .tech-badge-react iconify-icon {
     filter: brightness(0) invert(1) !important;
     color: white !important;
-  }
+  } */
 }
