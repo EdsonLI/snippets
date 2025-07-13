@@ -29,7 +29,7 @@
   /* Color for headings and titles */
   --heading-color: #012970;
   /* Accent color for buttons, links, etc. */
-  --accent-color: #1f6feb;
+  --accent-color: #6658D3;
   /* Background color for boxed elements */
   --surface-color: #ffffff;
   /* Contrast color for text on colored backgrounds */
@@ -41,7 +41,7 @@
   /* Default color for navigation links */
   --nav-color: #012970;
   /* Hover and active state color for navigation links */
-  --nav-hover-color: #1f6feb;
+  --nav-hover-color: #6658D3;
   /* Background color for mobile navigation menu */
   --nav-mobile-background-color: #ffffff;
   /* Background color for dropdown items */
@@ -49,7 +49,7 @@
   /* Text color for dropdown items */
   --nav-dropdown-color: #212529;
   /* Hover color for dropdown items */
-  --nav-dropdown-hover-color: #1f6feb;
+  --nav-dropdown-hover-color: #6658D3;
 }
 
 /* Color Presets - Alternative color schemes for specific sections */
@@ -1174,20 +1174,20 @@ section,
 }
 
 .services .service-item.item-cyan {
-  border-bottom: 3px solid #1f6feb;
+  border-bottom: 3px solid #6658D3;
 }
 
 .services .service-item.item-cyan .icon {
-  color: #1f6feb;
+  color: #6658D3;
   background: rgba(13, 202, 240, 0.1);
 }
 
 .services .service-item.item-cyan .read-more {
-  color: #1f6feb;
+  color: #6658D3;
 }
 
 .services .service-item.item-cyan:hover {
-  background: #1f6feb;
+  background: #6658D3;
 }
 
 .services .service-item.item-orange {
@@ -2794,13 +2794,13 @@ section,
   --heading-color: #ffffff;
   --surface-color: #252525;
   --contrast-color: #ffffff;
-  --accent-color: #1f6feb;
+  --accent-color: #6658D3;
   --nav-color: #ffffff;
-  --nav-hover-color: #1f6feb;
+  --nav-hover-color: #6658D3;
   --nav-mobile-background-color: #252525;
   --nav-dropdown-background-color: #252525;
   --nav-dropdown-color: #ffffff;
-  --nav-dropdown-hover-color: #1f6feb;
+  --nav-dropdown-hover-color: #6658D3;
 }
 
 /* Hero background para tema escuro */
@@ -2947,7 +2947,7 @@ code[class*="language-"] .token {
   gap: 0.5em;
   font-size: 1em;
   border: none;
-  background: #1f6feb;
+  background: #6658D3;
   color: #fff;
   cursor: pointer;
   padding: 0.4em 1.1em;
@@ -2973,7 +2973,7 @@ code[class*="language-"] .token {
 }
 
 .copy-btn:focus {
-  outline: 2px solid #1f6feb;
+  outline: 2px solid #6658D3;
   outline-offset: 2px;
 }
 
@@ -2999,9 +2999,9 @@ pre .copy-btn {
 /* Customizados */
 /* Estilo padronizado para botões com borda e ícones */
 .btn-custom {
-  border-color: #1f6feb !important;
-  border: 1px solid #1f6feb !important; /* Adiciona a borda */
-  color: #1f6feb !important;
+  border-color: #6658D3 !important;
+  border: 1px solid #6658D3 !important; /* Adiciona a borda */
+  color: #6658D3 !important;
   transition: color 0.3s, border-color 0.3s;
   height: 1.35em !important;
   padding-top: .25px !important;
@@ -3009,7 +3009,7 @@ pre .copy-btn {
 }
 
 .btn-custom i {
-  color: #1f6feb !important;
+  color: #6658D3 !important;
   transition: color 0.3s;
 }
 
@@ -3120,7 +3120,7 @@ pre[class*="language-"] {
 }
 
 .theme-toggle-btn:focus {
-  outline: 2px solid #1f6feb;
+  outline: 2px solid #6658D3;
 }
 
 /* Ícone sempre visível: escuro no tema claro, branco no tema escuro */
@@ -3293,7 +3293,7 @@ pre[class*="language-"] {
 }
 
 .hljs-variable {
-  color: #1f6feb !important; /* Cor personalizada para variáveis */
+  color: #6658D3 !important; /* Cor personalizada para variáveis */
 }
 
 .hljs-doctag, .hljs-keyword, .hljs-meta .hljs-keyword, .hljs-template-tag, .hljs-template-variable, .hljs-type, .hljs-variable.language_ {
