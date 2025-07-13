@@ -46,7 +46,6 @@
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(33, 37, 41, 0.7) !important;
-  padding: 2px 4px;
   border-radius: 4px;
   display: flex !important;
   align-items: center !important;
@@ -91,6 +90,7 @@
 .snippet-actions-float a[data-snippet-external-link] {
   margin-left: 0.1rem;
   display: inline-flex !important;
+  margin-right: 2px !important;
 }
 
 /* Garante visibilidade dos botões */
