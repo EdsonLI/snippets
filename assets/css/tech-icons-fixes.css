@@ -47,7 +47,18 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 20px !important;
-  height: 20px !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 3px !important;
+  vertical-align: -3px !important;
+}
+
+/* Estilo específico para ícones coloridos */
+.tech-badge {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.tech-badge iconify-icon svg {
+  transform: scale(1.2) !important; /* Aumenta um pouco o tamanho do SVG dentro do ícone */
 }

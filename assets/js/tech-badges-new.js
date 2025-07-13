@@ -8,43 +8,43 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
   const TECH_ICONS = {
-    // Tecnologias já implementadas - usando versões monocromáticas quando disponíveis
-    'sql': 'simple-icons:sqlite',
-    'html': 'mdi:language-html5',
-    'css': 'mdi:language-css3',
-    'javascript': 'mdi:language-javascript',
-    'js': 'mdi:language-javascript',
-    'php': 'mdi:language-php',
-    'bootstrap': 'mdi:bootstrap',
-    'jquery': 'simple-icons:jquery',
-    'git': 'mdi:git',
-    'fontawesome': 'mdi:font-awesome',
+    // Tecnologias implementadas - usando versões coloridas (brandings originais)
+    'sql': 'logos:sqlite',
+    'html': 'logos:html-5',
+    'css': 'logos:css-3',
+    'javascript': 'logos:javascript',
+    'js': 'logos:javascript',
+    'php': 'logos:php',
+    'bootstrap': 'logos:bootstrap',
+    'jquery': 'logos:jquery',
+    'git': 'logos:git-icon',
+    'fontawesome': 'logos:font-awesome',
     'isotope': 'carbon:chart-network',
-    'vscode': 'mdi:microsoft-visual-studio-code',
-    'sweetalert2': 'mdi:alert-circle-outline',
-    'codepen': 'mdi:codepen',
-    'madbuilder': 'mdi:tools',
+    'vscode': 'logos:visual-studio-code',
+    'sweetalert2': 'logos:sweetalert2',
+    'codepen': 'logos:codepen-icon',
+    'madbuilder': 'fluent-emoji:hammer-and-wrench',
     
-    // Tecnologias adicionais que você pode usar - versões monocromáticas
-    'react': 'mdi:react',
-    'vue': 'mdi:vuejs',
-    'angular': 'mdi:angular',
-    'node': 'mdi:nodejs',
-    'python': 'mdi:language-python',
-    'java': 'mdi:language-java',
-    'csharp': 'mdi:language-csharp',
-    'ruby': 'mdi:language-ruby',
-    'typescript': 'mdi:language-typescript',
-    'graphql': 'mdi:graphql',
-    'mongodb': 'simple-icons:mongodb',
-    'mysql': 'mdi:database',
-    'postgresql': 'simple-icons:postgresql',
-    'aws': 'mdi:aws',
-    'docker': 'mdi:docker',
-    'kubernetes': 'mdi:kubernetes',
-    'laravel': 'mdi:laravel',
-    'dotnet': 'mdi:dot-net',
-    'flutter': 'mdi:flutter'
+    // Tecnologias adicionais - versões coloridas
+    'react': 'logos:react',
+    'vue': 'logos:vue',
+    'angular': 'logos:angular-icon',
+    'node': 'logos:nodejs-icon',
+    'python': 'logos:python',
+    'java': 'logos:java',
+    'csharp': 'logos:c-sharp',
+    'ruby': 'logos:ruby',
+    'typescript': 'logos:typescript-icon',
+    'graphql': 'logos:graphql',
+    'mongodb': 'logos:mongodb-icon',
+    'mysql': 'logos:mysql',
+    'postgresql': 'logos:postgresql',
+    'aws': 'logos:aws',
+    'docker': 'logos:docker-icon',
+    'kubernetes': 'logos:kubernetes',
+    'laravel': 'logos:laravel',
+    'dotnet': 'logos:dotnet',
+    'flutter': 'logos:flutter'
   };
 
   // Função para transformar spans em badges
@@ -72,28 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
-        iconElement.setAttribute('width', '1em');
-        iconElement.setAttribute('height', '1em');
+        iconElement.setAttribute('width', '18px');
+        iconElement.setAttribute('height', '18px');
         
-        // Adiciona evento para tratar SVG interno quando carregado
-        iconElement.addEventListener('load', () => {
-          // Somente para badges com fundos escuros
-          if (!['javascript', 'js', 'react'].includes(tech)) {
-            const svg = iconElement.querySelector('svg');
-            if (svg) {
-              // Forçar estilo direto no SVG
-              svg.style.fill = 'white';
-              svg.style.stroke = 'white';
-              svg.style.color = 'white';
-              
-              // Para todos os elementos internos
-              svg.querySelectorAll('*').forEach(el => {
-                el.style.fill = 'white';
-                el.style.stroke = 'white';
-              });
-            }
-          }
-        });
+        // Configuração para ícones coloridos - sem manipulação de cores
+        // Permitimos que os ícones mantenham suas cores originais de branding
         
         // Insere o ícone no DOM
         span.insertBefore(iconElement, span.firstChild);

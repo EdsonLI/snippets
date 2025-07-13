@@ -6,45 +6,45 @@
  * @version 1.0.0
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Mapeamento de tecnologias para seus respectivos ícones
+  // Mapeamento de tecnologias para seus respectivos ícones coloridos
   const TECH_ICONS = {
-    // Tecnologias já implementadas - usando versões monocromáticas
-    'sql': 'simple-icons:sqlite',
-    'html': 'mdi:language-html5',
-    'css': 'mdi:language-css3',
-    'javascript': 'mdi:language-javascript',
-    'js': 'mdi:language-javascript',
-    'php': 'mdi:language-php',
-    'bootstrap': 'mdi:bootstrap',
-    'jquery': 'simple-icons:jquery',
-    'git': 'mdi:git',
-    'fontawesome': 'mdi:font-awesome',
-    'isotope': 'mdi:view-grid',
-    'vscode': 'mdi:microsoft-visual-studio-code',
-    'sweetalert2': 'mdi:alert-circle-outline',
-    'codepen': 'mdi:codepen',
-    'madbuilder': 'mdi:tools',
+    // Tecnologias já implementadas - usando versões coloridas (brandings originais)
+    'sql': 'logos:sqlite',
+    'html': 'logos:html-5',
+    'css': 'logos:css-3',
+    'javascript': 'logos:javascript',
+    'js': 'logos:javascript',
+    'php': 'logos:php',
+    'bootstrap': 'logos:bootstrap',
+    'jquery': 'logos:jquery',
+    'git': 'logos:git-icon',
+    'fontawesome': 'logos:font-awesome',
+    'isotope': 'carbon:chart-network',
+    'vscode': 'logos:visual-studio-code',
+    'sweetalert2': 'logos:sweetalert2',
+    'codepen': 'logos:codepen-icon',
+    'madbuilder': 'fluent-emoji:hammer-and-wrench',
     
-    // Tecnologias adicionais que você pode usar - versões monocromáticas
-    'react': 'mdi:react',
-    'vue': 'mdi:vuejs',
-    'angular': 'mdi:angular',
-    'node': 'mdi:nodejs',
-    'python': 'mdi:language-python',
-    'java': 'mdi:language-java',
-    'csharp': 'mdi:language-csharp',
-    'ruby': 'mdi:language-ruby',
-    'typescript': 'mdi:language-typescript',
-    'graphql': 'mdi:graphql',
-    'mongodb': 'simple-icons:mongodb',
-    'mysql': 'mdi:database',
-    'postgresql': 'simple-icons:postgresql',
-    'aws': 'mdi:aws',
-    'docker': 'mdi:docker',
-    'kubernetes': 'mdi:kubernetes',
-    'laravel': 'mdi:laravel',
-    'dotnet': 'mdi:dot-net',
-    'flutter': 'mdi:flutter'
+    // Tecnologias adicionais que você pode usar - versões coloridas
+    'react': 'logos:react',
+    'vue': 'logos:vue',
+    'angular': 'logos:angular-icon',
+    'node': 'logos:nodejs-icon',
+    'python': 'logos:python',
+    'java': 'logos:java',
+    'csharp': 'logos:c-sharp',
+    'ruby': 'logos:ruby',
+    'typescript': 'logos:typescript-icon',
+    'graphql': 'logos:graphql',
+    'mongodb': 'logos:mongodb-icon',
+    'mysql': 'logos:mysql',
+    'postgresql': 'logos:postgresql',
+    'aws': 'logos:aws',
+    'docker': 'logos:docker-icon',
+    'kubernetes': 'logos:kubernetes',
+    'laravel': 'logos:laravel',
+    'dotnet': 'logos:dotnet',
+    'flutter': 'logos:flutter'
   };
 
   // Função simplificada para trabalhar com ícones
@@ -77,18 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const iconElement = document.createElement('iconify-icon');
         iconElement.setAttribute('icon', icon);
         iconElement.style.verticalAlign = 'middle';
-        // Define tamanho adequado
-        iconElement.setAttribute('width', '1em');
-        iconElement.setAttribute('height', '1em');
+        // Define tamanho adequado para os ícones coloridos
+        iconElement.setAttribute('width', '18px');
+        iconElement.setAttribute('height', '18px');
         // Adiciona classes para estilização
         iconElement.classList.add('icon-tech', `icon-tech-${tech}`);
         
-        // Define a cor do ícone com base na tecnologia
+        // Mantém as cores originais dos ícones para mostrar os brandings coloridos
+        // Apenas ajusta o JavaScript que precisa ser escuro devido ao fundo amarelo
         if (tech === 'javascript' || tech === 'js') {
           iconElement.style.color = '#323330';
-        } else {
-          iconElement.style.color = 'white';
         }
+        // Demais tecnologias usam suas cores originais de branding
         
         // Insere o ícone no DOM
         span.insertBefore(iconElement, span.firstChild);
@@ -101,6 +101,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar as badges
   transformTechBadges();
+  
+  // Evento customizado para recarregar os ícones
+  document.addEventListener('reload-tech-badges', function() {
+    transformTechBadges();
+  });
   
   // Para suportar carregamento dinâmico de conteúdo
   // Observe o DOM para novos elementos
