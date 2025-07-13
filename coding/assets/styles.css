@@ -393,7 +393,7 @@ a, a:visited {
   transition: color 0.2s;
 }
 a:hover {
-  color: #6658D3;
+  color: #5e65cc;
   text-decoration: underline;
 }
 
