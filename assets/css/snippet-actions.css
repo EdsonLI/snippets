@@ -1,0 +1,56 @@
+/* Definições para botões extra-pequenos */
+.btn-xs {
+  --bs-btn-padding-y: 0.15rem;
+  --bs-btn-padding-x: 0.3rem;
+  --bs-btn-font-size: 0.675rem;
+  --bs-btn-border-radius: 0.2rem;
+}
+
+/* Ajustes para os botões na snippet-actions-float */
+.snippet-actions-float {
+  position: relative !important; /* Mudado de sticky para relative */
+  top: auto !important;
+  right: 0;
+  left: auto;
+  z-index: 10;
+  margin-left: auto; /* empurra para direita */
+  margin-right: 0; /* Reduzido para ficar mais próximo da borda */
+  display: flex;
+  gap: 0.2em; /* Reduzido o gap entre os botões */
+  background: transparent !important;
+  padding: 0;
+  box-shadow: none; /* Removido o box-shadow */
+}
+
+/* Estilo para o título com ícones */
+h6 {
+  margin-bottom: 0.2rem;
+}
+
+/* Ajustes para o posicionamento do badge de tecnologia e ações */
+h6.d-flex span.tech-badge {
+  margin-right: auto; /* Empurra os botões para a direita */
+}
+
+/* Ajuste para os ícones nos botões */
+.snippet-actions-float .btn iconify-icon {
+  vertical-align: middle;
+}
+
+/* Aumenta a especificidade para o novo layout */
+.portfolio-content h6.d-flex {
+  margin-bottom: 0.1rem;
+  flex-wrap: nowrap;
+}
+
+/* Ajusta o espaçamento quando o título fica em duas linhas */
+.portfolio-content .text-center.mb-2 {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem !important;
+  font-weight: 500;
+}
+
+/* Ajustes para o botão de link externo (último botão) */
+.snippet-actions-float a[data-snippet-external-link] {
+  margin-left: 0.1rem;
+}
