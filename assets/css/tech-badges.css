@@ -188,12 +188,6 @@
   color: #fff;
 }
 
-/* Efeito hover */
-.tech-badge:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
 /* ===== ESTILOS DE ÍCONES PARA MELHOR CONTRASTE ===== */
 
 /* Estilo padrão para ícones (para fundos escuros) */
@@ -273,13 +267,6 @@
   background-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
   color: white;
-}
-
-/* Efeito de destaque ao passar o mouse sobre os ícones */
-.tech-badge iconify-icon:hover {
-  filter: brightness(1.1);
-  transform: scale(1.1);
-  transition: all 0.2s ease;
 }
 
 /* Classe de acessibilidade para alto contraste */

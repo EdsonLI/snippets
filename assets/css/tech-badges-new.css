@@ -39,12 +39,6 @@
   --icon-color: white !important;
 }
 
-/* Efeito hover */
-.tech-badge:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
 /* Definições de cores para cada tecnologia */
 
 /* SQL */
