@@ -20,7 +20,7 @@
 
 /* Estilo para os ícones dentro das badges */
 .tech-badge iconify-icon {
-  font-size: 1rem;
+  font-size: .75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
