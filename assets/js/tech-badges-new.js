@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
   const TECH_ICONS = {
     // Tecnologias implementadas - usando versões coloridas (brandings originais)
-    'sql': 'teenyicons:sql-outline', // Ícone alternativo para SQL que deve funcionar melhor
+    'sql': 'vscode-icons:file-type-sql', // Ícone do VS Code que deve ser mais confiável
     'html': 'logos:html-5',
     'css': 'logos:css-3',
     'javascript': 'logos:javascript',

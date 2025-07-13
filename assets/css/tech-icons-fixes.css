@@ -65,16 +65,34 @@
 
 /* Sem estilos específicos para o Bootstrap - usando cores originais */
 
-/* Ajuste específico para o ícone do SQL */
+/* Ajuste específico para o ícone do SQL com fallback */
 .tech-badge-sql iconify-icon {
-  background-color: rgba(0, 123, 255, 0.1) !important; /* Fundo azulado sutil */
-  border-radius: 3px !important;
-  border: 1px solid rgba(0, 123, 255, 0.2) !important;
+  background-color: #00618a !important; /* Cor do MySQL */
+  border-radius: 4px !important;
+  color: white !important;
+  border: none !important;
+  position: relative !important;
+}
+
+/* Fallback para caso o ícone não carregue */
+.tech-badge-sql iconify-icon::before {
+  content: "SQL" !important;
+  font-size: 9px !important;
+  font-weight: bold !important;
+  font-family: Consolas, monospace !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: white !important;
+  z-index: 1 !important;
 }
 
 .tech-badge-sql iconify-icon svg {
   transform: scale(1.2) !important;
-  filter: drop-shadow(0 0 1px rgba(0,0,0,0.2)) !important;
+  position: relative !important;
+  z-index: 2 !important; /* Colocar SVG acima do texto de fallback */
+  fill: white !important;
 }
 
 /* Garantir visibilidade em temas escuros */
