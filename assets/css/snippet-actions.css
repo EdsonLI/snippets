@@ -51,6 +51,8 @@
   align-items: center !important;
   justify-content: center !important;
   height: 24px !important;
+  padding-right: 0 !important;
+  padding-left: 2px !important;
 }
 
 /* Ajuste para os ícones nos botões */
@@ -90,6 +92,11 @@
 .snippet-actions-float a[data-snippet-external-link] {
   margin-left: 0.1rem;
   display: inline-flex !important;
+  margin-right: 2px !important;
+}
+
+/* Ajuste para o botão de copiar quando é o último (sem link externo) */
+.snippet-actions-float button.last-button-right {
   margin-right: 2px !important;
 }
 

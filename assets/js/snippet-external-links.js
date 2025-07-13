@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', function() {
         button.style.display = 'none';
         button.style.visibility = 'hidden';
         button.classList.add('d-none');
+        
+        // Encontra o botão de copiar para reposicioná-lo
+        const snippetActionsFloat = button.closest('.snippet-actions-float');
+        if (snippetActionsFloat) {
+          // Encontra o botão de copiar (geralmente é o que tem o atributo data-target)
+          const copyButton = snippetActionsFloat.querySelector('button[data-target]');
+          if (copyButton) {
+            // Adiciona classe para ajustar a margem direita
+            copyButton.classList.add('last-button-right');
+            copyButton.style.marginRight = '2px';
+          }
+        }
       } else {
         // Garante que o botão esteja visível se tiver uma URL válida
         button.style.display = 'inline-flex';
@@ -28,6 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove classes que podem estar escondendo o botão
         button.classList.remove('d-none');
         button.classList.add('d-inline-flex');
+        
+        // Encontra o botão de copiar e remove a classe de último botão, se houver
+        const snippetActionsFloat = button.closest('.snippet-actions-float');
+        if (snippetActionsFloat) {
+          const copyButton = snippetActionsFloat.querySelector('button[data-target]');
+          if (copyButton) {
+            copyButton.classList.remove('last-button-right');
+            copyButton.style.marginRight = '';
+          }
+        }
         
         // Adiciona título ao passar o mouse
         if (!button.getAttribute('title')) {
@@ -45,6 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Inicializa os links externos na carga da página
   setTimeout(initExternalLinks, 100); // Pequeno delay para garantir que os elementos estejam carregados
+  
+  // Reprocessa links após a página estar totalmente carregada
+  window.addEventListener('load', function() {
+    initExternalLinks();
+    setTimeout(initExternalLinks, 300);
+  });
   
   // Adiciona um observador para detectar novos links adicionados dinamicamente
   const observer = new MutationObserver(mutations => {
