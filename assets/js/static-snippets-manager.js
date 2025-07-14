@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'jquery': ['snippet_jquery_toggle_example.html'],
     'php': ['snippet_php_cookies_sessions_preferences.html'],
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
-    'sweetalert2': ['snippet_sweetalert2_confirmation_example.html.html', 'snippet_sweetalert2_select_color_radio_example.html']
+    'sweetalert2': ['snippet_sweetalert2_confirmation_example.html.html'/*, 'snippet_sweetalert2_select_color_radio_example.html'*/]
     // Última atualização: 14/07/2025 19:43:30
   };
 
