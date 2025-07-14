@@ -61,36 +61,38 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-$(document).ready(function() {
-  $("#btn-preview-swal2-select-color-radio").on("click", async function() {
-    const inputOptions = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          "#ff0000": "Red",
-          "#00ff00": "Green",
-          "#0000ff": "Blue"
+$(function() {
+  $("#btn-preview-swal2-select-color-radio").click(function() {
+    (async function() {
+      const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            "#ff0000": "Red",
+            "#00ff00": "Green",
+            "#0000ff": "Blue"
+          });
+        }, 1000);
+      });
+
+      const { value: color } = await Swal.fire({
+        title: "Select color",
+        input: "radio",
+        inputOptions,
+        inputValidator: (value) => {
+          if (!value) {
+            return "You need to choose something!";
+          }
+        }
+      });
+
+      if (color) {
+        Swal.fire({
+          html: `You selected: <span style="color:${color}; font-weight:bold">${color}</span>`,
+          background: "#222",
+          color: "#fff"
         });
-      }, 1000);
-    });
-
-  const { value: color } = await Swal.fire({
-    title: "Select color",
-    input: "radio",
-    inputOptions,
-    inputValidator: (value) => {
-      if (!value) {
-        return "You need to choose something!";
       }
-    }
-  });
-
-  if (color) {
-    Swal.fire({
-      html: `You selected: <span style="color:${color}; font-weight:bold">${color}</span>`,
-      background: "#222",
-      color: "#fff"
-    });
-  }
+    })();
   });
 });
 </script>
