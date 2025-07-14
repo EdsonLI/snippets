@@ -1,32 +1,37 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sql">
-  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-center">
-      <span class="id-tech-sql">SQL</span>
-      <div class="snippet-actions-float d-flex align-items-center gap-1">
-        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-sql-procedure-report-basic">
-          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
-        </button>
-        <a href="https://www.w3schools.com/sql/sql_quickref.asp" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
-          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
-        </a>
-      </div>
-    </h6>
-    <div class="text-center mb-2">Procedure para gerar relatório simples</div>
-    <div class="snippet-code position-relative">     
-      <pre>
-<code id="snippet-sql-procedure-report-basic" class="language-sql">
-DELIMITER //
+<div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+  <h6 class="text-center">
+    <span class="id-tech-sql">SQL</span>
+    <div class="snippet-actions-float d-flex align-items-center gap-1">
+      <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-sql-procedure-report-basic">
+        <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+      </button>
+      <a href="https://www.w3schools.com/sql/sql_quickref.asp" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+        <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+      </a>
+    </div>
+  </h6>
+  <div class="text-center mb-2">Procedure para gerar relatório simples</div>
 
-CREATE PROCEDURE Relatorio_Clientes_Por_Cidade()
-BEGIN
+<!-- snippet-code -->
+<div class="snippet-code position-relative">     
+<pre>
+<code id="snippet-sql-procedure-report-basic" class="language-sql">
+ DELIMITER //
+
+ CREATE PROCEDURE Relatorio_Clientes_Por_Cidade()
+ BEGIN
   SELECT cidade, COUNT(*) AS total_clientes
     FROM clientes
   GROUP BY cidade;
-END //
+ END //
 
-DELIMITER ;
+ DELIMITER ;
 </code>
-      </pre>
-    </div>
-  </div>
+</pre>
 </div>
+<!-- /snippet-code -->
+
+</div>
+</div>
+<!-- https://www.w3schools.com/sql/sql_quickref.asp -->
