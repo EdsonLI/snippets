@@ -54,45 +54,36 @@
 </div>
 <!-- https://sweetalert2.github.io -->
 
-<style>
-    body {
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
-    }
-</style>
 <script>
-    document.getElementById("btn-preview-swal2-select-color-radio").addEventListener("click", async () => {
-    const inputOptions = new Promise((resolve) => {
-        setTimeout(() => {
-        resolve({
-            "#ff0000": "Red",
-            "#00ff00": "Green",
-            "#0000ff": "Blue"
-        });
-        }, 1000);
-    });
+document.getElementById("btn-preview-swal2-select-color-radio").addEventListener("click", async () => {
+  const inputOptions = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        "#ff0000": "Red",
+        "#00ff00": "Green",
+        "#0000ff": "Blue"
+      });
+    }, 1000);
+  });
 
-    const { value: color } = await Swal.fire({
-        title: "Select color",
-        input: "radio",
-        inputOptions,
-        inputValidator: (value) => {
-        if (!value) {
-            return "You need to choose something!";
-        }
-        }
-    });
-
-    if (color) {
-        Swal.fire({   
-            html: `
-                <div>You selected:</div>
-                <div style="width: 50px; height: 50px; margin: 10px auto; background-color: ${color}; border-radius: 4px;"></div>
-                <div style="font-weight: bold;">${color}</div>
-            `,
-            background: "#222",
-            color: "#fff"
-        });
+  const { value: color } = await Swal.fire({
+    title: "Select color",
+    input: "radio",
+    inputOptions,
+    inputValidator: (value) => {
+      if (!value) {
+        return "You need to choose something!";
+      }
     }
+  });
+
+  if (color) {
+    Swal.fire({
+      html: `You selected: <span style="color:${color}; font-weight:bold">${color}</span>`,
+      background: "#222",
+      color: "#fff"
     });
+  }
+});
 </script>
 <!-- https://sweetalert2.github.io -->
