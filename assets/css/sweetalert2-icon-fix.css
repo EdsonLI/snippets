@@ -1,0 +1,25 @@
+/**
+ * SweetAlert2 Icon Fix - CSS para ajustar o tamanho e o alinhamento do ícone SVG personalizado
+ */
+
+/* Estilos para o ícone SVG do SweetAlert2 */
+.filter-button[data-tech-type="sweetalert2"] svg,
+.tech-badge[data-tech-type="sweetalert2"] svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Ajuste para o ícone em elementos de filtro */
+.filter-button[data-tech-type="sweetalert2"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajuste para o ícone em badges de tecnologia */
+.tech-badge[data-tech-type="sweetalert2"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
