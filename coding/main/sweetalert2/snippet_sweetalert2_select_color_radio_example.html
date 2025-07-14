@@ -54,20 +54,24 @@
 </div>
 <!-- https://sweetalert2.github.io -->
 
+<!-- Importação do jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!-- Importação da biblioteca SweetAlert2 via CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-document.getElementById("btn-preview-swal2-select-color-radio").addEventListener("click", async () => {
-  const inputOptions = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        "#ff0000": "Red",
-        "#00ff00": "Green",
-        "#0000ff": "Blue"
-      });
-    }, 1000);
-  });
+$(document).ready(function() {
+  $("#btn-preview-swal2-select-color-radio").on("click", async function() {
+    const inputOptions = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          "#ff0000": "Red",
+          "#00ff00": "Green",
+          "#0000ff": "Blue"
+        });
+      }, 1000);
+    });
 
   const { value: color } = await Swal.fire({
     title: "Select color",
@@ -87,6 +91,7 @@ document.getElementById("btn-preview-swal2-select-color-radio").addEventListener
       color: "#fff"
     });
   }
+  });
 });
 </script>
 <!-- https://sweetalert2.github.io -->
