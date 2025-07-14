@@ -43,14 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
    *   ...
    * }
    */  const STATIC_DIRECTORY_MAP = {
-    'bootstrap': ['snippet_bootstrap_form_validation.html'],
+    'bootstrap': ['snippet_bootstrap_form_validation.html', 'snippet_bootstrap_form_validation_teste.html'],
     'git': ['snippet_git_change_all_message_commits.html'],
     'isotope': ['snippet_isotope_basic_example.html'],
     'jquery': ['snippet_jquery_toggle_example.html'],
     'php': ['snippet_php_cookies_sessions_preferences.html'],
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
-    'sweetalert2': ['snippet_sweetalert2_confirmation_example.html.html']
-    // Última atualização: 13/07/2025 19:21:12
+    'sweetalert2': ['snippet_sweetalert2_confirmation_example.html.html', 'snippet_sweetalert2_select_color_radio_example.html']
+    // Última atualização: 14/07/2025 19:43:30
   };
 
   /**

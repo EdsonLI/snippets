@@ -1,0 +1,94 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sweetalert2">
+<div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+        <span class="id-tech-sweetalert2">SweetAlert2</span>
+        <div class="snippet-actions-float d-flex align-items-center gap-1">
+            
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-swal2-select-color-radio-input-example">
+            <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://codepen.io/Edson-Lu-s-Isele/pen/ZYbGBLj" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+            <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+        </div>
+    </h6>
+    <div class="text-center mb-2">Select color input radio example</div>
+
+<!-- snippet-code -->
+<div class="snippet-code position-relative">
+<pre>
+<code class="language-javascript" id="snippet-swal2-select-color-radio-input-example">
+(async () => {
+  /* inputOptions can be an object or Promise */
+  const inputOptions = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        "#ff0000": "Red",
+        "#00ff00": "Green",
+        "#0000ff": "Blue"
+      });
+    }, 1000);
+  });
+  const { value: color } = await Swal.fire({
+    title: "Select color",
+    input: "radio",
+    inputOptions,
+    inputValidator: (value) => {
+      if (!value) {
+        return "You need to choose something!";
+      }
+    }
+  });
+  if (color) {
+    Swal.fire({ html: `You selected: ${color}` });
+  }
+})();
+</code>
+</pre>
+</div>
+<!-- /snippet-code -->
+
+</div>
+</div>
+<style>
+    body {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    }
+</style>
+<script>
+    document.getElementById("btn-preview-swal2-select-color-radio").addEventListener("click", async () => {
+    const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+        resolve({
+            "#ff0000": "Red",
+            "#00ff00": "Green",
+            "#0000ff": "Blue"
+        });
+        }, 1000);
+    });
+
+    const { value: color } = await Swal.fire({
+        title: "Select color",
+        input: "radio",
+        inputOptions,
+        inputValidator: (value) => {
+        if (!value) {
+            return "You need to choose something!";
+        }
+        }
+    });
+
+    if (color) {
+        Swal.fire({   
+            html: `
+                <div>You selected:</div>
+                <div style="width: 50px; height: 50px; margin: 10px auto; background-color: ${color}; border-radius: 4px;"></div>
+                <div style="font-weight: bold;">${color}</div>
+            `,
+            background: "#222",
+            color: "#fff"
+        });
+    }
+    });
+</script>
+<!-- https://sweetalert2.github.io -->
