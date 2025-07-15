@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // SVG personalizado do SweetAlert2 (versão otimizada)
     const sweetAlert2SVG = `
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 200 200">
-        <g transform="translate(100, 100) scale(0.45) translate(-150, -15)">
+        <g transform="translate(100, 100) scale(0.75) translate(-150, -15)">
           <!-- Fundo laranja claro -->
           <circle cx="161.8" cy="27" r="100.2" fill="#fdcc80"/>
           <!-- Círculo interno branco -->
