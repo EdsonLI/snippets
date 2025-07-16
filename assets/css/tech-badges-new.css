@@ -22,15 +22,14 @@
   width: 1.5em;
   height: 1.5em;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   padding: 2px;
-  color: white; /* Cor padrão para todos os ícones */
+  background-color: white !important;
 }
 
-/* Garantir que todos os ícones em badges sejam brancos por padrão */
+/* Garantir que todos os ícones em badges mantenham suas cores originais */
 .tech-badge iconify-icon {
-  color: white !important;
-  --icon-color: white !important;
+  --icon-color: currentColor !important;
 }
 
 /* Definições de cores para cada tecnologia */

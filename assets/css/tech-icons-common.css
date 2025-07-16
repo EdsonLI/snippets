@@ -1,0 +1,20 @@
+/* Estilos comuns para todos os ícones personalizados */
+.tech-icon-custom {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2) !important;
+}
+
+/* Estilo para SVGs dentro de ícones personalizados */
+.tech-icon-custom svg {
+  width: 100% !important;
+  height: 100% !important;
+}
