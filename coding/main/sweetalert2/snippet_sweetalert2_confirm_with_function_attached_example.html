@@ -1,0 +1,45 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-sweetalert2">
+<div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+        <span class="id-tech-sweetalert2">SweetAlert2</span>
+        <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-swal2-confirm-with-function-attached-example">
+            <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://sweetalert2.github.io" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+            <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+        </div>
+    </h6>
+    <div class="text-center mb-2">Confirm with function attached</div>
+
+<!-- snippet-code -->
+<div class="snippet-code position-relative">
+<pre>
+<code class="language-javascript" id="snippet-swal2-confirm-with-function-attached-example">
+ Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+    if (result.isConfirmed) {
+       Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+       });
+   }
+});
+</code>
+</pre>
+</div>
+<!-- /snippet-code -->
+
+</div>
+</div>
+<!-- https://sweetalert2.github.io -->
+ 
