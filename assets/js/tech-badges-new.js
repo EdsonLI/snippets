@@ -77,6 +77,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone no DOM antes do texto
         span.insertBefore(jQueryIcon, span.firstChild);
+      } 
+      // Caso especial para Isotope - usar a imagem personalizada
+      else if (tech === 'isotope') {
+        // Remover ícones existentes para Isotope
+        const existingIcons = span.querySelectorAll('iconify-icon, .isotope-icon');
+        existingIcons.forEach(icon => icon.remove());
+        
+        // Criar um elemento de imagem para o Isotope
+        const isotopeIcon = document.createElement('img');
+        isotopeIcon.className = 'isotope-icon';
+        isotopeIcon.src = '/snippets/assets/img/isotope.png';
+        isotopeIcon.alt = 'Isotope';
+        isotopeIcon.width = 20;
+        isotopeIcon.height = 20;
+        isotopeIcon.style.verticalAlign = 'middle';
+        isotopeIcon.style.marginRight = '4px';
+        
+        // Inserir o ícone no DOM antes do texto
+        span.insertBefore(isotopeIcon, span.firstChild);
       } else {
         // Para todas as outras tecnologias, continuar com o comportamento normal
         const icon = TECH_ICONS[tech] || 'mdi:code-tags';
