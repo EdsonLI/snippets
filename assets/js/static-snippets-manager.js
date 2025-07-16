@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Sistema de log para facilitar diagnósticos
   const log = {
-    info: (msg) => SNIPPETS_CONFIG.debug && console.info(`📋 [Snippets]: ${msg}`),
-    success: (msg) => SNIPPETS_CONFIG.debug && console.log(`✅ [Snippets]: ${msg}`),
-    warn: (msg) => console.warn(`⚠️ [Snippets]: ${msg}`),
-    error: (msg, err) => console.error(`❌ [Snippets]: ${msg}`, err || '')
+    info: (msg) => SNIPPETS_CONFIG.debug && console.info(`[Snippets]: ${msg}`),
+    success: (msg) => SNIPPETS_CONFIG.debug && console.log(`[Snippets]: ${msg}`),
+    warn: (msg) => console.warn(`[Snippets]: ${msg}`),
+    error: (msg, err) => console.error(`[Snippets]: ${msg}`, err || '')
   };
 
   // Estado do carregador - rastreia o que foi carregado
@@ -34,23 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
     isotopeInitialized: false   // Rastrear se o Isotope já foi inicializado
   };
 
-  /**
-   * Lista estática de pastas e snippets (substitui o PHP)
-   * Quando você adicionar novas pastas ou arquivos, atualize esta estrutura
-   * 
-   * Formato: { 
-   *   'nome-da-pasta': ['snippet1.html', 'snippet2.html', ...],
-   *   ...
-   * }
-   */  const STATIC_DIRECTORY_MAP = {
-    'bootstrap': ['snippet_bootstrap_form_validation.html', /*'snippet_bootstrap_form_validation_teste.html'*/],
+  
+  const STATIC_DIRECTORY_MAP = {
+    'bootstrap': ['snippet_bootstrap_form_validation.html'/*, 'snippet_bootstrap_form_validation_teste.html'*/],
+    'css': ['snippet_css_display_flex_center.html'],
     'git': ['snippet_git_change_all_message_commits.html'],
     'isotope': ['snippet_isotope_basic_example.html'],
     'jquery': ['snippet_jquery_toggle_example.html'],
     'php': ['snippet_php_cookies_sessions_preferences.html'],
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
     'sweetalert2': ['snippet_sweetalert2_confirm_example.html', 'snippet_sweetalert2_confirm_with_function_attached_example.html', 'snippet_sweetalert2_select_color_radio_example.html']
-    // Última atualização: 16/07/2025 19:46:10
+    // Última atualização: 16/07/2025 20:31:48
   };
 
   /**
