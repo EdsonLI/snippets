@@ -12,12 +12,13 @@
 
 /* Estilos específicos para o SVG do jQuery */
 .jquery-icon svg {
-  width: 20px !important;
-  height: 20px !important;
+  width: 16px !important;
+  height: 16px !important;
   vertical-align: middle !important;
   background-color: white !important;
   border-radius: 50% !important;
   padding: 2px !important;
+  aspect-ratio: 1/1 !important;
 }
 
 /* Garantir que o elemento pai tenha o estilo correto */
@@ -25,6 +26,20 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
+}
+
+/* Garantir que o ícone seja perfeitamente circular */
+.jquery-icon {
+  position: relative !important;
+  aspect-ratio: 1/1 !important;
+}
+
+/* Centralizar perfeitamente o SVG dentro do seu contêiner */
+.jquery-icon svg {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 /* Garantir que o texto fique alinhado corretamente */

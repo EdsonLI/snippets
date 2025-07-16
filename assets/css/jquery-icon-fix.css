@@ -6,14 +6,16 @@
   filter: none !important;
   -webkit-filter: none !important;
   background-color: rgba(255, 255, 255, 0.9) !important; /* Fundo branco para destacar o ícone azul */
-  width: 1.5em !important;
-  height: 1.5em !important;
+  width: 20px !important; 
+  height: 20px !important;
+  aspect-ratio: 1/1 !important; /* Garante formato perfeitamente circular */
   padding: 2px !important;
   border-radius: 50% !important;
   border: 1px solid rgba(0, 120, 215, 0.7) !important; /* Borda azul para combinar com jQuery */
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  position: relative !important; /* Para posicionar elementos filhos */
 }
 
 /* Garantir que o ícone não receba filtros de cor */
@@ -23,6 +25,13 @@
 .id-tech-jquery iconify-icon svg * {
   fill: #0769ad !important; /* Cor azul do jQuery */
   stroke: none !important;
+  width: 16px !important; 
+  height: 16px !important;
+  aspect-ratio: 1/1 !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 /* Adicionar manualmente o ícone do jQuery como background se ele não aparecer */
