@@ -80,14 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Inserir o ícone no DOM antes do texto
         span.insertBefore(jQueryIcon, span.firstChild);
       }
-      // Caso especial para SQL - usar o SVG customizado
+      // Caso especial para SQL - não fazemos nada aqui
+      // O ícone SQL é gerenciado completamente pelo arquivo sql-icon-fix.js
       else if (tech === 'sql') {
-        // Remover ícones existentes para SQL
-        const existingIcons = span.querySelectorAll('iconify-icon, .sql-icon');
-        existingIcons.forEach(icon => icon.remove());
-        
-        // Adicionar classe para ativar o SVG via CSS
-        span.classList.add('has-custom-sql-svg');
+        // Apenas marcamos como processado e deixamos o sql-icon-fix.js fazer o trabalho
+        span.setAttribute('data-sql-badge', 'true');
       }
       // Caso especial para Bootstrap - usar um SVG customizado
       else if (tech === 'bootstrap') {
