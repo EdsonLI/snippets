@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mapeamento de tecnologias para seus respectivos ícones
   const TECH_ICONS = {
     // Tecnologias implementadas - usando versões coloridas (brandings originais)
-    'sql': 'vscode-icons:file-type-sql', // Ícone do VS Code que deve ser mais confiável
+    'sql': 'custom-sql-svg', // Usando SVG customizado definido no CSS
     'html': 'logos:html-5',
     'css': 'logos:css-3',
     'javascript': 'logos:javascript',
@@ -79,6 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone no DOM antes do texto
         span.insertBefore(jQueryIcon, span.firstChild);
+      }
+      // Caso especial para SQL - usar o SVG customizado
+      else if (tech === 'sql') {
+        // Remover ícones existentes para SQL
+        const existingIcons = span.querySelectorAll('iconify-icon, .sql-icon');
+        existingIcons.forEach(icon => icon.remove());
+        
+        // Adicionar classe para ativar o SVG via CSS
+        span.classList.add('has-custom-sql-svg');
       }
       // Caso especial para Bootstrap - usar um SVG customizado
       else if (tech === 'bootstrap') {

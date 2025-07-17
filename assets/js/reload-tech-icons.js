@@ -11,11 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
     techBadges.forEach(badge => {
       badge.removeAttribute('data-tech-processed');
       
-      // Remover iconify-icon existentes para substituí-los
-      const existingIcons = badge.querySelectorAll('iconify-icon');
-      existingIcons.forEach(icon => {
-        icon.remove();
-      });
+      // Não remover iconify-icon de badges SQL que usam nosso SVG personalizado
+      if (!badge.classList.contains('tech-badge-sql')) {
+        // Remover iconify-icon existentes para substituí-los
+        const existingIcons = badge.querySelectorAll('iconify-icon');
+        existingIcons.forEach(icon => {
+          icon.remove();
+        });
+      }
     });
     
     // Disparar evento customizado para notificar tech-badges.js para reprocessar
