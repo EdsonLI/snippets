@@ -40,3 +40,26 @@
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+/* Estilos customizados para o snippet de links do W3Schools */
+.filter-w3schools .snippet-code .d-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-gap: 8px !important;
+  padding: 0 6px !important;
+  margin: 0 auto !important;
+  max-width: calc(100% - 12px) !important;
+}
+
+.filter-w3schools .w3s-link-card {
+  padding: 8px 6px !important;
+  border-radius: 8px !important;
+}
+
+.filter-w3schools .w3s-link-card span {
+  margin-top: 4px !important;
+  font-size: 0.8rem !important;
+}
+
+.filter-w3schools .w3s-link-card iconify-icon {
+  font-size: 24px !important;
+}
