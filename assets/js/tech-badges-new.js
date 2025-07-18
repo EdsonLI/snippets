@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'php': 'logos:php',
     'bootstrap': 'logos:bootstrap',
     'jquery': 'logos:jquery',
-    'git': 'logos:git-icon',
+    'git': 'custom-git-svg', // Usando SVG customizado definido no CSS
     'fontawesome': 'logos:font-awesome',
     'isotope': 'carbon:chart-network',
     'vscode': 'logos:visual-studio-code',
@@ -85,6 +85,11 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (tech === 'sql') {
         // Apenas marcamos como processado e deixamos o sql-icon-fix.js fazer o trabalho
         span.setAttribute('data-sql-badge', 'true');
+      }
+      // Caso especial para Git - gerenciado pelo arquivo git-icon-fix.js
+      else if (tech === 'git') {
+        // Apenas marcamos como processado e deixamos o git-icon-fix.js fazer o trabalho
+        span.setAttribute('data-git-badge', 'true');
       }
       // Caso especial para Bootstrap - usar um SVG customizado
       else if (tech === 'bootstrap') {
