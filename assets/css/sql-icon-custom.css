@@ -1,32 +1,52 @@
 /* Estilo para o ícone SQL - apenas inserindo o ícone via classe especial */
 .sql-icon-wrapper {
-  display: inline-flex;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  vertical-align: middle;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 50%;
-  padding: 2px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  position: relative !important;
+  aspect-ratio: 1/1 !important;
 }
 
 /* SVG SQL embutido diretamente no elemento */
 .sql-icon-svg {
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle !important;
 }
 
 /* Ocultar qualquer iconify-icon original que possa estar presente */
-.tech-badge-sql iconify-icon:not(.sql-icon-svg) {
+.tech-badge-sql iconify-icon:not(.sql-icon-svg),
+[class*="id-tech-sql"] iconify-icon:not(.sql-icon-svg) {
   display: none !important;
 }
 
 /* Ajuste específico para o filtro no menu de filtros */
 .portfolio-filters li.filter-sql .sql-icon-wrapper {
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Garantir que o ícone apareça corretamente dentro dos snippets */
+[class*="id-tech-sql"] .sql-icon-wrapper {
+  display: inline-flex !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  margin-right: 4px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Estilo para o wrapper do texto SQL no título do snippet */
+.id-tech-sql {
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 .portfolio-filters li.filter-sql .sql-icon-svg {

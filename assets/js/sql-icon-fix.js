@@ -47,6 +47,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
+    // Função específica para os títulos dos snippets
+    function applySqlIconToSnippets() {
+      // Obter todos os spans com classe id-tech-sql (títulos dos snippets)
+      const sqlTitleSpans = document.querySelectorAll('.id-tech-sql');
+      sqlTitleSpans.forEach(span => {
+        // Remover ícones existentes
+        const existingIcons = span.querySelectorAll('iconify-icon, .sql-icon-wrapper');
+        existingIcons.forEach(icon => icon.remove());
+        
+        // Criar e inserir o novo ícone
+        const wrapper = document.createElement('span');
+        wrapper.className = 'sql-icon-wrapper';
+        wrapper.innerHTML = sqlSvgContent;
+        
+        // Inserir o ícone antes do texto
+        span.insertBefore(wrapper, span.firstChild);
+      });
+    }
+    
     // Aplicar aos badges normais
     const sqlBadges = document.querySelectorAll('.tech-badge-sql');
     sqlBadges.forEach(badge => {
@@ -58,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
     sqlFilters.forEach(filter => {
       applySqlIcon(filter);
     });
+    
+    // Aplicar aos títulos dos snippets
+    applySqlIconToSnippets();
     
     console.info('✅ SVG personalizado para SQL aplicado');
   }, 500);
