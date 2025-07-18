@@ -43,6 +43,11 @@
   visibility: visible !important;
 }
 
+/* Evitar que o ícone apareça diretamente no container */
+.filter-sql > .sql-icon-wrapper {
+  display: none !important;
+}
+
 /* Estilo para o wrapper do texto SQL no título do snippet */
 .id-tech-sql {
   display: inline-flex !important;

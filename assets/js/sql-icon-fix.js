@@ -3,8 +3,20 @@
  * Versão atualizada: Insere SVG diretamente no DOM
  */
 document.addEventListener('DOMContentLoaded', function() {
+  // Primeiro remover qualquer ícone SQL incorretamente posicionado
+  const removeBadIcons = function() {
+    const badIcons = document.querySelectorAll('.filter-sql > .sql-icon-wrapper');
+    if (badIcons.length > 0) {
+      console.info(`🧹 Removendo ${badIcons.length} ícones SQL mal posicionados`);
+      badIcons.forEach(icon => icon.remove());
+    }
+  };
+
   // Aguardar um momento para garantir que outros scripts já foram carregados
   setTimeout(function() {
+    // Primeiro limpamos ícones mal posicionados
+    removeBadIcons();
+    
     console.info('🔄 Aplicando SVG personalizado para o ícone SQL...');
     
     // SVG para o ícone SQL (definido em um único lugar para fácil manutenção)
@@ -52,8 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // Obter todos os spans com classe id-tech-sql (títulos dos snippets)
       const sqlTitleSpans = document.querySelectorAll('.id-tech-sql');
       sqlTitleSpans.forEach(span => {
-        // Remover ícones existentes
-        const existingIcons = span.querySelectorAll('iconify-icon, .sql-icon-wrapper');
+        // Verificar se já tem um ícone SQL dentro (para não duplicar)
+        const hasIcon = span.querySelector('.sql-icon-wrapper');
+        if (hasIcon) return;
+
+        // Remover outros ícones existentes (iconify, etc)
+        const existingIcons = span.querySelectorAll('iconify-icon');
         existingIcons.forEach(icon => icon.remove());
         
         // Criar e inserir o novo ícone
@@ -66,20 +82,26 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Aplicar aos badges normais
-    const sqlBadges = document.querySelectorAll('.tech-badge-sql');
+    // Aplicar aos badges normais (apenas quando não estão dentro de id-tech-sql)
+    const sqlBadges = document.querySelectorAll('.tech-badge-sql:not(.id-tech-sql .tech-badge-sql)');
     sqlBadges.forEach(badge => {
       applySqlIcon(badge);
     });
     
-    // Aplicar também aos filtros
-    const sqlFilters = document.querySelectorAll('.filter-sql');
-    sqlFilters.forEach(filter => {
-      applySqlIcon(filter);
-    });
+    // NÃO aplicar aos filtros - isso estava causando o ícone flutuante
+    // const sqlFilters = document.querySelectorAll('.filter-sql');
+    // sqlFilters.forEach(filter => {
+    //   applySqlIcon(filter);
+    // });
     
     // Aplicar aos títulos dos snippets
     applySqlIconToSnippets();
+    
+    // Garantir que não fiquem ícones flutuantes fora do lugar
+    removeBadIcons();
+    
+    // Remover depois de um tempo também (para casos onde o DOM muda)
+    setTimeout(removeBadIcons, 1000);
     
     console.info('✅ SVG personalizado para SQL aplicado');
   }, 500);
