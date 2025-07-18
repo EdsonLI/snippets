@@ -1,0 +1,58 @@
+/* Estilo para o ícone PHP - personalizado */
+.php-icon-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  position: relative !important;
+  aspect-ratio: 1/1 !important;
+}
+
+/* SVG PHP embutido diretamente no elemento */
+.php-icon-svg {
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle !important;
+}
+
+/* Ocultar qualquer iconify-icon original que possa estar presente */
+.tech-badge-php iconify-icon:not(.php-icon-svg),
+[class*="id-tech-php"] iconify-icon:not(.php-icon-svg) {
+  display: none !important;
+}
+
+/* Ajuste específico para o filtro no menu de filtros */
+.portfolio-filters li.filter-php .php-icon-wrapper {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Garantir que o ícone apareça corretamente dentro dos snippets */
+[class*="id-tech-php"] .php-icon-wrapper {
+  display: inline-flex !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  margin-right: 4px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Estilo para o wrapper do texto PHP no título do snippet */
+.id-tech-php {
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important; /* Garante posicionamento correto */
+  padding-left: 0 !important; /* Evita espaçamento extra */
+}
+
+/* Ajustes para o filtro no menu */
+.portfolio-filters li.filter-php .php-icon-svg {
+  width: 12px;
+  height: 12px;
+}
