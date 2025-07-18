@@ -5,6 +5,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Primeiro remover qualquer ícone SQL incorretamente posicionado
   const removeBadIcons = function() {
+    // Seletor mais específico - apenas para ícones diretamente dentro do container de filtro
+    // (não dentro de spans ou outros elementos)
     const badIcons = document.querySelectorAll('.filter-sql > .sql-icon-wrapper');
     if (badIcons.length > 0) {
       console.info(`🧹 Removendo ${badIcons.length} ícones SQL mal posicionados`);
@@ -63,10 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function applySqlIconToSnippets() {
       // Obter todos os spans com classe id-tech-sql (títulos dos snippets)
       const sqlTitleSpans = document.querySelectorAll('.id-tech-sql');
+      console.info(`🔍 Encontrados ${sqlTitleSpans.length} elementos .id-tech-sql para aplicar ícones`);
+      
       sqlTitleSpans.forEach(span => {
         // Verificar se já tem um ícone SQL dentro (para não duplicar)
         const hasIcon = span.querySelector('.sql-icon-wrapper');
-        if (hasIcon) return;
+        if (hasIcon) {
+          console.info('✓ Ícone SQL já existe, mantendo-o intacto');
+          return;
+        }
 
         // Remover outros ícones existentes (iconify, etc)
         const existingIcons = span.querySelectorAll('iconify-icon');
@@ -79,20 +86,36 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone antes do texto
         span.insertBefore(wrapper, span.firstChild);
+        console.info('✅ Ícone SQL inserido em elemento .id-tech-sql');
       });
     }
     
     // Aplicar aos badges normais (apenas quando não estão dentro de id-tech-sql)
     const sqlBadges = document.querySelectorAll('.tech-badge-sql:not(.id-tech-sql .tech-badge-sql)');
+    console.info(`🔍 Encontrados ${sqlBadges.length} elementos .tech-badge-sql para aplicar ícones`);
+    
     sqlBadges.forEach(badge => {
       applySqlIcon(badge);
     });
     
-    // NÃO aplicar aos filtros - isso estava causando o ícone flutuante
-    // const sqlFilters = document.querySelectorAll('.filter-sql');
-    // sqlFilters.forEach(filter => {
-    //   applySqlIcon(filter);
-    // });
+    // Aplicar aos filtros do menu de forma segura - apenas aqueles que NÃO contêm já um ícone SQL
+    const sqlFilters = document.querySelectorAll('.portfolio-filters li.filter-sql');
+    console.info(`🔍 Encontrados ${sqlFilters.length} elementos .filter-sql no menu de filtros`);
+    
+    sqlFilters.forEach(filter => {
+      // Verificar se já tem um ícone SQL dentro (para não duplicar)
+      const hasIcon = filter.querySelector('.sql-icon-wrapper');
+      if (!hasIcon) {
+        // Criar e inserir o novo ícone
+        const wrapper = document.createElement('span');
+        wrapper.className = 'sql-icon-wrapper';
+        wrapper.innerHTML = sqlSvgContent;
+        
+        // Inserir o ícone no início do elemento do filtro
+        filter.insertBefore(wrapper, filter.firstChild);
+        console.info('✅ Ícone SQL inserido em elemento .filter-sql do menu');
+      }
+    });
     
     // Aplicar aos títulos dos snippets
     applySqlIconToSnippets();
@@ -102,6 +125,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Remover depois de um tempo também (para casos onde o DOM muda)
     setTimeout(removeBadIcons, 1000);
+    
+    // Executar novamente após o carregamento completo da página e após eventos de isotope
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        removeBadIcons();
+        applySqlIconToSnippets();
+      }, 1000);
+    });
+    
+    // Se existir o evento isotope (layout completo), reaplique os ícones
+    document.addEventListener('isotope:arranged', function() {
+      setTimeout(function() {
+        removeBadIcons();
+        applySqlIconToSnippets();
+      }, 500);
+    });
     
     console.info('✅ SVG personalizado para SQL aplicado');
   }, 500);

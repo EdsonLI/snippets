@@ -43,15 +43,38 @@
   visibility: visible !important;
 }
 
-/* Evitar que o ícone apareça diretamente no container */
+/* Ajuste para o container filter-sql */
+/* NÃO esconder completamente, mas posicionar corretamente */
 .filter-sql > .sql-icon-wrapper {
-  display: none !important;
+  position: absolute !important;
+  display: none !important; /* Esconde no container diretamente, mas permite nos spans dentro */
+}
+
+/* Permitir ícones em filtros do menu de filtros */
+.portfolio-filters li.filter-sql > .sql-icon-wrapper {
+  display: inline-flex !important;
+  position: relative !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px !important;
 }
 
 /* Estilo para o wrapper do texto SQL no título do snippet */
 .id-tech-sql {
   display: inline-flex !important;
   align-items: center !important;
+  position: relative !important; /* Garante posicionamento correto */
+  padding-left: 0 !important; /* Evita espaçamento extra */
+}
+
+/* Garantir que o ícone esteja posicionado corretamente nos títulos dos snippets */
+.portfolio-content h6 .id-tech-sql .sql-icon-wrapper {
+  position: relative !important;
+  display: inline-flex !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 4px !important;
+  vertical-align: text-bottom !important;
 }
 
 .portfolio-filters li.filter-sql .sql-icon-svg {
