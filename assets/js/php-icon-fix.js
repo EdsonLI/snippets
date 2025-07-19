@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const phpSvgContent = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 65" class="php-icon-svg">
         <rect width="125" height="65" rx="5" fill="white"/>
-        <g transform="matrix(.204883 0 0 -.202632 7.737077 62.329876)">
+        <g transform="matrix(.224883 0 0 -.222632 6.5 63.329876)">
           <defs>
             <clipPath id="php-A">
               <path d="M11.52 162C11.52 81.677 135.307 16.56 288 16.56S564.48 81.677 564.48 162 440.693 307.44 288 307.44 11.52 242.322 11.52 162"/>
