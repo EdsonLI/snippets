@@ -9,16 +9,18 @@
   vertical-align: middle !important;
   background-color: white !important;
   border-radius: 50% !important;
-  padding: 2px !important;
+  padding: 1px !important; /* Reduzido para permitir mais espaço para o ícone */
   position: relative !important;
   aspect-ratio: 1/1 !important;
+  overflow: hidden !important; /* Garante que o ícone não ultrapasse a borda */
 }
 
 /* SVG PHP embutido diretamente no elemento */
 .php-icon-svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 18px !important;
+  height: 18px !important;
   vertical-align: middle !important;
+  margin: -1px !important; /* Compensação para centralizar o ícone maior */
 }
 
 /* Ocultar qualquer iconify-icon original que possa estar presente */
@@ -53,6 +55,7 @@
 
 /* Ajustes para o filtro no menu */
 .portfolio-filters li.filter-php .php-icon-svg {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  margin: -1px !important;
 }
