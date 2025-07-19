@@ -43,7 +43,7 @@
 .portfolio-content h6 .snippet-actions-float {
   position: absolute !important;
   right: 0;
-  top: 50%;
+  top: .285rem !important;
   transform: translateY(-50%);
   background-color: rgba(33, 37, 41, 0.7) !important;
   border-radius: 4px;
