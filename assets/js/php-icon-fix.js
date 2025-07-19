@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // SVG para o ícone PHP (definido em um único lugar para fácil manutenção)
     const phpSvgContent = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 65" class="php-icon-svg">
-        <rect width="125" height="65" rx="5" fill="white"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 85" class="php-icon-svg">
+        <rect width="155" height="85" rx="5" fill="white"/>
         <g transform="matrix(.164883 0 0 -.162632 11.737077 58.329876)">
           <defs>
             <clipPath id="php-A">
