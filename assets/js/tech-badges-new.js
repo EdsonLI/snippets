@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Criar um elemento SVG para Bootstrap
         const bootstrapIcon = document.createElement('span');
         bootstrapIcon.className = 'bootstrap-icon tech-icon-custom';
-        bootstrapIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="18" height="18" style="aspect-ratio: 1/1;">
+        bootstrapIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="20" height="20" style="aspect-ratio: 1/1;">
           <defs>
             <linearGradient id="bootstrap-a" x1="76.079" x2="523.48" y1="10.798" y2="365.95" gradientTransform="translate(1.11 14.613) scale(.24566)" gradientUnits="userSpaceOnUse">
               <stop offset="0" stop-color="#9013fe"></stop>
