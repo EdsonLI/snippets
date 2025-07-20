@@ -3324,7 +3324,7 @@ pre[class*="language-"] {
 /* O grupo dos botões flutuantes */
 .snippet-actions-float {
   position: sticky !important;
-  top: 0 !important;
+  top: .2rem !important;
   right: 0.4rem;
   left: auto;
   z-index: 10;

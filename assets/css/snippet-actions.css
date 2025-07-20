@@ -9,7 +9,7 @@
 /* Ajustes para os botões na snippet-actions-float */
 .snippet-actions-float {
   position: relative !important;
-  top: auto !important;
+  top: .2rem !important;
   right: 0;
   left: auto;
   z-index: 10;
@@ -43,7 +43,7 @@
 .portfolio-content h6 .snippet-actions-float {
   position: absolute !important;
   right: 0;
-  top: .285rem !important;
+  top: .2rem !important;
   transform: translateY(-50%);
   background-color: rgba(33, 37, 41, 0.7) !important;
   border-radius: 4px;
