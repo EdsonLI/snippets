@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function ensureProperPosition(container) {
     // Força o posicionamento absoluto e as margens corretas
     container.style.position = 'absolute';
-    container.style.top = '5px';
+    container.style.top = '3px'; // Reduzido para 3px
     container.style.right = '5px';
     container.style.margin = '0';
     container.style.padding = '0';
@@ -49,12 +49,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remove qualquer transform que possa estar interferindo
     container.style.transform = 'none';
     
+    // Verifica se está em dispositivo móvel
+    if (window.innerWidth < 768) {
+      container.style.top = '2px'; // Ainda mais próximo em dispositivos móveis
+    }
+    
     // Verifica se está dentro de um card com título
     const parentCard = container.closest('.card');
     if (parentCard) {
       const cardTitle = parentCard.querySelector('h5, h6');
       if (cardTitle && container.compareDocumentPosition(cardTitle) & Node.DOCUMENT_POSITION_PRECEDING) {
-        container.style.top = '10px'; // Ajusta o top quando está dentro de um card com título
+        container.style.top = '8px'; // Ajusta o top quando está dentro de um card com título
       }
     }
   }
