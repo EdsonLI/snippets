@@ -32,7 +32,6 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
-  margin-bottom: 0 !important; /* Remover margem inferior para evitar espaçamento extra */
 }
 
 /* Forçar que o ícone apareça mesmo com outras classes */
