@@ -38,7 +38,7 @@
 /* Ajusta o posicionamento dentro de cards especiais */
 .card h5 + .snippet-actions-float,
 .card h6 + .snippet-actions-float {
-  top: 6px !important; /* Ajustado para cards com cabeçalhos */
+  top: 2px !important; /* Ajustado para cards com cabeçalhos */
 }
 
 /* Corrige casos específicos onde o botão pode estar desalinhado */
