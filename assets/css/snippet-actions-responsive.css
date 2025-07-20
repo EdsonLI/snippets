@@ -6,7 +6,7 @@
 /* Regra base para todos os dispositivos */
 .snippet-actions-float {
   position: absolute !important;
-  top: .1rpm !important; /* Distância reduzida do topo */
+  top: 2px !important; /* Distância reduzida do topo */
   right: 5px !important; /* Distância fixa da direita */
   transform: none !important; /* Remove qualquer transform que possa afetar o posicionamento */
   padding: 0 !important;
@@ -38,7 +38,7 @@
 /* Ajusta o posicionamento dentro de cards especiais */
 .card h5 + .snippet-actions-float,
 .card h6 + .snippet-actions-float {
-  top: 8px !important; /* Ajustado para cards com cabeçalhos */
+  top: 6px !important; /* Ajustado para cards com cabeçalhos */
 }
 
 /* Corrige casos específicos onde o botão pode estar desalinhado */
