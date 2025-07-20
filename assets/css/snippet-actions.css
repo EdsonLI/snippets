@@ -9,7 +9,7 @@
 /* Ajustes para os botões na snippet-actions-float */
 .snippet-actions-float {
   position: relative !important;
-  top: .2rem !important;
+  top: .15rem !important;
   right: 0;
   left: auto;
   z-index: 10;
