@@ -1,0 +1,130 @@
+<?php
+Modificador de acesso 'protected':
+
+protected $form;
+# Este atributo é acessível dentro da classe onde foi definido
+# É acessível em todas as classes que herdam (estendem) dessa classe
+# NÃO é acessível de fora da classe ou de suas subclasses (não é acessível publicamente)
+
+Snippet:
+<?php
+class MinhaClasse {
+    protected $mensagem;
+
+    public function setMensagem($valor) {
+        $this->mensagem = $valor; // Acesso permitido dentro da própria classe
+    }
+
+    public function getMensagem() {
+        return $this->mensagem;   // Acesso permitido dentro da própria classe
+    }
+}
+
+class ClasseFilha extends MinhaClasse {
+    public function alterarMensagem($novaMensagem) {
+        // Acesso permitido, pois está dentro de uma classe filha
+        $this->mensagem = $novaMensagem;
+    }
+
+    public function exibirMensagem() {
+        // Também permitido
+        return $this->mensagem;
+    }
+}
+
+// Criando um objeto
+$obj = new ClasseFilha();
+
+// Chamando métodos públicos para acessar o atributo protegido
+$obj->setMensagem("Olá, mundo!");
+echo $obj->getMensagem(); // Saída: Olá, mundo!
+
+// Também podemos alterar pela classe filha
+$obj->alterarMensagem("Nova mensagem!");
+echo $obj->exibirMensagem(); // Saída: Nova mensagem!
+
+// ⚠️ Tentativa de acesso direto de fora da classe: GERA ERRO!
+// $obj->mensagem = "Não pode";      // ❌ Erro fatal
+// echo $obj->mensagem;              // ❌ Erro fatal
+?>
+
+Modificador de acesso 'private':
+
+private $form;
+# O atributo é acessível APENAS dentro da classe onde foi definido
+# Você pode acessá-lo usando $this->form em qualquer método dessa mesma classe
+# Classes filhas (que herdam dessa classe) NÃO podem acessar diretamente esse atributo
+# Código externo também NÃO pode acessar esse atributo
+
+Snippet:
+<?php
+class MinhaClasse {
+    private $form;
+    
+    public function setForm($valor) {
+        $this->form = $valor;  // Acesso válido
+    }
+    
+    public function getForm() {
+        return $this->form;    // Acesso válido
+    }
+}
+
+class ClasseFilha extends MinhaClasse {
+    public function tentarAcessar() {
+        // Isso geraria um erro, pois $form é privado na classe pai
+        // return $this->form;  
+    }
+}
+
+$objeto = new MinhaClasse();
+// Isso também geraria um erro, pois $form é privado
+// $objeto->form = "valor";
+?>
+
+Modificador 'static' quando combinado com 'private':
+private static $projectId;
+
+Quando um atributo é declarado como static, isso significa que:
+# O atributo pertence à classe em si, não a instâncias específicas (objetos) dessa classe
+# Existe apenas uma cópia desse atributo compartilhada por todas as instâncias da classe
+# Você acessa o atributo usando o nome da classe em vez de $this
+
+Com private static $projectId;, você tem um atributo que:
+# É compartilhado entre todas as instâncias da classe (porque é static)
+# É acessível apenas dentro da própria classe onde foi definido (porque é private)
+# É acessado usando self::$projectId ou NomeDaClasse::$projectId dentro dos métodos da classe, não com $this->projectId
+
+Snippet:
+<?php
+class Projeto {
+    private static $projectId = 100;
+    private $nome;
+    
+    public function __construct($nome) {
+        $this->nome = $nome;
+        // Acessa o atributo estático usando self::
+        self::$projectId++; 
+    }
+    
+    public static function getNextId() {
+        // Método estático acessando atributo estático
+        return self::$projectId;
+    }
+    
+    public function getId() {
+        // Método normal também pode acessar atributo estático
+        return self::$projectId;
+    }
+}
+
+// Uso:
+$projeto1 = new Projeto("Alpha");
+$projeto2 = new Projeto("Beta");
+
+// Acessando o método estático através da classe
+echo Projeto::getNextId(); // Resultado: 102
+
+* Variáveis estáticas são úteis quando você precisa de um valor que seja compartilhado entre 
+todas as instâncias de uma classe, como contadores, configurações globais ou valores de referência.
+?>
