@@ -1,0 +1,191 @@
+/* Toggle para retrair/expandir o side-panel - versão melhorada */
+#side-panel {
+  position: relative;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  overflow: visible !important; /* Garante que elementos que ultrapassam os limites fiquem visíveis */
+}
+
+/* Botão de toggle posicionado no centro-direita do painel */
+#side-panel-toggle {
+  position: absolute;
+  top: 50%;
+  right: -16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--ytmusic-button-background, rgba(33, 33, 33, 0.8));
+  cursor: pointer;
+  z-index: 1001; /* Aumento do z-index para garantir que fique acima de outros elementos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+}
+
+#side-panel-toggle:hover {
+  background-color: var(--ytmusic-button-background-hover, rgba(48, 48, 48, 0.9));
+}
+
+#side-panel-toggle::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="%23FFFFFF"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  transition: transform 0.3s ease;
+  transform: rotate(180deg); /* Por padrão mostra a seta apontando para direita (retrair) */
+}
+
+/* Quando colapsado, a seta aponta para esquerda (expandir) */
+#side-panel.collapsed #side-panel-toggle::after {
+  transform: rotate(0deg);
+}
+
+#side-panel.collapsed {
+  transform: translateX(calc(100% - 8px)); /* Mantém apenas uma pequena parte visível */
+  width: 8px !important;
+}
+
+/* Garante que o botão fique totalmente visível quando o painel está colapsado */
+#side-panel.collapsed #side-panel-toggle {
+  right: -24px; /* Move o botão mais para fora quando colapsado */
+}
+
+/* Animação suave para o conteúdo interno */
+#side-panel > * {
+  transition: opacity 0.2s ease-in-out;
+}
+
+#side-panel.collapsed > * {
+  opacity: 0;
+}
+
+/* O botão nunca desaparece */
+#side-panel-toggle {
+  opacity: 1 !important;
+  pointer-events: auto !important; /* Garante que o botão seja sempre clicável */
+}
+
+/* Garantir que o botão tenha uma área de clique segura */
+#side-panel-toggle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Remover a área de clique anterior que poderia interferir */
+#side-panel::before {
+  display: none;
+}
+
+/* O resto do seu CSS */
+#player {
+  /* width: 1280px !important; */
+  /* height: 720px !important; */
+}
+video.video-stream {
+  /* width: 1280px !important; */
+  /* height: 720px !important; */
+  /* left: 0px !important; */
+  /* top: 0px !important; */
+}
+
+/*
+  <ytmusic-player id="player" class="style-scope ytmusic-player-page"
+*/
+
+/*
+<div id="song-media-window" tabindex="-1" class="song-media-controls style-scope ytmusic-player">
+  <div class="top-row-buttons style-scope ytmusic-player"><div><yt-icon-button class="player-quality-button style-scope ytmusic-player" icon="yt-icons:settings" role="button" tabindex="0" aria-disabled="false" aria-label="Open player quality changer" title="Open player quality changer"><!--css-build:shady--><!--css-build:shady--><button id="button" class="style-scope yt-icon-button"><span class="yt-icon-shape style-scope yt-icon yt-spec-icon-shape"><div style="width: 100%; height: 100%; display: block; fill: currentcolor;"><svg class="style-scope yt-icon" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path class="style-scope yt-icon" d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.1-1.65c.2-.15.25-.42.13-.64l-2-3.46c-.12-.22-.4-.3-.6-.22l-2.5 1c-.52-.4-1.08-.73-1.7-.98l-.37-2.65c-.06-.24-.27-.42-.5-.42h-4c-.27 0-.48.18-.5.42l-.4 2.65c-.6.25-1.17.6-1.7.98l-2.48-1c-.23-.1-.5 0-.6.22l-2 3.46c-.14.22-.08.5.1.64l2.12 1.65c-.04.32-.07.65-.07.98s.02.66.06.98l-2.1 1.65c-.2.15-.25.42-.13.64l2 3.46c.12.22.4.3.6.22l2.5-1c.52.4 1.08.73 1.7.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.6-.25 1.17-.6 1.7-.98l2.48 1c.23.1.5 0 .6-.22l2-3.46c.13-.22.08-.5-.1-.64l-2.12-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"></path></g></svg></div></span></button><yt-interaction id="interaction" class="circular style-scope yt-icon-button"><!--css-build:shady--><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></yt-icon-button></div>
+    
+    <yt-icon-button class="player-minimize-button style-scope ytmusic-player" title="Abrir o miniplayer"><!--css-build:shady--><!--css-build:shady--><button id="button" class="style-scope yt-icon-button" aria-label="Abrir o miniplayer">
+      <yt-icon icon="yt-sys-icons:music_miniplayer" class="style-scope ytmusic-player"><!--css-build:shady--><!--css-build:shady--><span class="yt-icon-shape style-scope yt-icon yt-spec-icon-shape"><div style="width: 100%; height: 100%; display: block; fill: currentcolor;"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><g><path d="M14 13h6v4h-6v-4zm7-7v12H3V6h18m1-1H2v14h20V5zM12 8v2.29L9.35 7.65l-.7.7L11.29 11H9v1h4V8h-1z" fill-rule="evenodd"></path></g></svg></div></span></yt-icon>
+    </button><yt-interaction id="interaction" class="circular style-scope yt-icon-button"><!--css-build:shady--><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></yt-icon-button>
+    <yt-icon-button class="player-maximize-button style-scope ytmusic-player" title="Abrir a página do player"><!--css-build:shady--><!--css-build:shady--><button id="button" class="style-scope yt-icon-button" aria-label="Abrir a página do player">
+      <yt-icon icon="yt-sys-icons:music_player_page" class="style-scope ytmusic-player"><!--css-build:shady--><!--css-build:shady--><span class="yt-icon-shape style-scope yt-icon yt-spec-icon-shape"><div style="width: 100%; height: 100%; display: block; fill: currentcolor;"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><path clip-rule="evenodd" d="M18 5H4v14h7v1H3V4h16v8h-1V5ZM6 7h5v1H7.707L12 12.293l-.707.707L7 8.707V12H6V7Zm7 7h9v8h-9v-8Z" fill-rule="evenodd"></path></svg></div></span></yt-icon>
+    </button><yt-interaction id="interaction" class="circular style-scope yt-icon-button"><!--css-build:shady--><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></yt-icon-button>
+    <yt-icon-button class="fullscreen-button style-scope ytmusic-player" title="Entrar no modo tela cheia"><!--css-build:shady--><!--css-build:shady--><button id="button" class="style-scope yt-icon-button" aria-label="Entrar no modo tela cheia">
+      <yt-icon icon="yt-sys-icons:fullscreen" class="style-scope ytmusic-player"><!--css-build:shady--><!--css-build:shady--><span class="yt-icon-shape style-scope yt-icon yt-spec-icon-shape"><div style="width: 100%; height: 100%; display: block; fill: currentcolor;"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><path d="M5 9H4V4h5v1H5v4zm15-5h-5v1h4v4h1V4zm0 11h-1v4h-4v1h5v-5zM9 19H5v-4H4v5h5v-1z"></path></svg></div></span></yt-icon>
+    </button><yt-interaction id="interaction" class="circular style-scope yt-icon-button"><!--css-build:shady--><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></yt-icon-button>
+    <yt-icon-button class="player-close-button style-scope ytmusic-player" title="Fechar miniplayer"><!--css-build:shady--><!--css-build:shady--><button id="button" class="style-scope yt-icon-button" aria-label="Fechar miniplayer">
+      <yt-icon icon="yt-sys-icons:close" class="style-scope ytmusic-player"><!--css-build:shady--><!--css-build:shady--><span class="yt-icon-shape style-scope yt-icon yt-spec-icon-shape"><div style="width: 100%; height: 100%; display: block; fill: currentcolor;"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path></svg></div></span></yt-icon>
+    </button><yt-interaction id="interaction" class="circular style-scope yt-icon-button"><!--css-build:shady--><!--css-build:shady--><div class="stroke style-scope yt-interaction"></div><div class="fill style-scope yt-interaction"></div></yt-interaction></yt-icon-button>
+    
+  </div>
+</div>
+*/
+
+/*
+<video tabindex="-1" class="video-stream html5-main-video" webkit-playsinline="" playsinline="" controlslist="nodownload" src="blob:https://music.youtube.com/6956a1c7-91e8-4244-94f6-c1bd91ce18ff" style="width: 1024px; height: 576px; left: 128px; top: 0px;"></video>
+*/
+
+/* o js para fazer funcionar o toggle do painel direito */
+/*
+(function() {
+  // Função para criar o botão de toggle
+  function createSidePanelToggle() {
+    const sidePanel = document.querySelector('#side-panel');
+    if (!sidePanel) {
+      console.log('Side panel não encontrado');
+      return;
+    }
+    
+    // Verificar se o botão já existe para evitar duplicatas
+    if (document.querySelector('#side-panel-toggle')) return;
+    
+    // Criar o botão de toggle
+    const toggleButton = document.createElement('div');
+    toggleButton.id = 'side-panel-toggle';
+    toggleButton.title = 'Recolher/Expandir painel lateral';
+    
+    // Anexar o botão ao side-panel
+    sidePanel.appendChild(toggleButton);
+    
+    // Adicionar evento de clique
+    toggleButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Evita propagação para outros elementos
+      sidePanel.classList.toggle('collapsed');
+      
+      // Salvar o estado no localStorage
+      localStorage.setItem('sidePanelCollapsed', sidePanel.classList.contains('collapsed'));
+    });
+    
+    // Restaurar o estado anterior se existir
+    const wasCollapsed = localStorage.getItem('sidePanelCollapsed') === 'true';
+    if (wasCollapsed) {
+      sidePanel.classList.add('collapsed');
+    }
+    
+    console.log('Toggle configurado com sucesso!');
+  }
+  
+  // Executa imediatamente
+  createSidePanelToggle();
+  
+  // Também tenta quando o DOM estiver carregado
+  document.addEventListener('DOMContentLoaded', createSidePanelToggle);
+  
+  // Se o side-panel for adicionado dinamicamente depois
+  const observer = new MutationObserver(function(mutations) {
+    if (document.querySelector('#side-panel') && 
+        !document.querySelector('#side-panel-toggle')) {
+      console.log('Side panel detectado por MutationObserver');
+      createSidePanelToggle();
+    }
+  });
+  
+  observer.observe(document.body, { 
+    childList: true, 
+    subtree: true 
+  });
+})();
+*/
+
+/* C:\Users\edson\AppData\Roaming\YouTube Music\Themes\theme-edson-ytmd */
