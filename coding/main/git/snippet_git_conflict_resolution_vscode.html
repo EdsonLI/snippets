@@ -17,12 +17,45 @@
 <div class="snippet-code position-relative">
 <pre>
 <code class="language-bash" id="snippet-git-conflict-resolution-vscode">
-# Se já tiver o repositório, vá para a branch da sua PR:
- git checkout minha-feature
+<!--
+    Snippet: Resolvendo conflitos no VS Code
+    Contexto: PR da branch "157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage"
+    Fluxo: GitHub PR com conflitos a serem resolvidos localmente
+-->
 
-# Resolver conflitos no VS Code:
- git checkout 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage
+<h2>Passo a passo: Resolver conflitos da PR no VS Code</h2>
+<ol>
+  <li><strong>Atualize a branch de base (development):</strong>
+    git checkout development
+    git pull origin development
+  </li>
+  <li><strong>Faça checkout da sua branch da PR:</strong>
+    git checkout 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage
 
+    <p><em>Ou, se ainda não tiver localmente:</em></p>
+    git fetch origin
+    git checkout -b 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage origin/157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage
+  </li>
+  <li><strong>Mescle a branch development na sua para resolver os conflitos:</strong>
+    git merge development
+  </li>
+  <li><strong>Resolva os conflitos:</strong>
+    <ul>
+      <li>Vá até a aba <strong>Source Control</strong> (atalho: <code>Ctrl+Shift+G</code>)</li>
+      <li>Abra os arquivos com ícone de ⚠️</li>
+      <li>Use os botões: <em>Accept Current / Incoming / Both Changes</em></li>
+      <li>Remova os marcadores de conflito <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> etc.</li>
+    </ul>
+  </li>
+  <li><strong>Finalize o merge:</strong>
+    git add .
+    git commit -m "Resolve conflitos com a branch development"
+  </li>
+  <li><strong>Atualize sua PR com o push:</strong>
+    git push origin 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage
+  </li>
+</ol>
+<p><strong>✅ PR atualizada e pronta para nova revisão!</strong></p>
 </code>
 </pre>
 </div>
