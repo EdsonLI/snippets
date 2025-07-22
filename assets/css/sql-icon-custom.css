@@ -1,23 +1,9 @@
 /* Estilo para o ícone SQL - apenas inserindo o ícone via classe especial */
-.sql-icon-wrapper {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 20px !important;
-  height: 20px !important;
-  margin-right: 4px !important;
-  vertical-align: middle !important;
-  background-color: white !important;
-  border-radius: 50% !important;
-  padding: 2px !important;
-  position: relative !important;
-  aspect-ratio: 1/1 !important;
-}
+/* Nota: As propriedades básicas (tamanho, padding) estão agora em tech-icons-uniform.css */
 
 /* SVG SQL embutido diretamente no elemento */
+/* Nota: As propriedades básicas estão agora em tech-icons-uniform.css */
 .sql-icon-svg {
-  width: 16px !important;
-  height: 16px !important;
   vertical-align: middle !important;
 }
 
@@ -28,10 +14,7 @@
 }
 
 /* Ajuste específico para o filtro no menu de filtros */
-.portfolio-filters li.filter-sql .sql-icon-wrapper {
-  width: 16px !important;
-  height: 16px !important;
-}
+/* Nota: As propriedades de tamanho estão agora em tech-icons-uniform.css */
 
 /* Garantir que o ícone apareça corretamente dentro dos snippets */
 [class*="id-tech-sql"] .sql-icon-wrapper {
@@ -54,8 +37,6 @@
 .portfolio-filters li.filter-sql > .sql-icon-wrapper {
   display: inline-flex !important;
   position: relative !important;
-  width: 16px !important;
-  height: 16px !important;
   margin-right: 4px !important;
 }
 
@@ -71,8 +52,6 @@
 .portfolio-content h6 .id-tech-sql .sql-icon-wrapper {
   position: relative !important;
   display: inline-flex !important;
-  width: 18px !important;
-  height: 18px !important;
   margin-right: 4px !important;
   vertical-align: text-bottom !important;
 }

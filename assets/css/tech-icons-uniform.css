@@ -1,0 +1,97 @@
+/* 
+ * Estilos unificados para ícones de tecnologia
+ * Garante que todos os ícones de tecnologia tenham o mesmo tamanho
+ * Baseado no tamanho do ícone PHP (24px x 24px)
+ */
+
+/* Estilo base para todos os ícones personalizados */
+.tech-icon-custom,
+[class$="-icon-wrapper"],
+.php-icon-wrapper,
+.sql-icon-wrapper,
+.html-icon-wrapper,
+.css-icon-wrapper,
+.js-icon-wrapper,
+.bootstrap-icon-wrapper,
+.jquery-icon-wrapper,
+.vscode-icon-wrapper,
+.git-icon-wrapper,
+.fontawesome-icon-wrapper,
+.sweetalert2-icon-wrapper,
+.isotope-icon-wrapper,
+.codepen-icon-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  aspect-ratio: 1/1 !important; /* Garante formato perfeitamente circular */
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 0 !important; /* Sem padding para maximizar o espaço para o ícone */
+  box-shadow: 0 0 2px rgba(0,0,0,0.2) !important;
+  position: relative !important; /* Para posicionamento de elementos filhos */
+  overflow: hidden !important; /* Garante que o ícone não ultrapasse a borda */
+}
+
+/* Estilo para SVGs dentro de ícones personalizados */
+.tech-icon-custom svg,
+[class$="-icon-wrapper"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  aspect-ratio: 1/1 !important; /* Garante SVG perfeitamente proporcional */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Ajuste específico para os filtros no menu de filtros */
+.portfolio-filters li [class$="-icon-wrapper"],
+.portfolio-filters li .tech-icon-custom {
+  width: 18px !important;
+  height: 18px !important;
+  padding: 0 !important;
+}
+
+/* Ajuste para os SVGs nos filtros */
+.portfolio-filters li [class$="-icon-wrapper"] svg,
+.portfolio-filters li .tech-icon-custom svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Garantir que o SVG para o PHP seja dimensionado corretamente */
+.php-icon-svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: #777bb3 !important; /* Cor oficial do PHP */
+  transform: scale(1.2) !important; /* Aumenta o tamanho do SVG */
+}
+
+/* Garantir que o SVG para o SQL seja dimensionado corretamente */
+.sql-icon-svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Ajuste para os SVGs de PHP e SQL nos filtros */
+.portfolio-filters li.filter-php .php-icon-svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.portfolio-filters li.filter-sql .sql-icon-svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Estilo para o wrapper do texto nos títulos dos snippets */
+[class*="id-tech-"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  padding-left: 0 !important;
+}

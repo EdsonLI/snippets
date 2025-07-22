@@ -1,29 +1,11 @@
 /* Estilo para o ícone PHP - personalizado */
-.php-icon-wrapper {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 24px !important;
-  height: 24px !important;
-  margin-right: 4px !important;
-  vertical-align: middle !important;
-  background-color: white !important;
-  border-radius: 50% !important;
-  padding: 0 !important; /* Removido completamente para maximizar o espaço para o ícone */
-  position: relative !important;
-  aspect-ratio: 1/1 !important;
-  overflow: hidden !important; /* Garante que o ícone não ultrapasse a borda */
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) !important; /* Adiciona uma leve sombra para consistência */
-}
+/* Nota: As propriedades básicas (tamanho, padding) estão agora em tech-icons-uniform.css */
 
 /* SVG PHP embutido diretamente no elemento */
+/* Nota: As propriedades básicas (tamanho, cor) estão agora em tech-icons-uniform.css */
 .php-icon-svg {
-  width: 20px !important;
-  height: 20px !important;
   vertical-align: middle !important;
   margin: 0 !important; /* Sem compensações - o ícone já está bem proporcionado */
-  fill: #777bb3 !important; /* Cor oficial do PHP */
-  transform: scale(1.2) !important; /* Aumenta o tamanho do SVG */
 }
 
 /* Ocultar qualquer iconify-icon original que possa estar presente */
@@ -33,11 +15,7 @@
 }
 
 /* Ajuste específico para o filtro no menu de filtros */
-.portfolio-filters li.filter-php .php-icon-wrapper {
-  width: 18px !important;
-  height: 18px !important;
-  padding: 0 !important; /* Removido padding também nos filtros */
-}
+/* Nota: As propriedades básicas (tamanho, padding) estão agora em tech-icons-uniform.css */
 
 /* Garantir que o ícone apareça corretamente dentro dos snippets */
 [class*="id-tech-php"] .php-icon-wrapper {

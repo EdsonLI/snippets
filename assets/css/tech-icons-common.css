@@ -1,27 +1,3 @@
 /* Estilos comuns para todos os ícones personalizados */
-.tech-icon-custom {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 20px !important;
-  height: 20px !important;
-  aspect-ratio: 1/1 !important; /* Garante formato perfeitamente circular */
-  margin-right: 4px !important;
-  vertical-align: middle !important;
-  background-color: white !important;
-  border-radius: 50% !important;
-  padding: 2px !important;
-  box-shadow: 0 0 2px rgba(0,0,0,0.2) !important;
-  position: relative !important; /* Para posicionamento de elementos filhos */
-}
-
-/* Estilo para SVGs dentro de ícones personalizados */
-.tech-icon-custom svg {
-  width: 16px !important;
-  height: 16px !important;
-  aspect-ratio: 1/1 !important; /* Garante SVG perfeitamente proporcional */
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-}
+/* Nota: Estilos transferidos para tech-icons-uniform.css */
+/* Este arquivo mantido para compatibilidade com versões anteriores */
