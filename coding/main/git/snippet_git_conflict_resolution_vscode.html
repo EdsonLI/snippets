@@ -16,25 +16,18 @@
 <!-- snippet-code -->
 <div class="snippet-code position-relative">
 <pre>
-<code class="language-bash" id="snippet-git-conflict-resolution-vscode">
-<!--
-    Snippet: Resolvendo conflitos no VS Code
-    Contexto: PR da branch "157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage"
-    Fluxo: GitHub PR com conflitos a serem resolvidos localmente
--->
-
-<h2>Passo a passo: Resolver conflitos da PR no VS Code</h2>
+<code class="language-bash" id="snippet-git-conflict-resolution-vscode">Passo a passo: Resolver conflitos da PR no VS Code
 <ol>
   <li><strong>Atualize a branch de base (development):</strong>
     git checkout development
     git pull origin development
   </li>
   <li><strong>Faça checkout da sua branch da PR:</strong>
-    git checkout 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage
+    git checkout 157-implementar-a-nova-funcionalidade
 
     <p><em>Ou, se ainda não tiver localmente:</em></p>
     git fetch origin
-    git checkout -b 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage origin/157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage
+    git checkout -b 157-implementar-a-nova-funcionalidade
   </li>
   <li><strong>Mescle a branch development na sua para resolver os conflitos:</strong>
     git merge development
@@ -42,15 +35,15 @@
   <li><strong>Resolva os conflitos:</strong>
     <ul>
       <li>Vá até a aba <strong>Source Control</strong> (atalho: <code>Ctrl+Shift+G</code>)</li>
-      <li>Abra os arquivos com ícone de ⚠️</li>
-      <li>Use os botões: <em>Accept Current / Incoming / Both Changes</em></li>
-      <li>Remova os marcadores de conflito <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> etc.</li>
+      <li>Abra os arquivos com ícone de exclamação ⚠️</li>
+      <li>Use os botões: <em>Accept Current [Aceitar alteração local] / Incoming [Vindo da branch remota] / Both Changes [Mesclar as duas]</em></li>
+      <li>Remova os marcadores de conflito se necessário</li>
     </ul>
   </li>
   <li><strong>Entrada x Atual:</strong>
     <ul>
       <li><strong>"Entrada"</strong> ou <strong>"Incoming"</strong> é o que vem da <strong>development</strong> <strong>(ou qualquer branch que você está tentando mesclar)</strong></li>
-      <li><strong>"Atual" (HEAD)</strong> → É o que está na sua <strong>branch atual — normalmente a da PR</strong></li>
+      <li><strong>"Atual" (HEAD)</strong> → É o que está na sua <strong>branch atual - normalmente a da PR</strong></li>
     </ul>
   </li>
   <li><strong>Finalize o merge:</strong>
