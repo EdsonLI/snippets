@@ -1,0 +1,78 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-prompts">Prompts para Modelos & Grids - Adianti</span>
+    </h6>
+    <div class="snippet-code position-relative">
+      <div class="d-grid" style="grid-template-columns: repeat(1, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">
+        <style>
+          .prompt-card {
+            background-color: #1b1f24;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 0.8rem;
+            color: #ccc;
+            white-space: pre-wrap;
+            transition: all 0.15s ease-in-out;
+          }
+          .prompt-card:hover {
+            background-color: #222;
+            border-color: #666;
+          }
+          .prompt-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #3dd5f3;
+            margin-bottom: 4px;
+          }
+        </style>
+
+        <div class="prompt-card">
+          <div class="prompt-title">🧱 Gerar modelo (TRecord)</div>
+Crie uma classe PHP para o Adianti Framework que represente a tabela "clientes" com os campos: id, nome, email, telefone, status, created_at. Use TRecord como base.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">📋 Gerar formulário BootstrapForm</div>
+Crie uma tela de cadastro para o Adianti usando BootstrapForm com os campos: nome (obrigatório), email (validação de e-mail), telefone (com máscara) e status (combo: ativo/inativo). Inclua botão de salvar com método onSave.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">📑 Gerar TDataGrid com filtros</div>
+Gere um TDataGrid para listar os dados da tabela 'pedidos' com colunas: id, cliente_id, total, status, data_criacao. Adicione filtros para cliente_id (autocomplete) e status (combo), e uma ação para visualizar detalhes.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">🗑️ Ação de exclusão com confirmação</div>
+Me mostre como criar uma ação de exclusão em uma TDataGrid do Adianti que exibe confirmação com TQuestion e chama o método onDeleteConfirmado.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">🔍 Filtro com persistência</div>
+Gere um formulário de busca com campos: nome e status, usando BootstrapFormBuilder no Adianti. Os filtros devem ser armazenados na sessão para manter o estado da pesquisa entre páginas.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">🔗 Botão personalizado na grid</div>
+Na minha TDataGrid, quero adicionar um botão "PDF" ao lado de cada pedido, que chama o método onGerarPdf passando o ID da linha. Mostre o código.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">🔐 Menu lateral com permissões</div>
+Gere um menu lateral para um sistema Adianti com as seções: Cadastros, Relatórios, Configurações. Cada item deve verificar se o usuário logado tem permissão usando checkPermission().
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">📦 Classe de serviço com regras de negócio</div>
+Crie uma classe chamada PedidoService no Adianti que contenha métodos para: calcular total do pedido, aplicar desconto, verificar estoque e registrar pedido. Não exibir interface.
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-title">📊 Dashboard com cards</div>
+Crie um dashboard simples no Adianti com 3 cards horizontais exibindo: Total de clientes, Total de pedidos do mês, e Valor total em aberto. Use TPanelGroup e THTMLRenderer.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

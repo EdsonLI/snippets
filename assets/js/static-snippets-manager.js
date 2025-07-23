@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     filterMap: new Map(),       // Mapeamento de pastas para classes de filtro
     isotopeInitialized: false   // Rastrear se o Isotope já foi inicializado
   };  const STATIC_DIRECTORY_MAP = {
+    'ai': ['prompts_adianti.html'],
     'bootstrap': ['snippet_bootstrap_form_validation.html'],
     'css': ['snippet_css_display_flex_center.html'],
     'git': ['snippet_git_change_all_message_commits.html', 'snippet_git_conflict_resolution_vscode.html'],
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
     'sweetalert2': ['snippet_sweetalert2_confirm_example.html', 'snippet_sweetalert2_confirm_with_function_attached_example.html', 'snippet_sweetalert2_select_color_radio_example.html'],
     'w3schools': ['w3schools.html']
-    // Última atualização: 22/07/2025 16:19:46
+    // Última atualização: 23/07/2025 11:42:02
   };
 
   /**
