@@ -1,0 +1,101 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-git">GIT</span>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet_git_update_local_branch_from_remote_development">
+          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://git-scm.com/docs/git-filter-branch" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </h6>
+  <div class="text-center mb-2">Atualizar branch local com o conteúdo atualizado da remota 'development' nesse momento após PRs e merges</div>
+
+<!-- snippet-code -->
+<div class="snippet-code position-relative">
+# Atualizar sua branch com as mudanças mais recentes da development (já com os merges de PRs), sem perder suas próprias edições
+<!-- <pre>
+<code class="language-bash">git log -p -n 3 -- app/control/pedidos/OrderPageForm.php</code>
+</pre> -->
+Atualizar sua branch com as mudanças mais recentes da development (já com os merges de PRs), sem perder suas próprias edições:
+
+Opção 1: Merge da development na sua branch (mais simples e segura)
+Esse é o jeito mais comum em times colaborativos.
+
+Passo a passo:
+
+# Estar na sua branch
+git checkout minha-branch
+
+# Atualiza a development local
+git fetch origin
+git checkout development
+git pull origin development
+
+# Volta para sua branch
+git checkout minha-branch
+
+# Faz o merge da development atualizada nela
+git merge development
+
+
+Opção 2: Rebase da sua branch sobre a development (histórico linear, mas mais avançado)
+Esse método reorganiza os commits como se sua branch tivesse sido criada agora, em cima do development.
+
+Passo a passo:
+# Atualiza a development
+git fetch origin
+git checkout development
+git pull origin development
+
+# Volta para sua branch
+git checkout minha-branch
+
+# Faz o rebase
+git rebase development
+
+
+
+<pre></pre>
+  </pre>✅ PR atualizada e pronta para nova revisão!</code>
+</pre>
+</div>
+<!-- /snippet-code -->
+ 
+</div>
+</div>
+<!-- https://git-scm.com/docs -->
+
+<!-- Mais informações:
+Claro! Aqui está um passo a passo para comparar visualmente as 3 últimas versões do método public static function onPreviewAdjustments($param = null) no arquivo OrderPageForm.php usando o GitHub:
+
+git log -p -n 3 -- app/control/pedidos/OrderPageForm.php
+
+Dica de ouro:
+Outra alternativa que parece bem promissora é usar a extensão "GitLens" no Visual Studio Code. Com ela, você pode facilmente comparar versões anteriores de métodos específicos diretamente no editor. 
+Aqui está como fazer isso:
+
+1. Usar a extensão "GitLens" com "Visual File History"
+GitLens é a principal ferramenta para visualização avançada de histórico Git dentro do VS Code.
+
+Passos:
+Instale o GitLens no VS Code.
+
+Abra o arquivo onde está o método.
+
+Clique com o botão direito > Open File History (ou use o painel lateral do GitLens).
+
+Você verá a lista de commits que modificaram aquele arquivo.
+
+Clique em um commit e selecione Open Revision.
+
+Faça isso com os últimos três commits que envolvem o método.
+
+Eles serão abertos como arquivos separados em abas.
+
+Agora:
+Você pode reorganizar essas 3 abas lado a lado (split editor) no VS Code (Ctrl+\ para dividir verticalmente).
+
+Com isso, você verá as 3 versões simultaneamente, cada uma em seu "estado histórico". -->

@@ -1,0 +1,60 @@
+como adicionar instruções personalizadas de contexto ao GitHub Copilot no VS Code (não apenas anexar arquivos).
+
+Essas “instruções” são uma forma de você personalizar o comportamento do Copilot Chat, informando suas preferências, 
+estilo de código, frameworks usados, linguagem, contexto do projeto, etc.
+
+só uma pergunta, não modifique nada do meu código, hoje você criou um arquivo de instruções pra mim...
+porque chamou de copilot-instructions.md e porque colocou ele na pasta .github e não na subpasta dentro de 
+.github/instructions?
+
+Ótima pergunta! O nome copilot-instructions.md e a localização em .github seguem a recomendação oficial da 
+Microsoft para instruções de IA no contexto do GitHub Copilot e agentes similares. O arquivo nessa raiz é 
+automaticamente reconhecido por ferramentas e integrações de IA, servindo como referência global para o repositório.
+
+Se você preferir, pode mover para instructions para organização interna, mas algumas ferramentas podem não 
+detectar instruções personalizadas fora da raiz .github. O padrão mais amplamente suportado é copilot-instructions.md
+
+no exemplo que citei acima, a pasta .github está dentro de uma pasta sincronizada com um repositório remoto...
+mas e se eu quisesse que ficasse global no vscode em geral como os snippets tem aquela pasta específica?
+
+Ótima dúvida! Arquivos como copilot-instructions.md são específicos de cada repositório e não existe, atualmente, um 
+local global no VS Code para instruções de IA que afete todos os projetos, como acontece com snippets em 
+AppData/Roaming/Code/User/snippets.
+
+Snippets são globais porque o VS Code lê aquela pasta para todos os projetos, mas instruções para IA (Copilot, etc.) 
+são lidas apenas do repositório atual, geralmente na pasta .github.
+
+Se quiser um comportamento global para instruções de IA, teria que replicar manualmente o arquivo em cada repositório, 
+pois não há suporte nativo para um diretório global de instruções como há para snippets. Se surgir esse recurso no 
+futuro, será documentado nas docs oficiais do VS Code/Copilot.
+
+#####################################################################################################################
+
+Instruções no .github e Visual Studio Code
+As instruções armazenadas na pasta .github não são automaticamente carregadas pelo VS Code quando você abre o projeto. 
+Existem dois cenários comuns:
+
+Para GitHub Copilot
+Para o GitHub Copilot:
+
+As instruções em copilot-instructions.md são carregadas automaticamente quando o Copilot é ativado no projeto
+As instruções específicas de codificação em coding.instructions.md com o formato que você está usando (com applyTo: '**') 
+também são carregadas automaticamente pelo Copilot
+
+Para outros casos no VS Code
+Para outros casos no VS Code (sem Copilot):
+
+Você precisaria adicionar contexto manualmente ou usar extensões específicas
+O VS Code não lê automaticamente arquivos instructions para aplicar regras de codificação
+Você pode usar o .editorconfig para algumas configurações de estilo de código que o VS Code reconhece automaticamente
+Se quiser que as regras sejam aplicadas automaticamente por todos os desenvolvedores, considere:
+
+Usar .editorconfig para regras de formatação
+Configurar linters/formatadores como ESLint, PHP_CodeSniffer, etc.
+Configurar hooks de pre-commit com Husky ou similares
+No seu caso específico, a instrução de usar # em vez de  para comentários PHP está sendo carregada automaticamente 
+pelo Copilot, mas não seria aplicada automaticamente para outros desenvolvedores sem Copilot.
+
+
+https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions
+
