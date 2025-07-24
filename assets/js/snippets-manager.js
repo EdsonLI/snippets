@@ -230,7 +230,14 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Criar novo filtro se não existir
       if (!filterExists) {
-        const displayName = folder.charAt(0).toUpperCase() + folder.slice(1); // Capitalizar
+        // Verificar se o folder deve ser todo maiúsculo
+        let displayName;
+        if (['ai', 'css', 'php', 'sql'].includes(folder.toLowerCase())) {
+          displayName = folder.toUpperCase(); // Tudo maiúsculo para AI, CSS, PHP, SQL
+        } else {
+          displayName = folder.charAt(0).toUpperCase() + folder.slice(1); // Capitalizar para os outros
+        }
+        
         const filterItem = document.createElement('li');
         filterItem.setAttribute('data-filter', `.${filterClass}`);
         filterItem.style.cursor = 'pointer';
