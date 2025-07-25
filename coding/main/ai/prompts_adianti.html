@@ -1,10 +1,12 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
   <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-center">
-      <span class="id-tech-prompts">Prompts para Modelos & Grids - Adianti</span>
+      <span class="id-tech-prompts">Prompts para Modelos & Grids Adianti</span>
     </h6>
     <div class="snippet-code position-relative">
-      <div class="d-grid" style="grid-template-columns: repeat(1, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">
+      <div class="content-scrollable">
+        <div class="expand-indicator"><i class="bi bi-chevron-compact-down"></i></div>
+        <div class="d-grid" style="grid-template-columns: repeat(1, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">
         <style>
           .prompt-card {
             background-color: #1b1f24;
@@ -25,6 +27,61 @@
             font-size: 0.85rem;
             color: #3dd5f3;
             margin-bottom: 4px;
+          }
+          
+          /* Padrão para controlar altura de quadros de informação extensos */
+          .content-scrollable {
+            max-height: 500px; /* Altura máxima para o conteúdo */
+            overflow-y: auto; /* Habilita scroll vertical quando necessário */
+            position: relative;
+            padding-right: 5px; /* Espaço para o scrollbar */
+          }
+          
+          /* Estilização da barra de rolagem */
+          .content-scrollable::-webkit-scrollbar {
+            width: 6px;
+          }
+          
+          .content-scrollable::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+            border-radius: 3px;
+          }
+          
+          .content-scrollable::-webkit-scrollbar-thumb {
+            background: rgba(125,125,125,0.5);
+            border-radius: 3px;
+          }
+          
+          .content-scrollable::-webkit-scrollbar-thumb:hover {
+            background: rgba(125,125,125,0.7);
+          }
+          
+          /* Indicador visual de conteúdo expandível */
+          .expand-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            pointer-events: none;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            transition: opacity 0.2s ease;
+          }
+          
+          .expand-indicator i {
+            color: #3dd5f3;
+            font-size: 16px;
+            margin-bottom: 5px;
+          }
+          
+          .content-scrollable:hover .expand-indicator {
+            opacity: 0.3;
           }
         </style>
 
@@ -72,6 +129,7 @@ Crie uma classe chamada PedidoService no Adianti que contenha métodos para: cal
           <div class="prompt-title">📊 Dashboard com cards</div>
 Crie um dashboard simples no Adianti com 3 cards horizontais exibindo: Total de clientes, Total de pedidos do mês, e Valor total em aberto. Use TPanelGroup e THTMLRenderer.
         </div>
+      </div>
       </div>
     </div>
   </div>

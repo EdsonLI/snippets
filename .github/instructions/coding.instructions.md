@@ -8,7 +8,7 @@ applyTo: '**'
 - Sempre utilizar o padrão **K&R** para chaves de abertura e fechamento de métodos, classes e estruturas de controle.
 - Evite usar **emojis** ou caracteres especiais em nomes de classes, métodos, variáveis e comentários.
 - Em **arrays associativos extensos**, alinhe verticalmente os operadores `=>` para facilitar a leitura visual.
-- Sempre iniciar arquivos PHP com: `declare(strict_types=1);`.
+- Utilize identação padrão **PSR-12**.
 
 ---
 
