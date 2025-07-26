@@ -17,6 +17,9 @@ $(function() {
   const isGitHubPages = window.location.hostname === 'edsonli.github.io';
   const basePath = isGitHubPages ? '/snippets' : '';
   
+  // Log de informação de ambiente para diagnóstico
+  console.info(`[Ambiente] Hostname: ${window.location.hostname}, isGitHubPages: ${isGitHubPages}, basePath: "${basePath}"`);
+  
   // Configuração para o gerenciador de snippets
   const SNIPPETS_CONFIG = {
     // Seletores principais
@@ -48,6 +51,9 @@ $(function() {
     
     // Informação sobre ambiente para ajustes de caminhos
     isGitHubPages: isGitHubPages,
+    
+    // Flag para decidir entre usar pasta 'main' ou 'indexing'
+    useMainPath: false, // Será definido automaticamente pela função checkDirectoryStructure
     
     // Debug
     debug: true
@@ -209,6 +215,8 @@ $(function() {
    * permitindo funcionamento consistente em ambientes hospedados e locais.
    */
   function discoverFolders() {
+    // Verificar a estrutura de diretórios ao iniciar
+    checkDirectoryStructure();
     if (state.scanning) {
       log.warn('Já está escaneando pastas, ignorando esta chamada');
       return;
@@ -332,10 +340,17 @@ $(function() {
         
         selected.forEach(file => {
           // Ajustar o caminho dependendo se estamos no GitHub Pages ou ambiente local
+          // e se devemos usar a pasta main ou indexing
+          const pathType = SNIPPETS_CONFIG.useMainPath ? 'main' : 'indexing';
+          
           const baseFolderPath = SNIPPETS_CONFIG.isGitHubPages ? 
-            `${SNIPPETS_CONFIG.basePath}/coding/indexing` : 
-            `${SNIPPETS_CONFIG.pathMapping['indexing'] || SNIPPETS_CONFIG.codingPath}`;
+            `${SNIPPETS_CONFIG.basePath}/coding/${pathType}` : 
+            `${SNIPPETS_CONFIG.pathMapping[pathType] || SNIPPETS_CONFIG.codingPath}`;
+          
+          // Construir caminho completo e fazer log para debug
           const snippetPath = `${baseFolderPath}/snippets_${folderName}/${file}`;
+          log.info(`Caminho construído para snippet: ${snippetPath} (GitHub Pages: ${SNIPPETS_CONFIG.isGitHubPages}, Pasta: ${pathType})`);
+          
           
           // Verificar se o snippet já foi carregado
           if (!state.loadedSnippets.includes(snippetPath)) {
@@ -372,6 +387,17 @@ $(function() {
             fetch(`${snippetPath}?_t=${timestamp}`)
               .then(response => {
                 if (!response.ok) {
+                  if (response.status === 404 && SNIPPETS_CONFIG.isGitHubPages) {
+                    // Tentar um caminho alternativo se estivermos no GitHub Pages
+                    const altPath = `/snippets/coding/main/snippets_${snippetInfo.folder}/${snippetInfo.file}`;
+                    log.warn(`Snippet não encontrado, tentando caminho alternativo: ${altPath}`);
+                    return fetch(`${altPath}?_t=${timestamp}`).then(altResponse => {
+                      if (!altResponse.ok) {
+                        throw new Error(`HTTP error ${response.status} (tentativa alternativa: ${altResponse.status})`);
+                      }
+                      return altResponse.text();
+                    });
+                  }
                   throw new Error(`HTTP error ${response.status}`);
                 }
                 return response.text();
@@ -462,13 +488,15 @@ $(function() {
     state.fallbackLoaded = true;
     log.warn('Carregando snippets de fallback...');
     
-    // Lista de snippets de fallback
+    // Lista de snippets de fallback (caminhos relativos à raiz do site)
     const fallbackSnippets = [
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_html/snippet_html_basic_structure.html` },
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_css/snippet_css_flexbox_basics.html` },
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_javascript/snippet_js_dom_manipulation.html` },
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_jquery/snippet_jquery_ajax_basic.html` }
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_html/snippet_html_basic_structure.html` },
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_css/snippet_css_flexbox_basics.html` },
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_javascript/snippet_js_dom_manipulation.html` },
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_jquery/snippet_jquery_ajax_basic.html` }
     ];
+    
+    log.info(`Usando snippets de fallback com basePath: ${SNIPPETS_CONFIG.basePath}`);
     
     const loadPromises = fallbackSnippets.map(snippet => {
       return new Promise((resolve, reject) => {
@@ -821,6 +849,42 @@ $(function() {
     });
   }
   
+  /**
+   * Tenta determinar a estrutura de diretórios correta verificando diferentes caminhos
+   * Esta função ajuda a adaptar os caminhos com base na estrutura real encontrada
+   */
+  function checkDirectoryStructure() {
+    const possiblePaths = [
+      // Opções para ambiente GitHub Pages
+      `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_html/snippet_html_basic_structure.html`,
+      `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_html/snippet_html_basic_structure.html`,
+      
+      // Opções para ambiente local
+      `/coding/indexing/snippets_html/snippet_html_basic_structure.html`,
+      `/coding/main/snippets_html/snippet_html_basic_structure.html`
+    ];
+    
+    log.info(`Verificando estrutura de diretórios...`);
+    
+    // Testar cada caminho possível
+    possiblePaths.forEach(path => {
+      fetch(`${path}?_nocache=${new Date().getTime()}`)
+        .then(response => {
+          if (response.ok) {
+            log.success(`Estrutura de diretório encontrada: ${path}`);
+            // Atualizar configurações com base no caminho que funciona
+            if (path.includes('/main/')) {
+              SNIPPETS_CONFIG.useMainPath = true;
+              log.info(`Usando pasta 'main' ao invés de 'indexing'`);
+            }
+          }
+        })
+        .catch(() => {
+          // Ignorar erros silenciosamente
+        });
+    });
+  }
+
   /**
    * =================================
    * INICIALIZAÇÃO
