@@ -272,11 +272,29 @@ $(function() {
     // Inicializa todos os tooltips na página
     initTooltips();
     
-    // Reinicializa tooltips em conteúdo carregado dinamicamente
-    $(document).on('DOMNodeInserted', function(e) {
-      if ($(e.target).find('[data-bs-toggle="tooltip"]').length > 0) {
-        initTooltips(e.target);
-      }
+    // Usar MutationObserver em vez de DOMNodeInserted (que está depreciado)
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        // Verifica se foram adicionados novos nós
+        if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+          // Para cada novo nó adicionado
+          mutation.addedNodes.forEach(function(node) {
+            // Verifica se o nó é um elemento DOM e tem tooltips
+            if (node.nodeType === 1) { // ELEMENT_NODE
+              if ($(node).find('[data-bs-toggle="tooltip"]').length > 0 || 
+                  $(node).is('[data-bs-toggle="tooltip"]')) {
+                initTooltips(node);
+              }
+            }
+          });
+        }
+      });
+    });
+    
+    // Configuração do observer para monitorar adições de nós no DOM inteiro
+    observer.observe(document.body, {
+      childList: true,  // observa adições/remoções diretas de filhos
+      subtree: true     // observa toda a árvore DOM abaixo do body
     });
   });
 
