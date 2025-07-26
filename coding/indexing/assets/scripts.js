@@ -36,7 +36,7 @@ $(document).ready(function() {
 
   // --- BLOCO: Carregamento de abas e conteúdos iniciais ---
   function loadTabContents() {
-    $('#git-content').load('snippets_git.html', function(response, status, xhr) {
+    $('#git-content').load('./snippets_git.html', function(response, status, xhr) {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
@@ -53,7 +53,7 @@ $(document).ready(function() {
       });
     });
 
-    $('#madbuilder-content').load('snippets_madbuilder.html', function() {
+    $('#madbuilder-content').load('./snippets_madbuilder.html', function() {
       // Corrigir targets dos botões
       $(this).find('.section').each(function() {
         const sectionId = $(this).attr('id');
@@ -79,7 +79,7 @@ $(document).ready(function() {
       addCopyButtons();    
     });
 
-    $('#vscode-content').load('snippets_vscode.html', function() {
+    $('#vscode-content').load('./snippets_vscode.html', function() {
       // Corrigir targets dos botões
       $(this).find('.section').each(function() {
         const sectionId = $(this).attr('id');
@@ -107,49 +107,49 @@ $(document).ready(function() {
       loadSnippetsListings();
     });
 
-    $('#sweetalert2-content').load('snippets_sweetalert2.html', function() {
+    $('#sweetalert2-content').load('./snippets_sweetalert2.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#fontawesome-content').load('snippets_fontawesome.html', function() {
+    $('#fontawesome-content').load('./snippets_fontawesome.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#css-content').load('snippets_css.html', function() {
+    $('#css-content').load('./snippets_css.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#bootstrap-content').load('snippets_bootstrap.html', function() {
+    $('#bootstrap-content').load('./snippets_bootstrap.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#jquery-content').load('snippets_jquery.html', function() {
+    $('#jquery-content').load('./snippets_jquery.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#html-content').load('snippets_html.html', function() {
+    $('#html-content').load('./snippets_html.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#php-content').load('snippets_php.html', function() {
+    $('#php-content').load('./snippets_php.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
     });
 
-    $('#sql-content').load('snippets_sql.html', function() {
+    $('#sql-content').load('./snippets_sql.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
@@ -301,14 +301,14 @@ $(document).ready(function() {
   function loadSnippetsFormularios() {
     const container = document.getElementById('formularios-snippets');
     if (!container) return;
-    const listUrl = 'snippets_vscode/formularios/list.json';
+    const listUrl = './snippets_vscode/formularios/list.json';
 
     fetch(listUrl)
       .then(response => response.json())
       .then(files => {
         container.innerHTML = '';
         const fetches = files.map(filename => {
-          const snippetUrl = `snippets_vscode/formularios/${filename}`;
+          const snippetUrl = `./snippets_vscode/formularios/${filename}`;
           return fetch(snippetUrl)
             .then(response => response.text())
             .then(snippetText => {
@@ -359,14 +359,14 @@ $(document).ready(function() {
   function loadSnippetsListings() {
     const container = document.getElementById('listagens-snippets');
     if (!container) return;
-    const listUrl = 'snippets_vscode/listagens/list.json'; // local path
+    const listUrl = './snippets_vscode/listagens/list.json'; // local path
 
     fetch(listUrl)
       .then(response => response.json())
       .then(files => {
         container.innerHTML = ''; // Limpa antes de adicionar
         const fetches = files.map(filename => {
-          const snippetUrl = `snippets_vscode/listagens/${filename}`;
+          const snippetUrl = `./snippets_vscode/listagens/${filename}`;
           return fetch(snippetUrl)
             .then(response => response.text())
             .then(snippetText => {
