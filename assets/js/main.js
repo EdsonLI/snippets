@@ -256,6 +256,4 @@ $(function() {
   // Chamar a função ao carregar a página
   $(window).on('load', setupCopyButtons);
 
-});
-
 // O carregamento dinâmico de snippets foi movido para o arquivo snippets-manager.js
