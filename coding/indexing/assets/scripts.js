@@ -53,31 +53,7 @@ $(document).ready(function() {
       });
     });
 
-    $('#madbuilder-content').load('./snippets_madbuilder.html', function() {
-      // Corrigir targets dos botões
-      $(this).find('.section').each(function() {
-        const sectionId = $(this).attr('id');
-        if (sectionId) {
-          // Encontrar os botões dentro desta seção e definir o target correto
-          const contentId = sectionId + '-snippets';
-          $(this).find('.expand-all, .collapse-all').attr('data-target', contentId);
-        }
-      });
-
-      // Substituir ícones plus/chevron por fa-expand nos snippets, exceto fa-download
-      $(this).find('.snippet-title i:first-child:not(.fa-download)').removeClass('fa-plus fa-chevron-right fa-chevron-down fa-compress').addClass('fa-expand');
-
-      // Converter para chevron-down ao carregar (inicialmente expandido) nas categorias
-      $(this).find('.collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
-
-      // Substituir ícones + e - por expand e compress nos botões de categoria
-      $(this).find('.expand-all i').removeClass('fa-plus').addClass('fa-expand');
-      $(this).find('.collapse-all i').removeClass('fa-minus').addClass('fa-compress');
-
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();    
-    });
+    // MadBuilder content removed
 
     $('#vscode-content').load('./snippets_vscode.html', function() {
       // Corrigir targets dos botões
@@ -270,7 +246,7 @@ $(document).ready(function() {
         return;
       }
       // Esconde todas as seções de categoria
-      $('.section[id]').not('#madbuilder').hide();
+      $('.section[id]').hide();
       // Mostra só a seção da categoria clicada
       $('#' + filter).show();
       // Esconde todos os blocos de snippet
@@ -496,7 +472,7 @@ $(document).ready(function() {
         });
 
         if (activeFilter === 'todas') {
-          $('.section[id!="madbuilder"][id!="vscode"]').each(function() {
+          $('.section[id!="vscode"]').each(function() {
             if ($(this).find('.snippet-block:visible').length > 0) {
               $(this).show();
               $(this).find('h3 .collapse-icon').removeClass('fa-chevron-left').addClass('fa-chevron-down');
@@ -507,7 +483,7 @@ $(document).ready(function() {
           });
         } else {
           // Esconde todas as seções, mostra só a da categoria ativa
-          $('.section[id]').not('#madbuilder').hide();
+          $('.section[id]').hide();
           const $section = $('#' + activeFilter);
           $section.show();
 
