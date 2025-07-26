@@ -934,7 +934,7 @@ $(function() {
    * Esta função ajuda a adaptar os caminhos com base na estrutura real encontrada
    */
   function checkDirectoryStructure() {
-    # Definir opção para usar CDN para GitHub Pages
+    // Definir opção para usar CDN para GitHub Pages
     if (SNIPPETS_CONFIG.isGitHubPages) {
       SNIPPETS_CONFIG.useCDN = true;
       SNIPPETS_CONFIG.cdnBase = `https://raw.githubusercontent.com/EdsonLI/snippets/main`;
@@ -951,7 +951,7 @@ $(function() {
       `/coding/main/snippets_html/snippet_html_basic_structure.html`
     ];
     
-    # Adicionar opção de CDN para GitHub Pages
+    // Adicionar opção de CDN para GitHub Pages
     if (SNIPPETS_CONFIG.useCDN) {
       possiblePaths.push(
         `${SNIPPETS_CONFIG.cdnBase}/coding/indexing/snippets_html/snippet_html_basic_structure.html`,
@@ -961,14 +961,14 @@ $(function() {
     
     log.info(`Verificando estrutura de diretórios...`);
     
-    # Testar cada caminho possível
+    // Testar cada caminho possível
     possiblePaths.forEach(path => {
       fetch(`${path}?_nocache=${new Date().getTime()}`)
         .then(response => {
           if (response.ok) {
             log.success(`Estrutura de diretório encontrada: ${path}`);
             
-            # Identificar se é um caminho CDN
+            // Identificar se é um caminho CDN
             if (path.includes('githubusercontent.com')) {
               SNIPPETS_CONFIG.useRawGithub = true;
               if (path.includes('/main/')) {
@@ -976,7 +976,7 @@ $(function() {
               }
               log.info(`Usando GitHub raw content: ${path}`);
             }
-            # Para caminhos normais
+            // Para caminhos normais
             else if (path.includes('/main/')) {
               SNIPPETS_CONFIG.useMainPath = true;
               log.info(`Usando pasta 'main' ao invés de 'indexing'`);
@@ -984,7 +984,7 @@ $(function() {
           }
         })
         .catch(() => {
-          # Ignorar erros silenciosamente
+          // Ignorar erros silenciosamente
         });
     });
   }
