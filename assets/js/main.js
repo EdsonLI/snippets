@@ -4,51 +4,51 @@
 * Updated: Nov 01 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
+* Converted to jQuery by EdsonLI
 */
 
-(function() {
+$(function() {
   "use strict";
 
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
   function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader) return;
+    const $body = $('body');
+    const $header = $('#header');
+    if (!$header.length) return;
 
-    if (window.scrollY > 100) {
-      selectBody.classList.add('scrolled');
+    if ($(window).scrollTop() > 100) {
+      $body.addClass('scrolled');
     } else {
-      selectBody.classList.remove('scrolled');
+      $body.removeClass('scrolled');
     }
   }
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+  $(document).on('scroll', toggleScrolled);
+  $(window).on('load', toggleScrolled);
 
   /**
    * Mobile nav toggle
    */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const $mobileNavToggleBtn = $('.mobile-nav-toggle');
 
   function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+    $('body').toggleClass('mobile-nav-active');
+    $mobileNavToggleBtn.toggleClass('bi-list bi-x');
   }
-  if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  
+  if ($mobileNavToggleBtn.length) {
+    $mobileNavToggleBtn.on('click', mobileNavToogle);
   }
 
   /**
    * Hide mobile nav on same-page/hash links
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
+  $('#navmenu a').on('click', function() {
+    if ($('.mobile-nav-active').length) {
+      mobileNavToogle();
+    }
     });
 
   });
@@ -254,8 +254,8 @@
   }
 
   // Chamar a função ao carregar a página
-  window.addEventListener('load', setupCopyButtons);
+  $(window).on('load', setupCopyButtons);
 
-})();
+});
 
 // O carregamento dinâmico de snippets foi movido para o arquivo snippets-manager.js
