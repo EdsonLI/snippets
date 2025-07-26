@@ -25,7 +25,8 @@ $(function() {
     portfolioItemSelector: '.isotope-item',
     
     // Caminhos padrão - ajustados para GitHub Pages quando necessário
-    basePath: `${basePath}/coding`,
+    basePath: basePath, // Caminho base para o repositório
+    codingPath: `${basePath}/coding`,
     indexingPath: `${basePath}/coding/indexing`,
     
     // Opções de isotope
@@ -330,7 +331,11 @@ $(function() {
         const selected = shuffled.slice(0, SNIPPETS_CONFIG.maxSnippetsPerFolder);
         
         selected.forEach(file => {
-          const snippetPath = `${SNIPPETS_CONFIG.pathMapping['indexing'] || SNIPPETS_CONFIG.basePath}/snippets_${folderName}/${file}`;
+          // Ajustar o caminho dependendo se estamos no GitHub Pages ou ambiente local
+          const baseFolderPath = SNIPPETS_CONFIG.isGitHubPages ? 
+            `${SNIPPETS_CONFIG.basePath}/coding/indexing` : 
+            `${SNIPPETS_CONFIG.pathMapping['indexing'] || SNIPPETS_CONFIG.codingPath}`;
+          const snippetPath = `${baseFolderPath}/snippets_${folderName}/${file}`;
           
           // Verificar se o snippet já foi carregado
           if (!state.loadedSnippets.includes(snippetPath)) {
@@ -459,10 +464,10 @@ $(function() {
     
     // Lista de snippets de fallback
     const fallbackSnippets = [
-      { path: '/snippets/coding/indexing/snippets_html/snippet_html_basic_structure.html' },
-      { path: '/snippets/coding/indexing/snippets_css/snippet_css_flexbox_basics.html' },
-      { path: '/snippets/coding/indexing/snippets_javascript/snippet_js_dom_manipulation.html' },
-      { path: '/snippets/coding/indexing/snippets_jquery/snippet_jquery_ajax_basic.html' }
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_html/snippet_html_basic_structure.html` },
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_css/snippet_css_flexbox_basics.html` },
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_javascript/snippet_js_dom_manipulation.html` },
+      { path: `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_jquery/snippet_jquery_ajax_basic.html` }
     ];
     
     const loadPromises = fallbackSnippets.map(snippet => {
@@ -653,7 +658,7 @@ $(function() {
       }
       
       // Constrói o URL para a visualização standalone
-      const standaloneUrl = `/snippets/coding/indexing/snippets_${techType}/snippet_${snippetName}_standalone.html`;
+      const standaloneUrl = `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_${techType}/snippet_${snippetName}_standalone.html`;
       
       // Abre em uma nova janela
       window.open(standaloneUrl, '_blank');
