@@ -85,9 +85,11 @@
   /* Garante que o container pai tenha posição relativa */
   </style>
 
-  <!-- jQuery -->
+  <!-- jQuery PARA TESTES -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- CSS Files para snippets e ícones -->
+  <!-- Script para gerenciador ESTÁTICO de snippets (compatível com GitHub Pages) -->
+  <script src="assets/js/static-snippets-manager.js" defer></script>
+  <!-- Tech Badges System -->
   <link href="assets/css/tech-badges-new.css" rel="stylesheet">
   <link href="assets/css/tech-icons-fixes-new.css" rel="stylesheet">
   <link href="assets/css/snippet-actions.css" rel="stylesheet">
@@ -98,6 +100,17 @@
   <link href="assets/css/search-functionality.css" rel="stylesheet">
   <!-- Scrollable Git and AI snippets -->
   <link href="assets/css/git-snippet-scroll.css" rel="stylesheet">
+  <script src="assets/js/tech-badges-new.js" defer></script>
+  <script src="assets/js/reload-tech-icons.js" defer></script>
+  <script src="assets/js/sql-icon-fix.js" defer></script>
+  <script src="assets/js/git-icon-fix.js" defer></script>
+  <script src="assets/js/php-icon-fix.js" defer></script>
+  <script src="assets/js/sweetalert2-icon-fix.js" defer></script>
+  <script src="assets/js/snippet-external-links.js" defer></script>
+  <script src="assets/js/button-position-fix.js" defer></script>
+  <script src="assets/js/snippet-responsive-loader.js" defer></script><!-- Carregador de CSS responsivo para snippets -->
+  <script src="assets/js/snippets-search.js" defer></script>
+  <!--script src="assets/js/filter-text-fixer.js" defer></script--><!-- Corrige texto dos filtros AI, CSS, PHP e SQL -->
 </head>
 
 <body class="index-page">
@@ -260,48 +273,61 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/js/jquery/jquery-3.7.1.min.js"></script>
-  
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <!-- <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script> -->
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Script Loader (carrega todos os scripts consolidados) -->
-  <script src="assets/js/script-loader.js"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <!-- Copy to clipboard logic -->
   <script>
-    // Função de cópia movida para main-core.js
-    // Theme toggle logic - Convertido para jQuery
-    $(document).ready(function() {
-      const $themeBtn = $('#theme-toggle');
-      const $icon = $themeBtn.find('iconify-icon'); // Usando jQuery para selecionar o elemento
-      
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const targetId = btn.getAttribute('data-target'); // Obtém o ID do bloco de código
+          const codeBlock = document.getElementById(targetId); // Localiza o bloco de código correspondente
+          if (codeBlock) {
+            const text = codeBlock.textContent.trim(); // Obtém o texto do bloco de código
+            navigator.clipboard.writeText(text).then(function () {
+              btn.classList.add('copied');
+              btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!'; // Feedback visual
+              setTimeout(function () {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<iconify-icon icon="mdi:content-copy"></iconify-icon>'; // Restaura o ícone original
+              }, 1200);
+            });
+          }
+        });
+      });
+    });
+    // Theme toggle logic
+    document.addEventListener('DOMContentLoaded', function () {
+      const themeBtn = document.getElementById('theme-toggle');
+      const icon = themeBtn.querySelector('iconify-icon'); // Corrigido para selecionar o elemento correto
       function setTheme(dark) {
-        $('body').toggleClass('dark-theme', dark);
-        //$ icon.attr('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
-        $themeBtn.attr('title', dark ? 'Tema claro' : 'Tema escuro');
+        document.body.classList.toggle('dark-theme', dark);
+        //icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
+        themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
         localStorage.setItem('theme', dark ? 'dark' : 'light');
       }
-      
       const saved = localStorage.getItem('theme');
       setTheme(saved === 'dark');
-      
-      $themeBtn.on('click', function() {
-        setTheme(!$('body').hasClass('dark-theme'));
+      themeBtn.addEventListener('click', function () {
+        setTheme(!document.body.classList.contains('dark-theme'));
       });
     });
   </script>
   
-  <!-- Os scripts de detecção de snippets agora são carregados via script-loader.js -->
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
 </body>
 </html>
 

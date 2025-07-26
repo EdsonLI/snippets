@@ -4,9 +4,9 @@
  * Compatível com hospedagem estática como GitHub Pages
  * 
  * @author Edson LI - GitHub Copilot
- * @version 2.0.0 (Static jQuery Edition)
+ * @version 2.0.0 (Static Edition)
  */
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
   // Configuração - tudo o que você precisa ajustar está aqui
   const SNIPPETS_CONFIG = {
     baseFolder: 'coding/main',                  // Pasta base onde você coloca suas subpastas de snippets
@@ -94,30 +94,30 @@ $(document).ready(function() {
    * Atualiza a interface de filtros com as pastas descobertas
    */
   function updateFiltersUI() {
-    const $filtersContainer = $(SNIPPETS_CONFIG.filtersContainerSelector);
-    if (!$filtersContainer.length) {
+    const filtersContainer = document.querySelector(SNIPPETS_CONFIG.filtersContainerSelector);
+    if (!filtersContainer) {
       log.warn(`Container de filtros não encontrado: ${SNIPPETS_CONFIG.filtersContainerSelector}`);
       return;
     }
     
     // Verificar se o filtro "All" já existe
     let allFilterExists = false;
-    $filtersContainer.children().each(function() {
-      if ($(this).attr('data-filter') === '*') {
+    Array.from(filtersContainer.children).forEach(child => {
+      if (child.getAttribute('data-filter') === '*') {
         allFilterExists = true;
         // Garantir que tenha a classe filter-active
-        $(this).addClass('filter-active');
+        child.classList.add('filter-active');
       }
     });
     
     // Adicionar filtro "All" se não existir
     if (!allFilterExists) {
-      const $allFilter = $('<li></li>')
-        .attr('data-filter', '*')
-        .addClass('filter-active')
-        .css('cursor', 'pointer')
-        .text('All');
-      $filtersContainer.prepend($allFilter);
+      const allFilter = document.createElement('li');
+      allFilter.setAttribute('data-filter', '*');
+      allFilter.classList.add('filter-active');
+      allFilter.style.cursor = 'pointer';
+      allFilter.textContent = 'All';
+      filtersContainer.prepend(allFilter);
     }
     
     // Adicionar filtros para cada pasta descoberta
@@ -126,8 +126,8 @@ $(document).ready(function() {
       const filterClass = state.filterMap.get(folder);
       let filterExists = false;
       
-      $filtersContainer.children().each(function() {
-        if ($(this).attr('data-filter') === `.${filterClass}`) {
+      Array.from(filtersContainer.children).forEach(child => {
+        if (child.getAttribute('data-filter') === `.${filterClass}`) {
           filterExists = true;
         }
       });
@@ -142,11 +142,11 @@ $(document).ready(function() {
           displayName = folder.charAt(0).toUpperCase() + folder.slice(1); // Capitalizar para os outros
         }
         
-        const $filterItem = $('<li></li>')
-          .attr('data-filter', `.${filterClass}`)
-          .css('cursor', 'pointer')
-          .text(displayName);
-        $filtersContainer.append($filterItem);
+        const filterItem = document.createElement('li');
+        filterItem.setAttribute('data-filter', `.${filterClass}`);
+        filterItem.style.cursor = 'pointer';
+        filterItem.textContent = displayName;
+        filtersContainer.appendChild(filterItem);
         log.info(`Adicionado novo filtro: ${displayName}`);
       }
     });
@@ -176,38 +176,37 @@ $(document).ready(function() {
         
         // Criar uma promessa para carregar este snippet
         const loadPromise = new Promise((resolveLoad) => {
-          // Criar uma promessa para carregar este snippet
-          $.ajax({
-            url: snippetPath,
-            type: 'GET',
-            dataType: 'html'
-          })
-          .done(function(html) {
-            // Adicionar o snippet ao container
-            const $container = $(SNIPPETS_CONFIG.containerSelector);
-            if (!$container.length) {
-              log.error(`Container não encontrado: ${SNIPPETS_CONFIG.containerSelector}`);
+          fetch(snippetPath)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+              }
+              return response.text();
+            })
+            .then(html => {
+              // Adicionar o snippet ao container
+              const container = document.querySelector(SNIPPETS_CONFIG.containerSelector);
+              if (!container) {
+                throw new Error(`Container não encontrado: ${SNIPPETS_CONFIG.containerSelector}`);
+              }
+              
+              // Processar HTML para evitar carregamento de recursos inexistentes
+              html = processHtml(html, snippetPath);
+              
+              // Inserir o HTML
+              container.insertAdjacentHTML('beforeend', html);
+              
+              // Marcar como carregado
+              snippetInfo.loaded = true;
+              state.loadedCount++;
+              
+              log.info(`Snippet carregado (${state.loadedCount}/${state.totalToLoad}): ${snippetPath}`);
               resolveLoad();
-              return;
-            }
-            
-            // Processar HTML para evitar carregamento de recursos inexistentes
-            html = processHtml(html, snippetPath);
-            
-            // Inserir o HTML
-            $container.append(html);
-            
-            // Marcar como carregado
-            snippetInfo.loaded = true;
-            state.loadedCount++;
-            
-            log.info(`Snippet carregado (${state.loadedCount}/${state.totalToLoad}): ${snippetPath}`);
-            resolveLoad();
-          })
-          .fail(function(xhr, status, err) {
-            log.error(`Falha ao carregar snippet: ${snippetPath}`, err);
-            resolveLoad(); // Resolver mesmo com erro
-          });
+            })
+            .catch(err => {
+              log.error(`Falha ao carregar snippet: ${snippetPath}`, err);
+              resolveLoad(); // Resolver mesmo com erro
+            });
         });
         
         loadPromises.push(loadPromise);
@@ -244,48 +243,43 @@ $(document).ready(function() {
       log.warn(`Encontrados links para snippets_standalone em: ${snippetPath}`);
       
       // Criar um elemento temporário para manipular o HTML
-      const $tempDiv = $('<div>').html(html);
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
       
       // Processar links de download que apontam para arquivos standalone
-      $tempDiv.find('a[href*="snippets_standalone"]').each(function() {
-        const $link = $(this);
+      tempDiv.querySelectorAll('a[href*="snippets_standalone"]').forEach(link => {
         // Desativar o link para evitar 404
-        $link.attr({
-          'href': 'javascript:void(0)',
-          'title': 'Arquivo standalone não disponível neste ambiente',
-          'data-bs-toggle': 'tooltip',
-          'data-bs-placement': 'top'
-        });
+        link.setAttribute('href', 'javascript:void(0)');
+        link.setAttribute('title', 'Arquivo standalone não disponível neste ambiente');
+        link.setAttribute('data-bs-toggle', 'tooltip');
+        link.setAttribute('data-bs-placement', 'top');
         
         // Adicionar classe visual para indicar indisponibilidade
-        $link.addClass('text-muted');
+        link.classList.add('text-muted');
         
-        log.info(`Link para standalone desativado: ${$link.attr('href')}`);
+        log.info(`Link para standalone desativado: ${link.getAttribute('href')}`);
       });
       
       // Processar iframes que carregam arquivos standalone
-      $tempDiv.find('iframe[src*="snippets_standalone"]').each(function() {
-        const $iframe = $(this);
+      tempDiv.querySelectorAll('iframe[src*="snippets_standalone"]').forEach(iframe => {
         // Substituir o src do iframe
-        const originalSrc = $iframe.attr('src');
-        $iframe.attr({
-          'src': 'about:blank',
-          'data-original-src': originalSrc
-        });
+        const originalSrc = iframe.getAttribute('src');
+        iframe.setAttribute('src', 'about:blank');
+        iframe.setAttribute('data-original-src', originalSrc);
         
         // Adicionar mensagem de indisponibilidade
-        const $wrapper = $iframe.parent();
-        if ($wrapper.length) {
-          $('<div>')
-            .addClass('alert alert-warning py-2 mt-2')
-            .html('<small>Visualização não disponível neste ambiente</small>')
-            .appendTo($wrapper);
+        const wrapper = iframe.parentNode;
+        if (wrapper) {
+          const notice = document.createElement('div');
+          notice.className = 'alert alert-warning py-2 mt-2';
+          notice.innerHTML = '<small>Visualização não disponível neste ambiente</small>';
+          wrapper.appendChild(notice);
         }
         
         log.info(`Iframe de standalone substituído: ${originalSrc}`);
       });
       
-      return $tempDiv.html();
+      return tempDiv.innerHTML;
     }
     
     return html;
@@ -293,37 +287,36 @@ $(document).ready(function() {
 
   function reinitializeIsotope() {
     // Se não houver elementos para organizar, não inicializar
-    const $containers = $(SNIPPETS_CONFIG.containerSelector);
-    if (!$containers.length) {
+    const containers = document.querySelectorAll(SNIPPETS_CONFIG.containerSelector);
+    if (!containers.length) {
       log.warn('Nenhum container Isotope encontrado');
       return;
     }
     
     // Processar cada container
-    $containers.each(function() {
-      const $container = $(this);
+    containers.forEach(container => {
       // Se já existe uma instância do Isotope, destruí-la
-      const existingIso = Isotope.data(this);
+      const existingIso = Isotope.data(container);
       if (existingIso) {
         existingIso.destroy();
       }
       
       // Obter opções do elemento pai
-      const $parent = $container.closest('.isotope-layout');
-      if (!$parent.length) {
+      const parent = container.closest('.isotope-layout');
+      if (!parent) {
         log.warn(`Container isotope sem elemento pai .isotope-layout`);
         return;
       }
       
       // Obter configurações
-      const layout = $parent.attr('data-layout') || 'masonry';
-      const filter = $parent.attr('data-default-filter') || '*';
-      const sort = $parent.attr('data-sort') || 'original-order';
+      const layout = parent.getAttribute('data-layout') || 'masonry';
+      const filter = parent.getAttribute('data-default-filter') || '*';
+      const sort = parent.getAttribute('data-sort') || 'original-order';
       
       // Aguardar carregamento de imagens antes de inicializar
-      imagesLoaded($container[0], function() {
+      imagesLoaded(container, function() {
         // Criar nova instância do Isotope
-        const iso = new Isotope($container[0], {
+        const iso = new Isotope(container, {
           itemSelector: '.isotope-item',
           layoutMode: layout,
           filter: filter,
@@ -332,55 +325,55 @@ $(document).ready(function() {
         });
         
         // Configurar eventos de filtro
-        const $filterContainer = $parent.find('.isotope-filters');
-        if (!$filterContainer.length) {
+        const filterContainer = parent.querySelector('.isotope-filters');
+        if (!filterContainer) {
           log.warn('Container de filtros .isotope-filters não encontrado');
           return;
         }
         
         // Clonar toda a lista de filtros para remover todos os eventos atribuídos anteriormente
-        const $newFilterList = $filterContainer.clone(true);
-        $filterContainer.replaceWith($newFilterList);
+        const newFilterList = filterContainer.cloneNode(true);
+        filterContainer.parentNode.replaceChild(newFilterList, filterContainer);
         
         // Obter referência aos novos botões
-        const $filterBtns = $newFilterList.find('li');
+        const filterBtns = newFilterList.querySelectorAll('li');
         
         // Garantir que apenas o botão 'All' (primeiro) tenha a classe filter-active
-        $filterBtns.each(function(index) {
+        filterBtns.forEach((btn, index) => {
           if (index === 0) {
-            $(this).addClass('filter-active');
+            btn.classList.add('filter-active');
           } else {
-            $(this).removeClass('filter-active');
+            btn.classList.remove('filter-active');
           }
         });
         
         // Adicionar novos eventos de clique
-        $filterBtns.on('click', function(e) {
-          // Evitar comportamento padrão e propagação
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Remover classe ativa de todos os botões
-          $filterBtns.removeClass('filter-active');
-          
-          // Adicionar classe ativa apenas ao botão clicado
-          $(this).addClass('filter-active');
-          
-          // Filtrar os itens
-          iso.arrange({
-            filter: $(this).attr('data-filter')
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            // Evitar comportamento padrão e propagação
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Remover classe ativa de todos os botões
+            filterBtns.forEach(b => b.classList.remove('filter-active'));
+            
+            // Adicionar classe ativa apenas ao botão clicado
+            this.classList.add('filter-active');
+            
+            // Filtrar os itens
+            iso.arrange({
+              filter: this.getAttribute('data-filter')
+            });
+            
+            // Atualizar animações AOS se disponível
+            if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
+              AOS.refresh();
+            }
           });
-          
-          // Atualizar animações AOS se disponível
-          if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
-            AOS.refresh();
-          }
         });
         
         // Layout final
-        setTimeout(function() { 
-          iso.arrange(); 
-        }, 100);
+        setTimeout(() => iso.arrange(), 100);
         
         // Marcar como inicializado
         state.isotopeInitialized = true;
@@ -397,42 +390,41 @@ $(document).ready(function() {
    */
   function setupCopyButtons() {
     // Garantir que todos os snippet-actions-float estejam alinhados à direita
-    $('.snippet-actions-float').each(function() {
-      if (!$(this).hasClass('justify-content-end')) {
-        $(this).addClass('justify-content-end');
+    document.querySelectorAll('.snippet-actions-float').forEach(actionBar => {
+      if (!actionBar.classList.contains('justify-content-end')) {
+        actionBar.classList.add('justify-content-end');
       }
     });
     
     // Configurar botões de cópia
-    $('.btn-custom[data-target]').each(function() {
-      const $button = $(this);
+    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
       // Pular se já inicializado
-      if ($button.attr('data-copy-initialized')) return;
+      if (button.hasAttribute('data-copy-initialized')) return;
       
       // Marcar como inicializado
-      $button.attr('data-copy-initialized', 'true');
+      button.setAttribute('data-copy-initialized', 'true');
       
       // Adicionar evento de clique
-      $button.on('click', function() {
-        const targetId = $button.attr('data-target');
-        const $codeBlock = $('#' + targetId);
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const codeBlock = document.getElementById(targetId);
 
-        if ($codeBlock.length) {
+        if (codeBlock) {
           // Copiar o texto para a área de transferência
-          const text = $codeBlock.text().trim();
+          const text = codeBlock.textContent.trim();
           navigator.clipboard.writeText(text)
-            .then(function() {
+            .then(() => {
               // Feedback visual
-              const $icon = $button.find('iconify-icon');
-              if ($icon.length) {
-                const originalIcon = $icon.attr('icon');
-                $icon.attr('icon', 'mdi:check');
-                setTimeout(function() {
-                  $icon.attr('icon', originalIcon || 'mdi:content-copy');
+              const icon = button.querySelector('iconify-icon');
+              if (icon) {
+                const originalIcon = icon.getAttribute('icon');
+                icon.setAttribute('icon', 'mdi:check');
+                setTimeout(() => {
+                  icon.setAttribute('icon', originalIcon || 'mdi:content-copy');
                 }, 1200);
               }
             })
-            .catch(function(err) { log.error('Erro ao copiar texto', err); });
+            .catch(err => log.error('Erro ao copiar texto', err));
         } else {
           log.error(`Bloco de código não encontrado: ${targetId}`);
         }

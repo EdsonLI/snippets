@@ -2,23 +2,22 @@
  * Detecta snippets que precisam de rolagem e adiciona um indicador visual
  * 
  * @author Edson LI - GitHub Copilot
- * @version 1.0.0 (jQuery)
+ * @version 1.0.0
  */
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
   // Função para verificar quais snippets precisam de rolagem
   function detectScrollableSnippets() {
     // Selecionar todos os blocos de código em snippets Git e AI
-    const $snippetCodeBlocks = $('.filter-git .snippet-code, .filter-ai .snippet-code');
+    const snippetCodeBlocks = document.querySelectorAll('.filter-git .snippet-code, .filter-ai .snippet-code');
     
     // Para cada bloco, verificar se precisa de rolagem
-    $snippetCodeBlocks.each(function() {
-      const $block = $(this);
-      if ($block[0].scrollHeight > $block[0].clientHeight) {
+    snippetCodeBlocks.forEach(block => {
+      if (block.scrollHeight > block.clientHeight) {
         // O conteúdo é maior que a área visível, precisa de rolagem
-        $block.addClass('needs-scroll');
+        block.classList.add('needs-scroll');
       } else {
         // Não precisa de rolagem
-        $block.removeClass('needs-scroll');
+        block.classList.remove('needs-scroll');
       }
     });
   }
@@ -29,27 +28,29 @@ $(document).ready(function() {
     setTimeout(detectScrollableSnippets, 500);
     
     // Verificar novamente quando os filtros Isotope forem acionados
-    $('.isotope-filters li').on('click', function() {
-      setTimeout(detectScrollableSnippets, 400); // Delay para permitir que o filtro seja aplicado
+    document.querySelectorAll('.isotope-filters li').forEach(filter => {
+      filter.addEventListener('click', () => {
+        setTimeout(detectScrollableSnippets, 400); // Delay para permitir que o filtro seja aplicado
+      });
     });
     
     // Verificar novamente em caso de redimensionamento da janela
-    $(window).on('resize', function() {
+    window.addEventListener('resize', () => {
       setTimeout(detectScrollableSnippets, 200);
     });
     
     // Configurar evento de rolagem para ocultar o indicador durante a rolagem
-    $('.filter-git .snippet-code, .filter-ai .snippet-code').on('scroll', function() {
-      // Se o usuário estiver rolando, não precisamos do indicador
-      const $this = $(this);
-      $this.addClass('is-scrolling');
-      
-      // Remover a classe após a rolagem terminar
-      clearTimeout($this.data('scrollTimer'));
-      const timer = setTimeout(function() {
-        $this.removeClass('is-scrolling');
-      }, 1000);
-      $this.data('scrollTimer', timer);
+    document.querySelectorAll('.filter-git .snippet-code, .filter-ai .snippet-code').forEach(block => {
+      block.addEventListener('scroll', function() {
+        // Se o usuário estiver rolando, não precisamos do indicador
+        this.classList.add('is-scrolling');
+        
+        // Remover a classe após a rolagem terminar
+        clearTimeout(this.scrollTimer);
+        this.scrollTimer = setTimeout(() => {
+          this.classList.remove('is-scrolling');
+        }, 1000);
+      });
     });
   }
   

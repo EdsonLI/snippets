@@ -4,51 +4,51 @@
 * Updated: Nov 01 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
-* Converted to jQuery by EdsonLI
 */
 
-$(function() {
+(function() {
   "use strict";
 
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
   function toggleScrolled() {
-    const $body = $('body');
-    const $header = $('#header');
-    if (!$header.length) return;
+    const selectBody = document.querySelector('body');
+    const selectHeader = document.querySelector('#header');
+    if (!selectHeader) return;
 
-    if ($(window).scrollTop() > 100) {
-      $body.addClass('scrolled');
+    if (window.scrollY > 100) {
+      selectBody.classList.add('scrolled');
     } else {
-      $body.removeClass('scrolled');
+      selectBody.classList.remove('scrolled');
     }
   }
 
-  $(document).on('scroll', toggleScrolled);
-  $(window).on('load', toggleScrolled);
+  document.addEventListener('scroll', toggleScrolled);
+  window.addEventListener('load', toggleScrolled);
 
   /**
    * Mobile nav toggle
    */
-  const $mobileNavToggleBtn = $('.mobile-nav-toggle');
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
-    $('body').toggleClass('mobile-nav-active');
-    $mobileNavToggleBtn.toggleClass('bi-list bi-x');
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    mobileNavToggleBtn.classList.toggle('bi-list');
+    mobileNavToggleBtn.classList.toggle('bi-x');
   }
-  
-  if ($mobileNavToggleBtn.length) {
-    $mobileNavToggleBtn.on('click', mobileNavToogle);
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
   }
 
   /**
    * Hide mobile nav on same-page/hash links
    */
-  $('#navmenu a').on('click', function() {
-    if ($('.mobile-nav-active').length) {
-      mobileNavToogle();
-    }
+  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+    navmenu.addEventListener('click', () => {
+      if (document.querySelector('.mobile-nav-active')) {
+        mobileNavToogle();
+      }
     });
 
   });
@@ -56,33 +56,35 @@ $(function() {
   /**
    * Toggle mobile nav dropdowns
    */
-  $('.navmenu .toggle-dropdown').on('click', function(e) {
-    e.preventDefault();
-    $(this).parent().toggleClass('active');
-    $(this).parent().next().toggleClass('dropdown-active');
-    e.stopImmediatePropagation();
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+    navmenu.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.parentNode.classList.toggle('active');
+      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      e.stopImmediatePropagation();
+    });
   });
 
   /**
    * Scroll top button
    */
-  const $scrollTop = $('.scroll-top');
+  let scrollTop = document.querySelector('.scroll-top');
 
   function toggleScrollTop() {
-    if ($scrollTop.length) {
-      $(window).scrollTop() > 100 ? $scrollTop.addClass('active') : $scrollTop.removeClass('active');
+    if (scrollTop) {
+      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  
-  $scrollTop.on('click', function(e) {
+  scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
-    $('html, body').animate({
-      scrollTop: 0
-    }, 'smooth');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
 
-  $(window).on('load', toggleScrollTop);
-  $(document).on('scroll', toggleScrollTop);
+  window.addEventListener('load', toggleScrollTop);
+  document.addEventListener('scroll', toggleScrollTop);
 
   /**
    * Animation on scroll function and init
@@ -95,7 +97,7 @@ $(function() {
       mirror: false
     });
   }
-  $(window).on('load', aosInit);
+  window.addEventListener('load', aosInit);
 
   /**
    * Initiate glightbox
@@ -105,7 +107,7 @@ $(function() {
   });
 
   // Inicializa o Glightbox para suportar links de pré-visualização
-  $(document).ready(function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const lightbox = GLightbox({
       selector: '.glightbox',
       type: 'iframe', // Permite carregar páginas standalone
@@ -116,22 +118,20 @@ $(function() {
       touchNavigation: true, // Habilita navegação por toque
       onOpen: () => {
         // Remove aria-hidden de elementos que podem causar conflitos
-        $('[aria-hidden="true"]').each(function() {
-          $(this).removeAttr('aria-hidden');
-        });
+        document.querySelectorAll('[aria-hidden="true"]').forEach(el => el.removeAttribute('aria-hidden'));
 
         // Adiciona o atributo `inert` ao body para evitar foco em elementos fora do modal
-        $('body').attr('inert', '');
+        document.body.setAttribute('inert', '');
       },
       onClose: () => {
         // Restaura o foco no elemento correto após fechar o modal
         const lastFocusedElement = document.activeElement;
         if (lastFocusedElement) {
-          $(lastFocusedElement).blur();
+          lastFocusedElement.blur();
         }
 
         // Remove o atributo `inert` do body
-        $('body').removeAttr('inert');
+        document.body.removeAttribute('inert');
       }
     });
   });
@@ -144,42 +144,44 @@ $(function() {
   /**
    * Frequently Asked Questions Toggle
    */
-  $('.faq-item h3, .faq-item .faq-toggle').on('click', function() {
-    $(this).parent().toggleClass('faq-active');
+  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
+    faqItem.addEventListener('click', () => {
+      faqItem.parentNode.classList.toggle('faq-active');
+    });
   });
 
   /**
    * Init swiper sliders
    */
   function initSwiper() {
-    $(".init-swiper").each(function() {
-      const $this = $(this);
+    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
       let config = JSON.parse(
-        $this.find(".swiper-config").html().trim()
+        swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
 
-      if ($this.hasClass("swiper-tab")) {
-        initSwiperWithCustomPagination(this, config);
+      if (swiperElement.classList.contains("swiper-tab")) {
+        initSwiperWithCustomPagination(swiperElement, config);
       } else {
-        new Swiper(this, config);
+        new Swiper(swiperElement, config);
       }
     });
   }
 
-  $(window).on("load", initSwiper);
+  window.addEventListener("load", initSwiper);
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  $(window).on('load', function(e) {
+  window.addEventListener('load', function(e) {
     if (window.location.hash) {
-      const $section = $(window.location.hash);
-      if ($section.length) {
+      if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
-          let scrollMarginTop = getComputedStyle($section[0]).scrollMarginTop;
-          $('html, body').animate({
-            scrollTop: $section.offset().top - parseInt(scrollMarginTop)
-          }, 'smooth');
+          let section = document.querySelector(window.location.hash);
+          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+          window.scrollTo({
+            top: section.offsetTop - parseInt(scrollMarginTop),
+            behavior: 'smooth'
+          });
         }, 100);
       }
     }
@@ -188,114 +190,72 @@ $(function() {
   /**
    * Navmenu Scrollspy
    */
-  const $navmenulinks = $('.navmenu a');
+  let navmenulinks = document.querySelectorAll('.navmenu a');
 
   function navmenuScrollspy() {
-    $navmenulinks.each(function() {
-      const $link = $(this);
-      if (!$link[0].hash) return;
-      
-      const $section = $($link[0].hash);
-      if (!$section.length) return;
-      
-      const position = $(window).scrollTop() + 200;
-      const sectionTop = $section.offset().top;
-      const sectionHeight = $section.outerHeight();
-      
-      if (position >= sectionTop && position <= (sectionTop + sectionHeight)) {
-        $('.navmenu a.active').removeClass('active');
-        $link.addClass('active');
+    navmenulinks.forEach(navmenulink => {
+      if (!navmenulink.hash) return;
+      let section = document.querySelector(navmenulink.hash);
+      if (!section) return;
+      let position = window.scrollY + 200;
+      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+        navmenulink.classList.add('active');
       } else {
-        $link.removeClass('active');
+        navmenulink.classList.remove('active');
+      }
+    })
+  }
+  window.addEventListener('load', navmenuScrollspy);
+  document.addEventListener('scroll', navmenuScrollspy);
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const offset = 1; // Ajuste para descer um pouco mais
+        const targetPosition = targetElement.offsetTop - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
       }
     });
-  }
-  
-  $(window).on('load', navmenuScrollspy);
-  $(document).on('scroll', navmenuScrollspy);
-  
-  $('a[href^="#"]').on('click', function(e) {
-    const targetId = $(this).attr('href').substring(1);
-    const $targetElement = $('#' + targetId);
-    
-    if ($targetElement.length) {
-      e.preventDefault();
-      const offset = 1; // Ajuste para descer um pouco mais
-      const targetPosition = $targetElement.offset().top - offset;
-      
-      $('html, body').animate({
-        scrollTop: targetPosition
-      }, 'smooth');
-    }
   });
 
   /**
-   * Função para adicionar funcionalidade de copiar código nos snippets usando jQuery
+   * Função para adicionar funcionalidade de copiar código nos snippets usando JavaScript nativo
    */
   function setupCopyButtons() {
-    $('.btn-custom[data-target]').on('click', function() {
-      const targetId = $(this).data('target');
-      const $codeBlock = $('#' + targetId);
+    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const codeBlock = document.getElementById(targetId);
 
-      if ($codeBlock.length) {
-        const text = $codeBlock.text().trim();
-        navigator.clipboard.writeText(text).then(() => {
-          const $icon = $(this).find('iconify-icon');
-          if ($icon.length) {
-            $icon.attr('icon', 'mdi:check'); // Troca para ícone de check
-            setTimeout(() => {
-              $icon.attr('icon', 'mdi:content-copy'); // Restaura o ícone original
-            }, 1200);
-          }
-        }).catch(err => {
-          console.error('Erro ao copiar o texto:', err);
-        });
-      } else {
-        console.error('Bloco de código não encontrado para o ID:', targetId);
-      }
+        if (codeBlock) {
+          const text = codeBlock.textContent.trim();
+          navigator.clipboard.writeText(text).then(() => {
+            const icon = button.querySelector('iconify-icon');
+            if (icon) {
+              icon.setAttribute('icon', 'mdi:check'); // Troca para ícone de check
+              setTimeout(() => {
+                icon.setAttribute('icon', 'mdi:content-copy'); // Restaura o ícone original
+              }, 1200);
+            }
+          }).catch(err => {
+            console.error('Erro ao copiar o texto:', err);
+          });
+        } else {
+          console.error('Bloco de código não encontrado para o ID:', targetId);
+        }
+      });
     });
   }
 
   // Chamar a função ao carregar a página
-  $(window).on('load', setupCopyButtons);
-  
-  /**
-   * Inicializa os tooltips do Bootstrap
-   */
-  $(function() {
-    // Função para inicializar os tooltips
-    function initTooltips(parent) {
-      const $container = parent ? $(parent) : $(document);
-      $container.find('[data-bs-toggle="tooltip"]').tooltip();
-    }
-    
-    // Inicializa todos os tooltips na página
-    initTooltips();
-    
-    // Usar MutationObserver em vez de DOMNodeInserted (que está depreciado)
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        // Verifica se foram adicionados novos nós
-        if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-          // Para cada novo nó adicionado
-          mutation.addedNodes.forEach(function(node) {
-            // Verifica se o nó é um elemento DOM e tem tooltips
-            if (node.nodeType === 1) { // ELEMENT_NODE
-              if ($(node).find('[data-bs-toggle="tooltip"]').length > 0 || 
-                  $(node).is('[data-bs-toggle="tooltip"]')) {
-                initTooltips(node);
-              }
-            }
-          });
-        }
-      });
-    });
-    
-    // Configuração do observer para monitorar adições de nós no DOM inteiro
-    observer.observe(document.body, {
-      childList: true,  // observa adições/remoções diretas de filhos
-      subtree: true     // observa toda a árvore DOM abaixo do body
-    });
-  });
+  window.addEventListener('load', setupCopyButtons);
+
+})();
 
 // O carregamento dinâmico de snippets foi movido para o arquivo snippets-manager.js
