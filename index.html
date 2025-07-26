@@ -292,39 +292,42 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.copy-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const targetId = btn.getAttribute('data-target'); // Obtém o ID do bloco de código
-          const codeBlock = document.getElementById(targetId); // Localiza o bloco de código correspondente
-          if (codeBlock) {
-            const text = codeBlock.textContent.trim(); // Obtém o texto do bloco de código
-            navigator.clipboard.writeText(text).then(function () {
-              btn.classList.add('copied');
-              btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!'; // Feedback visual
-              setTimeout(function () {
-                btn.classList.remove('copied');
-                btn.innerHTML = '<iconify-icon icon="mdi:content-copy"></iconify-icon>'; // Restaura o ícone original
-              }, 1200);
-            });
-          }
-        });
+    $(document).ready(function() {
+      $('.copy-btn').on('click', function() {
+        const $btn = $(this);
+        const targetId = $btn.attr('data-target'); // Obtém o ID do bloco de código
+        const $codeBlock = $('#' + targetId); // Localiza o bloco de código correspondente
+        
+        if ($codeBlock.length) {
+          const text = $codeBlock.text().trim(); // Obtém o texto do bloco de código
+          navigator.clipboard.writeText(text).then(function() {
+            $btn.addClass('copied');
+            $btn.html('<i class="fa-solid fa-check"></i> Copiado!'); // Feedback visual
+            setTimeout(function() {
+              $btn.removeClass('copied');
+              $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>'); // Restaura o ícone original
+            }, 1200);
+          });
+        }
       });
     });
-    // Theme toggle logic
-    document.addEventListener('DOMContentLoaded', function () {
-      const themeBtn = document.getElementById('theme-toggle');
-      const icon = themeBtn.querySelector('iconify-icon'); // Corrigido para selecionar o elemento correto
+    // Theme toggle logic - Convertido para jQuery
+    $(document).ready(function() {
+      const $themeBtn = $('#theme-toggle');
+      const $icon = $themeBtn.find('iconify-icon'); // Usando jQuery para selecionar o elemento
+      
       function setTheme(dark) {
-        document.body.classList.toggle('dark-theme', dark);
-        //icon.setAttribute('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
-        themeBtn.title = dark ? 'Tema claro' : 'Tema escuro';
+        $('body').toggleClass('dark-theme', dark);
+        //$ icon.attr('icon', dark ? 'fa6-solid:sun' : 'fa6-regular:moon'); // Atualiza o ícone corretamente
+        $themeBtn.attr('title', dark ? 'Tema claro' : 'Tema escuro');
         localStorage.setItem('theme', dark ? 'dark' : 'light');
       }
+      
       const saved = localStorage.getItem('theme');
       setTheme(saved === 'dark');
-      themeBtn.addEventListener('click', function () {
-        setTheme(!document.body.classList.contains('dark-theme'));
+      
+      $themeBtn.on('click', function() {
+        setTheme(!$('body').hasClass('dark-theme'));
       });
     });
   </script>

@@ -190,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function() {
    * Atualiza a interface de filtros com as pastas descobertas
    */
   function updateFiltersUI() {
-    const filtersContainer = document.querySelector(SNIPPETS_CONFIG.filtersContainerSelector);
-    if (!filtersContainer) {
+    const $filtersContainer = $(SNIPPETS_CONFIG.filtersContainerSelector);
+    if (!$filtersContainer.length) {
       log.warn(`Container de filtros não encontrado: ${SNIPPETS_CONFIG.filtersContainerSelector}`);
       return;
     }
@@ -282,8 +282,8 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(html => {
               // Adicionar o snippet ao container
-              const container = document.querySelector(SNIPPETS_CONFIG.containerSelector);
-              if (!container) {
+              const $container = $(SNIPPETS_CONFIG.containerSelector);
+              if (!$container.length) {
                 throw new Error(`Container não encontrado: ${SNIPPETS_CONFIG.containerSelector}`);
               }
               
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Inserir o HTML
-                container.insertAdjacentHTML('beforeend', html);
+                $container.append(html);
                 
                 // Marcar como carregado
                 snippetInfo.loaded = true;
@@ -393,9 +393,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.text();
           })
           .then(html => {
-            const container = document.querySelector(SNIPPETS_CONFIG.containerSelector);
-            if (container) {
-              container.insertAdjacentHTML('beforeend', html);
+            const $container = $(SNIPPETS_CONFIG.containerSelector);
+            if ($container.length) {
+              $container.append(html);
               state.loadedCount++;
               log.info(`Snippet de fallback carregado: ${snippet.path}`);
             }
@@ -432,16 +432,17 @@ document.addEventListener('DOMContentLoaded', function() {
    */
   function reinitializeIsotope() {
     // Se não houver elementos para organizar, não inicializar
-    const containers = document.querySelectorAll(SNIPPETS_CONFIG.containerSelector);
-    if (!containers.length) {
+    const $containers = $(SNIPPETS_CONFIG.containerSelector);
+    if (!$containers.length) {
       log.warn('Nenhum container Isotope encontrado');
       return;
     }
     
     // Processar cada container
-    containers.forEach(container => {
+    $containers.each(function() {
+      const $container = $(this);
       // Se já existe uma instância do Isotope, destruí-la
-      const existingIso = Isotope.data(container);
+      const existingIso = Isotope.data(this);
       if (existingIso) {
         existingIso.destroy();
       }
@@ -509,30 +510,31 @@ document.addEventListener('DOMContentLoaded', function() {
    * Configura botões de cópia para todos os snippets
    */
   function setupCopyButtons() {
-    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
+    $('.btn-custom[data-target]').each(function() {
+      const $button = $(this);
       // Pular se já inicializado
-      if (button.hasAttribute('data-copy-initialized')) return;
+      if ($button.attr('data-copy-initialized')) return;
       
       // Marcar como inicializado
-      button.setAttribute('data-copy-initialized', 'true');
+      $button.attr('data-copy-initialized', 'true');
       
       // Adicionar evento de clique
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        const codeBlock = document.getElementById(targetId);
+      $button.on('click', function() {
+        const targetId = $button.attr('data-target');
+        const $codeBlock = $('#' + targetId);
 
-        if (codeBlock) {
+        if ($codeBlock.length) {
           // Copiar o texto para a área de transferência
-          const text = codeBlock.textContent.trim();
+          const text = $codeBlock.text().trim();
           navigator.clipboard.writeText(text)
             .then(() => {
               // Feedback visual
-              const icon = button.querySelector('iconify-icon');
-              if (icon) {
-                const originalIcon = icon.getAttribute('icon');
-                icon.setAttribute('icon', 'mdi:check');
+              const $icon = $button.find('iconify-icon');
+              if ($icon.length) {
+                const originalIcon = $icon.attr('icon');
+                $icon.attr('icon', 'mdi:check');
                 setTimeout(() => {
-                  icon.setAttribute('icon', originalIcon || 'mdi:content-copy');
+                  $icon.attr('icon', originalIcon || 'mdi:content-copy');
                 }, 1200);
               }
             })

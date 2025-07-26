@@ -56,35 +56,33 @@ $(function() {
   /**
    * Toggle mobile nav dropdowns
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
+  $('.navmenu .toggle-dropdown').on('click', function(e) {
+    e.preventDefault();
+    $(this).parent().toggleClass('active');
+    $(this).parent().next().toggleClass('dropdown-active');
+    e.stopImmediatePropagation();
   });
 
   /**
    * Scroll top button
    */
-  let scrollTop = document.querySelector('.scroll-top');
+  const $scrollTop = $('.scroll-top');
 
   function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    if ($scrollTop.length) {
+      $(window).scrollTop() > 100 ? $scrollTop.addClass('active') : $scrollTop.removeClass('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
+  
+  $scrollTop.on('click', function(e) {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    $('html, body').animate({
+      scrollTop: 0
+    }, 'smooth');
   });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  $(window).on('load', toggleScrollTop);
+  $(document).on('scroll', toggleScrollTop);
 
   /**
    * Animation on scroll function and init
@@ -97,7 +95,7 @@ $(function() {
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  $(window).on('load', aosInit);
 
   /**
    * Initiate glightbox
@@ -107,7 +105,7 @@ $(function() {
   });
 
   // Inicializa o Glightbox para suportar links de pré-visualização
-  document.addEventListener('DOMContentLoaded', function () {
+  $(document).ready(function() {
     const lightbox = GLightbox({
       selector: '.glightbox',
       type: 'iframe', // Permite carregar páginas standalone
@@ -118,20 +116,22 @@ $(function() {
       touchNavigation: true, // Habilita navegação por toque
       onOpen: () => {
         // Remove aria-hidden de elementos que podem causar conflitos
-        document.querySelectorAll('[aria-hidden="true"]').forEach(el => el.removeAttribute('aria-hidden'));
+        $('[aria-hidden="true"]').each(function() {
+          $(this).removeAttr('aria-hidden');
+        });
 
         // Adiciona o atributo `inert` ao body para evitar foco em elementos fora do modal
-        document.body.setAttribute('inert', '');
+        $('body').attr('inert', '');
       },
       onClose: () => {
         // Restaura o foco no elemento correto após fechar o modal
         const lastFocusedElement = document.activeElement;
         if (lastFocusedElement) {
-          lastFocusedElement.blur();
+          $(lastFocusedElement).blur();
         }
 
         // Remove o atributo `inert` do body
-        document.body.removeAttribute('inert');
+        $('body').removeAttr('inert');
       }
     });
   });
@@ -144,44 +144,42 @@ $(function() {
   /**
    * Frequently Asked Questions Toggle
    */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
-    });
+  $('.faq-item h3, .faq-item .faq-toggle').on('click', function() {
+    $(this).parent().toggleClass('faq-active');
   });
 
   /**
    * Init swiper sliders
    */
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+    $(".init-swiper").each(function() {
+      const $this = $(this);
       let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
+        $this.find(".swiper-config").html().trim()
       );
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
+      if ($this.hasClass("swiper-tab")) {
+        initSwiperWithCustomPagination(this, config);
       } else {
-        new Swiper(swiperElement, config);
+        new Swiper(this, config);
       }
     });
   }
 
-  window.addEventListener("load", initSwiper);
+  $(window).on("load", initSwiper);
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  window.addEventListener('load', function(e) {
+  $(window).on('load', function(e) {
     if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
+      const $section = $(window.location.hash);
+      if ($section.length) {
         setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
+          let scrollMarginTop = getComputedStyle($section[0]).scrollMarginTop;
+          $('html, body').animate({
+            scrollTop: $section.offset().top - parseInt(scrollMarginTop)
+          }, 'smooth');
         }, 100);
       }
     }
@@ -190,70 +188,96 @@ $(function() {
   /**
    * Navmenu Scrollspy
    */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
+  const $navmenulinks = $('.navmenu a');
 
   function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
+    $navmenulinks.each(function() {
+      const $link = $(this);
+      if (!$link[0].hash) return;
+      
+      const $section = $($link[0].hash);
+      if (!$section.length) return;
+      
+      const position = $(window).scrollTop() + 200;
+      const sectionTop = $section.offset().top;
+      const sectionHeight = $section.outerHeight();
+      
+      if (position >= sectionTop && position <= (sectionTop + sectionHeight)) {
+        $('.navmenu a.active').removeClass('active');
+        $link.addClass('active');
       } else {
-        navmenulink.classList.remove('active');
-      }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        const offset = 1; // Ajuste para descer um pouco mais
-        const targetPosition = targetElement.offsetTop - offset;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+        $link.removeClass('active');
       }
     });
+  }
+  
+  $(window).on('load', navmenuScrollspy);
+  $(document).on('scroll', navmenuScrollspy);
+  
+  $('a[href^="#"]').on('click', function(e) {
+    const targetId = $(this).attr('href').substring(1);
+    const $targetElement = $('#' + targetId);
+    
+    if ($targetElement.length) {
+      e.preventDefault();
+      const offset = 1; // Ajuste para descer um pouco mais
+      const targetPosition = $targetElement.offset().top - offset;
+      
+      $('html, body').animate({
+        scrollTop: targetPosition
+      }, 'smooth');
+    }
   });
 
   /**
-   * Função para adicionar funcionalidade de copiar código nos snippets usando JavaScript nativo
+   * Função para adicionar funcionalidade de copiar código nos snippets usando jQuery
    */
   function setupCopyButtons() {
-    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        const codeBlock = document.getElementById(targetId);
+    $('.btn-custom[data-target]').on('click', function() {
+      const targetId = $(this).data('target');
+      const $codeBlock = $('#' + targetId);
 
-        if (codeBlock) {
-          const text = codeBlock.textContent.trim();
-          navigator.clipboard.writeText(text).then(() => {
-            const icon = button.querySelector('iconify-icon');
-            if (icon) {
-              icon.setAttribute('icon', 'mdi:check'); // Troca para ícone de check
-              setTimeout(() => {
-                icon.setAttribute('icon', 'mdi:content-copy'); // Restaura o ícone original
-              }, 1200);
-            }
-          }).catch(err => {
-            console.error('Erro ao copiar o texto:', err);
-          });
-        } else {
-          console.error('Bloco de código não encontrado para o ID:', targetId);
-        }
-      });
+      if ($codeBlock.length) {
+        const text = $codeBlock.text().trim();
+        navigator.clipboard.writeText(text).then(() => {
+          const $icon = $(this).find('iconify-icon');
+          if ($icon.length) {
+            $icon.attr('icon', 'mdi:check'); // Troca para ícone de check
+            setTimeout(() => {
+              $icon.attr('icon', 'mdi:content-copy'); // Restaura o ícone original
+            }, 1200);
+          }
+        }).catch(err => {
+          console.error('Erro ao copiar o texto:', err);
+        });
+      } else {
+        console.error('Bloco de código não encontrado para o ID:', targetId);
+      }
     });
   }
 
   // Chamar a função ao carregar a página
   $(window).on('load', setupCopyButtons);
+  
+  /**
+   * Inicializa os tooltips do Bootstrap
+   */
+  $(function() {
+    // Função para inicializar os tooltips
+    function initTooltips(parent) {
+      const $container = parent ? $(parent) : $(document);
+      $container.find('[data-bs-toggle="tooltip"]').tooltip();
+    }
+    
+    // Inicializa todos os tooltips na página
+    initTooltips();
+    
+    // Reinicializa tooltips em conteúdo carregado dinamicamente
+    $(document).on('DOMNodeInserted', function(e) {
+      if ($(e.target).find('[data-bs-toggle="tooltip"]').length > 0) {
+        initTooltips(e.target);
+      }
+    });
+  });
 
 // O carregamento dinâmico de snippets foi movido para o arquivo snippets-manager.js

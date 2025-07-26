@@ -68,29 +68,30 @@ $(document).ready(function() {
   // Função auxiliar para configurar botões de cópia e alinhar botões flutuantes
   function setupCopyButtons() {
     // Garantir que todos os snippet-actions-float estejam alinhados à direita
-    document.querySelectorAll('.snippet-actions-float').forEach(actionBar => {
-      if (!actionBar.classList.contains('justify-content-end')) {
-        actionBar.classList.add('justify-content-end');
+    $('.snippet-actions-float').each(function() {
+      if (!$(this).hasClass('justify-content-end')) {
+        $(this).addClass('justify-content-end');
       }
     });
     
     // Configurar botões de cópia
-    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
-      if (button.hasAttribute('data-copy-initialized')) return;
+    $('.btn-custom[data-target]').each(function() {
+      if ($(this).attr('data-copy-initialized')) return;
       
-      button.setAttribute('data-copy-initialized', 'true');
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        const codeBlock = document.getElementById(targetId);
+      $(this).attr('data-copy-initialized', 'true');
+      $(this).on('click', function() {
+        const $button = $(this);
+        const targetId = $button.attr('data-target');
+        const $codeBlock = $('#' + targetId);
 
-        if (codeBlock) {
-          const text = codeBlock.textContent.trim();
+        if ($codeBlock.length) {
+          const text = $codeBlock.text().trim();
           navigator.clipboard.writeText(text).then(() => {
-            const icon = button.querySelector('iconify-icon');
-            if (icon) {
-              icon.setAttribute('icon', 'mdi:check');
+            const $icon = $button.find('iconify-icon');
+            if ($icon.length) {
+              $icon.attr('icon', 'mdi:check');
               setTimeout(() => {
-                icon.setAttribute('icon', 'mdi:content-copy');
+                $icon.attr('icon', 'mdi:content-copy');
               }, 1200);
             }
           }).catch(err => {
