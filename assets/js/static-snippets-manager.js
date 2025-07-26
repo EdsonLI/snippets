@@ -190,6 +190,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`Container não encontrado: ${SNIPPETS_CONFIG.containerSelector}`);
               }
               
+              // Processar HTML para evitar carregamento de recursos inexistentes
+              html = processHtml(html, snippetPath);
+              
               // Inserir o HTML
               container.insertAdjacentHTML('beforeend', html);
               
@@ -227,6 +230,61 @@ document.addEventListener('DOMContentLoaded', function() {
   /**
    * Reinicializa o Isotope após o carregamento dos snippets
    */
+  /**
+   * Processa o HTML do snippet antes de inseri-lo no DOM
+   * Previne carregamento de recursos inexistentes, como arquivos standalone
+   * @param {string} html O conteúdo HTML do snippet
+   * @param {string} snippetPath O caminho do snippet atual
+   * @returns {string} HTML processado
+   */
+  function processHtml(html, snippetPath) {
+    // Remover ou modificar links para snippets_standalone
+    if (html.includes('snippets_standalone')) {
+      log.warn(`Encontrados links para snippets_standalone em: ${snippetPath}`);
+      
+      // Criar um elemento temporário para manipular o HTML
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      
+      // Processar links de download que apontam para arquivos standalone
+      tempDiv.querySelectorAll('a[href*="snippets_standalone"]').forEach(link => {
+        // Desativar o link para evitar 404
+        link.setAttribute('href', 'javascript:void(0)');
+        link.setAttribute('title', 'Arquivo standalone não disponível neste ambiente');
+        link.setAttribute('data-bs-toggle', 'tooltip');
+        link.setAttribute('data-bs-placement', 'top');
+        
+        // Adicionar classe visual para indicar indisponibilidade
+        link.classList.add('text-muted');
+        
+        log.info(`Link para standalone desativado: ${link.getAttribute('href')}`);
+      });
+      
+      // Processar iframes que carregam arquivos standalone
+      tempDiv.querySelectorAll('iframe[src*="snippets_standalone"]').forEach(iframe => {
+        // Substituir o src do iframe
+        const originalSrc = iframe.getAttribute('src');
+        iframe.setAttribute('src', 'about:blank');
+        iframe.setAttribute('data-original-src', originalSrc);
+        
+        // Adicionar mensagem de indisponibilidade
+        const wrapper = iframe.parentNode;
+        if (wrapper) {
+          const notice = document.createElement('div');
+          notice.className = 'alert alert-warning py-2 mt-2';
+          notice.innerHTML = '<small>Visualização não disponível neste ambiente</small>';
+          wrapper.appendChild(notice);
+        }
+        
+        log.info(`Iframe de standalone substituído: ${originalSrc}`);
+      });
+      
+      return tempDiv.innerHTML;
+    }
+    
+    return html;
+  }
+
   function reinitializeIsotope() {
     // Se não houver elementos para organizar, não inicializar
     const containers = document.querySelectorAll(SNIPPETS_CONFIG.containerSelector);
