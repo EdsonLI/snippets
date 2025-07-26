@@ -216,15 +216,15 @@ $(function() {
     state.scanning = true;
     log.info('Iniciando descoberta de pastas...');
     
-    # Lista de pastas com snippets
+    // Lista de pastas com snippets
     const folders = ['bootstrap', 'css', 'html', 'javascript', 'jquery', 'php', 'git', 'ai', 'outros'];
     
-    # Usamos sempre o mapa estático para compatibilidade com todos os ambientes
+    // Usamos sempre o mapa estático para compatibilidade com todos os ambientes
     log.info('Usando mapa de snippets predefinido para compatibilidade universal');
     
     folders.forEach(folderName => {
       if (staticSnippetsMap[folderName]) {
-        # Usar os arquivos predefinidos do mapa estático
+        // Usar os arquivos predefinidos do mapa estático
         state.discoveredFiles[folderName] = staticSnippetsMap[folderName];
         if (!state.loadedFolders.includes(folderName)) {
           state.loadedFolders.push(folderName);
@@ -233,7 +233,7 @@ $(function() {
       }
     });
     
-    # Atualizar a UI com os dados estáticos
+    // Atualizar a UI com os dados estáticos
     updateFiltersUI();
     loadDiscoveredSnippets();
     state.scanning = false;
