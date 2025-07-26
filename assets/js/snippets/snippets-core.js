@@ -3,12 +3,19 @@
  * Combina as funcionalidades de snippet-loader.js, snippets-manager.js, 
  * snippet-external-links.js e snippet-scroll-indicator.js
  * 
+ * Esta versão foi otimizada para compatibilidade universal com todos os ambientes,
+ * incluindo GitHub Pages, usando uma abordagem JavaScript pura sem dependências de back-end.
+ * 
  * @author EdsonLI e GitHub Copilot
- * @version 1.0.0 (jQuery)
+ * @version 1.1.0 (jQuery - Universal Compatibility)
  */
 
 $(function() {
   "use strict";
+  
+  // Detecção automática do ambiente (GitHub Pages ou desenvolvimento local)
+  const isGitHubPages = window.location.hostname === 'edsonli.github.io';
+  const basePath = isGitHubPages ? '/snippets' : '';
   
   // Configuração para o gerenciador de snippets
   const SNIPPETS_CONFIG = {
@@ -17,9 +24,9 @@ $(function() {
     filtersContainerSelector: '.portfolio-filters',
     portfolioItemSelector: '.isotope-item',
     
-    // Caminhos padrão
-    basePath: '/snippets/coding',
-    indexingPath: '/snippets/coding/indexing',
+    // Caminhos padrão - ajustados para GitHub Pages quando necessário
+    basePath: `${basePath}/coding`,
+    indexingPath: `${basePath}/coding/indexing`,
     
     // Opções de isotope
     isotopeOptions: {
@@ -30,13 +37,16 @@ $(function() {
     
     // Configurações específicas de caminhos
     pathMapping: {
-      'coding': '/snippets/coding/main',
-      'indexing': '/snippets/coding/indexing'
+      'coding': `${basePath}/coding/main`,
+      'indexing': `${basePath}/coding/indexing`
     },
     
     // Controle de carregamento
     maxSnippetsPerFolder: 10,
     scanInterval: 8000,
+    
+    // Informação sobre ambiente para ajustes de caminhos
+    isGitHubPages: isGitHubPages,
     
     // Debug
     debug: true
@@ -133,7 +143,69 @@ $(function() {
    */
   
   /**
+   * Lista estática de arquivos de snippets disponíveis no projeto
+   */
+  const staticSnippetsMap = {
+    'bootstrap': [
+      'snippet_bootstrap_accordion.html',
+      'snippet_bootstrap_alert.html',
+      'snippet_bootstrap_form_validation.html',
+      'snippet_bootstrap_card.html',
+      'snippet_bootstrap_carousel.html',
+      'snippet_bootstrap_modal.html'
+    ],
+    'css': [
+      'snippet_css_flexbox_basics.html',
+      'snippet_css_grid_layout.html',
+      'snippet_css_media_queries.html',
+      'snippet_css_transitions.html',
+      'snippet_css_variables.html'
+    ],
+    'html': [
+      'snippet_html_basic_structure.html',
+      'snippet_html_form.html',
+      'snippet_html_tables.html',
+      'snippet_html_semantic_elements.html'
+    ],
+    'javascript': [
+      'snippet_js_async_await.html',
+      'snippet_js_dom_manipulation.html',
+      'snippet_js_fetch_api.html',
+      'snippet_js_promises.html'
+    ],
+    'jquery': [
+      'snippet_jquery_ajax_basic.html',
+      'snippet_jquery_animations.html',
+      'snippet_jquery_dom_manipulation.html',
+      'snippet_jquery_event_handling.html'
+    ],
+    'php': [
+      'snippet_php_database_connection.html',
+      'snippet_php_file_handling.html',
+      'snippet_php_form_processing.html'
+    ],
+    'git': [
+      'snippet_git_basic_commands.html',
+      'snippet_git_branching.html',
+      'snippet_git_workflow.html'
+    ],
+    'ai': [
+      'snippet_ai_prompt_engineering.html',
+      'snippet_ai_chatgpt_api.html'
+    ],
+    'outros': [
+      'snippet_markdown_syntax.html',
+      'snippet_regex_patterns.html'
+    ]
+  };
+
+  /**
    * Descobre as pastas disponíveis e atualiza a interface
+   * Usando uma abordagem puramente baseada em JavaScript para garantir
+   * compatibilidade universal com todos os ambientes, incluindo GitHub Pages.
+   * 
+   * A estratégia atual usa um mapa estático predefinido de snippets disponíveis,
+   * permitindo funcionamento consistente em ambientes hospedados e locais.
    */
   function discoverFolders() {
     if (state.scanning) {
@@ -144,73 +216,27 @@ $(function() {
     state.scanning = true;
     log.info('Iniciando descoberta de pastas...');
     
+    # Lista de pastas com snippets
     const folders = ['bootstrap', 'css', 'html', 'javascript', 'jquery', 'php', 'git', 'ai', 'outros'];
-    const folderPromises = [];
     
-    // Criar uma Promise para cada pasta a ser verificada
+    # Usamos sempre o mapa estático para compatibilidade com todos os ambientes
+    log.info('Usando mapa de snippets predefinido para compatibilidade universal');
+    
     folders.forEach(folderName => {
-      // Verificar se a pasta já foi carregada
-      if (state.loadedFolders.includes(folderName)) {
-        log.info(`Pasta ${folderName} já foi carregada anteriormente`);
-        return;
+      if (staticSnippetsMap[folderName]) {
+        # Usar os arquivos predefinidos do mapa estático
+        state.discoveredFiles[folderName] = staticSnippetsMap[folderName];
+        if (!state.loadedFolders.includes(folderName)) {
+          state.loadedFolders.push(folderName);
+        }
+        log.success(`Carregados ${staticSnippetsMap[folderName].length} snippets para ${folderName}`);
       }
-      
-      folderPromises.push(
-        new Promise(resolve => {
-          // Caminho para a pasta dentro da estrutura de coding
-          const folderPath = `${SNIPPETS_CONFIG.pathMapping['indexing'] || SNIPPETS_CONFIG.basePath}/snippets_${folderName}`;
-          
-          // Adicionar timestamp para evitar cache
-          const timestamp = new Date().getTime();
-          
-          // Fazer uma requisição AJAX para listar os arquivos na pasta
-          $.ajax({
-            url: `assets/php/list_files.php?path=${folderPath}&ext=html&debug=1&_t=${timestamp}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-              if (data && data.files && Array.isArray(data.files)) {
-                // Guardar os arquivos descobertos
-                state.discoveredFiles[folderName] = data.files;
-                log.success(`Descobertos ${data.files.length} snippets em ${folderName}`);
-                
-                // Adicionar à lista de pastas carregadas
-                if (!state.loadedFolders.includes(folderName)) {
-                  state.loadedFolders.push(folderName);
-                }
-              } else {
-                log.warn(`Nenhum arquivo encontrado em ${folderName} ou resposta inválida`);
-              }
-              resolve();
-            },
-            error: function(xhr, status, error) {
-              log.error(`Erro ao listar arquivos em ${folderName}`, error);
-              
-              // Em caso de erro, tentar uma abordagem alternativa com XMLHttpRequest
-              // (útil em ambientes sem PHP ativo)
-              const xhr2 = new XMLHttpRequest();
-              xhr2.open('GET', `assets/php/list_files.php?path=${folderPath}&ext=html&debug=1&_t=${timestamp}`, false);
-              xhr2.send();
-              
-              log.error(`Resposta bruta para ${folderName}:`, xhr2.responseText);
-              resolve(); // Continuar mesmo com erro
-            }
-          });
-        })
-      );
     });
     
-    // Aguardar todas as promessas e atualizar a interface
-    Promise.all(folderPromises)
-      .then(() => {
-        updateFiltersUI();
-        loadDiscoveredSnippets();
-        state.scanning = false;
-      })
-      .catch(err => {
-        log.error('Erro durante a descoberta de pastas', err);
-        state.scanning = false;
-      });
+    # Atualizar a UI com os dados estáticos
+    updateFiltersUI();
+    loadDiscoveredSnippets();
+    state.scanning = false;
   }
   
   /**
