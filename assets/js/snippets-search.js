@@ -3,8 +3,9 @@
  * 
  * This script adds search functionality to filter snippets based on user input
  * Allows filtering snippets by text content, titles, or tags
+ * jQuery Edition
  */
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
   // Configuration for search functionality
   const SEARCH_CONFIG = {
     searchInputSelector: '#search',
@@ -38,27 +39,27 @@ document.addEventListener('DOMContentLoaded', function() {
    * Set up search input and button events
    */
   function setupSearchEvents() {
-    const searchInput = document.querySelector(SEARCH_CONFIG.searchInputSelector);
-    const refreshButton = document.querySelector(SEARCH_CONFIG.refreshButtonSelector);
+    const $searchInput = $(SEARCH_CONFIG.searchInputSelector);
+    const $refreshButton = $(SEARCH_CONFIG.refreshButtonSelector);
 
-    if (!searchInput) {
+    if (!$searchInput.length) {
       log.error('Search input not found:', SEARCH_CONFIG.searchInputSelector);
       return;
     }
 
-    if (!refreshButton) {
+    if (!$refreshButton.length) {
       log.warn('Refresh button not found:', SEARCH_CONFIG.refreshButtonSelector);
     }
 
     // Add input event listener for search
-    searchInput.addEventListener('input', function() {
-      performSearch(this.value.toLowerCase().trim());
+    $searchInput.on('input', function() {
+      performSearch($(this).val().toLowerCase().trim());
     });
 
     // Add click event listener for refresh button
-    if (refreshButton) {
-      refreshButton.addEventListener('click', function() {
-        searchInput.value = '';
+    if ($refreshButton.length) {
+      $refreshButton.on('click', function() {
+        $searchInput.val('');
         performSearch('');
       });
     }
@@ -71,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {string} searchText - The search term entered by the user
    */
   function performSearch(searchText) {
-    const snippets = document.querySelectorAll(SEARCH_CONFIG.snippetSelector);
-    const container = document.querySelector(SEARCH_CONFIG.containerSelector);
+    const $snippets = $(SEARCH_CONFIG.snippetSelector);
+    const $container = $(SEARCH_CONFIG.containerSelector);
     
     // Remove any existing no results message
     removeNoResultsMessage();
@@ -89,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let foundMatches = false;
     
     // Loop through all snippets
-    snippets.forEach(snippet => {
+    $snippets.each(function() {
+      const $snippet = $(this);
       // Check all possible selectors for title and content
       let title = '';
       let content = '';
@@ -97,35 +99,33 @@ document.addEventListener('DOMContentLoaded', function() {
       // Get title from any matching elements
       const titleSelectors = SEARCH_CONFIG.snippetTitleSelector.split(',');
       for (const selector of titleSelectors) {
-        const titleElements = snippet.querySelectorAll(selector.trim());
-        titleElements.forEach(el => {
-          title += el.textContent.toLowerCase() + ' ';
+        $snippet.find(selector.trim()).each(function() {
+          title += $(this).text().toLowerCase() + ' ';
         });
       }
       
       // Get content from any matching elements
       const contentSelectors = SEARCH_CONFIG.snippetContentSelector.split(',');
       for (const selector of contentSelectors) {
-        const contentElements = snippet.querySelectorAll(selector.trim());
-        contentElements.forEach(el => {
-          content += el.textContent.toLowerCase() + ' ';
+        $snippet.find(selector.trim()).each(function() {
+          content += $(this).text().toLowerCase() + ' ';
         });
       }
       
       // Get tags from dataset
-      const tags = snippet.dataset.tags?.toLowerCase() || '';
+      const tags = $snippet.data('tags')?.toLowerCase() || '';
       
       // Check if snippet contains the search text
       if (title.includes(searchText) || content.includes(searchText) || tags.includes(searchText)) {
-        snippet.style.display = '';
+        $snippet.show();
         foundMatches = true;
       } else {
-        snippet.style.display = 'none';
+        $snippet.hide();
       }
     });
     
     // If we didn't find any matches, show a message
-    if (!foundMatches && container) {
+    if (!foundMatches && $container.length) {
       showNoResultsMessage(container);
     }
     
@@ -139,24 +139,21 @@ document.addEventListener('DOMContentLoaded', function() {
    * Remove any existing no-results message
    */
   function removeNoResultsMessage() {
-    const existingMessage = document.querySelector(`.${SEARCH_CONFIG.noResultsClass}`);
-    if (existingMessage) {
-      existingMessage.remove();
-    }
+    $(`.${SEARCH_CONFIG.noResultsClass}`).remove();
   }
 
   /**
    * Show a message when no results are found
-   * @param {HTMLElement} container - The container where to show the message
+   * @param {jQuery} $container - The container where to show the message
    */
-  function showNoResultsMessage(container) {
-    const messageElement = document.createElement('div');
-    messageElement.className = SEARCH_CONFIG.noResultsClass;
-    messageElement.innerHTML = `
-      <i class="fa fa-search"></i>
-      Nenhum resultado encontrado para sua busca
-    `;
-    container.appendChild(messageElement);
+  function showNoResultsMessage($container) {
+    $('<div>')
+      .addClass(SEARCH_CONFIG.noResultsClass)
+      .html(`
+        <i class="fa fa-search"></i>
+        Nenhum resultado encontrado para sua busca
+      `)
+      .appendTo($container);
   }
 
   /**
@@ -167,20 +164,17 @@ document.addEventListener('DOMContentLoaded', function() {
     removeNoResultsMessage();
     
     // Show all snippets
-    const snippets = document.querySelectorAll(SEARCH_CONFIG.snippetSelector);
-    snippets.forEach(snippet => {
-      snippet.style.display = '';
-    });
+    $(SEARCH_CONFIG.snippetSelector).show();
     
     // Re-layout Isotope if it exists
     reinitializeIsotope();
     
     // Reset any active filter in the Isotope filters
     try {
-      const activeFilter = document.querySelector('.isotope-filters .filter-active');
-      if (activeFilter) {
+      const $activeFilter = $('.isotope-filters .filter-active');
+      if ($activeFilter.length) {
         // Simulate a click on the active filter to refresh the view
-        activeFilter.click();
+        $activeFilter.trigger('click');
       }
     } catch (err) {
       log.error('Error resetting isotope filters:', err);
@@ -193,18 +187,18 @@ document.addEventListener('DOMContentLoaded', function() {
    * Re-initialize Isotope after filtering
    */
   function reinitializeIsotope() {
-    const container = document.querySelector(SEARCH_CONFIG.containerSelector);
-    if (!container) return;
+    const $container = $(SEARCH_CONFIG.containerSelector);
+    if (!$container.length) return;
     
     // If Isotope is available, re-layout
-    if (window.Isotope && Isotope.data(container)) {
-      const iso = Isotope.data(container);
-      setTimeout(() => {
+    if (window.Isotope && Isotope.data($container[0])) {
+      const iso = Isotope.data($container[0]);
+      setTimeout(function() {
         // First, we need to tell Isotope to respect our visibility settings
         // by using our own filtering function that respects the display property
         iso.arrange({
           filter: function() {
-            return this.style.display !== 'none';
+            return $(this).is(':visible');
           }
         });
         
