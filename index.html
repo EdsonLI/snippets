@@ -85,11 +85,9 @@
   /* Garante que o container pai tenha posição relativa */
   </style>
 
-  <!-- jQuery PARA TESTES -->
+  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- Script para gerenciador ESTÁTICO de snippets (compatível com GitHub Pages) -->
-  <script src="assets/js/static-snippets-manager.js" defer></script>
-  <!-- Tech Badges System -->
+  <!-- CSS Files para snippets e ícones -->
   <link href="assets/css/tech-badges-new.css" rel="stylesheet">
   <link href="assets/css/tech-icons-fixes-new.css" rel="stylesheet">
   <link href="assets/css/snippet-actions.css" rel="stylesheet">
@@ -100,17 +98,6 @@
   <link href="assets/css/search-functionality.css" rel="stylesheet">
   <!-- Scrollable Git and AI snippets -->
   <link href="assets/css/git-snippet-scroll.css" rel="stylesheet">
-  <script src="assets/js/tech-badges-new.js" defer></script>
-  <script src="assets/js/reload-tech-icons.js" defer></script>
-  <script src="assets/js/sql-icon-fix.js" defer></script>
-  <script src="assets/js/git-icon-fix.js" defer></script>
-  <script src="assets/js/php-icon-fix.js" defer></script>
-  <script src="assets/js/sweetalert2-icon-fix.js" defer></script>
-  <script src="assets/js/snippet-external-links.js" defer></script>
-  <script src="assets/js/button-position-fix.js" defer></script>
-  <script src="assets/js/snippet-responsive-loader.js" defer></script><!-- Carregador de CSS responsivo para snippets -->
-  <script src="assets/js/snippets-search.js" defer></script>
-  <!--script src="assets/js/filter-text-fixer.js" defer></script--><!-- Corrige texto dos filtros AI, CSS, PHP e SQL -->
 </head>
 
 <body class="index-page">
@@ -285,12 +272,12 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <!-- <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script> -->
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- Script Loader (carrega todos os scripts consolidados) -->
+  <script src="assets/js/script-loader.js"></script>
   <script>
     $(document).ready(function() {
       $('.copy-btn').on('click', function() {
@@ -332,8 +319,7 @@
     });
   </script>
   
-  <!-- Detecção de snippets que precisam rolagem -->
-  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  <!-- Os scripts de detecção de snippets agora são carregados via script-loader.js -->
 </body>
 </html>
 
