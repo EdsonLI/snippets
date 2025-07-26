@@ -52,6 +52,11 @@ $(function() {
     // Informação sobre ambiente para ajustes de caminhos
     isGitHubPages: isGitHubPages,
     
+    // Configurações de CDN para GitHub Pages
+    useCDN: isGitHubPages, // Usar CDN automaticamente se estiver no GitHub Pages
+    cdnBase: null, // Será definido na função checkDirectoryStructure
+    useRawGithub: false, // Flag para usar GitHub raw content
+    
     // Flag para decidir entre usar pasta 'main' ou 'indexing'
     useMainPath: false, // Será definido automaticamente pela função checkDirectoryStructure
     
@@ -339,17 +344,25 @@ $(function() {
         const selected = shuffled.slice(0, SNIPPETS_CONFIG.maxSnippetsPerFolder);
         
         selected.forEach(file => {
-          // Ajustar o caminho dependendo se estamos no GitHub Pages ou ambiente local
-          // e se devemos usar a pasta main ou indexing
+          // Ajustar o caminho dependendo das configurações atuais
           const pathType = SNIPPETS_CONFIG.useMainPath ? 'main' : 'indexing';
+          let snippetPath;
           
-          const baseFolderPath = SNIPPETS_CONFIG.isGitHubPages ? 
-            `${SNIPPETS_CONFIG.basePath}/coding/${pathType}` : 
-            `${SNIPPETS_CONFIG.pathMapping[pathType] || SNIPPETS_CONFIG.codingPath}`;
+          // Se estamos usando CDN do GitHub (para GitHub Pages)
+          if (SNIPPETS_CONFIG.useRawGithub && SNIPPETS_CONFIG.cdnBase) {
+            snippetPath = `${SNIPPETS_CONFIG.cdnBase}/coding/${pathType}/snippets_${folderName}/${file}`;
+            log.info(`Usando CDN GitHub para snippet: ${snippetPath}`);
+          } 
+          // Caso contrário, usar o caminho relativo normal
+          else {
+            const baseFolderPath = SNIPPETS_CONFIG.isGitHubPages ? 
+              `${SNIPPETS_CONFIG.basePath}/coding/${pathType}` : 
+              `${SNIPPETS_CONFIG.pathMapping[pathType] || SNIPPETS_CONFIG.codingPath}`;
+            
+            snippetPath = `${baseFolderPath}/snippets_${folderName}/${file}`;
+          }
           
-          // Construir caminho completo e fazer log para debug
-          const snippetPath = `${baseFolderPath}/snippets_${folderName}/${file}`;
-          log.info(`Caminho construído para snippet: ${snippetPath} (GitHub Pages: ${SNIPPETS_CONFIG.isGitHubPages}, Pasta: ${pathType})`);
+          log.info(`Caminho construído para snippet: ${snippetPath} (GitHub Pages: ${SNIPPETS_CONFIG.isGitHubPages}, Pasta: ${pathType}, CDN: ${SNIPPETS_CONFIG.useRawGithub ? 'Sim' : 'Não'})`);
           
           
           // Verificar se o snippet já foi carregado
@@ -387,19 +400,77 @@ $(function() {
             fetch(`${snippetPath}?_t=${timestamp}`)
               .then(response => {
                 if (!response.ok) {
-                  if (response.status === 404 && SNIPPETS_CONFIG.isGitHubPages) {
-                    // Tentar um caminho alternativo se estivermos no GitHub Pages
-                    const altPath = `/snippets/coding/main/snippets_${snippetInfo.folder}/${snippetInfo.file}`;
-                    log.warn(`Snippet não encontrado, tentando caminho alternativo: ${altPath}`);
-                    return fetch(`${altPath}?_t=${timestamp}`).then(altResponse => {
-                      if (!altResponse.ok) {
-                        throw new Error(`HTTP error ${response.status} (tentativa alternativa: ${altResponse.status})`);
+                  if (response.status === 404) {
+                    // Tentar caminhos alternativos em caso de erro 404
+                    let altPaths = [];
+                    
+                    // Se ainda não estamos usando CDN, tentar com CDN
+                    if (!SNIPPETS_CONFIG.useRawGithub) {
+                      const cdnPath = `https://raw.githubusercontent.com/EdsonLI/snippets/main/coding/${SNIPPETS_CONFIG.useMainPath ? 'main' : 'indexing'}/snippets_${snippetInfo.folder}/${snippetInfo.file}`;
+                      altPaths.push({path: cdnPath, description: 'Raw GitHub'});
+                    }
+                    
+                    // Tentar com pasta main se estamos usando indexing ou vice-versa
+                    const oppositePathType = SNIPPETS_CONFIG.useMainPath ? 'indexing' : 'main';
+                    
+                    if (SNIPPETS_CONFIG.useRawGithub && SNIPPETS_CONFIG.cdnBase) {
+                      altPaths.push({
+                        path: `${SNIPPETS_CONFIG.cdnBase}/coding/${oppositePathType}/snippets_${snippetInfo.folder}/${snippetInfo.file}`,
+                        description: `CDN com pasta ${oppositePathType}`
+                      });
+                    } else {
+                      altPaths.push({
+                        path: `${SNIPPETS_CONFIG.basePath}/coding/${oppositePathType}/snippets_${snippetInfo.folder}/${snippetInfo.file}`,
+                        description: `Pasta ${oppositePathType}`
+                      });
+                    }
+                    
+                    // Tentar cada caminho alternativo sequencialmente
+                    log.warn(`Snippet não encontrado em ${snippetPath}, tentando ${altPaths.length} alternativas`);
+                    
+                    // Função recursiva para tentar os caminhos alternativos
+                    const tryNextPath = (index) => {
+                      if (index >= altPaths.length) {
+                        // Nenhuma alternativa funcionou
+                        throw new Error(`HTTP error ${response.status} (todas as alternativas falharam)`);
                       }
-                      return altResponse.text();
-                    });
+                      
+                      const altPathInfo = altPaths[index];
+                      log.info(`Tentativa ${index + 1}/${altPaths.length}: ${altPathInfo.description} - ${altPathInfo.path}`);
+                      
+                      return fetch(`${altPathInfo.path}?_t=${timestamp}`)
+                        .then(altResponse => {
+                          if (altResponse.ok) {
+                            // Se deu certo, atualizar as configurações
+                            if (altPathInfo.description === 'Raw GitHub') {
+                              SNIPPETS_CONFIG.useRawGithub = true;
+                              SNIPPETS_CONFIG.cdnBase = 'https://raw.githubusercontent.com/EdsonLI/snippets/main';
+                              log.success('Alternativa com Raw GitHub funcionou, usando para próximos snippets');
+                            }
+                            if (altPathInfo.path.includes('/main/') && !SNIPPETS_CONFIG.useMainPath) {
+                              SNIPPETS_CONFIG.useMainPath = true;
+                              log.success('Alternativa com pasta "main" funcionou, usando para próximos snippets');
+                            } else if (altPathInfo.path.includes('/indexing/') && SNIPPETS_CONFIG.useMainPath) {
+                              SNIPPETS_CONFIG.useMainPath = false;
+                              log.success('Alternativa com pasta "indexing" funcionou, usando para próximos snippets');
+                            }
+                            return altResponse.text();
+                          }
+                          // Se falhou, tentar o próximo
+                          return tryNextPath(index + 1);
+                        })
+                        .catch(() => tryNextPath(index + 1));
+                    };
+                    
+                    // Começar a tentar os caminhos alternativos
+                    return tryNextPath(0);
                   }
+                  
+                  // Para outros erros diferentes de 404
                   throw new Error(`HTTP error ${response.status}`);
                 }
+                
+                // Resposta bem-sucedida
                 return response.text();
               })
               .then(html => {
@@ -488,15 +559,24 @@ $(function() {
     state.fallbackLoaded = true;
     log.warn('Carregando snippets de fallback...');
     
-    // Lista de snippets de fallback (caminhos relativos à raiz do site)
-    const fallbackSnippets = [
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_html/snippet_html_basic_structure.html` },
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_css/snippet_css_flexbox_basics.html` },
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_javascript/snippet_js_dom_manipulation.html` },
-      { path: `${SNIPPETS_CONFIG.basePath}/coding/main/snippets_jquery/snippet_jquery_ajax_basic.html` }
+    // Lista de snippets de fallback
+    let fallbackSnippets = [];
+    
+    // Escolher fonte correta para snippets de fallback (CDN ou local)
+    const pathBase = SNIPPETS_CONFIG.useRawGithub && SNIPPETS_CONFIG.cdnBase ? 
+        SNIPPETS_CONFIG.cdnBase : 
+        SNIPPETS_CONFIG.basePath;
+    
+    const pathType = SNIPPETS_CONFIG.useMainPath ? 'main' : 'indexing';
+    
+    fallbackSnippets = [
+      { path: `${pathBase}/coding/${pathType}/snippets_html/snippet_html_basic_structure.html` },
+      { path: `${pathBase}/coding/${pathType}/snippets_css/snippet_css_flexbox_basics.html` },
+      { path: `${pathBase}/coding/${pathType}/snippets_javascript/snippet_js_dom_manipulation.html` },
+      { path: `${pathBase}/coding/${pathType}/snippets_jquery/snippet_jquery_ajax_basic.html` }
     ];
     
-    log.info(`Usando snippets de fallback com basePath: ${SNIPPETS_CONFIG.basePath}`);
+    log.info(`Usando snippets de fallback com base: ${pathBase}, tipo: ${pathType}`);
     
     const loadPromises = fallbackSnippets.map(snippet => {
       return new Promise((resolve, reject) => {
@@ -854,6 +934,13 @@ $(function() {
    * Esta função ajuda a adaptar os caminhos com base na estrutura real encontrada
    */
   function checkDirectoryStructure() {
+    # Definir opção para usar CDN para GitHub Pages
+    if (SNIPPETS_CONFIG.isGitHubPages) {
+      SNIPPETS_CONFIG.useCDN = true;
+      SNIPPETS_CONFIG.cdnBase = `https://raw.githubusercontent.com/EdsonLI/snippets/main`;
+      log.info(`Ambiente GitHub Pages detectado, usando CDN: ${SNIPPETS_CONFIG.cdnBase}`);
+    }
+    
     const possiblePaths = [
       // Opções para ambiente GitHub Pages
       `${SNIPPETS_CONFIG.basePath}/coding/indexing/snippets_html/snippet_html_basic_structure.html`,
@@ -864,23 +951,40 @@ $(function() {
       `/coding/main/snippets_html/snippet_html_basic_structure.html`
     ];
     
+    # Adicionar opção de CDN para GitHub Pages
+    if (SNIPPETS_CONFIG.useCDN) {
+      possiblePaths.push(
+        `${SNIPPETS_CONFIG.cdnBase}/coding/indexing/snippets_html/snippet_html_basic_structure.html`,
+        `${SNIPPETS_CONFIG.cdnBase}/coding/main/snippets_html/snippet_html_basic_structure.html`
+      );
+    }
+    
     log.info(`Verificando estrutura de diretórios...`);
     
-    // Testar cada caminho possível
+    # Testar cada caminho possível
     possiblePaths.forEach(path => {
       fetch(`${path}?_nocache=${new Date().getTime()}`)
         .then(response => {
           if (response.ok) {
             log.success(`Estrutura de diretório encontrada: ${path}`);
-            // Atualizar configurações com base no caminho que funciona
-            if (path.includes('/main/')) {
+            
+            # Identificar se é um caminho CDN
+            if (path.includes('githubusercontent.com')) {
+              SNIPPETS_CONFIG.useRawGithub = true;
+              if (path.includes('/main/')) {
+                SNIPPETS_CONFIG.useMainPath = true;
+              }
+              log.info(`Usando GitHub raw content: ${path}`);
+            }
+            # Para caminhos normais
+            else if (path.includes('/main/')) {
               SNIPPETS_CONFIG.useMainPath = true;
               log.info(`Usando pasta 'main' ao invés de 'indexing'`);
             }
           }
         })
         .catch(() => {
-          // Ignorar erros silenciosamente
+          # Ignorar erros silenciosamente
         });
     });
   }
