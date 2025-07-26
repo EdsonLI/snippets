@@ -279,25 +279,7 @@
   <!-- Script Loader (carrega todos os scripts consolidados) -->
   <script src="assets/js/script-loader.js"></script>
   <script>
-    $(document).ready(function() {
-      $('.copy-btn').on('click', function() {
-        const $btn = $(this);
-        const targetId = $btn.attr('data-target'); // Obtém o ID do bloco de código
-        const $codeBlock = $('#' + targetId); // Localiza o bloco de código correspondente
-        
-        if ($codeBlock.length) {
-          const text = $codeBlock.text().trim(); // Obtém o texto do bloco de código
-          navigator.clipboard.writeText(text).then(function() {
-            $btn.addClass('copied');
-            $btn.html('<i class="fa-solid fa-check"></i> Copiado!'); // Feedback visual
-            setTimeout(function() {
-              $btn.removeClass('copied');
-              $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>'); // Restaura o ícone original
-            }, 1200);
-          });
-        }
-      });
-    });
+    // Função de cópia movida para main-core.js
     // Theme toggle logic - Convertido para jQuery
     $(document).ready(function() {
       const $themeBtn = $('#theme-toggle');
