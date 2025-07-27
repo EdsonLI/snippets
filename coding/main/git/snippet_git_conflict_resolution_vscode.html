@@ -16,57 +16,45 @@
 <!-- snippet-code -->
 <div class="snippet-code position-relative px-2">
     <div class="mb-3">
-      <span class="fw-bold text-info">Dica: para comparar visualmente as <b>3 últimas versões</b> de um método específico:</span>
+      <span class="fw-bold text-info">Dica: para comparar visualmente as <b>três últimas versões</b> de um método específico:</span>
       <pre class="mb-2"><code class="language-bash">git log -p -n 3 -- app/control/pedidos/OrderPageForm.php</code></pre>
     </div>
 
-    <ol class="mb-3 ps-3">
-      <li class="mb-2">
         <b>Atualize a branch de base (<span class="text-warning">development</span>):</b>
         <pre class="mb-1"><code class="language-bash">git checkout development
 git pull origin development</code></pre>
-      </li>
-      <li class="mb-2">
+    
         <b>Faça checkout da sua branch da PR:</b>
         <pre class="mb-1"><code class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code></pre>
-        <span class="text-secondary">Se ainda não tiver localmente:</span>
+        Se ainda não tiver localmente:
         <pre class="mb-1"><code class="language-bash">git fetch origin
 git checkout -b 157-implementar-a-nova-funcionalidade</code></pre>
-      </li>
-      <li class="mb-2">
+      
         <b>Mescle a branch <span class="text-warning">development</span> na sua para resolver os conflitos:</b>
         <pre class="mb-1"><code class="language-bash">git merge development</code></pre>
-      </li>
-      <li class="mb-2">
+
         <b>Resolva os conflitos no VS Code:</b>
-        <ul class="mb-1">
-          <li>Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>).</li>
-          <li>Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span>.</li>
-          <li>Use os botões: <b>Accept Current</b> (HEAD) / <b>Accept Incoming</b> / <b>Accept Both Changes</b>.</li>
-          <li>Remova os marcadores de conflito <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> <code>=======</code> <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> após resolver.</li>
-        </ul>
-        <div class="small text-secondary mb-1">
+          - Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>).
+          - Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span>.
+          - Use os botões: <b>Accept Current</b> (HEAD) / <b>Accept Incoming</b> / <b>Accept Both Changes</b>:
+          <div class="small text-secondary mb-1">
           <b>Atual</b> (HEAD): sua branch atual (geralmente a da PR)<br>
           <b>Entrada</b> (Incoming): o que vem da <span class="text-warning">development</span> (ou branch que está mesclando)
         </div>
-      </li>
-      <li class="mb-2">
+          - Remova os marcadores de conflito <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> <code>=======</code> <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> após resolver.
+
         <b>Finalize o merge:</b>
         <pre class="mb-1"><code class="language-bash">git add .
 git commit -m "Resolvendo conflitos com a branch development"</code></pre>
-      </li>
-      <li class="mb-2">
+
         <b>Atualize sua PR com o push:</b>
         <pre class="mb-1"><code class="language-bash">git push origin 157-implementar-a-funcionalidade-de-armazenamento-de-arquivos-em-cloud-storage</code></pre>
-      </li>
-    </ol>
 
-    <div class="alert alert-success p-2 mb-2" style="font-size: 1rem;">
-      <b>✅ PR atualizada e pronta para nova revisão!</b>
-    </div>
+
+    PR atualizada e pronta para nova revisão!    
 
     <details class="mt-3">
-      <summary class="fw-bold">💡 Dica avançada: comparar versões de métodos com GitLens</summary>
+      <summary class="fw-bold">Dica avançada: comparar versões com GitLens</summary>
       <div class="mt-2 small">
         <ol>
           <li>Instale a extensão <b>GitLens</b> no VS Code.</li>
@@ -76,7 +64,7 @@ git commit -m "Resolvendo conflitos com a branch development"</code></pre>
           <li>Clique em um commit e selecione <b>Open Revision</b>.</li>
           <li>Abra as últimas 3 revisões e organize lado a lado (Ctrl+\ para split editor).</li>
         </ol>
-        <span class="text-secondary">Assim você compara facilmente as versões históricas de um método!</span>
+        <span class="text-secondary">Assim você compara facilmente as versões com o GitLens!</span>
       </div>
     </details>
   </div>
