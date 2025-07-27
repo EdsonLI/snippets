@@ -17,53 +17,71 @@
 <div class="snippet-code position-relative px-2">
   # <b>Atualize a branch de base (<span class="text-warning">development</span>):</b>
 <pre class="mb-1">
-  <code class="language-bash">git checkout development
-  git pull origin development</code>
+  <code class="language-bash">
+  git checkout development
+  git pull origin development
+</code>
 </pre>
     
   # <b>Faça checkout da sua branch da PR:</b>
-  <pre class="mb-1">
-    <code class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code>
-  </pre>
-    - Se ainda não tiver localmente:
 <pre class="mb-1">
-  <code class="language-bash">git fetch origin
-  git checkout -b 157-implementar-a-nova-funcionalidade</code>
+  <code class="language-bash">
+  git checkout 157-implementar-a-nova-funcionalidade
+  </code>
+</pre>
+  - Se ainda não tiver localmente:
+<pre class="mb-1">
+  <code class="language-bash">
+  git fetch origin
+  git checkout -b 157-implementar-a-nova-funcionalidade
+</code>
 </pre>
       
   # <b>Mescle a branch <span class="text-warning">development</span> na sua para resolver os conflitos:</b>
 <pre class="mb-1">
-  <code class="language-bash">git merge development</code>
+  <code class="language-bash">
+  git merge development
+  </code>
 </pre>
         
-  # <b>Resolva os conflitos no VS Code:</b>
-    - Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>).
-    - Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span>.
-    - Use os botões: <b>Accept Current</b> (HEAD) / <b>Accept Incoming</b> / <b>Accept Both Changes</b>:
+  # <b>Resolva os conflitos no VS Code:</b><br/>
+    - Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>).<br/>
+    - Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span>.<br/>
+    - Use os botões: <br/>
+    <b>Accept Current</b> (HEAD) / <b>Accept Incoming</b> / <b>Accept Both Changes</b>:<br/>
       <div class="small text-secondary mb-1">
-        <b>Atual</b> (HEAD): sua branch atual (geralmente a da PR)<br>
-        <b>Entrada</b> (Incoming): o que vem da <span class="text-warning">development</span> (ou branch que está mesclando)
+        <b>Atual</b> (HEAD): sua branch atual (geralmente a da PR)<br/>
+        <b>Entrada</b> (Incoming): o que vem da <span class="text-warning">development</span> (ou branch que está mesclando)<br/>
       </div>
-    - Remova os marcadores de conflito 
+    - Remova os marcadores de conflito:<br/> 
   <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> 
   <code>=======</code> 
   <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.
-
+<br/>
   # <b>Após resolver finalize o merge:</b>
-<pre class="mb-1"><code class="language-bash">git add .
-  git commit -m "Resolvendo conflitos com a branch development"</code>
+<pre class="mb-1">
+  <code class="language-bash">
+  git add .
+  git commit -m "Resolvendo conflitos com a branch development"
+</code>
 </pre>
 
   # <b>Atualize sua PR com o push:</b>
 <pre class="mb-1">
-  <code class="language-bash">git push origin 157-implementar-a-nova-funcionalidade</code>
+  <code class="language-bash">
+  git push origin 157-implementar-a-nova-funcionalidade
+</code>
 </pre>
 
   # Pronto!  PR atualizada e pronta para nova revisão!    
-    <div class="mb-3">
-      <span class="fw-bold text-info">Dica: para comparar visualmente as <b>três últimas versões</b> de um método específico:</span>
-      <pre class="mb-2"><code class="language-bash">git log -p -n 3 -- app/control/pedidos/OrderPageForm.php</code></pre>
-    </div>
+<div class="mb-3">
+<span class="fw-bold text-info">Dica: para comparar visualmente as <b>três últimas versões</b> de um método específico:</span>
+<pre class="mb-2">
+  <code class="language-bash">
+  git log -p -n 3 -- app/control/pedidos/OrderFormView.php
+  </code>
+</pre>
+</div>
     <details class="mt-3">
       <summary class="fw-bold">Dica avançada: comparar versões com GitLens</summary>
       <div class="mt-2 small">
