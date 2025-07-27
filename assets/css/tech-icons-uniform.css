@@ -39,8 +39,8 @@
 /* Estilo para SVGs dentro de ícones personalizados */
 .tech-icon-custom svg,
 [class$="-icon-wrapper"] svg {
-  width: 20px !important;
-  height: 20px !important;
+  width: 16px !important;
+  height: 16px !important;
   aspect-ratio: 1/1 !important; /* Garante SVG perfeitamente proporcional */
   position: absolute !important;
   top: 50% !important;
@@ -65,16 +65,16 @@
 
 /* Garantir que o SVG para o PHP seja dimensionado corretamente */
 .php-icon-svg {
-  width: 20px !important;
-  height: 20px !important;
+  width: 16px !important;
+  height: 18px !important;
   fill: #777bb3 !important; /* Cor oficial do PHP */
   transform: scale(1.2) !important; /* Aumenta o tamanho do SVG */
 }
 
 /* Garantir que o SVG para o SQL seja dimensionado corretamente */
 .sql-icon-svg {
-  width: 20px !important;
-  height: 20px !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 /* Ajuste para os SVGs de PHP e SQL nos filtros */
