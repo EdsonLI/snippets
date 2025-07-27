@@ -1,5 +1,5 @@
 /* Estilo para o ícone Git - personalizado */
-.git-icon-wrapper {
+/* .git-icon-wrapper {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -12,7 +12,7 @@
   padding: 2px !important;
   position: relative !important;
   aspect-ratio: 1/1 !important;
-}
+} */
 
 /* Ocultar qualquer iconify-icon original que possa estar presente */
 .tech-badge-git iconify-icon:not(.git-icon-svg),
