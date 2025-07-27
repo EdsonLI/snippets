@@ -3357,3 +3357,15 @@ pre {
 pre code.hljs {
   padding: 0 0 0 1px !important;
 }
+
+.tech-icon-custom svg, [class$="-icon-wrapper"] svg {
+  width: 14px !important;
+  height: 14px !important;
+  /* 
+  aspect-ratio: 1 / 1 !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; 
+  */
+}
