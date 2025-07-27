@@ -83,3 +83,9 @@
 ol, ul {
     padding-left: 1.2rem !important;
 }
+
+.git-pre-code {
+    left: -1rem !important;
+    position: relative !important;
+    width: 20.7rem !important;
+}
