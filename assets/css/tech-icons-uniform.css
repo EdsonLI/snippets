@@ -1,7 +1,6 @@
 /* 
  * Estilos unificados para ícones de tecnologia
  * Garante que todos os ícones de tecnologia tenham o mesmo tamanho
- * Baseado no tamanho do ícone PHP (24px x 24px)
  */
 
 /* Estilo base para todos os ícones personalizados */
@@ -23,8 +22,8 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 24px !important;
-  height: 24px !important;
+  width: 22px !important;
+  height: 22px !important;
   aspect-ratio: 1/1 !important; /* Garante formato perfeitamente circular */
   margin-right: 4px !important;
   vertical-align: middle !important;
@@ -39,8 +38,8 @@
 /* Estilo para SVGs dentro de ícones personalizados */
 .tech-icon-custom svg,
 [class$="-icon-wrapper"] svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 15px !important;
+  height: 15px !important;
   aspect-ratio: 1/1 !important; /* Garante SVG perfeitamente proporcional */
   position: absolute !important;
   top: 50% !important;
@@ -59,8 +58,8 @@
 /* Ajuste para os SVGs nos filtros */
 .portfolio-filters li [class$="-icon-wrapper"] svg,
 .portfolio-filters li .tech-icon-custom svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 15px !important;
+  height: 15px !important;
 }
 
 /* Garantir que o SVG para o PHP seja dimensionado corretamente */
@@ -73,14 +72,14 @@
 
 /* Garantir que o SVG para o SQL seja dimensionado corretamente */
 .sql-icon-svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 15px !important;
+  height: 15px !important;
 }
 
 /* Ajuste para os SVGs de PHP e SQL nos filtros */
 .portfolio-filters li.filter-php .php-icon-svg {
   width: 16px !important;
-  height: 16px !important;
+  height: 17px !important;
 }
 
 .portfolio-filters li.filter-sql .sql-icon-svg {
