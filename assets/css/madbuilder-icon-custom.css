@@ -7,7 +7,7 @@
     display: none !important;
 }
 
-/* Estilos para garantir que a imagem estática seja exibida corretamente */
+/* Estilos para garantir que a imagem estática seja exibida como um círculo perfeito */
 .madbuilder-icon {
     display: inline-block;
     vertical-align: middle;
@@ -16,6 +16,9 @@
     width: 20px;
     height: 20px;
     object-fit: cover;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+    aspect-ratio: 1/1;
 }
 
 /* Quando usado em snippets */
@@ -23,4 +26,19 @@
     margin-right: 5px;
     display: inline-block !important;
     vertical-align: middle;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+/* Wrapper para forçar corte circular */
+.id-tech-madbuilder .madbuilder-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 4px;
 }
