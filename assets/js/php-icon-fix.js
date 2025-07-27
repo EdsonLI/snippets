@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Seletor específico - apenas para ícones diretamente dentro do container de filtro
     const badIcons = document.querySelectorAll('.filter-php > .php-icon-wrapper');
     if (badIcons.length > 0) {
-      console.info(`🧹 Removendo ${badIcons.length} ícones PHP mal posicionados`);
       badIcons.forEach(icon => icon.remove());
     }
   };
@@ -17,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
     // Primeiro limpamos ícones mal posicionados
     removeBadIcons();
-    
-    console.info('🔄 Aplicando SVG personalizado para o ícone PHP...');
     
     // SVG para o ícone PHP (definido em um único lugar para fácil manutenção)
     const phpSvgContent = `
@@ -51,13 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function applyPhpIconToSnippets() {
       // Obter todos os spans com classe id-tech-php (títulos dos snippets)
       const phpTitleSpans = document.querySelectorAll('.id-tech-php');
-      console.info(`🔍 Encontrados ${phpTitleSpans.length} elementos .id-tech-php para aplicar ícones`);
       
       phpTitleSpans.forEach(span => {
         // Verificar se já tem um ícone PHP dentro (para não duplicar)
         const hasIcon = span.querySelector('.php-icon-wrapper');
         if (hasIcon) {
-          console.info('✓ Ícone PHP já existe, mantendo-o intacto');
           return;
         }
 
@@ -72,13 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone antes do texto
         span.insertBefore(wrapper, span.firstChild);
-        console.info('✅ Ícone PHP inserido em elemento .id-tech-php');
       });
     }
     
     // Aplicar aos badges normais (apenas quando não estão dentro de id-tech-php)
     const phpBadges = document.querySelectorAll('.tech-badge-php:not(.id-tech-php .tech-badge-php)');
-    console.info(`🔍 Encontrados ${phpBadges.length} elementos .tech-badge-php para aplicar ícones`);
     
     phpBadges.forEach(badge => {
       applyPhpIcon(badge);
@@ -86,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Aplicar aos filtros do menu de forma segura - apenas aqueles que NÃO contêm já um ícone PHP
     const phpFilters = document.querySelectorAll('.portfolio-filters li.filter-php');
-    console.info(`🔍 Encontrados ${phpFilters.length} elementos .filter-php no menu de filtros`);
     
     phpFilters.forEach(filter => {
       // Verificar se já tem um ícone PHP dentro (para não duplicar)
@@ -99,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone no início do elemento do filtro
         filter.insertBefore(wrapper, filter.firstChild);
-        console.info('✅ Ícone PHP inserido em elemento .filter-php do menu');
       }
     });
     
@@ -127,7 +118,5 @@ document.addEventListener('DOMContentLoaded', function() {
         applyPhpIconToSnippets();
       }, 500);
     });
-    
-    console.info('✅ SVG personalizado para PHP aplicado');
   }, 500);
 });
