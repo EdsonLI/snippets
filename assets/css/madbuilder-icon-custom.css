@@ -1,0 +1,26 @@
+/**
+ * Estilos específicos para o MadBuilder
+ */
+
+/* Remove a geração automática do ícone para o madbuilder */
+.id-tech-madbuilder::before {
+    display: none !important;
+}
+
+/* Estilos para garantir que a imagem estática seja exibida corretamente */
+.madbuilder-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+/* Quando usado em snippets */
+.portfolio-item .id-tech-madbuilder img.madbuilder-icon {
+    margin-right: 5px;
+    display: inline-block !important;
+    vertical-align: middle;
+}

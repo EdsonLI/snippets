@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'vscode': 'logos:visual-studio-code',
     'sweetalert2': 'logos:sweetalert2',
     'codepen': 'logos:codepen-icon',
-    'madbuilder': 'fluent-emoji:hammer-and-wrench',
+    // 'madbuilder': removido para usar imagem estática
     
     // Tecnologias adicionais que você pode usar - versões coloridas
     'react': 'logos:react',
