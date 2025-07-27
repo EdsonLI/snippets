@@ -52,7 +52,7 @@
 
 /* SVG Git embutido diretamente no elemento */
 .git-icon-svg {
-  width: 14px !important;
-  height: 14px !important;
+  width: 10px !important;
+  height: 10px !important;
   vertical-align: middle !important;
 }
