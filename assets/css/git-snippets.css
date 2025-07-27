@@ -89,3 +89,7 @@ ol, ul {
     position: relative !important;
     width: 20.7rem !important;
 }
+
+.git-internal-ul {
+    padding-left: .8rem !important;
+}
