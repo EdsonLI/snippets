@@ -1,19 +1,10 @@
 /**
- * Corrige o texto dos filtros para exibir nomenclaturas corretas
- * Exibe termos em maiúsculas/minúsculas de acordo com padrão oficial
+ * Corrige o texto dos filtros para AI, CSS, PHP e SQL
+ * Exibe esses termos em letras maiúsculas
  */
 document.addEventListener('DOMContentLoaded', function() {
   // Lista de filtros que devem estar em maiúsculas
   const upperCaseFilters = ['ai', 'css', 'php', 'sql'];
-  
-  // Mapeamento especial para filtros com formatação personalizada
-  const specialFormatFilters = {
-    'sweetalert2': 'SweetAlert2',
-    'git': 'Git',
-    'jquery': 'jQuery',
-    'madbuilder': 'MadBuilder',
-    'w3schools': 'W3Schools'
-  };
   
   // Função para corrigir os filtros existentes
   function fixFilterText() {
@@ -34,12 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
           // Define o texto para maiúsculas
           filterItem.textContent = filterName.toUpperCase();
           console.info(`Filtro corrigido: ${filterName} -> ${filterItem.textContent}`);
-        }
-        // Se é um dos filtros com formato específico
-        else if (specialFormatFilters[filterName.toLowerCase()]) {
-          // Define o texto para o formato específico
-          filterItem.textContent = specialFormatFilters[filterName.toLowerCase()];
-          console.info(`Filtro especial corrigido: ${filterName} -> ${filterItem.textContent}`);
         }
       }
     });
