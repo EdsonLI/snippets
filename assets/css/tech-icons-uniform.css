@@ -228,6 +228,17 @@
   visibility: visible !important;
 }
 
+/* MadBuilder */
+.id-tech-madbuilder {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+.id-tech-madbuilder .madbuilder-icon {
+  border-radius: 4px;
+  object-fit: contain;
+}
+
 /* jQuery */
 .jquery-icon {
   display: inline-flex !important;
