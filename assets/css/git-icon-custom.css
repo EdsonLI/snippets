@@ -14,13 +14,6 @@
   aspect-ratio: 1/1 !important;
 }
 
-/* SVG Git embutido diretamente no elemento */
-.git-icon-svg {
-  width: 16px !important;
-  height: 16px !important;
-  vertical-align: middle !important;
-}
-
 /* Ocultar qualquer iconify-icon original que possa estar presente */
 .tech-badge-git iconify-icon:not(.git-icon-svg),
 [class*="id-tech-git"] iconify-icon:not(.git-icon-svg) {
@@ -55,4 +48,11 @@
 .portfolio-filters li.filter-git .git-icon-svg {
   width: 12px;
   height: 12px;
+}
+
+/* SVG Git embutido diretamente no elemento */
+.git-icon-svg {
+  width: 14px !important;
+  height: 14px !important;
+  vertical-align: middle !important;
 }
