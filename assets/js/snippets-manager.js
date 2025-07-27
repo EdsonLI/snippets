@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       // Obter opções do elemento pai
-      const parent = container.closest('.isotope-layout');
+      const parent = $container.closest('.isotope-layout')[0];
       if (!parent) {
         log.warn(`Container isotope sem elemento pai .isotope-layout`);
         return;
@@ -460,9 +460,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const sort = parent.getAttribute('data-sort') || 'original-order';
       
       // Aguardar carregamento de imagens antes de inicializar
-      imagesLoaded(container, function() {
+      imagesLoaded($container[0], function() {
         // Criar nova instância do Isotope
-        const iso = new Isotope(container, {
+        const iso = new Isotope($container[0], {
           itemSelector: '.isotope-item',
           layoutMode: layout,
           filter: filter,
@@ -471,27 +471,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Configurar eventos de filtro
-        const filterBtns = parent.querySelectorAll('.isotope-filters li');
-        filterBtns.forEach(btn => {
-          // Remover eventos anteriores
-          const newBtn = btn.cloneNode(true);
-          btn.parentNode.replaceChild(newBtn, btn);
+        const $filterContainer = $(parent).find('.isotope-filters');
+        if ($filterContainer.length) {
+          const $filterBtns = $filterContainer.find('li');
           
-          // Adicionar novo evento
-          newBtn.addEventListener('click', function() {
-            filterBtns.forEach(b => b.classList.remove('filter-active'));
-            this.classList.add('filter-active');
+          // Remover eventos anteriores e readicionar
+          $filterBtns.each(function() {
+            const $btn = $(this);
+            const $newBtn = $btn.clone(false);
+            $btn.replaceWith($newBtn);
             
-            iso.arrange({
-              filter: this.getAttribute('data-filter')
+            // Adicionar novo evento
+            $newBtn.on('click', function() {
+              $filterBtns.removeClass('filter-active');
+              $(this).addClass('filter-active');
+              
+              iso.arrange({
+                filter: $(this).data('filter')
+              });
+              
+              // Atualizar animações AOS se disponível
+              if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
+                AOS.refresh();
+              }
             });
-            
-            // Atualizar animações AOS se disponível
-            if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
-              AOS.refresh();
-            }
           });
-        });
+        }
         
         // Layout final
         setTimeout(() => iso.arrange(), 100);

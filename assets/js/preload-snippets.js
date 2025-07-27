@@ -49,7 +49,8 @@ $(document).ready(function() {
         });
         
         // Configurar os filtros
-        const $filterButtons = $(this).find('.isotope-filters li');
+        const $parent = $container.closest('.isotope-layout');
+        const $filterButtons = $parent.find('.isotope-filters li');
         $filterButtons.on('click', function() {
           $filterButtons.removeClass('filter-active');
           $(this).addClass('filter-active');
