@@ -1,5 +1,7 @@
 /**
  * Estilos específicos para o MadBuilder
+ * Este CSS garante que o ícone seja exibido perfeitamente centralizado em um círculo
+ * sem cortes nas laterais
  */
 
 /* Remove a geração automática do ícone para o madbuilder */
@@ -9,25 +11,34 @@
 
 /* Estilos para garantir que a imagem estática seja exibida como um círculo perfeito */
 .madbuilder-icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 5px;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
-    aspect-ratio: 1/1;
+    display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    object-position: center;
+    margin: 0;
+    padding: 0;
+    transform: scale(0.9); /* Escala ligeiramente menor para evitar cortes */
 }
 
 /* Quando usado em snippets */
-.portfolio-item .id-tech-madbuilder img.madbuilder-icon {
+.portfolio-item .id-tech-madbuilder .madbuilder-icon-wrapper {
     margin-right: 5px;
-    display: inline-block !important;
+    display: inline-flex !important;
     vertical-align: middle;
-    border-radius: 50% !important;
-    object-fit: cover !important;
+}
+
+/* Estilos específicos para garantir consistência em diferentes contextos */
+.portfolio-item .id-tech-madbuilder,
+.isotope-item .id-tech-madbuilder {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Certificar que não existam alterações indesejadas da imagem */
+.madbuilder-icon-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* Wrapper para forçar corte circular */
@@ -41,4 +52,16 @@
     overflow: hidden;
     vertical-align: middle;
     margin-right: 4px;
+    background-color: white;
+    box-sizing: content-box;
+    padding: 1px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* Garante que o wrapper e a imagem estejam alinhados corretamente com o texto */
+.id-tech-madbuilder {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
 }
