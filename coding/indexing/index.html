@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+</head>
 <head>
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
-  <!-- Google tag (gtag.js) -->
-  <meta charset="UTF-8">
-  <br/>
-  <title>Snippets</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>EdsonLI | Skills | Snippets</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
-  <!-- Bootstrap 5 CSS (CDN oficial, última versão estável) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="../../assets/img/favicon.png" rel="icon">
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- FontAwesome (ícones) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Highlight.js (tema escuro) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tomorrow-night-bright.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <!-- Vendor CSS Files -->
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-  <!-- CSS Personalizado -->
-  <link rel="stylesheet" href="assets/styles.css">
-  
-  <!-- CSS para ações de snippets -->
-  <link href="../../assets/css/snippet-actions.css" rel="stylesheet">
-  <link href="../../assets/css/snippet-actions-responsive.css" rel="stylesheet">
-  
+  <!-- Main CSS File -->
+  <link href="../../assets/css/main.css" rel="stylesheet">
   <!-- Tech Badges CSS -->
   <link href="../../assets/css/tech-badges-new.css" rel="stylesheet">
   <link href="../../assets/css/tech-icons-common.css" rel="stylesheet">
@@ -42,7 +36,82 @@
   <link href="../../assets/css/w3schools-icon-custom.css" rel="stylesheet">
   <link href="../../assets/css/css-icon-custom.css" rel="stylesheet">
   <link href="../../assets/css/isotope-icon-custom.css" rel="stylesheet">
+  <link href="../../assets/css/git-icon-custom.css" rel="stylesheet">
+  <link href="../../assets/css/php-icon-custom.css" rel="stylesheet">
+  <!-- Highlight.js (tema escuro) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  <script src="../../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    });
+  </script>
+  <!-- FontAwesome for copy icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Updated: Nov 01 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+  /* Estilo para barra de rolagem no tema dark */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #222; /* Cor do fundo da barra de rolagem */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #555; /* Cor do "polegar" da barra de rolagem */
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Cor ao passar o mouse */
+  } 
+  /* Garante que o container pai tenha posição relativa */
+  </style>
+
+  <!-- jQuery PARA TESTES -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Script para gerenciador ESTÁTICO de snippets (compatível com GitHub Pages) -->
+  <script src="../../assets/js/static-snippets-manager.js" defer></script>
+  <!-- Tech Badges System -->
+  <link href="../../assets/css/tech-badges-new.css" rel="stylesheet">
+  <link href="../../assets/css/tech-icons-fixes-new.css" rel="stylesheet">
+  <link href="../../assets/css/snippet-actions.css" rel="stylesheet">
+  <link href="../../assets/css/snippet-actions-responsive.css" rel="stylesheet"><!-- Ajustes responsivos para botões de snippet -->
+  <link href="../../assets/css/icon-fixes.css" rel="stylesheet">
+  <link href="../../assets/css/iconify-alignment-fix.css" rel="stylesheet">
+  <!-- Search functionality -->
+  <link href="../../assets/css/search-functionality.css" rel="stylesheet">
+  <!-- Scrollable Git and AI snippets -->
+  <link href="../../assets/css/git-snippet-scroll.css" rel="stylesheet">
+  <script src="../../assets/js/tech-badges-new.js" defer></script>
+  <script src="../../assets/js/reload-tech-icons.js" defer></script>
+  <script src="../../assets/js/sql-icon-fix.js" defer></script>
+  <script src="../../assets/js/git-icon-fix.js" defer></script>
+  <script src="../../assets/js/php-icon-fix.js" defer></script>
+  <script src="../../assets/js/sweetalert2-icon-fix.js" defer></script>
+  <script src="../../assets/js/snippet-external-links.js" defer></script>
+  <script src="../../assets/js/button-position-fix.js" defer></script>
+  <script src="../../assets/js/snippet-responsive-loader.js" defer></script><!-- Carregador de CSS responsivo para snippets -->
+  <script src="../../assets/js/snippets-search.js" defer></script>
+  <!--script src="../../assets/js/filter-text-fixer.js" defer></script--><!-- Corrige texto dos filtros AI, CSS, PHP e SQL -->
+</head>
 </head>
 <body>
   <h1>Snippets</h1>
