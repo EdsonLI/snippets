@@ -1,23 +1,9 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
-  <div class="portfolio-content           </li>
-          <li>
-            <details class="mt-3">
-              <summary class="fw-bold">Dica avançada: comparar versões com GitLens</summary>
-              <div class="mt-2 small">
-                <ol>
-                  <li>Instale a extensão <b>GitLens</b> no VS Code.</li>
-                  <li>Abra o arquivo desejado.</li>
-                  <li>Clique com o direito &gt; <b>Open File History</b> (ou use o painel lateral do GitLens).</li>
-                  <li>Veja a lista de commits que modificaram o arquivo.</li>
-                  <li>Clique em um commit e selecione <b>Open Revision</b>.</li>
-                  <li>Abra as últimas 3 revisões e organize lado a lado (Ctrl+\ para split editor).</li>
-                </ol>
-              </div>
-            </details>
-          </li>
-        </ul>k text-light rounded position-relative border border-secondary-custom">
-    <h6 class="text-center">
-      <span class="id-tech-git">GIT</span>
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <div class="text-center">
+      <h6>
+        <span class="id-tech-git">git</span>
+      </h6>
       <div class="snippet-actions-float d-flex align-items-center gap-1">
         <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-git-conflict-resolution-vscode">
           <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
@@ -26,115 +12,109 @@
           <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
         </a>
       </div>
-    </h6>
-    <div class="text-center mb-2">Resolver conflitos localmente no VS Code após criar PR</div>
-
-    <!-- snippet-code -->
+    </div>
+    <div class="text-center mb-2">
+      Resolver conflitos localmente no VS Code após criar PR
+    </div>
     <div class="snippet-code position-relative px-2">
       <div class="mt-2 small">
-        <ol>    
+        <ol>
           <li>
             <b>Atualize a branch de base (<span class="text-warning">development</span>):</b>
-<pre class="mb-1">
+            <pre class="mb-1">
   <code class="language-bash">  git checkout development
   git pull origin development</code>
-</pre>
-    </li>
-    <li class="mt-2">
-    <b>Faça checkout da sua branch da PR:</b>
-<pre class="mb-1">
+            </pre>
+          </li>
+          <li>
+            <b>Faça checkout da sua branch da PR:</b>
+            <pre class="mb-1">
   <code class="language-bash">  git checkout 157-implementar-a-nova-funcionalidade</code>
-</pre>
-    </li>
-    <li class="mt-2">
-      <b>Atualize a branch de base (<span class="text-warning">development</span>):</b>
-<pre class="mb-1">
+            </pre>
+          </li>
+          <li>
+            <b>Atualize a branch de base (<span class="text-warning">development</span>):</b>
+            <pre class="mb-1">
   <code class="language-bash">  git checkout development
   git pull origin development</code>
-</pre>
-    </li>
-    <li class="mt-2">
-<b>Faça checkout da sua branch da PR:</b>
-<pre class="mb-1">
+            </pre>
+          </li>
+          <li>
+            <b>Faça checkout da sua branch da PR:</b>
+            <pre class="mb-1">
   <code class="language-bash">  git checkout 157-implementar-a-nova-funcionalidade</code>
-</pre>
-  - Se ainda não tiver localmente:
-<pre class="mb-1">
+            </pre>
+            <div class="mt-1">Se ainda não tiver localmente:</div>
+            <pre class="mb-1">
   <code class="language-bash">  git fetch origin
   git checkout -b 157-implementar-a-nova-funcionalidade</code>
-</pre>
-    </li>
-    <li class="mt-2">
-<b>Mescle a branch <span class="text-warning">development</span> na sua para resolver os conflitos:</b>
-<pre class="mb-1">
+            </pre>
+          </li>
+          <li>
+            <b>Mescle a branch <span class="text-warning">development</span> na sua para resolver os conflitos:</b>
+            <pre class="mb-1">
   <code class="language-bash">  git merge development</code>
-</pre>
-  </li>
-  <li class="mt-2">
-  <b>Resolva os conflitos no VS Code:</b>
-    <ul>
-      <li>
-        Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>);
-      </li>
-      <li>
-        Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span>
-      </li>
-      <li>
-        Use os botões:<br/>
-        <b>Accept Current</b> (HEAD) / <b>Accept Incoming</b> / <b>Accept Both Changes</b>:<br/>
-        <div class="small text-secondary mb-1">
-          <b>Atual</b> (HEAD): sua branch atual (geralmente a da PR)<br/>
-          <b>Entrada</b> (Incoming): o que vem da <span class="text-warning">development</span> (ou branch que está mesclando)<br/>
-        </div>
-      </li>
-      <li>
-        Remova os marcadores de conflito:<br/> 
-  <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> 
-  <code>=======</code> 
-  <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>
-      </li>
-    </ul>
-  </li>
-  <li class="mt-2">
-  <b>Após resolver finalize o merge:</b>
-<pre class="mb-1">
+            </pre>
+          </li>
+          <li>
+            <b>Resolva os conflitos no VS Code:</b>
+            <ul>
+              <li>Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>);</li>
+              <li>Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span></li>
+              <li>
+                Use os botões:<br />
+                <b>Accept Current</b> (HEAD) / <b>Accept Incoming</b> / <b>Accept Both Changes</b>:
+                <div class="small text-secondary mb-1 mt-1">
+                  <b>Atual</b> (HEAD): sua branch atual (geralmente a da PR)<br />
+                  <b>Entrada</b> (Incoming): o que vem da <span class="text-warning">development</span> (ou branch que está mesclando)
+                </div>
+              </li>
+              <li>
+                Remova os marcadores de conflito:<br />
+                <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> 
+                <code>=======</code> 
+                <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Após resolver finalize o merge:</b>
+            <pre class="mb-1">
   <code class="language-bash">  git add .
   git commit -m "Resolvendo conflitos com a branch development"</code>
-</pre>
-  </li>
-  <li class="mt-2">
-  <b>Atualize sua PR com o push:</b>
-<pre class="mb-1">
+            </pre>
+          </li>
+          <li>
+            <b>Atualize sua PR com o push:</b>
+            <pre class="mb-1">
   <code class="language-bash">  git push origin 157-implementar-a-nova-funcionalidade</code>
-</pre>
-Pronto! PR atualizada e pronta para nova revisão!    
+            </pre>
+            Pronto! PR atualizada e pronta para nova revisão!
           </li>
         </ol>
-        <ul>
-          <strong>Dicas:</strong>
-          <li>
-            Dica: para comparar visualmente as <b>três últimas versões</b> de um método específico:
-<pre class="mb-2">
-  <code class="language-bash">  git log -p -n 3 -- app/control/pedidos/OrderFormView.php</code>
-</pre>
-    </li>
-    <li>
-<details class="mt-3">
-  <summary class="fw-bold">Dica avançada: comparar versões com GitLens</summary>
-  <div class="mt-2 small">
-    <ol>
-      <li>Instale a extensão <b>GitLens</b> no VS Code.</li>
-      <li>Abra o arquivo desejado.</li>
-      <li>Clique com o direito &gt; <b>Open File History</b> (ou use o painel lateral do GitLens).</li>
-      <li>Veja a lista de commits que modificaram o arquivo.</li>
-      <li>Clique em um commit e selecione <b>Open Revision</b>.</li>
-      <li>Abra as últimas 3 revisões e organize lado a lado (Ctrl+\ para split editor).</li>
-    </ol>
-  </div>
-</details>
-    </li>
-  </ul>
       </div>
+      <div class="mb-3">
+        <span class="fw-bold text-info">
+          Dica: para comparar visualmente as <b>três últimas versões</b> de um método específico:
+        </span>
+        <pre class="mb-2">
+  <code class="language-bash">  git log -p -n 3 -- app/control/pedidos/OrderFormView.php</code>
+        </pre>
+      </div>
+
+      <details class="mt-3">
+        <summary class="fw-bold">Dica avançada: comparar versões com GitLens</summary>
+        <div class="mt-2 small">
+          <ol>
+            <li>Instale a extensão <b>GitLens</b> no VS Code.</li>
+            <li>Abra o arquivo desejado.</li>
+            <li>Clique com o direito &gt; <b>Open File History</b> (ou use o painel lateral do GitLens).</li>
+            <li>Veja a lista de commits que modificaram o arquivo.</li>
+            <li>Clique em um commit e selecione <b>Open Revision</b>.</li>
+            <li>Abra as últimas 3 revisões e organize lado a lado (Ctrl+\ para split editor).</li>
+          </ol>
+        </div>
+      </details>
     </div>
   </div>
 </div>
