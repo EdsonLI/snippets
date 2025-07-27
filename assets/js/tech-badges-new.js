@@ -96,6 +96,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apenas marcamos como processado e deixamos o php-icon-fix.js fazer o trabalho
         span.setAttribute('data-php-badge', 'true');
       }
+      // Caso especial para MadBuilder - usar uma imagem personalizada
+      else if (tech === 'madbuilder') {
+        // Remover ícones existentes para MadBuilder
+        const existingIcons = span.querySelectorAll('iconify-icon');
+        existingIcons.forEach(icon => icon.remove());
+        
+        // Verificar se já existe a imagem personalizada
+        const existingImage = span.querySelector('.madbuilder-icon');
+        if (!existingImage) {
+          // Criar um elemento de imagem para o MadBuilder
+          const madbuilderIcon = document.createElement('img');
+          madbuilderIcon.className = 'madbuilder-icon';
+          madbuilderIcon.src = '/snippets/assets/img/madbuilder.jpg';
+          madbuilderIcon.alt = 'MadBuilder';
+          madbuilderIcon.width = 20;
+          madbuilderIcon.height = 20;
+          madbuilderIcon.style.marginRight = '4px';
+          madbuilderIcon.style.verticalAlign = 'middle';
+          madbuilderIcon.style.borderRadius = '50%';
+          
+          // Inserir a imagem no DOM antes do texto
+          span.insertBefore(madbuilderIcon, span.firstChild);
+        }
+      }
       // Caso especial para Bootstrap - usar um SVG customizado
       else if (tech === 'bootstrap') {
         // Remover ícones existentes para Bootstrap

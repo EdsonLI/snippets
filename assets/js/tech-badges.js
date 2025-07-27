@@ -67,6 +67,37 @@ document.addEventListener('DOMContentLoaded', function() {
       const tech = techClass.replace('id-tech-', '').toLowerCase();
       const icon = TECH_ICONS[tech] || 'mdi:code-tags';
       
+      // Caso especial para MadBuilder - usar uma imagem personalizada
+      if (tech === 'madbuilder') {
+        // Remover ícones existentes para MadBuilder
+        const existingIcons = span.querySelectorAll('iconify-icon');
+        existingIcons.forEach(icon => icon.remove());
+        
+        // Verificar se já existe a imagem personalizada
+        const existingImage = span.querySelector('.madbuilder-icon');
+        if (!existingImage) {
+          // Criar um elemento de imagem para o MadBuilder
+          const madbuilderIcon = document.createElement('img');
+          madbuilderIcon.className = 'madbuilder-icon';
+          madbuilderIcon.src = '/snippets/assets/img/madbuilder.jpg';
+          madbuilderIcon.alt = 'MadBuilder';
+          madbuilderIcon.width = 20;
+          madbuilderIcon.height = 20;
+          madbuilderIcon.style.marginRight = '4px';
+          madbuilderIcon.style.verticalAlign = 'middle';
+          madbuilderIcon.style.borderRadius = '50%';
+          
+          // Inserir a imagem no DOM antes do texto
+          span.insertBefore(madbuilderIcon, span.firstChild);
+        }
+        
+        // Marcar como processado para evitar processamento duplicado
+        span.setAttribute('data-tech-processed', 'true');
+        
+        // Pular o resto do processamento para este span
+        return;
+      }
+      
       // Adicionar a classe de badge
       span.classList.add('tech-badge', `tech-badge-${tech}`);
       
