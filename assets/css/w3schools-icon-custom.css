@@ -1,89 +1,16 @@
 /* 
-# Arquivo de estilo personalizado para o ícone do W3Schools
-# Este arquivo segue o mesmo padrão usado para o ícone MadBuilder
-# Criando um visual circular e limpo para o ícone W3Schools
+# Ajustes personalizados para o ícone da W3Schools
+# Este arquivo contém ajustes específicos que podem ser necessários
 */
 
-/* Remove o pseudo-elemento padrão antes do tech-id */
-.id-tech-w3schools::before {
-    display: none !important;
+/* Ajustes de espaçamento nos filtros */
+.portfolio-filters li.filter-w3schools .w3schools-icon svg {
+    width: 14px !important;
+    height: 14px !important;
 }
 
-/* Estilo para o wrapper do ícone do W3Schools */
-.w3schools-icon-wrapper {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
-    vertical-align: middle !important;
-    margin-right: 4px !important;
-    background-color: white !important;
-    box-sizing: content-box !important;
-    padding: 1px !important;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) !important;
-    position: relative !important;
-}
-
-/* Estilo para o ícone dentro do wrapper */
-.w3schools-icon {
-    display: inline-block !important;
-    width: 18px !important;
-    height: 18px !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* Estilo para o SVG dentro do ícone */
+/* Melhorar a visibilidade do ícone em fundos escuros */
 .w3schools-icon svg {
-    width: 16px !important;
-    height: 16px !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    display: block !important;
-    fill: #04AA6D !important;
-}
-
-/* Ajustes para visualização em items do portfolio */
-.portfolio-item .id-tech-w3schools .w3schools-icon-wrapper {
-    margin-right: 5px !important;
-    display: inline-flex !important;
-    vertical-align: middle !important;
-}
-
-/* Ajustes para alinhamento em diferentes contextos */
-.portfolio-item .id-tech-w3schools,
-.isotope-item .id-tech-w3schools {
-    display: inline-flex !important;
-    align-items: center !important;
-}
-
-/* Ajustes específicos para os filtros */
-.portfolio-filters li.filter-w3schools .w3schools-icon-wrapper {
-    width: 18px !important;
-    height: 18px !important;
-}
-
-.portfolio-filters li.filter-w3schools .w3schools-icon-wrapper svg {
-    width: 15px !important;
-    height: 15px !important;
-}
-
-/* Garantir visibilidade em todos os contextos */
-[class*="id-tech-w3schools"] .w3schools-icon-wrapper {
-    display: inline-flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Correção para possível bug de display em alguns contextos */
-.w3schools-icon-wrapper span.w3schools-icon {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
+    background-color: white !important;
+    border-radius: 50% !important;
 }
