@@ -7,27 +7,22 @@
  */
 
 (function() {
-    // Função simplificada para melhorar os filtros para dispositivos móveis
+    //Função simplificada para melhorar os filtros para dispositivos móveis
     function enhanceMobileFilters() {
-        // Selecionar todos os filtros da lista
+        //Selecionar todos os filtros da lista
         const filterItems = document.querySelectorAll('.portfolio-filters li, .isotope-filters li');
         
-        // Para cada filtro, adicionar atributos que melhoram a interatividade móvel
+        //Para cada filtro, adicionar atributos que melhoram a interatividade móvel
         filterItems.forEach(function(item) {
-            // Adicionar atributos ARIA para acessibilidade
+            //Adicionar atributos ARIA para acessibilidade
             item.setAttribute('role', 'button');
             
-            // Garantir que o cursor seja pointer
+            //Garantir que o cursor seja pointer
             item.style.cursor = 'pointer';
             
-            // Adicionar atributos de toque para dispositivos móveis
+            //Adicionar atributos de toque para dispositivos móveis
             item.setAttribute('touch-action', 'manipulation');
-            
-            // Prevenir seleção de texto durante cliques
-            item.addEventListener('touchstart', function(e) {
-                // Evitar seleção de texto
-                e.preventDefault();
-            }, { passive: false });
+            //Não adicionar preventDefault em touchstart!
         });
     }
 
