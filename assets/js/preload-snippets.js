@@ -48,11 +48,12 @@ $(document).ready(function() {
           sortBy: sort
         });
         
-        // Configurar os filtros
+        // Delegação de evento para garantir clique em todos os filtros, inclusive dinâmicos
         const $parent = $container.closest('.isotope-layout');
-        const $filterButtons = $parent.find('.isotope-filters li');
-        $filterButtons.on('click', function() {
-          $filterButtons.removeClass('filter-active');
+        const $filtersContainer = $parent.find('.isotope-filters');
+        $filtersContainer.off('click', 'li');
+        $filtersContainer.on('click', 'li', function() {
+          $filtersContainer.find('li').removeClass('filter-active');
           $(this).addClass('filter-active');
           isotope.arrange({
             filter: $(this).attr('data-filter')
