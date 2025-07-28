@@ -417,39 +417,11 @@
   height: 12px;
 }
 
-/* W3Schools */
-.id-tech-w3schools::before {
-  display: none !important;
-}
-.w3schools-icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  object-position: center;
-  margin: 0;
-  padding: 0;
-  transform: scale(0.9); /* Escala ligeiramente menor para evitar cortes */
-}
+/* W3Schools - Estilos básicos apenas (detalhes em w3schools-icon-custom.css) */
 .tech-badge-w3schools {
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
-}
-[class*="id-tech-w3schools"] .w3schools-icon-wrapper {
-  display: inline-flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-.portfolio-item .id-tech-w3schools .w3schools-icon-wrapper {
-  margin-right: 5px;
-  display: inline-flex !important;
-  vertical-align: middle;
-}
-.portfolio-item .id-tech-w3schools,
-.isotope-item .id-tech-w3schools {
-  display: inline-flex;
-  align-items: center;
 }
 .filter-w3schools .snippet-code .d-grid {
   grid-template-columns: repeat(2, 1fr) !important;
