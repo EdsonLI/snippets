@@ -48,12 +48,16 @@ $(document).ready(function() {
           sortBy: sort
         });
         
-        // Delegação de evento para garantir clique em todos os filtros, inclusive dinâmicos
+        // Configurar os filtros com clique direto e touch-friendly
         const $parent = $container.closest('.isotope-layout');
-        const $filtersContainer = $parent.find('.isotope-filters');
-        $filtersContainer.off('click', 'li');
-        $filtersContainer.on('click', 'li', function() {
-          $filtersContainer.find('li').removeClass('filter-active');
+        const $filterButtons = $parent.find('.isotope-filters li');
+        
+        // Remover handlers antigos antes de adicionar novos
+        $filterButtons.off('click');
+        
+        // Adicionar handler de clique que funciona no desktop e mobile
+        $filterButtons.on('click', function() {
+          $parent.find('.isotope-filters li').removeClass('filter-active');
           $(this).addClass('filter-active');
           isotope.arrange({
             filter: $(this).attr('data-filter')
