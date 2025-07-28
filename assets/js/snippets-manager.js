@@ -212,6 +212,11 @@ document.addEventListener('DOMContentLoaded', function() {
       allFilter.setAttribute('data-filter', '*');
       allFilter.classList.add('filter-active');
       allFilter.style.cursor = 'pointer';
+      // Adicionar atributos para melhorar experiência mobile
+      allFilter.setAttribute('role', 'button');
+      allFilter.setAttribute('tabindex', '0');
+      allFilter.setAttribute('touch-action', 'manipulation');
+      allFilter.setAttribute('data-mobile-enhanced', 'true');
       allFilter.textContent = 'All';
       filtersContainer.prepend(allFilter);
     }
@@ -241,6 +246,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const filterItem = document.createElement('li');
         filterItem.setAttribute('data-filter', `.${filterClass}`);
         filterItem.style.cursor = 'pointer';
+        // Adicionar atributos para melhorar experiência mobile
+        filterItem.setAttribute('role', 'button');
+        filterItem.setAttribute('tabindex', '0');
+        filterItem.setAttribute('touch-action', 'manipulation');
+        filterItem.setAttribute('data-mobile-enhanced', 'true');
         filterItem.textContent = displayName;
         filtersContainer.appendChild(filterItem);
         log.info(`Adicionado novo filtro: ${displayName}`);
