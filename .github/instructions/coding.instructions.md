@@ -4,7 +4,7 @@ applyTo: '**'
 
 ## Regras gerais de codificação
 
-- Quando criar código em PHP, em qualquer escopo, ao inserir comentários, ao invés de utilizar `//`, use `#` no início da linha. Mesmo em comentários de várias linhas, utilize `#` no início de cada linha.
+- Somente quando criar código em **PHP**, em qualquer escopo, ao inserir comentários, ao invés de utilizar `//`, use `#` no início da linha. Mesmo em comentários de várias linhas, utilize `#` no início de cada linha.
 - Sempre utilizar o padrão **K&R** para chaves de abertura e fechamento de métodos, classes e estruturas de controle.
 - Evite usar **emojis** ou caracteres especiais em nomes de classes, métodos, variáveis e comentários.
 - Em **arrays associativos extensos**, alinhe verticalmente os operadores `=>` para facilitar a leitura visual.
