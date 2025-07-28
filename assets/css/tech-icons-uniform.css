@@ -38,8 +38,8 @@
 /* Estilo para SVGs dentro de ícones personalizados */
 .tech-icon-custom svg,
 [class$="-icon-wrapper"] svg {
-  width: 15px !important;
-  height: 15px !important;
+  /* width: 15px !important;
+  height: 15px !important; */
   aspect-ratio: 1/1 !important; /* Garante SVG perfeitamente proporcional */
   position: absolute !important;
   top: 50% !important;
@@ -58,8 +58,8 @@
 /* Ajuste para os SVGs nos filtros */
 .portfolio-filters li [class$="-icon-wrapper"] svg,
 .portfolio-filters li .tech-icon-custom svg {
-  width: 15px !important;
-  height: 15px !important;
+  /* width: 15px !important;
+  height: 15px !important; */
 }
 
 /* Garantir que o SVG para o PHP seja dimensionado corretamente */
@@ -111,8 +111,8 @@
   aspect-ratio: 1/1 !important;
 }
 .bootstrap-icon svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 20px !important;
+  height: 20px !important;
   vertical-align: middle !important;
   background-color: white !important;
   border-radius: 50% !important;
@@ -148,8 +148,8 @@
   aspect-ratio: 1/1 !important;
 }
 .css-icon svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 20px !important;
+  height: 20px !important;
   vertical-align: middle !important;
   background-color: white !important;
   border-radius: 50% !important;
@@ -589,3 +589,8 @@ a[data-snippet-external-link] iconify-icon {
 }
 
 /* ====== FIM: Ajustes de icon-fixes.css ====== */
+
+svg {
+  width: 20px !important;
+  height: 20px !important;
+}
