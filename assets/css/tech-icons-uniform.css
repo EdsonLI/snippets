@@ -195,13 +195,12 @@
   padding-left: 0 !important;
 }
 .portfolio-filters li.filter-git .git-icon-svg {
-  width: 12px;
-  height: 12px;
+  /* width: 12px;
+  height: 12px; */
 }
 .git-icon-svg {
-  width: 10px !important;
-  height: 10px !important;
-  vertical-align: middle !important;
+  width: 15px !important;
+  height: 15px !important;
 }
 
 /* Isotope */
