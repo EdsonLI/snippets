@@ -1,0 +1,61 @@
+/* 
+# Arquivo de estilo personalizado para o ícone do W3Schools
+# Este arquivo segue o mesmo padrão usado para o ícone MadBuilder
+# Criando um visual circular e limpo para o ícone W3Schools
+*/
+
+/* Remove o pseudo-elemento padrão antes do tech-id */
+.id-tech-w3schools::before {
+    display: none !important;
+}
+
+/* Estilo para o wrapper do ícone do W3Schools */
+.w3schools-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 4px;
+    background-color: white;
+    box-sizing: content-box;
+    padding: 1px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para o ícone SVG dentro do wrapper */
+.w3schools-icon-wrapper svg {
+    width: 16px;
+    height: 16px;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+/* Ajustes para visualização em items do portfolio */
+.portfolio-item .id-tech-w3schools .w3schools-icon-wrapper {
+    margin-right: 5px;
+    display: inline-flex !important;
+    vertical-align: middle;
+}
+
+/* Ajustes para alinhamento em diferentes contextos */
+.portfolio-item .id-tech-w3schools,
+.isotope-item .id-tech-w3schools {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Ajustes específicos para os filtros */
+.portfolio-filters li.filter-w3schools .w3schools-icon-wrapper {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.portfolio-filters li.filter-w3schools .w3schools-icon-wrapper svg {
+    width: 15px !important;
+    height: 15px !important;
+}
