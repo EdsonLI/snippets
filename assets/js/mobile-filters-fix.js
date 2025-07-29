@@ -25,15 +25,12 @@
         // Acionar isotope manualmente se necessário (força atualização via trigger)
         if (typeof jQuery !== 'undefined' && jQuery.fn.isotope) {
             var $container = jQuery('.isotope-container');
-            if (!$container.data('isotope')) {
-                $container.isotope({
-                    itemSelector: '.isotope-item',
-                    layoutMode: 'masonry'
-                });
-                alert('Isotope foi inicializado!');
+            if ($container.data('isotope')) {
+                $container.isotope('arrange', { filter: filterValue });
+                $container.trigger('isotope-filtered', [filterValue]);
+            } else {
+                alert('Isotope NÃO está inicializado! O carregamento dos snippets precisa inicializar o Isotope.');
             }
-            $container.isotope('arrange', { filter: filterValue });
-            $container.trigger('isotope-filtered', [filterValue]);
         }
         
         console.log('Filtro ativado via touch:', filterValue);
@@ -95,21 +92,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         enhanceMobileFilters();
     });
-    
     // Executar sempre que os filtros forem atualizados dinamicamente
     document.addEventListener('isotope-filters-added', function() {
         enhanceMobileFilters();
     });
-    
-    // Garantir que a função seja executada quando os filtros forem criados
+    // Inicializar Isotope após carregamento dos snippets
     if (typeof jQuery !== 'undefined') {
         jQuery(document).on('snippets-loaded', function() {
+            var $container = jQuery('.isotope-container');
+            if ($container.length && !$container.data('isotope')) {
+                $container.isotope({
+                    itemSelector: '.isotope-item',
+                    layoutMode: 'masonry'
+                });
+            }
             enhanceMobileFilters();
         });
     }
-    
-    // Verificar periodicamente se há novos filtros (para carregamento dinâmico)
-    setInterval(function() {
-        enhanceMobileFilters();
-    }, 2000); // Verificar a cada 2 segundos
 })();
