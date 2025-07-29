@@ -62,8 +62,16 @@
                     item.style.padding = '8px';
                 }
                 
-                // Adicionar listeners de evento especiais para mobile
-                item.addEventListener('touchend', handleTouchEnd);
+
+                // Adicionar listeners de evento para click e touch, sem duplicar
+                if (!item.hasAttribute('data-isotope-event')) {
+                    item.addEventListener('click', handleTouchEnd);
+                    item.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        handleTouchEnd.call(this, e);
+                    });
+                    item.setAttribute('data-isotope-event', 'true');
+                }
                 
                 // Marcar como melhorado
                 item.setAttribute('data-enhanced', 'true');
