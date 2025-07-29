@@ -25,12 +25,19 @@
         // Acionar isotope manualmente se necessário (força atualização via trigger)
         if (typeof jQuery !== 'undefined' && jQuery.fn.isotope) {
             var $container = jQuery('.isotope-container');
-            if ($container.data('isotope')) {
-                $container.isotope('arrange', { filter: filterValue });
-                $container.trigger('isotope-filtered', [filterValue]);
-            } else {
-                alert('Isotope NÃO está inicializado! O carregamento dos snippets precisa inicializar o Isotope.');
+            if (!$container.length) {
+                alert('Nenhum container Isotope encontrado!');
+                return;
             }
+            // Inicializa o Isotope se necessário
+            if (!$container.data('isotope')) {
+                $container.isotope({
+                    itemSelector: '.isotope-item',
+                    layoutMode: 'masonry'
+                });
+            }
+            $container.isotope('arrange', { filter: filterValue });
+            $container.trigger('isotope-filtered', [filterValue]);
         }
         
         console.log('Filtro ativado via touch:', filterValue);
