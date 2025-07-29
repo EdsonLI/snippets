@@ -21,11 +21,13 @@
         // Adicionar classe active a este item
         this.classList.add('filter-active');
         
-        // Acionar isotope manualmente se necessário
+
+        // Acionar isotope manualmente se necessário (força atualização via trigger)
         if (typeof jQuery !== 'undefined' && jQuery.fn.isotope) {
-            jQuery('.isotope-container').isotope({
-                filter: filterValue
-            });
+            // Força o trigger do evento para garantir atualização
+            jQuery('.isotope-container').isotope('arrange', { filter: filterValue });
+            // Trigger de evento customizado para debug
+            jQuery('.isotope-container').trigger('isotope-filtered', [filterValue]);
         }
         
         console.log('Filtro ativado via touch:', filterValue);
