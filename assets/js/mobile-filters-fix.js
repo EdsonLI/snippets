@@ -18,6 +18,12 @@
         }, 10);
     }
     
+    // Adicionar fallback para eventos de clique
+    function handleClickFallback(e) {
+        console.log('Fallback click triggered for:', this);
+        this.click();
+    }
+
     // Função simplificada para melhorar os filtros para dispositivos móveis
     function enhanceMobileFilters() {
         // Selecionar todos os filtros da lista
@@ -40,6 +46,7 @@
             // Garantir que os eventos sejam vinculados corretamente
             console.log('Binding touchend event to:', item);
             item.addEventListener('touchend', handleTouchEnd);
+            item.addEventListener('click', handleClickFallback);
         });
     }
 
