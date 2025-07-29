@@ -266,7 +266,21 @@ $(function() {
     // Função para inicializar os tooltips
     function initTooltips(parent) {
       const $container = parent ? $(parent) : $(document);
-      $container.find('[data-bs-toggle="tooltip"]').tooltip();
+      
+      // Compatibilidade com Bootstrap 5
+      const tooltipTriggerList = $container.find('[data-bs-toggle="tooltip"]').get();
+      if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        tooltipTriggerList.forEach(el => {
+          bootstrap.Tooltip.getOrCreateInstance(el);
+        });
+      } else {
+        // Fallback para versões antigas do Bootstrap (4 ou anterior)
+        try {
+          $container.find('[data-bs-toggle="tooltip"]').tooltip();
+        } catch (e) {
+          console.warn('Bootstrap tooltip não está disponível ou não é compatível', e);
+        }
+      }
     }
     
     // Inicializa todos os tooltips na página
