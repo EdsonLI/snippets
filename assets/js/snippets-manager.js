@@ -471,7 +471,8 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Aguardar carregamento de imagens antes de inicializar
       if ($container[0]) {
-        imagesLoaded($container[0], function() {
+        if ($container[0]) {
+            imagesLoaded($container[0], function() {
           // Criar nova instância do Isotope
         
         // Criar nova instância do Isotope
