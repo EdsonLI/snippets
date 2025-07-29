@@ -23,6 +23,9 @@
         // Selecionar todos os filtros da lista
         const filterItems = document.querySelectorAll('.portfolio-filters li, .isotope-filters li');
         
+        // Adicionar logs para depuração
+        console.log('Enhancing mobile filters...');
+
         // Para cada filtro, adicionar atributos que melhoram a interatividade móvel
         filterItems.forEach(function(item) {
             // Adicionar atributos ARIA para acessibilidade
@@ -34,7 +37,8 @@
             // Adicionar atributos de toque para dispositivos móveis
             item.setAttribute('touch-action', 'manipulation');
             
-            // Adicionar handler de touchend para garantir clique em mobile
+            // Garantir que os eventos sejam vinculados corretamente
+            console.log('Binding touchend event to:', item);
             item.addEventListener('touchend', handleTouchEnd);
         });
     }
