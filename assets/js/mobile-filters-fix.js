@@ -25,7 +25,13 @@
         // Acionar isotope manualmente se necessário (força atualização via trigger)
         if (typeof jQuery !== 'undefined' && jQuery.fn.isotope) {
             var $container = jQuery('.isotope-container');
-            alert('Isotope existe: ' + $container.length + '\nInstância: ' + ($container.data('isotope') ? 'OK' : 'NULO'));
+            if (!$container.data('isotope')) {
+                $container.isotope({
+                    itemSelector: '.isotope-item',
+                    layoutMode: 'masonry'
+                });
+                alert('Isotope foi inicializado!');
+            }
             $container.isotope('arrange', { filter: filterValue });
             $container.trigger('isotope-filtered', [filterValue]);
         }
