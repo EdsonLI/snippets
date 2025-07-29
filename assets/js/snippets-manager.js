@@ -471,6 +471,12 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Aguardar carregamento de imagens antes de inicializar
       imagesLoaded($container[0], function() {
+        // Verificar se o container existe antes de chamar imagesLoaded
+        if (!$container[0]) {
+          console.error('Erro: $container[0] é nulo ou indefinido.');
+          return;
+        }
+        
         // Criar nova instância do Isotope
         const iso = new Isotope($container[0], {
           itemSelector: '.isotope-item',
