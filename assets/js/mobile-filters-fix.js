@@ -24,10 +24,10 @@
 
         // Acionar isotope manualmente se necessário (força atualização via trigger)
         if (typeof jQuery !== 'undefined' && jQuery.fn.isotope) {
-            // Força o trigger do evento para garantir atualização
-            jQuery('.isotope-container').isotope('arrange', { filter: filterValue });
-            // Trigger de evento customizado para debug
-            jQuery('.isotope-container').trigger('isotope-filtered', [filterValue]);
+            var $container = jQuery('.isotope-container');
+            console.log('Isotope existe:', $container.length, $container.data('isotope'));
+            $container.isotope('arrange', { filter: filterValue });
+            $container.trigger('isotope-filtered', [filterValue]);
         }
         
         console.log('Filtro ativado via touch:', filterValue);
