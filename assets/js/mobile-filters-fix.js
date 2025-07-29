@@ -29,15 +29,20 @@
                 alert('Nenhum container Isotope encontrado!');
                 return;
             }
-            // Inicializa o Isotope se necessário
-            if (!$container.data('isotope')) {
+            // Sempre reinicializa o Isotope para garantir funcionamento
+            try {
+                if ($container.data('isotope')) {
+                    $container.isotope('destroy');
+                }
                 $container.isotope({
                     itemSelector: '.isotope-item',
                     layoutMode: 'masonry'
                 });
+                $container.isotope('arrange', { filter: filterValue });
+                $container.trigger('isotope-filtered', [filterValue]);
+            } catch (err) {
+                alert('Erro ao reinicializar Isotope: ' + err);
             }
-            $container.isotope('arrange', { filter: filterValue });
-            $container.trigger('isotope-filtered', [filterValue]);
         }
         
         console.log('Filtro ativado via touch:', filterValue);
