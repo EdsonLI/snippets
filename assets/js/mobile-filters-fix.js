@@ -24,29 +24,55 @@
         this.click();
     }
 
-    // Função simplificada para melhorar os filtros para dispositivos móveis
+    // Função radical para transformar li em botões reais
     function enhanceMobileFilters() {
         // Selecionar todos os filtros da lista
         const filterItems = document.querySelectorAll('.portfolio-filters li, .isotope-filters li');
         
         // Adicionar logs para depuração
-        console.log('Enhancing mobile filters...');
+        console.log('Transformando filtros em botões reais...');
 
-        // Para cada filtro, adicionar atributos que melhoram a interatividade móvel
+        // Para cada filtro, transformar em um botão real se ainda não foi transformado
         filterItems.forEach(function(item) {
-            // Adicionar atributos ARIA para acessibilidade
-            item.setAttribute('role', 'button');
+            // Pular se já foi transformado em botão
+            if (item.getAttribute('data-transformed') === 'true') {
+                return;
+            }
             
-            // Garantir que o cursor seja pointer
-            item.style.cursor = 'pointer';
-            
-            // Adicionar atributos de toque para dispositivos móveis
-            item.setAttribute('touch-action', 'manipulation');
-            
-            // Garantir que os eventos sejam vinculados corretamente
-            console.log('Binding touchend event to:', item);
-            item.addEventListener('touchend', handleTouchEnd);
-            item.addEventListener('click', handleClickFallback);
+            try {
+                // Salvar o texto e atributos do li original
+                const text = item.textContent;
+                const filter = item.getAttribute('data-filter');
+                const isActive = item.classList.contains('filter-active');
+                const classes = item.className;
+                
+                // Criar um botão real
+                const button = document.createElement('button');
+                button.textContent = text;
+                button.className = classes;
+                if (filter) button.setAttribute('data-filter', filter);
+                
+                // Estilizar o botão para parecer com o li
+                button.style.background = 'transparent';
+                button.style.border = 'none';
+                button.style.padding = '5px 10px';
+                button.style.margin = '0';
+                button.style.font = 'inherit';
+                button.style.color = 'inherit';
+                button.style.cursor = 'pointer';
+                button.style.display = 'inline-block';
+                
+                // Marcar como transformado
+                button.setAttribute('data-transformed', 'true');
+                
+                // Substituir o li pelo botão
+                if (item.parentNode) {
+                    item.parentNode.replaceChild(button, item);
+                    console.log('Li transformado em botão:', text);
+                }
+            } catch (error) {
+                console.error('Erro ao transformar filtro em botão:', error);
+            }
         });
     }
 
