@@ -215,17 +215,28 @@ $(function() {
   $(document).on('scroll', navmenuScrollspy);
   
   $('a[href^="#"]').on('click', function(e) {
-    const targetId = $(this).attr('href').substring(1);
-    const $targetElement = $('#' + targetId);
-    
-    if ($targetElement.length) {
+    const href = $(this).attr('href');
+    // Verifica se o href é apenas # ou tem um ID real
+    if (href === '#') {
+      // Se for apenas #, previne o comportamento padrão e não faz nada
       e.preventDefault();
-      const offset = 1; // Ajuste para descer um pouco mais
-      const targetPosition = $targetElement.offset().top - offset;
+      return;
+    }
+    
+    const targetId = href.substring(1);
+    // Verifica se há um ID válido antes de tentar encontrar o elemento
+    if (targetId && targetId.length > 0) {
+      const $targetElement = $('#' + targetId);
       
-      $('html, body').animate({
-        scrollTop: targetPosition
-      }, 'smooth');
+      if ($targetElement.length) {
+        e.preventDefault();
+        const offset = 1; // Ajuste para descer um pouco mais
+        const targetPosition = $targetElement.offset().top - offset;
+      
+        $('html, body').animate({
+          scrollTop: targetPosition
+        }, 'smooth');
+      }
     }
   });
 
