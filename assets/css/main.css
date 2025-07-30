@@ -3357,3 +3357,8 @@ pre {
 pre code.hljs {
   padding: 0 0 0 1px !important;
 }
+
+.svg-logo-jedi {
+  width: 5.8rem !important;
+  height: 5.8rem !important;
+}
