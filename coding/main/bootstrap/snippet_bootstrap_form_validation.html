@@ -160,12 +160,23 @@
       </div>
       <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
         <iframe 
-          src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" 
+          id="preview-bootstrap-iframe"
           width="100%" 
           height="100%" 
           frameborder="0" 
           style="border:none; overflow-y: auto; border-radius: 0.5rem;">
         </iframe>
+<script>
+  // Define src dinâmico para o iframe da modal de pré-visualização
+  document.addEventListener('DOMContentLoaded', function() {
+    var iframe = document.getElementById('preview-bootstrap-iframe');
+    var localPath = '/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
+    var remotePath = 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
+    var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    var src = isLocal ? localPath : remotePath;
+    iframe.src = src;
+  });
+</script>
       </div>
     </div>
   </div>
