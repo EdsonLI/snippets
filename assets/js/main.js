@@ -51,8 +51,6 @@ $(function() {
     }
     });
 
-  });
-
   /**
    * Toggle mobile nav dropdowns
    */
@@ -265,6 +263,24 @@ $(function() {
         console.error('Bloco de código não encontrado para o ID:', targetId);
       }
     });
+
+    // Copiar código para botões .copy-btn (extra)
+    $('.copy-btn').on('click', function() {
+      const $btn = $(this);
+      const targetId = $btn.attr('data-target');
+      const $codeBlock = $('#' + targetId);
+      if ($codeBlock.length) {
+        const text = $codeBlock.text().trim();
+        navigator.clipboard.writeText(text).then(function() {
+          $btn.addClass('copied');
+          $btn.html('<i class="fa-solid fa-check"></i> Copiado!');
+          setTimeout(function() {
+            $btn.removeClass('copied');
+            $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>');
+          }, 1200);
+        });
+      }
+    });
   }
 
   // Chamar a função ao carregar a página
@@ -321,25 +337,6 @@ $(function() {
       childList: true,  // observa adições/remoções diretas de filhos
       subtree: true     // observa toda a árvore DOM abaixo do body
     });
-  });
-
-$(document).ready(function() {
-  // Copiar código
-  $('.copy-btn').on('click', function() {
-    const $btn = $(this);
-    const targetId = $btn.attr('data-target');
-    const $codeBlock = $('#' + targetId);
-    if ($codeBlock.length) {
-      const text = $codeBlock.text().trim();
-      navigator.clipboard.writeText(text).then(function() {
-        $btn.addClass('copied');
-        $btn.html('<i class="fa-solid fa-check"></i> Copiado!');
-        setTimeout(function() {
-          $btn.removeClass('copied');
-          $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>');
-        }, 1200);
-      });
-    }
   });
 
   // Theme toggle logic - Convertido para jQuery
