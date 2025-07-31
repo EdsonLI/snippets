@@ -17,34 +17,43 @@
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
+  <!-- ======= CSS: Bibliotecas de terceiros ======= -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
+  <!-- ======= CSS: Principal do projeto ======= -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- Tech Badges CSS -->
+  <!-- ======= CSS: Customizados/adicionais ======= -->
   <link href="assets/css/tech-badges-new.css" rel="stylesheet">
   <link href="assets/css/tech-icons-uniform.css" rel="stylesheet">
   <link href="assets/css/mobile-filters-fix.css" rel="stylesheet">
+  <link href="assets/css/snippet-actions.css" rel="stylesheet">
+  <link href="assets/css/snippet-actions-responsive.css" rel="stylesheet">
+  <link href="assets/css/iconify-alignment-fix.css" rel="stylesheet">
+  <link href="assets/css/search-functionality.css" rel="stylesheet">
+  <link href="assets/css/git-snippets.css" rel="stylesheet">
+  <link href="assets/css/ai-custom-styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/all.min.css"/>
 
-  <!-- jQuery -->
+  <!-- ======= CSS: Highlight.js ======= -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+
+  <!-- ======= JS: jQuery (deve vir antes dos scripts que dependem dele) ======= -->
   <script src="assets/js/jquery/jquery-3.7.1.min.js"></script>
 
-  <!-- Highlight.js (tema escuro) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+  <!-- ======= JS: Bibliotecas de terceiros ======= -->
   <script src="assets/js/highlight/highlight.min.js"></script>
   <script src="assets/js/highlight/javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
   <script src="assets/js/highlight/css.min.js"></script>
-
-  <!-- iconify.js -->
   <script src="assets/js/iconify/iconify-icon.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+  <!-- ======= JS: Inicialização do Highlight.js ======= -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('pre code').forEach((block) => {
@@ -52,35 +61,9 @@
       });
     });
   </script>
-  <!-- FontAwesome for copy icon -->
-  <link rel="stylesheet" href="assets/css/all.min.css"/>
 
-  <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Nov 01 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
-  <!-- Script para gerenciador ESTÁTICO de snippets (compatível com GitHub Pages) -->
+  <!-- ======= JS: Sistema de snippets e funcionalidades customizadas ======= -->
   <script src="assets/js/static-snippets-manager.js" defer></script>
-
-  <!-- Tech Badges System -->
-  <link href="assets/css/tech-badges-new.css" rel="stylesheet">
-
-  <link href="assets/css/snippet-actions.css" rel="stylesheet">
-  <link href="assets/css/snippet-actions-responsive.css" rel="stylesheet"><!-- Ajustes responsivos para botões de snippet -->
-  
-  <link href="assets/css/iconify-alignment-fix.css" rel="stylesheet">
-
-  <!-- Search functionality -->
-  <link href="assets/css/search-functionality.css" rel="stylesheet">
-
-  <!-- Scrollable Git and AI snippets -->
-  <link href="assets/css/git-snippets.css" rel="stylesheet">
-  <link href="assets/css/ai-custom-styles.css" rel="stylesheet">
-
   <script src="assets/js/tech-badges-new.js" defer></script>
   <script src="assets/js/reload-tech-icons.js" defer></script>
   <script src="assets/js/sql-icon-fix.js" defer></script>
@@ -89,9 +72,17 @@
   <script src="assets/js/sweetalert2-icon-fix.js" defer></script>
   <script src="assets/js/snippet-external-links.js" defer></script>
   <script src="assets/js/button-position-fix.js" defer></script>
-  <script src="assets/js/snippet-responsive-loader.js" defer></script><!-- Carregador de CSS responsivo para snippets -->
+  <script src="assets/js/snippet-responsive-loader.js" defer></script>
   <script src="assets/js/snippets-search.js" defer></script>
-  <script src="assets/js/filter-text-formatter.js" defer></script><!-- Ajusta a formatação dos nomes nos filtros -->
+  <script src="assets/js/filter-text-formatter.js" defer></script>
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Updated: Nov 01 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -270,6 +261,15 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
+</body>
+</html>
   <script src="assets/js/main.js"></script>
   
   <!-- Detecção de snippets que precisam rolagem -->
