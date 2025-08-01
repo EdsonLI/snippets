@@ -3439,14 +3439,13 @@ pre code.hljs {
   align-items: center !important;
   justify-content: center !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important; /* Alterado para visible para garantir que os ícones não sejam cortados */
+  text-align: center !important;
+  box-sizing: border-box !important;
 }
 
 /* Correção centralização perfeita de ícones nos botões */
 .btn-custom iconify-icon {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -3455,12 +3454,16 @@ pre code.hljs {
   height: 16px !important;
   margin: 0 !important;
   padding: 0 !important;
+  display: block !important;
 }
 
 /* Correção específica para botões pequenos */
 .btn-xs {
-  position: relative;
-  overflow: hidden;
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .btn-xs iconify-icon {
@@ -3468,6 +3471,7 @@ pre code.hljs {
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important; /* Centralização perfeita */
+  display: block !important;
 }
 
 /* Ajustes para o tema escuro */

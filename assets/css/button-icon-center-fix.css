@@ -1,0 +1,37 @@
+/* Arquivo criado para centralização perfeita dos ícones nos botões */
+
+/* Correção global para posicionamento de ícones nos botões */
+.btn iconify-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: block !important;
+}
+
+.btn {
+  position: relative !important;
+}
+
+/* Centralização para botões com tamanho fixo */
+button[class*="btn"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Ajuste especial para botões com ícones */
+.btn-custom,
+.btn-xs {
+  line-height: 1 !important;
+}
+
+/* Ajuste para os ícones dentro dos botões das actions */
+.snippet-code-actions .btn-custom iconify-icon,
+.snippet-actions-float .btn-custom iconify-icon {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+}
