@@ -3380,3 +3380,104 @@ pre code.hljs {
 ::-webkit-scrollbar-thumb:hover {
   background: #888; /* Cor ao passar o mouse */
 }
+
+/*--------------------------------------------------------------
+# Estilos para Cards com Múltiplos Snippets
+# Centraliza os ícones e melhora o posicionamento dos botões
+--------------------------------------------------------------*/
+
+/* Container principal para snippets múltiplos */
+.multi-snippet-container {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Cabeçalho para cada snippet individual */
+.snippet-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Título do snippet individual */
+.snippet-section-header h6 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #f8f9fa;
+}
+
+/* Posicionamento dos botões no container de código */
+.snippet-code {
+  position: relative !important;
+}
+
+/* Container para botões internos posicionados no topo direito do bloco de código */
+.snippet-code-actions {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  display: flex;
+  gap: 0.2rem;
+  z-index: 20;
+  background: rgba(33, 37, 41, 0.7);
+  border-radius: 4px;
+  padding: 0.15rem;
+}
+
+/* Ajustes específicos para botões dentro do bloco de código */
+.snippet-code-actions .btn-custom {
+  font-size: 0.675rem;
+  padding: 0 !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Correção centralização perfeita de ícones nos botões */
+.btn-custom iconify-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Centralização perfeita */
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Correção específica para botões pequenos */
+.btn-xs {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-xs iconify-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Centralização perfeita */
+}
+
+/* Ajustes para o tema escuro */
+body.dark-theme .snippet-code-actions {
+  background: rgba(18, 18, 18, 0.7);
+}
+
+/* Separador entre snippets */
+.snippet-separator {
+  border-bottom: 1px solid #6c757d;
+  margin: 1rem 0;
+  opacity: 0.3;
+}
