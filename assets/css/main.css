@@ -3379,4 +3379,8 @@ pre code.hljs {
 
   ::-webkit-scrollbar-thumb:hover {
     background: #888; /* Cor ao passar o mouse */
-  } 
+  }
+
+  .text-info-purple {
+    color: var(--accent-color) !important;
+  }
