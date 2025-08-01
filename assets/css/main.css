@@ -3909,3 +3909,7 @@ button[class*="btn"] {
 .content-scrollable::-webkit-scrollbar-thumb:hover {
   background: rgba(125,125,125,0.7);
 }
+
+.text-center {
+  margin: auto !important;
+}
