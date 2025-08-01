@@ -3,22 +3,30 @@
     <h6 class="text-center">
         <span class="id-tech-sweetalert2">SweetAlert2</span>
         <div class="snippet-actions-float d-flex align-items-center gap-1">
-            <button class="btn btn-xs btn-outline-info btn-custom" id="btn-preview-swal2-confirm-with-function">
-                <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
-            </button>
-            <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-swal2-confirm-with-function-attached-example">
-                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
-            </button>
             <a href="https://sweetalert2.github.io" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
                 <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
             </a>
         </div>
     </h6>
-    <div class="text-center mb-2">Confirm with function attached</div>
+    <div class="text-center mb-2 fw-bold text-info">Confirm with Function Examples</div>
 
-<!-- snippet-code -->
-<div class="snippet-code position-relative">
-<pre>
+    <!-- Simple Confirm Example -->
+    <div class="border-bottom border-secondary mb-3 pb-2">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="text-light m-0">Exemplo Básico</h6>
+            <div class="d-flex align-items-center gap-1">
+                <button class="btn btn-xs btn-outline-info btn-custom" id="btn-preview-swal2-confirm-with-function">
+                    <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
+                </button>
+                <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-swal2-confirm-with-function-attached-example">
+                    <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- snippet-code -->
+        <div class="snippet-code position-relative">
+        <pre>
 <code class="language-javascript" id="snippet-swal2-confirm-with-function-attached-example">
  Swal.fire({
   title: "Are you sure?",
@@ -38,9 +46,64 @@
   }
  });
 </code>
-</pre>
-</div>
-<!-- /snippet-code -->
+        </pre>
+        </div>
+        <!-- /snippet-code -->
+    </div>
+
+    <!-- Advanced Confirm Example -->
+    <div>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="text-light m-0">Exemplo Avançado</h6>
+            <div class="d-flex align-items-center gap-1">
+                <button class="btn btn-xs btn-outline-info btn-custom" id="btn-preview-swal2-confirm-with-function-advanced">
+                    <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
+                </button>
+                <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-swal2-confirm-with-function-advanced-example">
+                    <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- snippet-code -->
+        <div class="snippet-code position-relative">
+        <pre>
+<code class="language-javascript" id="snippet-swal2-confirm-with-function-advanced-example">
+ const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+ });
+ swalWithBootstrapButtons.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, cancel!",
+  reverseButtons: true
+ }).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+ });
+</code>
+        </pre>
+        </div>
+        <!-- /snippet-code -->
+    </div>
 
 </div>
 </div>
@@ -54,6 +117,7 @@
 
 <script>
 $(function() {
+  // Preview para o exemplo básico
   $("#btn-preview-swal2-confirm-with-function").click(function() {
     console.log("Preview SweetAlert2 Confirm with Function Attached Example");
     
@@ -77,6 +141,46 @@ $(function() {
       }
     });
   });
+  
+  // Preview para o exemplo avançado
+  $("#btn-preview-swal2-confirm-with-function-advanced").click(function() {
+    console.log("Preview SweetAlert2 Confirm with Function Advanced Example");
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+          background: "#222",
+          color: "#fff"
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your imaginary file is safe :)",
+          icon: "error",
+          background: "#222",
+          color: "#fff"
+        });
+      }
+    });
+  });
 });
 </script>
- 
