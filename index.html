@@ -27,6 +27,17 @@
   <!-- ======= CSS: Principal do projeto ======= -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- ======= CSS: Customizados/adicionais ======= -->
+  <link href="assets/css/tech-badges-new.css" rel="stylesheet">
+  <link href="assets/css/tech-icons-uniform.css" rel="stylesheet">
+  <link href="assets/css/mobile-filters-fix.css" rel="stylesheet">
+  <link href="assets/css/snippet-actions.css" rel="stylesheet">
+  <link href="assets/css/snippet-actions-responsive.css" rel="stylesheet">
+  <link href="assets/css/iconify-alignment-fix.css" rel="stylesheet">
+  <link href="assets/css/search-functionality.css" rel="stylesheet">
+  <link href="assets/css/git-snippets.css" rel="stylesheet">
+  <link href="assets/css/ai-custom-styles.css" rel="stylesheet">
+
   <!-- ======= CSS: Highlight.js ======= -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
 
@@ -39,6 +50,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
   <script src="assets/js/highlight/css.min.js"></script>
   <script src="assets/js/iconify/iconify-icon.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
   <!-- ======= JS: Inicialização do Highlight.js ======= -->
   <script>
@@ -48,37 +60,6 @@
       });
     });
   </script>
-
-  <!-- FontAwesome for copy icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-
-  <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Nov 01 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
-  /* Estilo para barra de rolagem no tema dark */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #222; /* Cor do fundo da barra de rolagem */
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #555; /* Cor do "polegar" da barra de rolagem */
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #888; /* Cor ao passar o mouse */
-  } 
-  /* Garante que o container pai tenha posição relativa */
-  </style>
 
   <!-- ======= JS: Sistema de snippets e funcionalidades customizadas ======= -->
   <script src="assets/js/static-snippets-manager.js" defer></script>
@@ -94,6 +75,7 @@
   <script src="assets/js/snippets-search.js" defer></script>
   <script src="assets/js/filter-text-formatter.js" defer></script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
   <!-- =======================================================
   * Template Name: FlexStart
   * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
@@ -154,7 +136,7 @@
             </a>
           </li>
           <li>
-            <a href="#coding" class="nav-link" style="display:flex;align-items:center;gap:0.5em;">
+            <a href="#coding" class="nav-link" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5em;">
               <iconify-icon icon="mdi:filter-cog-outline" style="font-size: 1.2em;"></iconify-icon>
               <span>Filtrar</span>
             </a>
@@ -281,8 +263,27 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   
-  <!-- Estes scripts já estão incluídos com defer no início do documento, não precisam ser repetidos aqui -->
-  <!-- <script src="assets/js/snippet-scroll-indicator.js" defer></script> -->
-  <!-- <script src="assets/js/mobile-filters-fix.js" defer></script> -->
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
+</body>
+</html>
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
+</body>
+</html>
+  
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
 </body>
 </html>
