@@ -26,9 +26,15 @@
 
   <!-- ======= CSS: Principal do projeto ======= -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
+  <!-- ======= CSS: Mobile fixes ======= -->
+  <link href="assets/css/mobile-visibility-fix.css" rel="stylesheet">
 
   <!-- ======= CSS: Highlight.js ======= -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+
+  <!-- FontAwesome for copy icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <!-- ======= JS: jQuery (deve vir antes dos scripts que dependem dele) ======= -->
   <script src="assets/js/jquery/jquery-3.7.1.min.js"></script>
@@ -48,9 +54,6 @@
       });
     });
   </script>
-
-  <!-- FontAwesome for copy icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -93,14 +96,8 @@
   <script src="assets/js/snippet-responsive-loader.js" defer></script>
   <script src="assets/js/snippets-search.js" defer></script>
   <script src="assets/js/filter-text-formatter.js" defer></script>
-
-  <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Nov 01 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
 </head>
 
 <body class="index-page">
@@ -281,8 +278,26 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   
-  <!-- Estes scripts já estão incluídos com defer no início do documento, não precisam ser repetidos aqui -->
-  <!-- <script src="assets/js/snippet-scroll-indicator.js" defer></script> -->
-  <!-- <script src="assets/js/mobile-filters-fix.js" defer></script> -->
+  <!-- Fallback script para garantir visibilidade em dispositivos móveis -->
+  <script>
+    // Verifica se é um dispositivo móvel
+    if (window.innerWidth <= 768) {
+      // Garante que o conteúdo seja visível após 1 segundo
+      setTimeout(function() {
+        // Força a visibilidade das seções principais
+        document.querySelectorAll('section, .section, .container, .row, [data-aos]').forEach(function(el) {
+          el.style.opacity = '1';
+          el.style.visibility = 'visible';
+        });
+        
+        // Remove atributos AOS que possam estar causando problemas
+        document.querySelectorAll('[data-aos]').forEach(function(el) {
+          el.removeAttribute('data-aos');
+          el.removeAttribute('data-aos-delay');
+          el.removeAttribute('data-aos-duration');
+        });
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
