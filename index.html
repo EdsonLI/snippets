@@ -165,7 +165,7 @@
             </a>
           </li>
           <li>
-            <a href="#coding" class="nav-link" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5em;">
+            <a href="#coding" class="nav-link" style="display:flex;align-items:center;gap:0.5em;">
               <iconify-icon icon="mdi:filter-cog-outline" style="font-size: 1.2em;"></iconify-icon>
               <span>Filtrar</span>
             </a>
@@ -291,6 +291,10 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <!-- Correção para o toggle de tema -->
+  <script src="assets/js/theme-toggle-fix.js"></script>
+  
   <script>
     $(document).ready(function() {
       // Copiar código
@@ -309,20 +313,6 @@
             }, 1200);
           });
         }
-      });
-
-      // Theme toggle logic - Convertido para jQuery
-      const $themeBtn = $('#theme-toggle');
-      const $icon = $themeBtn.find('iconify-icon');
-      function setTheme(dark) {
-        $('body').toggleClass('dark-theme', dark);
-        $themeBtn.attr('title', dark ? 'Tema claro' : 'Tema escuro');
-        localStorage.setItem('theme', dark ? 'dark' : 'light');
-      }
-      const saved = localStorage.getItem('theme');
-      setTheme(saved === 'dark');
-      $themeBtn.on('click', function() {
-        setTheme(!$('body').hasClass('dark-theme'));
       });
 
       // Filtro + busca integrada
