@@ -31,6 +31,7 @@
   <link href="assets/css/tech-badges-new.css" rel="stylesheet">
   <link href="assets/css/tech-icons-uniform.css" rel="stylesheet">
   <link href="assets/css/mobile-filters-fix.css" rel="stylesheet">
+  <link href="assets/css/mobile-buttons-fix.css" rel="stylesheet">
 
   <!-- jQuery -->
   <script src="assets/js/jquery/jquery-3.7.1.min.js"></script>
@@ -193,7 +194,7 @@
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
             <h1 data-aos="fade-up" style="margin-bottom: 1.2rem;">Aqui tem alguns snippets e um pouco sobre minhas skills</h1>
             <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-              <a href="./coding" class="btn-get-started">Explorar snippets <i class="bi bi-arrow-right"></i></a>
+              <a href="./coding" class="btn-get-started" onclick="window.location.href='./coding'; return false;">Explorar snippets <i class="bi bi-arrow-right"></i></a>
               <!-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
             </div>
           </div>
@@ -355,6 +356,9 @@
   
   <!-- Correção para filtros em dispositivos móveis -->
   <script src="assets/js/mobile-filters-fix.js" defer></script>
+  
+  <!-- Correção para botões em dispositivos móveis -->
+  <script src="assets/js/mobile-buttons-fix.js"></script>
 </body>
 </html>
 

@@ -87,33 +87,52 @@ $(function() {
    */
   function aosInit() {
     // Verificar se está em mobile
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 991 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     AOS.init({
       duration: isMobile ? 0 : 600,  // Sem animação em dispositivos móveis
       easing: 'ease-in-out',
       once: true,
       mirror: false,
-      disable: isMobile ? 'mobile' : false  // Desabilitar em dispositivos móveis
+      disable: isMobile ? 'mobile' : false,  // Desabilitar em dispositivos móveis
+      startEvent: 'DOMContentLoaded', // Iniciar logo após o DOM estar pronto
+      disableMutationObserver: false // Manter observador de mutação ativado
     });
     
     // Forçar exibição dos elementos mesmo que AOS falhe
     if (isMobile) {
+      // Executa imediatamente para evitar flash de conteúdo invisível
+      $('[data-aos]').css('opacity', '1').css('transform', 'none');
+      
+      // E novamente após um curto intervalo para garantir
       setTimeout(() => {
         $('[data-aos]').each(function() {
           $(this).css('opacity', '1');
-          $(this).removeAttr('data-aos');
+          $(this).css('transform', 'none');
+          $(this).css('pointer-events', 'auto');
+          // Mantém o atributo data-aos para não quebrar outros scripts
+          // mas adiciona classe para override de CSS
+          $(this).addClass('aos-mobile-fixed');
         });
-      }, 500);
+        
+        // Garantir que elementos clicáveis dentro de contêineres AOS funcionem
+        $('[data-aos] a, [data-aos] button, [data-aos] .btn').css('pointer-events', 'auto');
+      }, 100);
     }
   }
   $(window).on('load', aosInit);
   
   // Garantir que o conteúdo seja visível em dispositivos móveis
   $(document).ready(function() {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 991 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       $('section').css('opacity', '1');
-      $('[data-aos]').css('opacity', '1');
+      $('[data-aos]').css('opacity', '1').css('pointer-events', 'auto');
+      
+      // Verificar se os botões estão funcionando após 2 segundos
+      setTimeout(() => {
+        console.log('🔍 Verificando interatividade de botões em dispositivos móveis...');
+        $('.btn-get-started, .nav-link').css('position', 'relative').css('z-index', '999');
+      }, 2000);
     }
   });
 
