@@ -86,14 +86,36 @@ $(function() {
    * Animation on scroll function and init
    */
   function aosInit() {
+    // Verificar se está em mobile
+    const isMobile = window.innerWidth <= 768;
+    
     AOS.init({
-      duration: 600,
+      duration: isMobile ? 0 : 600,  // Sem animação em dispositivos móveis
       easing: 'ease-in-out',
       once: true,
-      mirror: false
+      mirror: false,
+      disable: isMobile ? 'mobile' : false  // Desabilitar em dispositivos móveis
     });
+    
+    // Forçar exibição dos elementos mesmo que AOS falhe
+    if (isMobile) {
+      setTimeout(() => {
+        $('[data-aos]').each(function() {
+          $(this).css('opacity', '1');
+          $(this).removeAttr('data-aos');
+        });
+      }, 500);
+    }
   }
   $(window).on('load', aosInit);
+  
+  // Garantir que o conteúdo seja visível em dispositivos móveis
+  $(document).ready(function() {
+    if (window.innerWidth <= 768) {
+      $('section').css('opacity', '1');
+      $('[data-aos]').css('opacity', '1');
+    }
+  });
 
   /**
    * Initiate glightbox
