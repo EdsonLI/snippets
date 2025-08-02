@@ -26,15 +26,21 @@
 
   <!-- ======= CSS: Principal do projeto ======= -->
   <link href="assets/css/main.css" rel="stylesheet">
-  
-  <!-- ======= CSS: Mobile fixes ======= -->
-  <link href="assets/css/mobile-visibility-fix.css" rel="stylesheet">
+
+  <!-- ======= CSS: Customizados/adicionais ======= -->
+  <link href="assets/css/tech-badges-new.css" rel="stylesheet">
+  <link href="assets/css/tech-icons-uniform.css" rel="stylesheet">
+  <link href="assets/css/mobile-filters-fix.css" rel="stylesheet">
+  <link href="assets/css/snippet-actions.css" rel="stylesheet">
+  <link href="assets/css/snippet-actions-responsive.css" rel="stylesheet">
+  <link href="assets/css/iconify-alignment-fix.css" rel="stylesheet">
+  <link href="assets/css/search-functionality.css" rel="stylesheet">
+  <link href="assets/css/git-snippets.css" rel="stylesheet">
+  <link href="assets/css/ai-custom-styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/all.min.css"/>
 
   <!-- ======= CSS: Highlight.js ======= -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
-
-  <!-- FontAwesome for copy icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <!-- ======= JS: jQuery (deve vir antes dos scripts que dependem dele) ======= -->
   <script src="assets/js/jquery/jquery-3.7.1.min.js"></script>
@@ -45,6 +51,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
   <script src="assets/js/highlight/css.min.js"></script>
   <script src="assets/js/iconify/iconify-icon.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
   <!-- ======= JS: Inicialização do Highlight.js ======= -->
   <script>
@@ -54,34 +61,6 @@
       });
     });
   </script>
-
-  <!-- =======================================================
-  * Template Name: FlexStart
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Updated: Nov 01 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
-  /* Estilo para barra de rolagem no tema dark */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #222; /* Cor do fundo da barra de rolagem */
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #555; /* Cor do "polegar" da barra de rolagem */
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #888; /* Cor ao passar o mouse */
-  } 
-  /* Garante que o container pai tenha posição relativa */
-  </style>
 
   <!-- ======= JS: Sistema de snippets e funcionalidades customizadas ======= -->
   <script src="assets/js/static-snippets-manager.js" defer></script>
@@ -96,8 +75,14 @@
   <script src="assets/js/snippet-responsive-loader.js" defer></script>
   <script src="assets/js/snippets-search.js" defer></script>
   <script src="assets/js/filter-text-formatter.js" defer></script>
-  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
-  <script src="assets/js/mobile-filters-fix.js" defer></script>
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Updated: Nov 01 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -151,7 +136,7 @@
             </a>
           </li>
           <li>
-            <a href="#coding" class="nav-link" style="display:flex;align-items:center;gap:0.5em;">
+            <a href="#coding" class="nav-link" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5em;">
               <iconify-icon icon="mdi:filter-cog-outline" style="font-size: 1.2em;"></iconify-icon>
               <span>Filtrar</span>
             </a>
@@ -278,26 +263,28 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   
-  <!-- Fallback script para garantir visibilidade em dispositivos móveis -->
-  <script>
-    // Verifica se é um dispositivo móvel
-    if (window.innerWidth <= 768) {
-      // Garante que o conteúdo seja visível após 1 segundo
-      setTimeout(function() {
-        // Força a visibilidade das seções principais
-        document.querySelectorAll('section, .section, .container, .row, [data-aos]').forEach(function(el) {
-          el.style.opacity = '1';
-          el.style.visibility = 'visible';
-        });
-        
-        // Remove atributos AOS que possam estar causando problemas
-        document.querySelectorAll('[data-aos]').forEach(function(el) {
-          el.removeAttribute('data-aos');
-          el.removeAttribute('data-aos-delay');
-          el.removeAttribute('data-aos-duration');
-        });
-      }, 1000);
-    }
-  </script>
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
 </body>
 </html>
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
+</body>
+</html>
+  
+  <!-- Detecção de snippets que precisam rolagem -->
+  <script src="assets/js/snippet-scroll-indicator.js" defer></script>
+  
+  <!-- Correção para filtros em dispositivos móveis -->
+  <script src="assets/js/mobile-filters-fix.js" defer></script>
+</body>
+</html>
+
