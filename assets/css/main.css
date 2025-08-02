@@ -3357,26 +3357,3 @@ pre {
 pre code.hljs {
   padding: 0 0 0 1px !important;
 }
-
-.svg-logo-jedi {
-  width: 5.8rem !important;
-  height: 5.8rem !important;
-}
-
-/* Estilo para barra de rolagem no tema dark */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #222; /* Cor do fundo da barra de rolagem */
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #555; /* Cor do "polegar" da barra de rolagem */
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #888; /* Cor ao passar o mouse */
-  } 

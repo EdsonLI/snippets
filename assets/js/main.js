@@ -51,6 +51,8 @@ $(function() {
     }
     });
 
+  });
+
   /**
    * Toggle mobile nav dropdowns
    */
@@ -263,24 +265,6 @@ $(function() {
         console.error('Bloco de código não encontrado para o ID:', targetId);
       }
     });
-
-    // Copiar código para botões .copy-btn (extra)
-    $('.copy-btn').on('click', function() {
-      const $btn = $(this);
-      const targetId = $btn.attr('data-target');
-      const $codeBlock = $('#' + targetId);
-      if ($codeBlock.length) {
-        const text = $codeBlock.text().trim();
-        navigator.clipboard.writeText(text).then(function() {
-          $btn.addClass('copied');
-          $btn.html('<i class="fa-solid fa-check"></i> Copiado!');
-          setTimeout(function() {
-            $btn.removeClass('copied');
-            $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>');
-          }, 1200);
-        });
-      }
-    });
   }
 
   // Chamar a função ao carregar a página
@@ -339,50 +323,4 @@ $(function() {
     });
   });
 
-  // Theme toggle logic - Convertido para jQuery
-  const $themeBtn = $('#theme-toggle');
-  const $icon = $themeBtn.find('iconify-icon');
-  function setTheme(dark) {
-    $('body').toggleClass('dark-theme', dark);
-    $themeBtn.attr('title', dark ? 'Tema claro' : 'Tema escuro');
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }
-  const saved = localStorage.getItem('theme');
-  setTheme(saved === 'dark');
-  $themeBtn.on('click', function() {
-    setTheme(!$('body').hasClass('dark-theme'));
-  });
-
-  // Filtro + busca integrada
-  let currentFilter = '*';
-  // Desktop (Isotope)
-  $('#dynamic-snippets-filters').on('click', 'li', function() {
-    currentFilter = $(this).attr('data-filter');
-    $('#search').trigger('input');
-  });
-  // Mobile (custom)
-  $('#dynamic-snippets-filters-mobile').on('click', 'li', function() {
-    currentFilter = $(this).attr('data-filter');
-    $('#search').trigger('input');
-  });
-
-  // Busca integrada ao filtro
-  $('#search').on('input', function() {
-    var searchVal = $(this).val().toLowerCase();
-    // Seleciona os itens conforme filtro
-    var $items = (currentFilter === '*' ? $('.isotope-item') : $('.isotope-item'+currentFilter));
-    $('.isotope-item').hide();
-    $items.filter(function() {
-      return $(this).text().toLowerCase().indexOf(searchVal) !== -1;
-    }).show();
-  });
-
-  // Limpar busca e filtros
-  $('#refresh-list').on('click', function() {
-    $('#search').val('');
-    currentFilter = '*';
-    $('.isotope-item').show();
-    $('#dynamic-snippets-filters li[data-filter="*"]').addClass('filter-active').siblings().removeClass('filter-active');
-    $('#dynamic-snippets-filters-mobile li[data-filter="*"]').addClass('filter-active').siblings().removeClass('filter-active');
-  });
-});
+// O carregamento dinâmico de snippets foi movido para o arquivo snippets-manager.js
