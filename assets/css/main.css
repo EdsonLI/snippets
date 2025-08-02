@@ -3357,3 +3357,559 @@ pre {
 pre code.hljs {
   padding: 0 0 0 1px !important;
 }
+
+.svg-logo-jedi {
+  width: 5.8rem !important;
+  height: 5.8rem !important;
+}
+
+/* Estilo para barra de rolagem no tema dark */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222; /* Cor do fundo da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555; /* Cor do "polegar" da barra de rolagem */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888; /* Cor ao passar o mouse */
+}
+
+/*--------------------------------------------------------------
+# Estilos para Cards com Múltiplos Snippets
+# Centraliza os ícones e melhora o posicionamento dos botões
+--------------------------------------------------------------*/
+
+/* Container principal para snippets múltiplos */
+.multi-snippet-container {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Cabeçalho para cada snippet individual */
+.snippet-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Título do snippet individual */
+.snippet-section-header h6 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #f8f9fa;
+}
+
+/* Posicionamento dos botões no container de código */
+.snippet-code {
+  position: relative !important;
+}
+
+/* Container para botões internos posicionados no topo direito do bloco de código */
+.snippet-code-actions {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  display: flex;
+  gap: 0.2rem;
+  z-index: 20;
+  background: rgba(33, 37, 41, 0.7);
+  border-radius: 4px;
+  padding: 0.15rem;
+}
+
+/* Ajustes específicos para botões dentro do bloco de código */
+.snippet-code-actions .btn-custom {
+  font-size: 0.675rem;
+  padding: 0 !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: visible !important; /* Alterado para visible para garantir que os ícones não sejam cortados */
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Correção centralização perfeita de ícones nos botões */
+.btn-custom iconify-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Centralização perfeita */
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* Correção específica para botões pequenos */
+.btn-xs {
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-xs iconify-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Centralização perfeita */
+  display: block !important;
+}
+
+/* Ajustes para o tema escuro */
+body.dark-theme .snippet-code-actions {
+  background: rgba(18, 18, 18, 0.7);
+}
+
+/* Separador entre snippets */
+.snippet-separator {
+  border-bottom: 1px solid #6c757d;
+  margin: 1rem 0;
+  opacity: 0.3;
+}
+
+/*--------------------------------------------------------------
+# MÓDULOS CSS CONSOLIDADOS
+# Arquivos anteriormente separados que foram unificados neste arquivo principal
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# 1. Tech Badges e Tech Icons
+# Estilos para badges de tecnologias e ícones uniformes
+--------------------------------------------------------------*/
+
+/* ===== 1.1 Tech Badges ===== */
+/* Origem: tech-badges-new.css */
+
+/* Estilo base para todas as badges de tecnologia */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding-top: .35rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  gap: 0.3rem;
+}
+
+/* Estilo para os ícones dentro das badges */
+.tech-badge iconify-icon {
+  font-size: .9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  background-color: white !important;
+}
+
+/* Garantir que todos os ícones em badges mantenham suas cores originais */
+.tech-badge iconify-icon {
+  --icon-color: currentColor !important;
+}
+
+/* ===== 1.2 Tech Icons Uniform ===== */
+/* Origem: tech-icons-uniform.css */
+
+/* Estilo base para todos os ícones personalizados */
+.tech-icon-custom,
+[class$="-icon-wrapper"],
+.php-icon-wrapper,
+.sql-icon-wrapper,
+.html-icon-wrapper,
+.css-icon-wrapper,
+.js-icon-wrapper,
+.bootstrap-icon-wrapper,
+.jquery-icon-wrapper,
+.vscode-icon-wrapper,
+.git-icon-wrapper,
+.fontawesome-icon-wrapper,
+.sweetalert2-icon-wrapper,
+.isotope-icon-wrapper,
+.codepen-icon-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  aspect-ratio: 1/1 !important; /* Garante formato perfeitamente circular */
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 0 !important; /* Sem padding para maximizar o espaço para o ícone */
+  box-shadow: 0 0 2px rgba(0,0,0,0.2) !important;
+  position: relative !important; /* Para posicionamento de elementos filhos */
+  overflow: hidden !important; /* Garante que o ícone não ultrapasse a borda */
+}
+
+/* Estilo para SVGs dentro de ícones personalizados */
+.tech-icon-custom svg,
+[class$="-icon-wrapper"] svg {
+  aspect-ratio: 1/1 !important; /* Garante SVG perfeitamente proporcional */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/*--------------------------------------------------------------
+# 2. Layout e Elementos UI 
+# Estilos para disposição, ajustes responsivos e interações
+--------------------------------------------------------------*/
+
+/* ===== 2.1 Mobile Filters Fix ===== */
+/* Origem: mobile-filters-fix.css */
+
+/* Apenas previnir seleção de texto e melhorar toque */
+.portfolio-filters li,
+.isotope-filters li {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  cursor: pointer !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+  touch-action: manipulation !important;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  padding: 8px !important;
+}
+
+/* Correção para evitar que os filtros desapareçam em dispositivos móveis */
+.portfolio-filters,
+.isotope-filters {
+  z-index: 50 !important;
+}
+
+/* ===== 2.2 Search Functionality ===== */
+/* Origem: search-functionality.css */
+
+/* Search wrapper styles */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 18px auto;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper input[type="text"] {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 12px 38px 12px 12px;
+  margin-bottom: 0;
+  border-radius: 6px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-size: 1em;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+.search-wrapper input[type="text"]:focus {
+  outline: none;
+  border: 1.5px solid #388bfd;
+  box-shadow: 0 0 0 2px #388bfd33;
+}
+
+#refresh-list {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 1.3em;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
+  border-radius: 50%;
+}
+
+/*--------------------------------------------------------------
+# 3. Snippet Actions e Botões
+# Estilos para os botões de ação dos snippets
+--------------------------------------------------------------*/
+
+/* ===== 3.1 Snippet Actions Base ===== */
+/* Origem: snippet-actions.css */
+
+/* Definições para botões extra-pequenos */
+.btn-xs {
+  --bs-btn-padding-y: 0.15rem;
+  --bs-btn-padding-x: 0.3rem;
+  --bs-btn-font-size: 0.675rem;
+  --bs-btn-border-radius: 0.2rem;
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+/* Ajustes para os botões na snippet-actions-float */
+.snippet-actions-float {
+  position: relative !important;
+  top: 2px !important;
+  right: 0;
+  left: auto;
+  z-index: 10;
+  margin-left: auto; /* empurra para direita */
+  margin-right: 0;
+  display: flex;
+  gap: 0.2em;
+  background: transparent !important;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Estilo para o título com ícones */
+.portfolio-content h6 {
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 26px;
+}
+
+/* Layout para o título com badges e botões */
+.portfolio-content h6 span.tech-badge, 
+.portfolio-content h6 span[class^="id-tech-"] {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* Ajuste para os botões de ação */
+.portfolio-content h6 .snippet-actions-float {
+  position: absolute !important;
+  right: 0;
+  top: 2px !important;
+  transform: translateY(-50%);
+  background-color: rgba(33, 37, 41, 0.7) !important;
+  border-radius: 4px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 24px !important;
+  padding-right: 0 !important;
+  padding-left: 2px !important;
+  margin-top: .35rem;
+}
+
+/* ===== 3.2 Snippet Actions Responsive ===== */
+/* Origem: snippet-actions-responsive.css */
+
+/* Regra base para todos os dispositivos */
+.snippet-actions-float {
+  position: absolute !important;
+  top: 2px !important; /* Distância reduzida do topo */
+  right: 5px !important; /* Distância fixa da direita */
+  transform: none !important; /* Remove qualquer transform que possa afetar o posicionamento */
+  padding: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  z-index: 100 !important; /* Garante que fique acima de outros elementos */
+}
+
+/* Para dispositivos móveis */
+@media (max-width: 767.98px) {
+  .snippet-actions-float {
+    top: 2px !important; /* Ainda mais próximo do topo em mobile */
+    right: 4px !important;
+  }
+  
+  /* Reduz ligeiramente o tamanho dos botões em dispositivos muito pequenos */
+  @media (max-width: 375px) {
+    .snippet-actions-float .btn-xs {
+      --bs-btn-padding-y: 0.1rem;
+      --bs-btn-padding-x: 0.25rem;
+      font-size: 0.65rem;
+    }
+  }
+}
+
+/* ===== 3.3 Icon Alignment Fixes ===== */
+/* Origem: iconify-alignment-fix.css + button-icon-center-fix.css */
+
+/* Correção global para posicionamento de ícones nos botões */
+.btn iconify-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: block !important;
+}
+
+.btn {
+  position: relative !important;
+}
+
+/* Centralização para botões com tamanho fixo */
+button[class*="btn"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Força alinhamento e tamanho consistente para todos os iconify-icons nos botões de snippet */
+.btn-xs iconify-icon {
+  /* Dimensões fixas (exatas) */
+  width: 16px !important;
+  height: 16px !important;
+  
+  /* Centralização perfeita */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* Ajuste para os ícones dentro dos botões das actions */
+.snippet-code-actions .btn-custom iconify-icon,
+.snippet-actions-float .btn-custom iconify-icon {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Tamanho exato para botões */
+.snippet-actions-float .btn {
+  width: 22px !important;
+  height: 22px !important;
+  position: relative !important;
+  padding: 2px !important;
+  margin: 0 !important;
+}
+
+/*--------------------------------------------------------------
+# 4. Snippets Especiais
+# Estilos para snippets com características específicas
+--------------------------------------------------------------*/
+
+/* ===== 4.1 Git Snippets ===== */
+/* Origem: git-snippets.css */
+
+/* Estilos para tornar os snippets de Git e AI scrolláveis */
+.filter-git .snippet-code,
+.filter-ai .snippet-code {
+  max-height: 50vh; /* Altura máxima relativa à altura da viewport */
+  overflow-y: auto; /* Adiciona rolagem vertical */
+  padding-right: 6px; /* Espaço para a barra de rolagem */
+  transition: max-height 0.3s ease; /* Transição suave */
+}
+
+/* Estilização da barra de rolagem para navegadores modernos */
+.filter-git .snippet-code::-webkit-scrollbar,
+.filter-ai .snippet-code::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-track,
+.filter-ai .snippet-code::-webkit-scrollbar-track {
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 3px;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-thumb,
+.filter-ai .snippet-code::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.5);
+  border-radius: 3px;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-thumb:hover,
+.filter-ai .snippet-code::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.8);
+}
+
+/* ===== 4.2 AI Custom Styles ===== */
+/* Origem: ai-custom-styles.css */
+
+.prompt-card {
+  background-color: #1b1f24;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: .5em !important;
+  font-size: 0.8rem;
+  color: #ccc;
+  white-space: pre-wrap;
+  transition: all 0.15s ease-in-out;
+}
+.prompt-card:hover {
+  background-color: #222;
+  border-color: #666;
+}
+.prompt-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #3dd5f3;
+  margin-bottom: 4px;
+}
+/* Padrão para controlar altura de quadros de informação extensos */
+.content-scrollable {
+  max-height: 500px; /* Altura máxima para o conteúdo */
+  overflow-y: auto; /* Habilita scroll vertical quando necessário */
+  position: relative;
+  padding-right: 5px; /* Espaço para o scrollbar */
+}    
+/* Estilização da barra de rolagem */
+.content-scrollable::-webkit-scrollbar {
+  width: 6px;
+}    
+.content-scrollable::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  border-radius: 3px;
+}    
+.content-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(125,125,125,0.5);
+  border-radius: 3px;
+}
+.content-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(125,125,125,0.7);
+}
+
+.text-center {
+  margin: auto !important;
+}

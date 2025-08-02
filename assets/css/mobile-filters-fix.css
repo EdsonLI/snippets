@@ -23,4 +23,9 @@
 .portfolio-filters,
 .isotope-filters {
     z-index: 50 !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px !important;
 }

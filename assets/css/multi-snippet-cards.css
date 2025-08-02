@@ -1,0 +1,97 @@
+/* Estilos para cards com múltiplos snippets */
+.multi-snippet-container {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Cabeçalho para cada snippet individual dentro do card */
+.snippet-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Título do snippet individual */
+.snippet-section-header h6 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #f8f9fa;
+}
+
+/* Container de botões para cada snippet individual */
+.snippet-action-buttons {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+/* Posicionamento dos botões no container de código */
+.snippet-code {
+  position: relative !important;
+}
+
+/* Container para botões internos posicionados no topo direito do bloco de código */
+.snippet-code-actions {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  display: flex;
+  gap: 0.2rem;
+  z-index: 20;
+  background: rgba(33, 37, 41, 0.7);
+  border-radius: 4px;
+  padding: 0.15rem;
+}
+
+/* Ajustes específicos para botões dentro do bloco de código */
+.snippet-code-actions .btn-custom {
+  font-size: 0.675rem;
+  padding: 0.15rem !important;
+  line-height: 1 !important;
+  min-height: 22px !important;
+  min-width: 22px !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Correção para o alinhamento vertical dos ícones */
+.btn-custom iconify-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 16px !important;
+  width: 16px !important;
+  transform: translateY(0) !important; /* Evita que o ícone fique desalinhado */
+  vertical-align: middle !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+/* Correção específica para o posicionamento vertical do ícone */
+.btn-xs iconify-icon {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  top: 0 !important;
+}
+
+/* Ajustes para o container principal em modo escuro */
+body.dark-theme .snippet-code-actions {
+  background: rgba(18, 18, 18, 0.7);
+}
+
+/* Separador entre snippets */
+.snippet-separator {
+  border-bottom: 1px solid #6c757d;
+  margin: 1rem 0;
+  opacity: 0.3;
+}
+
+/* Espaçamento para o último snippet no card */
+.multi-snippet-container:last-child {
+  margin-bottom: 0;
+}
