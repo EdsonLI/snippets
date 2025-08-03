@@ -6,11 +6,11 @@ $(document).ready(function() {
     // Mapeamento dos textos para formatação correta
     const textFormatMap = {
         'sweetalert2': 'SweetAlert2',
-        'git': 'Git',
+        'git': 'git', // Minúsculas conforme solicitado
         'jquery': 'jQuery',
         'madbuilder': 'MadBuilder',
         'w3schools': 'W3Schools',
-        'ai': 'AI',
+        'ai': 'IA', // Mudança de AI para IA
         'css': 'CSS',
         'php': 'PHP',
         'sql': 'SQL'

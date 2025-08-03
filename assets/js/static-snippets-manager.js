@@ -138,8 +138,8 @@ $(document).ready(function() {
         let displayName;
         if (folder.toLowerCase() === 'git') {
           displayName = 'git'; // Minúsculas para git
-        } else if (folder.toLowerCase() === 'ai' || folder.toLowerCase() === 'ia') {
-          displayName = 'IA'; // Maiúsculas para IA
+        } else if (folder.toLowerCase() === 'ai') {
+          displayName = 'IA'; // Mudar AI para IA 
         } else if (['css', 'php', 'sql'].includes(folder.toLowerCase())) {
           displayName = folder.toUpperCase(); // Tudo maiúsculo para CSS, PHP, SQL
         } else {

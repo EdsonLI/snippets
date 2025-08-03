@@ -13,9 +13,9 @@
 .id-tech-copilot::before {
   content: '';
   background-image: url('../img/tech-icons/github-copilot.svg');
-  background-size: contain;
+  background-size: 16px 16px; /* Tamanho fixo para o conteúdo SVG */
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center; /* Centralização precisa */
   width: 20px;
   height: 20px;
   position: absolute;
