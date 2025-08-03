@@ -18,6 +18,7 @@
   background-color: rgba(40, 44, 52, 0.7) !important; /* Fundo semi-transparente para melhor legibilidade */
   border-radius: 4px !important;
   padding: 2px !important;
+  align-items: center !important; /* Centraliza os botões verticalmente */
 }
 
 /* Centraliza os ícones verticalmente dentro dos botões */
@@ -27,11 +28,13 @@
   justify-content: center !important;
   vertical-align: middle !important;
   line-height: 1 !important;
-  padding: 0.2rem 0.3rem !important;
+  padding: 0 !important; /* Remove padding para centralização perfeita */
   height: 24px !important; /* Altura fixa para garantir consistência */
   width: 24px !important; /* Largura fixa para garantir consistência */
   background-color: rgba(23, 25, 35, 0.8) !important; /* Fundo dos botões mais escuro */
   border: 1px solid rgba(86, 156, 214, 0.7) !important; /* Borda azul mais discreta */
+  position: relative !important; /* Para posicionamento absoluto do ícone */
+  overflow: visible !important; /* Garante que o ícone não seja cortado */
 }
 
 /* Ajusta o alinhamento vertical dos ícones dentro dos botões */
@@ -40,10 +43,11 @@
   align-items: center !important;
   justify-content: center !important;
   vertical-align: middle !important;
-  margin: 0 !important;
-  position: relative !important;
-  top: 0 !important; /* Remove qualquer deslocamento para cima */
-  transform: none !important; /* Remove transforms que afetam o posicionamento */
+  margin: 0 auto !important; /* Auto margin para centralizar */
+  position: absolute !important; /* Posicionamento absoluto para centralização precisa */
+  left: 50% !important; /* Centraliza horizontalmente */
+  top: 50% !important; /* Centraliza verticalmente */
+  transform: translate(-50%, -50%) !important; /* Ajuste fino da centralização */
   height: 16px !important; /* Altura fixa do ícone */
   width: 16px !important; /* Largura fixa do ícone */
 }
@@ -73,4 +77,17 @@
 /* Garantir que os ícones sempre apareçam sobre outros elementos */
 .snippet-code-actions {
   z-index: 1000 !important;
+}
+
+/* Garante que os ícones do Iconify tenham o tamanho correto */
+.snippet-code-actions button iconify-icon,
+.snippet-code-actions a iconify-icon {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  line-height: 1 !important;
+  display: block !important;
 }

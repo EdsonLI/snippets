@@ -117,6 +117,28 @@
 
 <script>
 $(function() {
+  // Centraliza os ícones nos botões
+  function centerButtonIcons() {
+    $('.snippet-code-actions .btn iconify-icon').each(function() {
+      $(this).css({
+        'position': 'absolute',
+        'left': '50%',
+        'top': '50%',
+        'transform': 'translate(-50%, -50%)'
+      });
+      
+      $(this).parent().css({
+        'position': 'relative',
+        'display': 'inline-flex',
+        'align-items': 'center',
+        'justify-content': 'center'
+      });
+    });
+  }
+  
+  // Executa após carregar a página
+  centerButtonIcons();
+  
   // Preview para o exemplo básico
   $("#btn-preview-swal2-confirm-with-function").click(function() {
     console.log("Preview SweetAlert2 Confirm with Function Attached Example");
