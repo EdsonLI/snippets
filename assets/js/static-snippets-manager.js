@@ -393,51 +393,16 @@ $(document).ready(function() {
   }
 
   /**
-   * Configura botões de cópia para todos os snippets e ajusta alinhamento dos botões flutuantes
+   * Configura botões de cópia para todos os snippets
+   * Usa a implementação global de copy-buttons-manager.js
    */
   function setupCopyButtons() {
-    // Garantir que todos os snippet-actions-float estejam alinhados à direita
-    $('.snippet-actions-float').each(function() {
-      if (!$(this).hasClass('justify-content-end')) {
-        $(this).addClass('justify-content-end');
-      }
-    });
-    
-    // Configurar botões de cópia
-    $('.btn-custom[data-target]').each(function() {
-      const $button = $(this);
-      // Pular se já inicializado
-      if ($button.attr('data-copy-initialized')) return;
-      
-      // Marcar como inicializado
-      $button.attr('data-copy-initialized', 'true');
-      
-      // Adicionar evento de clique
-      $button.on('click', function() {
-        const targetId = $button.attr('data-target');
-        const $codeBlock = $('#' + targetId);
-
-        if ($codeBlock.length) {
-          // Copiar o texto para a área de transferência
-          const text = $codeBlock.text().trim();
-          navigator.clipboard.writeText(text)
-            .then(function() {
-              // Feedback visual
-              const $icon = $button.find('iconify-icon');
-              if ($icon.length) {
-                const originalIcon = $icon.attr('icon');
-                $icon.attr('icon', 'mdi:check');
-                setTimeout(function() {
-                  $icon.attr('icon', originalIcon || 'mdi:content-copy');
-                }, 1200);
-              }
-            })
-            .catch(function(err) { log.error('Erro ao copiar texto', err); });
-        } else {
-          log.error(`Bloco de código não encontrado: ${targetId}`);
-        }
-      });
-    });
+    // Usar a implementação global com as opções padrão
+    if (typeof window.setupCopyButtons === 'function') {
+      window.setupCopyButtons();
+    } else {
+      console.error('Global setupCopyButtons function not found!');
+    }
   }
 
   /**

@@ -471,54 +471,52 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Aguardar carregamento de imagens antes de inicializar
       if ($container[0]) {
-        if ($container[0]) {
-            imagesLoaded($container[0], function() {
+        imagesLoaded($container[0], function() {
           // Criar nova instância do Isotope
-        
-        // Criar nova instância do Isotope
-        const iso = new Isotope($container[0], {
-          itemSelector: '.isotope-item',
-          layoutMode: layout,
-          filter: filter,
-          sortBy: sort,
-          transitionDuration: '0.4s'
-        });
-        
-        // Configurar eventos de filtro
-        const $filterContainer = $(parent).find('.isotope-filters');
-        if ($filterContainer.length) {
-          const $filterBtns = $filterContainer.find('li');
-          
-          // Remover eventos anteriores e readicionar
-          $filterBtns.each(function() {
-            const $btn = $(this);
-            const $newBtn = $btn.clone(false);
-            $btn.replaceWith($newBtn);
-            
-            // Adicionar novo evento
-            $newBtn.on('click', function() {
-              $filterBtns.removeClass('filter-active');
-              $(this).addClass('filter-active');
-              
-              iso.arrange({
-                filter: $(this).data('filter')
-              });
-              
-              // Atualizar animações AOS se disponível
-              if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
-                AOS.refresh();
-              }
-            });
+          const iso = new Isotope($container[0], {
+            itemSelector: '.isotope-item',
+            layoutMode: layout,
+            filter: filter,
+            sortBy: sort,
+            transitionDuration: '0.4s'
           });
-        }
-        
-        // Layout final
-        setTimeout(() => iso.arrange(), 100);
-        
-        // Marcar como inicializado
-        state.isotopeInitialized = true;
-        log.success('Isotope reinicializado com sucesso');
-      });
+          
+          // Configurar eventos de filtro
+          const $filterContainer = $(parent).find('.isotope-filters');
+          if ($filterContainer.length) {
+            const $filterBtns = $filterContainer.find('li');
+            
+            // Remover eventos anteriores e readicionar
+            $filterBtns.each(function() {
+              const $btn = $(this);
+              const $newBtn = $btn.clone(false);
+              $btn.replaceWith($newBtn);
+              
+              // Adicionar novo evento
+              $newBtn.on('click', function() {
+                $filterBtns.removeClass('filter-active');
+                $(this).addClass('filter-active');
+                
+                iso.arrange({
+                  filter: $(this).data('filter')
+                });
+                
+                // Atualizar animações AOS se disponível
+                if (typeof AOS !== 'undefined' && typeof AOS.refresh === 'function') {
+                  AOS.refresh();
+                }
+              });
+            });
+          }
+          
+          // Layout final
+          setTimeout(() => iso.arrange(), 100);
+          
+          // Marcar como inicializado
+          state.isotopeInitialized = true;
+          log.success('Isotope reinicializado com sucesso');
+        });
+      }
     });
     
     // Configurar botões de cópia
@@ -527,42 +525,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /**
    * Configura botões de cópia para todos os snippets
+   * Usa a implementação global definida em copy-buttons-manager.js
    */
   function setupCopyButtons() {
-    $('.btn-custom[data-target]').each(function() {
-      const $button = $(this);
-      // Pular se já inicializado
-      if ($button.attr('data-copy-initialized')) return;
-      
-      // Marcar como inicializado
-      $button.attr('data-copy-initialized', 'true');
-      
-      // Adicionar evento de clique
-      $button.on('click', function() {
-        const targetId = $button.attr('data-target');
-        const $codeBlock = $('#' + targetId);
-
-        if ($codeBlock.length) {
-          // Copiar o texto para a área de transferência
-          const text = $codeBlock.text().trim();
-          navigator.clipboard.writeText(text)
-            .then(() => {
-              // Feedback visual
-              const $icon = $button.find('iconify-icon');
-              if ($icon.length) {
-                const originalIcon = $icon.attr('icon');
-                $icon.attr('icon', 'mdi:check');
-                setTimeout(() => {
-                  $icon.attr('icon', originalIcon || 'mdi:content-copy');
-                }, 1200);
-              }
-            })
-            .catch(err => log.error('Erro ao copiar texto', err));
-        } else {
-          log.error(`Bloco de código não encontrado: ${targetId}`);
-        }
+    // Usar a implementação global se disponível
+    if (typeof window.setupCopyButtons === 'function') {
+      window.setupCopyButtons({
+        logger: log  // Passar o logger do snippets-manager
       });
-    });
+    } else {
+      log.error('Global setupCopyButtons function not found!');
+    }
   }
 
   // Detectar se estamos no ambiente local ou em produção

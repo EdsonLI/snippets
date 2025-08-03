@@ -242,29 +242,15 @@ $(function() {
 
   /**
    * Função para adicionar funcionalidade de copiar código nos snippets usando jQuery
+   * Usa a implementação global definida em copy-buttons-manager.js
    */
   function setupCopyButtons() {
-    $('.btn-custom[data-target]').on('click', function() {
-      const targetId = $(this).data('target');
-      const $codeBlock = $('#' + targetId);
-
-      if ($codeBlock.length) {
-        const text = $codeBlock.text().trim();
-        navigator.clipboard.writeText(text).then(() => {
-          const $icon = $(this).find('iconify-icon');
-          if ($icon.length) {
-            $icon.attr('icon', 'mdi:check'); // Troca para ícone de check
-            setTimeout(() => {
-              $icon.attr('icon', 'mdi:content-copy'); // Restaura o ícone original
-            }, 1200);
-          }
-        }).catch(err => {
-          console.error('Erro ao copiar o texto:', err);
-        });
-      } else {
-        console.error('Bloco de código não encontrado para o ID:', targetId);
-      }
-    });
+    // Usar a implementação global se disponível
+    if (typeof window.setupCopyButtons === 'function') {
+      window.setupCopyButtons();
+    } else {
+      console.error('Global setupCopyButtons function not found!');
+    }
   }
 
   // Chamar a função ao carregar a página

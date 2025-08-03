@@ -72,27 +72,12 @@ $(document).ready(function() {
   
   // Função auxiliar para configurar botões de cópia
   function setupCopyButtons() {
-    document.querySelectorAll('.btn-custom[data-target]').forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        const codeBlock = document.getElementById(targetId);
-
-        if (codeBlock) {
-          const text = codeBlock.textContent.trim();
-          navigator.clipboard.writeText(text).then(() => {
-            const icon = button.querySelector('iconify-icon');
-            if (icon) {
-              icon.setAttribute('icon', 'mdi:check');
-              setTimeout(() => {
-                icon.setAttribute('icon', 'mdi:content-copy');
-              }, 1200);
-            }
-          }).catch(err => {
-            console.error('Erro ao copiar o texto:', err);
-          });
-        }
-      });
-    });
+    // Usar a implementação global se disponível
+    if (typeof window.setupCopyButtons === 'function') {
+      window.setupCopyButtons();
+    } else {
+      console.error('Global setupCopyButtons function not found!');
+    }
   }
   
   // Carregar todos os snippets

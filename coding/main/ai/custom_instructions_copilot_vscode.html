@@ -1,3 +1,93 @@
+<div class="col-12 portfolio-item isotope-item filter-copilot">
+  <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative border border-secondary-custom shadow-sm">
+    <div class="d-flex justify-content-between align-items-start mb-2">
+      <h5 class="mb-0">
+        <span class="id-tech-copilot">Copilot Instructions</span>
+      </h5>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-instructions">
+          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions" target="_blank" class="btn btn-xs btn-outline-info btn-custom" title="Ver documentação oficial">
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+        <a href="https://chatgpt.com/c/688f974c-5650-8001-bc16-d81e5ef5c03b" target="_blank" class="btn btn-xs btn-outline-info btn-custom" title="Ver conversa no ChatGPT">
+          <iconify-icon icon="mdi:chat-outline" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </div>
+
+    <div class="text-muted mb-2 text-sm text-center">Guia personalizado de boas práticas para o GitHub Copilot</div>
+
+    <!-- snippet-code -->
+    <div class="snippet-code position-relative" style="max-height: 540px; overflow-y: auto;">
+<pre><code class="language-md" id="snippet-copilot-instructions">---
+applyTo: '**'
+---
+
+## Regras gerais de codificação
+
+- Use o padrão PSR-12 para formatação e K&R para chaves (`{}`).
+- Use nomes claros e autoexplicativos, evitando abreviações desnecessárias.
+- Escreva código coeso, com responsabilidade única por classe (SRP).
+- Siga os princípios SOLID e Clean Code.
+- Evite código duplicado, condições aninhadas profundas e efeitos colaterais.
+- Prefira retornos antecipados (early return) sempre que aplicável.
+- Use tipagem explícita e funções puras.
+
+## Organização do código
+
+- Agrupe funções e métodos com responsabilidades similares.
+- Separe claramente lógica de negócio, apresentação e dados.
+- Use estrutura em camadas: Controllers, Services, Repositories, etc.
+- Evite lógica de banco nos controladores.
+
+## Orientação a Objetos (OOP)
+
+- Prefira composição a herança.
+- Use injeção de dependência via construtor.
+- Mantenha classes pequenas e coesas.
+- Evite "God objects".
+- Use readonly e enum (PHP 8.1+).
+
+## Backend / APIs
+
+- Siga padrão RESTful (GET, POST, PUT, DELETE).
+- Valide dados antes de processar.
+- Retorne JSON estruturado com status code adequado.
+- Use DTOs para entrada e saída.
+
+## Testabilidade
+
+- Prefira funções puras e baixo acoplamento.
+- Use injeção ou fábricas, evite new direto.
+- Não dependa diretamente de $_POST, $_GET, etc.
+
+## Segurança
+
+- Nunca exponha exceções ao usuário.
+- Não armazene senhas em texto puro.
+- Sanitize saídas com htmlspecialchars.
+- Use prepared statements.
+- Nunca registre dados sensíveis em logs.
+
+## Projeto e dependências
+
+- Use PSR-4 e organize bem o composer.json.
+- Prefira pacotes bem mantidos e versionados.
+- Versione o composer.lock.
+
+## Convenções adicionais
+
+- Use match em vez de if/elseif longos.
+- Capture exceções específicas.
+- Use indentação com 4 espaços.
+</code></pre>
+    </div>
+    <!-- /snippet-code -->
+  </div>
+</div>
+
 <!-- como adicionar instruções personalizadas de contexto ao GitHub Copilot no VS Code (não apenas anexar arquivos).
 
 Essas “instruções” são uma forma de você personalizar o comportamento do Copilot Chat, informando suas preferências, 

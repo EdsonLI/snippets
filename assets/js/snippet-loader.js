@@ -65,40 +65,13 @@ $(document).ready(function() {
   // Expor a função globalmente
   window.loadDynamicSnippet = loadDynamicSnippet;
   
-  // Função auxiliar para configurar botões de cópia e alinhar botões flutuantes
+  // Função auxiliar para configurar botões de cópia
   function setupCopyButtons() {
-    // Garantir que todos os snippet-actions-float estejam alinhados à direita
-    $('.snippet-actions-float').each(function() {
-      if (!$(this).hasClass('justify-content-end')) {
-        $(this).addClass('justify-content-end');
-      }
-    });
-    
-    // Configurar botões de cópia
-    $('.btn-custom[data-target]').each(function() {
-      if ($(this).attr('data-copy-initialized')) return;
-      
-      $(this).attr('data-copy-initialized', 'true');
-      $(this).on('click', function() {
-        const $button = $(this);
-        const targetId = $button.attr('data-target');
-        const $codeBlock = $('#' + targetId);
-
-        if ($codeBlock.length) {
-          const text = $codeBlock.text().trim();
-          navigator.clipboard.writeText(text).then(() => {
-            const $icon = $button.find('iconify-icon');
-            if ($icon.length) {
-              $icon.attr('icon', 'mdi:check');
-              setTimeout(() => {
-                $icon.attr('icon', 'mdi:content-copy');
-              }, 1200);
-            }
-          }).catch(err => {
-            console.error('Erro ao copiar o texto:', err);
-          });
-        }
-      });
-    });
+    // Usar a implementação global se disponível
+    if (typeof window.setupCopyButtons === 'function') {
+      window.setupCopyButtons();
+    } else {
+      console.error('Global setupCopyButtons function not found!');
+    }
   }
 });
