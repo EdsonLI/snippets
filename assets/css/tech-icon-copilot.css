@@ -1,0 +1,37 @@
+/* 
+ * Estilos para o ícone do GitHub Copilot
+ */
+
+/* Definição básica para o ícone Copilot */
+.id-tech-copilot {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-left: 28px; /* Espaço para o ícone */
+}
+
+.id-tech-copilot::before {
+  content: '';
+  background-image: url('../img/tech-icons/github-copilot.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 6px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+/* Ajuste para quando estiver dentro de badge */
+.tech-badge .id-tech-copilot::before {
+  position: static;
+  transform: none;
+  margin-right: 4px;
+}
