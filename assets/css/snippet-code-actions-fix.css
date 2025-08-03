@@ -1,6 +1,24 @@
 /* 
  * Correção para o posicionamento dos botões de ação nos snippets de código
- * Ajusta o alinhamento e centralização dos ícones
+ * Ajusta o al/* Garante espaçamento adequado entre os botões e o código */
+.snippet-code pre,
+.filter-git .snippet-code pre,
+.filter-ai .snippet-code pre {
+  margin-top: 8px !important;
+}
+
+/* Especificidade adicional para casos de snippets múltiplos */
+.multi-snippet-container .snippet-code pre.mt-3,
+.filter-git .multi-snippet-container .snippet-code pre.mt-3,
+.filter-ai .multi-snippet-container .snippet-code pre.mt-3 {
+  margin-top: 12px !important;
+}
+
+/* Garantir que o espaçamento seja respeitado mesmo em casos especiais */
+.filter-git .snippet-code .mt-2,
+.filter-ai .snippet-code .mt-2 {
+  margin-top: 0.75rem !important;
+} e centralização dos ícones
  */
 
 /* Reposiciona a div de ações dos snippets */
@@ -10,7 +28,10 @@
 
 /* Ajusta o espaçamento do conteúdo de código */
 
-.snippet-code-actions {
+.snippet-code .snippet-code-actions,
+.multi-snippet-container .snippet-code .snippet-code-actions,
+.filter-git .snippet-code .snippet-code-actions,
+.filter-ai .snippet-code .snippet-code-actions {
   position: absolute !important;
   top: 3px !important; /* Mais próximo à margem superior */
   right: 3px !important; /* Mais próximo à margem direita */

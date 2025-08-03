@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Função para garantir posição adequada do container
   function ensureProperPosition(container) {
+    // Não aplica estilos em contêineres dentro dos snippet-code
+    if (container.closest('.snippet-code-actions')) {
+      return; // Pula a modificação para botões dentro dos snippet-code
+    }
+    
     // Força o posicionamento absoluto e as margens corretas
     container.style.position = 'absolute';
     container.style.top = '3px'; // Reduzido para 3px

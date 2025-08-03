@@ -1,5 +1,24 @@
-/* 
+//* 
  * Estilos para tornar os snippets de Git e AI scrolláveis
+ * Limita a altura dos snippets e adiciona rolagem
+ */
+.filter-git .snippet-code,
+.filter-ai .snippet-code {
+    max-height: 50vh; /* Altura máxima relativa à altura da viewport */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    padding-right: 6px; /* Espaço para a barra de rolagem */
+    transition: max-height 0.3s ease; /* Transição suave */
+    position: relative; /* Garante posicionamento relativo para os elementos absolutos internos */
+}
+
+/* Garantir que os botões de ação nos snippets Git sigam o mesmo padrão */
+.filter-git .snippet-code-actions,
+.filter-ai .snippet-code-actions {
+    position: absolute !important;
+    top: 3px !important;
+    right: 3px !important;
+    z-index: 1000 !important;
+}los para tornar os snippets de Git e AI scrolláveis
  * Limita a altura dos snippets e adiciona rolagem
  */
 .filter-git .snippet-code,
