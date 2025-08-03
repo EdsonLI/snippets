@@ -33,7 +33,7 @@ $(document).ready(function() {
     filterMap: new Map(),       // Mapeamento de pastas para classes de filtro
     isotopeInitialized: false   // Rastrear se o Isotope já foi inicializado
   };  const STATIC_DIRECTORY_MAP = {
-    'ai': ['custom_instructions_copilot_vscode.html', 'prompts_adianti.html'],
+    //'ai': ['custom_instructions_copilot_vscode.html', 'prompts_adianti.html'],
     'bootstrap': ['snippet_bootstrap_form_validation.html'],
     'css': ['snippet_css_display_flex_center.html'],
     'git': ['snippet_git_change_all_message_commits.html', 'snippet_git_conflict_resolution_vscode.html', 'snippet_git_update_local_branch_from_remote_development.html'],

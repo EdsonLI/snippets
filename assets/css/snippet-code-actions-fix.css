@@ -8,16 +8,16 @@
   position: relative !important; /* Garante posicionamento relativo para os elementos absolutos internos */
 }
 
+/* Ajusta o espaçamento do conteúdo de código */
+
 .snippet-code-actions {
   position: absolute !important;
-  top: 5px !important; /* Próximo à margem superior */
-  right: 5px !important; /* Próximo à margem direita */
+  top: 3px !important; /* Mais próximo à margem superior */
+  right: 3px !important; /* Mais próximo à margem direita */
   display: flex !important;
   gap: 4px !important;
-  z-index: 10 !important;
-  background-color: rgba(40, 44, 52, 0.7) !important; /* Fundo semi-transparente para melhor legibilidade */
-  border-radius: 4px !important;
-  padding: 2px !important;
+  z-index: 1000 !important; /* Aumentado para garantir que fique acima do código */
+  padding: 0 !important; /* Removido padding */
   align-items: center !important; /* Centraliza os botões verticalmente */
 }
 
@@ -31,7 +31,6 @@
   padding: 0 !important; /* Remove padding para centralização perfeita */
   height: 24px !important; /* Altura fixa para garantir consistência */
   width: 24px !important; /* Largura fixa para garantir consistência */
-  background-color: rgba(23, 25, 35, 0.8) !important; /* Fundo dos botões mais escuro */
   border: 1px solid rgba(86, 156, 214, 0.7) !important; /* Borda azul mais discreta */
   position: relative !important; /* Para posicionamento absoluto do ícone */
   overflow: visible !important; /* Garante que o ícone não seja cortado */
@@ -90,4 +89,14 @@
   max-height: 16px !important;
   line-height: 1 !important;
   display: block !important;
+}
+
+/* Garante espaçamento adequado entre os botões e o código */
+.snippet-code pre {
+  margin-top: 8px !important;
+}
+
+/* Especificidade adicional para casos de snippets múltiplos */
+.multi-snippet-container .snippet-code pre.mt-3 {
+  margin-top: 12px !important;
 }
