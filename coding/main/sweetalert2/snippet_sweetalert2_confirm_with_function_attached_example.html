@@ -155,7 +155,7 @@ $(function() {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your file has been deleted",
           icon: "success",
           background: "#222",
           color: "#fff"
@@ -171,7 +171,7 @@ $(function() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
+        cancelButton: "btn btn-danger mr-1"
       },
       buttonsStyling: false
     });
@@ -188,7 +188,7 @@ $(function() {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your file has been deleted",
           icon: "success",
           background: "#222",
           color: "#fff"
