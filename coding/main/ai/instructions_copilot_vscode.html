@@ -1,26 +1,23 @@
-<div class="col-12 portfolio-item isotope-item filter-copilot">
-  <div class="portfolio-content h-100 p-3 bg-dark text-light rounded position-relative border border-secondary-custom shadow-sm">
-    <div class="d-flex justify-content-between align-items-start mb-2">
-      <h5 class="mb-0">
-        <span class="id-tech-copilot">Copilot Instructions</span>
-      </h5>
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-copilot">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-copilot">Copilot Instructions</span>
       <div class="snippet-actions-float d-flex align-items-center gap-1">
         <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-instructions">
           <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
         </button>
-        <a href="https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions" target="_blank" class="btn btn-xs btn-outline-info btn-custom" title="Ver documentação oficial">
+        <a href="https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link title="Documentação Oficial">
           <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
         </a>
-        <a href="https://chatgpt.com/c/688f974c-5650-8001-bc16-d81e5ef5c03b" target="_blank" class="btn btn-xs btn-outline-info btn-custom" title="Ver conversa no ChatGPT">
+        <a href="https://chatgpt.com/c/688f974c-5650-8001-bc16-d81e5ef5c03b" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link title="Ver conversa com ChatGPT">
           <iconify-icon icon="mdi:chat-outline" width="16" height="16"></iconify-icon>
         </a>
       </div>
-    </div>
-
-    <div class="text-muted mb-2 text-sm text-center">Guia personalizado de boas práticas para o GitHub Copilot</div>
+    </h6>
+    <div class="text-center mb-2">Guia personalizado de boas práticas para o GitHub Copilot</div>
 
     <!-- snippet-code -->
-    <div class="snippet-code position-relative" style="max-height: 540px; overflow-y: auto;">
+    <div class="snippet-code position-relative">
 <pre><code class="language-md" id="snippet-copilot-instructions">---
 applyTo: '**'
 ---
@@ -85,66 +82,6 @@ applyTo: '**'
 </code></pre>
     </div>
     <!-- /snippet-code -->
+
   </div>
 </div>
-
-<!-- como adicionar instruções personalizadas de contexto ao GitHub Copilot no VS Code (não apenas anexar arquivos).
-
-Essas “instruções” são uma forma de você personalizar o comportamento do Copilot Chat, informando suas preferências, 
-estilo de código, frameworks usados, linguagem, contexto do projeto, etc.
-
-só uma pergunta, não modifique nada do meu código, hoje você criou um arquivo de instruções pra mim...
-porque chamou de copilot-instructions.md e porque colocou ele na pasta .github e não na subpasta dentro de 
-.github/instructions?
-
-Ótima pergunta! O nome copilot-instructions.md e a localização em .github seguem a recomendação oficial da 
-Microsoft para instruções de IA no contexto do GitHub Copilot e agentes similares. O arquivo nessa raiz é 
-automaticamente reconhecido por ferramentas e integrações de IA, servindo como referência global para o repositório.
-
-Se você preferir, pode mover para instructions para organização interna, mas algumas ferramentas podem não 
-detectar instruções personalizadas fora da raiz .github. O padrão mais amplamente suportado é copilot-instructions.md
-
-no exemplo que citei acima, a pasta .github está dentro de uma pasta sincronizada com um repositório remoto...
-mas e se eu quisesse que ficasse global no vscode em geral como os snippets tem aquela pasta específica?
-
-Ótima dúvida! Arquivos como copilot-instructions.md são específicos de cada repositório e não existe, atualmente, um 
-local global no VS Code para instruções de IA que afete todos os projetos, como acontece com snippets em 
-AppData/Roaming/Code/User/snippets.
-
-Snippets são globais porque o VS Code lê aquela pasta para todos os projetos, mas instruções para IA (Copilot, etc.) 
-são lidas apenas do repositório atual, geralmente na pasta .github.
-
-Se quiser um comportamento global para instruções de IA, teria que replicar manualmente o arquivo em cada repositório, 
-pois não há suporte nativo para um diretório global de instruções como há para snippets. Se surgir esse recurso no 
-futuro, será documentado nas docs oficiais do VS Code/Copilot.
-
-#####################################################################################################################
-
-Instruções no .github e Visual Studio Code
-As instruções armazenadas na pasta .github não são automaticamente carregadas pelo VS Code quando você abre o projeto. 
-Existem dois cenários comuns:
-
-Para GitHub Copilot
-Para o GitHub Copilot:
-
-As instruções em copilot-instructions.md são carregadas automaticamente quando o Copilot é ativado no projeto
-As instruções específicas de codificação em coding.instructions.md com o formato que você está usando (com applyTo: '**') 
-também são carregadas automaticamente pelo Copilot
-
-Para outros casos no VS Code
-Para outros casos no VS Code (sem Copilot):
-
-Você precisaria adicionar contexto manualmente ou usar extensões específicas
-O VS Code não lê automaticamente arquivos instructions para aplicar regras de codificação
-Você pode usar o .editorconfig para algumas configurações de estilo de código que o VS Code reconhece automaticamente
-Se quiser que as regras sejam aplicadas automaticamente por todos os desenvolvedores, considere:
-
-Usar .editorconfig para regras de formatação
-Configurar linters/formatadores como ESLint, PHP_CodeSniffer, etc.
-Configurar hooks de pre-commit com Husky ou similares
-No seu caso específico, a instrução de usar # em vez de  para comentários PHP está sendo carregada automaticamente 
-pelo Copilot, mas não seria aplicada automaticamente para outros desenvolvedores sem Copilot.
-
-
-https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions
- -->
