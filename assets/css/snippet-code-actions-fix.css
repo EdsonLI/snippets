@@ -1,0 +1,76 @@
+/* 
+ * Correção para o posicionamento dos botões de ação nos snippets de código
+ * Ajusta o alinhamento e centralização dos ícones
+ */
+
+/* Reposiciona a div de ações dos snippets */
+.snippet-code {
+  position: relative !important; /* Garante posicionamento relativo para os elementos absolutos internos */
+}
+
+.snippet-code-actions {
+  position: absolute !important;
+  top: 5px !important; /* Próximo à margem superior */
+  right: 5px !important; /* Próximo à margem direita */
+  display: flex !important;
+  gap: 4px !important;
+  z-index: 10 !important;
+  background-color: rgba(40, 44, 52, 0.7) !important; /* Fundo semi-transparente para melhor legibilidade */
+  border-radius: 4px !important;
+  padding: 2px !important;
+}
+
+/* Centraliza os ícones verticalmente dentro dos botões */
+.snippet-code-actions .btn-xs {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  padding: 0.2rem 0.3rem !important;
+  height: 24px !important; /* Altura fixa para garantir consistência */
+  width: 24px !important; /* Largura fixa para garantir consistência */
+  background-color: rgba(23, 25, 35, 0.8) !important; /* Fundo dos botões mais escuro */
+  border: 1px solid rgba(86, 156, 214, 0.7) !important; /* Borda azul mais discreta */
+}
+
+/* Ajusta o alinhamento vertical dos ícones dentro dos botões */
+.snippet-code-actions .btn iconify-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  margin: 0 !important;
+  position: relative !important;
+  top: 0 !important; /* Remove qualquer deslocamento para cima */
+  transform: none !important; /* Remove transforms que afetam o posicionamento */
+  height: 16px !important; /* Altura fixa do ícone */
+  width: 16px !important; /* Largura fixa do ícone */
+}
+
+/* Para casos de snippets com múltiplos exemplos */
+.multi-snippet-container .snippet-code-actions {
+  top: 5px !important; /* Mesma distância do topo */
+  right: 5px !important; /* Mesma distância da direita */
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 767.98px) {
+  .snippet-code-actions {
+    top: 3px !important;
+    right: 3px !important;
+  }
+  
+  /* Reduz ligeiramente o tamanho em dispositivos muito pequenos */
+  @media (max-width: 375px) {
+    .snippet-code-actions .btn-xs {
+      height: 22px !important;
+      width: 22px !important;
+    }
+  }
+}
+
+/* Garantir que os ícones sempre apareçam sobre outros elementos */
+.snippet-code-actions {
+  z-index: 1000 !important;
+}
