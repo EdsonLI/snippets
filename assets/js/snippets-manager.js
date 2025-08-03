@@ -235,10 +235,14 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Criar novo filtro se não existir
       if (!filterExists) {
-        // Verificar se o folder deve ser todo maiúsculo
+        // Verificar formatação específica para cada pasta
         let displayName;
-        if (['ai', 'css', 'php', 'sql'].includes(folder.toLowerCase())) {
-          displayName = folder.toUpperCase(); // Tudo maiúsculo para AI, CSS, PHP, SQL
+        if (folder.toLowerCase() === 'git') {
+          displayName = 'git'; // Minúsculas para git
+        } else if (folder.toLowerCase() === 'ai' || folder.toLowerCase() === 'ia') {
+          displayName = 'IA'; // Maiúsculas para IA
+        } else if (['css', 'php', 'sql'].includes(folder.toLowerCase())) {
+          displayName = folder.toUpperCase(); // Tudo maiúsculo para CSS, PHP, SQL
         } else {
           displayName = folder.charAt(0).toUpperCase() + folder.slice(1); // Capitalizar para os outros
         }
