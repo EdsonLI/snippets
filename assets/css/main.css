@@ -3322,22 +3322,21 @@ pre[class*="language-"] {
 }
 
 /* O grupo dos botões flutuantes */
-.snippet-actions-float {
+/* .snippet-actions-float {
   position: sticky !important;
   top: 2px !important;
   right: 0.4rem;
   left: auto;
   z-index: 10;
-  margin-left: auto; /* empurra para direita */
-  margin-right: 0.4rem; /* distância da borda direita */
+  margin-left: auto;
+  margin-right: 0.4rem;
   display: flex;
   gap: 0.3em;
-  /* background: rgba(34,34,34,0.85); */
   background: transparent !important;
   border-radius: .5em;
   padding: .25em .4em;
-  box-shadow: 0px 2px 5px 0px #0002; /* opcional */
-}
+  box-shadow: 0px 2px 5px 0px #0002;
+} */
 
 pre {
   background-color: transparent !important;

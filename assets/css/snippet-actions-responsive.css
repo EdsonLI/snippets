@@ -4,19 +4,19 @@
  */
 
 /* Regra base para todos os dispositivos */
-.snippet-actions-float {
+/* .snippet-actions-float {
   position: absolute !important;
-  top: 2px !important; /* Distância reduzida do topo */
-  right: 5px !important; /* Distância fixa da direita */
-  transform: none !important; /* Remove qualquer transform que possa afetar o posicionamento */
+  top: 2px !important;
+  right: 5px !important;
+  transform: none !important;
   padding: 0 !important;
   margin: 0 !important;
   height: auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: flex-end !important;
-  z-index: 100 !important; /* Garante que fique acima de outros elementos */
-}
+  z-index: 100 !important;
+} */
 
 /* Para dispositivos móveis */
 @media (max-width: 767.98px) {

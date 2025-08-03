@@ -39,7 +39,7 @@ a[data-snippet-external-link] iconify-icon {
 }
 
 /* Alinhamento global */
-.snippet-actions-float {
+/* .snippet-actions-float {
   display: flex !important;
   align-items: center !important;
-}
+} */
