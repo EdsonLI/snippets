@@ -1,53 +1,54 @@
 /**
- * Correções para os botões de cópia de código nos snippets Git
+ * Correções DIRETAS para os botões de cópia de código nos snippets Git
  * Resolve problemas de alinhamento dos botões e dos ícones
  */
 
-/* Corrige o posicionamento dos containers de código */
-.git-pre-code {
-  position: relative;
-  padding-right: 2.2rem; /* Espaço para o botão */
-  margin-bottom: 0.25rem;
-}
-
-/* Ajusta a posição relativa dos containers */
-.position-relative {
-  position: relative !important;
-  margin-bottom: 0.5rem;
-}
-
-/* Reposiciona todos os botões de cópia */
-.position-relative .btn-custom {
+/* SOLUÇÃO DIRETA: Força posicionamento absoluto dos botões */
+.filter-git .position-absolute.top-0.end-0.m-1 {
+  top: 5px !important;
+  right: 5px !important;
   position: absolute !important;
-  top: 0.25rem !important;
-  right: 0.25rem !important;
   margin: 0 !important;
-  padding: 0.15rem 0.3rem !important;
-  z-index: 5;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: 1.5rem;
-  width: 1.5rem;
+  padding: 2px 6px !important;
+  z-index: 99 !important;
 }
 
-/* Alinhamento vertical do ícone dentro do botão */
-.btn-custom iconify-icon {
-  display: flex !important;
+/* SOLUÇÃO DIRETA: Aumento de especificidade para garantir que o posicionamento funcione */
+.filter-git .portfolio-content .position-relative {
+  position: relative !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* SOLUÇÃO DIRETA: Prepara o pre para posicionar o botão */
+.filter-git .position-relative pre {
+  position: relative !important;
+  padding-right: 35px !important;  /* Espaço à direita para o botão */
+  margin-bottom: 0 !important;
+}
+
+/* SOLUÇÃO DIRETA: Centralização forçada do ícone no botão */
+.filter-git .btn-custom iconify-icon {
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   vertical-align: middle !important;
   margin: auto !important;
+  width: 14px !important;
+  height: 14px !important;
+  line-height: 1 !important;
 }
 
-/* Ajusta os botões em dispositivos móveis */
+/* Torna o pré-código bonito */
+.filter-git .git-pre-code {
+  border-radius: 4px !important;
+  margin-top: 3px !important;
+}
+
+/* Garante espaço para os botões em dispositivos móveis */
 @media (max-width: 576px) {
-  .git-pre-code {
-    padding-right: 2.5rem;
-  }
-  
-  .position-relative .btn-custom {
-    height: 1.6rem;
-    width: 1.6rem;
+  .filter-git .position-absolute.top-0.end-0.m-1 {
+    padding: 3px 7px !important;
   }
 }
