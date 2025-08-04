@@ -25,8 +25,9 @@
     
     // Método 2: Aplicar estilos diretamente via JavaScript como fallback
     const applyInlineStyles = () => {
-        // Estilos CSS para corrigir os ícones
+        // Estilos CSS para corrigir os ícones e posicionamento dos botões
         const cssRules = `
+            /* Alinhamento dos ícones nos botões */
             .filter-git .btn-xs iconify-icon,
             .portfolio-item.filter-git .btn-custom iconify-icon {
                 position: static !important;
@@ -42,6 +43,7 @@
                 height: 14px !important;
             }
             
+            /* Container dos botões */
             .filter-git .btn-xs,
             .portfolio-item.filter-git .btn-custom {
                 display: inline-flex !important;
@@ -50,6 +52,32 @@
                 padding: 0.15rem 0.3rem !important;
                 line-height: 1 !important;
                 height: auto !important;
+            }
+            
+            /* Posicionamento dos botões */
+            .filter-git .position-relative {
+                position: relative !important;
+                padding-top: 1.75rem !important; /* Espaço superior para o botão */
+            }
+            
+            .filter-git .position-relative .btn-custom.position-absolute {
+                top: 0 !important;
+                right: 0 !important;
+                margin: 0 !important;
+                z-index: 10 !important;
+            }
+            
+            /* Estilização do pre para criar espaço visual para o botão */
+            .filter-git .git-pre-code {
+                border-top-right-radius: 0 !important;
+                margin-top: 0 !important;
+                position: relative !important;
+            }
+            
+            /* Alinha o botão com o canto do bloco de código */
+            .filter-git pre {
+                margin-right: 0 !important;
+                border-top-right-radius: 0 !important;
             }
         `;
         

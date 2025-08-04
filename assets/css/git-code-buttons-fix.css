@@ -55,3 +55,62 @@
   left: auto !important;
   transform: none !important;
 }
+
+/* Posicionamento dos botões para dar a aparência de estarem dentro do bloco de código */
+.filter-git .position-relative {
+  position: relative !important;
+  padding-top: 0 !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Botão posicionado para parecer que faz parte do bloco de código */
+.filter-git .position-relative .btn-custom.position-absolute,
+.portfolio-item.filter-git .position-relative .btn-custom.position-absolute {
+  top: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
+  z-index: 10 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  height: 24px !important;
+  width: 24px !important;
+  padding: 2px !important;
+  background-color: #2c2c2c !important; /* Cor escura que combina com o fundo do código */
+  border: none !important;              /* Remove borda para integração visual */
+  box-shadow: none !important;          /* Remove sombras */
+  outline: none !important;             /* Remove outline */
+}
+
+/* Ajustes no bloco de código para integrar visualmente o botão */
+.filter-git .git-pre-code,
+.filter-git pre {
+  margin-top: 0 !important;
+  border-top-right-radius: 0 !important;
+  position: relative !important;
+  padding-top: 0 !important;
+  padding-right: 28px !important; /* Espaço à direita para o botão não sobrepor o código */
+  border: 1px solid #495057 !important;
+  overflow: hidden !important;
+}
+
+/* Garante que o código dentro do pre tenha o espaçamento correto */
+.filter-git .git-pre-code code {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Hover e efeitos do botão */
+.filter-git .position-relative .btn-custom.position-absolute:hover,
+.portfolio-item.filter-git .position-relative .btn-custom.position-absolute:hover {
+  background-color: #0dcaf0 !important;
+  color: #212529 !important;
+  border-color: #0dcaf0 !important;
+}
+
+/* Correções específicas para botões em snippets git */
+.filter-git .position-relative .btn-xs.btn-outline-info.btn-custom {
+  font-size: 0.65rem !important;
+  line-height: 1 !important;
+}
