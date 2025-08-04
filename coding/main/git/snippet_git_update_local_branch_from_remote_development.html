@@ -174,42 +174,6 @@ git pull origin development</code></pre>
         botao.onclick = function() {
           copiarCodigoParaClipboard(this);
         };
-        
-        // CORREÇÃO DIRETA: Forçar estilos corretos inline para os botões
-        botao.style.position = 'absolute';
-        botao.style.top = '4px';
-        botao.style.right = '4px';
-        botao.style.margin = '0';
-        botao.style.padding = '2px 6px';
-        botao.style.zIndex = '99';
-        botao.style.display = 'flex';
-        botao.style.alignItems = 'center';
-        botao.style.justifyContent = 'center';
-        
-        // Corrigir o ícone
-        const icon = botao.querySelector('iconify-icon');
-        if (icon) {
-          icon.style.display = 'flex';
-          icon.style.alignItems = 'center';
-          icon.style.justifyContent = 'center';
-          icon.style.margin = 'auto';
-          icon.style.verticalAlign = 'middle';
-        }
-        
-        // Garantir que o container é relative
-        const parentDiv = botao.closest('.position-relative');
-        if (parentDiv) {
-          parentDiv.style.position = 'relative';
-          parentDiv.style.display = 'block';
-          
-          // Ajustar o pre-code para ter espaço para o botão
-          const pre = parentDiv.querySelector('pre');
-          if (pre) {
-            pre.style.position = 'relative';
-            pre.style.paddingRight = '30px';
-            pre.style.marginBottom = '0';
-          }
-        }
       });
     });
   </script>

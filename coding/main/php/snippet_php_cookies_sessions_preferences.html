@@ -16,9 +16,7 @@
 <!-- snippet-code -->
 <div class="snippet-code position-relative" style="max-height: 500px; overflow: auto;">
 <pre>
-<code class="language-php" code-id="snippet-php-cookies-sessions">
-&lt;?php
-  session_start();
+<code class="language-php" code-id="snippet-php-cookies-sessions">  session_start();
 
   # Aceite de cookies recebido via POST
   if (isset($_POST['aceitar'])) {
@@ -34,7 +32,6 @@
   if (isset($_SESSION['tema'])) {
       echo "Sessão tema: " . $_SESSION['tema'] . "&lt;br&gt;";
   }
-?&gt;
 
 &lt;!-- Mostrar aviso se cookie ainda não aceito --&gt;
 &lt;?php if (!isset($_COOKIE['aceite_cookie'])): ?&gt;
