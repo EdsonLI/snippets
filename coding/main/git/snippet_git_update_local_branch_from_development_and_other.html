@@ -1,0 +1,93 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-git">git</span>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet_git_integrate_other_branches">
+          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://git-scm.com/docs" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </h6>
+    <div class="text-center mb-2">
+      Integrar funcionalidades de outras branches e manter-se atualizado com a development
+    </div>
+    <div class="snippet-code position-relative px-2">
+      <div class="mt-2 small">
+      
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Cenário</strong></h6>
+          <p class="mb-2">Você precisa:</p>
+          <ul>
+            <li>Manter sua branch <code>feature/edson-ajustes</code> atualizada com a branch base <code>development</code></li>
+            <li>Trazer o código da branch <code>feature/pedro-nova-funcionalidade</code> para testar ou integrar</li>
+          </ul>
+        </div>
+        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Passo 1: Atualizar sua branch com development</strong></h6>
+          <div class="position-relative">
+            <pre class="git-pre-code"><code class="language-bash">  git switch development
+  git fetch origin
+  git pull
+  git switch feature/edson-ajustes
+  git rebase origin/development</code></pre>
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+          </div>
+          <div class="small mt-1">
+            Isso garante que a sua branch está atualizada com tudo que foi integrado na development.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Passo 2: Integrar o código da branch de outro dev</strong></h6>
+          <p class="mb-2">Você tem duas opções:</p>
+          
+          <div class="mb-2">
+            <strong>Opção 1: Rebase da branch do outro dev (histórico linear)</strong>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">  git switch feature/edson-ajustes
+  git fetch origin
+  git rebase origin/feature/pedro-nova-funcionalidade</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+            <div class="small text-info mt-1">
+              Útil quando você precisa das alterações como base para seu trabalho.
+            </div>
+          </div>
+          
+          <div class="mb-2">
+            <strong>Opção 2: Merge da branch do outro dev (preserva histórico)</strong>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">  git switch feature/edson-ajustes
+  git fetch origin
+  git merge origin/feature/pedro-nova-funcionalidade</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+            <div class="small text-info mt-1">
+              Mantém o histórico de que você trouxe os commits dele, mais explícito e seguro para testes.
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-3">
+          <p><strong>Resumo:</strong></p>
+          <ul>
+            <li>Rebase com development → manter base atualizada</li>
+            <li>Trazer o que outro dev fez (via rebase, merge ou cherry-pick) → integrar dependências específicas</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
