@@ -1,0 +1,57 @@
+/* 
+ * Correção específica para alinhamento vertical dos ícones nos botões dos snippets Git
+ * Este arquivo sobrescreve configurações anteriores que estão desalinhando os ícones
+ */
+
+/* Correção principal para todos os botões em snippets Git */
+.filter-git .btn iconify-icon,
+.portfolio-item.filter-git .btn-custom iconify-icon,
+.filter-git .btn-xs iconify-icon {
+  /* Reset de propriedades problemáticas */
+  position: static !important; 
+  top: auto !important;        
+  left: auto !important;      
+  transform: none !important;  
+  
+  /* Novo alinhamento vertical apropriado */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  margin: 0 !important;
+  
+  /* Garante que as dimensões são exatas */
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Garante que os botões contêm os ícones corretamente */
+.filter-git .btn,
+.portfolio-item.filter-git .btn-custom,
+.filter-git .btn-xs {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0.15rem 0.3rem !important;
+  line-height: 1 !important;
+  height: auto !important;
+  vertical-align: middle !important;
+}
+
+/* Ajuste específico para os botões de cópia de código */
+.filter-git .position-relative .btn-custom iconify-icon,
+.portfolio-item.filter-git .position-absolute .btn-custom iconify-icon {
+  vertical-align: middle !important;
+  margin: 0 auto !important;
+  line-height: 1 !important;
+}
+
+/* Garante que o botão não desloca durante hover/focus */
+.filter-git .btn:hover iconify-icon,
+.filter-git .btn:focus iconify-icon,
+.filter-git .btn:active iconify-icon {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+}
