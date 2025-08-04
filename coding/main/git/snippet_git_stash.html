@@ -75,18 +75,22 @@
         
         <div class="mb-3">
           <h6 class="mb-2"><strong>Exemplo de uso combinado</strong></h6>
-          <p>Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>
+          <p class="mb-2">Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>
           
-          <div class="position-relative">
-            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-5">
-              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-            </button>
-            <pre class="git-pre-code"><code id="gul-step-5" class="language-bash">git stash               # guarda as alterações
+          <ul>
+            <li>
+              <div class="position-relative">
+                <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-5">
+                  <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+                </button>
+                <pre class="git-pre-code"><code id="gul-step-5" class="language-bash">git stash               # guarda as alterações
 git checkout branch-b   # muda de branch
 # faz algo na branch-b
 git checkout branch-a   # volta
 git stash pop           # recupera as alterações</code></pre>
-          </div>
+              </div>
+            </li>
+          </ul>
         </div>
         
         <div class="mt-3">
