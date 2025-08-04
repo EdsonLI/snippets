@@ -85,4 +85,3 @@ $(document).ready(function() {
     setTimeout(fixAllCodeButtons, 200);
   });
 });
-});
