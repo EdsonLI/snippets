@@ -301,23 +301,7 @@
   <script src="assets/js/main.js"></script>
   <script>
     $(document).ready(function() {
-      // Copiar código
-      $('.copy-btn').on('click', function() {
-        const $btn = $(this);
-        const targetId = $btn.attr('data-target');
-        const $codeBlock = $('#' + targetId);
-        if ($codeBlock.length) {
-          const text = $codeBlock.text().trim();
-          navigator.clipboard.writeText(text).then(function() {
-            $btn.addClass('copied');
-            $btn.html('<i class="fa-solid fa-check"></i> Copiado!');
-            setTimeout(function() {
-              $btn.removeClass('copied');
-              $btn.html('<iconify-icon icon="mdi:content-copy"></iconify-icon>');
-            }, 1200);
-          });
-        }
-      });
+      // Inicialização de botões de cópia é feita pelo copy-buttons-manager.js
 
       // Theme toggle logic - Convertido para jQuery
       const $themeBtn = $('#theme-toggle');

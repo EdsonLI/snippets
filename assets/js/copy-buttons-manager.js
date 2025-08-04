@@ -33,8 +33,8 @@ function setupCopyButtons(options = {}) {
     });
   }
   
-  // 2. Configurar botões de cópia
-  $('.btn-custom[data-target]').each(function() {
+  // 2. Configurar botões de cópia - seletor mais abrangente para pegar todos os botões
+  $('button[data-target], .btn-custom[data-target], .copy-btn[data-target]').each(function() {
     const $button = $(this);
     
     // Pular se já inicializado e a opção checkInit estiver ativada
@@ -48,9 +48,10 @@ function setupCopyButtons(options = {}) {
     // Remover handlers existentes para evitar duplicação
     $button.off('click.copySnippet');
     
-    // Adicionar evento de clique
+    // Adicionar evento de clique (CORRIGIDO: usando variável local $thisButton)
     $button.on('click.copySnippet', function() {
-      const targetId = $button.attr('data-target');
+      const $thisButton = $(this); // Corrigido: use o contexto correto do botão clicado
+      const targetId = $thisButton.attr('data-target');
       const $codeBlock = $('#' + targetId);
 
       if ($codeBlock.length) {
@@ -59,7 +60,7 @@ function setupCopyButtons(options = {}) {
         navigator.clipboard.writeText(text)
           .then(function() {
             // Feedback visual
-            const $icon = $button.find('iconify-icon');
+            const $icon = $thisButton.find('iconify-icon');
             if ($icon.length) {
               // Salvar ícone original se a opção estiver ativada
               const originalIcon = settings.saveOriginalIcon 
@@ -94,11 +95,16 @@ window.setupCopyButtons = setupCopyButtons;
 
 // Inicializar automaticamente quando o documento estiver pronto
 $(document).ready(function() {
+  console.log('copy-buttons-manager.js - Document ready');
+  console.log('Botões encontrados:', $('button[data-target], .btn-custom[data-target], .copy-btn[data-target]').length);
+  
   // Chamada inicial
   setupCopyButtons();
   
   // Também chamar quando a página estiver totalmente carregada (imagens, etc.)
   $(window).on('load', function() {
+    console.log('copy-buttons-manager.js - Window loaded');
+    console.log('Botões encontrados após carregamento:', $('button[data-target], .btn-custom[data-target], .copy-btn[data-target]').length);
     setupCopyButtons({ checkInit: true });
   });
 });

@@ -3,7 +3,7 @@
     <h6 class="text-center">
       <span class="id-tech-copilot">Copilot Instructions</span>
       <div class="snippet-actions-float d-flex align-items-center gap-1">
-        <button class="btn btn-xs btn-outline-info btn-custom copy-instructions-btn" data-target-container="snippet-copilot-instructions">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-instructions">
           <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
         </button>
         <a href="https://code.visualstudio.com/docs/copilot/copilot-customization#_custom-instructions" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link title="Documentação Oficial">
@@ -17,77 +17,60 @@
     <div class="text-center mb-2">Meu 'instructions' de boas práticas para o GitHub Copilot</div>
 
     <!-- snippet-code -->
-    <div class="snippet-code position-relative bg-dark p-3 rounded" id="snippet-copilot-instructions">
-      <div class="mb-3 text-muted">
-        ---<br>
-        applyTo: '**'<br>
-        ---
-      </div>
+    <div class="snippet-code position-relative">
+<pre><code class="language-html" id="snippet-copilot-instructions">---
+applyTo: '**'
+---
 
-      <h4 class="text-info fw-bold">Orientações gerais de codificação</h4>
-      <ul class="text-light mb-4">
-        <li>Use o padrão PSR-12 para formatação e K&R para chaves (<code class="text-warning">{}</code>).</li>
-        <li>Use nomes claros e autoexplicativos, evitando abreviações desnecessárias.</li>
-        <li>Escreva código coeso, com responsabilidade única por classe (SRP).</li>
-        <li>Siga os princípios SOLID e Clean Code.</li>
-        <li>Evite código duplicado, condições aninhadas profundas e efeitos colaterais.</li>
-        <li>Prefira retornos antecipados (early return) sempre que aplicável.</li>
-        <li>Use tipagem explícita e funções puras.</li>
-      </ul>
+## Orientações gerais de codificação
+- Use o padrão PSR-12 para formatação e K&R para chaves (`{}`).
+- Use nomes claros e autoexplicativos, evitando abreviações desnecessárias.
+- Escreva código coeso, com responsabilidade única por classe (SRP).
+- Siga os princípios SOLID e Clean Code.
+- Evite código duplicado, condições aninhadas profundas e efeitos colaterais.
+- Prefira retornos antecipados (early return) sempre que aplicável.
+- Use tipagem explícita e funções puras.
 
-      <h4 class="text-info fw-bold">Organização do código</h4>
-      <ul class="text-light mb-4">
-        <li>Agrupe funções e métodos com responsabilidades similares.</li>
-        <li>Separe claramente lógica de negócio, apresentação e dados.</li>
-        <li>Use estrutura em camadas: Controllers, Services, Repositories, etc.</li>
-        <li>Evite lógica de banco nos controladores.</li>
-      </ul>
+## Organização do código
+- Agrupe funções e métodos com responsabilidades similares.
+- Separe claramente lógica de negócio, apresentação e dados.
+- Use estrutura em camadas: Controllers, Services, Repositories, etc.
+- Evite lógica de banco nos controladores.
 
-      <h4 class="text-info fw-bold">Orientação a Objetos (OOP)</h4>
-      <ul class="text-light mb-4">
-        <li>Prefira composição a herança.</li>
-        <li>Use injeção de dependência via construtor.</li>
-        <li>Mantenha classes pequenas e coesas.</li>
-        <li>Evite "God objects".</li>
-        <li>Use readonly e enum (PHP 8.1+).</li>
-      </ul>
+## Orientação a Objetos (OOP)
+- Prefira composição a herança.
+- Use injeção de dependência via construtor.
+- Mantenha classes pequenas e coesas.
+- Evite "God objects".
+- Use readonly e enum (PHP 8.1+).
 
-      <h4 class="text-info fw-bold">Backend / APIs</h4>
-      <ul class="text-light mb-4">
-        <li>Siga padrão RESTful (GET, POST, PUT, DELETE).</li>
-        <li>Valide dados antes de processar.</li>
-        <li>Retorne JSON estruturado com status code adequado.</li>
-        <li>Use DTOs para entrada e saída.</li>
-      </ul>
+## Backend / APIs
+- Siga padrão RESTful (GET, POST, PUT, DELETE).
+- Valide dados antes de processar.
+- Retorne JSON estruturado com status code adequado.
+- Use DTOs para entrada e saída.
 
-      <h4 class="text-info fw-bold">Testabilidade</h4>
-      <ul class="text-light mb-4">
-        <li>Prefira funções puras e baixo acoplamento.</li>
-        <li>Use injeção ou fábricas, evite new direto.</li>
-        <li>Não dependa diretamente de $_POST, $_GET, etc.</li>
-      </ul>
+## Testabilidade
+- Prefira funções puras e baixo acoplamento.
+- Use injeção ou fábricas, evite new direto.
+- Não dependa diretamente de $_POST, $_GET, etc.
 
-      <h4 class="text-info fw-bold">Segurança</h4>
-      <ul class="text-light mb-4">
-        <li>Nunca exponha exceções ao usuário.</li>
-        <li>Não armazene senhas em texto puro.</li>
-        <li>Sanitize saídas com htmlspecialchars.</li>
-        <li>Use prepared statements.</li>
-        <li>Nunca registre dados sensíveis em logs.</li>
-      </ul>
+## Segurança
+- Nunca exponha exceções ao usuário.
+- Não armazene senhas em texto puro.
+- Sanitize saídas com htmlspecialchars.
+- Use prepared statements.
+- Nunca registre dados sensíveis em logs.
 
-      <h4 class="text-info fw-bold">Projeto e dependências</h4>
-      <ul class="text-light mb-4">
-        <li>Use PSR-4 e organize bem o composer.json.</li>
-        <li>Prefira pacotes bem mantidos e versionados.</li>
-        <li>Versione o composer.lock.</li>
-      </ul>
+## Projeto e dependências
+- Use PSR-4 e organize bem o composer.json.
+- Prefira pacotes bem mantidos e versionados.
+- Versione o composer.lock.
 
-      <h4 class="text-info fw-bold">Convenções adicionais</h4>
-      <ul class="text-light mb-4">
-        <li>Use match em vez de if/elseif longos.</li>
-        <li>Capture exceções específicas.</li>
-      </ul>
+## Convenções adicionais
+- Use match em vez de if/elseif longos.
+- Capture exceções específicas.
+</code></pre>
     </div>
     <!-- /snippet-code -->
 
