@@ -1,101 +1,169 @@
 /**
- * Script para carregar e aplicar o CSS de correção dos botões em snippets Git
+ * Script para corrigir o posicionamento dos botões nos snippets Git
+ * Versão 2.0 - Totalmente reescrita para garantir posicionamento correto
  */
 (function() {
-    // Método 1: Tentar carregar o arquivo CSS
-    const loadExternalCSS = () => {
-        try {
-            if (!document.querySelector('link[href*="git-code-buttons-fix.css"]')) {
-                // Cria elemento link para o CSS
-                const linkElement = document.createElement('link');
-                linkElement.rel = 'stylesheet';
-                linkElement.type = 'text/css';
-                
-                // Tentamos os dois caminhos possíveis para garantir
-                const baseUrl = window.location.pathname.includes('/snippets/') ? '' : 'snippets/';
-                linkElement.href = baseUrl + 'assets/css/git-code-buttons-fix.css';
-                
-                linkElement.setAttribute('data-priority', 'high');
-                document.head.appendChild(linkElement);
-            }
-        } catch (e) {
-            console.warn('Falha ao carregar CSS externo:', e);
+    // Manipulação direta do DOM para garantir o posicionamento correto
+    function fixGitButtons() {
+        // Encontrar todos os botões de cópia de código em snippets Git
+        const gitCopyButtons = document.querySelectorAll('.filter-git .position-relative .btn-custom.position-absolute');
+        
+        if (gitCopyButtons.length === 0) {
+            console.log('Nenhum botão de Git encontrado para corrigir.');
+            // Tentar novamente em 500ms (pode ser que o DOM ainda esteja carregando)
+            setTimeout(fixGitButtons, 500);
+            return;
         }
-    };
-    
-    // Método 2: Aplicar estilos diretamente via JavaScript como fallback
-    const applyInlineStyles = () => {
-        // Estilos CSS para corrigir os ícones e posicionamento dos botões
-        const cssRules = `
-            /* Alinhamento dos ícones nos botões */
-            .filter-git .btn-xs iconify-icon,
-            .portfolio-item.filter-git .btn-custom iconify-icon {
-                position: static !important;
-                top: auto !important;
-                left: auto !important;
-                transform: none !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                vertical-align: middle !important;
-                margin: 0 !important;
-                width: 14px !important;
-                height: 14px !important;
+        
+        console.log(`Corrigindo ${gitCopyButtons.length} botões de Git...`);
+        
+        // Aplicar correções para cada botão
+        gitCopyButtons.forEach(button => {
+            // Remover todas as margens
+            button.style.margin = '0';
+            
+            // Garantir posicionamento absoluto correto
+            button.style.position = 'absolute';
+            button.style.top = '1px';
+            button.style.right = '1px';
+            button.style.zIndex = '999';
+            
+            // Estilização visual do botão
+            button.style.width = '24px';
+            button.style.height = '24px';
+            button.style.display = 'flex';
+            button.style.alignItems = 'center';
+            button.style.justifyContent = 'center';
+            button.style.padding = '0';
+            button.style.backgroundColor = '#212529';
+            button.style.color = '#0dcaf0';
+            button.style.border = '1px solid #495057';
+            button.style.borderRight = 'none';
+            button.style.borderBottom = 'none';
+            button.style.borderTopLeftRadius = '3px';
+            button.style.borderTopRightRadius = '0';
+            button.style.borderBottomRightRadius = '0';
+            button.style.borderBottomLeftRadius = '0';
+            
+            // Corrigir o ícone dentro do botão
+            const icon = button.querySelector('iconify-icon');
+            if (icon) {
+                icon.style.width = '16px';
+                icon.style.height = '16px';
+                icon.style.display = 'flex';
+                icon.style.alignItems = 'center';
+                icon.style.justifyContent = 'center';
+                icon.style.margin = '0';
+                icon.style.padding = '0';
+                icon.style.position = 'static';
+                icon.style.transform = 'none';
             }
             
-            /* Container dos botões */
-            .filter-git .btn-xs,
-            .portfolio-item.filter-git .btn-custom {
-                display: inline-flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                padding: 0.15rem 0.3rem !important;
-                line-height: 1 !important;
-                height: auto !important;
+            // Ajustar o bloco de código pai
+            const parentDiv = button.closest('.position-relative');
+            if (parentDiv) {
+                const preElement = parentDiv.querySelector('pre');
+                if (preElement) {
+                    preElement.style.paddingTop = '0.5rem';
+                    preElement.style.paddingRight = '30px';
+                    preElement.style.marginTop = '0';
+                    preElement.style.border = '1px solid #495057';
+                    preElement.style.borderRadius = '0.25rem';
+                    preElement.style.position = 'relative';
+                }
             }
-            
-            /* Posicionamento dos botões */
-            .filter-git .position-relative {
-                position: relative !important;
-                padding-top: 1.75rem !important; /* Espaço superior para o botão */
-            }
-            
+        });
+        
+        // Adicionar CSS global para garantir comportamento consistente
+        const globalCSS = `
             .filter-git .position-relative .btn-custom.position-absolute {
-                top: 0 !important;
-                right: 0 !important;
                 margin: 0 !important;
-                z-index: 10 !important;
+                top: 1px !important;
+                right: 1px !important;
+                width: 24px !important;
+                height: 24px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0 !important;
+                z-index: 999 !important;
+                background-color: #212529 !important;
+                color: #0dcaf0 !important;
+                border: 1px solid #495057 !important;
+                border-right: none !important;
+                border-bottom: none !important;
+                border-top-left-radius: 3px !important;
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
             }
             
-            /* Estilização do pre para criar espaço visual para o botão */
-            .filter-git .git-pre-code {
-                border-top-right-radius: 0 !important;
+            .filter-git .position-relative .btn-custom.position-absolute iconify-icon {
+                width: 16px !important;
+                height: 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                position: static !important;
+                transform: none !important;
+            }
+            
+            .filter-git .position-relative .btn-custom.position-absolute:hover {
+                background-color: #0dcaf0 !important;
+                color: #212529 !important;
+            }
+            
+            .filter-git .position-relative .btn-custom.position-absolute:hover iconify-icon {
+                color: #212529 !important;
+            }
+            
+            .filter-git .position-relative pre.git-pre-code {
+                padding-right: 30px !important;
                 margin-top: 0 !important;
-                position: relative !important;
             }
             
-            /* Alinha o botão com o canto do bloco de código */
-            .filter-git pre {
-                margin-right: 0 !important;
-                border-top-right-radius: 0 !important;
+            /* Desativar completamente a classe m-1 nos botões de Git */
+            .filter-git .btn-custom.position-absolute.m-1 {
+                margin: 0 !important;
             }
         `;
         
-        // Cria e adiciona o elemento style
         const styleElement = document.createElement('style');
         styleElement.type = 'text/css';
-        styleElement.appendChild(document.createTextNode(cssRules));
+        styleElement.appendChild(document.createTextNode(globalCSS));
         document.head.appendChild(styleElement);
-    };
+        
+        console.log('Correção para botões Git aplicada com sucesso!');
+    }
     
-    // Tenta os dois métodos para garantir que um deles funcione
-    loadExternalCSS();
-    applyInlineStyles();
+    // Executar imediatamente
+    fixGitButtons();
     
-    // Adiciona uma classe especial para identificação
-    document.querySelectorAll('.filter-git .btn-custom iconify-icon').forEach(icon => {
-        icon.classList.add('git-icon-fixed');
+    // Executar novamente após o carregamento completo da página
+    window.addEventListener('load', fixGitButtons);
+    
+    // Verificar várias vezes nos primeiros segundos
+    let checkCount = 0;
+    const intervalId = setInterval(() => {
+        fixGitButtons();
+        checkCount++;
+        if (checkCount >= 5) {
+            clearInterval(intervalId);
+        }
+    }, 1000);
+    
+    // Adicionar um observador de mutação para detectar quando novos botões são adicionados
+    const observer = new MutationObserver((mutations) => {
+        for (let mutation of mutations) {
+            if (mutation.addedNodes.length) {
+                fixGitButtons();
+                break;
+            }
+        }
     });
     
-    console.log('Correção para botões Git aplicada com sucesso!');
+    // Iniciar a observação do DOM
+    observer.observe(document.body, { childList: true, subtree: true });
 })();
