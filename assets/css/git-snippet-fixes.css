@@ -1,0 +1,58 @@
+/**
+ * Correções específicas para snippets de Git
+ * Foco em corrigir os botões de cópia nos blocos pre/code
+ */
+
+/* Remove o botão de cópia redundante no h6 dos snippets Git */
+.filter-git h6 .snippet-actions-float button[data-target^="snippet-git"],
+.filter-git h6 .snippet-actions-float button[data-target^="snippet_git"] {
+  display: none !important;
+}
+
+/* Mantém apenas o botão de link externo no h6 */
+.filter-git h6 .snippet-actions-float a[data-snippet-external-link] {
+  margin-left: 0 !important;
+}
+
+/* Posicionamento específico para botões de cópia em snippets Git */
+.filter-git .position-relative button.btn-custom {
+  position: absolute !important;
+  top: 3px !important;
+  right: 3px !important;
+  margin: 0 !important;
+  padding: 2px 4px !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 24px !important;
+  width: 24px !important;
+  box-sizing: content-box !important;
+  transform: none !important;
+}
+
+/* Corrige a centralização dos ícones */
+.filter-git .position-relative button.btn-custom iconify-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: auto !important;
+}
+
+/* Garante que os botões ficam completamente dentro do pre */
+.filter-git .git-pre-code {
+  position: relative !important;
+  padding-right: 30px !important;
+  margin-bottom: 0 !important;
+  border-radius: 4px !important;
+  overflow: visible !important;
+}
+
+/* Ajusta os containers de código para posicionamento correto */
+.filter-git .position-relative {
+  position: relative !important;
+  display: block !important;
+  margin-bottom: 4px !important;
+}
