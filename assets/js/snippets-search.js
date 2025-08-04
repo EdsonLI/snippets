@@ -23,8 +23,8 @@ $(document).ready(function() {
   const log = {
     info: (msg) => SEARCH_CONFIG.debug && console.info(`🔍 [Search]: ${msg}`),
     success: (msg) => SEARCH_CONFIG.debug && console.log(`✅ [Search]: ${msg}`),
-    warn: (msg) => console.warn(`⚠️ [Search]: ${msg}`),
-    error: (msg, err) => console.error(`❌ [Search]: ${msg}`, err || '')
+    warn: (msg) => console.warn(`[Search]: ${msg}`),
+    error: (msg, err) => console.error(`[Search]: ${msg}`, err || '')
   };
 
   /**

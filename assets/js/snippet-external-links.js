@@ -104,6 +104,4 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('load', function() {
     setTimeout(initExternalLinks, 500);
   });
-  
-  console.info('✅ Snippet External Links: Sistema inicializado com sucesso!');
 });
