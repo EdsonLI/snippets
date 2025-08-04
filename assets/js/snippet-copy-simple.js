@@ -1,73 +1,68 @@
 /**
- * BOTÕES DE CÓPIA - VERSÃO SIMPLIFICADA E DIRETA
- * Funciona com qualquer botão que tenha um atributo data-target
- * 
- * @author Edson LI
- * @version 2.0.0 (Simplificado)
+ * BOTÕES DE CÓPIA - VERSÃO EXTREMAMENTE SIMPLIFICADA
+ * Solução direta sem complicações - foco em estabilidade
  */
-
-// Usar IIFE para evitar conflitos de namespace
-(function($) {
-  // Esperar que o DOM esteja pronto
-  $(function() {
-    console.log('[Botões de Cópia] Inicializando...');
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("Inicializando sistema de cópia...");
+  
+  // FUNÇÃO SIMPLES PARA COPIAR TEXTO
+  function copyTextToClipboard(text) {
+    return navigator.clipboard.writeText(text);
+  }
+  
+  // ENCONTRAR TODOS OS BOTÕES DE CÓPIA (que tenham data-target)
+  var copyButtons = document.querySelectorAll("button[data-target]");
+  console.log("Botões de cópia encontrados: " + copyButtons.length);
+  
+  // ADICIONAR HANDLER DE CLIQUE EM CADA BOTÃO
+  copyButtons.forEach(function(button) {
+    // Remover listeners existentes (se possível)
+    button.replaceWith(button.cloneNode(true));
     
-    // Encontrar todos os botões com atributo data-target
-    const $copyButtons = $('button[data-target]');
-    console.log('[Botões de Cópia] Encontrados: ' + $copyButtons.length);
-
-    // Remover todos os handlers antigos para evitar conflitos
-    $copyButtons.off('click.snippetCopy');
-
-    // Adicionar o novo handler com namespace para evitar conflitos
-    $copyButtons.on('click.snippetCopy', function(e) {
-      // Prevenir comportamento padrão e propagação do evento
+    // Obter botão novamente após substituição
+    var newButton = document.querySelector('button[data-target="' + button.getAttribute('data-target') + '"]');
+    
+    // Adicionar novo listener
+    newButton.addEventListener("click", function(e) {
       e.preventDefault();
-      e.stopPropagation();
-    const $button = $(this);
-    const targetId = $button.attr('data-target');
-    const $codeElement = $('#' + targetId);
-
-    if ($codeElement.length) {
-      // Capturar o texto do elemento
-      const textToCopy = $codeElement.text().trim();
       
-      // Copiar para a área de transferência
-      navigator.clipboard.writeText(textToCopy)
+      // Obter ID do elemento alvo
+      var targetId = this.getAttribute("data-target");
+      var codeElement = document.getElementById(targetId);
+      
+      if (!codeElement) {
+        console.error("Elemento não encontrado: #" + targetId);
+        return;
+      }
+      
+      // Copiar texto
+      var textToCopy = codeElement.textContent.trim();
+      copyTextToClipboard(textToCopy)
         .then(function() {
-          // Salvar o ícone original
-          const $icon = $button.find('iconify-icon');
+          // Feedback visual
+          var iconElement = newButton.querySelector("iconify-icon");
           
-          if ($icon.length) {
-            const originalIcon = $icon.attr('icon') || 'mdi:content-copy';
+          if (iconElement) {
+            var originalIcon = iconElement.getAttribute("icon") || "mdi:content-copy";
+            iconElement.setAttribute("icon", "mdi:check");
             
-            // Mostrar ícone de confirmação
-            $icon.attr('icon', 'mdi:check');
-            
-            // Restaurar o ícone original após um delay
             setTimeout(function() {
-              $icon.attr('icon', originalIcon);
-            }, 1200);
+              iconElement.setAttribute("icon", originalIcon);
+            }, 1500);
           } else {
-            // Feedback alternativo para botões sem ícone iconify
-            const originalHtml = $button.html();
-            $button.html('<i class="fa-solid fa-check"></i>');
+            var originalHtml = newButton.innerHTML;
+            newButton.innerHTML = '<i class="fa-solid fa-check"></i>';
             
             setTimeout(function() {
-              $button.html(originalHtml);
-            }, 1200);
+              newButton.innerHTML = originalHtml;
+            }, 1500);
           }
-          
-          console.log('[Botões de Cópia] Texto copiado de #' + targetId);
         })
         .catch(function(err) {
-          console.error('[Botões de Cópia] Erro ao copiar:', err);
+          console.error("Erro ao copiar:", err);
         });
-    } else {
-      console.error('[Botões de Cópia] Elemento alvo não encontrado: #' + targetId);
-    }
+    });
   });
-
-    console.log('[Botões de Cópia] Inicialização completa');
-  });
-})(jQuery);
+  
+  console.log("Sistema de cópia inicializado.");
+});

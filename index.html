@@ -105,9 +105,8 @@
   <link href="assets/css/git-snippets.css" rel="stylesheet">
   <link href="assets/css/ai-custom-styles.css" rel="stylesheet">
 
-  <!-- Nova implementação simplificada dos botões de cópia -->
+  <!-- As funcionalidades de cópia são implementadas diretamente no final da página -->
   <script src="assets/js/copy-buttons-legacy.js" defer></script>
-  <script src="assets/js/snippet-copy-simple.js" defer></script>
 
   <script src="assets/js/tech-badges-new.js" defer></script>
   <script src="assets/js/reload-tech-icons.js" defer></script>
@@ -360,6 +359,110 @@
   
   <!-- Correção para filtros em dispositivos móveis -->
   <script src="assets/js/mobile-filters-fix.js" defer></script>
+  
+  <!-- Script inline para garantir funcionamento dos botões de cópia -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('[Sistema de Cópia] Inicializando...');
+      
+      // Função para copiar texto para o clipboard
+      function copiarTexto(texto) {
+        return navigator.clipboard.writeText(texto)
+          .then(() => true)
+          .catch((erro) => {
+            console.error('[Sistema de Cópia] Erro:', erro);
+            return false;
+          });
+      }
+      
+      // Função para processar clique no botão
+      function processarClique(evento) {
+        evento.preventDefault();
+        
+        // Obter ID do elemento alvo
+        const idAlvo = this.getAttribute('data-target');
+        if (!idAlvo) return;
+        
+        // Obter elemento do código
+        const elemento = document.getElementById(idAlvo);
+        if (!elemento) {
+          console.error('[Sistema de Cópia] Elemento não encontrado:', idAlvo);
+          return;
+        }
+        
+        // Obter texto para copiar
+        const texto = elemento.textContent.trim();
+        
+        // Copiar texto e dar feedback
+        copiarTexto(texto).then((sucesso) => {
+          if (sucesso) {
+            // Feedback visual
+            const icone = this.querySelector('iconify-icon');
+            if (icone) {
+              const iconeOriginal = icone.getAttribute('icon') || 'mdi:content-copy';
+              icone.setAttribute('icon', 'mdi:check');
+              setTimeout(() => icone.setAttribute('icon', iconeOriginal), 1500);
+            } else {
+              const htmlOriginal = this.innerHTML;
+              this.innerHTML = '<i class="fa-solid fa-check"></i>';
+              setTimeout(() => this.innerHTML = htmlOriginal, 1500);
+            }
+          }
+        });
+      }
+      
+      // Aplicar handlers a todos os botões
+      function inicializarBotoes() {
+        const botoes = document.querySelectorAll('button[data-target]');
+        console.log(`[Sistema de Cópia] ${botoes.length} botões encontrados`);
+        
+        botoes.forEach(botao => {
+          // Remover handlers existentes
+          const novoBotao = botao.cloneNode(true);
+          botao.parentNode.replaceChild(novoBotao, botao);
+          
+          // Adicionar novo handler
+          novoBotao.addEventListener('click', processarClique);
+        });
+      }
+      
+      // Inicializar imediatamente
+      inicializarBotoes();
+      
+      // Também verificar novos elementos inseridos no DOM
+      const observer = new MutationObserver(function(mutacoes) {
+        let novosBotoes = false;
+        
+        mutacoes.forEach(mutacao => {
+          mutacao.addedNodes.forEach(node => {
+            if (node.nodeType === 1) { // Elemento
+              const botoesNovos = node.querySelectorAll?.('button[data-target]');
+              if (botoesNovos && botoesNovos.length) {
+                novosBotoes = true;
+              }
+            }
+          });
+        });
+        
+        if (novosBotoes) {
+          console.log('[Sistema de Cópia] Detectados novos botões, reinicializando...');
+          inicializarBotoes();
+        }
+      });
+      
+      // Configurar observer para monitorar todo o documento
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      
+      console.log('[Sistema de Cópia] Sistema inicializado com sucesso');
+      
+      // Compatibilidade com código legado
+      window.setupCopyButtons = function() {
+        console.log('[Compatibilidade] Função setupCopyButtons() interceptada');
+      };
+    });
+  </script>
 </body>
 </html>
-
