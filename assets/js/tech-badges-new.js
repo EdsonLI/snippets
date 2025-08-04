@@ -255,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Evento para recarregar ícones quando solicitado
   document.addEventListener('reload-tech-badges', function() {
-    console.info('🔄 Processando ícones após evento de recarga...');
     transformTechBadges();
   });
   
@@ -288,6 +287,4 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Configurar o observer para monitorar adições de nós em todo o documento
   observer.observe(document.body, { childList: true, subtree: true });
-  
-  console.info('✅ Tech Badges: Sistema inicializado com sucesso!');
 });

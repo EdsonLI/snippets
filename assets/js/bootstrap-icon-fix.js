@@ -55,6 +55,4 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Iniciar a observação
   observer.observe(document.body, { childList: true, subtree: true });
-  
-  console.info('✅ Bootstrap Icon Fix: Inicializado');
 });

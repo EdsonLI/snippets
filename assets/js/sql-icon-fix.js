@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // (não dentro de spans ou outros elementos)
     const badIcons = document.querySelectorAll('.filter-sql > .sql-icon-wrapper');
     if (badIcons.length > 0) {
-      console.info(`🧹 Removendo ${badIcons.length} ícones SQL mal posicionados`);
       badIcons.forEach(icon => icon.remove());
     }
   };
@@ -18,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
     // Primeiro limpamos ícones mal posicionados
     removeBadIcons();
-    
-    console.info('🔄 Aplicando SVG personalizado para o ícone SQL...');
     
     // SVG para o ícone SQL (definido em um único lugar para fácil manutenção)
     const sqlSvgContent = `
@@ -65,13 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function applySqlIconToSnippets() {
       // Obter todos os spans com classe id-tech-sql (títulos dos snippets)
       const sqlTitleSpans = document.querySelectorAll('.id-tech-sql');
-      console.info(`🔍 Encontrados ${sqlTitleSpans.length} elementos .id-tech-sql para aplicar ícones`);
       
       sqlTitleSpans.forEach(span => {
         // Verificar se já tem um ícone SQL dentro (para não duplicar)
         const hasIcon = span.querySelector('.sql-icon-wrapper');
         if (hasIcon) {
-          console.info('✓ Ícone SQL já existe, mantendo-o intacto');
           return;
         }
 
@@ -86,13 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone antes do texto
         span.insertBefore(wrapper, span.firstChild);
-        console.info('✅ Ícone SQL inserido em elemento .id-tech-sql');
       });
     }
     
     // Aplicar aos badges normais (apenas quando não estão dentro de id-tech-sql)
     const sqlBadges = document.querySelectorAll('.tech-badge-sql:not(.id-tech-sql .tech-badge-sql)');
-    console.info(`🔍 Encontrados ${sqlBadges.length} elementos .tech-badge-sql para aplicar ícones`);
     
     sqlBadges.forEach(badge => {
       applySqlIcon(badge);
@@ -100,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Aplicar aos filtros do menu de forma segura - apenas aqueles que NÃO contêm já um ícone SQL
     const sqlFilters = document.querySelectorAll('.portfolio-filters li.filter-sql');
-    console.info(`🔍 Encontrados ${sqlFilters.length} elementos .filter-sql no menu de filtros`);
     
     sqlFilters.forEach(filter => {
       // Verificar se já tem um ícone SQL dentro (para não duplicar)
@@ -113,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone no início do elemento do filtro
         filter.insertBefore(wrapper, filter.firstChild);
-        console.info('✅ Ícone SQL inserido em elemento .filter-sql do menu');
       }
     });
     
@@ -142,6 +133,5 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 500);
     });
     
-    console.info('✅ SVG personalizado para SQL aplicado');
   }, 500);
 });

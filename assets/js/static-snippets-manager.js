@@ -18,10 +18,10 @@ $(document).ready(function() {
 
   // Sistema de log para facilitar diagnósticos
   const log = {
-    info: (msg) => SNIPPETS_CONFIG.debug && console.info(`[Snippets]: ${msg}`),
-    success: (msg) => SNIPPETS_CONFIG.debug && console.log(`[Snippets]: ${msg}`),
-    warn: (msg) => console.warn(`[Snippets]: ${msg}`),
-    error: (msg, err) => console.error(`[Snippets]: ${msg}`, err || '')
+    info: (msg) => {},
+    success: (msg) => {},
+    warn: (msg) => {},
+    error: (msg, err) => {}
   };
 
   // Estado do carregador - rastreia o que foi carregado
@@ -33,10 +33,10 @@ $(document).ready(function() {
     filterMap: new Map(),       // Mapeamento de pastas para classes de filtro
     isotopeInitialized: false   // Rastrear se o Isotope já foi inicializado
   };  const STATIC_DIRECTORY_MAP = {
-    'ai': ['instructions_copilot_vscode.html'],
+    'ai': ['instructions_copilot_vscode.html', 'prompts_adianti.html'],
     'bootstrap': ['snippet_bootstrap_form_validation.html'],
     'css': ['snippet_css_display_flex_center.html'],
-    'git': ['snippet_git_change_all_message_commits.html', 'snippet_git_conflict_resolution_vscode.html', 'snippet_git_update_local_branch_from_development_and_other.html', 'snippet_git_update_local_branch_from_remote_development.html'],
+    'git': ['snippet_git_change_all_message_commits.html', 'snippet_git_conflict_resolution_vscode.html', 'snippet_git_stash.html', 'snippet_git_update_local_branch_from_development_and_other.html', 'snippet_git_update_local_branch_from_remote_development.html'],
     'isotope': ['snippet_isotope_basic_example.html'],
     'jquery': ['snippet_jquery_iife.html', 'snippet_jquery_toggle_example.html'],
     'madbuilder': ['madbuilder.html'],
@@ -44,7 +44,7 @@ $(document).ready(function() {
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
     'sweetalert2': ['snippet_sweetalert2_confirm_example.html', 'snippet_sweetalert2_confirm_with_function_attached_example.html', 'snippet_sweetalert2_select_color_radio_example.html'],
     'w3schools': ['w3schools.html']
-    // Última atualização: 04/08/2025 15:40:05
+    // Última atualização: 04/08/2025 16:31:26
   };
 
   /**
@@ -404,8 +404,6 @@ $(document).ready(function() {
     // Usar a implementação global com as opções padrão
     if (typeof window.setupCopyButtons === 'function') {
       window.setupCopyButtons();
-    } else {
-      console.error('Global setupCopyButtons function not found!');
     }
   }
 

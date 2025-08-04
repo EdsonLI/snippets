@@ -1,0 +1,157 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-git">git</span>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet_git_stash">
+          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://git-scm.com/docs/git-stash" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </h6>
+    <div class="text-center mb-2">
+      Git Stash: Guardar alterações temporariamente sem precisar fazer commit
+    </div>
+    <div class="snippet-code position-relative px-2">
+      <div class="mt-2 small">
+        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>O que é o Git Stash?</strong></h6>
+          <p>O stash salva temporariamente modificações que ainda não foram commitadas (em arquivos rastreados) e limpa seu working directory, permitindo que você alterne de branch ou execute outro trabalho sem perder o que estava fazendo.</p>
+        </div>
+        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Quando usar?</strong></h6>
+          <ul>
+            <li>Quando você está no meio de uma tarefa mas precisa mudar para outra branch para corrigir um bug.</li>
+            <li>Quando quer limpar o estado atual do projeto, mas pretende voltar a ele depois.</li>
+          </ul>
+        </div>
+        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Comandos básicos</strong></h6>
+          
+          <div class="mt-2">
+            <b>Guardar modificações atuais:</b>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git stash</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-2">
+            <b>Listar stashes guardados:</b>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git stash list</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-2">
+            <b>Restaurar último stash (mantendo na lista):</b>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git stash apply</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-2">
+            <b>Aplicar e remover do stash (como "colar e excluir"):</b>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git stash pop</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Exemplo de uso combinado</strong></h6>
+          <p>Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>
+          
+          <div class="position-relative">
+            <pre class="git-pre-code"><code class="language-bash">git stash               # guarda as alterações
+git checkout branch-b   # muda de branch
+# faz algo na branch-b
+git checkout branch-a   # volta
+git stash pop           # recupera as alterações</code></pre>
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+          </div>
+        </div>
+        
+        <div class="mt-3">
+          <h6 class="mb-2"><strong>Dicas avançadas</strong></h6>
+          
+          <div class="mt-2">
+            <b>Criar stash com mensagem descritiva:</b>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git stash push -m "descrição do que estou guardando"</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-2">
+            <b>Aplicar um stash específico:</b>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git stash apply stash@{2}</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Script para funcionalidade dos botões de cópia -->
+    <script>
+      // Função para copiar o texto para a área de transferência
+      function copiarCodigoParaClipboard(botao) {
+        // Encontrar o elemento de código
+        const preElement = botao.closest('.position-relative').querySelector('pre');
+        const codeElement = preElement.querySelector('code');
+        const textoParaCopiar = codeElement.textContent.trim();
+        
+        // Copiar para a área de transferência
+        navigator.clipboard.writeText(textoParaCopiar)
+          .then(() => {
+            // Feedback visual de sucesso
+            const icon = botao.querySelector('iconify-icon');
+            const originalIcon = icon.getAttribute('icon') || 'mdi:content-copy';
+            
+            icon.setAttribute('icon', 'mdi:check');
+            
+            setTimeout(() => {
+              icon.setAttribute('icon', originalIcon);
+            }, 1500);
+          })
+          .catch(err => {
+            console.error('Erro ao copiar texto: ', err);
+          });
+      }
+      
+      // Adicionar event listeners a todos os botões
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.position-relative button').forEach(botao => {
+          botao.onclick = function() {
+            copiarCodigoParaClipboard(this);
+          };
+        });
+      });
+    </script>
+  </div>
+</div>
+<!-- https://git-scm.com/docs/git-stash -->

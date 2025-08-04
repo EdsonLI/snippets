@@ -20,7 +20,6 @@ function setupCopyButtons(options = {}) {
   
   // Executar apenas uma vez se já inicializado globalmente
   if (window.copyButtonsInitialized && settings.checkInit) {
-    console.info('Copy buttons already initialized');
     return;
   }
   
@@ -81,17 +80,16 @@ function setupCopyButtons(options = {}) {
             }
           })
           .catch(function(err) {
-            console.error('Erro ao copiar o texto:', err);
+            // Erro ao copiar texto
           });
       } else {
-        console.error('Bloco de código não encontrado para o ID:', targetId);
+        // Bloco de código não encontrado
       }
     });
   });
   
   // Marcar como inicializado globalmente
   window.copyButtonsInitialized = true;
-  console.info('Copy buttons initialized successfully');
 }
 
 // Exportar a função para o escopo global
@@ -99,16 +97,11 @@ window.setupCopyButtons = setupCopyButtons;
 
 // Inicializar automaticamente quando o documento estiver pronto
 $(document).ready(function() {
-  console.log('copy-buttons-manager.js - Document ready');
-  console.log('Botões encontrados:', $('button[data-target], .btn-custom[data-target], .copy-btn[data-target]').length);
-  
   // Chamada inicial
   setupCopyButtons();
   
   // Também chamar quando a página estiver totalmente carregada (imagens, etc.)
   $(window).on('load', function() {
-    console.log('copy-buttons-manager.js - Window loaded');
-    console.log('Botões encontrados após carregamento:', $('button[data-target], .btn-custom[data-target], .copy-btn[data-target]').length);
     setupCopyButtons({ checkInit: true });
   });
 });

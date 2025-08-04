@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (upperCaseFilters.includes(filterName.toLowerCase())) {
           // Define o texto para maiúsculas
           filterItem.textContent = filterName.toUpperCase();
-          console.info(`Filtro corrigido: ${filterName} -> ${filterItem.textContent}`);
         }
       }
     });

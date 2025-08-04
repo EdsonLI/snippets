@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Seletor específico - apenas para ícones diretamente dentro do container de filtro
     const badIcons = document.querySelectorAll('.filter-git > .git-icon-wrapper');
     if (badIcons.length > 0) {
-      console.info(`🧹 Removendo ${badIcons.length} ícones Git mal posicionados`);
       badIcons.forEach(icon => icon.remove());
     }
   };
@@ -17,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
     // Primeiro limpamos ícones mal posicionados
     removeBadIcons();
-    
-    console.info('🔄 Aplicando SVG personalizado para o ícone Git...');
     
     // SVG para o ícone Git (definido em um único lugar para fácil manutenção)
     const gitSvgContent = `
@@ -50,13 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function applyGitIconToSnippets() {
       // Obter todos os spans com classe id-tech-git (títulos dos snippets)
       const gitTitleSpans = document.querySelectorAll('.id-tech-git');
-      console.info(`🔍 Encontrados ${gitTitleSpans.length} elementos .id-tech-git para aplicar ícones`);
       
       gitTitleSpans.forEach(span => {
         // Verificar se já tem um ícone Git dentro (para não duplicar)
         const hasIcon = span.querySelector('.git-icon-wrapper');
         if (hasIcon) {
-          console.info('✓ Ícone Git já existe, mantendo-o intacto');
           return;
         }
 
@@ -71,13 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone antes do texto
         span.insertBefore(wrapper, span.firstChild);
-        console.info('✅ Ícone Git inserido em elemento .id-tech-git');
       });
     }
     
     // Aplicar aos badges normais (apenas quando não estão dentro de id-tech-git)
     const gitBadges = document.querySelectorAll('.tech-badge-git:not(.id-tech-git .tech-badge-git)');
-    console.info(`🔍 Encontrados ${gitBadges.length} elementos .tech-badge-git para aplicar ícones`);
     
     gitBadges.forEach(badge => {
       applyGitIcon(badge);
@@ -85,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Aplicar aos filtros do menu de forma segura - apenas aqueles que NÃO contêm já um ícone Git
     const gitFilters = document.querySelectorAll('.portfolio-filters li.filter-git');
-    console.info(`🔍 Encontrados ${gitFilters.length} elementos .filter-git no menu de filtros`);
     
     gitFilters.forEach(filter => {
       // Verificar se já tem um ícone Git dentro (para não duplicar)
@@ -98,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Inserir o ícone no início do elemento do filtro
         filter.insertBefore(wrapper, filter.firstChild);
-        console.info('✅ Ícone Git inserido em elemento .filter-git do menu');
       }
     });
     
@@ -127,6 +118,5 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 500);
     });
     
-    console.info('✅ SVG personalizado para Git aplicado');
   }, 500);
 });
