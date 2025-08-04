@@ -19,28 +19,58 @@
         <ol>
           <li>
             <b>Atualize a branch de base (<span>development</span>):</b>
-            <pre class="git-pre-code"><code class="language-bash">git checkout development
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git checkout development
 git pull origin development</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
           </li>
           <li class="mt-2">
             <b>Faça checkout da sua branch da PR:</b>
-            <pre class="git-pre-code"><code class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code></pre>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
           </li>
           <li class="mt-2">
             <b>Atualize a branch de base (<span>development</span>):</b>
-            <pre class="git-pre-code"><code class="language-bash">git checkout development
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git checkout development
 git pull origin development</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
           </li>
           <li class="mt-2">
             <b>Faça checkout da sua branch da PR:</b>
-            <pre class="git-pre-code"><code class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code></pre>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
             <div class="mt-1">Se ainda não tiver localmente:</div>
-            <pre class="git-pre-code"><code class="language-bash">git fetch origin
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git fetch origin
 git checkout -b 157-implementar-a-nova-funcionalidade</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
           </li>
           <li class="mt-2">
             <b>Mescle a branch <span>development</span> na sua para resolver os conflitos:</b>
-            <pre class="git-pre-code"><code class="language-bash">git merge development</code></pre>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git merge development</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
           </li>
           <li class="mt-2">
             <b>Resolva os conflitos no VS Code:</b>
@@ -65,12 +95,22 @@ git checkout -b 157-implementar-a-nova-funcionalidade</code></pre>
           </li>
           <li class="mt-2">
             <b>Após resolver finalize o merge:</b>
-            <pre class="git-pre-code"><code class="language-bash">git add .
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git add .
 git commit -m "Resolvendo conflitos com a branch development"</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
           </li>
           <li class="mt-2">
             <b>Atualize sua PR com o push:</b>
-            <pre class="git-pre-code"><code class="language-bash">git push origin 157-implementar-a-nova-funcionalidade</code></pre>
+            <div class="position-relative">
+              <pre class="git-pre-code"><code class="language-bash">git push origin 157-implementar-a-nova-funcionalidade</code></pre>
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+            </div>
             Pronto! PR atualizada e pronta para nova revisão!
           </li>
         </ol>
@@ -79,7 +119,12 @@ git commit -m "Resolvendo conflitos com a branch development"</code></pre>
           <ul>
             <li>
               Comparar visualmente as <b>três últimas versões</b>:
-              <pre class="mb-2"><code class="language-bash">git log -p -n 3 -- app/control/pedidos/OrderFormView.php</code></pre>
+              <div class="position-relative">
+                <pre class="mb-2"><code class="language-bash">git log -p -n 3 -- app/control/pedidos/OrderFormView.php</code></pre>
+                <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+                  <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+                </button>
+              </div>
             </li>
             <li>
               Comparar versões com GitLens
@@ -99,4 +144,41 @@ git commit -m "Resolvendo conflitos com a branch development"</code></pre>
       </div>
     </div>
   </div>
+  
+  <!-- Script para funcionalidade dos botões de cópia -->
+  <script>
+    // Função para copiar o texto para a área de transferência
+    function copiarCodigoParaClipboard(botao) {
+      // Encontrar o elemento de código
+      const preElement = botao.closest('.position-relative').querySelector('pre');
+      const codeElement = preElement.querySelector('code');
+      const textoParaCopiar = codeElement.textContent.trim();
+      
+      // Copiar para a área de transferência
+      navigator.clipboard.writeText(textoParaCopiar)
+        .then(() => {
+          // Feedback visual de sucesso
+          const icon = botao.querySelector('iconify-icon');
+          const originalIcon = icon.getAttribute('icon') || 'mdi:content-copy';
+          
+          icon.setAttribute('icon', 'mdi:check');
+          
+          setTimeout(() => {
+            icon.setAttribute('icon', originalIcon);
+          }, 1500);
+        })
+        .catch(err => {
+          console.error('Erro ao copiar texto: ', err);
+        });
+    }
+    
+    // Adicionar event listeners a todos os botões
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.position-relative button').forEach(botao => {
+        botao.onclick = function() {
+          copiarCodigoParaClipboard(this);
+        };
+      });
+    });
+  </script>
 </div>
