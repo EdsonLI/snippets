@@ -149,58 +149,35 @@ git commit -m "Resolvendo conflitos com a branch development"</code></pre>
   <script>
     // Função para copiar o texto para a área de transferência
     function copiarCodigoParaClipboard(botao) {
-      try {
-        // Encontrar o elemento de código
-        const preElement = botao.closest('.position-relative').querySelector('pre');
-        const codeElement = preElement.querySelector('code');
-        const textoParaCopiar = codeElement.textContent.trim();
-        
-        // Copiar para a área de transferência
-        navigator.clipboard.writeText(textoParaCopiar)
-          .then(() => {
-            // Feedback visual de sucesso
-            const icon = botao.querySelector('iconify-icon');
-            const originalIcon = icon.getAttribute('icon') || 'mdi:content-copy';
-            
-            icon.setAttribute('icon', 'mdi:check');
-            
-            setTimeout(() => {
-              icon.setAttribute('icon', originalIcon);
-            }, 1500);
-          })
-          .catch(err => {
-            console.error('Erro ao copiar texto: ', err);
-            alert('Erro ao copiar código. Por favor, tente novamente.');
-          });
-      } catch (error) {
-        console.error('Erro ao processar cópia:', error);
-      }
+      // Encontrar o elemento de código
+      const preElement = botao.closest('.position-relative').querySelector('pre');
+      const codeElement = preElement.querySelector('code');
+      const textoParaCopiar = codeElement.textContent.trim();
+      
+      // Copiar para a área de transferência
+      navigator.clipboard.writeText(textoParaCopiar)
+        .then(() => {
+          // Feedback visual de sucesso
+          const icon = botao.querySelector('iconify-icon');
+          const originalIcon = icon.getAttribute('icon') || 'mdi:content-copy';
+          
+          icon.setAttribute('icon', 'mdi:check');
+          
+          setTimeout(() => {
+            icon.setAttribute('icon', originalIcon);
+          }, 1500);
+        })
+        .catch(err => {
+          console.error('Erro ao copiar texto: ', err);
+        });
     }
     
     // Adicionar event listeners a todos os botões
     document.addEventListener('DOMContentLoaded', function() {
-      // Seleciona especificamente todos os botões de cópia nos blocos de código
-      const botoesCopiaCodigo = document.querySelectorAll('.position-relative button.btn-xs.btn-outline-info');
-      
-      botoesCopiaCodigo.forEach(botao => {
-        // Remover handler anterior para evitar duplicação
-        botao.removeEventListener('click', botao.onclickHandler);
-        
-        // Criar e armazenar o handler para referência
-        botao.onclickHandler = function() {
+      document.querySelectorAll('.position-relative button').forEach(botao => {
+        botao.onclick = function() {
           copiarCodigoParaClipboard(this);
         };
-        
-        // Adicionar o novo handler
-        botao.addEventListener('click', botao.onclickHandler);
-        
-        // Ajuste do botão para garantir o posicionamento correto
-        botao.style.position = 'absolute';
-        botao.style.top = '3px';
-        botao.style.right = '3px';
-        botao.style.margin = '0';
-        botao.style.padding = '2px 4px';
-        botao.style.zIndex = '1000';
       });
     });
   </script>

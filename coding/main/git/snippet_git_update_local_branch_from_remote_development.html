@@ -170,28 +170,10 @@ git pull origin development</code></pre>
     
     // Adicionar event listeners a todos os botões
     document.addEventListener('DOMContentLoaded', function() {
-      // Seleciona especificamente todos os botões de cópia nos blocos de código
-      const botoesCopiaCodigo = document.querySelectorAll('.position-relative button.btn-xs.btn-outline-info');
-      
-      botoesCopiaCodigo.forEach(botao => {
-        // Remover handler anterior para evitar duplicação
-        botao.removeEventListener('click', botao.onclickHandler);
-        
-        // Criar e armazenar o handler para referência
-        botao.onclickHandler = function() {
+      document.querySelectorAll('.position-relative button').forEach(botao => {
+        botao.onclick = function() {
           copiarCodigoParaClipboard(this);
         };
-        
-        // Adicionar o novo handler
-        botao.addEventListener('click', botao.onclickHandler);
-        
-        // Ajuste do botão para garantir o posicionamento correto
-        botao.style.position = 'absolute';
-        botao.style.top = '3px';
-        botao.style.right = '3px';
-        botao.style.margin = '0';
-        botao.style.padding = '2px 4px';
-        botao.style.zIndex = '1000';
       });
     });
   </script>
