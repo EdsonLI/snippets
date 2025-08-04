@@ -6,18 +6,24 @@
  * @version 2.0.0 (Simplificado)
  */
 
-$(document).ready(function() {
-  console.log('[Botões de Cópia] Inicializando...');
+// Usar IIFE para evitar conflitos de namespace
+(function($) {
+  // Esperar que o DOM esteja pronto
+  $(function() {
+    console.log('[Botões de Cópia] Inicializando...');
+    
+    // Encontrar todos os botões com atributo data-target
+    const $copyButtons = $('button[data-target]');
+    console.log('[Botões de Cópia] Encontrados: ' + $copyButtons.length);
 
-  // Encontrar todos os botões com atributo data-target
-  const $copyButtons = $('button[data-target]');
-  console.log('[Botões de Cópia] Encontrados: ' + $copyButtons.length);
+    // Remover todos os handlers antigos para evitar conflitos
+    $copyButtons.off('click.snippetCopy');
 
-  // Remover todos os handlers antigos para evitar conflitos
-  $copyButtons.off('click');
-
-  // Adicionar o novo handler
-  $copyButtons.on('click', function() {
+    // Adicionar o novo handler com namespace para evitar conflitos
+    $copyButtons.on('click.snippetCopy', function(e) {
+      // Prevenir comportamento padrão e propagação do evento
+      e.preventDefault();
+      e.stopPropagation();
     const $button = $(this);
     const targetId = $button.attr('data-target');
     const $codeElement = $('#' + targetId);
@@ -62,5 +68,6 @@ $(document).ready(function() {
     }
   });
 
-  console.log('[Botões de Cópia] Inicialização completa');
-});
+    console.log('[Botões de Cópia] Inicialização completa');
+  });
+})(jQuery);

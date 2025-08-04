@@ -241,20 +241,10 @@ $(function() {
   });
 
   /**
-   * Função para adicionar funcionalidade de copiar código nos snippets usando jQuery
-   * Usa a implementação global definida em copy-buttons-manager.js
+   * REMOVIDO: A antiga função setupCopyButtons foi substituída pelo script snippet-copy-simple.js
+   * que inicializa automaticamente todos os botões de cópia.
    */
-  function setupCopyButtons() {
-    // Usar a implementação global se disponível
-    if (typeof window.setupCopyButtons === 'function') {
-      window.setupCopyButtons();
-    } else {
-      console.error('Global setupCopyButtons function not found!');
-    }
-  }
-
-  // Chamar a função ao carregar a página
-  $(window).on('load', setupCopyButtons);
+  // Não é mais necessário chamar setupCopyButtons aqui
   
   /**
    * Inicializa os tooltips do Bootstrap
