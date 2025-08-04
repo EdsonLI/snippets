@@ -1,0 +1,53 @@
+/**
+ * Correções para os botões de cópia de código nos snippets Git
+ * Resolve problemas de alinhamento dos botões e dos ícones
+ */
+
+/* Corrige o posicionamento dos containers de código */
+.git-pre-code {
+  position: relative;
+  padding-right: 2.2rem; /* Espaço para o botão */
+  margin-bottom: 0.25rem;
+}
+
+/* Ajusta a posição relativa dos containers */
+.position-relative {
+  position: relative !important;
+  margin-bottom: 0.5rem;
+}
+
+/* Reposiciona todos os botões de cópia */
+.position-relative .btn-custom {
+  position: absolute !important;
+  top: 0.25rem !important;
+  right: 0.25rem !important;
+  margin: 0 !important;
+  padding: 0.15rem 0.3rem !important;
+  z-index: 5;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+/* Alinhamento vertical do ícone dentro do botão */
+.btn-custom iconify-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  margin: auto !important;
+}
+
+/* Ajusta os botões em dispositivos móveis */
+@media (max-width: 576px) {
+  .git-pre-code {
+    padding-right: 2.5rem;
+  }
+  
+  .position-relative .btn-custom {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+}
