@@ -46,6 +46,9 @@
         languages: ['markdown', 'md', 'javascript', 'html', 'css', 'php', 'sql', 'bash', 'plaintext']
       });
       hljs.highlightAll();
+      
+      // Log para diagnóstico dos botões de cópia
+      console.log('DOMContentLoaded - Botões de cópia encontrados: ' + $('button[data-target]').length);
     });
   </script>
   
@@ -104,6 +107,7 @@
 
   <!-- Gerenciador unificado de botões de cópia -->
   <script src="assets/js/copy-buttons-manager.js" defer></script>
+  <script src="assets/js/copy-buttons-compatibility.js" defer></script>
 
   <script src="assets/js/tech-badges-new.js" defer></script>
   <script src="assets/js/reload-tech-icons.js" defer></script>

@@ -33,9 +33,15 @@ function setupCopyButtons(options = {}) {
     });
   }
   
-  // 2. Configurar botões de cópia - seletor mais abrangente para pegar todos os botões
-  $('button[data-target], .btn-custom[data-target], .copy-btn[data-target]').each(function() {
+  // 2. Configurar botões de cópia - SIMPLIFICADO: procurar apenas por botões com data-target
+  // Se você quiser copiar um código, o botão DEVE ter um atributo data-target
+  $('button[data-target]').each(function() {
     const $button = $(this);
+    
+    // Adicionar classe copy-btn para compatibilidade
+    if (!$button.hasClass('copy-btn')) {
+      $button.addClass('copy-btn');
+    }
     
     // Pular se já inicializado e a opção checkInit estiver ativada
     if (settings.checkInit && $button.attr('data-copy-initialized')) {
@@ -48,9 +54,9 @@ function setupCopyButtons(options = {}) {
     // Remover handlers existentes para evitar duplicação
     $button.off('click.copySnippet');
     
-    // Adicionar evento de clique (CORRIGIDO: usando variável local $thisButton)
+    // Adicionar evento de clique (CORRIGIDO E SIMPLIFICADO)
     $button.on('click.copySnippet', function() {
-      const $thisButton = $(this); // Corrigido: use o contexto correto do botão clicado
+      const $thisButton = $(this);
       const targetId = $thisButton.attr('data-target');
       const $codeBlock = $('#' + targetId);
 
@@ -62,10 +68,8 @@ function setupCopyButtons(options = {}) {
             // Feedback visual
             const $icon = $thisButton.find('iconify-icon');
             if ($icon.length) {
-              // Salvar ícone original se a opção estiver ativada
-              const originalIcon = settings.saveOriginalIcon 
-                ? ($icon.attr('icon') || 'mdi:content-copy')
-                : 'mdi:content-copy';
+              // Salvar ícone original
+              const originalIcon = $icon.attr('icon') || 'mdi:content-copy';
               
               // Alterar para ícone de confirmação
               $icon.attr('icon', 'mdi:check');
