@@ -26,14 +26,14 @@
         <div class="mb-3">
           <h6 class="mb-2"><strong>1: Atualizar sua branch com development</strong></h6>
           <div class="position-relative">
-            <pre class="git-pre-code"><code class="language-bash">  git switch development
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-1">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+            <pre class="git-pre-code"><code id="glbo-step-1" class="language-bash">  git switch development
   git fetch origin
   git pull
   git switch feature/edson-ajustes
   git rebase origin/development</code></pre>
-            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
-              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-            </button>
           </div>
           <div class="small mt-1">
             Isso garante que a sua branch está atualizada com tudo que foi integrado na development.
@@ -47,12 +47,12 @@
           <div class="mb-2">
             <strong>Opção 1: Rebase da branch do outro dev (histórico linear)</strong>
             <div class="position-relative">
-              <pre class="git-pre-code"><code class="language-bash">  git switch feature/edson-ajustes
-  git fetch origin
-  git rebase origin/feature/pedro-nova-funcionalidade</code></pre>
-              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-2">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
+              <pre class="git-pre-code"><code id="glbo-step-2" class="language-bash">  git switch feature/edson-ajustes
+  git fetch origin
+  git rebase origin/feature/pedro-nova-funcionalidade</code></pre>
             </div>
             <div class="small text-info mt-1">
               Útil quando você precisa das alterações como base para seu trabalho.
@@ -62,12 +62,12 @@
           <div class="mb-2">
             <strong>Opção 2: Merge da branch do outro dev (preserva histórico)</strong>
             <div class="position-relative">
-              <pre class="git-pre-code"><code class="language-bash">  git switch feature/edson-ajustes
-  git fetch origin
-  git merge origin/feature/pedro-nova-funcionalidade</code></pre>
-              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent.trim())">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-3">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
+              <pre class="git-pre-code"><code id="glbo-step-3" class="language-bash">  git switch feature/edson-ajustes
+  git fetch origin
+  git merge origin/feature/pedro-nova-funcionalidade</code></pre>
             </div>
             <div class="small text-info mt-1">
               Mantém o histórico de que você trouxe os commits dele, mais explícito e seguro para testes.
