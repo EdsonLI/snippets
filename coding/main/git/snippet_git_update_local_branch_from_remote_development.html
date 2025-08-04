@@ -140,42 +140,5 @@ git pull origin development</code></pre>
       </div>
     </div>
   </div>
-  
-  <!-- Script para funcionalidade dos botões de cópia -->
-  <script>
-    // Função para copiar o texto para a área de transferência
-    function copiarCodigoParaClipboard(botao) {
-      // Encontrar o elemento de código
-      const preElement = botao.closest('.position-relative').querySelector('pre');
-      const codeElement = preElement.querySelector('code');
-      const textoParaCopiar = codeElement.textContent.trim();
-      
-      // Copiar para a área de transferência
-      navigator.clipboard.writeText(textoParaCopiar)
-        .then(() => {
-          // Feedback visual de sucesso
-          const icon = botao.querySelector('iconify-icon');
-          const originalIcon = icon.getAttribute('icon') || 'mdi:content-copy';
-          
-          icon.setAttribute('icon', 'mdi:check');
-          
-          setTimeout(() => {
-            icon.setAttribute('icon', originalIcon);
-          }, 1500);
-        })
-        .catch(err => {
-          console.error('Erro ao copiar texto: ', err);
-        });
-    }
-    
-    // Adicionar event listeners a todos os botões
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.position-relative button').forEach(botao => {
-        botao.onclick = function() {
-          copiarCodigoParaClipboard(this);
-        };
-      });
-    });
-  </script>
 </div>
 <!-- https://git-scm.com/docs -->
