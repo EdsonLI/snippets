@@ -19,8 +19,6 @@
                 align-items: center !important;
                 justify-content: center !important;
                 z-index: 999 !important;
-                background-color: #343a40 !important;
-                color: #0dcaf0 !important;
                 border-radius: 0 !important;
                 border: none !important;
             }
@@ -50,7 +48,7 @@
             
             /* Efeito hover */
             .filter-git .position-relative .position-absolute.btn-custom:hover {
-                background-color: #0dcaf0 !important;
+                background-color: var(--bs-btn-active-bg) !important;
                 color: #212529 !important;
             }
         `;
