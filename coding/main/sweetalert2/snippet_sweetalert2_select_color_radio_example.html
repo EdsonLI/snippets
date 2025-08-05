@@ -14,38 +14,36 @@
             </a>
         </div>
     </h6>
-    <div class="text-center mb-2">Select color input radio example</div>
+    <h6 class="mb-2"><strong>Select color input radio example</strong></h6>
 
 <!-- snippet-code -->
 <div class="snippet-code position-relative">
 <pre>
-<code class="language-javascript" id="snippet-swal2-select-color-radio-input-example">
-  (async () => {
-    /* inputOptions can be an object or Promise */
-    const inputOptions = new Promise((resolve) => {
-     setTimeout(() => {
+<code class="language-javascript" id="snippet-swal2-select-color-radio-input-example">  (async () => {
+  /* inputOptions can be an object or Promise */
+  const inputOptions = new Promise((resolve) => {
+    setTimeout(() => {
       resolve({
         "#ff0000": "Red",
         "#00ff00": "Green",
         "#0000ff": "Blue"
       });
-     }, 1000);
-    });
-    const { value: color } = await Swal.fire({
-     title: "Select color",
-     input: "radio",
-     inputOptions,
-     inputValidator: (value) => {
+    }, 1000);
+  });
+  const { value: color } = await Swal.fire({
+    title: "Select color",
+    input: "radio",
+    inputOptions,
+    inputValidator: (value) => {
       if (!value) {
         return "You need to choose something!";
       }
-     }
-    });
-    if (color) {
-      Swal.fire({ html: `You selected: ${color}` });
     }
-  })();
-</code>
+  });
+  if (color) {
+    Swal.fire({ html: `You selected: ${color}` });
+  }
+})();</code>
 </pre>
 </div>
 <!-- /snippet-code -->
