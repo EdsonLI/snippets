@@ -3268,8 +3268,6 @@ pre[class*="language-"] {
   }
 }
 
-
-
 .snippet-code {
   margin-top: 0; /* Remove margens superiores */
   padding-top: 0; /* Remove preenchimento superior */
@@ -3321,23 +3319,6 @@ pre[class*="language-"] {
   padding: 6px !important;
 }
 
-/* O grupo dos botões flutuantes */
-/* .snippet-actions-float {
-  position: sticky !important;
-  top: 2px !important;
-  right: 0.4rem;
-  left: auto;
-  z-index: 10;
-  margin-left: auto;
-  margin-right: 0.4rem;
-  display: flex;
-  gap: 0.3em;
-  background: transparent !important;
-  border-radius: .5em;
-  padding: .25em .4em;
-  box-shadow: 0px 2px 5px 0px #0002;
-} */
-
 pre {
   background-color: transparent !important;
   padding: 0 2px 5px 5px !important;
@@ -3347,6 +3328,7 @@ pre,
 code {  
   white-space: pre-wrap !important;    /* Força a quebra de linha dentro do <pre> */
   word-break: break-all !important;    /* Quebra palavras longas se necessário */
+  font-size: .8rem !important; /* Ajusta o tamanho da fonte */
 }
 
 pre { 
