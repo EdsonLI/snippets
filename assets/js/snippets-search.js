@@ -62,8 +62,6 @@ $(document).ready(function() {
         performSearch('');
       });
     }
-
-    log.success('Search events successfully set up');
   }
 
   /**
