@@ -3,6 +3,31 @@
  * Versão completamente revisada para garantir posicionamento correto
  */
 
+/* REMOVER INDICADORES DE SCROLL (SETINHAS) DOS SNIPPETS GIT */
+.filter-git .snippet-code::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+.filter-git .snippet-code {
+  scrollbar-width: thin !important;
+  scrollbar-color: #495057 #212529 !important;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-track {
+  background: #212529 !important;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-thumb {
+  background-color: #495057 !important;
+  border-radius: 4px !important;
+  border: 2px solid #212529 !important;
+}
+
 /* RESET COMPLETO DE TODAS AS PROPRIEDADES PROBLEMÁTICAS */
 .filter-git .btn-custom.position-absolute,
 .filter-git .btn-custom.position-absolute iconify-icon,
@@ -22,7 +47,9 @@
 }
 
 .filter-git .position-relative .btn-custom.position-absolute {
-  display: inline-block !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   position: absolute !important;
   top: 1px !important;                /* 1px para alinhamento preciso com a borda */
   right: 1px !important;              /* 1px para alinhamento preciso com a borda */
@@ -41,23 +68,19 @@
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   box-shadow: none !important;
-  text-align: center !important;
-  line-height: 1 !important;
 }
 
 /* ÍCONE DENTRO DO BOTÃO */
 .filter-git .position-relative .btn-custom.position-absolute iconify-icon {
   width: 16px !important;
   height: 16px !important;
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
   padding: 0 !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
+  position: static !important;
+  transform: none !important;
   color: #0dcaf0 !important;
 }
 
@@ -96,17 +119,58 @@
   right: 1px !important;
 }
 
-/* GARANTIR CENTRALIZAÇÃO DO ÍCONE EM TODOS OS CASOS */
-.filter-git .btn-custom.position-absolute iconify-icon,
-.filter-git .btn-xs.btn-outline-info iconify-icon {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  display: block !important;
+/* ESTILOS ESPECÍFICOS PARA BOTÕES DE LINK EXTERNO NOS SNIPPETS GIT */
+.filter-git .snippet-actions-float .btn-custom[data-snippet-external-link],
+.filter-git .snippet-actions-float a[data-snippet-external-link] {
+  /* Resetar quaisquer estilos aplicados anteriormente */
+  all: revert !important;
+  
+  /* Propriedades básicas do botão */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.15rem 0.3rem !important;
+  height: auto !important;
+  border-color: #5bc0de !important;
+  border-radius: 0.2rem !important;
+  background-color: transparent !important;
+  
+  /* Garantir visibilidade */
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.iconify-icon-18 {
-  width: 18px !important;
-  height: 18px !important;
+/* ÍCONE DE LINK EXTERNO */
+.filter-git .snippet-actions-float a[data-snippet-external-link] iconify-icon,
+.filter-git h6 .snippet-actions-float a iconify-icon,
+.filter-git .portfolio-content h6 .snippet-actions-float a iconify-icon {
+  /* Garantir tamanho adequado */
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  
+  /* Garantir alinhamento e visualização */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #5bc0de !important;
+  transform: none !important;
+  position: static !important;
+  
+  /* Garantir que o ícone seja renderizado corretamente */
+  font-size: 20px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* EFEITOS HOVER PARA LINKS EXTERNOS */
+.filter-git .snippet-actions-float a[data-snippet-external-link]:hover {
+  background-color: #5bc0de !important;
+  color: #212529 !important;
+}
+
+.filter-git .snippet-actions-float a[data-snippet-external-link]:hover iconify-icon {
+  color: #212529 !important;
 }

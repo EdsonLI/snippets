@@ -3,6 +3,41 @@
  * Versão simplificada para resolver loops e problemas de carregamento
  */
 (function() {
+    // Função específica para ajustar os ícones de links externos
+    function fixExternalLinkIcons() {
+        try {
+            const externalLinkIcons = document.querySelectorAll('.filter-git .snippet-actions-float a[data-snippet-external-link] iconify-icon');
+            
+            if (externalLinkIcons.length > 0) {
+                externalLinkIcons.forEach(icon => {
+                    // Restaurar atributos originais
+                    if (icon.hasAttribute('width')) {
+                        icon.setAttribute('width', '20');
+                    }
+                    if (icon.hasAttribute('height')) {
+                        icon.setAttribute('height', '20');
+                    }
+                    
+                    // Aplicar estilos inline para garantir
+                    icon.style.width = '20px';
+                    icon.style.height = '20px';
+                    icon.style.minWidth = '20px';
+                    icon.style.minHeight = '20px';
+                    icon.style.display = 'inline-flex';
+                    icon.style.alignItems = 'center';
+                    icon.style.justifyContent = 'center';
+                });
+                
+                console.log('Ícones de links externos ajustados:', externalLinkIcons.length);
+            }
+        } catch (e) {
+            console.warn('Erro ao ajustar ícones de links externos:', e);
+        }
+    }
+    
+    // Chamar a função ao carregar
+    setTimeout(fixExternalLinkIcons, 500);
+    setTimeout(fixExternalLinkIcons, 1500);
     // CSS estritamente necessário para corrigir o problema
     const gitFixCSS = `
         /* Ajustes para os blocos de código - simplificado para máxima compatibilidade */
