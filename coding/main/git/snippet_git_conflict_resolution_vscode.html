@@ -10,28 +10,26 @@
     </h6>
     <h6 class="mb-2 text-center"><strong>Resolver conflitos localmente no VS Code após criar PR</strong></h6>
     <div class="snippet-code position-relative">
-      <div class="mt-2 small">
-        
+      <div class="mt-2 small">        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>1: Atualize a branch de base (<span>development</span>)</strong></h6>
+          <div class="text-center"><b>1. Atualize a branch de base (<span>development</span>):</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-1">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gcr-step-1" class="language-bash">git checkout development
+<code id="gcr-step-1" class="language-bash"> git checkout development
 git pull origin development</code></pre>
           </div>
-        </div>
-        
+        </div>        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>2: Faça checkout da sua branch da PR</strong></h6>
+          <div class="text-center"><b>2. Faça checkout da sua branch da PR:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-2">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gcr-step-2" class="language-bash">git checkout 157-implementar-a-nova-funcionalidade</code></pre>
+<code id="gcr-step-2" class="language-bash"> git checkout 157-implementar-a-nova-funcionalidade</code></pre>
           </div>
           <div class="small mt-1">Se ainda não tiver localmente:</div>
           <div class="position-relative">
@@ -39,24 +37,22 @@ git pull origin development</code></pre>
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gcr-step-3" class="language-bash">git fetch origin
+<code id="gcr-step-3" class="language-bash"> git fetch origin
 git checkout -b 157-implementar-a-nova-funcionalidade origin/157-implementar-a-nova-funcionalidade</code></pre>
           </div>
-        </div>
-        
+        </div>        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>3: Mescle a branch <span>development</span> na sua para resolver os conflitos</strong></h6>
+          <div class="text-center"><b>3. Mescle a branch <span>development</span> na sua para resolver os conflitos:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-4">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gcr-step-4" class="language-bash">git merge development</code></pre>
+<code id="gcr-step-4" class="language-bash"> git merge development</code></pre>
           </div>
-        </div>
-        
+        </div>        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>4: Resolva os conflitos no VS Code</strong></h6>
+          <div class="text-center"><b>4. Resolva os conflitos no VS Code:</b></div>
           <ul class="git-internal-ul">
             <li>Acesse a aba <b>Source Control</b> (<kbd>Ctrl+Shift+G</kbd>);</li>
             <li>Abra os arquivos com ícone de exclamação <span style="color: #ffc107;">&#9888;</span></li>
@@ -78,31 +74,28 @@ git checkout -b 157-implementar-a-nova-funcionalidade origin/157-implementar-a-n
         </div>
         
         <div class="mb-3">
-          <h6 class="mb-2"><strong>5: Após resolver finalize o merge</strong></h6>
+          <div class="text-center"><b>5. Após resolver finalize o merge:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-5">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gcr-step-5" class="language-bash">git add .
+<code id="gcr-step-5" class="language-bash"> git add .
 git commit -m "Resolvendo conflitos com a branch development"</code></pre>
           </div>
-        </div>
-        
+        </div>        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>6: Push para o repositório remoto</strong></h6>
+          <div class="text-center"><b>6. Push para o repositório remoto:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-6">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gcr-step-6" class="language-bash">git push origin 157-implementar-a-nova-funcionalidade</code></pre>
+<code id="gcr-step-6" class="language-bash"> git push origin 157-implementar-a-nova-funcionalidade</code></pre>
           </div>
-        </div>
-        
+        </div>        
         <div class="mt-4">
-          <p><strong>Dicas:</strong></p>
-          
+          <p><strong>Dicas:</strong></p>          
           <div class="mb-3">
             <div><b>Comparar visualmente as três últimas versões</b></div>
             <div class="position-relative">
@@ -110,10 +103,9 @@ git commit -m "Resolvendo conflitos com a branch development"</code></pre>
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gcr-step-9" class="language-bash">git log -p -n 3 -- app/control/pedidos/OrderFormView.php</code></pre>
+<code id="gcr-step-9" class="language-bash"> git log -p -n 3 -- app/control/pedidos/OrderFormView.php</code></pre>
             </div>
-          </div>
-          
+          </div>          
           <div class="mb-3">
             <div><b>Comparar versões com GitLens</b></div>
             <div class="mt-2 small">
