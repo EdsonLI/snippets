@@ -38,7 +38,7 @@
             .filter-git .position-relative pre.git-pre-code {
                 position: relative !important;
                 margin-top: 0 !important;                    
-                width: 25.5rem !important;
+                width: 25.35rem !important;
             }
             
             /* Override específico para remover margens */
