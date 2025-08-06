@@ -38,7 +38,12 @@
             .filter-git .position-relative pre.git-pre-code {
                 position: relative !important;
                 margin-top: 0 !important;                    
-                width: 25.26rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: auto !important;
+                white-space: pre-wrap !important;
+                word-break: break-word !important;
             }
             
             /* Override específico para remover margens */
@@ -50,6 +55,23 @@
             .filter-git .position-relative .position-absolute.btn-custom:hover {
                 background-color: var(--bs-btn-active-bg) !important;
                 color: #212529 !important;
+            }
+            
+            /* Ajustes específicos para dispositivos móveis */
+            @media (max-width: 768px) {
+                .filter-git .position-relative pre.git-pre-code {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    overflow-x: hidden !important;
+                    word-wrap: break-word !important;
+                    white-space: pre-wrap !important;
+                }
+                
+                .filter-git .position-relative pre.git-pre-code code {
+                    white-space: pre-wrap !important;
+                    word-break: break-word !important;
+                    width: 100% !important;
+                }
             }
         `;
         
@@ -74,7 +96,7 @@
                 button.setAttribute('data-fixed', 'true');
             });
         } catch (e) {
-            console.warn('Erro ao remover classes m-1:', e);
+            // Erro silencioso - removido console.warn
         }
     }
     
@@ -82,6 +104,37 @@
     function fixGitButtons() {
         applyGlobalCSS();
         removeM1Class();
+        adjustCodeWidths();
+    }
+    
+    // Ajustar larguras dos blocos de código para dispositivos móveis
+    function adjustCodeWidths() {
+        const gitPreCodes = document.querySelectorAll('.filter-git .position-relative pre.git-pre-code');
+        gitPreCodes.forEach(preElement => {
+            // Marcar como processado
+            preElement.setAttribute('data-width-fixed', 'true');
+            
+            // Ajustar largura com base no elemento pai
+            const parentWidth = preElement.parentElement.clientWidth;
+            if (parentWidth > 0) {
+                preElement.style.maxWidth = (parentWidth - 10) + 'px'; // -10px para margem de segurança
+                
+                // Ajuste adicional para telas pequenas
+                if (window.innerWidth <= 768) {
+                    // Para dispositivos móveis, queremos ter certeza que o texto quebra corretamente
+                    preElement.style.whiteSpace = 'pre-wrap';
+                    preElement.style.wordBreak = 'break-word';
+                    
+                    // Ajustar o tamanho do código interno também
+                    const codeElement = preElement.querySelector('code');
+                    if (codeElement) {
+                        codeElement.style.whiteSpace = 'pre-wrap';
+                        codeElement.style.wordBreak = 'break-word';
+                        codeElement.style.width = '100%';
+                    }
+                }
+            }
+        });
     }
     
     // Aplicar correções imediatamente
@@ -95,6 +148,21 @@
     // Aplicar correções após o carregamento completo
     window.addEventListener('load', fixGitButtons);
     
-    // Verificar novamente após um pequeno delay
+    // Verificar novamente após pequenos delays para garantir que os elementos estejam carregados
+    setTimeout(fixGitButtons, 500);
     setTimeout(fixGitButtons, 1000);
+    setTimeout(fixGitButtons, 2000);
+    
+    // Aplicar correções quando a janela for redimensionada (importante para dispositivos móveis)
+    window.addEventListener('resize', function() {
+        setTimeout(adjustCodeWidths, 100);
+    });
+    
+    // Verificar periodicamente se novos snippets foram adicionados
+    setInterval(function() {
+        const unfixedGitPreCodes = document.querySelectorAll('.filter-git .position-relative pre.git-pre-code:not([data-width-fixed="true"])');
+        if (unfixedGitPreCodes.length > 0) {
+            fixGitButtons();
+        }
+    }, 3000);
 })();
