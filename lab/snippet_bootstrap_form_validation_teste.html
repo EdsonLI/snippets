@@ -129,16 +129,11 @@
   &lt;/div&gt;
 &lt;/form&gt;
 
-&lt;!-- JavaScript para ativar a validação do Bootstrap --&gt;
 &lt;script&gt;
   // Função para ativar validação em todos os formulários com classe 'needs-validation'
   (function () {
     'use strict'
-
-    // Seleciona todos os formulários que precisam de validação
     var forms = document.querySelectorAll('.needs-validation')
-
-    // Loop sobre eles e previne submissão
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
