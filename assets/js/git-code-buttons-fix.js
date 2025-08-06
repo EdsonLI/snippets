@@ -23,9 +23,18 @@
             right: 0 !important;
             margin: 0 !important;
             z-index: 10 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            display: inline-block !important;
+            text-align: center !important;
+            line-height: 1 !important;
+        }
+        
+        /* Centralização completa do ícone */
+        .filter-git .position-relative .position-absolute.btn-custom iconify-icon {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            display: block !important;
         }
         
         /* Ajustes para os ícones dentro dos botões */

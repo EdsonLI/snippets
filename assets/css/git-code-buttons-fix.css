@@ -22,9 +22,7 @@
 }
 
 .filter-git .position-relative .btn-custom.position-absolute {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: inline-block !important;
   position: absolute !important;
   top: 1px !important;                /* 1px para alinhamento preciso com a borda */
   right: 1px !important;              /* 1px para alinhamento preciso com a borda */
@@ -43,19 +41,23 @@
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   box-shadow: none !important;
+  text-align: center !important;
+  line-height: 1 !important;
 }
 
 /* ÍCONE DENTRO DO BOTÃO */
 .filter-git .position-relative .btn-custom.position-absolute iconify-icon {
   width: 16px !important;
   height: 16px !important;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   padding: 0 !important;
-  position: static !important;
-  transform: none !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
   color: #0dcaf0 !important;
 }
 
@@ -92,4 +94,14 @@
   margin: 0 !important;
   top: 1px !important;
   right: 1px !important;
+}
+
+/* GARANTIR CENTRALIZAÇÃO DO ÍCONE EM TODOS OS CASOS */
+.filter-git .btn-custom.position-absolute iconify-icon,
+.filter-git .btn-xs.btn-outline-info iconify-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: block !important;
 }
