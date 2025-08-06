@@ -59,9 +59,9 @@
             
             /* Ajustes específicos para dispositivos móveis */
             @media (max-width: 768px) {
-                .filter-git .position-relative pre.git-pre-code {
-                    width: 100% !important;
-                    max-width: 100% !important;
+                .filter-git .position-relative pre.git-pre-code {                                
+                    width: 378px !important;
+                    max-width: 380px !important;
                     overflow-x: hidden !important;
                     word-wrap: break-word !important;
                     white-space: pre-wrap !important;
@@ -70,7 +70,7 @@
                 .filter-git .position-relative pre.git-pre-code code {
                     white-space: pre-wrap !important;
                     word-break: break-word !important;
-                    width: 100% !important;
+                    width: 378px !important;
                 }
             }
         `;
