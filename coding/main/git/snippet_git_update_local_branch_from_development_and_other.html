@@ -19,6 +19,7 @@
           </ul>
         </div>
         
+        <!--aqui-->
         <div class="mb-3">
           <h6 class="mb-2"><strong>1: Atualizar sua branch com development</strong></h6>
           <div class="position-relative">
@@ -36,42 +37,43 @@
             Isso garante que a sua branch está atualizada com tudo que foi integrado na development.
           </div>
         </div>
+        <!--/aqui-->
         
         <div class="mb-3">
           <h6 class="mb-2"><strong>2: Integrar o código da branch de outro dev</strong></h6>
           <p class="mb-2">Você tem duas opções:</p>
           
-          <ol>
-            <li>
-              <b>Opção 1: Rebase da branch do outro dev (histórico linear)</b>
-              <div class="position-relative">
-                <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-2">
-                  <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-                </button>
-                <pre class="git-pre-code"><code id="glbo-step-2" class="language-bash">git switch feature/edson-ajustes
+          <div class="mb-3">
+            <div><b>Opção 1: Rebase da branch do outro dev (histórico linear)</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-2">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="glbo-step-2" class="language-bash">git switch feature/edson-ajustes
 git fetch origin
 git rebase origin/feature/pedro-nova-funcionalidade</code></pre>
-              </div>
-              <div class="small text-info mt-1">
-                Útil quando você precisa das alterações como base para seu trabalho.
-              </div>
-            </li>
-            
-            <li class="mt-2">
-              <b>Opção 2: Merge da branch do outro dev (preserva histórico)</b>
-              <div class="position-relative">
-                <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-3">
-                  <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-                </button>
-                <pre class="git-pre-code"><code id="glbo-step-3" class="language-bash">git switch feature/edson-ajustes
+            </div>
+            <div class="small text-info mt-1">
+              Útil quando você precisa das alterações como base para seu trabalho.
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <div><b>Opção 2: Merge da branch do outro dev (preserva histórico)</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-3">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="glbo-step-3" class="language-bash">git switch feature/edson-ajustes
 git fetch origin
 git merge origin/feature/pedro-nova-funcionalidade</code></pre>
-              </div>
-              <div class="small text-info mt-1">
-                Mantém o histórico de que você trouxe os commits dele, mais explícito e seguro para testes.
-              </div>
-            </li>
-          </ol>
+            </div>
+            <div class="small text-info mt-1">
+              Mantém o histórico de que você trouxe os commits dele, mais explícito e seguro para testes.
+            </div>
+          </div>
         </div>
         
         <div class="mt-3">
