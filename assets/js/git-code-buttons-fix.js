@@ -38,12 +38,12 @@
             .filter-git .position-relative pre.git-pre-code {
                 position: relative !important;
                 margin-top: 0 !important;
-                width: 408px !important;
+                width: 407px !important;
                 box-sizing: border-box !important;
                 overflow-x: auto !important;
                 white-space: pre-wrap !important;
                 word-break: break-word !important;
-                max-width: 408px !important;
+                max-width: 407px !important;
             }
             
             /* Override específico para remover margens */
