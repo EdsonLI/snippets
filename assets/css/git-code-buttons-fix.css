@@ -105,3 +105,8 @@
   transform: translate(-50%, -50%) !important;
   display: block !important;
 }
+
+.iconify-icon-18 {
+  width: 18px !important;
+  height: 18px !important;
+}
