@@ -145,10 +145,10 @@
 .filter-git h6 .snippet-actions-float a iconify-icon,
 .filter-git .portfolio-content h6 .snippet-actions-float a iconify-icon {
   /* Garantir tamanho adequado */
-  width: 20px !important;
-  height: 20px !important;
-  min-width: 20px !important;
-  min-height: 20px !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
   
   /* Garantir alinhamento e visualização */
   display: inline-flex !important;
@@ -159,7 +159,7 @@
   position: static !important;
   
   /* Garantir que o ícone seja renderizado corretamente */
-  font-size: 20px !important;
+  font-size: 18px !important;
   line-height: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
