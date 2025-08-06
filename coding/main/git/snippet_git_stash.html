@@ -8,25 +8,21 @@
         </a>
       </div>
     </h6>
+    <h6 class="mb-2 text-center"><strong>Git Stash</strong></h6>
     <div class="snippet-code position-relative">
-      <div class="mt-2 small">
-        
-        <div class="mb-3">
-          <h6 class="mb-2"><strong>Git Stash</strong></h6>
+      <div class="mt-2 small">        
+        <div class="mb-3">          
           <p class="text-center">O stash salva temporariamente modificações que ainda não foram commitadas (em arquivos rastreados) e limpa seu working directory, permitindo que você alterne de branch ou execute outro trabalho sem perder o que estava fazendo e sem fazer o commit:</p>
-        </div>
-        
+        </div>        
         <div class="mb-3">
           <h6 class="mb-2"><strong>Quando usar?</strong></h6>
           <ul>
             <li>Quando você está no meio de uma tarefa mas precisa mudar para outra branch para corrigir um bug.</li>
             <li>Quando quer limpar o estado atual do projeto, mas pretende voltar a ele depois.</li>
           </ul>
-        </div>
-        
+        </div>        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>Comandos básicos</strong></h6>
-          
+          <h6 class="mb-2"><strong>Comandos básicos</strong></h6>          
           <div class="mb-3">
             <div><b>1: Guardar modificações atuais</b></div>
             <div class="position-relative">
@@ -36,8 +32,7 @@
               <pre class="git-pre-code">
 <code id="gul-step-1" class="language-bash">git stash</code></pre>
             </div>
-          </div>
-          
+          </div>          
           <div class="mb-3">
             <div><b>2: Listar stashes guardados</b></div>
             <div class="position-relative">
@@ -47,8 +42,7 @@
               <pre class="git-pre-code">
 <code id="gul-step-2" class="language-bash">git stash list</code></pre>
             </div>
-          </div>
-          
+          </div>          
           <div class="mb-3">
             <div><b>3: Restaurar último stash (mantendo na lista)</b></div>
             <div class="position-relative">
@@ -58,8 +52,7 @@
               <pre class="git-pre-code">
 <code id="gul-step-3" class="language-bash">git stash apply</code></pre>
             </div>
-          </div>
-          
+          </div>          
           <div class="mb-3">
             <div><b>4: Aplicar e remover do stash (como "colar e excluir")</b></div>
             <div class="position-relative">
@@ -70,12 +63,10 @@
 <code id="gul-step-4" class="language-bash">git stash pop</code></pre>
             </div>
           </div>
-        </div>
-        
+        </div>        
         <div class="mb-3">
           <h6 class="mb-2"><strong>Exemplo de uso combinado</strong></h6>
-          <p class="mb-2">Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>
-          
+          <p class="mb-2">Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>          
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-5">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -87,11 +78,9 @@ git checkout branch-b   # muda de branch
 git checkout branch-a   # volta
 git stash pop           # recupera as alterações</code></pre>
           </div>
-        </div>
-        
+        </div>        
         <div class="mt-3">
-          <h6 class="mb-2"><strong>Dicas avançadas</strong></h6>
-          
+          <h6 class="mb-2"><strong>Dicas avançadas</strong></h6>          
           <div class="mb-3">
             <div><b>1: Criar stash com mensagem descritiva</b></div>
             <div class="position-relative">
@@ -101,8 +90,7 @@ git stash pop           # recupera as alterações</code></pre>
               <pre class="git-pre-code">
 <code id="gul-step-6" class="language-bash">git stash push -m "descrição do que estou guardando"</code></pre>
             </div>
-          </div>
-          
+          </div>          
           <div class="mb-3">
             <div><b>2: Aplicar um stash específico</b></div>
             <div class="position-relative">
