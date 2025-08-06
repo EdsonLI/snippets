@@ -174,69 +174,114 @@
         });
     }
     
-    // Aplicar correções imediatamente
-    fixGitButtons();
-    
-    // Aplicar correções quando a página estiver carregada
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', fixGitButtons);
+    // Função de inicialização segura
+    function safeInit() {
+        // Aplicar correções imediatamente se o DOM já estiver pronto
+        if (document.readyState !== 'loading') {
+            fixGitButtons();
+        } else {
+            // Caso contrário, esperar o DOM carregar
+            document.addEventListener('DOMContentLoaded', fixGitButtons);
+        }
+        
+        // Aplicar correções após o carregamento completo
+        window.addEventListener('load', fixGitButtons);
     }
     
-    // Aplicar correções após o carregamento completo
-    window.addEventListener('load', fixGitButtons);
+    // Iniciar com segurança
+    safeInit();
+    
+    // Função para aplicar com segurança
+    function safeApply(fn) {
+        return function() {
+            try {
+                fn();
+            } catch (e) {
+                // Ignorar erros silenciosamente
+            }
+        };
+    }
     
     // Verificar novamente após pequenos delays para garantir que os elementos estejam carregados
-    setTimeout(fixGitButtons, 100);
-    setTimeout(fixGitButtons, 500);
-    setTimeout(fixGitButtons, 1000);
-    setTimeout(fixGitButtons, 2000);
+    setTimeout(safeApply(fixGitButtons), 100);
+    setTimeout(safeApply(fixGitButtons), 500);
+    setTimeout(safeApply(fixGitButtons), 1000);
+    setTimeout(safeApply(fixGitButtons), 2000);
     
     // Aplicar correções quando a janela for redimensionada (importante para dispositivos móveis)
     window.addEventListener('resize', function() {
-        // Executa imediatamente
-        adjustCodeWidths();
-        // E depois de um pequeno delay para garantir que todos os cálculos de layout foram concluídos
-        setTimeout(adjustCodeWidths, 100);
+        try {
+            // Executa imediatamente
+            adjustCodeWidths();
+            // E depois de um pequeno delay para garantir que todos os cálculos de layout foram concluídos
+            setTimeout(safeApply(adjustCodeWidths), 100);
+        } catch (e) {
+            // Ignorar erros silenciosamente
+        }
     });
     
     // Handler específico para mudanças de orientação em dispositivos móveis
     window.addEventListener('orientationchange', function() {
-        // Executar várias vezes para garantir que os ajustes sejam aplicados após o evento de orientação
-        setTimeout(fixGitButtons, 100);
-        setTimeout(fixGitButtons, 500);
+        try {
+            // Executar várias vezes para garantir que os ajustes sejam aplicados após o evento de orientação
+            setTimeout(safeApply(fixGitButtons), 100);
+            setTimeout(safeApply(fixGitButtons), 500);
+        } catch (e) {
+            // Ignorar erros silenciosamente
+        }
     });
     
-    // Verificar periodicamente se novos snippets foram adicionados (intervalo mais curto)
-    setInterval(function() {
-        const unfixedGitPreCodes = document.querySelectorAll('.filter-git .position-relative pre.git-pre-code:not([data-width-fixed="true"])');
-        if (unfixedGitPreCodes.length > 0) {
-            fixGitButtons();
-        }
-    }, 1000);
-    
-    // Para garantir que qualquer ajuste dinâmico no DOM seja detectado
-    const observer = new MutationObserver(function(mutations) {
-        let needsUpdate = false;
-        
-        mutations.forEach(function(mutation) {
-            if (mutation.addedNodes.length || mutation.type === 'attributes') {
-                const gitSnippets = document.querySelectorAll('.filter-git');
-                if (gitSnippets.length > 0) {
-                    needsUpdate = true;
+    // Função para configurar a observação de DOM
+    function setupDOMObservation() {
+        // Verificar periodicamente se novos snippets foram adicionados (intervalo mais curto)
+        setInterval(function() {
+            try {
+                const unfixedGitPreCodes = document.querySelectorAll('.filter-git .position-relative pre.git-pre-code:not([data-width-fixed="true"])');
+                if (unfixedGitPreCodes.length > 0) {
+                    fixGitButtons();
                 }
+            } catch (e) {
+                // Ignorar erros silenciosamente
             }
-        });
+        }, 1000);
         
-        if (needsUpdate) {
-            setTimeout(fixGitButtons, 50);
+        try {
+            // Para garantir que qualquer ajuste dinâmico no DOM seja detectado
+            const observer = new MutationObserver(function(mutations) {
+                let needsUpdate = false;
+                
+                mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length || mutation.type === 'attributes') {
+                        const gitSnippets = document.querySelectorAll('.filter-git');
+                        if (gitSnippets.length > 0) {
+                            needsUpdate = true;
+                        }
+                    }
+                });
+                
+                if (needsUpdate) {
+                    setTimeout(fixGitButtons, 50);
+                }
+            });
+            
+            // Configurar e iniciar o observer para detectar mudanças no DOM
+            if (document.body) {
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    attributeFilter: ['class', 'style']
+                });
+            }
+        } catch (e) {
+            // Ignorar erros do MutationObserver
         }
-    });
+    }
     
-    // Configurar e iniciar o observer para detectar mudanças no DOM
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['class', 'style']
-    });
+    // Adicionar setupDOMObservation ao evento DOMContentLoaded
+    if (document.readyState !== 'loading') {
+        setupDOMObservation();
+    } else {
+        document.addEventListener('DOMContentLoaded', setupDOMObservation);
+    }
 })();
