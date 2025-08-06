@@ -36,9 +36,9 @@
             
             /* Ajustes para os blocos de código */
             .filter-git .position-relative pre.git-pre-code {
-                padding-right: 26px !important;
                 position: relative !important;
-                margin-top: 0 !important;
+                margin-top: 0 !important;                    
+                width: 21.65rem !important;
             }
             
             /* Override específico para remover margens */
