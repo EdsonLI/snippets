@@ -37,13 +37,13 @@
             /* Ajustes para os blocos de código */
             .filter-git .position-relative pre.git-pre-code {
                 position: relative !important;
-                margin-top: 0 !important;                    
-                width: 100% !important;
-                max-width: 100% !important;
+                margin-top: 0 !important;
+                width: 404px !important;
                 box-sizing: border-box !important;
                 overflow-x: auto !important;
                 white-space: pre-wrap !important;
                 word-break: break-word !important;
+                max-width: 404px !important;
             }
             
             /* Override específico para remover margens */
