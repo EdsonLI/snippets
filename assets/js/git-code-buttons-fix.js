@@ -23,6 +23,26 @@
             right: 0 !important;
             margin: 0 !important;
             z-index: 10 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* Ajustes para os ícones dentro dos botões */
+        .filter-git .position-relative .position-absolute.btn-custom iconify-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 14px !important;
+            height: 14px !important;
+        }
+        
+        /* Ajustes para garantir que o botão tenha o tamanho e posicionamento corretos */
+        .filter-git .position-relative .btn-custom {
+            padding: 2px 5px !important;
+            height: 24px !important;
+            min-height: 24px !important;
+            line-height: 24px !important;
         }
         
         /* Ajustes para dispositivos móveis */
@@ -39,13 +59,44 @@
             // 1. Aplicar CSS
             const styleElement = document.createElement('style');
             styleElement.type = 'text/css';
+            styleElement.setAttribute('data-git-button-fix', 'true'); // Marcar para evitar duplicações
             styleElement.textContent = gitFixCSS;
             document.head.appendChild(styleElement);
             
             // 2. Remover classes m-1 que causam problemas
-            const buttons = document.querySelectorAll('.filter-git .position-relative .position-absolute.m-1');
+            const buttons = document.querySelectorAll('.filter-git .position-relative .position-absolute.btn-custom');
             buttons.forEach(button => {
+                // Remover classe m-1
                 button.classList.remove('m-1');
+                
+                // Aplicar estilos diretamente (mais forte que classes)
+                button.style.position = 'absolute';
+                button.style.top = '0';
+                button.style.right = '0';
+                button.style.margin = '0';
+                button.style.display = 'flex';
+                button.style.alignItems = 'center';
+                button.style.justifyContent = 'center';
+                button.style.padding = '2px 5px';
+                
+                // Ajustar os ícones dentro do botão
+                const icons = button.querySelectorAll('iconify-icon');
+                icons.forEach(icon => {
+                    icon.style.display = 'flex';
+                    icon.style.alignItems = 'center';
+                    icon.style.justifyContent = 'center';
+                    icon.style.margin = '0';
+                    icon.style.padding = '0';
+                });
+            });
+            
+            // 3. Garantir que os pre.git-pre-code tenham largura 100%
+            const preCodes = document.querySelectorAll('.filter-git .position-relative pre.git-pre-code');
+            preCodes.forEach(preCode => {
+                preCode.style.width = '100%';
+                preCode.style.maxWidth = '100%';
+                preCode.style.boxSizing = 'border-box';
+                preCode.style.overflowX = 'hidden';
             });
         } catch (e) {
             // Silenciar erros

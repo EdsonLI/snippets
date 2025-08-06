@@ -104,9 +104,11 @@ ol, ul {
 }
 
 .git-pre-code {
-    left: -1rem !important;
+    left: 0 !important;
     position: relative !important;
-    width: 20.7rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .git-internal-ul {
