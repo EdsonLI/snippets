@@ -31,7 +31,6 @@ $(document).ready(function() {
    * Initialize search functionality
    */
   function initSearchFunctionality() {
-    log.info('Initializing search functionality');
     setupSearchEvents();
   }
 
@@ -83,8 +82,6 @@ $(document).ready(function() {
       resetSnippetsView();
       return;
     }
-
-    log.info(`Searching for: "${searchText}"`);
     
     // Track if we found any matches
     let foundMatches = false;
@@ -131,8 +128,6 @@ $(document).ready(function() {
     
     // Re-layout Isotope if it exists
     reinitializeIsotope();
-    
-    log.info(`Search complete: ${foundMatches ? 'results found' : 'no results'}`);
   }
 
   /**
@@ -177,10 +172,8 @@ $(document).ready(function() {
         $activeFilter.trigger('click');
       }
     } catch (err) {
-      log.error('Error resetting isotope filters:', err);
+      // log.error('Error resetting isotope filters:', err);
     }
-    
-    log.info('Reset snippets view - showing all snippets');
   }
 
   /**
@@ -201,8 +194,6 @@ $(document).ready(function() {
             return $(this).is(':visible');
           }
         });
-        
-        log.info('Isotope layout refreshed');
       }, 10);
     }
   }
