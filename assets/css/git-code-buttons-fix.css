@@ -1,0 +1,176 @@
+/* 
+ * Correção específica para alinhamento vertical e posicionamento dos botões nos snippets Git
+ * Versão completamente revisada para garantir posicionamento correto
+ */
+
+/* REMOVER INDICADORES DE SCROLL (SETINHAS) DOS SNIPPETS GIT */
+.filter-git .snippet-code::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+.filter-git .snippet-code {
+  scrollbar-width: thin !important;
+  scrollbar-color: #495057 #212529 !important;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-track {
+  background: #212529 !important;
+}
+
+.filter-git .snippet-code::-webkit-scrollbar-thumb {
+  background-color: #495057 !important;
+  border-radius: 4px !important;
+  border: 2px solid #212529 !important;
+}
+
+/* RESET COMPLETO DE TODAS AS PROPRIEDADES PROBLEMÁTICAS */
+.filter-git .btn-custom.position-absolute,
+.filter-git .btn-custom.position-absolute iconify-icon,
+.filter-git .position-relative .btn-custom.position-absolute,
+.filter-git .position-relative .btn-custom.position-absolute iconify-icon {
+  all: initial !important;
+  * {
+    all: unset !important;
+  }
+}
+
+/* NOVO POSICIONAMENTO ABSOLUTO PARA OS BOTÕES */
+.filter-git .position-relative {
+  position: relative !important;
+  margin-top: 0.5rem !important;
+  padding-top: 0 !important;
+}
+
+.filter-git .position-relative .btn-custom.position-absolute {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 1px !important;                /* 1px para alinhamento preciso com a borda */
+  right: 1px !important;              /* 1px para alinhamento preciso com a borda */
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 999 !important;
+  background-color: #212529 !important;
+  color: #0dcaf0 !important;
+  border: 1px solid #495057 !important;
+  border-bottom: none !important;
+  border-right: none !important;
+  border-top-left-radius: 3px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ÍCONE DENTRO DO BOTÃO */
+.filter-git .position-relative .btn-custom.position-absolute iconify-icon {
+  width: 16px !important;
+  height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  transform: none !important;
+  color: #0dcaf0 !important;
+}
+
+/* AJUSTES NOS BLOCOS DE CÓDIGO */
+.filter-git pre.git-pre-code {
+  margin-top: 0 !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-right: 30px !important;
+  border: 1px solid #495057 !important;
+  position: relative !important;
+  border-radius: 0.25rem !important;
+  background-color: #212529 !important;
+}
+
+/* HOVER EFFECTS */
+.filter-git .position-relative .btn-custom.position-absolute:hover {
+  background-color: #0dcaf0 !important;
+  color: #212529 !important;
+}
+
+.filter-git .position-relative .btn-custom.position-absolute:hover iconify-icon {
+  color: #212529 !important;
+}
+
+/* REMOVER A MARGEM ENTRE O BOTÃO E O PRE */
+.filter-git .position-relative .btn-custom.position-absolute.m-1 {
+  margin: 0 !important;
+}
+
+/* CORREÇÃO ESPECÍFICA PARA BOTÕES COM CLASSE m-1 */
+.filter-git .btn-xs.btn-outline-info.btn-custom.position-absolute.top-0.end-0.m-1,
+.filter-git .btn-custom.position-absolute.top-0.end-0.m-1 {
+  margin: 0 !important;
+  top: 1px !important;
+  right: 1px !important;
+}
+
+/* ESTILOS ESPECÍFICOS PARA BOTÕES DE LINK EXTERNO NOS SNIPPETS GIT */
+.filter-git .snippet-actions-float .btn-custom[data-snippet-external-link],
+.filter-git .snippet-actions-float a[data-snippet-external-link] {
+  /* Resetar quaisquer estilos aplicados anteriormente */
+  all: revert !important;
+  
+  /* Propriedades básicas do botão */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.15rem 0.3rem !important;
+  height: auto !important;
+  border-color: #5bc0de !important;
+  border-radius: 0.2rem !important;
+  background-color: transparent !important;
+  
+  /* Garantir visibilidade */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ÍCONE DE LINK EXTERNO */
+.filter-git .snippet-actions-float a[data-snippet-external-link] iconify-icon,
+.filter-git h6 .snippet-actions-float a iconify-icon,
+.filter-git .portfolio-content h6 .snippet-actions-float a iconify-icon {
+  /* Garantir tamanho adequado */
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  
+  /* Garantir alinhamento e visualização */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #5bc0de !important;
+  transform: none !important;
+  position: static !important;
+  
+  /* Garantir que o ícone seja renderizado corretamente */
+  font-size: 18px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* EFEITOS HOVER PARA LINKS EXTERNOS */
+.filter-git .snippet-actions-float a[data-snippet-external-link]:hover {
+  background-color: #5bc0de !important;
+  color: #212529 !important;
+}
+
+.filter-git .snippet-actions-float a[data-snippet-external-link]:hover iconify-icon {
+  color: #212529 !important;
+}
