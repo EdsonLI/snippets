@@ -6,6 +6,9 @@
         <a href="https://git-scm.com/docs/git-rebase/pt_BR" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
           <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
         </a>
+        <a href="https://git-scm.com/docs/git-merge/pt_BR" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
       </div>
     </h6>
     <h6 class="mb-2 text-center"><strong>Atualizar branch local com a development (remota) e integrar funcionalidades de outras branches (com 'rebase')</strong></h6>
@@ -18,10 +21,8 @@
             <li>Trazer o código da branch <code>feature/pedro-nova-funcionalidade</code> para testar ou integrar</li>
           </ul>
         </div>
-        
-        <!--aqui-->
         <div class="mb-3">
-          <h6 class="mb-2"><strong>1: Atualizar sua branch com development</strong></h6>
+          <div class="text-center"><b>1. Atualizar sua branch com development:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-1">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -36,54 +37,48 @@
           <div class="small mt-1">
             Isso garante que a sua branch está atualizada com tudo que foi integrado na development.
           </div>
-        </div>
-        <!--/aqui-->
-        
+        </div>        
         <div class="mb-3">
-          <h6 class="mb-2"><strong>2: Integrar o código da branch de outro dev</strong></h6>
-          <p class="mb-2">Você tem duas opções:</p>
-          
+          <div class="text-center"><b>2. Integrar o código da branch de outro dev:</b></div>
+          <p class="mb-2">Você tem duas opções:</p>          
           <div class="mb-3">
-            <div><b>Opção 1: Rebase da branch do outro dev (histórico linear)</b></div>
+            <div class="text-center"><b>Opção 1: Rebase da branch do outro dev (histórico linear):</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-2">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="glbo-step-2" class="language-bash">git switch feature/edson-ajustes
-git fetch origin
-git rebase origin/feature/pedro-nova-funcionalidade</code></pre>
+<code id="glbo-step-2" class="language-bash"> git switch feature/edson-ajustes
+ git fetch origin
+ git rebase origin/feature/pedro-nova-funcionalidade</code></pre>
             </div>
             <div class="small text-info mt-1">
               Útil quando você precisa das alterações como base para seu trabalho.
             </div>
-          </div>
-          
+          </div>          
           <div class="mb-3">
-            <div><b>Opção 2: Merge da branch do outro dev (preserva histórico)</b></div>
+            <div class="text-center"><b>Opção 2: Merge da branch do outro dev (preserva histórico):</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="glbo-step-3">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="glbo-step-3" class="language-bash">git switch feature/edson-ajustes
-git fetch origin
-git merge origin/feature/pedro-nova-funcionalidade</code></pre>
+<code id="glbo-step-3" class="language-bash"> git switch feature/edson-ajustes
+ git fetch origin
+ git merge origin/feature/pedro-nova-funcionalidade</code></pre>
             </div>
             <div class="small text-info mt-1">
               Mantém o histórico de que você trouxe os commits dele, mais explícito e seguro para testes.
             </div>
           </div>
-        </div>
-        
+        </div>        
         <div class="mt-3">
           <p><strong>Resumo:</strong></p>
           <ul>
             <li>Rebase com development → manter base atualizada</li>
             <li>Trazer o que outro dev fez (via rebase, merge ou cherry-pick) → integrar dependências específicas</li>
           </ul>
-        </div>
-        
+        </div>        
       </div>
     </div>
   </div>

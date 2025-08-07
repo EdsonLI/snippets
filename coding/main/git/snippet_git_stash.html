@@ -24,43 +24,43 @@
         <div class="mb-3">
           <h6 class="mb-2"><strong>Comandos básicos</strong></h6>          
           <div class="mb-3">
-            <div><b>1: Guardar modificações atuais</b></div>
+            <div class="text-center"><b>1. Guardar modificações atuais:</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-1">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-1" class="language-bash">git stash</code></pre>
+<code id="gul-step-1" class="language-bash"> git stash</code></pre>
             </div>
           </div>          
           <div class="mb-3">
-            <div><b>2: Listar stashes guardados</b></div>
+            <div class="text-center"><b>2. Listar stashes guardados:</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-2">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-2" class="language-bash">git stash list</code></pre>
+<code id="gul-step-2" class="language-bash"> git stash list</code></pre>
             </div>
           </div>          
           <div class="mb-3">
-            <div><b>3: Restaurar último stash (mantendo na lista)</b></div>
+            <div class="text-center"><b>3. Restaurar último stash (mantendo na lista):</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-3">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-3" class="language-bash">git stash apply</code></pre>
+<code id="gul-step-3" class="language-bash"> git stash apply</code></pre>
             </div>
           </div>          
           <div class="mb-3">
-            <div><b>4: Aplicar e remover do stash (como "colar e excluir")</b></div>
+            <div class="text-center"><b>4. Aplicar e remover do stash (como "colar e excluir"):</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-4">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-4" class="language-bash">git stash pop</code></pre>
+<code id="gul-step-4" class="language-bash"> git stash pop</code></pre>
             </div>
           </div>
         </div>        
@@ -72,33 +72,33 @@
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gul-step-5" class="language-bash">git stash               # guarda as alterações
-git checkout branch-b   # muda de branch
-# faz algo na branch-b
-git checkout branch-a   # volta
-git stash pop           # recupera as alterações</code></pre>
+<code id="gul-step-5" class="language-bash"> git stash # guarda as alterações
+ git checkout branch-b # muda de branch
+ # faz algo na branch-b
+ git checkout branch-a # volta
+ git stash pop # recupera as alterações</code></pre>
           </div>
         </div>        
         <div class="mt-3">
           <h6 class="mb-2"><strong>Dicas avançadas</strong></h6>          
           <div class="mb-3">
-            <div><b>1: Criar stash com mensagem descritiva</b></div>
+            <div class="text-center"><b>1. Criar stash com mensagem descritiva:</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-6">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-6" class="language-bash">git stash push -m "descrição do que estou guardando"</code></pre>
+<code id="gul-step-6" class="language-bash"> git stash push -m "descrição do que estou guardando"</code></pre>
             </div>
           </div>          
           <div class="mb-3">
-            <div><b>2: Aplicar um stash específico</b></div>
+            <div class="text-center"><b>2. Aplicar um stash específico:</b></div>
             <div class="position-relative">
               <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-7">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-7" class="language-bash">git stash apply stash@{2}</code></pre>
+<code id="gul-step-7" class="language-bash"> git stash apply stash@{2}</code></pre>
             </div>
           </div>
         </div>
@@ -106,4 +106,3 @@ git stash pop           # recupera as alterações</code></pre>
     </div>    
   </div>
 </div>
-<!-- https://git-scm.com/docs/git-stash -->
