@@ -39,7 +39,8 @@
 
 /* Ícone Isotope */
 .portfolio-filters li[data-filter=".filter-isotope"]::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23222222" d="M128 32c-17.7 0-32 14.3-32 32v384c0 17.7 14.3 32 32 32H320c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32H128zM32 192c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V224c0-17.7-14.3-32-32-32zm384 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V224z"/></svg>');
+    background-image: url('/snippets/assets/img/isotope.png');
+    background-size: 18px 18px;
 }
 
 /* Ícone jQuery */
