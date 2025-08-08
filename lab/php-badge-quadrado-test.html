@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHP Badge Quadrado</title>
+  
+  <!-- Estilos necessários -->
+  <link rel="stylesheet" href="../assets/css/tech-badges-new.css">
+  <link rel="stylesheet" href="../assets/css/tech-icons-uniform.css">
+  <link rel="stylesheet" href="../assets/css/php-icon-square-fix.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .test-container {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #f8f9fa;
+    }
+    .test-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .highlight-border {
+      border: 2px dashed red;
+      display: inline-block;
+      padding: 2px;
+      margin-top: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Teste do Badge PHP Quadrado</h1>
+  
+  <div class="grid">
+    <div class="test-container">
+      <div class="test-title">Badge PHP (deve estar quadrado):</div>
+      <span class="id-tech-php tech-badge tech-badge-php" data-php-badge="true" data-tech-processed="true">PHP</span>
+      <div class="highlight-border">
+        <span class="id-tech-php tech-badge tech-badge-php" data-php-badge="true" data-tech-processed="true">PHP</span>
+      </div>
+    </div>
+    
+    <div class="test-container">
+      <div class="test-title">Comparação com badge normal:</div>
+      <span class="tech-badge tech-badge-js">JavaScript</span>
+      <div class="highlight-border">
+        <span class="tech-badge tech-badge-js">JavaScript</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script de ícone PHP -->
+  <script src="../assets/js/php-icon-fix.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* Correção específica para o badge PHP e seu SVG */
+span.id-tech-php.tech-badge-php {
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+span.id-tech-php.tech-badge-php svg.php-icon-svg,
+.php-icon-svg rect {
+  border-radius: 0 !important;
+}
+
+/* Remover qualquer arredondamento do SVG PHP e seu fundo */
+svg.php-icon-svg {
+  border-radius: 0 !important;
+}

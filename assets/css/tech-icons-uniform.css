@@ -68,6 +68,14 @@
   width: 16px !important;
   height: 16px !important;
   transform: scale(1) !important;
+  border-radius: 0 !important; /* Garantir que o ícone PHP seja quadrado */
+  overflow: visible !important;
+}
+
+/* Forçar o path dentro do SVG do PHP a ser quadrado também */
+.php-icon-svg path,
+.php-icon-svg rect {
+  border-radius: 0 !important;
 }
 
 /* Garantir que o SVG para o SQL seja dimensionado corretamente */
@@ -344,6 +352,14 @@
   gap: 4px !important;
 }
 
+/* PHP - garantir que o badge PHP tenha o canto quadrado */
+.tech-badge-php, 
+.tech-badge-php.tech-badge,
+span.id-tech-php.tech-badge,
+span.id-tech-php.tech-badge-php {
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
 
 /* PHP */
 .php-icon-svg {
