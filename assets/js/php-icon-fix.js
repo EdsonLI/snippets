@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Primeiro remover qualquer ícone PHP incorretamente posicionado
   const removeBadIcons = function() {
     // Seletor específico - apenas para ícones diretamente dentro do container de filtro
-    const badIcons = document.querySelectorAll('.filter-php > .php-icon-wrapper');
+    const badIcons = document.querySelectorAll('.filter-php > svg.php-icon-svg');
     if (badIcons.length > 0) {
       badIcons.forEach(icon => icon.remove());
     }
@@ -31,20 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Função para limpar e inserir o ícone PHP
     function applyPhpIcon(element) {
-      // Primeiro remover qualquer iconify-icon ou outros elementos PHP existentes
-      const existingIcons = element.querySelectorAll('iconify-icon, .php-icon-wrapper');
+      // Primeiro remover qualquer iconify-icon ou ícones SVG PHP existentes
+      const existingIcons = element.querySelectorAll('iconify-icon, svg.php-icon-svg');
       existingIcons.forEach(icon => icon.remove());
       
-      // Criar o wrapper para o ícone PHP
-      const wrapper = document.createElement('span');
-      wrapper.className = 'php-icon-wrapper';
-      wrapper.innerHTML = phpSvgContent;
+      // Inserir o SVG diretamente sem wrapper
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = phpSvgContent.trim();
+      const svgElement = tempDiv.firstChild;
       
       // Inserir no início do elemento
       if (element.firstChild) {
-        element.insertBefore(wrapper, element.firstChild);
+        element.insertBefore(svgElement, element.firstChild);
       } else {
-        element.appendChild(wrapper);
+        element.appendChild(svgElement);
       }
     }
     
@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const phpTitleSpans = document.querySelectorAll('.id-tech-php');
       
       phpTitleSpans.forEach(span => {
-        // Verificar se já tem um ícone PHP dentro (para não duplicar)
-        const hasIcon = span.querySelector('.php-icon-wrapper');
+        // Verificar se já tem um ícone SVG PHP dentro (para não duplicar)
+        const hasIcon = span.querySelector('svg.php-icon-svg');
         if (hasIcon) {
           return;
         }
@@ -64,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const existingIcons = span.querySelectorAll('iconify-icon');
         existingIcons.forEach(icon => icon.remove());
         
-        // Criar e inserir o novo ícone
-        const wrapper = document.createElement('span');
-        wrapper.className = 'php-icon-wrapper';
-        wrapper.innerHTML = phpSvgContent;
+        // Inserir o SVG diretamente sem wrapper
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = phpSvgContent.trim();
+        const svgElement = tempDiv.firstChild;
         
         // Inserir o ícone antes do texto
-        span.insertBefore(wrapper, span.firstChild);
+        span.insertBefore(svgElement, span.firstChild);
       });
     }
     
@@ -85,16 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const phpFilters = document.querySelectorAll('.portfolio-filters li.filter-php');
     
     phpFilters.forEach(filter => {
-      // Verificar se já tem um ícone PHP dentro (para não duplicar)
-      const hasIcon = filter.querySelector('.php-icon-wrapper');
+      // Verificar se já tem um ícone SVG dentro (para não duplicar)
+      const hasIcon = filter.querySelector('svg');
       if (!hasIcon) {
-        // Criar e inserir o novo ícone
-        const wrapper = document.createElement('span');
-        wrapper.className = 'php-icon-wrapper';
-        wrapper.innerHTML = phpSvgContent;
+        // Inserir o SVG diretamente sem wrapper
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = phpSvgContent.trim();
+        const svgElement = tempDiv.firstChild;
         
         // Inserir o ícone no início do elemento do filtro
-        filter.insertBefore(wrapper, filter.firstChild);
+        filter.insertBefore(svgElement, filter.firstChild);
       }
     });
     

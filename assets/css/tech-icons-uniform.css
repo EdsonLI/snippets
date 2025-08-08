@@ -6,7 +6,6 @@
 /* Estilo base para todos os ícones personalizados */
 .tech-icon-custom,
 [class$="-icon-wrapper"],
-.php-icon-wrapper,
 .sql-icon-wrapper,
 .html-icon-wrapper,
 .css-icon-wrapper,
@@ -18,6 +17,8 @@
 .fontawesome-icon-wrapper,
 .sweetalert2-icon-wrapper,
 .isotope-icon-wrapper,
+/* SVG direto */
+.php-icon-svg,
 .codepen-icon-wrapper {
   display: inline-flex !important;
   align-items: center !important;
@@ -353,7 +354,7 @@
 [class*="id-tech-php"] iconify-icon:not(.php-icon-svg) {
   display: none !important;
 }
-[class*="id-tech-php"] .php-icon-wrapper {
+[class*="id-tech-php"] svg.php-icon-svg {
   display: inline-flex !important;
   position: relative !important;
   vertical-align: middle !important;
