@@ -143,9 +143,12 @@
 /* MadBuilder */
 .tech-badge-madbuilder {
   color: #fff;
+  display: inline-flex;
+  align-items: center;
 }
-.tech-badge-madbuilder iconify-icon {
-  color: white;
+.tech-badge-madbuilder img.madbuilder-icon {
+  margin-right: 4px;
+  vertical-align: middle;
 }
 
 /* React */

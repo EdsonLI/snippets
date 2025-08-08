@@ -76,23 +76,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Verificar se já existe a imagem personalizada
         const existingImage = span.querySelector('.madbuilder-icon');
         if (!existingImage) {
-          // Criar um wrapper para forçar o corte circular
-          const iconWrapper = document.createElement('div');
-          iconWrapper.className = 'madbuilder-icon-wrapper';
-          
           // Criar um elemento de imagem para o MadBuilder
           const madbuilderIcon = document.createElement('img');
           madbuilderIcon.className = 'madbuilder-icon';
           madbuilderIcon.src = '/snippets/assets/img/madbuilder.svg';
           madbuilderIcon.alt = 'MadBuilder';
-          madbuilderIcon.width = 18;
-          madbuilderIcon.height = 18;
+          madbuilderIcon.width = 16;
+          madbuilderIcon.height = 16;
           
-          // Adicionar a imagem ao wrapper
-          iconWrapper.appendChild(madbuilderIcon);
-          
-          // Inserir o wrapper no DOM antes do texto
-          span.insertBefore(iconWrapper, span.firstChild);
+          // Inserir a imagem diretamente no span
+          span.insertBefore(madbuilderIcon, span.firstChild);
         }
         
         // Marcar como processado para evitar processamento duplicado

@@ -494,39 +494,19 @@
   display: none !important;
 }
 .madbuilder-icon {
-  display: block;
+  display: inline-block;
   width: 16px;
   height: 16px;
   object-fit: contain;
   object-position: center;
-  margin: 0;
+  margin-right: 4px;
   padding: 0;
-  transform: scale(1);
-}
-.portfolio-item .id-tech-madbuilder .madbuilder-icon-wrapper {
-  margin-right: 5px;
-  display: inline-flex !important;
   vertical-align: middle;
 }
 .portfolio-item .id-tech-madbuilder,
 .isotope-item .id-tech-madbuilder {
   display: inline-flex;
   align-items: center;
-}
-.madbuilder-icon-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-}
-.id-tech-madbuilder .madbuilder-icon-wrapper {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  vertical-align: middle;
-  margin-right: 4px;
-  box-sizing: content-box;
-  position: relative;
 }
 .id-tech-madbuilder {
   display: inline-flex;
