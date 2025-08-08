@@ -8,7 +8,7 @@ $(document).ready(function() {
         'sweetalert2': 'SweetAlert2',
         'git': 'git', // Minúsculas conforme solicitado
         'jquery': 'jQuery',
-        'madbuilder': 'MadBuilder',
+        'madbuilder': 'Mad[Builder]',
         'w3schools': 'W3Schools',
         'ai': 'IA', // Mudança de AI para IA
         'css': 'CSS',

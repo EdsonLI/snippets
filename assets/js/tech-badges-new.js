@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const madbuilderIcon = document.createElement('img');
           madbuilderIcon.className = 'madbuilder-icon';
           madbuilderIcon.src = '/snippets/assets/img/madbuilder.svg';
-          madbuilderIcon.alt = 'MadBuilder';
+          madbuilderIcon.alt = 'Mad[Builder]';
           madbuilderIcon.width = 16;
           madbuilderIcon.height = 16;
           
