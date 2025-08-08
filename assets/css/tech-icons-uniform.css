@@ -361,6 +361,14 @@
   margin-right: 4px !important;
   opacity: 1 !important;
   visibility: visible !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.filter-php svg.php-icon-svg {
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 4px !important;
 }
 .id-tech-php {
   display: inline-flex !important;
