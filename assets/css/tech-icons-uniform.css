@@ -497,11 +497,12 @@
   display: block;
   width: 18px;
   height: 18px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   margin: 0;
   padding: 0;
-  transform: scale(0.9); /* Escala ligeiramente menor para evitar cortes */
+  border-radius: 50%;
+  transform: scale(1); /* Escala completa para preencher o círculo */
 }
 .portfolio-item .id-tech-madbuilder .madbuilder-icon-wrapper {
   margin-right: 5px;
