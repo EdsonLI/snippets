@@ -64,7 +64,9 @@
 
 /* Ícone SQL */
 .portfolio-filters li[data-filter=".filter-sql"]::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23E48E00" d="M448 75.2v361.7c0 24.3-19 43.2-43.2 43.2H43.2C19.3 480 0 461.4 0 436.8V75.2C0 51.1 18.8 32 43.2 32h361.7c24 0 43.1 18.8 43.1 43.2zm-37.3 361.6V75.2c0-3-2.6-5.8-5.8-5.8h-9.3L285.3 144 224 94.1 162.8 144 52.5 69.3h-9.3c-3.2 0-5.8 2.8-5.8 5.8v361.7c0 3 2.6 5.8 5.8 5.8h361.7c3.2.1 5.8-2.7 5.8-5.8zM150.2 186v-13.6H65.2V248h13.6v-27.3h57.6v-13.6h-57.6v-21.3l70.4.1zm156.3 14.1-43.3-43.3h-21.3v122.7h21.3v-51.2l32.6 32.6h29.6l-45.1-45.1 45.1-45.1h-29.6l-21.3 21.2v-21.2h-21.3v21.2h21.3v43.3zM259.5 369.8c50.8 0 91.9-41.1 91.9-91.9 0-50.8-41.1-91.9-91.9-91.9-50.8 0-91.9 41.1-91.9 91.9 0 50.8 41.1 91.9 91.9 91.9zm-21.6-173.8c47.9-8.1 90.8 29.4 90.8 76.9 0 42.4-32.4 77.2-74.9 79.9v-40.5h-32.2v40.5c-42.6-2.6-75.3-37.5-75.3-79.9 0-31.8 19.2-61.2 49.3-73.3v48.8h32.2v-52.4h10.1z"/></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:%23aecbfa;}.cls-1,.cls-2,.cls-3{fill-rule:evenodd;}.cls-2{fill:%23669df6;}.cls-3{fill:%234285f4;}</style></defs><g data-name="Product Icons"><g><polygon class="cls-1" points="4.67 10.44 4.67 13.45 12 17.35 12 14.34 4.67 10.44"></polygon><polygon class="cls-1" points="4.67 15.09 4.67 18.1 12 22 12 18.99 4.67 15.09"></polygon><polygon class="cls-2" points="12 17.35 19.33 13.45 19.33 10.44 12 14.34 12 17.35"></polygon><polygon class="cls-2" points="12 22 19.33 18.1 19.33 15.09 12 18.99 12 22"></polygon><polygon class="cls-3" points="19.33 8.91 19.33 5.9 12 2 12 5.01 19.33 8.91"></polygon><polygon class="cls-2" points="12 2 4.67 5.9 4.67 8.91 12 5.01 12 2"></polygon><polygon class="cls-1" points="4.67 5.87 4.67 8.89 12 12.79 12 9.77 4.67 5.87"></polygon><polygon class="cls-2" points="12 12.79 19.33 8.89 19.33 5.87 12 9.77 12 12.79"></polygon></g></g></svg>');
+    width: 20px; /* Mantém proporções adequadas */
+    height: 20px; /* Mantém proporções adequadas */
 }
 
 /* Ícone SweetAlert2 */
