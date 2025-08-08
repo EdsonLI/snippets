@@ -87,7 +87,7 @@
               <pre class="git-pre-code">
 <code id="gul-step-3" class="language-bash"> git stash apply</code></pre>
             </div>
-          </div>          
+          </div>
           <div class="mb-3">
             <div class="text-center"><b>4. Aplicar e remover do stash (como "colar e excluir"):</b></div>
             <div class="position-relative">
@@ -98,16 +98,26 @@
 <code id="gul-step-4" class="language-bash"> git stash pop</code></pre>
             </div>
           </div>
+          <div class="mb-3">
+            <div class="text-center"><b>Remover um stash específico (sem aplicar):</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-5">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-5" class="language-bash"> git stash drop stash@{0}</code></pre>
+            </div>
+          </div>
         </div>        
         <div class="mb-3">
           <h6 class="mb-2"><strong>Exemplo de uso combinado</strong></h6>
           <p class="mb-2">Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>          
           <div class="position-relative">
-            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-5">
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-6">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
             </button>
             <pre class="git-pre-code">
-<code id="gul-step-5" class="language-bash"> git stash # guarda as alterações
+<code id="gul-step-6" class="language-bash"> git stash # guarda as alterações
  git checkout branch-b # muda de branch
  # faz algo na branch-b
  git checkout branch-a # volta
@@ -119,21 +129,21 @@
           <div class="mb-3">
             <div class="text-center"><b>1. Criar stash com mensagem descritiva:</b></div>
             <div class="position-relative">
-              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-6">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-7">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-6" class="language-bash"> git stash push -m "descrição do que estou guardando"</code></pre>
+<code id="gul-step-7" class="language-bash"> git stash push -m "descrição do que estou guardando"</code></pre>
             </div>
           </div>          
           <div class="mb-3">
             <div class="text-center"><b>2. Aplicar um stash específico:</b></div>
             <div class="position-relative">
-              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-7">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-8">
                 <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
               </button>
               <pre class="git-pre-code">
-<code id="gul-step-7" class="language-bash"> git stash apply stash@{2}</code></pre>
+<code id="gul-step-8" class="language-bash"> git stash apply stash@{2}</code></pre>
             </div>
           </div>
         </div>
