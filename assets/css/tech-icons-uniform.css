@@ -65,9 +65,8 @@
 /* Garantir que o SVG para o PHP seja dimensionado corretamente */
 .php-icon-svg {
   width: 16px !important;
-  height: 18px !important;
-  fill: #777bb3 !important; /* Cor oficial do PHP */
-  transform: scale(1.2) !important; /* Aumenta o tamanho do SVG */
+  height: 16px !important;
+  transform: scale(1) !important;
 }
 
 /* Garantir que o SVG para o SQL seja dimensionado corretamente */
