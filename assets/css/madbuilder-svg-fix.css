@@ -1,0 +1,52 @@
+/* 
+ * Estilos específicos para o SVG do MadBuilder
+ * Este arquivo deve ser incluído após tech-icons-uniform.css
+ */
+
+.madbuilder-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.madbuilder-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* Ajustes específicos para os snippets */
+.id-tech-madbuilder .madbuilder-icon-wrapper {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Ajustes específicos para os filtros */
+.portfolio-filters li[data-filter=".filter-madbuilder"]::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url('/snippets/assets/img/madbuilder.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* Ajuste para tech badges */
+.tech-badge-madbuilder iconify-icon,
+.tech-badge-madbuilder img {
+  width: 16px;
+  height: 16px;
+}

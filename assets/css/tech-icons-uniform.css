@@ -495,8 +495,8 @@
 }
 .madbuilder-icon {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   object-position: center;
   margin: 0;
@@ -521,16 +521,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  overflow: hidden;
+  width: 18px;
+  height: 18px;
   vertical-align: middle;
   margin-right: 4px;
-  background-color: white;
   box-sizing: content-box;
-  padding: 1px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
   position: relative;
 }
 .id-tech-madbuilder {

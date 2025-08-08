@@ -93,10 +93,10 @@
 /* Ícone MadBuilder */
 .portfolio-filters li[data-filter=".filter-madbuilder"]::before {
     content: "";
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     position: absolute;
-    left: 1px;
+    left: 2px;
     top: 50%;
     transform: translateY(-50%);
     background-image: url('/snippets/assets/img/madbuilder.svg');
