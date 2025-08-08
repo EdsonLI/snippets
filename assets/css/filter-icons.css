@@ -95,15 +95,14 @@
     content: "";
     width: 18px;
     height: 18px;
-    border-radius: 50%;
-    overflow: hidden;
     position: absolute;
     left: 1px;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url('/snippets/assets/img/madbuilder.jpg');
+    background-image: url('/snippets/assets/img/madbuilder.svg');
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     border: 0;
     padding: 0;
     margin: 0;

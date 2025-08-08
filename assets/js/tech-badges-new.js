@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // Criar um elemento de imagem para o MadBuilder
           const madbuilderIcon = document.createElement('img');
           madbuilderIcon.className = 'madbuilder-icon';
-          madbuilderIcon.src = '/snippets/assets/img/madbuilder.jpg';
+          madbuilderIcon.src = '/snippets/assets/img/madbuilder.svg';
           madbuilderIcon.alt = 'MadBuilder';
           madbuilderIcon.width = 18;
           madbuilderIcon.height = 18;

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.5 65.5">
+  <style>
+    .st2 { fill: #FD9308; }
+    .st3 { fill: #FEFEFE; }
+  </style>
+  <polygon class="st2" points="28.4,65.5 16.2,58.2 16.2,49.1 28.4,55.7"/>
+  <polygon class="st3" points="48.2,11.8 56.5,16.7 56.5,48.8 28.4,65.5 28.4,55.7 48.2,44.4"/>
+  <polygon class="st2" points="8.1,21.4 8.1,53.5 0,48.7 0,17"/>
+  <polygon class="st3" points="28.2,0 40.2,7 40.2,16.3 28.2,9.5 8.1,21.4 0,17"/>
+</svg>

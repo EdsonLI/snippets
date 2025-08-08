@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste - Ícone MadBuilder SVG</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- CSS do site -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+  <link href="../assets/css/filter-icons.css" rel="stylesheet">
+  <link href="../assets/css/tech-icons-uniform.css" rel="stylesheet">
+  
+  <style>
+    body { background-color: #f8f9fa; padding: 2rem; }
+    .demo-section { margin-bottom: 2rem; padding: 1rem; border: 1px solid #ddd; border-radius: 5px; }
+    .test-filters { list-style: none; padding: 0; display: flex; gap: 10px; }
+    .test-filters li { position: relative; padding-left: 25px; cursor: pointer; }
+    .dark-bg { background-color: #212529; color: white; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">Teste - Ícone MadBuilder SVG</h1>
+    
+    <div class="demo-section">
+      <h2>Filtros Isotope (Fundo Claro)</h2>
+      <ul class="test-filters portfolio-filters">
+        <li data-filter=".filter-madbuilder">MadBuilder</li>
+      </ul>
+    </div>
+    
+    <div class="demo-section dark-bg">
+      <h2>Filtros Isotope (Fundo Escuro)</h2>
+      <ul class="test-filters portfolio-filters">
+        <li data-filter=".filter-madbuilder">MadBuilder</li>
+      </ul>
+    </div>
+    
+    <div class="demo-section">
+      <h2>Imagem SVG Direta</h2>
+      <img src="../assets/img/madbuilder.svg" alt="MadBuilder" width="50" height="50">
+    </div>
+    
+    <div class="demo-section">
+      <h2>Classe Madbuilder-icon</h2>
+      <div class="id-tech-madbuilder">
+        <div class="madbuilder-icon-wrapper">
+          <img src="../assets/img/madbuilder.svg" alt="MadBuilder" class="madbuilder-icon" width="18" height="18">
+        </div>
+        MadBuilder
+      </div>
+    </div>
+  </div>
+</body>
+</html>
