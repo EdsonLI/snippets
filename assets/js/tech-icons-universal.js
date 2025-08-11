@@ -65,10 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <path fill="#2C2255" d="M95 15.8l-4.3-4.3L75 26.1l-29.8-29-1.5-.4H43L6 26.1l5.6 5.6 7.1-3L76 81.5v3.8l-.1.5h.6l5.6 5.6 12.8-4.5V15.8zM76 75.4L30.6 30.1l45.4-17v62.3z"></path>
     </svg>`,
 
-    // Isotope
-    'isotope': `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" class="isotope-icon-svg">
-      <path fill="#E5C43E" d="M102.123 0v21.322h-21.32v-5.33h5.331V5.33H48.013v10.661h5.33v84.763h-5.33V64H26.693v42.557h-5.33v21.32h21.32v-5.33h-5.33v-10.66H75.47v10.66h-5.33v5.33h42.64v-21.32h-21.32v5.33h5.33v10.66h-37.31v-5.33h-5.33V21.322h5.33v-5.33h37.31v10.661h-5.33v5.33h21.32V5.33h-5.33V0z"></path>
-    </svg>`,
+    // Isotope - usando o caminho da imagem conforme solicitado
+    'isotope': `<img src="assets/img/isotope.png" class="isotope-icon-img" alt="Isotope">`,
 
     // Prompts
     'prompts': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="prompts-icon-svg">
@@ -81,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </svg>`
   };
 
-  // Função para adicionar o SVG ao elemento
+  // Função para adicionar o SVG ou imagem ao elemento
   function addTechIcon(techClass, techName) {
     const elements = document.querySelectorAll(`.${techClass}:not(:has([class$="-icon-wrapper"]))`);
     
@@ -96,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Pega o texto atual
       const originalText = element.textContent.trim();
       
-      // Adiciona o wrapper SVG
+      // Adiciona o wrapper SVG ou imagem
       const wrapper = document.createElement('span');
       wrapper.className = `${techName}-icon-wrapper`;
       wrapper.innerHTML = techIcons[techName];

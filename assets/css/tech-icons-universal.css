@@ -41,6 +41,17 @@
   margin-top: -2px;
 }
 
+.isotope-icon-wrapper {
+  margin-top: -2px;
+}
+
+.isotope-icon-img {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .jquery-icon-wrapper {
   margin-top: -2px;
 }
