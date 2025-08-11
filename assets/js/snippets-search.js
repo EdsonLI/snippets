@@ -121,7 +121,7 @@ $(document).ready(function() {
     
     // If we didn't find any matches, show a message
     if (!foundMatches && $container.length) {
-      showNoResultsMessage(container);
+      showNoResultsMessage($container);
     }
     
     // Re-layout Isotope if it exists
