@@ -34,5 +34,11 @@
 
 /* Garantir que os elementos internos do SVG apareçam corretamente */
 .bootstrap-icon-svg path {
-  fill: #7952B3;  /* Cor oficial do Bootstrap */
+  fill: #7952B3 !important;  /* Cor oficial do Bootstrap */
+}
+
+/* Ajuste do tamanho específico para o SVG do Bootstrap */
+.bootstrap-icon-svg[viewBox="0 0 576 512"] {
+  width: 20px !important;
+  height: 20px !important;
 }
