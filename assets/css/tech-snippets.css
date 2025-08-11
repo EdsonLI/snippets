@@ -6,30 +6,33 @@
  *   - tech-badges-new.css
  *   - tech-icon-copilot.css
  *   - tech-icons-uniform.css
+ * Com modificações para remover os wrappers e simplificar a estrutura
  */
 
 /******************************
  * SEÇÃO 1: ESTILOS DE BADGES
- * (Originalmente de tech-badges-new.css)
+ * (Versão simplificada sem wrappers)
  ******************************/
 
 /* Estilo base para todas as badges de tecnologia */
 .tech-badge {
   display: inline-flex;
   align-items: center;
-  padding-top: .35rem;
   border-radius: 4px;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1;
   margin-bottom: 0.25rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
   gap: 0.3rem;
+  /* Removemos o padding e shadow para simplicar o estilo */
+  padding: 0;
+  box-shadow: none;
 }
 
 /* Estilo para os ícones dentro das badges */
-.tech-badge iconify-icon {
+.tech-badge iconify-icon,
+.tech-badge svg,
+.tech-badge .tech-icon-custom {
   font-size: .9rem;
   display: inline-flex;
   align-items: center;
@@ -40,11 +43,38 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   padding: 2px;
   background-color: white !important;
+  margin-right: 0.3rem;
+  vertical-align: middle;
 }
 
 /* Garantir que todos os ícones em badges mantenham suas cores originais */
 .tech-badge iconify-icon {
   --icon-color: currentColor !important;
+}
+
+/* Estilo para os ícones SVG customizados */
+.tech-badge svg.php-icon-svg {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+/* Estilo para imagens customizadas */
+.tech-badge img.madbuilder-icon,
+.tech-badge img.isotope-icon {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  margin-right: 0.3rem;
+  vertical-align: middle;
 }
 
 /* Definições de cores para cada tecnologia */
@@ -285,13 +315,6 @@
   width: 18px !important;
   height: 18px !important;
   padding: 0 !important;
-}
-
-/* Ajuste para os SVGs nos filtros */
-.portfolio-filters li [class$="-icon-wrapper"] svg,
-.portfolio-filters li .tech-icon-custom svg {
-  /* width: 15px !important;
-  height: 15px !important; */
 }
 
 /* Garantir que o SVG para o PHP seja dimensionado corretamente */

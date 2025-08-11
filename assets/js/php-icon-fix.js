@@ -1,6 +1,6 @@
 /**
  * Script específico para inserir o ícone do PHP
- * Insere SVG diretamente no DOM
+ * Insere SVG diretamente no DOM - Versão simplificada sem wrappers
  */
 document.addEventListener('DOMContentLoaded', function() {
   // Primeiro remover qualquer ícone PHP incorretamente posicionado
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // SVG para o ícone PHP (definido em um único lugar para fácil manutenção)
     const phpSvgContent = `
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="PHP" role="img" viewBox="0 0 512 512" class="php-icon-svg" shape-rendering="crispEdges" style="border-radius: 0;">
-        <rect x="0" y="0" width="512" height="512" fill="#777bb3" style="border-radius: 0;"/>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="PHP" role="img" viewBox="0 0 512 512" class="php-icon-svg" shape-rendering="crispEdges" style="border-radius: 50%; background-color: white; padding: 2px; box-shadow: 0 0 2px rgba(0,0,0,0.2); width: 1.5em; height: 1.5em; vertical-align: middle; margin-right: 0.3rem;">
+        <rect x="0" y="0" width="512" height="512" fill="#777bb3" style="border-radius: 50%;"/>
         <g stroke="#fff" stroke-width="6">
           <path id="a" d="M168 256c2-16 3-26-24-26H126l-11 53h18c18 0 31-8 35-27Zm-13-54c51 0 55 31 50 56s-26 53-68 53H110l-7 35s0 2-3 2H70s-3 0-3-3L94 204a3 3 0 013-2h58Z"/>
           <path d="M304 312c5 0 5-3 5-3l13-69c3-20-6-37-42-37H254l7-34s1-3-2-3H229c-4 0-4 2-4 2L197 309s0 3 3 3h29c4 0 4-3 4-3l15-78h18c24-1 18 7 18 15l-12 61s-1 4 3 4Z"/>
