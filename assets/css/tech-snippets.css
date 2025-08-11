@@ -122,12 +122,12 @@
 }
 
 /* Bootstrap */
-.tech-badge-bootstrap {
+/* .tech-badge-bootstrap {
   color: #fff;
 }
 .tech-badge-bootstrap iconify-icon {
   color: white;
-}
+} */
 
 /* jQuery */
 .tech-badge-jquery {
@@ -385,11 +385,11 @@
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
 }
-.tech-badge-bootstrap {
+/* .tech-badge-bootstrap {
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
-}
+} */
 /* [class*="id-tech-bootstrap"] .bootstrap-icon {
   display: inline-flex !important;
   opacity: 1 !important;
