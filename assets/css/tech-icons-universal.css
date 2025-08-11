@@ -21,9 +21,20 @@
   margin-top: -2px;
 }
 
+.bootstrap-icon-wrapper {
+  margin-top: -2px;
+  background-color: transparent !important;
+  position: relative !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
 .bootstrap-icon-svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  position: static !important;
+  transform: none !important;
 }
 
 .git-icon-wrapper {
