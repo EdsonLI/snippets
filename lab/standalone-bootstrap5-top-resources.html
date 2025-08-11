@@ -1,206 +1,518 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap 5 Full + Lazy Load jQuery</title>
-  <link href="../assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo Responsiva Bootstrap 5 - Arquivão</title>
+
+  <!-- #######################################################
+       ###  Dependências CSS (Bootstrap 5 + Icons)
+       ###  Observação: versões via CDN para fácil teste.
+       ####################################################### -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
-    .video-lazy {
-      position: relative;
-      cursor: pointer;
-    }
-    .video-lazy img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-    .video-play-btn {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      opacity: 0;
-      transition: opacity .3s ease;
-    }
-    .video-lazy:hover .video-play-btn {
-      opacity: 1;
+    /* #######################################################
+       ###  Estilos úteis e pequenos helpers para a demo
+       ####################################################### */
+    body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    .video-lazy { position: relative; cursor: pointer; overflow: hidden; }
+    .video-lazy img { object-fit: cover; width: 100%; height: 100%; display:block; }
+    .video-play-btn { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.25); opacity:0; transition:opacity .18s ease; }
+    .video-lazy:hover .video-play-btn { opacity:1; }
+    .hero { background: linear-gradient(0deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12)); color: white; }
+    .card-img-cover { object-fit: cover; height:200px; width:100%; }
+    .kb-divider { border-top:1px dashed rgba(0,0,0,0.08); margin:2rem 0; }
+    .back-to-top { position: fixed; right: 1rem; bottom: 1rem; z-index:1055; display:none; }
+    @media (min-width: 992px) {
+      .hero .col-lg-6 img { height: 340px; object-fit: cover; }
     }
   </style>
 </head>
 <body class="bg-light">
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="bi bi-bootstrap-fill"></i> Meu Projeto</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <!-- #######################################################
+       ###  NAVBAR RESPONSIVA + OFFCANVAS (menu mobile)
+       ####################################################### -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <i class="bi bi-bootstrap-fill me-2"></i>
+        <span>Template Responsivo</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<!-- Offcanvas Menu -->
-<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title">Menu</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="list-unstyled">
-      <li><a href="#" class="text-white text-decoration-none d-block py-2">Início</a></li>
-      <li><a href="#" class="text-white text-decoration-none d-block py-2">Sobre</a></li>
-      <li><a href="#" class="text-white text-decoration-none d-block py-2">Contato</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- Container principal -->
-<div class="container py-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold">Galeria Responsiva</h2>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalInfo">
-      <i class="bi bi-info-circle"></i> Info
-    </button>
-  </div>
-
-  <!-- Grid responsivo de Cards -->
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-
-    <!-- Card de imagem -->
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <div class="ratio ratio-16x9">
-          <img src="https://picsum.photos/600/400?random=1" class="card-img-top" alt="Imagem aleatória">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Título 1</h5>
-          <p class="card-text">Descrição breve do card para ilustrar o layout.</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Detalhes</a>
-        </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#hero">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+          <li class="nav-item"><a class="nav-link" href="#carrossel">Carrossel</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-    <!-- Card com vídeo lazy load -->
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <div class="ratio ratio-16x9 video-lazy" data-video-id="dQw4w9WgXcQ">
-          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" 
-               class="img-fluid" alt="Capa do vídeo">
-          <div class="video-play-btn d-flex justify-content-center align-items-center">
-            <i class="bi bi-play-circle-fill text-white" style="font-size:3rem;"></i>
+  <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="menuLateralLabel">Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="nav flex-column">
+        <a class="nav-link text-white" href="#hero">Início</a>
+        <a class="nav-link text-white" href="#galeria">Galeria</a>
+        <a class="nav-link text-white" href="#carrossel">Carrossel</a>
+        <a class="nav-link text-white" href="#tabela">Tabela</a>
+        <a class="nav-link text-white" href="#contato">Contato</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- #######################################################
+       ###  HERO RESPONSIVO (imagem + texto adaptáveis)
+       ###  Exemplo de uso de grid responsivo e utilities
+       ####################################################### -->
+  <header id="hero" class="py-5">
+    <div class="container">
+      <div class="row align-items-center hero rounded-3 overflow-hidden">
+        <div class="col-12 col-lg-6 p-4">
+          <h1 class="display-6 fw-bold">Demo completa de responsividade</h1>
+          <p class="lead mb-4">Mostra os principais recursos do Bootstrap 5 focados em responsividade: grid, cards, carousel, lazy-load de vídeo, tabelas responsivas, formulários e muito mais — pronto pra colar no seu projeto.</p>
+          <div class="d-flex gap-2">
+            <a href="#galeria" class="btn btn-primary">Ver galeria</a>
+            <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalInfo">Saiba mais</button>
           </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Vídeo (Lazy Load)</h5>
-          <p class="card-text">O player do YouTube só é carregado quando você clicar.</p>
+        <div class="col-12 col-lg-6 p-0">
+          <img src="https://picsum.photos/1200/700?grayscale" class="w-100 d-block" alt="Hero image">
         </div>
       </div>
     </div>
+  </header>
 
-    <!-- Outros cards -->
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <div class="ratio ratio-16x9">
-          <img src="https://picsum.photos/600/400?random=3" class="card-img-top" alt="Imagem aleatória">
+  <!-- #######################################################
+       ###  GALERIA RESPONSIVA (row-cols-* + g-*) + CARDS H-100
+       ###  Inclui card com lazy-load de YouTube (jQuery)
+       ####################################################### -->
+  <section id="galeria" class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 mb-0">Galeria responsiva</h2>
+        <div>
+          <span class="badge bg-secondary me-2">row-cols</span>
+          <span class="badge bg-secondary">g-4</span>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Título 3</h5>
-          <p class="card-text">Outro exemplo de card responsivo.</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <!-- Card imagem -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="https://picsum.photos/800/500?random=101" class="card-img-top card-img-cover" alt="Imagem 1">
+            <div class="card-body">
+              <h5 class="card-title">Imagem</h5>
+              <p class="card-text small text-muted">Exemplo de imagem fluida com altura controlada.</p>
+              <a class="btn btn-sm btn-outline-primary" href="#">Abrir</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card lazy video (YouTube) -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="ratio ratio-16x9 video-lazy" data-video-id="dQw4w9WgXcQ" aria-label="Vídeo">
+              <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Thumbnail do vídeo">
+              <div class="video-play-btn"><i class="bi bi-play-circle-fill text-white" style="font-size:3rem;"></i></div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Vídeo (lazy)</h5>
+              <p class="card-text small text-muted">O player só é carregado quando o usuário clica — reduz requisições e evita warnings de CORS.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card com conteúdo -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="ratio ratio-16x9">
+              <img src="https://picsum.photos/800/500?random=103" class="card-img-top" alt="Imagem 3">
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Conteúdo</h5>
+              <p class="card-text small text-muted">Cards com .h-100 e display flex para manter altura uniforme.</p>
+              <div class="mt-auto">
+                <a class="btn btn-sm btn-primary" href="#">Ação</a>
+                <span class="ms-2 badge bg-info text-dark">Novo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card adicional -->
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="ratio ratio-16x9">
+              <img src="https://picsum.photos/800/500?random=104" class="card-img-top" alt="Imagem 4">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Outro</h5>
+              <p class="card-text small text-muted">Mais um exemplo de card responsivo.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <div class="ratio ratio-16x9">
-          <img src="https://picsum.photos/600/400?random=4" class="card-img-top" alt="Imagem aleatória">
+  <!-- #######################################################
+       ###  CARROSSEL RESPONSIVO (com indicators e controls)
+       ####################################################### -->
+  <section id="carrossel" class="py-5 bg-white">
+    <div class="container">
+      <h3 class="h5 mb-3">Carrossel responsivo</h3>
+      <div id="demoCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" aria-label="Carrossel de demonstração">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Título 4</h5>
-          <p class="card-text">Mais um card com altura igual e imagem adaptada.</p>
+        <div class="carousel-inner rounded-3 overflow-hidden">
+          <div class="carousel-item active">
+            <img src="https://picsum.photos/1200/500?random=201" class="d-block w-100" alt="Slide 1">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Slide principal</h5>
+              <p class="small">Legenda opcional do slide com visibilidade controlada por breakpoint.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://picsum.photos/1200/500?random=202" class="d-block w-100" alt="Slide 2">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Segundo slide</h5>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://picsum.photos/1200/500?random=203" class="d-block w-100" alt="Slide 3">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Terceiro slide</h5>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#demoCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demoCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- #######################################################
+       ###  ACCORDION (FAQ) - ótimo para mobile
+       ####################################################### -->
+  <section id="faq" class="py-5">
+    <div class="container">
+      <h3 class="h5 mb-3">FAQ (Accordion)</h3>
+      <div class="accordion" id="accordionFAQ">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              O que é esse template?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">É uma demo completa com recursos de responsividade do Bootstrap 5 — pronta para servir como base.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Por que usar lazy-load para vídeo?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#accordionFAQ">
+            <div class="accordion-body">Reduz o número de requisições iniciais, melhora performance e evita warnings de CORS gerados por embeds automáticos.</div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
+  <!-- #######################################################
+       ###  TABELA RESPONSIVA (table-responsive)
+       ####################################################### -->
+  <section id="tabela" class="py-5 bg-white">
+    <div class="container">
+      <h3 class="h5 mb-3">Tabela responsiva</h3>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th class="d-none d-md-table-cell">Email</th>
+              <th>Plano</th>
+              <th class="text-end">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Maria Silva</td>
+              <td class="d-none d-md-table-cell">maria@exemplo.com</td>
+              <td><span class="badge bg-success">Pro</span></td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary me-1">Ver</button>
+                <button class="btn btn-sm btn-outline-danger">Excluir</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>João Souza</td>
+              <td class="d-none d-md-table-cell">joao@exemplo.com</td>
+              <td><span class="badge bg-secondary">Free</span></td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary me-1">Ver</button>
+                <button class="btn btn-sm btn-outline-danger">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- #######################################################
+       ###  FORMULÁRIO RESPONSIVO (form-floating + grid)
+       ####################################################### -->
+  <section id="contato" class="py-5">
+    <div class="container">
+      <h3 class="h5 mb-3">Formulário responsivo</h3>
+      <form class="row g-3" id="formContato" novalidate>
+        <div class="col-12 col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+            <label for="nome">Nome</label>
+            <div class="invalid-feedback">Por favor, informe seu nome.</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required>
+            <label for="email">E-mail</label>
+            <div class="invalid-feedback">Informe um e-mail válido.</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-floating">
+            <select class="form-select" id="assunto" aria-label="Assunto">
+              <option selected>Escolha...</option>
+              <option value="1">Suporte</option>
+              <option value="2">Comercial</option>
+            </select>
+            <label for="assunto">Assunto</label>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-floating">
+            <input type="tel" class="form-control" id="telefone" placeholder="(00) 00000-0000">
+            <label for="telefone">Telefone</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Mensagem" id="mensagem" style="height:120px"></textarea>
+            <label for="mensagem">Mensagem</label>
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-between align-items-center">
+          <div>
+            <small class="text-muted">Exemplo de formulário responsivo com validação nativa bootstrap.</small>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- #######################################################
+       ###  MODAL (usado em várias ações)
+       ####################################################### -->
+  <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalInfoLabel">Informações do Template</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Este exemplo reúne práticas e componentes para garantir responsividade e boa experiência em diferentes dispositivos.</p>
+          <ul>
+            <li>Grid: row-cols / gaps com <code>g-*</code></li>
+            <li>Lazy load de vídeo para performance</li>
+            <li>Carrossel e accordions para mobile</li>
+            <li>Table responsive para dados em telas pequenas</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="modalInfo" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Informações</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        Este layout utiliza recursos avançados do Bootstrap 5 para máxima responsividade e qualidade visual.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+  <!-- #######################################################
+       ###  TOAST (boas-vindas) - posição fixa
+       ####################################################### -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+    <div id="meuToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Template responsivo carregado! Explore as seções.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar"></button>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Toast -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
-  <div id="meuToast" class="toast align-items-center text-bg-success border-0" role="alert">
-    <div class="d-flex">
-      <div class="toast-body">
-        Bem-vindo ao layout avançado Bootstrap 5!
+  <!-- #######################################################
+       ###  BACK TO TOP (botão responsivo)
+       ####################################################### -->
+  <button class="btn btn-primary rounded-circle back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- #######################################################
+       ###  FOOTER
+       ####################################################### -->
+  <footer class="py-4 bg-dark text-white mt-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div class="small">© <span id="anoAtual"></span> - Template Responsivo</div>
+      <div>
+        <a href="#" class="text-white text-decoration-none me-2"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="text-white text-decoration-none me-2"><i class="bi bi-github"></i></a>
+        <a href="#" class="text-white text-decoration-none"><i class="bi bi-linkedin"></i></a>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
     </div>
-  </div>
-</div>
+  </footer>
 
-<!-- Scripts -->
-<script src="../assets/js/jquery/jquery-3.7.1.min.js"></script>
-<script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-<script>
-$(function(){
-  // Mostrar toast ao carregar
-  new bootstrap.Toast($('#meuToast')).show();
+  <!-- #######################################################
+       ###  SCRIPTS (jQuery + Bootstrap Bundle)
+       ###  Aqui colocamos todas as interações: lazy load, form validation,
+       ###  toast, back-to-top, e utilitários responsivos.
+       ####################################################### -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  // Lazy load de vídeos do YouTube
-  $(".video-lazy").on("click", function(){
-    var videoId = $(this).data("video-id");
-    var iframe = $("<iframe>", {
-      src: "https://www.youtube.com/embed/" + videoId + "?autoplay=1",
-      frameborder: 0,
-      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-      allowfullscreen: true
+  <script>
+    $(function () {
+      // #######################################################
+      // ###  Mostrar toast de boas-vindas
+      // #######################################################
+      var toastEl = document.getElementById('meuToast');
+      if (toastEl) {
+        var bsToast = new bootstrap.Toast(toastEl, { delay: 4200 });
+        bsToast.show();
+      }
+
+      // #######################################################
+      // ###  Lazy-load de vídeos do YouTube (jQuery)
+      // ###  Substitui thumbnail pelo iframe só depois do clique.
+      // #######################################################
+      $('.video-lazy').on('click', function () {
+        var $this = $(this);
+        var videoId = $this.data('video-id') || $this.attr('data-video-id');
+        if (!videoId) return;
+        var $iframe = $('<iframe>', {
+          src: 'https://www.youtube.com/embed/' + videoId + '?autoplay=1',
+          frameborder: 0,
+          allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+          allowfullscreen: true,
+          css: { width: '100%', height: '100%', border: 0 }
+        });
+        $this.empty().append($iframe);
+      });
+
+      // #######################################################
+      // ###  Form validation bootstrap (nativa + js)
+      // #######################################################
+      (function () {
+        'use strict';
+        var form = document.getElementById('formContato');
+        if (!form) return;
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          } else {
+            event.preventDefault(); // demo: evitar submit real
+            // Simula envio e mostra toast
+            var toast = new bootstrap.Toast(toastEl);
+            $('.toast-body', toastEl).text('Formulário enviado (demo). Obrigado!');
+            toast.show();
+            form.reset();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      })();
+
+      // #######################################################
+      // ###  Back to top behavior (aparece após rolar)
+      // #######################################################
+      var $back = $('#backToTop');
+      $(window).on('scroll', function () {
+        if ($(window).scrollTop() > 300) $back.fadeIn(180); else $back.fadeOut(180);
+      });
+      $back.on('click', function () { $('html, body').animate({ scrollTop: 0 }, 400); });
+
+      // #######################################################
+      // ###  Ajuste automático do ano no footer
+      // #######################################################
+      $('#anoAtual').text(new Date().getFullYear());
+
+      // #######################################################
+      // ###  Exemplo: usar utilities para esconder/exibir conteúdo
+      // ###  (apenas demonstrando comportamento em runtime)
+      // #######################################################
+      // Se quiser, aqui você pode checar largura e adicionar classes dinâmicas.
+      // Exemplo: esconder imagens pesadas em telas pequenas (demo):
+      function toggleHeavyImages() {
+        if ($(window).width() < 576) {
+          $('.card-img-cover').addClass('d-none');
+        } else {
+          $('.card-img-cover').removeClass('d-none');
+        }
+      }
+      toggleHeavyImages();
+      $(window).on('resize', toggleHeavyImages);
+
+      // #######################################################
+      // ###  Pequeno helper: detectar suporte a touch e ajustar hover
+      // #######################################################
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        // reduzir overlays em touch para evitar confusão
+        $('.video-lazy .video-play-btn').css('opacity', '1');
+      }
+
+      // #######################################################
+      // ###  Optional: inicializar outros componentes dinamicamente
+      // ###  Ex: collapse, popover (exemplo comentado)
+      // #######################################################
+      // var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+      // popoverTriggerList.map(function (popoverTriggerEl) { return new bootstrap.Popover(popoverTriggerEl) });
+
     });
-    $(this).empty().append(iframe);
-  });
-});
-</script>
-
+  </script>
 </body>
 </html>
-
-<!-- jQuery -->
-<script src="../assets/js/jquery/jquery-3.7.1.min.js"></script>
-<script>
-    $(function(){
-        $(".video-lazy").on("click", function() {
-            let videoId = $(this).data("video-id"),
-                iframe = $("<iframe>", {
-                    src: "https://www.youtube.com/embed/" + videoId + "?autoplay=1",
-                    frameborder: 0,
-                    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-                    allowfullscreen: true
-                });
-            $(this).empty().append(iframe);
-        });
-    });
-</script>
