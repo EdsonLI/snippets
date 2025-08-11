@@ -1,0 +1,82 @@
+/* Estilos para os ícones de tecnologia universais */
+
+/* Estilo base para todos os wrappers de ícones */
+[class$="-icon-wrapper"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Estilo base para todos os SVGs de ícones */
+[class$="-icon-svg"] {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+/* Estilos específicos para tecnologias individuais */
+.bootstrap-icon-wrapper {
+  margin-top: -2px;
+}
+
+.git-icon-wrapper {
+  margin-top: -2px;
+}
+
+.jquery-icon-wrapper {
+  margin-top: -2px;
+}
+
+.html-icon-wrapper {
+  margin-top: -2px;
+}
+
+.css-icon-wrapper {
+  margin-top: -2px;
+}
+
+.js-icon-wrapper {
+  margin-top: -2px;
+}
+
+.php-icon-wrapper {
+  margin-top: -2px;
+}
+
+.sql-icon-wrapper {
+  margin-top: -2px;
+}
+
+.sweetalert2-icon-wrapper {
+  margin-top: -2px;
+}
+
+.vscode-icon-wrapper {
+  margin-top: -2px;
+}
+
+.isotope-icon-wrapper {
+  margin-top: -2px;
+}
+
+.prompts-icon-wrapper {
+  margin-top: -2px;
+}
+
+.w3schools-icon-wrapper {
+  margin-top: -2px;
+}
+
+/* Ajustes de espaçamento para layouts móveis */
+@media (max-width: 768px) {
+  [class$="-icon-wrapper"] {
+    margin-right: 4px;
+  }
+  
+  [class$="-icon-svg"] {
+    width: 16px;
+    height: 16px;
+  }
+}
