@@ -1,0 +1,49 @@
+/* 
+ * Estilos específicos para ícone do Bootstrap
+ */
+
+/* Configuração para o wrapper do ícone */
+.bootstrap-icon-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Configuração para o SVG do Bootstrap */
+.bootstrap-icon-svg {
+  width: 16px !important;
+  height: 16px !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Estilo específico para o tech-badge do Bootstrap */
+.id-tech-bootstrap {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* Ajustar visibilidade do wrapper do ícone no tech-badge */
+[class*="id-tech-bootstrap"] .bootstrap-icon-wrapper {
+  display: inline-flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ajuste para os filtros */
+.portfolio-filters li.filter-bootstrap .bootstrap-icon-wrapper {
+  width: 16px !important;
+  height: 16px !important;
+}
