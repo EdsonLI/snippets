@@ -11,7 +11,7 @@ $(document).ready(function() {
     searchInputSelector: '#search',
     refreshButtonSelector: '#refresh-list',
     snippetSelector: '.isotope-item',
-    snippetTitleSelector: '.portfolio-info h4, .snippet-title',
+    snippetTitleSelector: '.portfolio-info h4, .snippet-title, .search-title, .search-title strong',
     snippetContentSelector: '.portfolio-description, pre code',
     noResultsClass: 'no-results-message',
     containerSelector: '.isotope-container',
@@ -94,9 +94,23 @@ $(document).ready(function() {
       // Get title from any matching elements
       const titleSelectors = SEARCH_CONFIG.snippetTitleSelector.split(',');
       for (const selector of titleSelectors) {
-        $snippet.find(selector.trim()).each(function() {
+        const elements = $snippet.find(selector.trim());
+        if (elements.length > 0 && SEARCH_CONFIG.debug) {
+          log.info(`Found ${elements.length} title element(s) with selector "${selector.trim()}"`);
+          elements.each(function() {
+            log.info(`Title text: "${$(this).text()}"`);
+          });
+        }
+        elements.each(function() {
           title += $(this).text().toLowerCase() + ' ';
         });
+      }
+      
+      // Backup method: se ainda não encontramos o título, vamos buscar em todo o conteúdo HTML
+      if (!title.trim() && $snippet.find('.search-title').length > 0) {
+        const titleElement = $snippet.find('.search-title');
+        log.info(`Using direct approach to get title: "${titleElement.text()}"`);
+        title += titleElement.text().toLowerCase() + ' ';
       }
       
       // Get content from any matching elements
@@ -110,10 +124,25 @@ $(document).ready(function() {
       // Get tags from dataset
       const tags = $snippet.data('tags')?.toLowerCase() || '';
       
+      // Log the title for debugging
+      if (SEARCH_CONFIG.debug) {
+        log.info(`Snippet title compiled: "${title.trim()}"`);
+        log.info(`Searching for: "${searchText}" in snippet`);
+      }
+      
       // Check if snippet contains the search text
-      if (title.includes(searchText) || content.includes(searchText) || tags.includes(searchText)) {
+      const titleMatch = title.includes(searchText);
+      const contentMatch = content.includes(searchText);
+      const tagsMatch = tags.includes(searchText);
+      
+      if (titleMatch || contentMatch || tagsMatch) {
         $snippet.show();
         foundMatches = true;
+        if (SEARCH_CONFIG.debug) {
+          if (titleMatch) log.success(`Match found in title: "${title}"`);
+          if (contentMatch) log.success(`Match found in content`);
+          if (tagsMatch) log.success(`Match found in tags: "${tags}"`);
+        }
       } else {
         $snippet.hide();
       }
