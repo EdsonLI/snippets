@@ -96,6 +96,26 @@
   margin-top: -2px;
 }
 
+.python-icon-wrapper {
+  margin-top: -2px;
+}
+
+.react-icon-wrapper {
+  margin-top: -2px;
+}
+
+.nodejs-icon-wrapper {
+  margin-top: -2px;
+}
+
+.vue-icon-wrapper {
+  margin-top: -2px;
+}
+
+.angular-icon-wrapper {
+  margin-top: -2px;
+}
+
 /* Ajustes de espaçamento para layouts móveis */
 @media (max-width: 768px) {
   [class$="-icon-wrapper"] {
