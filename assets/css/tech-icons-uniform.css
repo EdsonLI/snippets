@@ -136,11 +136,11 @@
   align-items: center !important;
   gap: 4px !important;
 }
-[class*="id-tech-bootstrap"] .bootstrap-icon {
+/* [class*="id-tech-bootstrap"] .bootstrap-icon {
   display: inline-flex !important;
   opacity: 1 !important;
   visibility: visible !important;
-}
+} */
 
 /* CSS */
 .css-icon {
