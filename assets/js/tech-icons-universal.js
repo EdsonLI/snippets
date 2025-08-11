@@ -53,8 +53,20 @@ document.addEventListener('DOMContentLoaded', function() {
     </svg>`,
 
     // SQL
-    'sql': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="sql-icon-svg">
-      <path fill="#00618A" d="M256 192c-70.7 0-128 28.7-128 64 0 35.4 57.3 64 128 64 70.7 0 128-28.6 128-64 0-35.3-57.3-64-128-64zm0-32c106 0 192 42.8 192 96v160c0 53.2-86 96-192 96S64 469.2 64 416V256c0-53.2 86-96 192-96z"/>
+    'sql': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sql-icon-svg">
+      <defs><style>.cls-1{fill:#aecbfa;}.cls-1,.cls-2,.cls-3{fill-rule:evenodd;}.cls-2{fill:#669df6;}.cls-3{fill:#4285f4;}</style></defs>
+      <g data-name="Product Icons">
+        <g>
+          <polygon class="cls-1" points="4.67 10.44 4.67 13.45 12 17.35 12 14.34 4.67 10.44"/>
+          <polygon class="cls-1" points="4.67 15.09 4.67 18.1 12 22 12 18.99 4.67 15.09"/>
+          <polygon class="cls-2" points="12 17.35 19.33 13.45 19.33 10.44 12 14.34 12 17.35"/>
+          <polygon class="cls-2" points="12 22 19.33 18.1 19.33 15.09 12 18.99 12 22"/>
+          <polygon class="cls-3" points="19.33 8.91 19.33 5.9 12 2 12 5.01 19.33 8.91"/>
+          <polygon class="cls-2" points="12 2 4.67 5.9 4.67 8.91 12 5.01 12 2"/>
+          <polygon class="cls-1" points="4.67 5.87 4.67 8.89 12 12.79 12 9.77 4.67 5.87"/>
+          <polygon class="cls-2" points="12 12.79 19.33 8.89 19.33 5.87 12 9.77 12 12.79"/>
+        </g>
+      </g>
     </svg>`,
 
     // SweetAlert2
