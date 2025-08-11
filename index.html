@@ -235,7 +235,7 @@
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
           <!-- Search functionality -->
           <div class="search-wrapper" data-aos="fade-up" data-aos-delay="50">
-            <input type="text" id="search" placeholder="Buscar snippets (ex: store, find, card, etc)" autocomplete="off">
+            <input type="text" id="search" placeholder="Buscar snippets (ex: store, find, card, etc)" autocomplete="off" title="Busca por palavras-chave nos títulos, conteúdo e tags dos snippets">
             <button id="refresh-list" title="Limpar busca e filtros">
               <i class="fa-regular fa-circle-xmark"></i>
             </button>
@@ -338,15 +338,57 @@
         $('#search').trigger('input');
       });
 
-      // Busca integrada ao filtro
+      // Busca avançada integrada ao filtro (suporta elementos com classe search-title)
       $('#search').on('input', function() {
         var searchVal = $(this).val().toLowerCase();
-        // Seleciona os itens conforme filtro
+        
+        // Não filtrar se o campo de busca estiver vazio
+        if (searchVal === '') {
+          $('.isotope-item').show();
+          return;
+        }
+        
+        // Seleciona os itens conforme filtro de categoria
         var $items = (currentFilter === '*' ? $('.isotope-item') : $('.isotope-item'+currentFilter));
         $('.isotope-item').hide();
+        
+        // Filtrar os itens considerando títulos de busca como prioridade
         $items.filter(function() {
-          return $(this).text().toLowerCase().indexOf(searchVal) !== -1;
+          // Busca específica em elementos com classe search-title
+          const $searchTitle = $(this).find('.search-title');
+          if ($searchTitle.length && $searchTitle.text().toLowerCase().indexOf(searchVal) !== -1) {
+            return true;
+          }
+          
+          // Busca em títulos regulares
+          const $title = $(this).find('.portfolio-info h4, .snippet-title');
+          if ($title.length && $title.text().toLowerCase().indexOf(searchVal) !== -1) {
+            return true;
+          }
+          
+          // Busca no conteúdo do código
+          const $code = $(this).find('pre code');
+          if ($code.length && $code.text().toLowerCase().indexOf(searchVal) !== -1) {
+            return true;
+          }
+          
+          // Busca na descrição
+          const $desc = $(this).find('.portfolio-description');
+          if ($desc.length && $desc.text().toLowerCase().indexOf(searchVal) !== -1) {
+            return true;
+          }
+          
+          // Busca em tags (se existirem)
+          const tags = $(this).data('tags');
+          if (tags && tags.toLowerCase().indexOf(searchVal) !== -1) {
+            return true;
+          }
+          
+          return false;
         }).show();
+        
+        // Log para depuração (quando necessário)
+        console.log(`Busca: "${searchVal}" - Resultados: ${$items.filter(':visible').length} de ${$items.length} itens no filtro atual`);
       });
 
       // Limpar busca e filtros
@@ -362,6 +404,9 @@
     
   <!-- Correção para filtros em dispositivos móveis -->
   <script src="assets/js/mobile-filters-fix.js" defer></script>
+  
+  <!-- Teste de busca por títulos (search-title) -->
+  <script src="assets/js/search-title-test.js" defer></script>
   
   <!-- Script inline para garantir funcionamento dos botões de cópia -->
   <script>
