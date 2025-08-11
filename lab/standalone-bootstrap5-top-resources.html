@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 5 Standalone Avançado</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="bi bi-bootstrap-fill"></i> Meu Projeto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Menu -->
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled">
+      <li><a href="#" class="text-white text-decoration-none d-block py-2">Início</a></li>
+      <li><a href="#" class="text-white text-decoration-none d-block py-2">Sobre</a></li>
+      <li><a href="#" class="text-white text-decoration-none d-block py-2">Contato</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Container principal -->
+<div class="container py-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Galeria Responsiva</h2>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalInfo">
+      <i class="bi bi-info-circle"></i> Info
+    </button>
+  </div>
+
+  <!-- Grid responsivo de Cards -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="ratio ratio-16x9">
+          <img src="https://picsum.photos/600/400?random=1" class="card-img-top" alt="Imagem aleatória">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Título 1</h5>
+          <p class="card-text">Descrição breve do card para ilustrar o layout.</p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Detalhes</a>
+        </div>
+      </div>
+    </div>
+    <!-- Repetir outros cards -->
+    <!-- Card de vídeo com lazy load -->
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="ratio ratio-16x9 video-lazy" data-video-id="dQw4w9WgXcQ">
+                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" 
+                class="img-fluid" alt="Capa do vídeo">
+                <div class="video-play-btn d-flex justify-content-center align-items-center">
+                    <i class="bi bi-play-circle-fill text-white" style="font-size:3rem;"></i>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Vídeo (Lazy Load)</h5>
+                <p class="card-text">O player do YouTube só é carregado quando você clicar.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Mais cards gerados com picsum -->
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="ratio ratio-16x9">
+          <img src="https://picsum.photos/600/400?random=3" class="card-img-top" alt="Imagem aleatória">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Título 3</h5>
+          <p class="card-text">Outro exemplo de card responsivo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="ratio ratio-16x9">
+          <img src="https://picsum.photos/600/400?random=4" class="card-img-top" alt="Imagem aleatória">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Título 4</h5>
+          <p class="card-text">Mais um card com altura igual e imagem adaptada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalInfo" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Informações</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Este layout utiliza recursos avançados do Bootstrap 5 para máxima responsividade e qualidade visual.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
+  <div id="meuToast" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">
+        Bem-vindo ao layout avançado Bootstrap 5!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    new bootstrap.Toast(document.getElementById('meuToast')).show();
+  });
+</script>
+</body>
+</html>
+<style>
+    .video-lazy {
+    position: relative;
+    cursor: pointer;
+    }
+    .video-lazy img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    }
+    .video-play-btn {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity .3s ease;
+    }
+    .video-lazy:hover .video-play-btn {
+    opacity: 1;
+    }
+</style>
+
+<!-- jQuery -->
+<script src="./assets/js/jquery/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+        $(".video-lazy").on("click", function() {
+            let videoId = $(this).data("video-id"),
+                iframe = $("<iframe>", {
+                    src: "https://www.youtube.com/embed/" + videoId + "?autoplay=1",
+                    frameborder: 0,
+                    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                    allowfullscreen: true
+                });
+            $(this).empty().append(iframe);
+        });
+    });
+</script>
