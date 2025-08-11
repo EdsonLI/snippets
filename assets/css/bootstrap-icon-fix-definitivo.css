@@ -1,0 +1,38 @@
+/* 
+ * Estilos definitivos para o ícone do Bootstrap
+ * Sobrescreve qualquer outra regra existente
+ */
+
+/* Reset completo para o wrapper do ícone */
+.bootstrap-icon-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  position: static !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
+  transform: none !important;
+}
+
+/* Reset completo para o SVG */
+.bootstrap-icon-svg {
+  width: 18px !important;
+  height: 18px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  display: block !important;
+}
+
+/* Garantir que os elementos internos do SVG apareçam corretamente */
+.bootstrap-icon-svg path {
+  fill: #7952B3;  /* Cor oficial do Bootstrap */
+}
