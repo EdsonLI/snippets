@@ -1,5 +1,10 @@
 /* Estilos para ícones do Bootstrap nos filtros */
 
+/* Remover o ícone ::before para evitar duplicação */
+li[data-filter=".filter-bootstrap"]::before {
+  display: none !important;
+}
+
 /* Ajuste específico para o ícone do Bootstrap no filtro */
 li[data-filter=".filter-bootstrap"] .bootstrap-icon-svg {
   width: 24px !important;
