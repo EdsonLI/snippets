@@ -6,7 +6,7 @@
 /* Ajuste do posicionamento à esquerda com menos espaço */
 .portfolio-filters li[data-filter]:not([data-filter="*"]):not([data-filter=".filter-ai"]) {
     position: relative !important;
-    padding-left: 20px !important; /* Espaço reduzido para o ícone (antes era 24px) */
+    padding-left: 22px !important; /* Espaço ajustado para 22px conforme solicitado */
     padding-top: 0 !important;
     display: inline-flex !important;
     flex-direction: row !important;
