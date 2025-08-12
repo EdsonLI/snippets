@@ -23,4 +23,5 @@ li[data-filter=".filter-bootstrap"] .bootstrap-icon-wrapper {
   left: 6px;
   top: 50%;
   transform: translateY(-50%);
+  margin-right: 8px !important;
 }
