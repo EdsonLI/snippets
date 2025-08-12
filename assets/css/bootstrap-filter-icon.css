@@ -1,0 +1,21 @@
+/* Estilos para ícones do Bootstrap nos filtros */
+
+/* Ajuste específico para o ícone do Bootstrap no filtro */
+li[data-filter=".filter-bootstrap"] .bootstrap-icon-svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Espaçamento para o filtro com ícone */
+li[data-filter=".filter-bootstrap"] {
+  padding-left: 30px !important;
+  position: relative;
+}
+
+/* Posicionamento do ícone no filtro */
+li[data-filter=".filter-bootstrap"] .bootstrap-icon-wrapper {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
