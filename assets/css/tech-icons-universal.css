@@ -50,6 +50,16 @@
   height: 24px;
 }
 
+/* Estilos para o ícone do GitHub Copilot */
+.copilot-icon-wrapper {
+  margin-top: -2px;
+}
+
+.copilot-icon-svg {
+  width: 20px;
+  height: 18px;
+}
+
 .git-icon-wrapper {
   margin-top: -2px;
 }
