@@ -1,0 +1,19 @@
+/* Estilos para o ícone do GitHub Copilot */
+.copilot-icon-wrapper {
+  margin-top: -2px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.copilot-icon-svg {
+  width: 20px;
+  height: 18px;
+  fill: #FFFFFF !important;
+}
+
+/* Para garantir que o texto "GitHub Copilot" seja exibido após o ícone */
+.id-tech-copilot span.tech-icon-text {
+  display: inline-block !important;
+  visibility: visible !important;
+}
