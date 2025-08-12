@@ -9,6 +9,13 @@
   vertical-align: middle;
 }
 
+/* Ajuste especial para o filtro - ícones maiores */
+.filtro-tech [class$="-icon-wrapper"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Estilo base para todos os SVGs de ícones */
 [class$="-icon-svg"] {
   width: 18px;
@@ -31,10 +38,16 @@
 }
 
 .bootstrap-icon-svg {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   position: static !important;
   transform: none !important;
+}
+
+/* Destaque especial para o ícone do Bootstrap nos filtros */
+#filters .bootstrap-icon-svg {
+  width: 24px;
+  height: 24px;
 }
 
 .git-icon-wrapper {
