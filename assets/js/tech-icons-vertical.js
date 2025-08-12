@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Função para ajustar a exibição dos ícones
   function adjustIconsDisplay() {
-    // Para os filtros - garantir que os ícones estão centralizados
+    // Remove qualquer estilo inline para os filtros que possa interferir
     document.querySelectorAll('.portfolio-filters li[data-filter]').forEach(function(filter) {
-      filter.style.textAlign = 'center';
+      filter.style.textAlign = '';
     });
     
     // Para os títulos dos snippets - garantir estrutura vertical

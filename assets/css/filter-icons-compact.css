@@ -49,11 +49,11 @@
     
     .portfolio-filters li[data-filter]:not([data-filter="*"]):not([data-filter=".filter-ai"])::before {
         width: 14px;
-        height: 16px;
+        height: 14px;
     }
     
     .portfolio-filters li[data-filter=".filter-sweetalert2"]::before {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
     }
 }
