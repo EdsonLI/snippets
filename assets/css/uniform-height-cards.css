@@ -1,0 +1,113 @@
+/* 
+ * Estilos para cards com altura uniforme 
+ * Compatível com Isotope e estrutura atual de snippets
+ */
+
+/* Estilos base para cartões com altura uniforme */
+.portfolio-item.isotope-item .portfolio-content {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho do card */
+.portfolio-item.isotope-item .portfolio-content h6:first-of-type {
+  flex: 0 0 auto;
+}
+
+/* Título do card */
+.portfolio-item.isotope-item .portfolio-content h6.search-title {
+  flex: 0 0 auto;
+}
+
+/* Área do snippet */
+.portfolio-item.isotope-item .portfolio-content .snippet-code {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Ajuste interno do snippet */
+.portfolio-item.isotope-item .portfolio-content .snippet-code > .position-relative {
+  height: 100%;
+  overflow: auto;
+}
+
+/* Estilo para pré-visualização/placeholder */
+.portfolio-item.isotope-item .portfolio-content .snippet-preview {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+/* Manter a responsividade dos cards */
+@media (max-width: 767.98px) {
+  .portfolio-item.isotope-item {
+    width: 100%;
+  }
+}
+
+/* Ajuste para código dentro dos snippets */
+.portfolio-item.isotope-item pre {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* Estilos para cards Bootstrap modernos */
+.card-uniform-height {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-uniform-height .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-uniform-height .card-img-cover {
+  object-fit: cover;
+  height: 200px;
+}
+
+.card-uniform-height .card-title {
+  margin-bottom: 0.5rem;
+}
+
+.card-uniform-height .card-text {
+  margin-bottom: 0.75rem;
+}
+
+.card-uniform-height .mt-auto {
+  margin-top: auto !important;
+}
+
+/* Estilos para vídeos lazy load */
+.video-lazy {
+  position: relative;
+  cursor: pointer;
+}
+
+.video-lazy img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+
+.video-lazy:hover .video-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+}
