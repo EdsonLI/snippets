@@ -1,0 +1,56 @@
+/**
+ * Estilos para ícones de tecnologia nos títulos dos snippets (posicionamento vertical)
+ * Posiciona os ícones acima dos títulos em vez de à esquerda
+ */
+
+/* Reset e ajuste do estilo base para todos os wrappers de ícones */
+.portfolio-content h6 [class$="-icon-wrapper"] {
+    display: block !important;
+    margin-right: 0 !important;
+    margin-bottom: 4px !important;
+    text-align: center !important;
+    margin-left: 0 !important;
+}
+
+/* Reorganização do header de snippets para exibição vertical */
+.portfolio-content h6 {
+    flex-direction: column;
+    min-height: 42px; /* Aumenta para acomodar o ícone + texto */
+    padding-top: 2px;
+}
+
+/* Ajuste para o título com ícones tecnologia */
+.portfolio-content h6 span.id-tech-* {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Posiciona os botões de ação adequadamente */
+.portfolio-content h6 .snippet-actions-float {
+    position: absolute !important;
+    right: 0;
+    top: 0 !important; /* Alinha ao topo do contêiner */
+    transform: none;
+    margin-top: 0;
+}
+
+/* Ajuste fino para o texto abaixo dos ícones */
+.portfolio-content h6 span.id-tech-* span {
+    margin-top: 4px;
+}
+
+/* Estilo base para todos os SVGs de ícones */
+[class$="-icon-svg"] {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Ajustes para o espaçamento geral do snippet */
+.portfolio-content .text-center.mb-2 {
+    margin-top: 8px !important;
+}

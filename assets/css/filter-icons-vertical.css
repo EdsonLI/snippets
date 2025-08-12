@@ -1,0 +1,58 @@
+/**
+ * Estilos para ícones nos filtros de categoria (posicionamento vertical)
+ * Adiciona ícones SVG acima dos filtros (em vez de à esquerda) para melhor visualização
+ */
+
+/* Reset do estilo anterior de posicionamento à esquerda */
+.portfolio-filters li[data-filter]:not([data-filter="*"]):not([data-filter=".filter-ai"]) {
+    padding-left: 0 !important; 
+    padding-top: 24px !important; /* Espaço para o ícone acima */
+    position: relative !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Reposicionando o ícone acima do texto */
+.portfolio-filters li[data-filter]:not([data-filter="*"]):not([data-filter=".filter-ai"])::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 2px; /* Distância do topo */
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* Ajuste para ícones específicos */
+.portfolio-filters li[data-filter=".filter-php"]::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portfolio-filters li[data-filter=".filter-sweetalert2"]::before {
+    width: 24px;
+    height: 24px;
+}
+
+/* Ajustes de espaçamento para layouts móveis */
+@media (max-width: 768px) {
+    .portfolio-filters li[data-filter]:not([data-filter="*"]):not([data-filter=".filter-ai"]) {
+        padding-top: 22px !important;
+    }
+    
+    .portfolio-filters li[data-filter]:not([data-filter="*"]):not([data-filter=".filter-ai"])::before {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .portfolio-filters li[data-filter=".filter-sweetalert2"]::before {
+        width: 20px;
+        height: 20px;
+    }
+}
