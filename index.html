@@ -40,9 +40,6 @@
         languages: ['markdown', 'md', 'javascript', 'html', 'css', 'php', 'sql', 'bash', 'plaintext']
       });
       hljs.highlightAll();
-      
-      // Log para diagnóstico dos botões de cópia
-      console.log('DOMContentLoaded - Botões de cópia encontrados: ' + $('button[data-target]').length);
     });
   </script>
   
@@ -413,15 +410,12 @@
   
   <!-- Script inline para garantir funcionamento dos botões de cópia -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('[Sistema de Cópia] Inicializando...');
-      
+    document.addEventListener('DOMContentLoaded', function() {      
       // Função para copiar texto para o clipboard
       function copiarTexto(texto) {
         return navigator.clipboard.writeText(texto)
           .then(() => true)
           .catch((erro) => {
-            console.error('[Sistema de Cópia] Erro:', erro);
             return false;
           });
       }
@@ -437,7 +431,6 @@
         // Obter elemento do código
         const elemento = document.getElementById(idAlvo);
         if (!elemento) {
-          console.error('[Sistema de Cópia] Elemento não encontrado:', idAlvo);
           return;
         }
         
@@ -465,7 +458,6 @@
       // Aplicar handlers a todos os botões
       function inicializarBotoes() {
         const botoes = document.querySelectorAll('button[data-target]');
-        console.log(`[Sistema de Cópia] ${botoes.length} botões encontrados`);
         
         botoes.forEach(botao => {
           // Remover handlers existentes
@@ -496,7 +488,6 @@
         });
         
         if (novosBotoes) {
-          console.log('[Sistema de Cópia] Detectados novos botões, reinicializando...');
           inicializarBotoes();
         }
       });
@@ -506,8 +497,6 @@
         childList: true,
         subtree: true
       });
-      
-      console.log('[Sistema de Cópia] Sistema inicializado com sucesso');
       
       // Compatibilidade com código legado
       window.setupCopyButtons = function() {

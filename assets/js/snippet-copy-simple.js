@@ -2,9 +2,7 @@
  * BOTÕES DE CÓPIA - VERSÃO EXTREMAMENTE SIMPLIFICADA
  * Solução direta sem complicações - foco em estabilidade
  */
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("Inicializando sistema de cópia...");
-  
+document.addEventListener("DOMContentLoaded", function() {  
   // FUNÇÃO SIMPLES PARA COPIAR TEXTO
   function copyTextToClipboard(text) {
     return navigator.clipboard.writeText(text);
@@ -12,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // ENCONTRAR TODOS OS BOTÕES DE CÓPIA (que tenham data-target)
   var copyButtons = document.querySelectorAll("button[data-target]");
-  console.log("Botões de cópia encontrados: " + copyButtons.length);
   
   // ADICIONAR HANDLER DE CLIQUE EM CADA BOTÃO
   copyButtons.forEach(function(button) {
@@ -31,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
       var codeElement = document.getElementById(targetId);
       
       if (!codeElement) {
-        console.error("Elemento não encontrado: #" + targetId);
         return;
       }
       
@@ -59,10 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }
         })
         .catch(function(err) {
-          console.error("Erro ao copiar:", err);
         });
     });
   });
-  
-  console.log("Sistema de cópia inicializado.");
 });

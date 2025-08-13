@@ -44,14 +44,10 @@
                 alert('Erro ao reinicializar Isotope: ' + err);
             }
         }
-        
-        console.log('Filtro ativado via touch:', filterValue);
     }
     
     // Função que melhora os filtros existentes sem substituí-los
-    function enhanceMobileFilters() {
-        console.log('[Mobile Fix] Melhorando filtros para mobile...');
-        
+    function enhanceMobileFilters() {        
         // Selecionar todos os filtros
         const filterItems = document.querySelectorAll('.portfolio-filters li, .isotope-filters li');
         
@@ -92,10 +88,7 @@
                 
                 // Marcar como melhorado
                 item.setAttribute('data-enhanced', 'true');
-                
-                console.log('Filtro melhorado para mobile:', item.textContent);
             } catch (error) {
-                console.error('Erro ao melhorar filtro:', error);
             }
         });
     }
