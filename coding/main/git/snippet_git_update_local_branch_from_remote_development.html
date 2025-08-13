@@ -7,10 +7,10 @@
   <div class="snippet-code position-relative">
     <div class="mt-2 small">      
       <div class="mb-3">
-        <h6 class="mb-2 text-center"><strong>1ª opção: Merge da development na sua branch</strong> <span class="text-info">(mais simples e segura)</span></h6>
-        <p class="mb-2">Este é o método mais comum em times colaborativos:</p>        
+        <h6 class="mb-2 px-2"><strong>1ª opção: Merge da development na sua branch</strong> <span class="text-info">(mais simples e segura)</span></h6>
+        <p class="mb-2 px-2">Este é o método mais comum em times colaborativos:</p>        
         <div class="mb-3">
-          <div class="text-center"><b>1. Certifique-se de estar na sua branch:</b></div>
+          <div class="px-2"><b>1. Certifique-se de estar na sua branch:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-1">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -20,7 +20,7 @@
           </div>
         </div>        
         <div class="mb-3">
-          <div class="text-center"><b>2. Atualize a branch de base (<span>development</span>):</b></div>
+          <div class="px-2"><b>2. Atualize a branch de base (<span>development</span>):</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-2">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -32,7 +32,7 @@
           </div>
         </div>        
         <div class="mb-3">
-          <div class="text-center"><b>3. Volte para sua branch:</b></div>
+          <div class="px-2"><b>3. Volte para sua branch:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-3">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -43,7 +43,7 @@
         </div>
         
         <div class="mb-3">
-          <div class="text-center"><b>4. Faça o merge da development atualizada:</b></div>
+          <div class="px-2"><b>4. Faça o merge da development atualizada:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-4">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -54,10 +54,10 @@
         </div>
       </div>      
       <div class="mb-3">
-        <h6 class="mb-2 text-center"><strong>2ª opção: Rebase da sua branch sobre a development</strong> <span class="text-info">(histórico linear, mais avançado)</span></h6>
-        <p class="mb-2">Este método reorganiza os commits como se sua branch tivesse sido criada agora, em cima da development:</p>        
+        <h6 class="mb-2 px-2"><strong>2ª opção: Rebase da sua branch sobre a development</strong> <span class="text-info">(histórico linear, mais avançado)</span></h6>
+        <p class="mb-2 px-2">Este método reorganiza os commits como se sua branch tivesse sido criada agora, em cima da development:</p>        
         <div class="mb-3">
-          <div class="text-center"><b>1. Atualize a branch de base (<span>development</span>):</b></div>
+          <div class="px-2"><b>1. Atualize a branch de base (<span>development</span>):</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-5">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -69,7 +69,7 @@
           </div>
         </div>        
         <div class="mb-3">
-          <div class="text-center"><b>2. Volte para sua branch:</b></div>
+          <div class="px-2"><b>2. Volte para sua branch:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-6">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -79,7 +79,7 @@
           </div>
         </div>        
         <div class="mb-3">
-          <div class="text-center"><b>3. Faça o rebase:</b></div>
+          <div class="px-2"><b>3. Faça o rebase:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-7">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -87,12 +87,12 @@
             <pre class="git-pre-code">
 <code id="grud-step-7" class="language-bash"> git rebase development</code></pre>
           </div>
-          <div class="small text-warning mt-1">
+          <div class="small text-warning mt-1 px-2">
             <b>Atenção:</b> Se houver conflitos, resolva-os seguindo as instruções do Git antes de continuar.
           </div>
         </div>        
         <div class="mb-3">
-          <div class="text-center"><b>4. Atualize o repositório remoto (se necessário):</b></div>
+          <div class="px-2"><b>4. Atualize o repositório remoto (se necessário):</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-8">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -100,7 +100,7 @@
             <pre class="git-pre-code">
 <code id="grud-step-8" class="language-bash"> git push origin minha-branch --force</code></pre>
           </div>
-          <div class="small text-warning mt-1">
+          <div class="small text-warning mt-1 px-2">
             <b>Cuidado:</b> O parâmetro --force reescreve o histórico remoto. Use apenas quando entender as implicações.
           </div>
         </div>
@@ -108,7 +108,7 @@
       <div class="mt-4">
         <p><strong>Dicas úteis:</strong></p>        
         <div class="mb-3">
-          <div><b>Para comparar versões de um arquivo específico:</b></div>
+          <div class="px-2"><b>Para comparar versões de um arquivo específico:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-9">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
@@ -118,7 +118,7 @@
           </div>
         </div>        
         <div class="mb-3">
-          <div><b>Para visualizar o histórico completo:</b></div>
+          <div class="px-2"><b>Para visualizar o histórico completo:</b></div>
           <div class="position-relative">
             <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="grud-step-10">
               <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
