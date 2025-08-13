@@ -32,7 +32,6 @@ $(document).ready(function() {
             // Se houver uma formatação específica para esta tecnologia
             if (textFormatMap[techName]) {
                 $filter.text(textFormatMap[techName]);
-                console.info(`Filtro ajustado: ${techName} -> ${textFormatMap[techName]}`);
             }
         });
     }

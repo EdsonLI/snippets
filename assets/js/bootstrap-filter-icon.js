@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // Adiciona estilo para alinhar o texto corretamente
       filter.style.display = 'flex';
       filter.style.alignItems = 'center';
-      
-      console.log('Ícone Bootstrap adicionado ao filtro:', filter);
     });
   }
 
