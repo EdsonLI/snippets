@@ -32,10 +32,13 @@
     z-index: 1 !important;
 }
 
-/* Garante que qualquer wrapper de ícone personalizado não afete o layout */
+/* Garante que qualquer wrapper de ícone personalizado não afete o layout 
+   Comentado para permitir uma alternativa caso o script original seja reativado */
+/* 
 .portfolio-filters li[data-filter=".filter-bootstrap"] .bootstrap-icon-wrapper {
     display: none !important;
 }
+*/
 
 /* Ajuste responsivo para telas menores */
 @media (max-width: 768px) {

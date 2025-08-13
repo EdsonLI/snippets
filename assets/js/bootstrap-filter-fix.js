@@ -37,9 +37,36 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(fixBootstrapFilterPosition, 500);
   
   // Observador de mutações para detectar quando novos filtros são adicionados ou modificados
+  // Usando uma variável para controle de debounce para evitar loops infinitos
   if (window.MutationObserver) {
-    const observer = new MutationObserver(function() {
-      fixBootstrapFilterPosition();
+    let debounceTimer;
+    const observer = new MutationObserver(function(mutations) {
+      // Verifica se alguma das mutações afetou o elemento do Bootstrap
+      let shouldProcess = false;
+      for (let mutation of mutations) {
+        if (mutation.target.getAttribute && mutation.target.getAttribute('data-filter') === '.filter-bootstrap') {
+          shouldProcess = true;
+          break;
+        }
+        
+        // Verifica os nós adicionados
+        if (mutation.addedNodes && mutation.addedNodes.length) {
+          for (let node of mutation.addedNodes) {
+            if (node.nodeType === 1 && node.getAttribute && node.getAttribute('data-filter') === '.filter-bootstrap') {
+              shouldProcess = true;
+              break;
+            }
+          }
+        }
+      }
+      
+      // Só executa se realmente envolver o filtro Bootstrap
+      if (shouldProcess) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function() {
+          fixBootstrapFilterPosition();
+        }, 100);
+      }
     });
     
     // Observa o elemento que contém os filtros
@@ -48,7 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
       observer.observe(filtersContainer, { 
         childList: true, 
         subtree: true,
-        attributes: true
+        attributes: true,
+        characterData: false
       });
     }
   }
