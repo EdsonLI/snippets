@@ -15,7 +15,6 @@
 /* Reorganização do header de snippets para exibição vertical */
 .portfolio-content h6 {
     flex-direction: column;
-    min-height: 42px; /* Aumenta para acomodar o ícone + texto */
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
