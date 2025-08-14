@@ -1,0 +1,27 @@
+/* Estilos para ícones do GitHub Copilot nos filtros */
+
+/* Remover o ícone ::before para evitar duplicação */
+li[data-filter=".filter-copilot"]::before {
+  display: none !important;
+}
+
+/* Ajuste específico para o ícone do Copilot no filtro */
+li[data-filter=".filter-copilot"] .copilot-icon-svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: #FFFFFF !important;
+}
+
+/* Espaçamento para o filtro com ícone */
+li[data-filter=".filter-copilot"] {
+  padding-left: 28px !important;
+  position: relative;
+}
+
+/* Posicionamento do ícone no filtro */
+li[data-filter=".filter-copilot"] .copilot-icon-wrapper {
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
