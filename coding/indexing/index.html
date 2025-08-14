@@ -26,6 +26,7 @@
   <!-- CSS Personalizado -->
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/tab-icons-fix.css">
+  <link rel="stylesheet" href="assets/home-link.css">
   
   <!-- CSS para ações de snippets -->
   <link href="../../assets/css/snippet-actions.css" rel="stylesheet">
@@ -43,7 +44,19 @@
   <script src="../../assets/js/filter-text-formatter.js" defer></script>
 </head>
 <body>
+  <!-- Link para retornar à página principal -->
+  <a href="../../index.html" class="home-link" title="Voltar à página principal">
+    <i class="fas fa-home"></i>
+    <span>Página Principal</span>
+  </a>
+  
   <h1>Snippets</h1>
+  <div class="header-nav">
+    <a href="../../index.html" class="home-link-inline">
+      <i class="fas fa-arrow-left"></i>
+      <span>Voltar à Biblioteca de Snippets</span>
+    </a>
+  </div>
   <div class="search-wrapper">
     <input type="text" id="search" placeholder="Buscar snippets (ex: store, find, card, etc)">
     <button id="refresh-list" title="Limpar busca e filtros">

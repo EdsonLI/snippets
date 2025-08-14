@@ -1,0 +1,54 @@
+/* Estilo para o link de retorno à página principal */
+.home-link {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #21262d;
+  color: #c9d1d9;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #30363d;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.home-link:hover {
+  background-color: #30363d;
+  color: #f0f6fc;
+  border-color: #388bfd;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.home-link i {
+  font-size: 1.1em;
+}
+
+/* Estilo para o link de retorno na parte superior da página */
+.header-nav {
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.header-nav .home-link-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #388bfd;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.header-nav .home-link-inline:hover {
+  background-color: rgba(56, 139, 253, 0.1);
+  color: #58a6ff;
+}
