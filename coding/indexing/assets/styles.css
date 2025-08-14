@@ -194,6 +194,14 @@ input[type="text"]:focus {
   /* Centraliza e iguala o espaçamento dos outros ícones */
 }
 
+/* Ajuste específico para o ícone do Git */
+.git-tab svg.tab-icon {
+  display: block;
+  margin: 0 auto !important;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
 .tab.madbuilder-tab > div {
   text-align: center;
   width: 100%;
@@ -965,7 +973,7 @@ a:hover {
   display: none;
 }
 
-/* .tabs-arrow {
+.tabs-arrow {
   display: none;
   position: absolute;
   top: 0;
@@ -980,17 +988,17 @@ a:hover {
   margin: 0 !important;
   z-index: 10;
   cursor: pointer;
-} */
+}
 
-/* .tabs-arrow.left {
+.tabs-arrow.left {
   left: 0;
-} */
+}
 
-/* .tabs-arrow.right {
+.tabs-arrow.right {
   right: 0;
-} */
+}
 
-/* .tabs-arrow i {
+.tabs-arrow i {
   color: #8b949e;
   font-size: 1.5rem;
   opacity: 0.7;
@@ -999,30 +1007,30 @@ a:hover {
   background: none !important;
   padding: 8px !important;
   border-radius: 50%;
-} */
+}
 
-/* .tabs-arrow:hover i {
+.tabs-arrow:hover i {
   opacity: 1;
   color: #f0f6fc;
-} */
+}
 
-/* .tabs-arrow.disabled i {
+.tabs-arrow.disabled i {
   opacity: 0.3;
   pointer-events: none;
-} */
+}
 
 @media (min-width: 900px) {
-  /* .tabs-arrow {
+  .tabs-arrow {
     display: flex;
-  } */
+  }
   .tabs {
     margin: 0 36px;
   }
 }
 @media (max-width: 899px) {
-  /* .tabs-arrow {
+  .tabs-arrow {
     display: none !important;
-  } */
+  }
   .tabs {
     margin: 0;
   }
