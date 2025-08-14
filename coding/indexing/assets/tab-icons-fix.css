@@ -1,0 +1,29 @@
+/* Estilo específico para o ícone do PHP */
+.tab.php-tab .tab-icon {
+  font-size: 2rem;
+  margin: 0 auto 8px auto !important;
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+/* Correção para centralizar todos os ícones de tabs uniformemente */
+.tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px !important;
+  padding-bottom: 5px !important;
+}
+
+/* Garantir espaço uniforme entre ícone e texto */
+.tab > div {
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+/* Remover espaçamento vertical excessivo */
+.tab > .tab-icon + div {
+  margin-top: 6px;
+}
