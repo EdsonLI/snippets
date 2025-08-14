@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="icon" href="../../assets/img/favicon.png" type="image/png">
   <!-- Google tag (gtag.js) -->
   <meta charset="UTF-8">
   <br/>
@@ -27,22 +27,19 @@
   <link rel="stylesheet" href="assets/styles.css">
   
   <!-- CSS para ações de snippets -->
-  <link href="../assets/css/snippet-actions.css" rel="stylesheet">
-  <link href="../assets/css/snippet-actions-responsive.css" rel="stylesheet">
+  <link href="../../assets/css/snippet-actions.css" rel="stylesheet">
+  <link href="../../assets/css/snippet-actions-responsive.css" rel="stylesheet">
   
-  <!-- Tech Badges CSS -->
-  <link href="../assets/css/tech-badges-new.css" rel="stylesheet">
-  <link href="../assets/css/tech-icons-common.css" rel="stylesheet">
-  <link href="../assets/css/tech-icons-uniform.css" rel="stylesheet">
-  <link href="../assets/css/madbuilder-svg-fix.css" rel="stylesheet">
-  <link href="../assets/css/sql-icon-custom.css" rel="stylesheet">
-  <link href="../assets/css/jquery-icon-simple.css" rel="stylesheet">
-  <link href="../assets/css/bootstrap-icon-custom.css" rel="stylesheet">
-  <link href="../assets/css/w3schools-icon-custom.css" rel="stylesheet">
-  <link href="../assets/css/css-icon-custom.css" rel="stylesheet">
-  <link href="../assets/css/isotope-icon-custom.css" rel="stylesheet">
+  <!-- CSS para ícones de tecnologias -->
+  <link href="../../assets/css/tech-icons-universal.css" rel="stylesheet">
+  <link href="../../assets/css/tech-icon-copilot.css" rel="stylesheet">
 
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  
+  <!-- Scripts necessários -->
+  <script src="../../assets/js/tech-icons-universal.js" defer></script>
+  <script src="../../assets/js/button-position-fix.js" defer></script>
+  <script src="../../assets/js/filter-text-formatter.js" defer></script>
 </head>
 <body>
   <h1>Snippets</h1>
@@ -69,13 +66,11 @@
         <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
       </div>
       <div class="tab isotope-tab" data-target="isotope-content">
-        <img src="./assets/img/madbuilder.svg" alt="MadBuilder Logo" class="tab-icon-isotope" width="10" height="10">
+        <img src="../../assets/img/isotope.png" alt="MadBuilder Logo" class="tab-icon-isotope" width="24" height="24">
         <div>Isotope</div>
         <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
       </div>
-      <!-- MadBuilder tab removed -->
-        <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
-      </div>
+      <!-- Removi tag extra que estava causando problemas no HTML -->
       <div class="tab vscode-tab" data-target="vscode-content">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
           <linearGradient id="HjBUFHyNtcsDcBgnZBZ2Sa_0OQR1FYCuA9f_gr1" x1="37.8" x2="37.8" y1="43.37" y2="7.42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#29b6f6"></stop><stop offset="1" stop-color="#13b2f6"></stop></linearGradient><path fill="url(#HjBUFHyNtcsDcBgnZBZ2Sa_0OQR1FYCuA9f_gr1)" d="M34.176,4.249c0.188,0.092,5.688,2.716,8.374,3.998C43.437,8.67,44,9.564,44,10.546v26.86	c0,0.981-0.559,1.874-1.443,2.299c-2.548,1.228-7.611,3.666-7.948,3.826C34.361,43.649,33.709,44,33.181,44	c-0.678,0-1.133-0.316-1.58-0.73L34,35.711V5.715l-2.254-1.135C32.228,4.109,32.896,4,33.291,4C33.653,4,33.948,4.138,34.176,4.249z"></path><linearGradient id="HjBUFHyNtcsDcBgnZBZ2Sb_0OQR1FYCuA9f_gr2" x1="6.085" x2="34.793" y1="34.801" y2="7.173" gradientUnits="userSpaceOnUse"><stop offset=".115" stop-color="#0076bb"></stop><stop offset=".257" stop-color="#0069b0"></stop><stop offset=".28" stop-color="#0069b0"></stop><stop offset=".424" stop-color="#0069b0"></stop><stop offset=".491" stop-color="#0072b7"></stop><stop offset=".577" stop-color="#0076bb"></stop><stop offset=".795" stop-color="#0076bb"></stop><stop offset="1" stop-color="#006eb9"></stop></linearGradient><path fill="url(#HjBUFHyNtcsDcBgnZBZ2Sb_0OQR1FYCuA9f_gr2)" d="M9,33.896l25-19.023V5.83c0-1.299-1.662-1.808-2.337-1.184	C31.008,5.25,4.658,29.239,4.658,29.239c-0.9,0.83-0.849,2.267,0.107,3.032c0,0,1.324,1.232,1.803,1.574	C7.304,34.37,8.271,34.43,9,33.896z"></path><path fill="#0288d1" d="M9,14.104l25,19.054v8.771c0,1.198-1.42,2.193-2.399,1.341L4.658,18.761	c-0.9-0.83-0.849-2.267,0.107-3.032c0,0,1.324-1.232,1.803-1.574C7.304,13.63,8.271,13.57,9,14.104z"></path>
@@ -275,31 +270,30 @@
       right.classList.toggle('disabled', tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 2);
     }
     document.addEventListener('DOMContentLoaded', function() {
-      const wrapper = document.querySelector('.tabs-carousel-wrapper');
+      const wrapper = document.querySelector('.tabs-wrapper'); // Corrigido o seletor
       if (!wrapper) return;
       const tabs = wrapper.querySelector('.tabs');
       const left = wrapper.querySelector('.tabs-arrow.left');
       const right = wrapper.querySelector('.tabs-arrow.right');
-      left.addEventListener('click', function() {
-        tabs.scrollBy({ left: -200, behavior: 'smooth' });
-      });
-      right.addEventListener('click', function() {
-        tabs.scrollBy({ left: 200, behavior: 'smooth' });
-      });
-      tabs.addEventListener('scroll', updateTabsArrows);
-      window.addEventListener('resize', updateTabsArrows);
-      updateTabsArrows();
+      
+      // Verificar se todos os elementos existem antes de adicionar eventos
+      if (tabs && left && right) {
+        left.addEventListener('click', function() {
+          tabs.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        right.addEventListener('click', function() {
+          tabs.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+        tabs.addEventListener('scroll', updateTabsArrows);
+        window.addEventListener('resize', updateTabsArrows);
+        updateTabsArrows();
+      } else {
+        console.warn('Alguns elementos de navegação não foram encontrados');
+      }
     });
   </script>
   
-  <!-- Script para os tech badges -->
-  <script src="../assets/js/tech-badges-new.js"></script>
-  
-  <!-- Scripts para posicionamento dos botões de ação -->
-  <script src="../assets/js/button-position-fix.js" defer></script>
-  
-  <!-- Script para formatar textos dos filtros -->
-  <script src="../assets/js/filter-text-formatter.js" defer></script>
+  <!-- Scripts já incluídos no cabeçalho da página -->
   
   <button id="back-to-top" title="Voltar ao topo">
     <i class="fa fa-arrow-up"></i>
