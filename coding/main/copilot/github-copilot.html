@@ -1,0 +1,77 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-copilot">
+  <div class="portfolio-content h-100 p-2 copilot-card-bg text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center position-relative">
+      <span class="id-tech-copilot">
+        <img src="./assets/img/github-copilot.svg" alt="GitHub Copilot" class="copilot-icon" width="16" height="16">
+        GitHub Copilot
+      </span>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <a href="https://github.com/features/copilot" target="_blank"
+           class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link>
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </h6>
+    <div class="snippet-code position-relative">
+      <div class="d-grid"
+           style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">
+        <a href="https://docs.github.com/pt/copilot" target="_blank"
+           class="copilot-link-card text-decoration-none">
+          <iconify-icon icon="mdi:book-open-outline" width="22"></iconify-icon>
+          <span>Documentação</span>
+        </a>
+        <a href="https://docs.github.com/pt/copilot/how-tos/get-code-suggestions/write-pr-descriptions" target="_blank"
+           class="copilot-link-card text-decoration-none">
+          <iconify-icon icon="mdi:git-pull-request" width="22"></iconify-icon>
+          <span>PR Descriptions</span>
+        </a>
+        <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" target="_blank"
+           class="copilot-link-card text-decoration-none">
+          <iconify-icon icon="mdi:microsoft-visual-studio-code" width="22"></iconify-icon>
+          <span>VS Code</span>
+        </a>
+        <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat" target="_blank"
+           class="copilot-link-card text-decoration-none">
+          <iconify-icon icon="mdi:chat-outline" width="22"></iconify-icon>
+          <span>Copilot Chat</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  :root {
+    --copilot-blue: #0C4DA1;
+    --copilot-light-blue: #6CB6FF;
+    --copilot-dark: #0D1117;
+    --copilot-border: #30363D;
+  }
+  .copilot-card-bg {
+    background-color: var(--copilot-dark);
+    border-color: var(--copilot-border);
+  }
+  .copilot-link-card {
+    background: #161B22;
+    border: 1px solid var(--copilot-border);
+    border-radius: 6px;
+    padding: 6px 4px;
+    text-align: center;
+    transition: all .15s ease-in-out;
+    color: #E6EDF3;
+  }
+  .copilot-link-card:hover {
+    box-shadow: 0 0 0 2px var(--copilot-light-blue);
+    transform: translateY(-1px);
+  }
+  .copilot-link-card iconify-icon,
+  .copilot-link-card span {
+    color: var(--copilot-light-blue);
+  }
+  .copilot-link-card span {
+    font-size: .75rem;
+    margin-top: 2px;
+    font-weight: 600;
+    letter-spacing: -.2px;
+    display: block;
+  }
+</style>
