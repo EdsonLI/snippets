@@ -13,10 +13,10 @@
     </h6>
     <div class="snippet-code position-relative">
       <div class="d-grid"
-           style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 4px 4px 6px 4px; max-height: 220px; overflow-y: auto;">
+           style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 4px 4px 6px 4px;">
         <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode" target="_blank"
            class="copilot-link-card text-decoration-none">
-          <iconify-icon icon="mdi:robot" width="22"></iconify-icon>
+          <iconify-icon icon="mdi:brain" width="22"></iconify-icon>
           <span>Agent Mode</span>
         </a>
         <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_revert-edits-with-checkpoints-preview" target="_blank"
@@ -85,5 +85,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  /* Esconde a barra de rolagem em todos os navegadores */
+  .snippet-code::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+  }
+  .snippet-code {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE e Edge */
   }
 </style>
