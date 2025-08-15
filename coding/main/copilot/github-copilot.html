@@ -13,26 +13,36 @@
     </h6>
     <div class="snippet-code position-relative">
       <div class="d-grid"
-           style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 4px 4px 6px 4px;">
-        <a href="https://docs.github.com/pt/copilot" target="_blank"
+           style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 4px 4px 6px 4px; max-height: 220px; overflow-y: auto;">
+        <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode" target="_blank"
            class="copilot-link-card text-decoration-none">
-          <iconify-icon icon="mdi:book-open-outline" width="22"></iconify-icon>
-          <span>Documentação</span>
+          <iconify-icon icon="mdi:robot" width="22"></iconify-icon>
+          <span>Agent Mode</span>
         </a>
-        <a href="https://docs.github.com/pt/copilot/how-tos/configure-custom-instructions/add-repository-instructions" target="_blank"
+        <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_revert-edits-with-checkpoints-preview" target="_blank"
            class="copilot-link-card text-decoration-none">
-          <iconify-icon icon="mdi:source-repository" width="22"></iconify-icon>
-          <span>Repo Instructions</span>
+          <iconify-icon icon="mdi:history" width="22"></iconify-icon>
+          <span>Checkpoints</span>
+        </a>
+        <a href="https://code.visualstudio.com/docs/copilot/copilot-customization" target="_blank"
+           class="copilot-link-card text-decoration-none">
+          <iconify-icon icon="mdi:tools" width="22"></iconify-icon>
+          <span>Customization</span>
+        </a>
+        <a href="https://code.visualstudio.com/api/extension-guides/ai/tools" target="_blank"
+           class="copilot-link-card text-decoration-none">
+          <iconify-icon icon="mdi:code-braces" width="22"></iconify-icon>
+          <span>AI Tools API</span>
         </a>
         <a href="https://docs.github.com/pt/copilot/tutorials/coding-agent/get-the-best-results" target="_blank"
            class="copilot-link-card text-decoration-none">
           <iconify-icon icon="mdi:lightbulb-outline" width="22"></iconify-icon>
           <span>Best Practices</span>
         </a>
-        <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" target="_blank"
+        <a href="https://docs.github.com/pt/copilot" target="_blank"
            class="copilot-link-card text-decoration-none">
-          <iconify-icon icon="mdi:microsoft-visual-studio-code" width="22"></iconify-icon>
-          <span>VS Code</span>
+          <iconify-icon icon="mdi:book-open-outline" width="22"></iconify-icon>
+          <span>Documentação</span>
         </a>
       </div>
     </div>
@@ -72,5 +82,8 @@
     font-weight: 600;
     letter-spacing: -.2px;
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
