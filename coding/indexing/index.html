@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/tab-icons-fix.css">
   <link rel="stylesheet" href="assets/home-link.css">
+  <link rel="stylesheet" href="assets/carousel-fix.css">
   
   <!-- CSS para ações de snippets -->
   <link href="../../assets/css/snippet-actions.css" rel="stylesheet">
@@ -47,7 +48,6 @@
   <!-- Link para retornar à página principal -->
   <a href="../../index.html" class="home-link" title="Voltar à página principal">
     <i class="fas fa-home"></i>
-    <span>Página Principal</span>
   </a>
   
   <h1>Snippets</h1>
@@ -63,9 +63,9 @@
       <i class="fa-regular fa-circle-xmark"></i>
     </button>
   </div>
-  <!-- Abas -->
+  <!-- Abas (carrossel) -->
   <div class="tabs-carousel-wrapper">
-    <button class="tabs-arrow left" aria-label="Rolar para a esquerda">
+    <button class="tabs-arrow left" aria-label="Rolar para a esquerda" title="Deslizar para a esquerda" onclick="scrollTabs(-200)">
       <i class="fa fa-chevron-left"></i>
     </button>
     <div class="tabs">
@@ -193,7 +193,7 @@
         <span class="tab-check"><i class="fa-regular fa-circle-check"></i></span>
       </div>    
     </div>
-    <button class="tabs-arrow right" aria-label="Rolar para a direita">
+    <button class="tabs-arrow right" aria-label="Rolar para a direita" title="Deslizar para a direita" onclick="scrollTabs(200)">
       <i class="fa fa-chevron-right"></i>
     </button>
   </div>
@@ -260,40 +260,83 @@
   <!-- JavaScript Personalizado -->
   <script src="assets/scripts.js"></script>
   <script>
+    // Função para rolar as tabs (usada pelos botões de seta)
+    function scrollTabs(amount) {
+      const tabs = document.querySelector('.tabs-carousel-wrapper .tabs');
+      if (tabs) {
+        tabs.scrollBy({ left: amount, behavior: 'smooth' });
+        console.log(`Rolando tabs: ${amount}px`);
+      }
+    }
+  
     // Tabs carousel scroll (desktop only)
     function isDesktop() {
       return window.innerWidth >= 900; // ajuste conforme seu breakpoint
     }
     function updateTabsArrows() {
       const wrapper = document.querySelector('.tabs-carousel-wrapper');
-      if (!wrapper) return;
+      if (!wrapper) {
+        console.error('Wrapper do carrossel não encontrado na função updateTabsArrows');
+        return;
+      }
       const tabs = wrapper.querySelector('.tabs');
       const left = wrapper.querySelector('.tabs-arrow.left');
       const right = wrapper.querySelector('.tabs-arrow.right');
+      
+      if (!tabs || !left || !right) {
+        console.error('Elementos do carrossel não encontrados');
+        return;
+      }
+      
       if (!isDesktop()) {
         left.style.display = right.style.display = 'none';
         tabs.style.overflowX = '';
         return;
       }
+      
+      // Tornar as setas visíveis
       left.style.display = right.style.display = 'flex';
       tabs.style.overflowX = 'auto';
+      
+      // Verificar se há overflow para rolar
+      const hasOverflow = tabs.scrollWidth > tabs.clientWidth;
+      console.log('Status do carrossel:', {
+        scrollWidth: tabs.scrollWidth, 
+        clientWidth: tabs.clientWidth, 
+        hasOverflow,
+        scrollLeft: tabs.scrollLeft
+      });
+      
+      // Esconder setas se não houver overflow
+      if (!hasOverflow) {
+        left.style.display = right.style.display = 'none';
+      }
+      
       // Esmaecer setas se não pode rolar
       left.classList.toggle('disabled', tabs.scrollLeft <= 0);
       right.classList.toggle('disabled', tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 2);
     }
     document.addEventListener('DOMContentLoaded', function() {
-      const wrapper = document.querySelector('.tabs-wrapper'); // Corrigido o seletor
-      if (!wrapper) return;
+      const wrapper = document.querySelector('.tabs-carousel-wrapper'); // Corrigido para corresponder à classe no HTML
+      if (!wrapper) {
+        console.error('Wrapper do carrossel não encontrado!');
+        return;
+      }
+      
       const tabs = wrapper.querySelector('.tabs');
       const left = wrapper.querySelector('.tabs-arrow.left');
       const right = wrapper.querySelector('.tabs-arrow.right');
       
+      console.log('Elementos do carrossel:', {wrapper, tabs, left, right}); // Debugging
+      
       // Verificar se todos os elementos existem antes de adicionar eventos
       if (tabs && left && right) {
         left.addEventListener('click', function() {
+          console.log('Clicou para esquerda');
           tabs.scrollBy({ left: -200, behavior: 'smooth' });
         });
         right.addEventListener('click', function() {
+          console.log('Clicou para direita');
           tabs.scrollBy({ left: 200, behavior: 'smooth' });
         });
         tabs.addEventListener('scroll', updateTabsArrows);

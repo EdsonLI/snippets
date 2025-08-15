@@ -1,0 +1,56 @@
+/* Estilos adicionais para as setas do carrossel */
+.tabs-arrow {
+  background-color: rgba(13, 17, 23, 0.8) !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tabs-arrow.left {
+  left: 0;
+}
+
+.tabs-arrow.right {
+  right: 0;
+}
+
+.tabs-arrow:hover {
+  background-color: rgba(33, 38, 45, 0.9) !important;
+}
+
+.tabs-arrow i {
+  color: #e6edf3;
+  font-size: 1.2rem;
+}
+
+/* Melhorando a área de clique */
+.tabs-arrow i {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajustar o layout do carrossel */
+.tabs-carousel-wrapper {
+  position: relative;
+  margin: 0 20px;
+  overflow: visible;
+}
+
+/* Garantir que o conteúdo das abas tenha espaço suficiente */
+.tabs {
+  padding: 0 10px;
+  scroll-behavior: smooth;
+}
