@@ -3333,6 +3333,7 @@ code {
 
 pre { 
   margin: 0 !important;
+  font-size: .75rem !important;
 }
 
 pre code.hljs {
