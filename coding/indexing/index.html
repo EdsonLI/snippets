@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="assets/tab-icons-fix.css">
   <link rel="stylesheet" href="assets/home-link.css">
   <link rel="stylesheet" href="assets/carousel-fix.css">
+  <link rel="stylesheet" href="assets/card-styles.css">
   
   <!-- CSS para ações de snippets -->
   <link href="../../assets/css/snippet-actions.css" rel="stylesheet">
@@ -346,6 +347,23 @@
   </script>
   
   <!-- Scripts já incluídos no cabeçalho da página -->
+  
+  <script>
+    // Adicionar classe especial para efeito de hover nos cards
+    document.addEventListener('DOMContentLoaded', function() {
+      const allCards = document.querySelectorAll('.card.p-3.shadow-sm');
+      allCards.forEach(card => {
+        card.classList.add('card-enhanced');
+        
+        // Determinar a que tipo de conteúdo este card pertence
+        const parentSection = card.closest('[class*="-content"]');
+        if (parentSection) {
+          const className = parentSection.className;
+          card.classList.add(className + '-card');
+        }
+      });
+    });
+  </script>
   
   <button id="back-to-top" title="Voltar ao topo">
     <i class="fa fa-arrow-up"></i>

@@ -1,0 +1,151 @@
+/* Estilos para os cards na seção de indexing */
+
+.card.p-3.shadow-sm {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem !important; /* Reduzido de p-3 (1rem) para 0.75rem */
+  margin-bottom: 1.5rem;
+  background-color: #f8f9fa;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease;
+  border-left: 3px solid #6c757d;
+}
+
+.card.p-3.shadow-sm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Estilos específicos para cada tipo de conteúdo */
+.git-content .card.p-3.shadow-sm {
+  border-left-color: #F05033;
+  background-color: #FEFEFE;
+}
+
+.vscode-content .card.p-3.shadow-sm {
+  border-left-color: #23A9F2;
+  background-color: #FAFAFA;
+}
+
+.sweetalert2-content .card.p-3.shadow-sm {
+  border-left-color: #F27474;
+  background-color: #FEFEFE;
+}
+
+.php-content .card.p-3.shadow-sm {
+  border-left-color: #8993BE;
+  background-color: #FAFAFA;
+}
+
+.sql-content .card.p-3.shadow-sm {
+  border-left-color: #F29111;
+  background-color: #FEFEFE;
+}
+
+.isotope-content .card.p-3.shadow-sm {
+  border-left-color: #ED2E49;
+  background-color: #FAFAFA;
+}
+
+.bootstrap-content .card.p-3.shadow-sm {
+  border-left-color: #7952B3;
+  background-color: #FEFEFE;
+}
+
+.html-content .card.p-3.shadow-sm {
+  border-left-color: #E34C26;
+  background-color: #FAFAFA;
+}
+
+.css-content .card.p-3.shadow-sm {
+  border-left-color: #1572B6;
+  background-color: #FEFEFE;
+}
+
+.jquery-content .card.p-3.shadow-sm {
+  border-left-color: #0769AD;
+  background-color: #FAFAFA;
+}
+
+.codepen-content .card.p-3.shadow-sm {
+  border-left-color: #000000;
+  background-color: #FEFEFE;
+}
+
+/* Melhorias para os elementos internos do card */
+.card.p-3.shadow-sm h4,
+.card.p-3.shadow-sm h5,
+.card.p-3.shadow-sm h6 {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.card.p-3.shadow-sm pre {
+  margin: 0.75rem 0;
+  border-radius: 6px;
+}
+
+/* Melhoria para os botões dentro dos cards */
+.card.p-3.shadow-sm .btn {
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* Adiciona um sutil degrade no fundo do card */
+.card.p-3.shadow-sm {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,1));
+  position: relative;
+}
+
+/* Animação sutil na borda esquerda */
+.card.p-3.shadow-sm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background: inherit;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.card.p-3.shadow-sm:hover::before {
+  opacity: 1;
+}
+
+/* Espaçamento interno para código */
+.card.p-3.shadow-sm pre code {
+  padding: 0.5rem !important;
+}
+
+/* Melhorar aparência dos cabeçalhos de card */
+.card.p-3.shadow-sm .card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #343a40;
+}
+
+/* Ajuste de posição para elementos de ação */
+.card.p-3.shadow-sm .btn-sm {
+  margin-top: 0.25rem;
+}
+
+/* Cores para modo escuro, caso tenha */
+@media (prefers-color-scheme: dark) {
+  .card.p-3.shadow-sm {
+    background-color: #2d2d2d;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+    color: #e9ecef;
+  }
+  
+  .card.p-3.shadow-sm .card-title {
+    color: #f8f9fa;
+  }
+  
+  .card.p-3.shadow-sm {
+    background-image: linear-gradient(to bottom, rgba(50,50,50,0.8), rgba(45,45,45,1));
+  }
+}
