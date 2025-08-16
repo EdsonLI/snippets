@@ -9,7 +9,7 @@
       </div>
     </h6>
   <div class="snippet-code position-relative">
-    <div class="d-grid" style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">
+  <div class="d-grid" style="grid-template-columns: repeat(2, 1fr); grid-gap: 10px; padding: 8px 8px 12px 8px;">
       <a href="https://www.w3schools.com" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="simple-icons:w3schools" width="22"></iconify-icon>
         <span>Code</span>
@@ -46,30 +46,33 @@
     <style>
       :root {
         --w3s-green: #04aa6d;
-        --w3s-dark: #222934;
+        --w3s-dark: #0D1117;
+        --w3s-link-bg: #161B22;
+        --w3s-link-border: #30363D;
+        --w3s-link-border-hover: #e6edf3;
       }
       .w3s-card-bg {
         background: var(--w3s-dark);
-        border-color: var(--w3s-green);
+        border-color: var(--w3s-link-border);
       }
       .w3s-link-card {
-        background: var(--w3s-dark);
-        border: 1.5px solid transparent;
-        border-radius: 7px;
-        padding: 8px 4px 7px 4px;
+        background: var(--w3s-link-bg);
+        border: 1px solid transparent;
+        border-radius: 6px;
+        padding: 6px 4px;
         text-align: center;
         transition: all .15s cubic-bezier(.4,1.3,.6,1);
         color: #fff;
-        box-shadow: 0 1px 2px 0 #0002;
         font-weight: 500;
         position: relative;
         outline: none;
+        box-shadow: none;
       }
       .w3s-link-card:hover, .w3s-link-card:focus {
-        border-color: #04e68b;
-        box-shadow: 0 0 0 2.5px #04e68b80, 0 2px 8px 0 #0003;
+        border-color: var(--w3s-link-border-hover);
+        box-shadow: 0 0 0 2px var(--w3s-link-border-hover);
         z-index: 2;
-        transform: translateY(-2px) scale(1.03);
+        transform: translateY(-1px) scale(1.03);
         color: var(--w3s-green);
       }
       .w3s-link-card iconify-icon {
@@ -80,16 +83,19 @@
       }
       .w3s-link-card span {
         color: var(--w3s-green);
-        font-size: .78rem;
+        font-size: .75rem;
         margin-top: 2px;
         font-weight: 600;
         letter-spacing: -.2px;
         display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         transition: color .15s;
       }
       .w3s-link-card:hover iconify-icon,
       .w3s-link-card:hover span {
-        color: #04e68b;
+        color: var(--w3s-link-border-hover);
       }
     </style>
   </div>
