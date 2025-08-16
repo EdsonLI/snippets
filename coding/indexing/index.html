@@ -46,6 +46,41 @@
   <script src="../../assets/js/filter-text-formatter.js" defer></script>
 </head>
 <body>
+  <!-- Botão flutuante de alternância de tema -->
+  <button id="themeToggle" class="btn btn-sm theme-toggle-btn" type="button" title="Alternar tema" aria-label="Alternar tema" style="position: fixed; top: 1rem; right: 1rem; z-index: 1050;">
+    <iconify-icon id="theme-icon" icon="line-md:light-dark" style="vertical-align: middle;"></iconify-icon>
+  </button>
+  <style>
+    #theme-icon {
+      font-size: 2.1em !important;
+      color: #222b36;
+      transition: color 0.2s;
+    }
+    body.theme-dark #theme-icon {
+      color: #fff !important;
+      text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+    }
+    .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
+  </style>
+
+  <script>
+    // Alternância de tema claro/escuro com Iconify
+    function setTheme(theme) {
+      document.body.classList.remove('theme-dark', 'theme-light');
+      document.body.classList.add(theme);
+      localStorage.setItem('snippetTheme', theme);
+      // O ícone do Iconify é animado, não precisa trocar manualmente
+    }
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      const isDark = document.body.classList.contains('theme-dark');
+      setTheme(isDark ? 'theme-light' : 'theme-dark');
+    });
+    // Inicialização
+    (function() {
+      const saved = localStorage.getItem('snippetTheme');
+      setTheme(saved === 'theme-light' ? 'theme-light' : 'theme-dark');
+    })();
+  </script>
   <!-- Link para retornar à página principal -->
   <a href="../../index.html" class="home-link" title="Voltar à página principal" style="display: flex; align-items: center; justify-content: center; height: 60px; width: 60px;">
     <svg xmlns="http://www.w3.org/2000/svg" class="svg-logo-jedi" viewBox="0 0 576 512" style="width: 40px; height: 40px; display: block; margin: auto;">
