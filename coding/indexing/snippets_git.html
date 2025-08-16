@@ -1,282 +1,196 @@
-<style>
-/* --- Adaptação visual para interface principal dos snippets --- */
-body, .container {
-  background: var(--background-color, #f8f9fa) !important;
-  color: var(--default-color, #222) !important;
-  font-family: var(--default-font, 'Roboto', Arial, sans-serif);
-}
+<div class="container my-5 text-light bg-dark rounded-4 p-4 shadow" id="git" data-tags="git">
 
-.git-card {
-  background: #fff;
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 24px 0 rgba(80, 80, 120, 0.10), 0 1.5px 6px 0 rgba(80, 80, 120, 0.08);
-  border: 1.5px solid #e5e7ef;
-  margin-bottom: 2.5rem;
-  padding: 2rem 1.5rem;
-  transition: box-shadow 0.2s;
-}
-.git-card:hover {
-  box-shadow: 0 8px 32px 0 rgba(80, 80, 120, 0.16), 0 2px 8px 0 rgba(80, 80, 120, 0.12);
-}
+  <h2 class="text-danger mb-4">Voltar commits</h2>
+  <div class="table-responsive mb-5">
+    <table class="table table-dark table-hover table-bordered align-middle border-danger">
+      <thead class="table-danger text-dark">
+        <tr>
+          <th>Situação</th>
+          <th>Comando</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Voltar 1 commit local (mantém alterações)</td>
+          <td>
+            <code>git reset --soft HEAD~1</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --soft HEAD~1" aria-label="Copiar comando">📋</button>
+          </td>
+          <td>Volta 1 commit, mas preserva o código no stage.</td>
+        </tr>
+        <tr>
+          <td>Voltar 1 commit local (mantém no working dir)</td>
+          <td>
+            <code>git reset --mixed HEAD~1</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --mixed HEAD~1" aria-label="Copiar comando">📋</button>
+          </td>
+          <td>Volta o commit e tira do stage.</td>
+        </tr>
+        <tr>
+          <td>Voltar 1 commit e <strong>descartar tudo</strong></td>
+          <td>
+            <code>git reset --hard HEAD~1</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --hard HEAD~1" aria-label="Copiar comando">📋</button>
+          </td>
+          <td>Cuidado! Apaga commit e alterações.</td>
+        </tr>
+        <tr>
+          <td>Voltar 2, 3 ou mais commits</td>
+          <td>
+            <code>git reset --hard HEAD~2</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --hard HEAD~2" aria-label="Copiar comando">📋</button>
+          </td>
+          <td>Basta ajustar o número (HEAD~3, etc).</td>
+        </tr>
+        <tr>
+          <td>Reverter um commit (sem apagar histórico)</td>
+          <td>
+            <code>git revert &lt;hash&gt;</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git revert <hash>" aria-label="Copiar comando">📋</button>
+          </td>
+          <td>Cria novo commit que desfaz um anterior. Ideal para colaboração.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-h2, h3, h4 {
-  color: #4b2a91;
-  font-family: var(--heading-font, 'Nunito', sans-serif);
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-}
+  <h2 class="text-danger mb-4">Branches</h2>
+  <div class="table-responsive mb-5">
+    <table class="table table-dark table-hover table-bordered align-middle border-danger">
+      <thead class="table-danger text-dark">
+        <tr>
+          <th>Situação</th>
+          <th>Comando</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Criar branch nova</td>
+          <td>
+            <code>git checkout -b nome-da-branch</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout -b nome-da-branch">📋</button>
+          </td>
+          <td>Usa-se para tarefas novas.</td>
+        </tr>
+        <tr>
+          <td>Alternar entre branches</td>
+          <td>
+            <code>git checkout nome-da-branch</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout nome-da-branch">📋</button>
+          </td>
+          <td>Muda de contexto.</td>
+        </tr>
+        <tr>
+          <td>Subir branch para o repositório</td>
+          <td>
+            <code>git push -u origin nome-da-branch</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git push -u origin nome-da-branch">📋</button>
+          </td>
+          <td><code>-u</code> define upstream para facilitar pushes futuros.</td>
+        </tr>
+        <tr>
+          <td>Deletar branch local</td>
+          <td>
+            <code>git branch -d nome-da-branch</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git branch -d nome-da-branch">📋</button>
+          </td>
+          <td>Use <code>-D</code> para forçar a exclusão.</td>
+        </tr>
+        <tr>
+          <td>Deletar branch remota</td>
+          <td>
+            <code>git push origin --delete nome-da-branch</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git push origin --delete nome-da-branch">📋</button>
+          </td>
+          <td>Para limpar branches antigas do repositório remoto.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-.table {
-  background: #fff;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 2px 8px 0 rgba(80, 80, 120, 0.07);
-}
-.table thead {
-  background: #f3eaff;
-}
-.table th {
-  color: #4b2a91;
-  font-weight: 700;
-  border-bottom: 2px solid #e5e7ef;
-}
-.table td, .table th {
-  border: 1px solid #e5e7ef !important;
-  vertical-align: middle;
-}
-.table-dark {
-  background: #f8f9fa !important;
-  color: #222 !important;
-}
-.table-bordered {
-  border: 1.5px solid #e5e7ef !important;
-}
+  <h2 class="text-danger mb-4">Atualizar com <code>development</code></h2>
+  <div class="table-responsive mb-5">
+    <table class="table table-dark table-hover table-bordered align-middle border-danger">
+      <thead class="table-danger text-dark">
+        <tr>
+          <th>Situação</th>
+          <th>Comando</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Atualizar sua branch com commits da <code>development</code></td>
+          <td>
+            <code>git checkout sua-branch<br>git pull origin development</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout sua-branch\ngit pull origin development">📋</button>
+          </td>
+          <td>Garante que sua branch esteja atualizada antes do PR.</td>
+        </tr>
+        <tr>
+          <td>Rebase para reordenar histórico</td>
+          <td>
+            <code>git rebase development</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git rebase development">📋</button>
+          </td>
+          <td>Cria histórico linear, mas pode gerar conflitos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-.btn-copy {
-  background: #f3eaff !important;
-  color: #4b2a91 !important;
-  border: 1px solid #d1c4e9 !important;
-  border-radius: 6px !important;
-  font-size: 1rem !important;
-  padding: 0.25rem 0.7rem !important;
-  margin-left: 0.5rem !important;
-  transition: background 0.2s, color 0.2s;
-}
-.btn-copy:hover {
-  background: #4b2a91 !important;
-  color: #fff !important;
-  border-color: #4b2a91 !important;
-}
+  <h2 class="text-danger mb-4">Ver histórico e estado</h2>
+  <div class="table-responsive mb-5">
+    <table class="table table-dark table-hover table-bordered align-middle border-danger">
+      <thead class="table-danger text-dark">
+        <tr>
+          <th>Situação</th>
+          <th>Comando</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ver log resumido e visual</td>
+          <td>
+            <code>git log --oneline --graph --all</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git log --oneline --graph --all">📋</button>
+          </td>
+          <td>Visualização clara do histórico e branches.</td>
+        </tr>
+        <tr>
+          <td>Ver mudanças locais</td>
+          <td>
+            <code>git status</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git status">📋</button>
+          </td>
+          <td>Mostra alterações e arquivos no stage.</td>
+        </tr>
+        <tr>
+          <td>Ver diferenças no código</td>
+          <td>
+            <code>git diff</code>
+            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git diff">📋</button>
+          </td>
+          <td>Compara working dir com o último commit.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-code {
-  background: #f3eaff !important;
-  color: #4b2a91 !important;
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-size: 1em;
-}
-
-@media (max-width: 600px) {
-  .git-card { padding: 1rem 0.5rem; }
-  .table th, .table td { font-size: 0.95em; }
-}
-</style>
-
-<div class="container my-5">
-  <div class="git-card" id="git" data-tags="git">
-
-    <h2 class="text-danger mb-4">Voltar commits</h2>
-    <div class="table-responsive mb-5">
-      <table class="table table-dark table-hover table-bordered align-middle border-danger">
-        <thead class="table-danger text-dark">
-          <tr>
-            <th>Situação</th>
-            <th>Comando</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Voltar 1 commit local (mantém alterações)</td>
-            <td>
-              <code>git reset --soft HEAD~1</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --soft HEAD~1" aria-label="Copiar comando">📋</button>
-            </td>
-            <td>Volta 1 commit, mas preserva o código no stage.</td>
-          </tr>
-          <tr>
-            <td>Voltar 1 commit local (mantém no working dir)</td>
-            <td>
-              <code>git reset --mixed HEAD~1</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --mixed HEAD~1" aria-label="Copiar comando">📋</button>
-            </td>
-            <td>Volta o commit e tira do stage.</td>
-          </tr>
-          <tr>
-            <td>Voltar 1 commit e <strong>descartar tudo</strong></td>
-            <td>
-              <code>git reset --hard HEAD~1</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --hard HEAD~1" aria-label="Copiar comando">📋</button>
-            </td>
-            <td>Cuidado! Apaga commit e alterações.</td>
-          </tr>
-          <tr>
-            <td>Voltar 2, 3 ou mais commits</td>
-            <td>
-              <code>git reset --hard HEAD~2</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --hard HEAD~2" aria-label="Copiar comando">📋</button>
-            </td>
-            <td>Basta ajustar o número (HEAD~3, etc).</td>
-          </tr>
-          <tr>
-            <td>Reverter um commit (sem apagar histórico)</td>
-            <td>
-              <code>git revert &lt;hash&gt;</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git revert <hash>" aria-label="Copiar comando">📋</button>
-            </td>
-            <td>Cria novo commit que desfaz um anterior. Ideal para colaboração.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="text-danger mb-4">Branches</h2>
-    <div class="table-responsive mb-5">
-      <table class="table table-dark table-hover table-bordered align-middle border-danger">
-        <thead class="table-danger text-dark">
-          <tr>
-            <th>Situação</th>
-            <th>Comando</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Criar branch nova</td>
-            <td>
-              <code>git checkout -b nome-da-branch</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout -b nome-da-branch">📋</button>
-            </td>
-            <td>Usa-se para tarefas novas.</td>
-          </tr>
-          <tr>
-            <td>Alternar entre branches</td>
-            <td>
-              <code>git checkout nome-da-branch</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout nome-da-branch">📋</button>
-            </td>
-            <td>Muda de contexto.</td>
-          </tr>
-          <tr>
-            <td>Subir branch para o repositório</td>
-            <td>
-              <code>git push -u origin nome-da-branch</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git push -u origin nome-da-branch">📋</button>
-            </td>
-            <td><code>-u</code> define upstream para facilitar pushes futuros.</td>
-          </tr>
-          <tr>
-            <td>Deletar branch local</td>
-            <td>
-              <code>git branch -d nome-da-branch</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git branch -d nome-da-branch">📋</button>
-            </td>
-            <td>Use <code>-D</code> para forçar a exclusão.</td>
-          </tr>
-          <tr>
-            <td>Deletar branch remota</td>
-            <td>
-              <code>git push origin --delete nome-da-branch</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git push origin --delete nome-da-branch">📋</button>
-            </td>
-            <td>Para limpar branches antigas do repositório remoto.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="text-danger mb-4">Atualizar com <code>development</code></h2>
-    <div class="table-responsive mb-5">
-      <table class="table table-dark table-hover table-bordered align-middle border-danger">
-        <thead class="table-danger text-dark">
-          <tr>
-            <th>Situação</th>
-            <th>Comando</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Atualizar sua branch com commits da <code>development</code></td>
-            <td>
-              <code>git checkout sua-branch<br>git pull origin development</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout sua-branch\ngit pull origin development">📋</button>
-            </td>
-            <td>Garante que sua branch esteja atualizada antes do PR.</td>
-          </tr>
-          <tr>
-            <td>Rebase para reordenar histórico</td>
-            <td>
-              <code>git rebase development</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git rebase development">📋</button>
-            </td>
-            <td>Cria histórico linear, mas pode gerar conflitos.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="text-danger mb-4">Ver histórico e estado</h2>
-    <div class="table-responsive mb-5">
-      <table class="table table-dark table-hover table-bordered align-middle border-danger">
-        <thead class="table-danger text-dark">
-          <tr>
-            <th>Situação</th>
-            <th>Comando</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Ver log resumido e visual</td>
-            <td>
-              <code>git log --oneline --graph --all</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git log --oneline --graph --all">📋</button>
-            </td>
-            <td>Visualização clara do histórico e branches.</td>
-          </tr>
-          <tr>
-            <td>Ver mudanças locais</td>
-            <td>
-              <code>git status</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git status">📋</button>
-            </td>
-            <td>Mostra alterações e arquivos no stage.</td>
-          </tr>
-          <tr>
-            <td>Ver diferenças no código</td>
-            <td>
-              <code>git diff</code>
-              <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git diff">📋</button>
-            </td>
-            <td>Compara working dir com o último commit.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="text-danger mb-4">Fluxo prático: branches e PRs</h2>
-    <div class="bg-dark border border-danger text-light p-4 rounded-3 mb-5">
-      <p><strong>📌 Exemplo de fluxo com a branch <code>development</code>:</strong></p>
-      <ol>
-        <li>Você e outros desenvolvedores criam suas branches a partir da <code>development</code>.</li>
-        <li>Fazem commits, push e abrem Pull Requests (PRs) para <code>development</code>.</li>
-        <li>O gestor aprova um PR. Os commits da branch são incorporados à <code>development</code>.</li>
-        <li>Outros PRs ainda abertos podem ter conflitos se baseados em versões antigas de <code>development</code>.</li>
-        <li><strong>Recomenda-se:</strong> sempre fazer <code>git pull origin development</code> ou <code>git rebase origin/development</code> antes de abrir ou atualizar PRs.</li>
-      </ol>
-      <p>Após aprovação de cada PR, atualize sua branch com os commits mais recentes da <code>development</code> antes de continuar desenvolvendo.</p>
-    </div>
+  <h2 class="text-danger mb-4">Fluxo prático: branches e PRs</h2>
+  <div class="bg-dark border border-danger text-light p-4 rounded-3 mb-5">
+    <p><strong>📌 Exemplo de fluxo com a branch <code>development</code>:</strong></p>
+    <ol>
+      <li>Você e outros desenvolvedores criam suas branches a partir da <code>development</code>.</li>
+      <li>Fazem commits, push e abrem Pull Requests (PRs) para <code>development</code>.</li>
+      <li>O gestor aprova um PR. Os commits da branch são incorporados à <code>development</code>.</li>
+      <li>Outros PRs ainda abertos podem ter conflitos se baseados em versões antigas de <code>development</code>.</li>
+      <li><strong>Recomenda-se:</strong> sempre fazer <code>git pull origin development</code> ou <code>git rebase origin/development</code> antes de abrir ou atualizar PRs.</li>
+    </ol>
+    <p>Após aprovação de cada PR, atualize sua branch com os commits mais recentes da <code>development</code> antes de continuar desenvolvendo.</p>
   </div>
 </div>
 
