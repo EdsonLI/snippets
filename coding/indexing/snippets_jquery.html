@@ -1,167 +1,155 @@
-<div class="section" id="jquery" data-tags="jquery">
-  <div class="snippet-block" data-tags="jquery">
-    <div class="snippet-title">
-     
-    </div>
-    <div class="container mt-4">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>📦 Document Ready</h5>
-        <pre><code>
-$(document).ready(function() {
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snippets jQuery Responsivos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .card-snippet pre { background: #161b22; color: #e6edf3; border-radius: 6px; padding: 1rem; font-size: 0.98em; }
+    .card-snippet code { background: none; color: inherit; }
+    .card-snippet .card-title { font-size: 1.1rem; font-weight: 600; }
+    .card-snippet .card { transition: box-shadow .15s; }
+    .card-snippet .card:hover { box-shadow: 0 0 0 2px #6cb6ff; }
+  </style>
+</head>
+<body class="bg-light">
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 mb-0">Snippets jQuery Responsivos</h2>
+        <div>
+          <span class="badge bg-secondary me-2">row-cols</span>
+          <span class="badge bg-secondary">g-4</span>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">📦 Document Ready</h5>
+              <pre><code>$(document).ready(function() {
   // Seu código aqui
-});
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>👆 Clique em botão</h5>
-        <pre><code>
-$("#meuBotao").click(function() {
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">👆 Clique em botão</h5>
+              <pre><code>$("#meuBotao").click(function() {
   alert("Botão clicado!");
-});
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>🎯 Alterar texto de um elemento</h5>
-        <pre><code>
-$("#meuElemento").text("Novo texto aqui!");
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>💡 Toggle visibilidade</h5>
-        <pre><code>
-$("#elemento").toggle();
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>🎨 Add / Remove classe CSS</h5>
-        <pre><code>
-$("#elemento").addClass("ativo");
-$("#elemento").removeClass("ativo");
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>📋 Pegar valor de input</h5>
-        <pre><code>
-let nome = $("#inputNome").val();
-alert("Nome: " + nome);
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>✍️ Alterar valor de input</h5>
-        <pre><code>
-$("#inputNome").val("Edson");
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>🧼 Limpar campo de texto</h5>
-        <pre><code>
-$("#campoTexto").val("");
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>🔁 Loop em elementos com classe</h5>
-        <pre><code>
-$(".item").each(function(index) {
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎯 Alterar texto de um elemento</h5>
+              <pre><code>$("#meuElemento").text("Novo texto aqui!");</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">💡 Toggle visibilidade</h5>
+              <pre><code>$("#elemento").toggle();</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎨 Add / Remove classe CSS</h5>
+              <pre><code>$("#elemento").addClass("ativo");
+$("#elemento").removeClass("ativo");</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">📋 Pegar valor de input</h5>
+              <pre><code>let nome = $("#inputNome").val();
+alert("Nome: " + nome);</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">✍️ Alterar valor de input</h5>
+              <pre><code>$("#inputNome").val("Edson");</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🧼 Limpar campo de texto</h5>
+              <pre><code>$("#campoTexto").val("");</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🔁 Loop em elementos com classe</h5>
+              <pre><code>$(".item").each(function(index) {
   console.log(index + ": " + $(this).text());
-});
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>📤 Enviar formulário via AJAX</h5>
-        <pre><code>
-$("#meuForm").submit(function(e) {
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">📤 Enviar formulário via AJAX</h5>
+              <pre><code>$("#meuForm").submit(function(e) {
   e.preventDefault();
   $.post("enviar.php", $(this).serialize(), function(res) {
     alert("Resposta: " + res);
   });
-});
-        </code></pre>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 mb-4">
-      <div class="card p-3 shadow-sm">
-        <h5>🔄 GET via AJAX</h5>
-        <pre><code>
-$.get("dados.json", function(data) {
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🔄 GET via AJAX</h5>
+              <pre><code>$.get("dados.json", function(data) {
   console.log(data);
-});
-        </code></pre>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 mb-4">
-      <div class="card p-3 shadow-sm">
-        <h5>🎬 FadeIn / FadeOut</h5>
-        <pre><code>
-$("#mensagem").fadeIn();
-$("#mensagem").fadeOut();
-        </code></pre>
-      </div>
-    </div>
-
-  <div class="col">
-      <div class="card p-3 shadow-sm">
-        <h5>📌 Scroll suave até elemento</h5>
-        <pre><code>
-$('html, body').animate({
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎬 FadeIn / FadeOut</h5>
+              <pre><code>$("#mensagem").fadeIn();
+$("#mensagem").fadeOut();</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">📌 Scroll suave até elemento</h5>
+              <pre><code>$('html, body').animate({
   scrollTop: $("#destino").offset().top
-}, 800);
-        </code></pre>
+}, 800);</code></pre>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-  </div>
-    </div>
-  </div>
-
-  <!-- Adicione outros snippets conforme desejar -->
-</div>
-
-<div class="snippet-news-box">
-  <h4>O que vem a seguir <i class="fa-solid fa-bullhorn"></i></h4>
-  <ul>
-    <li><i class="fa-solid fa-sparkles"></i> Document ready: Estrutura básica para garantir que o DOM está carregado</li>
-    <li><i class="fa-solid fa-sparkles"></i> Seletores rápidos: Selecionar elementos por id, classe, atributo</li>
-    <li><i class="fa-solid fa-sparkles"></i> Eventos comuns: Click, change, submit, hover, keyup</li>
-    <li><i class="fa-solid fa-sparkles"></i> Manipulação de classes: <code>addClass</code>, <code>removeClass</code>, <code>toggleClass</code></li>
-    <li><i class="fa-solid fa-sparkles"></i> Mostrar/esconder elementos: <code>show</code>, <code>hide</code>, <code>fadeIn</code>, <code>fadeOut</code>, <code>slideUp</code>, <code>slideDown</code></li>
-    <li><i class="fa-solid fa-sparkles"></i> AJAX simplificado: <code>$.get</code>, <code>$.post</code>, <code>$.ajax</code> com callbacks</li>
-    <li><i class="fa-solid fa-sparkles"></i> Validação de formulários: Checar campos vazios, impedir envio</li>
-    <li><i class="fa-solid fa-sparkles"></i> Animações: <code>animate</code> para transições customizadas</li>
-    <li><i class="fa-solid fa-sparkles"></i> Manipulação de atributos e valores: <code>attr</code>, <code>val</code>, <code>text</code>, <code>html</code></li>
-    <li><i class="fa-solid fa-sparkles"></i> Delegação de eventos: <code>.on</code> para elementos dinâmicos</li>
-    <li><i class="fa-solid fa-sparkles"></i> Iteração em listas: <code>$.each</code> para arrays e objetos</li>
-    <li><i class="fa-solid fa-sparkles"></i> Encadeamento de métodos: Uso de chaining para múltiplas ações em sequência</li>
-  </ul>
-</div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
