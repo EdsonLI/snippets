@@ -11,14 +11,14 @@
       --snippet-fg: #e6edf3;
       --snippet-card-bg: #fff;
       --snippet-card-fg: #222;
-      --snippet-border: #6cb6ff;
+      --snippet-border: #6610f2; /* Main branding purple */
     }
     body.theme-dark {
       --snippet-bg: #161b22;
       --snippet-fg: #e6edf3;
       --snippet-card-bg: #222b36;
       --snippet-card-fg: #e6edf3;
-      --snippet-border: #6cb6ff;
+      --snippet-border: #6610f2;
       background: #0d1117 !important;
       color: #e6edf3 !important;
     }
@@ -27,15 +27,23 @@
       --snippet-fg: #222b36;
       --snippet-card-bg: #fff;
       --snippet-card-fg: #222;
-      --snippet-border: #0d6efd;
+      --snippet-border: #6610f2;
       background: #f8f9fa !important;
       color: #222b36 !important;
     }
     .card-snippet pre { background: var(--snippet-bg); color: var(--snippet-fg); border-radius: 6px; padding: 1rem; font-size: 0.98em; }
     .card-snippet code { background: none; color: inherit; }
     .card-snippet .card-title { font-size: 1.1rem; font-weight: 600; color: var(--snippet-card-fg); }
-    .card-snippet .card { background: var(--snippet-card-bg); color: var(--snippet-card-fg); transition: box-shadow .15s, background .2s, color .2s; }
-    .card-snippet .card:hover { box-shadow: 0 0 0 2px var(--snippet-border); }
+    .card-snippet .card {
+      background: var(--snippet-card-bg);
+      color: var(--snippet-card-fg);
+      border: 1.5px solid var(--snippet-border);
+      transition: box-shadow .15s, background .2s, color .2s, border-color .2s;
+    }
+    .card-snippet .card:hover {
+      box-shadow: 0 0 0 2px var(--snippet-border);
+      border-color: #a259ec;
+    }
     .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
   </style>
 </head>
