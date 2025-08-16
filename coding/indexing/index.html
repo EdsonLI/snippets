@@ -46,7 +46,7 @@
   <script src="../../assets/js/filter-text-formatter.js" defer></script>
 </head>
 <body>
-  <!-- Botão flutuante de alternância de tema -->
+  <!-- Botão flutuante de alternância de tema (visível em todas as páginas de indexing/) -->
   <button id="themeToggle" class="btn btn-sm theme-toggle-btn" type="button" title="Alternar tema" aria-label="Alternar tema" style="position: fixed; top: 1rem; right: 1rem; z-index: 1050;">
     <iconify-icon id="theme-icon" icon="line-md:light-dark" style="vertical-align: middle;"></iconify-icon>
   </button>
@@ -62,6 +62,34 @@
     }
     .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
   </style>
+
+  <script>
+    // Alternância de tema claro/escuro com Iconify para todas as páginas de indexing
+    (function() {
+      function setTheme(theme) {
+        document.body.classList.remove('theme-dark', 'theme-light');
+        document.body.classList.add(theme);
+        localStorage.setItem('snippetTheme', theme);
+      }
+      function initThemeToggle() {
+        var btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+          const isDark = document.body.classList.contains('theme-dark');
+          setTheme(isDark ? 'theme-light' : 'theme-dark');
+        });
+        // Inicialização
+        const saved = localStorage.getItem('snippetTheme');
+        setTheme(saved === 'theme-light' ? 'theme-light' : 'theme-dark');
+      }
+      // Executa ao carregar
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemeToggle);
+      } else {
+        initThemeToggle();
+      }
+    })();
+  </script>
 
   <script>
     // Alternância de tema claro/escuro com Iconify
