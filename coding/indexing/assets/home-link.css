@@ -1,9 +1,8 @@
 /* Estilo para o link de retorno à página principal */
 .home-link {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  background-color: #21262d;
+  top: .5rem;
+  left: 1rem;
   color: #c9d1d9;
   width: 40px;
   height: 40px;
@@ -18,12 +17,12 @@
   z-index: 1000;
 }
 
-.home-link:hover {
+/* .home-link:hover {
   background-color: #30363d;
   color: #f0f6fc;
   border-color: #388bfd;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .home-link i {
   font-size: 1.2em;
