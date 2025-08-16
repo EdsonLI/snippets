@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-w3schools">
-  <div class="portfolio-content h-100 p-2 w3s-card-bg text-light rounded position-relative border border-secondary-custom">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
     <h6 class="text-center">
       <span class="id-tech-w3schools">W3Schools</span>
       <div class="snippet-actions-float d-flex align-items-center gap-1">
@@ -9,92 +9,76 @@
       </div>
     </h6>
   <div class="snippet-code position-relative">
-  <div class="d-grid" style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 4px 4px 6px 4px;">
+    <div class="d-grid" style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">    
+      <style>
+        .w3s-link-card {
+          background-color: #fff;
+          border: 1px solid #d0e8dc;
+          border-radius: 6px;
+          padding: 6px 4px;
+          text-align: center;
+          transition: all 0.15s ease-in-out;
+        }
+        .w3s-link-card:hover {
+          box-shadow: 0 0 0 2px #04aa6d33;
+          transform: translateY(-1px);
+        }
+        .w3s-link-card iconify-icon {
+          color: #04aa6d;
+        }
+        .w3s-link-card span {
+          font-size: 0.75rem;
+          color: #04aa6d;
+          margin-top: 2px;
+          display: block;
+          font-weight: 500;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          letter-spacing: -0.2px;
+        }
+      </style>
+
+      <!-- Card: Code (W3Schools Main) -->
       <a href="https://www.w3schools.com" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="simple-icons:w3schools" width="22"></iconify-icon>
         <span>Code</span>
       </a>
+
       <a href="https://pathfinder.w3schools.com" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="mdi:view-dashboard-outline" width="22"></iconify-icon>
         <span>Dashboard</span>
       </a>
+
       <a href="https://pathfinder.w3schools.com/tutorials" target="_blank" class="w3s-link-card text-decoration-none">
-        <iconify-icon icon="mdi:book-open-page-variant" width="22"></iconify-icon>
+        <iconify-icon icon="mdi:lightbulb-outline" width="22"></iconify-icon>
         <span>Tutorials</span>
       </a>
+
       <a href="https://pathfinder.w3schools.com/bookmarks" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="mdi:bookmark-outline" width="22"></iconify-icon>
         <span>Bookmarks</span>
       </a>
+
       <a href="https://pathfinder.w3schools.com/learning-paths" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="mdi:map-outline" width="22"></iconify-icon>
         <span>Learning Paths</span>
       </a>
+
       <a href="https://pathfinder.w3schools.com/courses" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="mdi:school-outline" width="22"></iconify-icon>
         <span>Courses</span>
       </a>
+
       <a href="https://spaces.w3schools.com/createspace" target="_blank" class="w3s-link-card text-decoration-none">
         <iconify-icon icon="mdi:code-braces" width="22"></iconify-icon>
         <span>My Spaces</span>
       </a>
+
       <a href="https://www.w3schools.com/tryit/default.asp" target="_blank" class="w3s-link-card text-decoration-none">
-        <iconify-icon icon="mdi:code" width="22"></iconify-icon>
+        <iconify-icon icon="mdi:code-tags" width="22"></iconify-icon>
         <span>Code Editor</span>
       </a>
+
     </div>
-    <style>
-      :root {
-        --w3s-green: #04aa6d;
-        --w3s-dark: #0D1117;
-        --w3s-link-bg: #161B22;
-        --w3s-link-border: #30363D;
-        --w3s-link-border-hover: #e6edf3;
-      }
-      .w3s-card-bg {
-        background: var(--w3s-dark);
-        border-color: var(--w3s-link-border);
-      }
-      .w3s-link-card {
-        background: var(--w3s-link-bg);
-        border: 1px solid var(--w3s-link-border);
-        border-radius: 6px;
-        padding: 6px 4px;
-        text-align: center;
-        transition: all .15s cubic-bezier(.4,1.3,.6,1);
-        color: #fff;
-        font-weight: 500;
-        position: relative;
-        outline: none;
-        box-shadow: none;
-      }
-      .w3s-link-card:hover, .w3s-link-card:focus {
-        border-color: var(--w3s-green);
-        box-shadow: 0 0 0 2px var(--w3s-green);
-        z-index: 2;
-        transform: translateY(-1px) scale(1.03);
-        color: var(--w3s-green);
-      }
-      .w3s-link-card iconify-icon {
-        color: var(--w3s-green);
-        filter: drop-shadow(0 0 2px #04aa6d40);
-        margin-bottom: 2px;
-        transition: color .15s;
-      }
-      .w3s-link-card span {
-        color: var(--w3s-green);
-        font-size: .75rem;
-        margin-top: 2px;
-        font-weight: 600;
-        letter-spacing: -.2px;
-        display: block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition: color .15s;
-      }
-  /* No hover, não altera a cor do texto nem do ícone, mantém o branding */
-    </style>
   </div>
 </div>
 </div>

@@ -39,18 +39,11 @@
       color: var(--snippet-card-fg);
       border: 1.5px solid var(--snippet-border);
       transition: box-shadow .15s, background .2s, color .2s, border-color .2s;
+    }    
+    .card-snippet .card-body {
+      padding: 0 !important;
     }
-    .card-snippet .card:hover {
-      box-shadow: 0 0 0 2px var(--snippet-border);
-      border-color: #a259ec;
-    }
-  .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
-  /* Remove unnecessary horizontal and bottom spacing */
-  section.py-5 { padding-top: 2.5rem !important; padding-bottom: 0 !important; }
-  .container { padding-left: 0 !important; padding-right: 0 !important; }
-  .card-snippet { margin-left: 0 !important; margin-right: 0 !important; }
-  /* Remove bottom margin from the last row */
-  .card-snippet > .col:last-child { margin-bottom: 0 !important; }
+    .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
   </style>
 </head>
 <body class="bg-light">
