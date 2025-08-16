@@ -44,7 +44,13 @@
       box-shadow: 0 0 0 2px var(--snippet-border);
       border-color: #a259ec;
     }
-    .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
+  .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
+  /* Remove unnecessary horizontal and bottom spacing */
+  section.py-5 { padding-top: 2.5rem !important; padding-bottom: 0 !important; }
+  .container { padding-left: 0 !important; padding-right: 0 !important; }
+  .card-snippet { margin-left: 0 !important; margin-right: 0 !important; }
+  /* Remove bottom margin from the last row */
+  .card-snippet > .col:last-child { margin-bottom: 0 !important; }
   </style>
 </head>
 <body class="bg-light">
@@ -55,12 +61,6 @@
   </button>
   <section class="py-5">
     <div class="container">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <div>
-          <span class="badge bg-secondary me-2">row-cols</span>
-          <span class="badge bg-secondary">g-4</span>
-        </div>
-      </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
         <div class="col">
           <div class="card h-100 shadow-sm">
