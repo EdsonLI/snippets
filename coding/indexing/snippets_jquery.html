@@ -46,11 +46,20 @@
       padding: 0 !important;
     }
     .theme-toggle-btn { position: fixed; top: 1rem; right: 1rem; z-index: 1050; }
+      #theme-icon {
+        font-size: 2.1em !important;
+        color: #222b36;
+        transition: color 0.2s;
+      }
+      body.theme-dark #theme-icon {
+        color: #fff !important;
+        text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+      }
   </style>
 </head>
 <body class="bg-light">
   <button id="themeToggle" class="btn btn-sm theme-toggle-btn" type="button" title="Alternar tema" aria-label="Alternar tema">
-    <iconify-icon id="theme-icon" icon="line-md:light-dark" style="vertical-align: middle; font-size: 1.3em;"></iconify-icon>
+  <iconify-icon id="theme-icon" icon="line-md:light-dark" style="vertical-align: middle;"></iconify-icon>
   </button>
   <section class="py-5">
     <div class="container">
