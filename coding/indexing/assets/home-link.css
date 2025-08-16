@@ -16,13 +16,10 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
-
-/* .home-link:hover {
-  background-color: #30363d;
-  color: #f0f6fc;
-  border-color: #388bfd;
+.home-link:hover {
+  border-color: #5e65cc !important;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-} */
+}
 
 .home-link i {
   font-size: 1.2em;
