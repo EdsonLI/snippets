@@ -1,0 +1,45 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+  <div class="portfolio-content p-2 bg-dark text-light rounded position-relative border border-secondary-custom h-100">
+    <h6 class="text-center">
+      <span class="id-tech-git">git</span>      
+    </h6>
+    <h6 class="mb-1 text-center search-title"><strong>Reset hard + force push</strong></h6>
+    <div class="snippet-code position-relative">
+      <div class="mt-2 small">        
+        <div class="mb-3">
+          <div class="px-2"><b>1. Faça checkout na branch que vai fazer isso:</b></div>
+          <div class="position-relative">
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-1">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+            <pre class="git-pre-code">
+<code id="gcr-step-1" class="language-bash">  # garante que está na branch certa (ex: main)
+git checkout main</code></pre>
+          </div>
+        </div>        
+        <div class="mb-3">
+          <div class="px-2"><b>2. Resetar a branch local selecionada para o commit desejado:</b></div>
+          <div class="position-relative">
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-2">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+            <pre class="git-pre-code">
+<code id="gcr-step-2" class="language-bash">  # reseta branch local para o commit desejado
+git reset --hard <hash-do-commit></code></pre>
+          </div>          
+        </div>        
+        <div class="mb-3">
+          <div class="px-2"><b>3. Enviar para o remoto forçando <b>overwrite</b>:</b></div>
+          <div class="position-relative">
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gcr-step-4">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+            <pre class="git-pre-code">
+<code id="gcr-step-4" class="language-bash">  # envia para remoto sobrescrevendo
+git push origin main --force</code></pre>
+          </div>
+        </div>                        
+      </div>
+    </div>
+  </div>
+</div>
