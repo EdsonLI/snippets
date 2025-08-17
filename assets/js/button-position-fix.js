@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Força o posicionamento absoluto e as margens corretas
     container.style.position = 'absolute';
-    container.style.top = '3px'; // Reduzido para 3px
+    container.style.top = '-5px'; // Movido para mais próximo do topo
     container.style.right = '5px';
     container.style.margin = '0';
     container.style.padding = '0';
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Verifica se está em dispositivo móvel
     if (window.innerWidth < 768) {
-      container.style.top = '2px'; // Ainda mais próximo em dispositivos móveis
+      container.style.top = '-3px'; // Ajuste para mobile também
     }
     
     // Verifica se está dentro de um card com título
