@@ -157,3 +157,91 @@ body.theme-dark input[type="text"] {
 body, .card, pre, code, h1, h2, h3, h4, h5, h6 {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
+
+/* =========================
+   CORREÇÕES ESPECÍFICAS PARA COMPONENTES GIT
+   ========================= */
+
+/* Tema Claro - Containers e Tabelas Git */
+body.theme-light .bg-dark {
+  background-color: #f8f9fa !important;
+}
+
+body.theme-light .text-light {
+  color: #212529 !important;
+}
+
+body.theme-light .table-dark {
+  --bs-table-color: #212529;
+  --bs-table-bg: #fff;
+  --bs-table-border-color: #dee2e6;
+  --bs-table-striped-bg: #f8f9fa;
+  --bs-table-striped-color: #212529;
+  --bs-table-active-bg: #e9ecef;
+  --bs-table-active-color: #212529;
+  --bs-table-hover-bg: #f5f5f5;
+  --bs-table-hover-color: #212529;
+  color: #212529 !important;
+  background-color: #fff !important;
+}
+
+body.theme-light .table-dark th,
+body.theme-light .table-dark td {
+  color: #212529 !important;
+  background-color: #fff !important;
+  border-color: #dee2e6 !important;
+}
+
+body.theme-light .table-dark tbody tr:hover {
+  background-color: #f5f5f5 !important;
+  color: #212529 !important;
+}
+
+/* Tema Escuro - Mantém original */
+body.theme-dark .bg-dark {
+  background-color: #212529 !important;
+}
+
+body.theme-dark .text-light {
+  color: #f8f9fa !important;
+}
+
+body.theme-dark .table-dark {
+  --bs-table-color: #fff;
+  --bs-table-bg: #212529;
+  --bs-table-border-color: #373b3e;
+  --bs-table-striped-bg: #2c3034;
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: #373b3e;
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: #323539;
+  --bs-table-hover-color: #fff;
+  color: #fff !important;
+  background-color: #212529 !important;
+}
+
+/* Correções adicionais para elementos específicos */
+body.theme-light .border-danger {
+  border-color: #dc3545 !important;
+}
+
+body.theme-light code {
+  background-color: #f8f9fa !important;
+  color: #d63384 !important;
+}
+
+body.theme-dark code {
+  background-color: #2d333b !important;
+  color: #f0f6fc !important;
+}
+
+/* Container de exemplo com bg-dark border */
+body.theme-light .bg-dark.border {
+  background-color: #fff !important;
+  border-color: #dee2e6 !important;
+}
+
+body.theme-dark .bg-dark.border {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+}
