@@ -11,7 +11,7 @@
   --snippet-border: #6610f2; /* Main branding purple */
 }
 
-/* Tema Escuro */
+/* Tema Escuro (padrão) */
 body.theme-dark {
   --snippet-bg: #161b22;
   --snippet-fg: #e6edf3;
@@ -33,30 +33,63 @@ body.theme-light {
   color: #222b36 !important;
 }
 
+/* Botão toggle de tema */
+.theme-toggle-btn { 
+  position: fixed; 
+  top: 1rem; 
+  right: 1rem; 
+  z-index: 1050;
+  background: transparent !important;
+  border: none !important;
+  padding: 8px !important;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-radius: 4px;
+}
+
+#theme-icon {
+  font-size: 2.1em !important;
+  transition: transform 0.3s ease, color 0.2s;
+  color: #222b36;
+  cursor: pointer;
+}
+
+body.theme-dark #theme-icon {
+  color: #fff !important;
+  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+}
+
 /* Estilos para cards de snippets */
-.card-snippet pre { 
-  background: var(--snippet-bg); 
-  color: var(--snippet-fg); 
+.card-snippet pre,
+pre { 
+  background: var(--snippet-bg) !important; 
+  color: var(--snippet-fg) !important; 
   border-radius: 6px; 
   padding: 1rem; 
   font-size: 0.98em; 
+  border: 1px solid var(--snippet-border);
 }
 
-.card-snippet code { 
-  background: none; 
-  color: inherit; 
+.card-snippet code,
+code { 
+  background: none !important; 
+  color: inherit !important; 
 }
 
-.card-snippet .card-title { 
+.card-snippet .card-title,
+.card h5 { 
   font-size: 1.1rem; 
   font-weight: 600; 
-  color: var(--snippet-card-fg); 
+  color: var(--snippet-card-fg) !important; 
 }
 
-.card-snippet .card {
-  background: var(--snippet-card-bg);
-  color: var(--snippet-card-fg);
-  border: 1.5px solid var(--snippet-border);
+.card-snippet .card,
+.card {
+  background: var(--snippet-card-bg) !important;
+  color: var(--snippet-card-fg) !important;
+  border: 1.5px solid var(--snippet-border) !important;
   transition: box-shadow .15s, background .2s, color .2s, border-color .2s;
 }    
 
@@ -64,30 +97,18 @@ body.theme-light {
   padding: 0 !important;
 }
 
-/* Botão toggle de tema */
-.theme-toggle-btn { 
-  position: fixed; 
-  top: 1rem; 
-  right: 1rem; 
-  z-index: 1050; 
-}
-
-#theme-icon {
-  font-size: 2.1em !important;
-  transition: transform 0.3s ease;
-}
-
-body.theme-dark #theme-icon {
-  color: #58a6ff;
-}
-
-/* Adaptações para o tema claro/escuro em elementos existentes */
+/* Adaptações globais para tema claro */
 body.theme-light {
   background: #f8f9fa !important;
   color: #212529 !important;
 }
 
-body.theme-light h1 {
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light h4,
+body.theme-light h5,
+body.theme-light h6 {
   color: #212529 !important;
 }
 
@@ -102,41 +123,28 @@ body.theme-light input[type="text"]:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
 }
 
-body.theme-light .card {
-  background: #fff !important;
-  border-color: #dee2e6 !important;
-  color: #212529 !important;
+/* Adaptações globais para tema escuro */
+body.theme-dark {
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
 }
 
-body.theme-light .card h5,
-body.theme-light .card .card-title {
-  color: #212529 !important;
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark h4,
+body.theme-dark h5,
+body.theme-dark h6 {
+  color: #f0f6fc !important;
 }
 
-body.theme-light pre {
-  background: #f8f9fa !important;
-  color: #212529 !important;
-  border: 1px solid #dee2e6 !important;
-}
-
-body.theme-dark .card {
-  background: #21262d !important;
+body.theme-dark input[type="text"] {
+  background: #161b22 !important;
   border-color: #30363d !important;
   color: #c9d1d9 !important;
 }
 
-body.theme-dark .card h5,
-body.theme-dark .card .card-title {
-  color: #c9d1d9 !important;
-}
-
-body.theme-dark pre {
-  background: #161b22 !important;
-  color: #e6edf3 !important;
-  border: 1px solid #30363d !important;
-}
-
 /* Transições suaves */
-body, .card, pre, code {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+body, .card, pre, code, h1, h2, h3, h4, h5, h6 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
