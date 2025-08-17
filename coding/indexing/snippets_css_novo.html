@@ -10,7 +10,7 @@
   <link href="assets/theme-toggle.css" rel="stylesheet">
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
   
-  <title>Snippets jQuery</title>
+  <title>Snippets CSS</title>
 </head>
 <body class="theme-dark">
   <!-- Toggle de Tema -->
@@ -21,126 +21,164 @@
   <section class="py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
+        
+        <!-- Gradiente no texto -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">📦 Document Ready</h5>
-              <pre><code>$(document).ready(function() {
-  // Seu código aqui
-});</code></pre>
+              <h5 class="card-title">🎨 Texto com gradiente</h5>
+              <pre><code class="language-css">.gradient-text {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Botão com hover suave -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🎯 Seletor de elemento</h5>
-              <pre><code>$('#meuElemento').click(function() {
-  alert('Clicado!');
-});</code></pre>
+              <h5 class="card-title">🌈 Botão com efeito hover</h5>
+              <pre><code class="language-css">.button {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.button:hover {
+  background: #4338ca;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Scroll invisível -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🎨 Adicionar classe</h5>
-              <pre><code>$('.meuBotao').addClass('ativo');</code></pre>
+              <h5 class="card-title">🪄 Scroll invisível</h5>
+              <pre><code class="language-css">.scroll-hidden {
+  overflow: auto;
+  scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Flexbox centralizador -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🔄 Toggle de classe</h5>
-              <pre><code>$('#menu').toggleClass('aberto');</code></pre>
+              <h5 class="card-title">📐 Centralizar com Flexbox</h5>
+              <pre><code class="language-css">.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Ellipsis no texto -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">✨ Fade In/Out</h5>
-              <pre><code>$('#elemento').fadeIn();
-$('#elemento').fadeOut();</code></pre>
+              <h5 class="card-title">✂️ Texto com reticências</h5>
+              <pre><code class="language-css">.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Grid de cards -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🔍 Encontrar elementos</h5>
-              <pre><code>$('.container').find('.item');</code></pre>
+              <h5 class="card-title">🧱 Grid de cards</h5>
+              <pre><code class="language-css">.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Fade-in simples -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">📝 Alterar texto</h5>
-              <pre><code>$('#titulo').text('Novo título');
-$('#conteudo').html('&lt;b&gt;Negrito&lt;/b&gt;');</code></pre>
+              <h5 class="card-title">🎥 Fade-in</h5>
+              <pre><code class="language-css">.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Brilho animado -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🌐 Ajax simples</h5>
-              <pre><code>$.get('api/dados.json', function(data) {
-  console.log(data);
-});</code></pre>
+              <h5 class="card-title">✨ Efeito de brilho</h5>
+              <pre><code class="language-css">.shine {
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shine 1.2s linear infinite;
+}
+@keyframes shine {
+  100% {
+    background-position: -200% 0;
+  }
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Sticky header -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">⏱️ Delay e animação</h5>
-              <pre><code>$('#elemento').delay(1000).slideUp();</code></pre>
+              <h5 class="card-title">🧭 Cabeçalho fixo (sticky)</h5>
+              <pre><code class="language-css">header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 999;
+}</code></pre>
             </div>
           </div>
         </div>
 
+        <!-- Media Query básica -->
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🔗 Event listener</h5>
-              <pre><code>$('.botao').on('click', function() {
-  $(this).prop('disabled', true);
-});</code></pre>
+              <h5 class="card-title">📱 Media query para mobile</h5>
+              <pre><code class="language-css">@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}</code></pre>
             </div>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">📋 Formulário</h5>
-              <pre><code>$('#formulario').serialize();
-$('#campo').val('novo valor');</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">🎬 Scroll animado</h5>
-              <pre><code>$('html, body').animate({
-  scrollTop: $("#destino").offset().top
-}, 800);</code></pre>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>

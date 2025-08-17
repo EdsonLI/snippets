@@ -1,0 +1,156 @@
+<div class="section" id="php" data-tags="php">
+  <div class="snippet-block" data-tags="php">
+    <div class="snippet-title">      
+    </div>
+    <div class="container mt-4">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔒 Evitar erros de variáveis indefinidas</h5>
+        <pre><code>
+$nome = $_GET['nome'] ?? 'Visitante';
+echo "Olá, $nome!";
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📥 Verificar se formulário foi enviado</h5>
+        <pre><code>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // processar dados
+}
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🧹 Limpar dados do formulário (sanitização)</h5>
+        <pre><code>
+$nome = htmlspecialchars(trim($_POST['nome']));
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📦 Criar e ler sessão</h5>
+        <pre><code>
+session_start();
+$_SESSION['usuario'] = 'Edson';
+
+echo $_SESSION['usuario'];
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📧 Enviar e-mail simples</h5>
+        <pre><code>
+mail("destino@email.com", "Assunto", "Mensagem");
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📁 Criar diretório se não existir</h5>
+        <pre><code>
+$dir = "uploads";
+if (!is_dir($dir)) {
+  mkdir($dir, 0755, true);
+}
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📝 Escrever em arquivo</h5>
+        <pre><code>
+file_put_contents("log.txt", "Nova linha\n", FILE_APPEND);
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔐 Hash de senha seguro</h5>
+        <pre><code>
+$senhaHash = password_hash("minhaSenha123", PASSWORD_DEFAULT);
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔑 Verificar senha com hash</h5>
+        <pre><code>
+if (password_verify($senhaDigitada, $senhaHash)) {
+  echo "Senha correta!";
+}
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📆 Data e hora formatada</h5>
+        <pre><code>
+echo date("d/m/Y H:i:s");
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 col-md-6 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>📚 Autoload de classes (PSR-4)</h5>
+        <pre><code>
+spl_autoload_register(function($classe) {
+  require_once "classes/{$classe}.php";
+});
+        </code></pre>
+      </div>
+    </div>
+    
+    <div class="col-sm-12 mb-4">
+      <div class="card p-3 shadow-sm">
+        <h5>🔄 Redirecionamento</h5>
+        <pre><code>
+header("Location: outra-pagina.php");
+exit;
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+    </div>
+  </div>
+
+  <!-- Adicione outros snippets conforme desejar -->
+</div>
+
+<div class="snippet-news-box">
+  <h4> O que vem a seguir <i class="fa-solid fa-bullhorn"></i></h4>
+  <ul>
+    <li><i class="fa-solid fa-sparkles"></i> Estrutura básica de classe (com propriedades e métodos)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Construtor (<code>__construct</code>)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Getters e setters automáticos</li>
+    <li><i class="fa-solid fa-sparkles"></i> Herança: <code>extends</code> e uso de <code>parent</code></li>
+    <li><i class="fa-solid fa-sparkles"></i> Interfaces e implementação</li>
+    <li><i class="fa-solid fa-sparkles"></i> Traits para reutilização de código</li>
+    <li><i class="fa-solid fa-sparkles"></i> Namespaces e uso de <code>use</code></li>
+    <li><i class="fa-solid fa-sparkles"></i> Autoloading (PSR-4)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Métodos mágicos úteis (<code>__get</code>, <code>__set</code>, <code>__call</code>, <code>__toString</code>)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Singleton pattern</li>
+    <li><i class="fa-solid fa-sparkles"></i> Factory pattern</li>
+    <li><i class="fa-solid fa-sparkles"></i> Injeção de dependência via construtor</li>
+    <li><i class="fa-solid fa-sparkles"></i> Declaração de tipos e retorno de métodos</li>
+    <li><i class="fa-solid fa-sparkles"></i> Exemplo de uso de exceptions personalizadas</li>
+    <li><i class="fa-solid fa-sparkles"></i> Snippets para testes unitários (PHPUnit)</li>
+  </ul>
+</div>
