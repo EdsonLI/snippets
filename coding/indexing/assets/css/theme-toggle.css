@@ -245,3 +245,162 @@ body.theme-dark .bg-dark.border {
   background-color: #161b22 !important;
   border-color: #30363d !important;
 }
+
+/* =========================
+   CORREÇÕES PARA CONTEÚDO DINÂMICO (TAB-CONTENT)
+   ========================= */
+
+/* Forçar temas em conteúdo dinâmico carregado via AJAX */
+body.theme-light .tab-content,
+body.theme-light .tab-content * {
+  color: #212529 !important;
+}
+
+body.theme-dark .tab-content,
+body.theme-dark .tab-content * {
+  color: #e6edf3 !important;
+}
+
+/* Cards dentro de tab-content */
+body.theme-light .tab-content .card {
+  background: #fff !important;
+  color: #212529 !important;
+  border-color: #dee2e6 !important;
+}
+
+body.theme-dark .tab-content .card {
+  background: #222b36 !important;
+  color: #e6edf3 !important;
+  border-color: #30363d !important;
+}
+
+/* Titles e headers dentro de tab-content */
+body.theme-light .tab-content h1,
+body.theme-light .tab-content h2,
+body.theme-light .tab-content h3,
+body.theme-light .tab-content h4,
+body.theme-light .tab-content h5,
+body.theme-light .tab-content h6 {
+  color: #212529 !important;
+}
+
+body.theme-dark .tab-content h1,
+body.theme-dark .tab-content h2,
+body.theme-dark .tab-content h3,
+body.theme-dark .tab-content h4,
+body.theme-dark .tab-content h5,
+body.theme-dark .tab-content h6 {
+  color: #f0f6fc !important;
+}
+
+/* Pre e code dentro de tab-content */
+body.theme-light .tab-content pre {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+}
+
+body.theme-dark .tab-content pre {
+  background: #161b22 !important;
+  color: #e6edf3 !important;
+  border: 1px solid #6610f2 !important;
+}
+
+body.theme-light .tab-content code {
+  background: #f8f9fa !important;
+  color: #d63384 !important;
+}
+
+body.theme-dark .tab-content code {
+  background: #2d333b !important;
+  color: #f0f6fc !important;
+}
+
+/* Seções e divs dentro de tab-content */
+body.theme-light .tab-content .section,
+body.theme-light .tab-content .info-box,
+body.theme-light .tab-content div {
+  background-color: transparent !important;
+  color: #212529 !important;
+}
+
+body.theme-dark .tab-content .section,
+body.theme-dark .tab-content .info-box,
+body.theme-dark .tab-content div {
+  background-color: transparent !important;
+  color: #e6edf3 !important;
+}
+
+/* Botões dentro de tab-content */
+body.theme-light .tab-content button:not(.theme-toggle-btn) {
+  background: #fff !important;
+  color: #212529 !important;
+  border-color: #dee2e6 !important;
+}
+
+body.theme-dark .tab-content button:not(.theme-toggle-btn) {
+  background: #222b36 !important;
+  color: #e6edf3 !important;
+  border-color: #30363d !important;
+}
+
+/* Links dentro de tab-content */
+body.theme-light .tab-content a {
+  color: #0d6efd !important;
+}
+
+body.theme-dark .tab-content a {
+  color: #58a6ff !important;
+}
+
+/* Inputs e forms dentro de tab-content */
+body.theme-light .tab-content input,
+body.theme-light .tab-content textarea,
+body.theme-light .tab-content select {
+  background: #fff !important;
+  color: #212529 !important;
+  border-color: #ced4da !important;
+}
+
+body.theme-dark .tab-content input,
+body.theme-dark .tab-content textarea,
+body.theme-dark .tab-content select {
+  background: #161b22 !important;
+  color: #c9d1d9 !important;
+  border-color: #30363d !important;
+}
+
+/* Forçar aplicação de tema em TODOS os elementos dentro de tab-content */
+body.theme-light .tab-content * {
+  color: #212529 !important;
+  border-color: #dee2e6 !important;
+}
+
+body.theme-light .tab-content .card,
+body.theme-light .tab-content .card-body {
+  background-color: #fff !important;
+  color: #212529 !important;
+}
+
+body.theme-light .tab-content pre,
+body.theme-light .tab-content .highlight {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+body.theme-dark .tab-content * {
+  color: #e6edf3 !important;
+  border-color: #30363d !important;
+}
+
+body.theme-dark .tab-content .card,
+body.theme-dark .tab-content .card-body {
+  background-color: #222b36 !important;
+  color: #e6edf3 !important;
+}
+
+body.theme-dark .tab-content pre,
+body.theme-dark .tab-content .highlight {
+  background-color: #161b22 !important;
+  color: #e6edf3 !important;
+}

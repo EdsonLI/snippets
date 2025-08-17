@@ -51,6 +51,11 @@ $(document).ready(function() {
         $('head').append('<style>' + $(this).html() + '</style>');
         $(this).remove();
       });
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('git-content'));
+      }
     });
 
     // MadBuilder content removed
@@ -81,54 +86,99 @@ $(document).ready(function() {
       addCopyButtons();
       loadSnippetsFormularios();
       loadSnippetsListings();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('vscode-content'));
+      }
     });
 
     $('#sweetalert2-content').load('./snippets_sweetalert2.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('sweetalert2-content'));
+      }
     });
 
     $('#fontawesome-content').load('./snippets_fontawesome.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('fontawesome-content'));
+      }
     });
 
     $('#css-content').load('./snippets_css.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('css-content'));
+      }
     });
 
     $('#bootstrap-content').load('./snippets_bootstrap.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('bootstrap-content'));
+      }
     });
 
     $('#jquery-content').load('./snippets_jquery.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('jquery-content'));
+      }
     });
 
     $('#html-content').load('./snippets_html.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('html-content'));
+      }
     });
 
     $('#php-content').load('./snippets_php.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('php-content'));
+      }
     });
 
     $('#sql-content').load('./snippets_sql.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
+      
+      // Reaplicar tema ao conteúdo carregado
+      if (window.snippetTheme) {
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('sql-content'));
+      }
     });
   }
 
@@ -138,9 +188,18 @@ $(document).ready(function() {
       $('.tab').removeClass('active');
       $(this).addClass('active');
       $('.tab-content').removeClass('active');
-      $('#' + $(this).data('target')).addClass('active');
+      const targetId = $(this).data('target');
+      $('#' + targetId).addClass('active');
       resetSnippetsView();
       addCopyButtons();
+      
+      // Reaplicar tema ao trocar de aba
+      if (window.snippetTheme) {
+        const targetContainer = document.getElementById(targetId);
+        if (targetContainer) {
+          window.snippetTheme.reapplyThemeToContent(targetContainer);
+        }
+      }
     });
   }
 

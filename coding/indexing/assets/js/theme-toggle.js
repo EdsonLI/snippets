@@ -12,6 +12,23 @@
 
   console.log('🎨 Iniciando sistema de toggle de tema...');
 
+  // Função para reaplicar tema ao conteúdo dinâmico
+  function reapplyThemeToContent(container) {
+    console.log('🔄 Reaplicando tema ao conteúdo dinâmico...', container);
+    
+    const currentTheme = document.body.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
+    
+    // Forçar reclassificação dos elementos dentro do container
+    if (container) {
+      container.classList.add('theme-applied');
+      
+      // Aguardar um frame para garantir que o CSS seja aplicado
+      requestAnimationFrame(() => {
+        console.log('✅ Tema reaplicado ao container:', container.id || container.className);
+      });
+    }
+  }
+
   // Função para definir o tema
   function setTheme(theme) {
     console.log('🔄 Alterando tema para:', theme);
@@ -19,6 +36,12 @@
     document.body.classList.remove('theme-dark', 'theme-light');
     document.body.classList.add(theme);
     localStorage.setItem('snippetTheme', theme);
+    
+    // Reaplicar tema a todos os containers de conteúdo dinâmico
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(container => {
+      reapplyThemeToContent(container);
+    });
     
     console.log('✅ Tema aplicado:', theme);
     console.log('📝 Classes do body:', document.body.className);
@@ -116,6 +139,12 @@
   window.snippetTheme = {
     setTheme: setTheme,
     toggleTheme: toggleTheme,
+    reapplyThemeToContent: reapplyThemeToContent,
+    refreshTheme: function() {
+      // Força reaplicação do tema atual a todo conteúdo
+      const currentTheme = this.getCurrentTheme();
+      setTheme(currentTheme);
+    },
     getCurrentTheme: function() {
       return document.body.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
     },
@@ -128,6 +157,7 @@
       console.log('- Tema salvo:', this.getSavedTheme());
       console.log('- Classes do body:', document.body.className);
       console.log('- Botão existe:', !!document.getElementById('themeToggle'));
+      console.log('- Containers tab-content encontrados:', document.querySelectorAll('.tab-content').length);
     }
   };
 
