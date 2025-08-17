@@ -13,35 +13,29 @@
       </div>
     </h6>
     <div class="snippet-code position-relative">
-      <div class="d-grid"
-           style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 0 4px 6px 4px;">
-        <a href="https://madbuilder.com.br/recursos" target="_blank"
-           class="mb-link-card text-decoration-none">
+  <div class="d-grid"
+       style="grid-template-columns: repeat(2, 1fr); grid-gap: 6px; padding: 4px 4px 6px 4px;">
+        <a href="https://madbuilder.com.br/recursos" target="_blank" class="mb-link-card text-decoration-none">
           <iconify-icon icon="mdi:tools" width="22"></iconify-icon>
           <span>Recursos</span>
         </a>
-        <a href="https://madbuilder.com.br/exemplos" target="_blank"
-           class="mb-link-card text-decoration-none">
+        <a href="https://madbuilder.com.br/exemplos" target="_blank" class="mb-link-card text-decoration-none">
           <iconify-icon icon="mdi:lightbulb-outline" width="22"></iconify-icon>
           <span>Exemplos</span>
         </a>
-        <a href="https://madbuilder.com.br/applications" target="_blank"
-           class="mb-link-card text-decoration-none">
+        <a href="https://madbuilder.com.br/applications" target="_blank" class="mb-link-card text-decoration-none">
           <iconify-icon icon="mdi:application-outline" width="22"></iconify-icon>
           <span>Apps</span>
         </a>
-        <a href="https://madbuilder.com.br/videos" target="_blank"
-           class="mb-link-card text-decoration-none">
+        <a href="https://madbuilder.com.br/videos" target="_blank" class="mb-link-card text-decoration-none">
           <iconify-icon icon="mdi:video-outline" width="22"></iconify-icon>
           <span>Vídeos</span>
         </a>
-        <a href="https://framework.adianti.me/tutor" target="_blank"
-           class="mb-link-card text-decoration-none">
+        <a href="https://framework.adianti.me/tutor" target="_blank" class="mb-link-card text-decoration-none">
           <iconify-icon icon="mdi:book-open-outline" width="22"></iconify-icon>
           <span>Tutor 8.2</span>
         </a>
-        <a href="https://framework.adianti.me/template/index.php?class=WelcomeView" target="_blank"
-           class="mb-link-card text-decoration-none">
+        <a href="https://framework.adianti.me/template/index.php?class=WelcomeView" target="_blank" class="mb-link-card text-decoration-none">
           <iconify-icon icon="mdi:application-cog-outline" width="22"></iconify-icon>
           <span>Template 8.2</span>
         </a>
@@ -49,38 +43,60 @@
     </div>
   </div>
 </div>
+
 <style>
   :root {
-    --mb-orange:  #F2911D; 
+    --mb-orange:  #F2911D;
     --mb-orange-10: #fd7e14;
-    --mb-dark:   #222934;
+    --mb-dark:   #0D1117;
+    --mb-link-bg: #161B22;
+    --mb-link-border: #30363D;
+    --mb-link-border-hover: #fd7e14;
   }
   .mb-card-bg {
     background-color: var(--mb-dark);
-    border-color: var(--mb-orange-10);
+    border-color: var(--mb-link-border);
   }
   .mb-link-card {
-    background: #fff;
-    border: 1px solid var(--mb-orange-10);
+    background: var(--mb-link-bg);
+    border: 1px solid var(--mb-link-border);
     border-radius: 6px;
     padding: 6px 4px;
     text-align: center;
-    transition: all .15s ease-in-out;
-    color: var(--mb-dark);
+    transition: all .15s cubic-bezier(.4,1.3,.6,1);
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    outline: none;
+    box-shadow: none;
   }
-  .mb-link-card:hover {
-    box-shadow: 0 0 0 2px var(--mb-orange-10);
-    transform: translateY(-1px);
-  }
-  .mb-link-card iconify-icon,
-  .mb-link-card span {
+  .mb-link-card:hover, .mb-link-card:focus {
+    border-color: var(--mb-orange);
+    box-shadow: 0 0 0 2px var(--mb-orange);
+    z-index: 2;
+    transform: translateY(-1px) scale(1.03);
     color: var(--mb-orange);
   }
+  .mb-link-card iconify-icon {
+    color: var(--mb-orange);
+    filter: drop-shadow(0 0 2px #fd7e1440);
+    margin-bottom: 2px;
+    transition: color .15s;
+  }
   .mb-link-card span {
+    color: var(--mb-orange);
     font-size: .75rem;
     margin-top: 2px;
     font-weight: 600;
     letter-spacing: -.2px;
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color .15s;
   }
-</style> 
+  .mb-link-card:hover iconify-icon,
+  .mb-link-card:hover span {
+    color: var(--mb-orange-10);
+  }
+</style>
