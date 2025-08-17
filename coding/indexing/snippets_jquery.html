@@ -9,14 +9,15 @@
   <!-- Sistema Global de Toggle de Tema -->
   <link href="assets/theme-toggle.css" rel="stylesheet">
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-  <script src="assets/theme-toggle.js"></script>
   
   <title>Snippets jQuery</title>
 </head>
-<body>
+<body class="theme-dark">
+  <!-- Toggle de Tema -->
   <button id="themeToggle" class="btn btn-sm theme-toggle-btn" type="button" title="Alternar tema" aria-label="Alternar tema">
-  <iconify-icon id="theme-icon" icon="line-md:light-dark" style="vertical-align: middle;"></iconify-icon>
+    <iconify-icon id="theme-icon" icon="line-md:light-dark" style="vertical-align: middle;"></iconify-icon>
   </button>
+
   <section class="py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
@@ -30,112 +31,110 @@
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">👆 Clique em botão</h5>
-              <pre><code>$("#meuBotao").click(function() {
-  alert("Botão clicado!");
+              <h5 class="card-title">🎯 Seletor de elemento</h5>
+              <pre><code>$('#meuElemento').click(function() {
+  alert('Clicado!');
 });</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🎯 Alterar texto de um elemento</h5>
-              <pre><code>$("#meuElemento").text("Novo texto aqui!");</code></pre>
+              <h5 class="card-title">🎨 Adicionar classe</h5>
+              <pre><code>$('.meuBotao').addClass('ativo');</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">💡 Toggle visibilidade</h5>
-              <pre><code>$("#elemento").toggle();</code></pre>
+              <h5 class="card-title">🔄 Toggle de classe</h5>
+              <pre><code>$('#menu').toggleClass('aberto');</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🎨 Add / Remove classe CSS</h5>
-              <pre><code>$("#elemento").addClass("ativo");
-$("#elemento").removeClass("ativo");</code></pre>
+              <h5 class="card-title">✨ Fade In/Out</h5>
+              <pre><code>$('#elemento').fadeIn();
+$('#elemento').fadeOut();</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">📋 Pegar valor de input</h5>
-              <pre><code>let nome = $("#inputNome").val();
-alert("Nome: " + nome);</code></pre>
+              <h5 class="card-title">🔍 Encontrar elementos</h5>
+              <pre><code>$('.container').find('.item');</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">✍️ Alterar valor de input</h5>
-              <pre><code>$("#inputNome").val("Edson");</code></pre>
+              <h5 class="card-title">📝 Alterar texto</h5>
+              <pre><code>$('#titulo').text('Novo título');
+$('#conteudo').html('&lt;b&gt;Negrito&lt;/b&gt;');</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🧼 Limpar campo de texto</h5>
-              <pre><code>$("#campoTexto").val("");</code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">🔁 Loop em elementos com classe</h5>
-              <pre><code>$(".item").each(function(index) {
-  console.log(index + ": " + $(this).text());
-});</code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">📤 Enviar formulário via AJAX</h5>
-              <pre><code>$("#meuForm").submit(function(e) {
-  e.preventDefault();
-  $.post("enviar.php", $(this).serialize(), function(res) {
-    alert("Resposta: " + res);
-  });
-});</code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">🔄 GET via AJAX</h5>
-              <pre><code>$.get("dados.json", function(data) {
+              <h5 class="card-title">🌐 Ajax simples</h5>
+              <pre><code>$.get('api/dados.json', function(data) {
   console.log(data);
 });</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">🎬 FadeIn / FadeOut</h5>
-              <pre><code>$("#mensagem").fadeIn();
-$("#mensagem").fadeOut();</code></pre>
+              <h5 class="card-title">⏱️ Delay e animação</h5>
+              <pre><code>$('#elemento').delay(1000).slideUp();</code></pre>
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
-              <h5 class="card-title">📌 Scroll suave até elemento</h5>
+              <h5 class="card-title">🔗 Event listener</h5>
+              <pre><code>$('.botao').on('click', function() {
+  $(this).prop('disabled', true);
+});</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">📋 Formulário</h5>
+              <pre><code>$('#formulario').serialize();
+$('#campo').val('novo valor');</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎬 Scroll animado</h5>
               <pre><code>$('html, body').animate({
   scrollTop: $("#destino").offset().top
 }, 800);</code></pre>
@@ -145,6 +144,9 @@ $("#mensagem").fadeOut();</code></pre>
       </div>
     </div>
   </section>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/theme-toggle.js"></script>
 </body>
 </html>
