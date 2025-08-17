@@ -1,43 +1,66 @@
-/* Estilo para o link de retorno à página principal */
+/* Estilo para o link de retorno à página principal - FORÇAR TAMANHOS */
 .home-link {
-  position: fixed;
-  top: .5rem;
-  left: 1rem;
-  color: #c9d1d9;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #30363d;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  position: fixed !important;
+  top: .5rem !important;
+  left: 1rem !important;
+  color: #c9d1d9 !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #30363d !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  z-index: 1000 !important;
 }
+
 .home-link:hover {
   border-color: #5e65cc !important;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 .home-link i {
-  font-size: 1.2em;
+  font-size: 1.2em !important;
 }
 
-/* Estilo para o SVG do logo Jedi */
+/* Estilo para o SVG do logo Jedi - FORÇAR TAMANHO */
 .svg-logo-jedi {
-  width: 28px;
-  height: 28px;
-  display: block;
+  width: 28px !important;
+  height: 28px !important;
+  display: block !important;
+  margin: auto !important;
+}
+
+/* REGRAS ESPECÍFICAS PARA GARANTIR QUE NÃO SEJA SOBRESCRITO */
+.home-link .svg-logo-jedi {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+}
+
+/* FORÇAR EM QUALQUER CONTEXTO */
+svg.svg-logo-jedi {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+a.home-link svg.svg-logo-jedi {
+  width: 28px !important;
+  height: 28px !important;
 }
 
 .home-link span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* Estilo para o link de retorno na parte superior da página */
