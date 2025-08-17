@@ -42,3 +42,21 @@
   width: 16px;
   height: 16px;
 }
+
+/* Força o posicionamento correto do botão de ação no snippet MadBuilder */
+.filter-madbuilder .snippet-actions-float {
+  position: absolute !important;
+  top: -8px !important;
+  right: 5px !important;
+  transform: translateY(0%) !important;
+  margin-top: 0 !important;
+  z-index: 100 !important;
+}
+
+.filter-madbuilder h6 .snippet-actions-float {
+  position: absolute !important;
+  top: -8px !important;
+  right: 0 !important;
+  transform: translateY(0%) !important;
+  margin-top: 0 !important;
+}
