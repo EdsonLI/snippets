@@ -1,3 +1,22 @@
+<div class="snippet-news-box mt-2 mb-2">
+  <h4>O que vem a seguir <i class="fa-solid fa-bullhorn"></i></h4>
+  <ul>
+    <li><i class="fa-solid fa-sparkles"></i> Snippet de implementação de classe utilitária em PHP para reutilização com os componentes e métodos SweetAlert2</li>
+    <li><i class="fa-solid fa-sparkles"></i> Snippets para 'Termos e Condições'</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta básico com <code>Swal.fire('Mensagem')</code></li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com título, texto e ícone personalizado</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta de confirmação com botões customizados</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com input para capturar dados do usuário</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com redirecionamento após confirmação</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com timer (fecha automaticamente)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com carregamento (loading)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com múltiplos passos (steps)</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta customizado com HTML no conteúdo</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com validação de input</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com animação customizada</li>
+    <li><i class="fa-solid fa-sparkles"></i> Alerta com callback para ações após confirmação ou cancelamento</li>
+  </ul>
+</div>
 <div id="swal2-helper" class="info-box">
   <button onclick="document.getElementById('swal2-helper').style.display='none';" 
           title="Fechar" class="info-box-close">
@@ -48,49 +67,4 @@
       <i class="fa-solid fa-arrow-up-right-from-square"></i>          
     </a>
   </div>
-</div>
-
-<div class="snippet-news-box">
-  <h4>O que vem a seguir <i class="fa-solid fa-bullhorn"></i></h4>
-  <ul>
-    <li><i class="fa-solid fa-sparkles"></i> Snippet de implementação de classe utilitária em PHP para reutilização com os componentes e métodos SweetAlert2</li>
-    <li><i class="fa-solid fa-sparkles"></i> Snippets para 'Termos e Condições'</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta básico com <code>Swal.fire('Mensagem')</code></li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com título, texto e ícone personalizado</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta de confirmação com botões customizados</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com input para capturar dados do usuário</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com redirecionamento após confirmação</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com timer (fecha automaticamente)</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com carregamento (loading)</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com múltiplos passos (steps)</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta customizado com HTML no conteúdo</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com validação de input</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com animação customizada</li>
-    <li><i class="fa-solid fa-sparkles"></i> Alerta com callback para ações após confirmação ou cancelamento</li>
-  </ul>
-</div>
-
-<div>
-<span>
-  $action = new TAction(array($this, 'onDelete'));
-  $action->setParameters($param);
-  $action->setParameter('delete', 1);
-  $params = [
-      'title' => 'Deseja realmente excluir a Conta?',
-      'text' => 'Esta ação não pode ser desfeita',
-      'icon' => 'warning',
-      'showCancelButton' => true,
-      'confirmButtonText' => 'Sim, continuar',
-      'cancelButtonText' => 'Não, cancelar',
-  ];
-  
-  $callback = '
-      if (result.isConfirmed) {
-          __adianti_post_data("'.trim($param['class']).'", "class='.trim($param['class']).'&method='.trim($param['method']).'&register_state=false&delete=1&key='.trim($param['key']).'");
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-          
-      }
-  ';
-  SweetAlertDialogs::showAlertWithCallback($params, $callback);
-</span>
 </div>
