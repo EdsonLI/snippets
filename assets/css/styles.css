@@ -960,10 +960,10 @@ a:hover {
   display: flex;
   align-items: center;
   margin-bottom: 18px;
-  width: 100%; /* Garantir largura total */
-  padding: 0;  /* Remover qualquer padding */
-  margin-left: 0;  /* Garantir que não há margin lateral */
-  margin-right: 0; /* Garantir que não há margin lateral */
+  width: calc(100% - 20px); /* Reduzir um pouco para acomodar as setas */
+  padding: 0;
+  margin-left: 10px;  /* Pequena margem para compensar as setas */
+  margin-right: 10px;
 }
 
 .tabs {
@@ -995,11 +995,11 @@ a:hover {
 }
 
 .tabs-arrow.left {
-  left: 0; /* Colado na borda esquerda */
+  left: -40px; /* Posicionar fora do container à esquerda */
 }
 
 .tabs-arrow.right {
-  right: 0; /* Colado na borda direita */
+  right: -40px; /* Posicionar fora do container à direita */
 }
 
 .tabs-arrow i {
@@ -1028,7 +1028,7 @@ a:hover {
     display: flex;
   }
   .tabs {
-    margin: 0 36px; /* Espaço para os botões não sobrepostos */
+    margin: 0; /* Remover margem já que as setas estão fora */
   }
 }
 @media (max-width: 899px) {
@@ -1040,7 +1040,7 @@ a:hover {
     -webkit-tap-highlight-color: transparent;
   }
   .tabs {
-    margin: 0 30px; /* Espaço para os botões menores */
+    margin: 0; /* Remover margem já que as setas estão fora */
   }
   
   .tabs-arrow i {
@@ -1050,6 +1050,15 @@ a:hover {
   .tabs-arrow:active {
     transform: scale(0.95);
     transition: transform 0.1s ease;
+  }
+  
+  /* Ajuste das setas para mobile com posição mais próxima */
+  .tabs-arrow.left {
+    left: -35px;
+  }
+  
+  .tabs-arrow.right {
+    right: -35px;
   }
 }
 
