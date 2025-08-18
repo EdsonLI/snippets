@@ -1,11 +1,45 @@
 $(document).ready(function() {
+  // --- BLOCO: Limpeza de wrappers duplicados ---
+  function cleanDuplicatedWrappers() {
+    // Remove todos os wrappers aninhados e botões duplicados
+    $('.code-block-wrapper').each(function() {
+      const $wrapper = $(this);
+      
+      // Se este wrapper tem outro wrapper filho, é duplicação
+      const $childWrapper = $wrapper.find('.code-block-wrapper').first();
+      if ($childWrapper.length > 0) {
+        // Pegar o pre do wrapper mais interno
+        const $innerPre = $wrapper.find('pre').first();
+        
+        // Remover todos os botões existentes
+        $wrapper.find('.copy-btn').remove();
+        
+        // Substituir toda a estrutura pelo pre limpo
+        $wrapper.replaceWith($innerPre);
+      }
+    });
+    
+    // Remover botões órfãos
+    $('.copy-btn').remove();
+  }
+
   // --- BLOCO: Botão de copiar código ---
   function addCopyButtons() {
+    // Limpar primeiro para evitar duplicações
+    cleanDuplicatedWrappers();
+    
     $('pre code').each(function () {
-      // Evita duplicar botões
-      if ($(this).parent().hasClass('code-block-wrapper')) return;
+      // Verificação melhorada para evitar duplicação
+      const $pre = $(this).parent();
+      
+      // Se já tem wrapper OU já tem botão de copy, pular
+      if ($pre.hasClass('code-block-wrapper') || 
+          $pre.parent().hasClass('code-block-wrapper') ||
+          $pre.siblings('.copy-btn').length > 0 ||
+          $pre.parent().siblings('.copy-btn').length > 0) {
+        return;
+      }
 
-      var $pre = $(this).parent();
       $pre.wrap('<div class="code-block-wrapper" style="position:relative"></div>');
       var $wrapper = $pre.parent();
 
@@ -694,3 +728,21 @@ $(document).ready(function() {
   // Inicializar estado
   setTimeout(updateNavState, 100);
 });
+// === FUN��O DE EMERG�NCIA PARA LIMPAR BOT�ES DUPLICADOS ===
+window.cleanCopyButtonMess = function() {
+  console.log('?? Limpando bagun�a dos bot�es de c�pia...');
+  
+  // Remover TODOS os wrappers e bot�es
+  .code-block-wrapper.each(function() {
+    const $wrapper = $(this);
+    const $pre = $wrapper.find('pre').first();
+    if ($pre.length) {
+      $wrapper.replaceWith($pre);
+    }
+  });
+  
+  // Remover todos os bot�es �rf�os
+  .copy-btn.remove();
+  
+  console.log('? Limpeza conclu�da! Recarregue a p�gina para recriar os bot�es.');
+};
