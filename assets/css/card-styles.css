@@ -67,11 +67,6 @@
   background-color: #FAFAFA;
 }
 
-.codepen-content .card.p-3.shadow-sm {
-  border-left-color: #000000;
-  background-color: #FEFEFE;
-}
-
 /* Melhorias para os elementos internos do card */
 .card.p-3.shadow-sm h4,
 .card.p-3.shadow-sm h5,

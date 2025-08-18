@@ -123,7 +123,6 @@ input[type="text"]:focus {
 .tab.php-tab.active::after { background-color: #777bb3; }
 .tab.php-tab:hover { background: #21262d !important; color: #777bb3 !important; }
 .tab.sql-tab.active::after { background-color: #10a37f; }
-.tab.codepen-tab.active::after { background-color: #FFFFFF; }
 
 .tab .tab-check {
   display: none;
@@ -170,7 +169,6 @@ input[type="text"]:focus {
 .tab.html-tab { color: #Ec6231; }
 .tab.php-tab { color: #777bb3; }
 .tab.sql-tab { color: #10a37f; }
-.tab.codepen-tab { color: #FFFFFF; }
 
 .tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
 .tab.vscode-tab.active .tab-check { color: #007ACC !important; }
@@ -183,7 +181,6 @@ input[type="text"]:focus {
 .tab.html-tab.active .tab-check { color: #Ec6231 !important; }
 .tab.php-tab.active .tab-check { color: #777bb3 !important; }
 .tab.sql-tab.active .tab-check { color: #10a37f !important; }
-.tab.codepen-tab.active .tab-check { color: #FFFFFF !important; }
 
 .tab-icon-madbuilder {
   display: block;
