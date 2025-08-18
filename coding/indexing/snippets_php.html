@@ -51,7 +51,6 @@
                         <pre class="bg-light p-3 rounded"><code>&lt;?php
 echo "Hello World!";
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Estrutura básica do PHP</p>
                     </div>
                 </div>
             </div>
@@ -70,7 +69,6 @@ $age = 30;
 $height = 1.65;
 $isActive = true;
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Declaração de variáveis em PHP</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +92,6 @@ $person = [
     "city" => "São Paulo"
 ];
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Arrays indexados e associativos</p>
                     </div>
                 </div>
             </div>
@@ -118,7 +115,6 @@ if ($score >= 90) {
     echo "Precisa melhorar";
 }
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Estruturas condicionais</p>
                     </div>
                 </div>
             </div>
@@ -136,7 +132,6 @@ for ($i = 1; $i <= 5; $i++) {
     echo "Número: " . $i . "&lt;br&gt;";
 }
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Loop for básico</p>
                     </div>
                 </div>
             </div>
@@ -161,7 +156,6 @@ foreach ($colors as $index => $color) {
     echo "$index: $color&lt;br&gt;";
 }
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Loop foreach para arrays</p>
                     </div>
                 </div>
             </div>
@@ -187,7 +181,6 @@ echo greet("Maria");
 echo add(5, 3); // 8
 echo add(10);   // 10
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Criação e uso de funções</p>
                     </div>
                 </div>
             </div>
@@ -214,7 +207,6 @@ $_SESSION['user_id'] = 123;
 // $_COOKIE
 setcookie("user", "Maria", time() + 3600);
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Variáveis superglobais</p>
                     </div>
                 </div>
             </div>
@@ -247,7 +239,6 @@ try {
     echo "Erro: " . $e->getMessage();
 }
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Conexão com MySQL usando PDO</p>
                     </div>
                 </div>
             </div>
@@ -272,7 +263,6 @@ $stmt = $pdo->prepare(
 $stmt->execute([18]);
 $adults = $stmt->fetchAll();
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Consultas SELECT com PDO</p>
                     </div>
                 </div>
             </div>
@@ -300,7 +290,6 @@ $stmt->execute([
 echo "Usuário inserido com ID: " . 
      $pdo->lastInsertId();
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Inserção de dados com PDO</p>
                     </div>
                 </div>
             </div>
@@ -324,7 +313,6 @@ try {
     echo "Sempre executa";
 }
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Tratamento de exceções</p>
                     </div>
                 </div>
             </div>
@@ -356,7 +344,6 @@ $person = new Person("Maria", 25);
 echo $person->name;
 echo $person->getAge();
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Programação orientada a objetos</p>
                     </div>
                 </div>
             </div>
@@ -387,7 +374,6 @@ foreach ($files as $file) {
     echo $file . "&lt;br&gt;";
 }
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Manipulação de arquivos</p>
                     </div>
                 </div>
             </div>
@@ -415,7 +401,6 @@ echo $json;
 $decoded = json_decode($json, true);
 print_r($decoded);
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Trabalhar com JSON</p>
                     </div>
                 </div>
             </div>
@@ -446,7 +431,6 @@ if (strlen($name) < 2) {
 $name = htmlspecialchars($name);
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 ?&gt;</code></pre>
-                        <p class="card-text mt-2">Validação e sanitização</p>
                     </div>
                 </div>
             </div>
