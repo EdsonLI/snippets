@@ -29,9 +29,19 @@
         
         // Forçar styles para tema claro
         if (currentTheme === 'theme-light') {
+          // Forçar fundo transparente no container principal
+          container.style.background = 'transparent';
+          container.style.color = '#212529';
+          
           const allElements = container.querySelectorAll('*');
           allElements.forEach(el => {
-            if (el.tagName === 'PRE') {
+            if (el.tagName === 'SECTION') {
+              el.style.backgroundColor = 'transparent';
+              el.style.color = '#212529';
+            } else if (el.classList.contains('container')) {
+              el.style.backgroundColor = 'transparent';
+              el.style.color = '#212529';
+            } else if (el.tagName === 'PRE') {
               el.style.backgroundColor = '#f8f9fa';
               el.style.color = '#212529';
               el.style.border = '1px solid #dee2e6';
@@ -46,9 +56,19 @@
         } 
         // Forçar styles para tema escuro
         else {
+          // Forçar fundo transparente no container principal
+          container.style.background = 'transparent';
+          container.style.color = '#e6edf3';
+          
           const allElements = container.querySelectorAll('*');
           allElements.forEach(el => {
-            if (el.tagName === 'PRE') {
+            if (el.tagName === 'SECTION') {
+              el.style.backgroundColor = 'transparent';
+              el.style.color = '#e6edf3';
+            } else if (el.classList.contains('container')) {
+              el.style.backgroundColor = 'transparent';
+              el.style.color = '#e6edf3';
+            } else if (el.tagName === 'PRE') {
               el.style.backgroundColor = '#161b22';
               el.style.color = '#e6edf3';
               el.style.border = '1px solid #6610f2';
@@ -199,6 +219,33 @@
         if (container) {
           console.log('🔧 Forçando correção na aba:', tabId);
           reapplyThemeToContent(container);
+        }
+      });
+    },
+    debugBackgrounds: function() {
+      // Debug específico para verificar fundos
+      const problemTabs = ['jquery-content', 'css-content', 'bootstrap-content', 'html-content'];
+      problemTabs.forEach(tabId => {
+        const container = document.getElementById(tabId);
+        if (container) {
+          console.log(`📋 Debug ${tabId}:`);
+          console.log('- Container background:', getComputedStyle(container).backgroundColor);
+          
+          const section = container.querySelector('section');
+          if (section) {
+            console.log('- Section background:', getComputedStyle(section).backgroundColor);
+          }
+          
+          const containerDiv = container.querySelector('.container');
+          if (containerDiv) {
+            console.log('- Container div background:', getComputedStyle(containerDiv).backgroundColor);
+          }
+          
+          const row = container.querySelector('.row');
+          if (row) {
+            console.log('- Row background:', getComputedStyle(row).backgroundColor);
+            console.log('- Row color:', getComputedStyle(row).color);
+          }
         }
       });
     },

@@ -475,3 +475,73 @@ body.theme-dark #html-content pre {
   color: #e6edf3 !important;
   border: 1px solid #6610f2 !important;
 }
+
+/* Containers pais (section, container, etc.) */
+body.theme-light #jquery-content section,
+body.theme-light #css-content section,
+body.theme-light #bootstrap-content section,
+body.theme-light #html-content section,
+body.theme-light #jquery-content .container,
+body.theme-light #css-content .container,
+body.theme-light #bootstrap-content .container,
+body.theme-light #html-content .container {
+  background-color: transparent !important;
+  color: #212529 !important;
+}
+
+body.theme-dark #jquery-content section,
+body.theme-dark #css-content section,
+body.theme-dark #bootstrap-content section,
+body.theme-dark #html-content section,
+body.theme-dark #jquery-content .container,
+body.theme-dark #css-content .container,
+body.theme-dark #bootstrap-content .container,
+body.theme-dark #html-content .container {
+  background-color: transparent !important;
+  color: #e6edf3 !important;
+}
+
+/* Forçar fundo transparente nos tab-content para herdar do body */
+body.theme-light #jquery-content,
+body.theme-light #css-content,
+body.theme-light #bootstrap-content,
+body.theme-light #html-content {
+  background: transparent !important;
+}
+
+body.theme-dark #jquery-content,
+body.theme-dark #css-content,
+body.theme-dark #bootstrap-content,
+body.theme-dark #html-content {
+  background: transparent !important;
+}
+
+/* Regras ultra-específicas para eliminar fundos brancos */
+body.theme-light .tab-content section,
+body.theme-light .tab-content .container,
+body.theme-light .tab-content .row,
+body.theme-light .tab-content div:not(.card) {
+  background-color: transparent !important;
+  background: none !important;
+}
+
+body.theme-dark .tab-content section,
+body.theme-dark .tab-content .container,
+body.theme-dark .tab-content .row,
+body.theme-dark .tab-content div:not(.card) {
+  background-color: transparent !important;
+  background: none !important;
+}
+
+/* Forçar herança de cor do body para todos os containers */
+body.theme-light .tab-content section,
+body.theme-light .tab-content .container,
+body.theme-light .tab-content .row {
+  color: inherit !important;
+}
+
+body.theme-dark .tab-content section,
+body.theme-dark .tab-content .container,
+body.theme-dark .tab-content .row {
+  color: inherit !important;
+}
