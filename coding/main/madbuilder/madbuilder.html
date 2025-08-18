@@ -1,6 +1,82 @@
 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-madbuilder">
   <!-- Incluindo o CSS de correção diretamente no documento -->
-  <link rel="stylesheet" href="madbuilder-link-fix.css">
+  <style>
+  /**
+   * Estilos específicos para correção do posicionamento do link externo em madbuilder.html
+   */
+  
+  /* Reset completo para limpar estilos anteriores */
+  .portfolio-item.filter-madbuilder a[data-snippet-external-link],
+  .portfolio-content a[data-snippet-external-link] {
+    all: initial !important; /* Reset completo de todos os estilos */
+    
+    /* Definir estilos básicos novamente */
+    font-family: inherit !important;
+    box-sizing: border-box !important;
+    
+    /* Posicionamento absoluto forçado */
+    position: absolute !important;
+    top: 3px !important;
+    right: 5px !important;
+    z-index: 1000 !important;
+    
+    /* Estilo visual */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 2px 6px !important;
+    
+    /* Tipografia */
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    
+    /* Cores e bordas */
+    color: #00b8d9 !important;
+    background-color: transparent !important;
+    border: 1px solid #00b8d9 !important;
+    border-radius: 3px !important;
+    
+    /* Efeitos de hover */
+    transition: all 0.3s ease !important;
+  }
+  
+  /* Estado hover */
+  .portfolio-item.filter-madbuilder a[data-snippet-external-link]:hover,
+  .portfolio-content a[data-snippet-external-link]:hover {
+    color: #fff !important;
+    background-color: rgba(0, 184, 217, 0.8) !important;
+    border-color: transparent !important;
+    text-decoration: none !important;
+  }
+  
+  /* Estilo para o ícone dentro do link */
+  .portfolio-item.filter-madbuilder a[data-snippet-external-link] i,
+  .portfolio-content a[data-snippet-external-link] i {
+    font-size: 10px !important;
+    margin-right: 3px !important;
+  }
+  
+  /* Centralização do texto e ícone */
+  .portfolio-item.filter-madbuilder a[data-snippet-external-link],
+  .portfolio-content a[data-snippet-external-link] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Fix específico para versão mobile */
+  @media (max-width: 768px) {
+    .portfolio-item.filter-madbuilder a[data-snippet-external-link],
+    .portfolio-content a[data-snippet-external-link] {
+      top: 3px !important;
+      right: 5px !important;
+      padding: 1px 4px !important;
+      font-size: 10px !important;
+    }
+  }
+  </style>
   
   <div class="portfolio-content h-100 p-2 mb-card-bg text-light rounded position-relative border border-secondary-custom">
     <div class="text-center position-relative" style="min-height: 24px;">
