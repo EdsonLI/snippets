@@ -960,6 +960,10 @@ a:hover {
   display: flex;
   align-items: center;
   margin-bottom: 18px;
+  width: 100%; /* Garantir largura total */
+  padding: 0;  /* Remover qualquer padding */
+  margin-left: 0;  /* Garantir que não há margin lateral */
+  margin-right: 0; /* Garantir que não há margin lateral */
 }
 
 .tabs {
@@ -991,11 +995,11 @@ a:hover {
 }
 
 .tabs-arrow.left {
-  left: 0;
+  left: 0; /* Colado na borda esquerda */
 }
 
 .tabs-arrow.right {
-  right: 0;
+  right: 0; /* Colado na borda direita */
 }
 
 .tabs-arrow i {
@@ -1024,27 +1028,25 @@ a:hover {
     display: flex;
   }
   .tabs {
-    margin: 0 36px;
+    margin: 0 36px; /* Espaço para os botões não sobrepostos */
   }
 }
 @media (max-width: 899px) {
   .tabs-arrow {
-    display: flex !important; /* Mostrar botões também no mobile */
-    width: 30px !important;   /* Tamanho menor para mobile */
+    display: flex !important;
+    width: 30px !important;
     height: 30px !important;
-    touch-action: manipulation; /* Melhor resposta ao toque */
-    -webkit-tap-highlight-color: transparent; /* Remove destaque azul no iOS */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   .tabs {
-    margin: 0 32px; /* Espaço para os botões menores */
+    margin: 0 30px; /* Espaço para os botões menores */
   }
   
-  /* Ícones menores no mobile */
   .tabs-arrow i {
     font-size: 0.8rem !important;
   }
   
-  /* Área de toque maior para mobile */
   .tabs-arrow:active {
     transform: scale(0.95);
     transition: transform 0.1s ease;
