@@ -728,12 +728,13 @@ $(document).ready(function() {
   // Inicializar estado
   setTimeout(updateNavState, 100);
 });
-// === FUN��O DE EMERG�NCIA PARA LIMPAR BOT�ES DUPLICADOS ===
+
+// === FUNÇÃO DE EMERGÊNCIA PARA LIMPAR BOTÕES DUPLICADOS ===
 window.cleanCopyButtonMess = function() {
-  console.log('?? Limpando bagun�a dos bot�es de c�pia...');
+  console.log('🧹 Limpando bagunça dos botões de cópia...');
   
-  // Remover TODOS os wrappers e bot�es
-  .code-block-wrapper.each(function() {
+  // Remover TODOS os wrappers e botões
+  $('.code-block-wrapper').each(function() {
     const $wrapper = $(this);
     const $pre = $wrapper.find('pre').first();
     if ($pre.length) {
@@ -741,8 +742,8 @@ window.cleanCopyButtonMess = function() {
     }
   });
   
-  // Remover todos os bot�es �rf�os
-  .copy-btn.remove();
+  // Remover todos os botões órfãos
+  $('.copy-btn').remove();
   
-  console.log('? Limpeza conclu�da! Recarregue a p�gina para recriar os bot�es.');
+  console.log('✅ Limpeza concluída! Recarregue a página para recriar os botões.');
 };
