@@ -40,6 +40,9 @@
   
   <!-- CSS e JS para toggle de tema -->
   <link href="assets/css/theme-toggle.css" rel="stylesheet">
+  
+  <!-- CSS para correção do fundo dos blocos de código -->
+  <link href="assets/css/code-dark-fix.css" rel="stylesheet">
 
   <!-- Iconify for animated theme toggle icon -->
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
@@ -51,8 +54,44 @@
   
   <!-- Script para toggle de tema -->
   <script src="assets/js/theme-toggle.js"></script>
+  
+  <!-- Script para correção do fundo dos blocos de código -->
+  <script src="assets/js/code-dark-fix.js"></script>
 </head>
 <body>
+  <!-- Estilo inline para garantir fundo escuro nos blocos de código -->
+  <!-- Definição de estilo inline para garantir que os blocos de código tenham fundo escuro -->
+<style>
+  /* Regras altamente específicas para sobrescrever qualquer outro estilo */
+  .code-block-wrapper,
+  .code-block-wrapper pre,
+  .code-block-wrapper pre code,
+  .code-block-wrapper pre code.hljs,
+  div.code-block-wrapper > pre > code,
+  div[class*="code-block-wrapper"] > pre > code,
+  pre, 
+  pre code,
+  pre code.hljs,
+  .hljs,
+  code.hljs,
+  .language-json,
+  .hljs-punctuation,
+  [data-highlighted="yes"] {
+    background-color: #161b22 !important;
+    color: #e6edf3 !important;
+  }
+  
+  /* Estilo específico para o wrapper ser transparente */
+  div.code-block-wrapper {
+    background-color: transparent !important;
+  }
+  
+  /* Garantir que nenhum elemento dentro do bloco de código tenha fundo claro */
+  .code-block-wrapper *:not(button):not(.btn):not(.btn-copy) {
+    background-color: #161b22 !important;
+  }
+</style>
+  
   <!-- Link para retornar à página principal -->
   <a href="../../index.html" class="home-link" title="Voltar à página principal">
     <svg xmlns="http://www.w3.org/2000/svg" class="svg-logo-jedi" viewBox="0 0 576 512" style="width: 28px !important; height: 28px !important; display: block !important;">
@@ -203,7 +242,7 @@
 
   <!-- MadBuilder content div removed -->
   
-  <div id="vscode-content" class="tab-content">
+  <div id="vscode-content" class="tab-content mx-5">
     <!-- O conteúdo será carregado via AJAX -->
   </div>
 

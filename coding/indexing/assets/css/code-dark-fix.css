@@ -1,0 +1,61 @@
+/* 
+ * Correção para blocos de código com fundo escuro
+ * Este arquivo corrige a aparência dos blocos de código em coding/indexing
+ */
+
+/* Definindo o fundo do bloco de código como escuro/preto */
+.code-block-wrapper {
+  background-color: transparent !important;
+}
+
+/* Aplicar fundo escuro em todos os elementos de código */
+.code-block-wrapper pre,
+.code-block-wrapper pre code,
+.code-block-wrapper pre code.hljs,
+pre, 
+pre code,
+pre code.hljs,
+.hljs,
+code.hljs,
+.language-json,
+.hljs-punctuation,
+.code-block-wrapper *,
+[data-highlighted="yes"] {
+  background-color: #161b22 !important; /* Fundo escuro para código */
+  color: #e6edf3 !important;
+}
+
+/* Ajuste de bordas para blocos de código */
+pre, 
+pre code,
+pre code.hljs,
+.hljs {
+  border-radius: 6px;
+}
+
+/* Sobrescrever com !important para garantir que funcione */
+pre[class*="language-"],
+code[class*="language-"],
+div.code-block-wrapper > pre > code {
+  background-color: #161b22 !important;
+}
+
+/* Correção específica para o tema escuro */
+body.theme-dark pre,
+body.theme-dark pre code,
+body.theme-dark pre code.hljs,
+body.theme-dark .code-block-wrapper pre,
+body.theme-dark .code-block-wrapper pre code,
+body.theme-dark .code-block-wrapper pre code.hljs {
+  background-color: #161b22 !important;
+}
+
+/* Correção específica para o tema claro (ainda mantém o fundo do código escuro) */
+body.theme-light pre,
+body.theme-light pre code,
+body.theme-light pre code.hljs,
+body.theme-light .code-block-wrapper pre,
+body.theme-light .code-block-wrapper pre code,
+body.theme-light .code-block-wrapper pre code.hljs {
+  background-color: #161b22 !important;
+}
