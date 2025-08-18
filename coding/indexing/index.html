@@ -267,9 +267,9 @@
       }
     }
   
-    // Tabs carousel scroll (desktop only)
-    function isDesktop() {
-      return window.innerWidth >= 900; // ajuste conforme seu breakpoint
+    // Tabs carousel scroll (agora funciona em mobile também)
+    function isMobile() {
+      return window.innerWidth < 600; // Apenas telas muito pequenas
     }
     function updateTabsArrows() {
       const wrapper = document.querySelector('.tabs-carousel-wrapper');
@@ -286,13 +286,7 @@
         return;
       }
       
-      if (!isDesktop()) {
-        left.style.display = right.style.display = 'none';
-        tabs.style.overflowX = '';
-        return;
-      }
-      
-      // Tornar as setas visíveis
+      // Sempre mostrar as setas (removida a verificação de desktop)
       left.style.display = right.style.display = 'flex';
       tabs.style.overflowX = 'auto';
       
