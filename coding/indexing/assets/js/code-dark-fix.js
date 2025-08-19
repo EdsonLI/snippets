@@ -24,8 +24,24 @@ $(document).ready(function() {
   // Aplicar estilos após um pequeno delay para garantir que todos os elementos estejam carregados
   setTimeout(applyDarkCodeBlockStyles, 100);
   
-  // Aplicar também quando o conteúdo for carregado via AJAX
-  $(document).on('DOMNodeInserted', '.code-block-wrapper, pre, code', function() {
-    applyDarkCodeBlockStyles();
+  // Configurar MutationObserver para observar mudanças no DOM
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          // Verificar se o nó adicionado ou seus descendentes contêm elementos de código
+          if ($(node).is('.code-block-wrapper, pre, code') || 
+              $(node).find('.code-block-wrapper, pre, code').length > 0) {
+            applyDarkCodeBlockStyles();
+          }
+        }
+      });
+    });
+  });
+  
+  // Iniciar a observação do documento
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
   });
 });
