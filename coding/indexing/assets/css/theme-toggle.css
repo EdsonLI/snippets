@@ -78,7 +78,8 @@ pre {
   border-radius: 6px; 
   padding: 1rem; 
   font-size: 0.98em; 
-  border: 1px solid var(--snippet-border);
+  /* Borda removida do <pre> para que fique apenas no .card */
+  border: none !important;
 }
 
 .card-snippet code,
@@ -98,6 +99,7 @@ code {
 .card {
   background: var(--snippet-card-bg) !important;
   color: var(--snippet-card-fg) !important;
+  /* Borda roxa aplicada ao card (único lugar com borda) */
   border: 1.5px solid var(--snippet-border) !important;
   transition: box-shadow .15s, background .2s, color .2s, border-color .2s;
 }    

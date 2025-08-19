@@ -44,11 +44,13 @@
             } else if (el.tagName === 'PRE') {
               el.style.backgroundColor = '#f8f9fa';
               el.style.color = '#212529';
-              el.style.border = '1px solid #dee2e6';
+              // Remover borda do <pre> (borda deve ficar no .card)
+              el.style.border = 'none';
             } else if (el.classList.contains('card')) {
               el.style.backgroundColor = '#fff';
               el.style.color = '#212529';
-              el.style.borderColor = '#dee2e6';
+              // Borda do card controlada por CSS; evitar inline para não conflitar
+              el.style.borderColor = '';
             } else {
               el.style.color = '#212529';
             }
@@ -71,11 +73,13 @@
             } else if (el.tagName === 'PRE') {
               el.style.backgroundColor = '#161b22';
               el.style.color = '#e6edf3';
-              el.style.border = '1px solid #6610f2';
+              // Remover borda do <pre> (borda deve ficar no .card)
+              el.style.border = 'none';
             } else if (el.classList.contains('card')) {
               el.style.backgroundColor = '#222b36';
               el.style.color = '#e6edf3';
-              el.style.borderColor = '#30363d';
+              // Borda do card controlada por CSS; evitar inline para não conflitar
+              el.style.borderColor = '';
             } else {
               el.style.color = '#e6edf3';
             }
