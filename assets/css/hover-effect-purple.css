@@ -1,0 +1,89 @@
+/**
+ * Estilos para padronizar o efeito hover em links e botões
+ * Baseado no efeito do link externo do madbuilder
+ */
+
+/* Estilo base para todos os links da navegação principal */
+.nav-link:hover,
+.nav-snippets-link:hover,
+.btn-get-started:hover,
+.theme-toggle-btn:hover,
+.navmenu .dropdown ul a:hover,
+.navmenu .dropdown ul .active:hover,
+.navmenu .dropdown ul li:hover>a {
+  color: #fff !important;
+  background-color: rgba(111, 66, 193, 0.8) !important;
+  border-color: transparent !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Ajuste específico para ícones dentro dos elementos no hover */
+.nav-link:hover iconify-icon,
+.nav-link:hover i,
+.nav-snippets-link:hover iconify-icon,
+.nav-snippets-link:hover i,
+.btn-get-started:hover iconify-icon,
+.btn-get-started:hover i,
+.theme-toggle-btn:hover iconify-icon,
+.theme-toggle-btn:hover i,
+.navmenu .dropdown ul a:hover i,
+.navmenu .dropdown ul .active:hover i {
+  color: #fff !important;
+}
+
+/* Adicionando borda e arredondamento para melhorar o visual */
+.nav-link,
+.nav-snippets-link,
+.btn-get-started,
+.theme-toggle-btn {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  transition: all 0.3s ease;
+}
+
+/* Ajuste específico para botões dentro do portfólio */
+.portfolio-item a[data-snippet-external-link]:hover {
+  color: #fff !important;
+  background-color: rgba(111, 66, 193, 0.8) !important;
+  border-color: transparent !important;
+  text-decoration: none !important;
+}
+
+/* Ajuste para o botão de alternar tema */
+.theme-toggle-btn {
+  background-color: transparent;
+}
+
+/* Estilo para links de botões get started */
+.btn-get-started {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 500;
+}
+
+/* Efeito hover para os cards de portfólio */
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(111, 66, 193, 0.15) !important;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover para todos os botões com classe btn */
+.btn:not(.theme-toggle-btn):hover {
+  color: #fff !important;
+  background-color: rgba(111, 66, 193, 0.8) !important;
+  border-color: transparent !important;
+}
+
+/* Ajustes responsivos para mobile */
+@media (max-width: 768px) {
+  .nav-link,
+  .nav-snippets-link,
+  .btn-get-started,
+  .theme-toggle-btn {
+    padding: 0.25rem 0.5rem;
+  }
+}

@@ -95,6 +95,20 @@
   margin-left: 0.1rem;
   display: inline-flex !important;
   margin-right: 2px !important;
+  transition: all 0.3s ease;
+}
+
+/* Estado hover para links externos em todos os snippets */
+.snippet-actions-float a[data-snippet-external-link]:hover {
+  color: #fff !important;
+  background-color: rgba(111, 66, 193, 0.8) !important;
+  border-color: transparent !important;
+  text-decoration: none !important;
+}
+
+/* Hover para o ícone dentro do link externo */
+.snippet-actions-float a[data-snippet-external-link]:hover iconify-icon {
+  color: #fff !important;
 }
 
 /* Ajuste para o botão de copiar quando é o último (sem link externo) */
