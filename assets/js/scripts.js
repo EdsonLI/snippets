@@ -149,7 +149,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#css-content').load('./snippets_css_fragment.html', function() {
+    $('#css-content').load('./snippets_css.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
@@ -160,7 +160,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#bootstrap-content').load('./snippets_bootstrap_fragment.html', function() {
+    $('#bootstrap-content').load('./snippets_bootstrap.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
@@ -171,7 +171,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#jquery-content').load('./snippets_jquery_fragment.html', function() {
+    $('#jquery-content').load('./snippets_jquery.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
@@ -182,7 +182,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#html-content').load('./snippets_html_fragment.html', function() {
+    $('#html-content').load('./snippets_html.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
