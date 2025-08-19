@@ -223,12 +223,9 @@ ORDER BY idade DESC, nome ASC;</code></pre>
             <!-- LIMIT -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-dark text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:list-numbers-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>LIMIT</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Primeiros 5 registros
+                        <h5 class="card-title">LIMIT</h5>
+                        <pre><code class="language-sql">-- Primeiros 5 registros
 SELECT * FROM usuarios 
 LIMIT 5;
 
@@ -248,12 +245,9 @@ LIMIT 5 OFFSET 10;</code></pre>
             <!-- ALTER TABLE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-warning text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:wrench-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>ALTER TABLE</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Adicionar coluna
+                        <h5 class="card-title">ALTER TABLE</h5>
+                        <pre><code class="language-sql">-- Adicionar coluna
 ALTER TABLE usuarios 
 ADD COLUMN telefone VARCHAR(15);
 
@@ -271,12 +265,9 @@ DROP COLUMN telefone;</code></pre>
             <!-- INDEX -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-warning text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:lightning-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>INDEX</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Criar índice
+                        <h5 class="card-title">INDEX</h5>
+                        <pre><code class="language-sql">-- Criar índice
 CREATE INDEX idx_email ON usuarios(email);
 
 -- Índice composto
@@ -292,12 +283,9 @@ DROP INDEX idx_email ON usuarios;</code></pre>
             <!-- Subqueries -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-secondary text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:brackets-round-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>Subqueries</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Usuários com idade acima da média
+                        <h5 class="card-title">Subqueries</h5>
+                        <pre><code class="language-sql">-- Usuários com idade acima da média
 SELECT nome, idade FROM usuarios
 WHERE idade > (
     SELECT AVG(idade) FROM usuarios
@@ -316,12 +304,9 @@ WHERE EXISTS (
             <!-- CASE WHEN -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-secondary text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:git-branch-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>CASE WHEN</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>SELECT nome, idade,
+                        <h5 class="card-title">CASE WHEN</h5>
+                        <pre><code class="language-sql">SELECT nome, idade,
     CASE 
         WHEN idade < 18 THEN 'Menor'
         WHEN idade BETWEEN 18 AND 59 THEN 'Adulto'
