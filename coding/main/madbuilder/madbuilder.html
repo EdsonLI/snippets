@@ -3,48 +3,36 @@
   <style>
   /**
    * Estilos específicos para correção do posicionamento do link externo em madbuilder.html
+   * Com escopo restrito apenas para este componente específico
    */
   
-  /* Reset completo para limpar estilos anteriores */
-  .portfolio-item.filter-madbuilder a[data-snippet-external-link],
-  .portfolio-content a[data-snippet-external-link] {
-    all: initial !important; /* Reset completo de todos os estilos */
-    
-    /* Definir estilos básicos novamente */
-    font-family: inherit !important;
-    box-sizing: border-box !important;
-    
-    /* Posicionamento absoluto forçado */
+  /* Classe de escopo para madbuilder específico */
+  .madbuilder-component a[data-snippet-external-link] {
     position: absolute !important;
     top: 3px !important;
     right: 5px !important;
     z-index: 1000 !important;
     
-    /* Estilo visual */
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 2px 6px !important;
+    width: 22px !important;
+    height: 22px !important;
+    padding: 2px !important;
     
-    /* Tipografia */
     font-size: 11px !important;
     line-height: 1.5 !important;
     
-    /* Cores e bordas */
     color: #00b8d9 !important;
     background-color: transparent !important;
     border: 1px solid #00b8d9 !important;
     border-radius: 3px !important;
     
-    /* Efeitos de hover */
     transition: all 0.3s ease !important;
   }
   
-  /* Estado hover */
-  .portfolio-item.filter-madbuilder a[data-snippet-external-link]:hover,
-  .portfolio-content a[data-snippet-external-link]:hover {
+  /* Estado hover específico para madbuilder */
+  .madbuilder-component a[data-snippet-external-link]:hover {
     color: #fff !important;
     background-color: rgba(0, 184, 217, 0.8) !important;
     border-color: transparent !important;
@@ -52,33 +40,26 @@
   }
   
   /* Estilo para o ícone dentro do link */
-  .portfolio-item.filter-madbuilder a[data-snippet-external-link] i,
-  .portfolio-content a[data-snippet-external-link] i {
-    font-size: 10px !important;
-    margin-right: 3px !important;
-  }
-  
-  /* Centralização do texto e ícone */
-  .portfolio-item.filter-madbuilder a[data-snippet-external-link],
-  .portfolio-content a[data-snippet-external-link] {
-    display: inline-flex !important;
+  .madbuilder-component a[data-snippet-external-link] iconify-icon {
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Fix específico para versão mobile */
   @media (max-width: 768px) {
-    .portfolio-item.filter-madbuilder a[data-snippet-external-link],
-    .portfolio-content a[data-snippet-external-link] {
+    .madbuilder-component a[data-snippet-external-link] {
       top: 3px !important;
       right: 5px !important;
-      padding: 1px 4px !important;
+      padding: 1px !important;
       font-size: 10px !important;
     }
   }
   </style>
   
-  <div class="portfolio-content h-100 p-2 mb-card-bg text-light rounded position-relative border border-secondary-custom">
+  <div class="portfolio-content h-100 p-2 mb-card-bg text-light rounded position-relative border border-secondary-custom madbuilder-component">
     <div class="text-center position-relative" style="min-height: 24px;">
       <span class="id-tech-madbuilder d-inline-block" style="margin-top: 0.5rem; margin-bottom: -0.2rem;">
         <img src="./assets/img/madbuilder.svg" alt="Mad[Builder]" class="madbuilder-icon" width="16" height="16">
@@ -183,15 +164,12 @@
 <script>
   // Aplicar posicionamento após carregamento completo da página
   document.addEventListener('DOMContentLoaded', function() {
-    // Obter o link externo
-    const externalLink = document.querySelector('a[data-snippet-external-link]');
+    // Obter o link externo apenas dentro do componente madbuilder
+    const externalLink = document.querySelector('.madbuilder-component a[data-snippet-external-link]');
     
     // Função para forçar os estilos
     function forceStyles() {
       if (externalLink) {
-        // Limpar qualquer estilo existente
-        externalLink.setAttribute('style', '');
-        
         // Aplicar os estilos críticos como atributos de estilo inline (nível mais alto de especificidade)
         externalLink.style.position = 'absolute';
         externalLink.style.top = '3px';
@@ -202,13 +180,13 @@
         externalLink.style.justifyContent = 'center';
         externalLink.style.width = '22px';
         externalLink.style.height = '22px';
+        externalLink.style.padding = '0';
         externalLink.style.visibility = 'visible';
         externalLink.style.opacity = '1';
         
         // Forçar o ícone a ficar centralizado
         const icon = externalLink.querySelector('iconify-icon');
         if (icon) {
-          icon.setAttribute('style', '');
           icon.style.display = 'flex';
           icon.style.alignItems = 'center';
           icon.style.justifyContent = 'center';
