@@ -267,13 +267,13 @@ body.theme-dark .tab-content * {
 body.theme-light .tab-content .card {
   background: #fff !important;
   color: #212529 !important;
-  border-color: #dee2e6 !important;
+  border: 1.5px solid var(--snippet-border) !important;
 }
 
 body.theme-dark .tab-content .card {
   background: #222b36 !important;
   color: #e6edf3 !important;
-  border-color: #30363d !important;
+  border: 1.5px solid var(--snippet-border) !important;
 }
 
 /* Titles e headers dentro de tab-content */
@@ -375,6 +375,9 @@ body.theme-dark .tab-content select {
 /* Forçar aplicação de tema em TODOS os elementos dentro de tab-content */
 body.theme-light .tab-content * {
   color: #212529 !important;
+}
+/* Em tema claro, ajustar bordas apenas de elementos de formulário e tabelas (não afetar .card/pre/code) */
+body.theme-light .tab-content :where(input, textarea, select, table, th, td, hr, .form-control, .btn) {
   border-color: #dee2e6 !important;
 }
 
@@ -392,6 +395,9 @@ body.theme-light .tab-content .highlight {
 
 body.theme-dark .tab-content * {
   color: #e6edf3 !important;
+}
+/* Em tema escuro, ajustar bordas apenas de elementos de formulário e tabelas (não afetar .card/pre/code) */
+body.theme-dark .tab-content :where(input, textarea, select, table, th, td, hr, .form-control, .btn) {
   border-color: #30363d !important;
 }
 
