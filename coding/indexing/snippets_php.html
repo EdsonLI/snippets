@@ -1,16 +1,12 @@
   <section class="py-5">
-    <div cla                    <div class="card-body">
-                        <h5 class="card-title">Arrays</h5>
-                        <pre><code>&lt;?phpntainer">
+    <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
             <!-- PHP Syntax Básica -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                           <div class="card-body">
+                    <div class="card-body">
                         <h5 class="card-title">PHP Syntax Básica</h5>
-                        <pre><code>&lt;?php       <div class="card-body">
-                        <h5 class="card-title">PHP Syntax Básica</h5>
-                        <pre><code>&lt;?php
+                        <pre><code class="language-php">&lt;?php
 echo "Hello World!";
 ?&gt;</code></pre>
                     </div>
@@ -25,7 +21,7 @@ echo "Hello World!";
                         <span>Variáveis</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $name = "Maria";
 $age = 30;
 $height = 1.65;
@@ -43,7 +39,7 @@ $isActive = true;
                         <span>Arrays</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Array indexado
 $fruits = ["apple", "banana", "orange"];
 
@@ -61,9 +57,12 @@ $person = [
             <!-- Estruturas de Controle - If/Else -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-purple text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:git-branch-bold" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>If/Else</span>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">If/Else</h5>
-                        <pre><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $score = 85;
 
 if ($score >= 90) {
@@ -86,7 +85,7 @@ if ($score >= 90) {
                         <span>Loop For</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 for ($i = 1; $i <= 5; $i++) {
     echo "Número: " . $i . "&lt;br&gt;";
 }
@@ -103,7 +102,7 @@ for ($i = 1; $i <= 5; $i++) {
                         <span>Loop Foreach</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $colors = ["red", "green", "blue"];
 
 foreach ($colors as $color) {
@@ -127,7 +126,7 @@ foreach ($colors as $index => $color) {
                         <span>Funções</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 function greet($name) {
     return "Olá, " . $name . "!";
 }
@@ -152,7 +151,7 @@ echo add(10);   // 10
                         <span>Superglobais</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // $_GET
 $name = $_GET['name'] ?? 'Visitante';
 
@@ -178,7 +177,7 @@ setcookie("user", "Maria", time() + 3600);
                         <span>Conexão MySQL</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $host = "localhost";
 $dbname = "minha_db";
 $username = "root";
@@ -210,7 +209,7 @@ try {
                         <span>SELECT com PDO</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Buscar todos
 $stmt = $pdo->query("SELECT * FROM users");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -234,7 +233,7 @@ $adults = $stmt->fetchAll();
                         <span>INSERT com PDO</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $stmt = $pdo->prepare(
     "INSERT INTO users (name, email, age) 
      VALUES (?, ?, ?)"
@@ -261,7 +260,7 @@ echo "Usuário inserido com ID: " .
                         <span>Try/Catch</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 try {
     $result = 10 / 0;
 } catch (DivisionByZeroError $e) {
@@ -284,7 +283,7 @@ try {
                         <span>Classes</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 class Person {
     public $name;
     private $age;
@@ -315,7 +314,7 @@ echo $person->getAge();
                         <span>Arquivos</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Ler arquivo
 $content = file_get_contents("arquivo.txt");
 
@@ -345,7 +344,7 @@ foreach ($files as $file) {
                         <span>JSON</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Array para JSON
 $data = [
     "name" => "João",
@@ -372,7 +371,7 @@ print_r($decoded);
                         <span>Validação</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>&lt;?php
+                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $email = $_POST['email'] ?? '';
 $name = $_POST['name'] ?? '';
 
