@@ -56,7 +56,6 @@ USE loja;
 CREATE DATABASE IF NOT EXISTS loja 
 CHARACTER SET utf8mb4 
 COLLATE utf8mb4_unicode_ci;</code></pre>
-                        <p class="card-text mt-2">Criação de banco de dados</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +75,6 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
     idade INT,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );</code></pre>
-                        <p class="card-text mt-2">Criação de tabelas</p>
                     </div>
                 </div>
             </div>
@@ -98,7 +96,6 @@ INSERT INTO usuarios (nome, email, idade)
 VALUES 
     ('Maria', 'maria@email.com', 25),
     ('Pedro', 'pedro@email.com', 35);</code></pre>
-                        <p class="card-text mt-2">Inserção de dados</p>
                     </div>
                 </div>
             </div>
@@ -120,7 +117,6 @@ SELECT nome, email FROM usuarios;
 -- Com condição
 SELECT * FROM usuarios 
 WHERE idade > 25;</code></pre>
-                        <p class="card-text mt-2">Consultas básicas</p>
                     </div>
                 </div>
             </div>
@@ -144,7 +140,6 @@ WHERE idade IN (25, 30, 35);
 -- BETWEEN
 SELECT * FROM usuarios 
 WHERE idade BETWEEN 20 AND 40;</code></pre>
-                        <p class="card-text mt-2">Filtros avançados</p>
                     </div>
                 </div>
             </div>
@@ -166,7 +161,6 @@ WHERE id = 1;
 UPDATE usuarios 
 SET nome = 'João Santos', email = 'joao.santos@email.com' 
 WHERE id = 1;</code></pre>
-                        <p class="card-text mt-2">Atualização de dados</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +183,6 @@ WHERE idade < 18 OR email IS NULL;
 
 -- CUIDADO: Deletar tudo
 -- DELETE FROM usuarios;</code></pre>
-                        <p class="card-text mt-2">Exclusão de dados</p>
                     </div>
                 </div>
             </div>
@@ -211,7 +204,6 @@ SELECT u.nome, p.total, pr.nome as produto
 FROM usuarios u
 INNER JOIN pedidos p ON u.id = p.usuario_id
 INNER JOIN produtos pr ON p.produto_id = pr.id;</code></pre>
-                        <p class="card-text mt-2">Junção de tabelas</p>
                     </div>
                 </div>
             </div>
@@ -234,7 +226,6 @@ SELECT u.nome
 FROM usuarios u
 LEFT JOIN pedidos p ON u.id = p.usuario_id
 WHERE p.id IS NULL;</code></pre>
-                        <p class="card-text mt-2">Junção com todos da esquerda</p>
                     </div>
                 </div>
             </div>
@@ -257,7 +248,6 @@ SELECT idade, COUNT(*) as total
 FROM usuarios
 GROUP BY idade
 HAVING COUNT(*) > 1;</code></pre>
-                        <p class="card-text mt-2">Agrupamento de dados</p>
                     </div>
                 </div>
             </div>
@@ -277,7 +267,6 @@ HAVING COUNT(*) > 1;</code></pre>
     MAX(idade) as maior_idade,
     SUM(idade) as soma_idades
 FROM usuarios;</code></pre>
-                        <p class="card-text mt-2">Cálculos estatísticos</p>
                     </div>
                 </div>
             </div>
@@ -301,7 +290,6 @@ ORDER BY idade DESC;
 -- Múltiplos critérios
 SELECT * FROM usuarios 
 ORDER BY idade DESC, nome ASC;</code></pre>
-                        <p class="card-text mt-2">Ordenação de resultados</p>
                     </div>
                 </div>
             </div>
@@ -327,7 +315,6 @@ LIMIT 10, 5;
 SELECT * FROM usuarios 
 ORDER BY nome
 LIMIT 5 OFFSET 10;</code></pre>
-                        <p class="card-text mt-2">Limitação de resultados</p>
                     </div>
                 </div>
             </div>
@@ -351,7 +338,6 @@ MODIFY COLUMN nome VARCHAR(200);
 -- Remover coluna
 ALTER TABLE usuarios 
 DROP COLUMN telefone;</code></pre>
-                        <p class="card-text mt-2">Modificação de estrutura</p>
                     </div>
                 </div>
             </div>
@@ -373,7 +359,6 @@ ON usuarios(nome, idade);
 
 -- Remover índice
 DROP INDEX idx_email ON usuarios;</code></pre>
-                        <p class="card-text mt-2">Otimização com índices</p>
                     </div>
                 </div>
             </div>
@@ -398,7 +383,6 @@ WHERE EXISTS (
     SELECT 1 FROM pedidos p 
     WHERE p.usuario_id = u.id
 );</code></pre>
-                        <p class="card-text mt-2">Consultas aninhadas</p>
                     </div>
                 </div>
             </div>
@@ -425,7 +409,6 @@ SET categoria = CASE
     WHEN preco < 100 THEN 'Barato'
     ELSE 'Caro'
 END;</code></pre>
-                        <p class="card-text mt-2">Lógica condicional</p>
                     </div>
                 </data>
             </div>
