@@ -545,3 +545,7 @@ body.theme-dark .tab-content .container,
 body.theme-dark .tab-content .row {
   color: inherit !important;
 }
+
+pre {
+  margin-bottom: 0 !important;
+}
