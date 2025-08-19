@@ -299,13 +299,13 @@ body.theme-dark .tab-content h6 {
 body.theme-light .tab-content pre {
   background: #f8f9fa !important;
   color: #212529 !important;
-  border: 1px solid #dee2e6 !important;
+  border: none !important;
 }
 
 body.theme-dark .tab-content pre {
   background: #161b22 !important;
   color: #e6edf3 !important;
-  border: 1px solid #6610f2 !important;
+  border: none !important;
 }
 
 body.theme-light .tab-content code {
@@ -433,7 +433,8 @@ body.theme-light #bootstrap-content .card,
 body.theme-light #html-content .card {
   background-color: #fff !important;
   color: #212529 !important;
-  border-color: #dee2e6 !important;
+  /* Borda roxa aplicada no card (tema claro) */
+  border: 1.5px solid var(--snippet-border) !important;
 }
 
 body.theme-light #jquery-content pre,
@@ -442,7 +443,7 @@ body.theme-light #bootstrap-content pre,
 body.theme-light #html-content pre {
   background-color: #f8f9fa !important;
   color: #212529 !important;
-  border: 1px solid #dee2e6 !important;
+  border: none !important;
 }
 
 body.theme-dark #jquery-content,
@@ -466,7 +467,8 @@ body.theme-dark #bootstrap-content .card,
 body.theme-dark #html-content .card {
   background-color: #222b36 !important;
   color: #e6edf3 !important;
-  border-color: #30363d !important;
+  /* Borda roxa aplicada no card (tema escuro) */
+  border: 1.5px solid var(--snippet-border) !important;
 }
 
 body.theme-dark #jquery-content pre,
@@ -475,7 +477,7 @@ body.theme-dark #bootstrap-content pre,
 body.theme-dark #html-content pre {
   background-color: #161b22 !important;
   color: #e6edf3 !important;
-  border: 1px solid #6610f2 !important;
+  border: none !important;
 }
 
 /* Containers pais (section, container, etc.) */
