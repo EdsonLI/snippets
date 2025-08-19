@@ -1,18 +1,6 @@
   <section class="py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
-            <!-- PHP Syntax Básica -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">PHP Syntax Básica</h5>
-                        <pre><code class="language-php">&lt;?php
-echo "Hello World!";
-?&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-
             <!-- Variáveis -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
@@ -21,14 +9,14 @@ echo "Hello World!";
                         <span>Variáveis</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $name = "Maria";
 $age = 30;
 $height = 1.65;
 $isActive = true;
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Arrays -->
@@ -39,7 +27,7 @@ $isActive = true;
                         <span>Arrays</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Array indexado
 $fruits = ["apple", "banana", "orange"];
 
@@ -50,8 +38,8 @@ $person = [
     "city" => "São Paulo"
 ];
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Estruturas de Controle - If/Else -->
@@ -62,7 +50,7 @@ $person = [
                         <span>If/Else</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $score = 85;
 
 if ($score >= 90) {
@@ -73,8 +61,8 @@ if ($score >= 90) {
     echo "Precisa melhorar";
 }
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Loops - For -->
@@ -85,13 +73,13 @@ if ($score >= 90) {
                         <span>Loop For</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 for ($i = 1; $i <= 5; $i++) {
     echo "Número: " . $i . "&lt;br&gt;";
 }
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Loop Foreach -->
@@ -102,7 +90,7 @@ for ($i = 1; $i <= 5; $i++) {
                         <span>Loop Foreach</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $colors = ["red", "green", "blue"];
 
 foreach ($colors as $color) {
@@ -114,8 +102,8 @@ foreach ($colors as $index => $color) {
     echo "$index: $color&lt;br&gt;";
 }
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Funções -->
@@ -126,7 +114,7 @@ foreach ($colors as $index => $color) {
                         <span>Funções</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 function greet($name) {
     return "Olá, " . $name . "!";
 }
@@ -139,8 +127,8 @@ echo greet("Maria");
 echo add(5, 3); // 8
 echo add(10);   // 10
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Superglobais -->
@@ -151,7 +139,7 @@ echo add(10);   // 10
                         <span>Superglobais</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // $_GET
 $name = $_GET['name'] ?? 'Visitante';
 
@@ -165,8 +153,8 @@ $_SESSION['user_id'] = 123;
 // $_COOKIE
 setcookie("user", "Maria", time() + 3600);
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Conexão com Banco de Dados -->
@@ -177,7 +165,7 @@ setcookie("user", "Maria", time() + 3600);
                         <span>Conexão MySQL</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $host = "localhost";
 $dbname = "minha_db";
 $username = "root";
@@ -197,8 +185,8 @@ try {
     echo "Erro: " . $e->getMessage();
 }
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- SELECT com PDO -->
@@ -209,7 +197,7 @@ try {
                         <span>SELECT com PDO</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Buscar todos
 $stmt = $pdo->query("SELECT * FROM users");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -221,8 +209,8 @@ $stmt = $pdo->prepare(
 $stmt->execute([18]);
 $adults = $stmt->fetchAll();
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- INSERT com PDO -->
@@ -233,7 +221,7 @@ $adults = $stmt->fetchAll();
                         <span>INSERT com PDO</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $stmt = $pdo->prepare(
     "INSERT INTO users (name, email, age) 
      VALUES (?, ?, ?)"
@@ -248,8 +236,8 @@ $stmt->execute([
 echo "Usuário inserido com ID: " . 
      $pdo->lastInsertId();
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Tratamento de Erros -->
@@ -260,7 +248,7 @@ echo "Usuário inserido com ID: " .
                         <span>Try/Catch</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 try {
     $result = 10 / 0;
 } catch (DivisionByZeroError $e) {
@@ -271,8 +259,8 @@ try {
     echo "Sempre executa";
 }
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Classes e Objetos -->
@@ -283,7 +271,7 @@ try {
                         <span>Classes</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 class Person {
     public $name;
     private $age;
@@ -302,8 +290,8 @@ $person = new Person("Maria", 25);
 echo $person->name;
 echo $person->getAge();
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Manipulação de Arquivos -->
@@ -314,7 +302,7 @@ echo $person->getAge();
                         <span>Arquivos</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Ler arquivo
 $content = file_get_contents("arquivo.txt");
 
@@ -332,8 +320,8 @@ foreach ($files as $file) {
     echo $file . "&lt;br&gt;";
 }
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- JSON -->
@@ -344,7 +332,7 @@ foreach ($files as $file) {
                         <span>JSON</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 // Array para JSON
 $data = [
     "name" => "João",
@@ -359,8 +347,8 @@ echo $json;
 $decoded = json_decode($json, true);
 print_r($decoded);
 ?&gt;</code></pre>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
 
             <!-- Validação de Formulários -->
@@ -371,7 +359,7 @@ print_r($decoded);
                         <span>Validação</span>
                     </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
+<pre class="bg-light p-3 rounded"><code class="language-php">&lt;?php
 $email = $_POST['email'] ?? '';
 $name = $_POST['name'] ?? '';
 
@@ -389,10 +377,9 @@ if (strlen($name) < 2) {
 $name = htmlspecialchars($name);
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 ?&gt;</code></pre>
-                    </div>
-                </div>
             </div>
-
+            </div>
+            </div>
       </div>
     </div>
   </section>

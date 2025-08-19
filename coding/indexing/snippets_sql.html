@@ -1,16 +1,13 @@
 
-
-    <div class="container-fluid py-4">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
+  <section class="py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
             <!-- CREATE DATABASE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-primary text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:database-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>CREATE DATABASE</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>CREATE DATABASE loja;
+                        <h5 class="card-title">CREATE DATABASE</h5>
+                        <pre><code class="language-sql">CREATE DATABASE loja;
 
 USE loja;
 
@@ -25,12 +22,9 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
             <!-- CREATE TABLE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-primary text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:table-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>CREATE TABLE</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>CREATE TABLE usuarios (
+                        <h5 class="card-title">CREATE TABLE</h5>
+                        <pre><code class="language-sql">CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
@@ -44,12 +38,9 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
             <!-- INSERT -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-success text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:plus-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>INSERT</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Inserir um registro
+                        <h5 class="card-title">INSERT</h5>
+                        <pre><code class="language-sql">-- Inserir um registro
 INSERT INTO usuarios (nome, email, idade) 
 VALUES ('João Silva', 'joao@email.com', 30);
 
@@ -65,12 +56,9 @@ VALUES
             <!-- SELECT Básico -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:magnifying-glass-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>SELECT Básico</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Selecionar tudo
+                        <h5 class="card-title">SELECT Básico</h5>
+                        <pre><code class="language-sql">-- Selecionar tudo
 SELECT * FROM usuarios;
 
 -- Selecionar colunas específicas
@@ -86,12 +74,9 @@ WHERE idade > 25;</code></pre>
             <!-- WHERE Avançado -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:funnel-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>WHERE Avançado</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Múltiplas condições
+                        <h5 class="card-title">WHERE Avançado</h5>
+                        <pre><code class="language-sql">-- Múltiplas condições
 SELECT * FROM usuarios 
 WHERE idade > 20 AND nome LIKE 'J%';
 
@@ -109,12 +94,9 @@ WHERE idade BETWEEN 20 AND 40;</code></pre>
             <!-- UPDATE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-warning text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:pencil-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>UPDATE</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Atualizar um registro
+                        <h5 class="card-title">UPDATE</h5>
+                        <pre><code class="language-sql">-- Atualizar um registro
 UPDATE usuarios 
 SET idade = 31 
 WHERE id = 1;
@@ -130,12 +112,9 @@ WHERE id = 1;</code></pre>
             <!-- DELETE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-danger text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:trash-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>DELETE</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Deletar um registro específico
+                        <h5 class="card-title">DELETE</h5>
+                        <pre><code class="language-sql">-- Deletar um registro específico
 DELETE FROM usuarios 
 WHERE id = 1;
 
@@ -152,12 +131,9 @@ WHERE idade < 18 OR email IS NULL;
             <!-- JOIN INNER -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-secondary text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:link-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>INNER JOIN</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>SELECT u.nome, p.nome as pedido
+                        <h5 class="card-title">INNER JOIN</h5>
+                        <pre><code class="language-sql">SELECT u.nome, p.nome as pedido
 FROM usuarios u
 INNER JOIN pedidos p ON u.id = p.usuario_id;
 
@@ -173,12 +149,9 @@ INNER JOIN produtos pr ON p.produto_id = pr.id;</code></pre>
             <!-- LEFT JOIN -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-secondary text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:arrow-left-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>LEFT JOIN</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Todos os usuários, com ou sem pedidos
+                        <h5 class="card-title">LEFT JOIN</h5>
+                        <pre><code class="language-sql">-- Todos os usuários, com ou sem pedidos
 SELECT u.nome, p.total
 FROM usuarios u
 LEFT JOIN pedidos p ON u.id = p.usuario_id;
@@ -195,12 +168,9 @@ WHERE p.id IS NULL;</code></pre>
             <!-- GROUP BY -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-dark text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:stack-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>GROUP BY</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Contar usuários por idade
+                        <h5 class="card-title">GROUP BY</h5>
+                        <pre><code class="language-sql">-- Contar usuários por idade
 SELECT idade, COUNT(*) as total
 FROM usuarios
 GROUP BY idade;
@@ -217,12 +187,9 @@ HAVING COUNT(*) > 1;</code></pre>
             <!-- Funções Agregadas -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-dark text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:calculator-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>Funções Agregadas</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>SELECT 
+                        <h5 class="card-title">Funções Agregadas</h5>
+                        <pre><code class="language-sql">SELECT 
     COUNT(*) as total_usuarios,
     AVG(idade) as idade_media,
     MIN(idade) as menor_idade,
@@ -236,12 +203,9 @@ FROM usuarios;</code></pre>
             <!-- ORDER BY -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-dark text-white d-flex align-items-center">
-                        <iconify-icon icon="ph:sort-ascending-bold" width="20" height="20" class="me-2"></iconify-icon>
-                        <span>ORDER BY</span>
-                    </div>
                     <div class="card-body">
-                        <pre class="bg-light p-3 rounded"><code>-- Ordenar por nome (A-Z)
+                        <h5 class="card-title">ORDER BY</h5>
+                        <pre><code class="language-sql">-- Ordenar por nome (A-Z)
 SELECT * FROM usuarios 
 ORDER BY nome ASC;
 
