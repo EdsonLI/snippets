@@ -23,9 +23,9 @@
     font-size: 11px !important;
     line-height: 1.5 !important;
     
-    color: #00b8d9 !important;
+    color: #5e65cc !important;
     background-color: transparent !important;
-    border: 1px solid #00b8d9 !important;
+    border: 1px solid #5e65cc !important;
     border-radius: 3px !important;
     
     transition: all 0.3s ease !important;
@@ -34,7 +34,7 @@
   /* Estado hover específico para madbuilder */
   .madbuilder-component a[data-snippet-external-link]:hover {
     color: #fff !important;
-    background-color: rgba(0, 184, 217, 0.8) !important;
+    background-color: rgba(111, 66, 193, 0.8) !important;
     border-color: transparent !important;
     text-decoration: none !important;
   }
@@ -183,6 +183,8 @@
         externalLink.style.padding = '0';
         externalLink.style.visibility = 'visible';
         externalLink.style.opacity = '1';
+        externalLink.style.color = '#6f42c1';
+        externalLink.style.border = '1px solid #6f42c1';
         
         // Forçar o ícone a ficar centralizado
         const icon = externalLink.querySelector('iconify-icon');
