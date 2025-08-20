@@ -60,16 +60,12 @@ body.theme-dark .home-link {
   }
 }
 
-/* Transparência forçada quando a classe auxiliar estiver presente */
+/* Transparência forçada quando a classe auxiliar estiver presente (mantém borda e sombra originais) */
 .home-link.home-link-transparent {
   background: transparent !important;
   background-color: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
 }
 body.theme-dark .home-link.home-link-transparent {
   background: transparent !important;
   background-color: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
 }
