@@ -4,14 +4,15 @@
     <style>
       /* Escopo local da página Git: borda fina e laranja Git */
       .git-scope { --snippet-border: #F05033; }
-      .git-scope .card { border-width: 1px !important; }
-      .git-scope .card-header { border-bottom: 1px solid #F05033 !important; }
+  .git-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+  .git-scope .card-header { background: transparent !important; border-bottom: 1px solid #F05033 !important; color: var(--snippet-fg) !important; }
+  .git-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
       .git-scope .btn-outline-git { color: #F05033 !important; border-color: #F05033 !important; }
       .git-scope .btn-outline-git:hover { background: rgba(240,80,51,.08) !important; color: #F05033 !important; }
-  .git-scope .table { background-color: var(--snippet-card-bg) !important; color: var(--snippet-card-fg) !important; }
+  .git-scope .table { background-color: transparent !important; color: var(--snippet-fg) !important; }
   .git-scope .table th,
-  .git-scope .table td { background-color: var(--snippet-card-bg) !important; color: var(--snippet-card-fg) !important; border-color: rgba(240,80,51,.25) !important; }
-  .git-scope .table thead th { background-color: var(--snippet-card-bg) !important; border-bottom: 1px solid #F05033 !important; }
+  .git-scope .table td { background-color: transparent !important; color: var(--snippet-fg) !important; border-color: rgba(240,80,51,.25) !important; }
+  .git-scope .table thead th { background-color: transparent !important; color: var(--snippet-fg) !important; border-bottom: 1px solid #F05033 !important; }
   .git-scope .table-hover tbody tr:hover td,
   .git-scope .table-hover tbody tr:hover th { background-color: rgba(240,80,51,.06) !important; }
   .git-scope .table-bordered { border-color: rgba(240,80,51,.35) !important; }
