@@ -59,7 +59,8 @@ body.theme-light {
 }
 
 #theme-icon {
-  font-size: 1.4em !important;
+  font-size: 1.85em !important; /* aumenta apenas o ícone */
+  line-height: 1 !important;    /* evita recortes dentro do botão */
   transition: transform 0.3s ease, color 0.2s;
   color: #222b36;
   cursor: pointer;
