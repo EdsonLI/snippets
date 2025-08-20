@@ -12,7 +12,7 @@
 .code-block-wrapper pre,
 .code-block-wrapper pre code,
 .code-block-wrapper pre code.hljs,
-pre, 
+pre,
 pre code,
 pre code.hljs,
 .hljs,
@@ -22,7 +22,7 @@ code.hljs,
 .code-block-wrapper *,
 [data-highlighted="yes"] {
   background-color: #161b22 !important; /* Fundo escuro para código */
-  color: #e6edf3 !important;
+  /* Não forçar a cor para permitir o highlight.js colorir tokens */
 }
 
 /* Ajuste de bordas para blocos de código */

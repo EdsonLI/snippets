@@ -87,8 +87,16 @@
         }
       }
       
-      // Aguardar um frame para garantir que o CSS seja aplicado
+      // Aguardar um frame para garantir que o CSS seja aplicado e reexecutar highlight
       requestAnimationFrame(() => {
+        try {
+          if (window.hljs && typeof window.hljs.highlightAll === 'function') {
+            window.hljs.highlightAll();
+            console.log('✨ highlight.js reaplicado no container');
+          }
+        } catch (e) {
+          console.warn('⚠️ Erro ao reaplicar highlight.js:', e);
+        }
         console.log('✅ Tema reaplicado ao container:', container.id || container.className);
       });
     }

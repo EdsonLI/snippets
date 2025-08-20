@@ -310,12 +310,18 @@ body.theme-dark .tab-content pre {
 
 body.theme-light .tab-content code {
   background: #f8f9fa !important;
-  color: #d63384 !important;
 }
 
 body.theme-dark .tab-content code {
   background: #2d333b !important;
-  color: #f0f6fc !important;
+}
+
+/* Preservar as cores do highlight.js dentro dos blocos de código */
+body.theme-light .tab-content pre code.hljs,
+body.theme-light .tab-content pre code.hljs *,
+body.theme-dark .tab-content pre code.hljs,
+body.theme-dark .tab-content pre code.hljs * {
+  color: unset !important;
 }
 
 /* Seções e divs dentro de tab-content */
