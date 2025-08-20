@@ -71,6 +71,13 @@ body.theme-dark #theme-icon {
   text-shadow: 0 0 6px #fff, 0 0 2px #fff;
 }
 
+/* No tema claro, manter o ícone escuro ao passar o mouse para não perder contraste */
+body.theme-light .theme-toggle-btn:hover #theme-icon,
+body.theme-light .theme-toggle-btn:hover iconify-icon#theme-icon {
+  color: #222b36 !important;
+  text-shadow: none !important;
+}
+
 /* Estilos para cards de snippets */
 .card-snippet pre,
 pre { 
