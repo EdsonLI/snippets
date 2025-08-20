@@ -59,3 +59,17 @@ body.theme-dark .home-link {
     height: 26px !important;
   }
 }
+
+/* Transparência forçada quando a classe auxiliar estiver presente */
+.home-link.home-link-transparent {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+body.theme-dark .home-link.home-link-transparent {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}

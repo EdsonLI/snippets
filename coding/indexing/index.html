@@ -107,28 +107,27 @@
     </span>
   </a>
   <style>
-    .home-link-transparent {
+    /* Força transparência do botão home, vencendo regras globais/light/dark */
+    .home-link.home-link-transparent {
       background: transparent !important;
-      box-shadow: none !important;
-      border: none !important;
-      padding: 0 !important;
+      background-color: transparent !important;
+    }
+    body.theme-dark .home-link.home-link-transparent {
+      background: transparent !important;
+      background-color: transparent !important;
     }
     .home-link-circle {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
+      width: 100% !important;
+      height: 100% !important;
       border-radius: 50%;
-      border: 2.5px solid #4b2a91;
       background: transparent !important;
-      box-shadow: 0 0 0 2px rgba(75,42,145,0.08);
-      transition: box-shadow 0.2s, border-color 0.2s;
+      border: none !important;
+      box-shadow: none !important;
     }
-    .home-link-circle:hover {
-      box-shadow: 0 0 0 4px rgba(75,42,145,0.18);
-      border-color: #6c3fd1;
-    }
+    .home-link-circle:hover { box-shadow: none !important; }
     .svg-logo-jedi {
       width: 28px !important;
       height: 28px !important;
