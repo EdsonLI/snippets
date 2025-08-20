@@ -1,207 +1,259 @@
-<div class="container my-5 text-light bg-dark rounded-4 p-4 shadow" id="git" data-tags="git">
+<section class="py-5">
+  <div class="container git-scope card-snippet" id="git" data-tags="git">
 
-  <h2 class="text-danger mb-4">Voltar commits</h2>
-  <div class="table-responsive mb-5">
-    <table class="table table-dark table-hover table-bordered align-middle border-danger">
-      <thead class="table-danger text-dark">
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Voltar 1 commit local (mantém alterações)</td>
-          <td>
-            <code>git reset --soft HEAD~1</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --soft HEAD~1" aria-label="Copiar comando">📋</button>
-          </td>
-          <td>Volta 1 commit, mas preserva o código no stage.</td>
-        </tr>
-        <tr>
-          <td>Voltar 1 commit local (mantém no working dir)</td>
-          <td>
-            <code>git reset --mixed HEAD~1</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --mixed HEAD~1" aria-label="Copiar comando">📋</button>
-          </td>
-          <td>Volta o commit e tira do stage.</td>
-        </tr>
-        <tr>
-          <td>Voltar 1 commit e <strong>descartar tudo</strong></td>
-          <td>
-            <code>git reset --hard HEAD~1</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --hard HEAD~1" aria-label="Copiar comando">📋</button>
-          </td>
-          <td>Cuidado! Apaga commit e alterações.</td>
-        </tr>
-        <tr>
-          <td>Voltar 2, 3 ou mais commits</td>
-          <td>
-            <code>git reset --hard HEAD~2</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git reset --hard HEAD~2" aria-label="Copiar comando">📋</button>
-          </td>
-          <td>Basta ajustar o número (HEAD~3, etc).</td>
-        </tr>
-        <tr>
-          <td>Reverter um commit (sem apagar histórico)</td>
-          <td>
-            <code>git revert &lt;hash&gt;</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git revert <hash>" aria-label="Copiar comando">📋</button>
-          </td>
-          <td>Cria novo commit que desfaz um anterior. Ideal para colaboração.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <style>
+      /* Escopo local da página Git: borda fina e laranja Git */
+      .git-scope { --snippet-border: #F05033; }
+      .git-scope .card { border-width: 1px !important; }
+      .git-scope .card-header { border-bottom: 1px solid #F05033 !important; }
+      .git-scope .btn-outline-git { color: #F05033 !important; border-color: #F05033 !important; }
+      .git-scope .btn-outline-git:hover { background: rgba(240,80,51,.08) !important; color: #F05033 !important; }
+      .git-scope table thead th { border-bottom: 1px solid #F05033 !important; }
+    </style>
 
-  <h2 class="text-danger mb-4">Branches</h2>
-  <div class="table-responsive mb-5">
-    <table class="table table-dark table-hover table-bordered align-middle border-danger">
-      <thead class="table-danger text-dark">
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Criar branch nova</td>
-          <td>
-            <code>git checkout -b nome-da-branch</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout -b nome-da-branch">📋</button>
-          </td>
-          <td>Usa-se para tarefas novas.</td>
-        </tr>
-        <tr>
-          <td>Alternar entre branches</td>
-          <td>
-            <code>git checkout nome-da-branch</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout nome-da-branch">📋</button>
-          </td>
-          <td>Muda de contexto.</td>
-        </tr>
-        <tr>
-          <td>Subir branch para o repositório</td>
-          <td>
-            <code>git push -u origin nome-da-branch</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git push -u origin nome-da-branch">📋</button>
-          </td>
-          <td><code>-u</code> define upstream para facilitar pushes futuros.</td>
-        </tr>
-        <tr>
-          <td>Deletar branch local</td>
-          <td>
-            <code>git branch -d nome-da-branch</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git branch -d nome-da-branch">📋</button>
-          </td>
-          <td>Use <code>-D</code> para forçar a exclusão.</td>
-        </tr>
-        <tr>
-          <td>Deletar branch remota</td>
-          <td>
-            <code>git push origin --delete nome-da-branch</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git push origin --delete nome-da-branch">📋</button>
-          </td>
-          <td>Para limpar branches antigas do repositório remoto.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Voltar commits -->
+    <div class="card h-100 shadow-sm mb-4">
+      <div class="card-header d-flex align-items-center">
+        <iconify-icon icon="mdi:git" width="20" height="20" class="me-2"></iconify-icon>
+        <span>Voltar commits</span>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>Situação</th>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Voltar 1 commit local (mantém alterações)</td>
+                <td>
+                  <code>git reset --soft HEAD~1</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git reset --soft HEAD~1" aria-label="Copiar comando"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Volta 1 commit, mas preserva o código no stage.</td>
+              </tr>
+              <tr>
+                <td>Voltar 1 commit local (mantém no working dir)</td>
+                <td>
+                  <code>git reset --mixed HEAD~1</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git reset --mixed HEAD~1" aria-label="Copiar comando"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Volta o commit e tira do stage.</td>
+              </tr>
+              <tr>
+                <td>Voltar 1 commit e <strong>descartar tudo</strong></td>
+                <td>
+                  <code>git reset --hard HEAD~1</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git reset --hard HEAD~1" aria-label="Copiar comando"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Cuidado! Apaga commit e alterações.</td>
+              </tr>
+              <tr>
+                <td>Voltar 2, 3 ou mais commits</td>
+                <td>
+                  <code>git reset --hard HEAD~2</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git reset --hard HEAD~2" aria-label="Copiar comando"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Basta ajustar o número (HEAD~3, etc).</td>
+              </tr>
+              <tr>
+                <td>Reverter um commit (sem apagar histórico)</td>
+                <td>
+                  <code>git revert &lt;hash&gt;</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git revert <hash>" aria-label="Copiar comando"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Cria novo commit que desfaz um anterior. Ideal para colaboração.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="text-danger mb-4">Atualizar com <code>development</code></h2>
-  <div class="table-responsive mb-5">
-    <table class="table table-dark table-hover table-bordered align-middle border-danger">
-      <thead class="table-danger text-dark">
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Atualizar sua branch com commits da <code>development</code></td>
-          <td>
-            <code>git checkout sua-branch<br>git pull origin development</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git checkout sua-branch\ngit pull origin development">📋</button>
-          </td>
-          <td>Garante que sua branch esteja atualizada antes do PR.</td>
-        </tr>
-        <tr>
-          <td>Rebase para reordenar histórico</td>
-          <td>
-            <code>git rebase development</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git rebase development">📋</button>
-          </td>
-          <td>Cria histórico linear, mas pode gerar conflitos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Branches -->
+    <div class="card h-100 shadow-sm mb-4">
+      <div class="card-header d-flex align-items-center">
+        <iconify-icon icon="mdi:git" width="20" height="20" class="me-2"></iconify-icon>
+        <span>Branches</span>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>Situação</th>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Criar branch nova</td>
+                <td>
+                  <code>git checkout -b nome-da-branch</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git checkout -b nome-da-branch"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Usa-se para tarefas novas.</td>
+              </tr>
+              <tr>
+                <td>Alternar entre branches</td>
+                <td>
+                  <code>git checkout nome-da-branch</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git checkout nome-da-branch"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Muda de contexto.</td>
+              </tr>
+              <tr>
+                <td>Subir branch para o repositório</td>
+                <td>
+                  <code>git push -u origin nome-da-branch</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git push -u origin nome-da-branch"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td><code>-u</code> define upstream para facilitar pushes futuros.</td>
+              </tr>
+              <tr>
+                <td>Deletar branch local</td>
+                <td>
+                  <code>git branch -d nome-da-branch</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git branch -d nome-da-branch"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Use <code>-D</code> para forçar a exclusão.</td>
+              </tr>
+              <tr>
+                <td>Deletar branch remota</td>
+                <td>
+                  <code>git push origin --delete nome-da-branch</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git push origin --delete nome-da-branch"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Para limpar branches antigas do repositório remoto.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="text-danger mb-4">Ver histórico e estado</h2>
-  <div class="table-responsive mb-5">
-    <table class="table table-dark table-hover table-bordered align-middle border-danger">
-      <thead class="table-danger text-dark">
-        <tr>
-          <th>Situação</th>
-          <th>Comando</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ver log resumido e visual</td>
-          <td>
-            <code>git log --oneline --graph --all</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git log --oneline --graph --all">📋</button>
-          </td>
-          <td>Visualização clara do histórico e branches.</td>
-        </tr>
-        <tr>
-          <td>Ver mudanças locais</td>
-          <td>
-            <code>git status</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git status">📋</button>
-          </td>
-          <td>Mostra alterações e arquivos no stage.</td>
-        </tr>
-        <tr>
-          <td>Ver diferenças no código</td>
-          <td>
-            <code>git diff</code>
-            <button class="btn btn-sm btn-outline-danger ms-2 btn-copy" data-copy="git diff">📋</button>
-          </td>
-          <td>Compara working dir com o último commit.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Atualizar com development -->
+    <div class="card h-100 shadow-sm mb-4">
+      <div class="card-header d-flex align-items-center">
+        <iconify-icon icon="mdi:git" width="20" height="20" class="me-2"></iconify-icon>
+        <span>Atualizar com <code>development</code></span>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>Situação</th>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Atualizar sua branch com commits da <code>development</code></td>
+                <td>
+                  <code>git checkout sua-branch<br>git pull origin development</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git checkout sua-branch\ngit pull origin development"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Garante que sua branch esteja atualizada antes do PR.</td>
+              </tr>
+              <tr>
+                <td>Rebase para reordenar histórico</td>
+                <td>
+                  <code>git rebase development</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git rebase development"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Cria histórico linear, mas pode gerar conflitos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="text-danger mb-4">Fluxo prático: branches e PRs</h2>
-  <div class="bg-dark border border-danger text-light p-4 rounded-3 mb-5">
-    <p><strong>📌 Exemplo de fluxo com a branch <code>development</code>:</strong></p>
-    <ol>
-      <li>Você e outros desenvolvedores criam suas branches a partir da <code>development</code>.</li>
-      <li>Fazem commits, push e abrem Pull Requests (PRs) para <code>development</code>.</li>
-      <li>O gestor aprova um PR. Os commits da branch são incorporados à <code>development</code>.</li>
-      <li>Outros PRs ainda abertos podem ter conflitos se baseados em versões antigas de <code>development</code>.</li>
-      <li><strong>Recomenda-se:</strong> sempre fazer <code>git pull origin development</code> ou <code>git rebase origin/development</code> antes de abrir ou atualizar PRs.</li>
-    </ol>
-    <p>Após aprovação de cada PR, atualize sua branch com os commits mais recentes da <code>development</code> antes de continuar desenvolvendo.</p>
+    <!-- Ver histórico e estado -->
+    <div class="card h-100 shadow-sm mb-4">
+      <div class="card-header d-flex align-items-center">
+        <iconify-icon icon="mdi:git" width="20" height="20" class="me-2"></iconify-icon>
+        <span>Ver histórico e estado</span>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>Situação</th>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ver log resumido e visual</td>
+                <td>
+                  <code>git log --oneline --graph --all</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git log --oneline --graph --all"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Visualização clara do histórico e branches.</td>
+              </tr>
+              <tr>
+                <td>Ver mudanças locais</td>
+                <td>
+                  <code>git status</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git status"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Mostra alterações e arquivos no stage.</td>
+              </tr>
+              <tr>
+                <td>Ver diferenças no código</td>
+                <td>
+                  <code>git diff</code>
+                  <button class="btn btn-sm btn-outline-git ms-2 btn-copy" data-copy="git diff"><i class="fa-regular fa-copy"></i></button>
+                </td>
+                <td>Compara working dir com o último commit.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fluxo prático: branches e PRs -->
+    <div class="card h-100 shadow-sm mb-2">
+      <div class="card-header d-flex align-items-center">
+        <iconify-icon icon="mdi:git" width="20" height="20" class="me-2"></iconify-icon>
+        <span>Fluxo prático: branches e PRs</span>
+      </div>
+      <div class="card-body">
+        <p><strong><i class="fa-solid fa-thumbtack"></i> Exemplo de fluxo com a branch <code>development</code>:</strong></p>
+        <ol>
+          <li>Você e outros desenvolvedores criam suas branches a partir da <code>development</code>.</li>
+          <li>Fazem commits, push e abrem Pull Requests (PRs) para <code>development</code>.</li>
+          <li>O gestor aprova um PR. Os commits da branch são incorporados à <code>development</code>.</li>
+          <li>Outros PRs ainda abertos podem ter conflitos se baseados em versões antigas de <code>development</code>.</li>
+          <li><strong>Recomenda-se:</strong> sempre fazer <code>git pull origin development</code> ou <code>git rebase origin/development</code> antes de abrir ou atualizar PRs.</li>
+        </ol>
+        <p>Após aprovação de cada PR, atualize sua branch com os commits mais recentes da <code>development</code> antes de continuar desenvolvendo.</p>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
+
 <script>
   $(document).ready(function() {
     $('.btn-copy').on('click', function() {
-      const text = $(this).data('copy');
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = $(this);
-        btn.text('✔️');
-        setTimeout(() => btn.text('📋'), 1500);
-      }).catch(() => {
+      var text = $(this).data('copy');
+      var $btn = $(this);
+      navigator.clipboard.writeText(text).then(function() {
+        $btn.html('<i class="fa-solid fa-check"></i>');
+        setTimeout(function() { $btn.html('<i class="fa-regular fa-copy"></i>'); }, 1500);
+      }).catch(function() {
         alert('Falha ao copiar');
       });
     });
