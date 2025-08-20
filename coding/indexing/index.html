@@ -50,6 +50,34 @@
   <!-- CSS aprimorado para link home -->
   <link href="assets/css/home-link-enhanced.css" rel="stylesheet">
 
+  <!-- Ajuste de tabelas dentro dos cards: remover cinza claro e usar fundo transparente -->
+  <style>
+    /* Remove fundos cinza das tabelas nos cards desta página */
+    .tab-content .card .table {
+      --bs-table-bg: transparent !important;
+      --bs-table-accent-bg: transparent !important;
+      --bs-table-striped-bg: transparent !important;
+      --bs-table-active-bg: transparent !important;
+      --bs-table-hover-bg: transparent !important;
+    }
+    body.theme-dark .tab-content .card .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
+    body.theme-light .tab-content .card .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
+    /* Zera qualquer fundo aplicado nas células (th/td) e remove sombra da linha do Bootstrap */
+    .tab-content .card .table > :not(caption) > * > * {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+    /* Garante que os cabeçalhos também fiquem sem fundo */
+    .tab-content .card .table thead th,
+    .tab-content .card .table thead td {
+      background-color: transparent !important;
+    }
+    /* Hover totalmente transparente para evitar o cinza claro */
+    .tab-content .card .table-hover > tbody > tr:hover > * {
+      background-color: transparent !important;
+    }
+  </style>
+
   <!-- Iconify for animated theme toggle icon -->
   <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
   
