@@ -20,20 +20,27 @@
     --bs-table-hover-bg: rgba(240,80,51,.06) !important;
     --bs-table-active-bg: transparent !important;
   }
-  /* Garante transparência em todas as células e remove o sombreamento via box-shadow */
-  .git-scope .table > :not(caption) > * > * { background-color: transparent !important; box-shadow: none !important; }
-  .git-scope .table th,
-  .git-scope .table td { background-color: transparent !important; color: var(--snippet-fg) !important; border-color: rgba(240,80,51,.25) !important; }
-  .git-scope .table thead th { background-color: transparent !important; color: var(--snippet-fg) !important; border-bottom: 1px solid #F05033 !important; }
-  /* Garantia extra no tbody para evitar cinza padrão do Bootstrap */
+  /* Garante transparência em todas as células e remove box-shadow (aumenta especificidade) */
+  .git-scope .table > :not(caption) > * > *,
+  .git-scope .table thead th,
+  .git-scope .table thead td,
   .git-scope .table tbody,
   .git-scope .table tbody tr,
   .git-scope .table tbody td,
-  .git-scope .table tbody th {
+  .git-scope .table tbody th,
+  .git-scope .table tfoot th,
+  .git-scope .table tfoot td {
+    background: transparent !important;
     background-color: transparent !important;
-    box-shadow: none !important;
     background-image: none !important;
+    box-shadow: none !important;
   }
+  .git-scope .table th,
+  .git-scope .table td {
+    color: var(--snippet-fg) !important;
+    border-color: rgba(240,80,51,.25) !important;
+  }
+  .git-scope .table thead th { border-bottom: 1px solid #F05033 !important; }
   /* Remove listras/ativado e aplica hover sutil no tom laranja */
   .git-scope .table-striped > tbody > tr:nth-of-type(odd) > * { background-color: transparent !important; }
   .git-scope .table .table-active,

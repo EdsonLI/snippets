@@ -573,3 +573,72 @@ body.theme-dark .tab-content .row {
 pre {
   margin-bottom: 0 !important;
 }
+
+/* =========================
+   OVERRIDES ESPECÍFICOS: ABA GIT (remover fundos cinza/branco no tbody)
+   ========================= */
+/* Garantir que os cards da aba Git permaneçam transparentes em ambos os temas */
+body.theme-light #git-content .git-scope .card,
+body.theme-light #git-content .git-scope .card-header,
+body.theme-light #git-content .git-scope .card-body,
+body.theme-dark  #git-content .git-scope .card,
+body.theme-dark  #git-content .git-scope .card-header,
+body.theme-dark  #git-content .git-scope .card-body {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Reset total de variáveis de tabela dentro da aba Git */
+body.theme-light #git-content .git-scope .table,
+body.theme-dark  #git-content .git-scope .table {
+  --bs-table-bg: transparent !important;
+  --bs-table-accent-bg: transparent !important;
+  --bs-table-striped-bg: transparent !important;
+  --bs-table-hover-bg: rgba(240,80,51,.06) !important; /* hover sutil laranja do Git */
+  --bs-table-active-bg: transparent !important;
+}
+
+/* Forçar transparência em todas as células (ganha da regra do Bootstrap .table>:not(caption)>*>*) */
+body.theme-light #git-content .git-scope .table > :not(caption) > * > *,
+body.theme-dark  #git-content .git-scope .table > :not(caption) > * > *,
+body.theme-light #git-content .git-scope .table thead th,
+body.theme-light #git-content .git-scope .table thead td,
+body.theme-dark  #git-content .git-scope .table thead th,
+body.theme-dark  #git-content .git-scope .table thead td,
+body.theme-light #git-content .git-scope .table tbody,
+body.theme-light #git-content .git-scope .table tbody tr,
+body.theme-light #git-content .git-scope .table tbody td,
+body.theme-light #git-content .git-scope .table tbody th,
+body.theme-dark  #git-content .git-scope .table tbody,
+body.theme-dark  #git-content .git-scope .table tbody tr,
+body.theme-dark  #git-content .git-scope .table tbody td,
+body.theme-dark  #git-content .git-scope .table tbody th,
+body.theme-light #git-content .git-scope .table tfoot th,
+body.theme-light #git-content .git-scope .table tfoot td,
+body.theme-dark  #git-content .git-scope .table tfoot th,
+body.theme-dark  #git-content .git-scope .table tfoot td {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Remover listras/ativo e padronizar hover */
+body.theme-light #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(odd) > *,
+body.theme-light #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(even) > *,
+body.theme-dark  #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(odd) > *,
+body.theme-dark  #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(even) > *,
+body.theme-light #git-content .git-scope .table .table-active,
+body.theme-light #git-content .git-scope .table .table-active > *,
+body.theme-dark  #git-content .git-scope .table .table-active,
+body.theme-dark  #git-content .git-scope .table .table-active > * {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+body.theme-light #git-content .git-scope .table-hover > tbody > tr:hover > *,
+body.theme-dark  #git-content .git-scope .table-hover > tbody > tr:hover > * {
+  background-color: rgba(240,80,51,.06) !important;
+}
