@@ -78,15 +78,15 @@
       background-color: transparent !important;
       background-image: none !important;
     }
-    .tab-content .card .table {
+  .tab-content .table {
       --bs-table-bg: transparent !important;
       --bs-table-accent-bg: transparent !important;
       --bs-table-striped-bg: transparent !important;
       --bs-table-active-bg: transparent !important;
       --bs-table-hover-bg: transparent !important;
     }
-    body.theme-dark .tab-content .card .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
-    body.theme-light .tab-content .card .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
+  body.theme-dark .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
+  body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
 
     /* Conteúdo textual do card: sem fundos acidentais */
     .tab-content .card-body p,
@@ -101,23 +101,29 @@
       background-color: transparent !important;
     }
     /* Aplica fundo escuro direto nas células (th/td) e remove sombra */
-    .tab-content .card .table > :not(caption) > * > * {
+    .tab-content .table > :not(caption) > * > * {
       background-color: #161b22 !important;
       color: #e6edf3 !important;
       box-shadow: none !important;
     }
     /* Cabeçalho com o mesmo fundo escuro para consistência */
-    .tab-content .card .table thead th,
-    .tab-content .card .table thead td {
+    .tab-content .table thead th,
+    .tab-content .table thead td {
+      background-color: #161b22 !important;
+      color: #e6edf3 !important;
+    }
+    /* Rodapé quando existir */
+    .tab-content .table tfoot th,
+    .tab-content .table tfoot td {
       background-color: #161b22 !important;
       color: #e6edf3 !important;
     }
     /* Hover mantém o fundo escuro (sem cinza) */
-    .tab-content .card .table-hover > tbody > tr:hover > * {
+    .tab-content .table-hover > tbody > tr:hover > * {
       background-color: #161b22 !important;
     }
     /* Bordas sutis visíveis sobre o fundo escuro */
-    .tab-content .card .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
+    .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
   </style>
 
   <!-- Iconify for animated theme toggle icon -->
