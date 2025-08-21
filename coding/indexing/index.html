@@ -53,6 +53,12 @@
   <!-- Ajuste de tabelas dentro dos cards: remover cinza claro e usar fundo transparente -->
   <style>
     /* Remove fundos cinza das tabelas nos cards desta página */
+    .tab-content .card,
+    .tab-content .card-header,
+    .tab-content .card-body,
+    .tab-content .table-responsive {
+      background-color: transparent !important;
+    }
     .tab-content .card .table {
       --bs-table-bg: transparent !important;
       --bs-table-accent-bg: transparent !important;
@@ -62,20 +68,24 @@
     }
     body.theme-dark .tab-content .card .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
     body.theme-light .tab-content .card .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
-    /* Zera qualquer fundo aplicado nas células (th/td) e remove sombra da linha do Bootstrap */
+    /* Aplica fundo escuro direto nas células (th/td) e remove sombra */
     .tab-content .card .table > :not(caption) > * > * {
-      background-color: transparent !important;
+      background-color: #161b22 !important;
+      color: #e6edf3 !important;
       box-shadow: none !important;
     }
-    /* Garante que os cabeçalhos também fiquem sem fundo */
+    /* Cabeçalho com o mesmo fundo escuro para consistência */
     .tab-content .card .table thead th,
     .tab-content .card .table thead td {
-      background-color: transparent !important;
+      background-color: #161b22 !important;
+      color: #e6edf3 !important;
     }
-    /* Hover totalmente transparente para evitar o cinza claro */
+    /* Hover mantém o fundo escuro (sem cinza) */
     .tab-content .card .table-hover > tbody > tr:hover > * {
-      background-color: transparent !important;
+      background-color: #161b22 !important;
     }
+    /* Bordas sutis visíveis sobre o fundo escuro */
+    .tab-content .card .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
   </style>
 
   <!-- Iconify for animated theme toggle icon -->
