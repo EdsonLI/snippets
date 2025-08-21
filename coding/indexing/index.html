@@ -58,12 +58,25 @@
       --bs-card-cap-bg: transparent !important; /* header */
       background: transparent !important;
       background-color: transparent !important;
+      background-image: none !important;
     }
     .tab-content .card-header,
     .tab-content .card-body,
     .tab-content .table-responsive {
+      --bs-card-cap-bg: transparent !important;
       background: transparent !important;
       background-color: transparent !important;
+      background-image: none !important;
+    }
+    /* Escopo adicional específico da aba Git para garantir prevalência */
+    #git-content .card,
+    #git-content .card-header,
+    #git-content .card-body {
+      --bs-card-bg: transparent !important;
+      --bs-card-cap-bg: transparent !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
     }
     .tab-content .card .table {
       --bs-table-bg: transparent !important;
