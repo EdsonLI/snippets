@@ -47,6 +47,13 @@
   .git-scope .table .table-active > * { background-color: transparent !important; }
   .git-scope .table-hover > tbody > tr:hover > * { background-color: rgba(240,80,51,.06) !important; box-shadow: none !important; }
   .git-scope .table-bordered { border-color: rgba(240,80,51,.35) !important; }
+
+  /* Posicionar todos os botões de copiar à direita do td */
+  .git-scope .table td { position: relative; }
+  .git-scope .table td .btn-copy {
+    float: right !important;
+    margin-left: .5rem !important;
+  }
     </style>
 
     <!-- Voltar commits -->
