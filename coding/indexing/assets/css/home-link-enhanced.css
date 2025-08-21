@@ -26,16 +26,62 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Estilo para o SVG - mantém cor original */
+/* Estilo para o SVG - mantém cor original e máxima nitidez */
 .home-link .svg-logo-jedi {
   width: 28px !important;
   height: 28px !important;
   display: block !important;
+  
+  /* Garantir máxima nitidez e qualidade */
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  shape-rendering: crispEdges !important;
+  
+  /* Remover qualquer filtro ou opacidade que possa estar sendo aplicada */
+  opacity: 1 !important;
+  filter: none !important;
+  
+  /* Garantir que não haja background */
+  background: transparent !important;
+  background-color: transparent !important;
+  
+  /* Melhorar o contraste e brilho */
+  filter: contrast(1.1) brightness(1.1) !important;
 }
 
-/* Path do SVG com cor original */
+/* Estilo para o círculo interno */
+.home-link-circle {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+  
+  /* Garantir que não interfira no SVG */
+  background: transparent !important;
+  position: relative !important;
+}
+
+/* Efeito hover para o círculo */
+.home-link:hover .home-link-circle {
+  background-color: rgba(111, 66, 193, 0.1) !important;
+  transform: scale(0.95) !important;
+}
+
+/* Efeito hover no tema escuro */
+body.theme-dark .home-link:hover .home-link-circle {
+  background-color: rgba(111, 66, 193, 0.2) !important;
+}
+
+/* Path do SVG com cor original e máximo contraste */
 .home-link .svg-logo-jedi path {
   fill: #4b2a91 !important;
+  opacity: 1 !important;
+  
+  /* Garantir que a cor seja sólida e vibrante */
+  filter: saturate(1.2) !important;
 }
 
 /* Tema escuro - ajuste simples */
