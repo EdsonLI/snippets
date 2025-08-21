@@ -53,10 +53,16 @@
   <!-- Ajuste de tabelas dentro dos cards: remover cinza claro e usar fundo transparente -->
   <style>
     /* Remove fundos cinza das tabelas nos cards desta página */
-    .tab-content .card,
+    .tab-content .card {
+      --bs-card-bg: transparent !important;
+      --bs-card-cap-bg: transparent !important; /* header */
+      background: transparent !important;
+      background-color: transparent !important;
+    }
     .tab-content .card-header,
     .tab-content .card-body,
     .tab-content .table-responsive {
+      background: transparent !important;
       background-color: transparent !important;
     }
     .tab-content .card .table {
@@ -68,6 +74,19 @@
     }
     body.theme-dark .tab-content .card .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
     body.theme-light .tab-content .card .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
+
+    /* Conteúdo textual do card: sem fundos acidentais */
+    .tab-content .card-body p,
+    .tab-content .card-body ol,
+    .tab-content .card-body ul,
+    .tab-content .card-body li,
+    .tab-content .card-body span,
+    .tab-content .card-body strong,
+    .tab-content .card-body em,
+    .tab-content .card-body code:not(.hljs) {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
     /* Aplica fundo escuro direto nas células (th/td) e remove sombra */
     .tab-content .card .table > :not(caption) > * > * {
       background-color: #161b22 !important;
