@@ -25,6 +25,15 @@
   .git-scope .table th,
   .git-scope .table td { background-color: transparent !important; color: var(--snippet-fg) !important; border-color: rgba(240,80,51,.25) !important; }
   .git-scope .table thead th { background-color: transparent !important; color: var(--snippet-fg) !important; border-bottom: 1px solid #F05033 !important; }
+  /* Garantia extra no tbody para evitar cinza padrão do Bootstrap */
+  .git-scope .table tbody,
+  .git-scope .table tbody tr,
+  .git-scope .table tbody td,
+  .git-scope .table tbody th {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    background-image: none !important;
+  }
   /* Remove listras/ativado e aplica hover sutil no tom laranja */
   .git-scope .table-striped > tbody > tr:nth-of-type(odd) > * { background-color: transparent !important; }
   .git-scope .table .table-active,

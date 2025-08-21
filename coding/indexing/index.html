@@ -105,6 +105,17 @@
       background-color: #161b22 !important;
       color: #e6edf3 !important;
       box-shadow: none !important;
+      background-image: none !important;
+    }
+    /* Garantia extra: tudo dentro do tbody fica escuro (tr, td, th) */
+    .tab-content .table tbody,
+    .tab-content .table tbody tr,
+    .tab-content .table tbody td,
+    .tab-content .table tbody th {
+      background-color: #161b22 !important;
+      color: #e6edf3 !important;
+      box-shadow: none !important;
+      background-image: none !important;
     }
     /* Cabeçalho com o mesmo fundo escuro para consistência */
     .tab-content .table thead th,
@@ -121,6 +132,14 @@
     /* Hover mantém o fundo escuro (sem cinza) */
     .tab-content .table-hover > tbody > tr:hover > * {
       background-color: #161b22 !important;
+    }
+    /* Remove qualquer listra/estado ativo claro do Bootstrap */
+    .tab-content .table.table-striped > tbody > tr:nth-of-type(odd) > *,
+    .tab-content .table.table-striped > tbody > tr:nth-of-type(even) > *,
+    .tab-content .table .table-active,
+    .tab-content .table .table-active > * {
+      background-color: #161b22 !important;
+      box-shadow: none !important;
     }
     /* Bordas sutis visíveis sobre o fundo escuro */
     .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
