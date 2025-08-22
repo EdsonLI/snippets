@@ -639,3 +639,26 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Bordas sutis visíveis sobre o fundo escuro */
 .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
+
+/* =========================
+   VSCode TAB BRANDING (bordas com cor do VSCode)
+   ========================= */
+#vscode-content { --snippet-border: #007ACC; }
+#vscode-content .section,
+#vscode-content .info-box {
+  border: 1.5px solid var(--snippet-border) !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+}
+#vscode-content h3 {
+  border-bottom: 1px solid var(--snippet-border) !important;
+  padding-bottom: 0.5rem !important;
+}
+#vscode-content .category-controls button {
+  border-color: var(--snippet-border) !important;
+  color: var(--snippet-border) !important;
+  background: transparent !important;
+}
+#vscode-content .category-controls button:hover {
+  background: rgba(0, 122, 204, 0.08) !important;
+}
