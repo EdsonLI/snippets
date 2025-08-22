@@ -21,7 +21,7 @@
   <script>hljs.highlightAll();</script>
 
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="../../assets/js/jquery/jquery-3.7.1.min.js"></script>
 
   <!-- CSS Personalizado -->
   <link rel="stylesheet" href="../../assets/css/styles.css">
@@ -38,115 +38,13 @@
   <link href="../../assets/css/tech-icons-universal.css" rel="stylesheet">
   <link href="../../assets/css/tech-icon-copilot.css" rel="stylesheet">
   
-  <!-- CSS e JS para toggle de tema -->
-  <link href="assets/css/theme-toggle.css" rel="stylesheet">
-  
-  <!-- CSS para correção do fundo dos blocos de código -->
-  <link href="assets/css/code-dark-fix.css" rel="stylesheet">
-  
-  <!-- CSS para link home original -->
-  <link href="../../assets/css/home-link.css" rel="stylesheet">
-  
-  <!-- CSS aprimorado para link home -->
-  <link href="assets/css/home-link-enhanced.css" rel="stylesheet">
+  <!-- CSS unificado para a seção indexing -->
+  <link href="assets/css/indexing-unified.css" rel="stylesheet">
 
-  <!-- Ajuste de tabelas dentro dos cards: remover cinza claro e usar fundo transparente -->
-  <style>
-    /* Remove fundos cinza das tabelas nos cards desta página */
-    .tab-content .card {
-      --bs-card-bg: transparent !important;
-      --bs-card-cap-bg: transparent !important; /* header */
-      background: transparent !important;
-      background-color: transparent !important;
-      background-image: none !important;
-    }
-    .tab-content .card-header,
-    .tab-content .card-body,
-    .tab-content .table-responsive {
-      --bs-card-cap-bg: transparent !important;
-      background: transparent !important;
-      background-color: transparent !important;
-      background-image: none !important;
-    }
-    /* Escopo adicional específico da aba Git para garantir prevalência */
-    #git-content .card,
-    #git-content .card-header,
-    #git-content .card-body {
-      --bs-card-bg: transparent !important;
-      --bs-card-cap-bg: transparent !important;
-      background: transparent !important;
-      background-color: transparent !important;
-      background-image: none !important;
-    }
-  .tab-content .table {
-      --bs-table-bg: transparent !important;
-      --bs-table-accent-bg: transparent !important;
-      --bs-table-striped-bg: transparent !important;
-      --bs-table-active-bg: transparent !important;
-      --bs-table-hover-bg: transparent !important;
-    }
-  body.theme-dark .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
-  body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
-
-    /* Conteúdo textual do card: sem fundos acidentais */
-    .tab-content .card-body p,
-    .tab-content .card-body ol,
-    .tab-content .card-body ul,
-    .tab-content .card-body li,
-    .tab-content .card-body span,
-    .tab-content .card-body strong,
-    .tab-content .card-body em,
-    .tab-content .card-body code:not(.hljs) {
-      background: transparent !important;
-      background-color: transparent !important;
-    }
-    /* Aplica fundo escuro direto nas células (th/td) e remove sombra */
-    .tab-content .table > :not(caption) > * > * {
-      background-color: #161b22 !important;
-      color: #e6edf3 !important;
-      box-shadow: none !important;
-      background-image: none !important;
-    }
-    /* Garantia extra: tudo dentro do tbody fica escuro (tr, td, th) */
-    .tab-content .table tbody,
-    .tab-content .table tbody tr,
-    .tab-content .table tbody td,
-    .tab-content .table tbody th {
-      background-color: #161b22 !important;
-      color: #e6edf3 !important;
-      box-shadow: none !important;
-      background-image: none !important;
-    }
-    /* Cabeçalho com o mesmo fundo escuro para consistência */
-    .tab-content .table thead th,
-    .tab-content .table thead td {
-      background-color: #161b22 !important;
-      color: #e6edf3 !important;
-    }
-    /* Rodapé quando existir */
-    .tab-content .table tfoot th,
-    .tab-content .table tfoot td {
-      background-color: #161b22 !important;
-      color: #e6edf3 !important;
-    }
-    /* Hover mantém o fundo escuro (sem cinza) */
-    .tab-content .table-hover > tbody > tr:hover > * {
-      background-color: #161b22 !important;
-    }
-    /* Remove qualquer listra/estado ativo claro do Bootstrap */
-    .tab-content .table.table-striped > tbody > tr:nth-of-type(odd) > *,
-    .tab-content .table.table-striped > tbody > tr:nth-of-type(even) > *,
-    .tab-content .table .table-active,
-    .tab-content .table .table-active > * {
-      background-color: #161b22 !important;
-      box-shadow: none !important;
-    }
-    /* Bordas sutis visíveis sobre o fundo escuro */
-    .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
-  </style>
+  <!-- Estilos unificados removem os blocos inline abaixo -->
 
   <!-- Iconify for animated theme toggle icon -->
-  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  <script src="../../assets/js/iconify/iconify-icon.min.js"></script>
   
   <!-- Scripts necessários -->
   <script src="../../assets/js/tech-icons-universal.js" defer></script>
@@ -201,32 +99,7 @@
       </svg>
     </span>
   </a>
-  <style>
-    /* Força transparência do botão home, vencendo regras globais/light/dark */
-    .home-link.home-link-transparent {
-      background: transparent !important;
-      background-color: transparent !important;
-    }
-    body.theme-dark .home-link.home-link-transparent {
-      background: transparent !important;
-      background-color: transparent !important;
-    }
-    .home-link-circle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100% !important;
-      height: 100% !important;
-      border-radius: 50%;
-      background: transparent !important;
-    }
-    .svg-logo-jedi {
-      width: 28px !important;
-      height: 28px !important;
-      display: block !important;
-      background: transparent !important;
-    }
-  </style>
+  
 
   <!-- Toggle de Tema -->
   <button id="themeToggle" class="btn btn-sm theme-toggle-btn" type="button" title="Alternar tema" aria-label="Alternar tema">

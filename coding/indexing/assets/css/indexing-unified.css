@@ -1,0 +1,641 @@
+/*
+ * Indexing Unified CSS
+ * Conteúdos unificados de:
+ * - theme-toggle.css (temas, botões e correções tab-content)
+ * - code-dark-fix.css (fundos escuros para blocos de código)
+ * - home-link-enhanced.css (link home aprimorado)
+ * - Estilos inline de index.html (ajustes de cards/tabelas nas abas)
+ * Ordem preservada para manter precedência funcional atual.
+ */
+
+/* =========================
+   TOGGLE DE TEMA - CSS UNIVERSAL (de theme-toggle.css)
+   ========================= */
+:root {
+  --snippet-bg: #161b22;
+  --snippet-fg: #e6edf3;
+  --snippet-card-bg: #fff;
+  --snippet-card-fg: #222;
+  --snippet-border: #6610f2;
+}
+
+body.theme-dark {
+  --snippet-bg: #161b22;
+  --snippet-fg: #e6edf3;
+  --snippet-card-bg: #222b36;
+  --snippet-card-fg: #e6edf3;
+  --snippet-border: #6610f2;
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+body.theme-light {
+  --snippet-bg: #f8f9fa;
+  --snippet-fg: #222b36;
+  --snippet-card-bg: #fff;
+  --snippet-card-fg: #222;
+  --snippet-border: #6610f2;
+  background: #f8f9fa !important;
+  color: #222b36 !important;
+}
+
+.theme-toggle-btn { 
+  position: fixed; 
+  top: 1rem; 
+  right: 1rem; 
+  z-index: 1050;
+  background: transparent !important;
+  border: none !important;
+  padding: 8px !important;
+  width: 45px !important;
+  height: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  border: 1px solid #30363d !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: #5e65cc !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+#theme-icon {
+  font-size: 1.85em !important;
+  line-height: 1 !important;
+  transition: transform 0.3s ease, color 0.2s;
+  color: #222b36;
+  cursor: pointer;
+}
+
+body.theme-dark #theme-icon {
+  color: #fff !important;
+  text-shadow: 0 0 6px #fff, 0 0 2px #fff;
+}
+
+body.theme-light .theme-toggle-btn:hover #theme-icon,
+body.theme-light .theme-toggle-btn:hover iconify-icon#theme-icon {
+  color: #222b36 !important;
+  text-shadow: none !important;
+}
+
+.card-snippet pre,
+pre { 
+  background: var(--snippet-bg) !important; 
+  color: var(--snippet-fg) !important; 
+  border-radius: 6px; 
+  padding: 1rem; 
+  font-size: 0.98em; 
+  border: none !important;
+}
+
+.card-snippet code,
+code { 
+  background: none !important; 
+  color: inherit !important; 
+}
+
+.card-snippet .card-title,
+.card h5 { 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  color: var(--snippet-card-fg) !important; 
+}
+
+.card-snippet .card,
+.card {
+  background: var(--snippet-card-bg) !important;
+  color: var(--snippet-card-fg) !important;
+  border: 1.5px solid var(--snippet-border) !important;
+  transition: box-shadow .15s, background .2s, color .2s, border-color .2s;
+}
+
+.card-snippet .card-body {
+  padding: 0 !important;
+}
+
+body.theme-light {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light h4,
+body.theme-light h5,
+body.theme-light h6 {
+  color: #212529 !important;
+}
+
+body.theme-light input[type="text"] {
+  background: #fff !important;
+  border-color: #ced4da !important;
+  color: #212529 !important;
+}
+
+body.theme-light input[type="text"]:focus {
+  border-color: #86b7fe !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+body.theme-dark {
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark h4,
+body.theme-dark h5,
+body.theme-dark h6 {
+  color: #f0f6fc !important;
+}
+
+body.theme-dark input[type="text"] {
+  background: #161b22 !important;
+  border-color: #30363d !important;
+  color: #c9d1d9 !important;
+}
+
+body, .card, pre, code, h1, h2, h3, h4, h5, h6 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Tema Claro/Escuro - ajustes adicionais (de theme-toggle.css) */
+body.theme-light .bg-dark { background-color: #f8f9fa !important; }
+body.theme-light .text-light { color: #212529 !important; }
+
+body.theme-light .table-dark {
+  --bs-table-color: #212529;
+  --bs-table-bg: #fff;
+  --bs-table-border-color: #dee2e6;
+  --bs-table-striped-bg: #f8f9fa;
+  --bs-table-striped-color: #212529;
+  --bs-table-active-bg: #e9ecef;
+  --bs-table-active-color: #212529;
+  --bs-table-hover-bg: #f5f5f5;
+  --bs-table-hover-color: #212529;
+  color: #212529 !important;
+  background-color: #fff !important;
+}
+
+body.theme-light .table-dark th,
+body.theme-light .table-dark td {
+  color: #212529 !important;
+  background-color: #fff !important;
+  border-color: #dee2e6 !important;
+}
+
+body.theme-light .table-dark tbody tr:hover {
+  background-color: #f5f5f5 !important;
+  color: #212529 !important;
+}
+
+body.theme-dark .bg-dark { background-color: #212529 !important; }
+body.theme-dark .text-light { color: #f8f9fa !important; }
+
+body.theme-dark .table-dark {
+  --bs-table-color: #fff;
+  --bs-table-bg: #212529;
+  --bs-table-border-color: #373b3e;
+  --bs-table-striped-bg: #2c3034;
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: #373b3e;
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: #323539;
+  --bs-table-hover-color: #fff;
+  color: #fff !important;
+  background-color: #212529 !important;
+}
+
+body.theme-light .border-danger { border-color: #dc3545 !important; }
+body.theme-light code { background-color: #f8f9fa !important; color: #d63384 !important; }
+body.theme-dark code { background-color: #2d333b !important; color: #f0f6fc !important; }
+
+body.theme-light .bg-dark.border { background-color: #fff !important; border-color: #dee2e6 !important; }
+body.theme-dark .bg-dark.border { background-color: #161b22 !important; border-color: #30363d !important; }
+
+/* CORREÇÕES PARA CONTEÚDO DINÂMICO (TAB-CONTENT) */
+body.theme-light .tab-content,
+body.theme-light .tab-content * { color: #212529 !important; }
+body.theme-dark .tab-content,
+body.theme-dark .tab-content * { color: #e6edf3 !important; }
+
+body.theme-light .tab-content .card { background: #fff !important; color: #212529 !important; border: 1.5px solid var(--snippet-border) !important; }
+body.theme-dark .tab-content .card { background: #222b36 !important; color: #e6edf3 !important; border: 1.5px solid var(--snippet-border) !important; }
+
+body.theme-light .tab-content h1,
+body.theme-light .tab-content h2,
+body.theme-light .tab-content h3,
+body.theme-light .tab-content h4,
+body.theme-light .tab-content h5,
+body.theme-light .tab-content h6 { color: #212529 !important; }
+body.theme-dark .tab-content h1,
+body.theme-dark .tab-content h2,
+body.theme-dark .tab-content h3,
+body.theme-dark .tab-content h4,
+body.theme-dark .tab-content h5,
+body.theme-dark .tab-content h6 { color: #f0f6fc !important; }
+
+body.theme-light .tab-content pre { background: #f8f9fa !important; color: #212529 !important; border: none !important; }
+body.theme-dark .tab-content pre { background: #161b22 !important; color: #e6edf3 !important; border: none !important; }
+
+body.theme-light .tab-content code { background: #f8f9fa !important; }
+body.theme-dark .tab-content code { background: #2d333b !important; }
+
+body.theme-light .tab-content pre code.hljs,
+body.theme-light .tab-content pre code.hljs *,
+body.theme-dark .tab-content pre code.hljs,
+body.theme-dark .tab-content pre code.hljs * { color: unset !important; }
+
+body.theme-light .tab-content .section,
+body.theme-light .tab-content .info-box,
+body.theme-light .tab-content div { background-color: transparent !important; color: #212529 !important; }
+body.theme-dark .tab-content .section,
+body.theme-dark .tab-content .info-box,
+body.theme-dark .tab-content div { background-color: transparent !important; color: #e6edf3 !important; }
+
+body.theme-light .tab-content button:not(.theme-toggle-btn) { background: #fff !important; color: #212529 !important; border-color: #dee2e6 !important; }
+body.theme-dark .tab-content button:not(.theme-toggle-btn) { background: #222b36 !important; color: #e6edf3 !important; border-color: #30363d !important; }
+
+body.theme-light .tab-content a { color: #0d6efd !important; }
+body.theme-dark .tab-content a { color: #58a6ff !important; }
+
+body.theme-light .tab-content input,
+body.theme-light .tab-content textarea,
+body.theme-light .tab-content select { background: #fff !important; color: #212529 !important; border-color: #ced4da !important; }
+body.theme-dark .tab-content input,
+body.theme-dark .tab-content textarea,
+body.theme-dark .tab-content select { background: #161b22 !important; color: #c9d1d9 !important; border-color: #30363d !important; }
+
+body.theme-light .tab-content * { color: #212529 !important; }
+body.theme-light .tab-content :where(input, textarea, select, table, th, td, hr, .form-control, .btn) { border-color: #dee2e6 !important; }
+
+body.theme-light .tab-content .card,
+body.theme-light .tab-content .card-body { background-color: #fff !important; color: #212529 !important; }
+
+body.theme-light .tab-content pre,
+body.theme-light .tab-content .highlight { background-color: #f8f9fa !important; color: #212529 !important; }
+
+body.theme-dark .tab-content * { color: #e6edf3 !important; }
+body.theme-dark .tab-content :where(input, textarea, select, table, th, td, hr, .form-control, .btn) { border-color: #30363d !important; }
+
+body.theme-dark .tab-content .card,
+body.theme-dark .tab-content .card-body { background-color: #222b36 !important; color: #e6edf3 !important; }
+
+body.theme-dark .tab-content pre,
+body.theme-dark .tab-content .highlight { background-color: #161b22 !important; color: #e6edf3 !important; }
+
+#jquery-content, #css-content, #bootstrap-content, #html-content { transition: all 0.3s ease !important; }
+
+body.theme-light #jquery-content,
+body.theme-light #css-content,
+body.theme-light #bootstrap-content,
+body.theme-light #html-content { background-color: transparent !important; color: #212529 !important; }
+
+body.theme-light #jquery-content *,
+body.theme-light #css-content *,
+body.theme-light #bootstrap-content *,
+body.theme-light #html-content * { color: #212529 !important; }
+
+body.theme-light #jquery-content .card,
+body.theme-light #css-content .card,
+body.theme-light #bootstrap-content .card,
+body.theme-light #html-content .card { background-color: #fff !important; color: #212529 !important; border: 1.5px solid var(--snippet-border) !important; }
+
+body.theme-light #jquery-content pre,
+body.theme-light #css-content pre,
+body.theme-light #bootstrap-content pre,
+body.theme-light #html-content pre { background-color: #f8f9fa !important; color: #212529 !important; border: none !important; }
+
+body.theme-dark #jquery-content,
+body.theme-dark #css-content,
+body.theme-dark #bootstrap-content,
+body.theme-dark #html-content { background-color: transparent !important; color: #e6edf3 !important; }
+
+body.theme-dark #jquery-content *,
+body.theme-dark #css-content *,
+body.theme-dark #bootstrap-content *,
+body.theme-dark #html-content * { color: #e6edf3 !important; }
+
+body.theme-dark #jquery-content .card,
+body.theme-dark #css-content .card,
+body.theme-dark #bootstrap-content .card,
+body.theme-dark #html-content .card { background-color: #222b36 !important; color: #e6edf3 !important; border: 1.5px solid var(--snippet-border) !important; }
+
+body.theme-dark #jquery-content pre,
+body.theme-dark #css-content pre,
+body.theme-dark #bootstrap-content pre,
+body.theme-dark #html-content pre { background-color: #161b22 !important; color: #e6edf3 !important; border: none !important; }
+
+body.theme-light #jquery-content section,
+body.theme-light #css-content section,
+body.theme-light #bootstrap-content section,
+body.theme-light #html-content section,
+body.theme-light #jquery-content .container,
+body.theme-light #css-content .container,
+body.theme-light #bootstrap-content .container,
+body.theme-light #html-content .container { background-color: transparent !important; color: #212529 !important; }
+
+body.theme-dark #jquery-content section,
+body.theme-dark #css-content section,
+body.theme-dark #bootstrap-content section,
+body.theme-dark #html-content section,
+body.theme-dark #jquery-content .container,
+body.theme-dark #css-content .container,
+body.theme-dark #bootstrap-content .container,
+body.theme-dark #html-content .container { background-color: transparent !important; color: #e6edf3 !important; }
+
+body.theme-light #jquery-content,
+body.theme-light #css-content,
+body.theme-light #bootstrap-content,
+body.theme-light #html-content { background: transparent !important; }
+
+body.theme-dark #jquery-content,
+body.theme-dark #css-content,
+body.theme-dark #bootstrap-content,
+body.theme-dark #html-content { background: transparent !important; }
+
+body.theme-light .tab-content section,
+body.theme-light .tab-content .container,
+body.theme-light .tab-content .row,
+body.theme-light .tab-content div:not(.card) { background-color: transparent !important; background: none !important; }
+
+body.theme-dark .tab-content section,
+body.theme-dark .tab-content .container,
+body.theme-dark .tab-content .row,
+body.theme-dark .tab-content div:not(.card) { background-color: transparent !important; background: none !important; }
+
+body.theme-light .tab-content section,
+body.theme-light .tab-content .container,
+body.theme-light .tab-content .row { color: inherit !important; }
+
+body.theme-dark .tab-content section,
+body.theme-dark .tab-content .container,
+body.theme-dark .tab-content .row { color: inherit !important; }
+
+pre { margin-bottom: 0 !important; }
+
+/* OVERRIDES ESPECÍFICOS: ABA GIT */
+body.theme-light #git-content .git-scope .card,
+body.theme-light #git-content .git-scope .card-header,
+body.theme-light #git-content .git-scope .card-body,
+body.theme-dark  #git-content .git-scope .card,
+body.theme-dark  #git-content .git-scope .card-header,
+body.theme-dark  #git-content .git-scope .card-body {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body.theme-light #git-content .git-scope .table,
+body.theme-dark  #git-content .git-scope .table {
+  --bs-table-bg: transparent !important;
+  --bs-table-accent-bg: transparent !important;
+  --bs-table-striped-bg: transparent !important;
+  --bs-table-hover-bg: rgba(240,80,51,.06) !important;
+  --bs-table-active-bg: transparent !important;
+}
+
+body.theme-light #git-content .git-scope .table > :not(caption) > * > *,
+body.theme-dark  #git-content .git-scope .table > :not(caption) > * > *,
+body.theme-light #git-content .git-scope .table thead th,
+body.theme-light #git-content .git-scope .table thead td,
+body.theme-dark  #git-content .git-scope .table thead th,
+body.theme-dark  #git-content .git-scope .table thead td,
+body.theme-light #git-content .git-scope .table tbody,
+body.theme-light #git-content .git-scope .table tbody tr,
+body.theme-light #git-content .git-scope .table tbody td,
+body.theme-light #git-content .git-scope .table tbody th,
+body.theme-dark  #git-content .git-scope .table tbody,
+body.theme-dark  #git-content .git-scope .table tbody tr,
+body.theme-dark  #git-content .git-scope .table tbody td,
+body.theme-dark  #git-content .git-scope .table tbody th,
+body.theme-light #git-content .git-scope .table tfoot th,
+body.theme-light #git-content .git-scope .table tfoot td,
+body.theme-dark  #git-content .git-scope .table tfoot th,
+body.theme-dark  #git-content .git-scope .table tfoot td {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+body.theme-light #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(odd) > *,
+body.theme-light #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(even) > *,
+body.theme-dark  #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(odd) > *,
+body.theme-dark  #git-content .git-scope .table.table-striped > tbody > tr:nth-of-type(even) > *,
+body.theme-light #git-content .git-scope .table .table-active,
+body.theme-light #git-content .git-scope .table .table-active > *,
+body.theme-dark  #git-content .git-scope .table .table-active,
+body.theme-dark  #git-content .git-scope .table .table-active > * { background: transparent !important; background-color: transparent !important; box-shadow: none !important; }
+
+body.theme-light #git-content .git-scope .table-hover > tbody > tr:hover > *,
+body.theme-dark  #git-content .git-scope .table-hover > tbody > tr:hover > * { background-color: rgba(240,80,51,.06) !important; }
+
+/* =========================
+   CODE DARK FIX (de code-dark-fix.css)
+   ========================= */
+.code-block-wrapper { background-color: transparent !important; }
+
+.code-block-wrapper pre,
+.code-block-wrapper pre code,
+.code-block-wrapper pre code.hljs,
+pre,
+pre code,
+pre code.hljs,
+.hljs,
+code.hljs,
+.language-json,
+.hljs-punctuation,
+.code-block-wrapper *,
+[data-highlighted="yes"] {
+  background-color: #161b22 !important;
+}
+
+pre, 
+pre code,
+pre code.hljs,
+.hljs { border-radius: 6px; }
+
+pre[class*="language-"],
+code[class*="language-"],
+div.code-block-wrapper > pre > code { background-color: #161b22 !important; }
+
+body.theme-dark pre,
+body.theme-dark pre code,
+body.theme-dark pre code.hljs,
+body.theme-dark .code-block-wrapper pre,
+body.theme-dark .code-block-wrapper pre code,
+body.theme-dark .code-block-wrapper pre code.hljs { background-color: #161b22 !important; }
+
+body.theme-light pre,
+body.theme-light pre code,
+body.theme-light pre code.hljs,
+body.theme-light .code-block-wrapper pre,
+body.theme-light .code-block-wrapper pre code,
+body.theme-light .code-block-wrapper pre code.hljs { background-color: #161b22 !important; }
+
+pre::-webkit-scrollbar,
+pre code::-webkit-scrollbar,
+.code-block-wrapper::-webkit-scrollbar,
+.code-block-wrapper pre::-webkit-scrollbar,
+.hljs::-webkit-scrollbar { height: 8px; width: 8px; }
+
+pre::-webkit-scrollbar-track,
+pre code::-webkit-scrollbar-track,
+.code-block-wrapper::-webkit-scrollbar-track,
+.code-block-wrapper pre::-webkit-scrollbar-track,
+.hljs::-webkit-scrollbar-track { background: #0d1117; border-radius: 4px; }
+
+pre::-webkit-scrollbar-thumb,
+pre code::-webkit-scrollbar-thumb,
+.code-block-wrapper::-webkit-scrollbar-thumb,
+.code-block-wrapper pre::-webkit-scrollbar-thumb,
+.hljs::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; border: 1px solid #21262d; }
+
+pre::-webkit-scrollbar-thumb:hover,
+pre code::-webkit-scrollbar-thumb:hover,
+.code-block-wrapper::-webkit-scrollbar-thumb:hover,
+.code-block-wrapper pre::-webkit-scrollbar-thumb:hover,
+.hljs::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+pre::-webkit-scrollbar-corner,
+pre code::-webkit-scrollbar-corner,
+.code-block-wrapper::-webkit-scrollbar-corner,
+.code-block-wrapper pre::-webkit-scrollbar-corner,
+.hljs::-webkit-scrollbar-corner { background: #0d1117; }
+
+pre,
+pre code,
+.code-block-wrapper,
+.code-block-wrapper pre,
+.hljs { scrollbar-width: thin; scrollbar-color: #30363d #0d1117; }
+
+pre,
+.code-block-wrapper pre,
+.hljs { overflow-x: auto; overflow-y: hidden; white-space: pre; word-wrap: normal; max-width: 100%; }
+
+pre code,
+.code-block-wrapper pre code { display: block; padding: 0.75rem; overflow-x: auto; white-space: pre; }
+
+/* =========================
+   HOME LINK ENHANCED (de home-link-enhanced.css)
+   ========================= */
+.home-link { position: fixed !important; top: 1rem !important; left: 1rem !important; width: 48px !important; height: 48px !important; border-radius: 50% !important; text-decoration: none !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 1000 !important; background-color: #ffffff !important; border: 2px solid #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; }
+
+.home-link .svg-logo-jedi { width: 28px !important; height: 28px !important; display: block !important; image-rendering: -webkit-optimize-contrast !important; image-rendering: crisp-edges !important; shape-rendering: crispEdges !important; opacity: 1 !important; filter: none !important; background: transparent !important; background-color: transparent !important; filter: contrast(1.1) brightness(1.1) !important; }
+
+.home-link-circle { width: 100% !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; transition: all 0.2s ease !important; background: transparent !important; position: relative !important; }
+
+.home-link:hover .home-link-circle { background-color: rgba(111, 66, 193, 0.1) !important; transform: scale(0.95) !important; }
+
+body.theme-dark .home-link:hover .home-link-circle { background-color: rgba(111, 66, 193, 0.2) !important; }
+
+.home-link .svg-logo-jedi path { fill: #4b2a91 !important; opacity: 1 !important; filter: saturate(1.2) !important; }
+
+body.theme-dark .home-link { background-color: #21262d !important; border-color: #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important; }
+
+@media (max-width: 768px) { .home-link { width: 44px !important; height: 44px !important; top: 0.75rem !important; left: 0.75rem !important; } .home-link .svg-logo-jedi { width: 26px !important; height: 26px !important; } }
+
+.home-link.home-link-transparent { background: transparent !important; background-color: transparent !important; }
+body.theme-dark .home-link.home-link-transparent { background: transparent !important; background-color: transparent !important; }
+
+/* =========================
+   AJUSTES INLINE DE index.html (cards/tabelas em abas)
+   ========================= */
+/* Cards nas abas totalmente transparentes por padrão */
+.tab-content .card {
+  --bs-card-bg: transparent !important;
+  --bs-card-cap-bg: transparent !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.tab-content .card-header,
+.tab-content .card-body,
+.tab-content .table-responsive {
+  --bs-card-cap-bg: transparent !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Escopo adicional específico da aba Git para garantir prevalência */
+#git-content .card,
+#git-content .card-header,
+#git-content .card-body {
+  --bs-card-bg: transparent !important;
+  --bs-card-cap-bg: transparent !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.tab-content .table {
+  --bs-table-bg: transparent !important;
+  --bs-table-accent-bg: transparent !important;
+  --bs-table-striped-bg: transparent !important;
+  --bs-table-active-bg: transparent !important;
+  --bs-table-hover-bg: transparent !important;
+}
+
+body.theme-dark .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.15) !important; }
+body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.12) !important; }
+
+.tab-content .card-body p,
+.tab-content .card-body ol,
+.tab-content .card-body ul,
+.tab-content .card-body li,
+.tab-content .card-body span,
+.tab-content .card-body strong,
+.tab-content .card-body em,
+.tab-content .card-body code:not(.hljs) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Aplicar fundo escuro direto nas células (th/td) e remover sombra */
+.tab-content .table > :not(caption) > * > * {
+  background-color: #161b22 !important;
+  color: #e6edf3 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Garantia extra: tudo dentro do tbody fica escuro (tr, td, th) */
+.tab-content .table tbody,
+.tab-content .table tbody tr,
+.tab-content .table tbody td,
+.tab-content .table tbody th {
+  background-color: #161b22 !important;
+  color: #e6edf3 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Cabeçalho com o mesmo fundo escuro para consistência */
+.tab-content .table thead th,
+.tab-content .table thead td { background-color: #161b22 !important; color: #e6edf3 !important; }
+
+/* Rodapé quando existir */
+.tab-content .table tfoot th,
+.tab-content .table tfoot td { background-color: #161b22 !important; color: #e6edf3 !important; }
+
+/* Hover mantém o fundo escuro (sem cinza) */
+.tab-content .table-hover > tbody > tr:hover > * { background-color: #161b22 !important; }
+
+/* Remove qualquer listra/estado ativo claro do Bootstrap */
+.tab-content .table.table-striped > tbody > tr:nth-of-type(odd) > *,
+.tab-content .table.table-striped > tbody > tr:nth-of-type(even) > *,
+.tab-content .table .table-active,
+.tab-content .table .table-active > * { background-color: #161b22 !important; box-shadow: none !important; }
+
+/* Bordas sutis visíveis sobre o fundo escuro */
+.tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
