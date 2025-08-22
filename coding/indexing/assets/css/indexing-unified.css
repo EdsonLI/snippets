@@ -678,3 +678,8 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 #vscode-content .table-bordered {
   border-color: rgba(0, 122, 204, 0.35) !important;
 }
+
+.h5-git {
+  padding: 0 0 0 .5rem !important;
+  margin-bottom: 0 !important;
+}
