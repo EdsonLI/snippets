@@ -529,7 +529,7 @@ pre code,
    ========================= */
 .home-link { position: fixed !important; top: 1rem !important; left: 1rem !important; width: 48px !important; height: 48px !important; border-radius: 50% !important; text-decoration: none !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 1000 !important; background-color: #ffffff !important; border: 2px solid #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; transition: border-color .15s ease, box-shadow .15s ease; }
 
-.home-link .svg-logo-jedi { width: 28px !important; height: 28px !important; display: block !important; image-rendering: -webkit-optimize-contrast !important; image-rendering: crisp-edges !important; shape-rendering: crispEdges !important; opacity: 1 !important; background: transparent !important; background-color: transparent !important; filter: brightness(1.12) saturate(1.12) !important; transition: filter .15s ease; }
+.home-link .svg-logo-jedi { width: 28px !important; height: 28px !important; display: block !important; image-rendering: -webkit-optimize-contrast !important; image-rendering: crisp-edges !important; shape-rendering: crispEdges !important; opacity: 1 !important; background: transparent !important; background-color: transparent !important; filter: brightness(1.06) saturate(1.06) !important; transition: filter .15s ease; }
 
 .home-link-circle { width: 100% !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; transition: all 0.2s ease !important; background: transparent !important; position: relative !important; }
 
@@ -537,11 +537,10 @@ pre code,
 /* Hover: destacar apenas a borda do botão */
 .home-link:hover { border-color: #8c6fff !important; box-shadow: 0 0 0 3px rgba(140, 111, 255, 0.35) !important; }
 
-body.theme-dark .home-link:hover .home-link-circle { background-color: rgba(111, 66, 193, 0.2) !important; }
+body.theme-dark .home-link:hover .home-link-circle { background: transparent !important; background-color: transparent !important; }
 
 .home-link .svg-logo-jedi path { fill: #6f42c1 !important; opacity: 1 !important; }
-.home-link:hover .svg-logo-jedi { filter: brightness(1.18) saturate(1.2) !important; }
-.home-link:hover .svg-logo-jedi path { fill: #8c6fff !important; }
+/* Remover qualquer efeito de hover no SVG: hover só nas bordas do círculo */
 
 body.theme-dark .home-link { background-color: #21262d !important; border-color: #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important; }
 
