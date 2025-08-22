@@ -662,3 +662,19 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 #vscode-content .category-controls button:hover {
   background: rgba(0, 122, 204, 0.08) !important;
 }
+
+/* Tabelas dentro da aba VSCode com bordas no branding azul */
+#vscode-content .table {
+  --bs-table-border-color: rgba(0, 122, 204, 0.25) !important;
+  --bs-table-hover-bg: transparent !important;
+}
+#vscode-content .table th,
+#vscode-content .table td {
+  border-color: rgba(0, 122, 204, 0.25) !important;
+}
+#vscode-content .table thead th {
+  border-bottom: 1px solid #007ACC !important;
+}
+#vscode-content .table-bordered {
+  border-color: rgba(0, 122, 204, 0.35) !important;
+}
