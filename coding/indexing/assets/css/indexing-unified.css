@@ -551,6 +551,13 @@ body.theme-dark .home-link.home-link-transparent { background: transparent !impo
 /* Garantir transparência total do círculo em qualquer tema/hover */
 .home-link.home-link-transparent:hover .home-link-circle { background: transparent !important; background-color: transparent !important; }
 
+/* Hover nas bordas do círculo deve prevalecer sobre regras de tema */
+body.theme-light .home-link:hover,
+body.theme-dark .home-link:hover {
+  border-color: #8c6fff !important;
+  box-shadow: 0 0 0 3px rgba(140, 111, 255, 0.35) !important;
+}
+
 /* =========================
    AJUSTES INLINE DE index.html (cards/tabelas em abas)
    ========================= */
