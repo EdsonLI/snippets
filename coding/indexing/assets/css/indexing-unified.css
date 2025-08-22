@@ -527,17 +527,21 @@ pre code,
 /* =========================
    HOME LINK ENHANCED (de home-link-enhanced.css)
    ========================= */
-.home-link { position: fixed !important; top: 1rem !important; left: 1rem !important; width: 48px !important; height: 48px !important; border-radius: 50% !important; text-decoration: none !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 1000 !important; background-color: #ffffff !important; border: 2px solid #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; }
+.home-link { position: fixed !important; top: 1rem !important; left: 1rem !important; width: 48px !important; height: 48px !important; border-radius: 50% !important; text-decoration: none !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 1000 !important; background-color: #ffffff !important; border: 2px solid #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; transition: border-color .15s ease, box-shadow .15s ease; }
 
-.home-link .svg-logo-jedi { width: 28px !important; height: 28px !important; display: block !important; image-rendering: -webkit-optimize-contrast !important; image-rendering: crisp-edges !important; shape-rendering: crispEdges !important; opacity: 1 !important; filter: none !important; background: transparent !important; background-color: transparent !important; filter: contrast(1.1) brightness(1.1) !important; }
+.home-link .svg-logo-jedi { width: 28px !important; height: 28px !important; display: block !important; image-rendering: -webkit-optimize-contrast !important; image-rendering: crisp-edges !important; shape-rendering: crispEdges !important; opacity: 1 !important; background: transparent !important; background-color: transparent !important; filter: brightness(1.12) saturate(1.12) !important; transition: filter .15s ease; }
 
 .home-link-circle { width: 100% !important; height: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; transition: all 0.2s ease !important; background: transparent !important; position: relative !important; }
 
-.home-link:hover .home-link-circle { background-color: rgba(111, 66, 193, 0.1) !important; transform: scale(0.95) !important; }
+.home-link:hover .home-link-circle { background: transparent !important; background-color: transparent !important; transform: none !important; }
+/* Hover: destacar apenas a borda do botão */
+.home-link:hover { border-color: #8c6fff !important; box-shadow: 0 0 0 3px rgba(140, 111, 255, 0.35) !important; }
 
 body.theme-dark .home-link:hover .home-link-circle { background-color: rgba(111, 66, 193, 0.2) !important; }
 
-.home-link .svg-logo-jedi path { fill: #4b2a91 !important; opacity: 1 !important; filter: saturate(1.2) !important; }
+.home-link .svg-logo-jedi path { fill: #6f42c1 !important; opacity: 1 !important; }
+.home-link:hover .svg-logo-jedi { filter: brightness(1.18) saturate(1.2) !important; }
+.home-link:hover .svg-logo-jedi path { fill: #8c6fff !important; }
 
 body.theme-dark .home-link { background-color: #21262d !important; border-color: #6f42c1 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important; }
 
@@ -545,6 +549,8 @@ body.theme-dark .home-link { background-color: #21262d !important; border-color:
 
 .home-link.home-link-transparent { background: transparent !important; background-color: transparent !important; }
 body.theme-dark .home-link.home-link-transparent { background: transparent !important; background-color: transparent !important; }
+/* Garantir transparência total do círculo em qualquer tema/hover */
+.home-link.home-link-transparent:hover .home-link-circle { background: transparent !important; background-color: transparent !important; }
 
 /* =========================
    AJUSTES INLINE DE index.html (cards/tabelas em abas)
