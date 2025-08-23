@@ -204,7 +204,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#sql-content').load('./snippets_sql.html', function() {
+    $('#sql-content').load('./snippets_sql_new.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
