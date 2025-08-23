@@ -1,15 +1,26 @@
 <section class="py-5">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
+    <div class="container sql-scope card-snippet" id="sql" data-tags="sql">
+
+        <style>
+            /* Escopo local da página SQL: borda azul SQL */
+            .sql-scope { --snippet-border: #0066cc; }
+            .sql-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+            .sql-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+            .sql-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+            .sql-scope .btn-outline-sql { color: #0066cc !important; border-color: #0066cc !important; }
+            .sql-scope .btn-outline-sql:hover { background: rgba(0,102,204,.08) !important; color: #0066cc !important; }
+        </style>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <!-- CREATE DATABASE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>CREATE DATABASE</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">CREATE DATABASE loja;
+<pre><code class="language-sql">CREATE DATABASE loja;
 
 USE loja;
 
@@ -24,12 +35,12 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
             <!-- CREATE TABLE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>CREATE TABLE</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">CREATE TABLE usuarios (
+<pre ><code class="language-sql">CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE,
@@ -44,12 +55,12 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
             <!-- INSERT INTO -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>INSERT INTO</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Inserir um registro
+<pre ><code class="language-sql">-- Inserir um registro
 INSERT INTO usuarios (nome, email, senha) 
 VALUES ('João Silva', 'joao@email.com', 'senha123');
 
@@ -65,12 +76,12 @@ VALUES
             <!-- SELECT BÁSICO -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>SELECT BÁSICO</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Selecionar todos os registros
+<pre ><code class="language-sql">-- Selecionar todos os registros
 SELECT * FROM usuarios;
 
 -- Selecionar campos específicos
@@ -86,12 +97,12 @@ WHERE ativo = TRUE;</code></pre>
             <!-- UPDATE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>UPDATE</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Atualizar um registro
+<pre ><code class="language-sql">-- Atualizar um registro
 UPDATE usuarios 
 SET email = 'novo@email.com' 
 WHERE id = 1;
@@ -107,12 +118,12 @@ WHERE email = 'joao@email.com';</code></pre>
             <!-- DELETE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>DELETE</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Deletar registro específico
+<pre ><code class="language-sql">-- Deletar registro específico
 DELETE FROM usuarios 
 WHERE id = 1;
 
@@ -127,12 +138,12 @@ AND data_criacao < '2024-01-01';</code></pre>
             <!-- JOIN -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>JOIN</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- INNER JOIN
+<pre ><code class="language-sql">-- INNER JOIN
 SELECT u.nome, p.titulo
 FROM usuarios u
 INNER JOIN posts p ON u.id = p.usuario_id;
@@ -149,12 +160,12 @@ GROUP BY u.id, u.nome;</code></pre>
             <!-- WHERE COM OPERADORES -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>WHERE AVANÇADO</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Operadores de comparação
+<pre ><code class="language-sql">-- Operadores de comparação
 SELECT * FROM produtos 
 WHERE preco BETWEEN 10 AND 50;
 
@@ -172,12 +183,12 @@ WHERE categoria_id IN (1, 3, 5);</code></pre>
             <!-- ORDER BY e LIMIT -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>ORDER BY & LIMIT</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Ordenar por campo
+<pre ><code class="language-sql">-- Ordenar por campo
 SELECT * FROM usuarios 
 ORDER BY nome ASC;
 
@@ -196,12 +207,12 @@ LIMIT 10;</code></pre>
             <!-- GROUP BY -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>GROUP BY</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Agrupar e contar
+<pre ><code class="language-sql">-- Agrupar e contar
 SELECT categoria_id, COUNT(*) as total
 FROM produtos 
 GROUP BY categoria_id;
@@ -218,12 +229,12 @@ HAVING AVG(preco) > 100;</code></pre>
             <!-- ALTER TABLE -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>ALTER TABLE</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Adicionar coluna
+<pre ><code class="language-sql">-- Adicionar coluna
 ALTER TABLE usuarios 
 ADD COLUMN telefone VARCHAR(20);
 
@@ -241,12 +252,12 @@ DROP COLUMN telefone;</code></pre>
             <!-- ÍNDICES -->
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>ÍNDICES</span>
                     </div>
                     <div class="card-body">
-<pre class="bg-light p-3 rounded"><code class="language-sql">-- Criar índice
+<pre ><code class="language-sql">-- Criar índice
 CREATE INDEX idx_usuario_email 
 ON usuarios (email);
 
