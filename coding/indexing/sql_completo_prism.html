@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+            <!-- CREATE DATABASE -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>CREATE DATABASE</span>
+                    </div>
+                    <div class="card-body">
+<pre><code class="language-sql">CREATE DATABASE loja;
+
+USE loja;
+
+-- Ou criar e usar
+CREATE DATABASE IF NOT EXISTS loja 
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;</code></pre>
+                    </div>
+                </div>
+            </div>harset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Snippets - Prism.js</title>
+    <title>SQL Snippets</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,121 +28,31 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Prism.js CSS - Tomorrow Night Theme -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <!-- Highlight.js (tema escuro + versão completa) - MESMO DOS OUTROS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     
     <!-- Iconify -->
     <script src="https://code.iconify.design/3/iconify.min.js"></script>
     
-    <!-- CSS unificado do indexing -->
+    <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
     <link href="assets/css/indexing-unified.css" rel="stylesheet">
-    
-    <style>
-        /* Escopo local da página SQL: borda azul SQL */
-        .sql-scope { --snippet-border: #0066cc; }
-        .sql-scope .card { 
-            border-width: 1px !important; 
-            background: var(--snippet-card-bg) !important; 
-            color: var(--snippet-card-fg) !important; 
-            border-color: var(--snippet-border) !important;
-        }
-        .sql-scope .card-header { 
-            background: var(--snippet-border) !important; 
-            color: #ffffff !important; 
-            border-bottom: 1px solid var(--snippet-border) !important;
-            padding: 0.5rem 0.75rem !important;
-            font-size: 0.85rem !important;
-        }
-        .sql-scope .card-body { 
-            background: var(--snippet-card-bg) !important; 
-            color: var(--snippet-card-fg) !important;
-            padding: 0.75rem !important;
-        }
-        
-        body {
-            background: var(--snippet-bg) !important;
-            color: var(--snippet-fg) !important;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        
-        /* Sobrescrever Prism.js para usar as variáveis do tema */
-        pre[class*="language-"] {
-            background: var(--snippet-bg) !important;
-            color: var(--snippet-fg) !important;
-            font-size: 0.75rem !important;
-            line-height: 1.4 !important;
-            margin: 0 !important;
-            padding: 1rem !important;
-            border-radius: 6px !important;
-            border: 1px solid rgba(0, 102, 204, 0.3) !important;
-        }
-        
-        code[class*="language-"] {
-            background: transparent !important;
-            color: var(--snippet-fg) !important;
-            font-size: 0.75rem !important;
-            font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace !important;
-        }
-        
-        /* Tokens do Prism.js adaptados ao tema */
-        .token.comment,
-        .token.prolog,
-        .token.doctype,
-        .token.cdata {
-            color: #969896 !important;
-        }
-        
-        .token.keyword,
-        .token.operator {
-            color: #0066cc !important;
-            font-weight: bold;
-        }
-        
-        .token.string,
-        .token.char,
-        .token.attr-value {
-            color: #0099cc !important;
-        }
-        
-        .token.number {
-            color: #ff9933 !important;
-        }
-        
-        .token.function {
-            color: #6699ff !important;
-        }
-        
-        .token.punctuation {
-            color: var(--snippet-fg) !important;
-        }
-        
-        /* Adaptação para tema escuro/claro */
-        body.theme-dark .token.keyword,
-        body.theme-dark .token.operator {
-            color: #66b3ff !important;
-        }
-        
-        body.theme-light .token.keyword,
-        body.theme-light .token.operator {
-            color: #0066cc !important;
-        }
-    </style>
 </head>
-<body>
-    <div class="container py-2 sql-scope">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mb-3" style="font-size: 1.5rem; color: var(--snippet-border);">
-                    <iconify-icon icon="ph:database" width="24" height="24" class="me-2"></iconify-icon>
-                    SQL Snippets
-                </h2>
-            </div>
-        </div>
-        
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 card-snippet">
+<body class="theme-dark">
+    <section class="py-5">
+        <div class="container sql-scope card-snippet" id="sql" data-tags="sql">
+            
+            <style>
+                /* Escopo local da página SQL: borda azul SQL */
+                .sql-scope { --snippet-border: #0066cc; }
+                .sql-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+                .sql-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+                .sql-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+                .sql-scope .btn-outline-sql { color: #0066cc !important; border-color: #0066cc !important; }
+                .sql-scope .btn-outline-sql:hover { background: rgba(0,102,204,.08) !important; color: #0066cc !important; }
+            </style>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <!-- CREATE DATABASE -->
             <div class="col">
                 <div class="card h-100 shadow">
@@ -145,16 +72,15 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
                     </div>
                 </div>
             </div>
-
             <!-- CREATE TABLE -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>CREATE TABLE</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">CREATE TABLE usuarios (
+<pre><code class="language-sql">CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE,
@@ -168,13 +94,13 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
 
             <!-- INSERT INTO -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>INSERT INTO</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Inserir um registro
+<pre><code class="language-sql">-- Inserir um registro
 INSERT INTO usuarios (nome, email, senha) 
 VALUES ('João Silva', 'joao@email.com', 'senha123');
 
@@ -189,13 +115,13 @@ VALUES
 
             <!-- SELECT BÁSICO -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>SELECT BÁSICO</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Selecionar todos os registros
+<pre><code class="language-sql">-- Selecionar todos os registros
 SELECT * FROM usuarios;
 
 -- Selecionar campos específicos
@@ -210,13 +136,13 @@ WHERE ativo = TRUE;</code></pre>
 
             <!-- UPDATE -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>UPDATE</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Atualizar um registro
+<pre><code class="language-sql">-- Atualizar um registro
 UPDATE usuarios 
 SET email = 'novo@email.com' 
 WHERE id = 1;
@@ -231,13 +157,13 @@ WHERE email = 'joao@email.com';</code></pre>
 
             <!-- DELETE -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>DELETE</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Deletar registro específico
+<pre><code class="language-sql">-- Deletar registro específico
 DELETE FROM usuarios 
 WHERE id = 1;
 
@@ -251,13 +177,13 @@ AND data_criacao < '2024-01-01';</code></pre>
 
             <!-- JOIN -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>JOIN</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- INNER JOIN
+<pre><code class="language-sql">-- INNER JOIN
 SELECT u.nome, p.titulo
 FROM usuarios u
 INNER JOIN posts p ON u.id = p.usuario_id;
@@ -273,13 +199,13 @@ GROUP BY u.id, u.nome;</code></pre>
 
             <!-- WHERE AVANÇADO -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>WHERE AVANÇADO</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Operadores de comparação
+<pre><code class="language-sql">-- Operadores de comparação
 SELECT * FROM produtos 
 WHERE preco BETWEEN 10 AND 50;
 
@@ -296,13 +222,13 @@ WHERE categoria_id IN (1, 3, 5);</code></pre>
 
             <!-- ORDER BY e LIMIT -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>ORDER BY & LIMIT</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Ordenar por campo
+<pre><code class="language-sql">-- Ordenar por campo
 SELECT * FROM usuarios 
 ORDER BY nome ASC;
 
@@ -320,13 +246,13 @@ LIMIT 10;</code></pre>
 
             <!-- GROUP BY -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>GROUP BY</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Agrupar e contar
+<pre><code class="language-sql">-- Agrupar e contar
 SELECT categoria_id, COUNT(*) as total
 FROM produtos 
 GROUP BY categoria_id;
@@ -342,13 +268,13 @@ HAVING AVG(preco) > 100;</code></pre>
 
             <!-- ALTER TABLE -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>ALTER TABLE</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Adicionar coluna
+<pre><code class="language-sql">-- Adicionar coluna
 ALTER TABLE usuarios 
 ADD COLUMN telefone VARCHAR(20);
 
@@ -365,13 +291,13 @@ DROP COLUMN telefone;</code></pre>
 
             <!-- ÍNDICES -->
             <div class="col">
-                <div class="card h-100 shadow">
-                    <div class="card-header text-white d-flex align-items-center">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header d-flex align-items-center">
                         <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
                         <span>ÍNDICES</span>
                     </div>
                     <div class="card-body">
-                        <pre><code class="language-sql">-- Criar índice
+<pre><code class="language-sql">-- Criar índice
 CREATE INDEX idx_usuario_email 
 ON usuarios (email);
 
@@ -386,34 +312,14 @@ ON usuarios;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Prism.js Core -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <!-- Highlight.js - MESMO DOS OUTROS -->
+    <script>hljs.highlightAll();</script>
     
-    <script>
-        // Configurar Prism.js
-        Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
-        
-        // Garantir que o destaque seja aplicado após carregamento completo
-        document.addEventListener('DOMContentLoaded', function() {
-            Prism.highlightAll();
-            
-            // Re-aplicar destaque após pequeno delay para garantir
-            setTimeout(function() {
-                Prism.highlightAll();
-            }, 100);
-        });
-        
-        // Função para re-destacar se necessário
-        window.rehighlightSQL = function() {
-            Prism.highlightAll();
-        };
-    </script>
 </body>
 </html>
