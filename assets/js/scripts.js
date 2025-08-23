@@ -204,21 +204,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#sql-content').load('./snippets_sql_new.html', function() {
-      // Forçar o highlight.js a processar especificamente SQL
-      $('#sql-content').find('pre code[class*="language-sql"]').each(function(i, block) {
-        $(block).removeClass().addClass('sql');
-        hljs.highlightElement(block);
-      });
-      
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('sql-content'));
-      }
-    });
+    $('#sql-content').html('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 2000px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
   }
 
   // --- BLOCO: Sistema de abas ---
