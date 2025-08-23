@@ -204,16 +204,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#sql-content').load('./snippets_sql_new.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('sql-content'));
-      }
-    });
+    $('#sql-content').html('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 100vh; border: none; background: #1a1a1a;"></iframe>');
   }
 
   // --- BLOCO: Sistema de abas ---
