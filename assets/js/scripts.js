@@ -204,23 +204,25 @@ $(document).ready(function() {
       }
     });
 
-    var iframe = $('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 1400px; border: none; background: #1a1a1a; overflow: hidden;" scrolling="no"></iframe>');
-    
-    // Função para ajustar altura do iframe
-    iframe.on('load', function() {
-        try {
-            var iframeDoc = this.contentDocument || this.contentWindow.document;
-            var height = iframeDoc.body.scrollHeight + 50; // 50px de margem extra
-            if (height > 800) { // Mínimo de 800px
-                $(this).height(height);
-            }
-        } catch(e) {
-            // Fallback se não conseguir acessar o conteúdo do iframe
-            $(this).height(1400);
+    // Carregar conteúdo SQL diretamente sem iframe
+    $.get('./sql_completo_prism.html', function(data) {
+        // Extrair apenas o conteúdo da section
+        var content = $(data).find('section').html();
+        $('#sql-content').html('<div style="background: transparent; min-height: 1200px;">' + content + '</div>');
+        
+        // Aplicar highlight.js
+        $('#sql-content').find('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+        
+        // Reaplicar tema se existir
+        if (window.snippetTheme) {
+            window.snippetTheme.reapplyThemeToContent(document.getElementById('sql-content'));
         }
+    }).fail(function() {
+        // Fallback para iframe se AJAX falhar
+        $('#sql-content').html('<iframe src="./sql_completo_prism.html?v=' + Date.now() + '" style="width: 100%; height: 1800px; border: none; background: #1a1a1a; overflow: hidden;" scrolling="no"></iframe>');
     });
-    
-    $('#sql-content').html(iframe);
   }
 
   // --- BLOCO: Sistema de abas ---
