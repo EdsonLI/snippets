@@ -1,0 +1,265 @@
+<section class="py-5"></section>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 card-snippet">
+            <!-- CREATE DATABASE -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>CREATE DATABASE</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">CREATE DATABASE loja;
+
+USE loja;
+
+-- Ou criar e usar
+CREATE DATABASE IF NOT EXISTS loja 
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CREATE TABLE -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>CREATE TABLE</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    senha VARCHAR(255),
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ativo BOOLEAN DEFAULT TRUE
+);</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INSERT INTO -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>INSERT INTO</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Inserir um registro
+INSERT INTO usuarios (nome, email, senha) 
+VALUES ('João Silva', 'joao@email.com', 'senha123');
+
+-- Inserir múltiplos registros
+INSERT INTO usuarios (nome, email, senha) 
+VALUES 
+    ('Maria Santos', 'maria@email.com', 'pass456'),
+    ('Pedro Oliveira', 'pedro@email.com', 'abc789');</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SELECT BÁSICO -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>SELECT BÁSICO</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Selecionar todos os registros
+SELECT * FROM usuarios;
+
+-- Selecionar campos específicos
+SELECT nome, email FROM usuarios;
+
+-- Com condição WHERE
+SELECT * FROM usuarios 
+WHERE ativo = TRUE;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UPDATE -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>UPDATE</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Atualizar um registro
+UPDATE usuarios 
+SET email = 'novo@email.com' 
+WHERE id = 1;
+
+-- Atualizar múltiplos campos
+UPDATE usuarios 
+SET nome = 'João Santos', ativo = FALSE 
+WHERE email = 'joao@email.com';</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DELETE -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>DELETE</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Deletar registro específico
+DELETE FROM usuarios 
+WHERE id = 1;
+
+-- Deletar com múltiplas condições
+DELETE FROM usuarios 
+WHERE ativo = FALSE 
+AND data_criacao < '2024-01-01';</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JOIN -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>JOIN</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- INNER JOIN
+SELECT u.nome, p.titulo
+FROM usuarios u
+INNER JOIN posts p ON u.id = p.usuario_id;
+
+-- LEFT JOIN
+SELECT u.nome, COUNT(p.id) as total_posts
+FROM usuarios u
+LEFT JOIN posts p ON u.id = p.usuario_id
+GROUP BY u.id, u.nome;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WHERE COM OPERADORES -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>WHERE AVANÇADO</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Operadores de comparação
+SELECT * FROM produtos 
+WHERE preco BETWEEN 10 AND 50;
+
+-- LIKE para busca por padrão
+SELECT * FROM usuarios 
+WHERE nome LIKE 'João%';
+
+-- IN para múltiplos valores
+SELECT * FROM produtos 
+WHERE categoria_id IN (1, 3, 5);</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ORDER BY e LIMIT -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>ORDER BY & LIMIT</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Ordenar por campo
+SELECT * FROM usuarios 
+ORDER BY nome ASC;
+
+-- Ordenar por múltiplos campos
+SELECT * FROM produtos 
+ORDER BY categoria_id DESC, preco ASC;
+
+-- Limitar resultados
+SELECT * FROM posts 
+ORDER BY data_criacao DESC 
+LIMIT 10;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GROUP BY -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>GROUP BY</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Agrupar e contar
+SELECT categoria_id, COUNT(*) as total
+FROM produtos 
+GROUP BY categoria_id;
+
+-- Agrupar com HAVING
+SELECT categoria_id, AVG(preco) as preco_medio
+FROM produtos 
+GROUP BY categoria_id
+HAVING AVG(preco) > 100;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALTER TABLE -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>ALTER TABLE</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Adicionar coluna
+ALTER TABLE usuarios 
+ADD COLUMN telefone VARCHAR(20);
+
+-- Modificar coluna
+ALTER TABLE usuarios 
+MODIFY COLUMN nome VARCHAR(150);
+
+-- Remover coluna
+ALTER TABLE usuarios 
+DROP COLUMN telefone;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÍNDICES -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex align-items-center">
+                        <iconify-icon icon="ph:code" width="20" height="20" class="me-2"></iconify-icon>
+                        <span>ÍNDICES</span>
+                    </div>
+                    <div class="card-body">
+<pre class="bg-light p-3 rounded"><code class="language-sql">-- Criar índice
+CREATE INDEX idx_usuario_email 
+ON usuarios (email);
+
+-- Índice composto
+CREATE INDEX idx_produto_categoria_preco 
+ON produtos (categoria_id, preco);
+
+-- Remover índice
+DROP INDEX idx_usuario_email 
+ON usuarios;</code></pre>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </div>
+</section>
