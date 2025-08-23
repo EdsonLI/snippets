@@ -204,7 +204,23 @@ $(document).ready(function() {
       }
     });
 
-    $('#sql-content').html('<iframe src="./sql_completo_prism.html" style="width: 100%; height: auto; min-height: 800px; border: none; background: #1a1a1a; overflow: hidden;" scrolling="no"></iframe>');
+    var iframe = $('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 1400px; border: none; background: #1a1a1a; overflow: hidden;" scrolling="no"></iframe>');
+    
+    // Função para ajustar altura do iframe
+    iframe.on('load', function() {
+        try {
+            var iframeDoc = this.contentDocument || this.contentWindow.document;
+            var height = iframeDoc.body.scrollHeight + 50; // 50px de margem extra
+            if (height > 800) { // Mínimo de 800px
+                $(this).height(height);
+            }
+        } catch(e) {
+            // Fallback se não conseguir acessar o conteúdo do iframe
+            $(this).height(1400);
+        }
+    });
+    
+    $('#sql-content').html(iframe);
   }
 
   // --- BLOCO: Sistema de abas ---
