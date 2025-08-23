@@ -204,7 +204,50 @@ $(document).ready(function() {
       }
     });
 
-    $('#sql-content').html('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 2000px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe = $('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    
+    iframe.on('load', function() {
+        var self = this;
+        setTimeout(function() {
+            try {
+                var iframeDoc = self.contentDocument || self.contentWindow.document;
+                
+                // Aguardar o Bootstrap aplicar altura uniforme dos cards
+                setTimeout(function() {
+                    var cards = $(iframeDoc).find('.card');
+                    var rows = $(iframeDoc).find('.row');
+                    var container = $(iframeDoc).find('.container');
+                    
+                    if (cards.length > 0 && rows.length > 0) {
+                        // Calcular altura baseada nos cards e container
+                        var cardHeight = cards.first().outerHeight() || 300; // altura de um card
+                        var numCols = 3; // 3 colunas por linha
+                        var numRows = Math.ceil(cards.length / numCols); // quantas linhas
+                        var containerPadding = container.outerHeight() - container.height(); // padding do container
+                        var rowGap = 24; // gap entre linhas (g-4 do Bootstrap = 1.5rem = 24px)
+                        
+                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra
+                        var totalHeight = (cardHeight * numRows) + (rowGap * (numRows - 1)) + containerPadding + 100;
+                        
+                        console.log('Card height:', cardHeight, 'Rows:', numRows, 'Total:', totalHeight);
+                        
+                        // Aplicar altura calculada (mínimo 800px, máximo 3000px)
+                        var finalHeight = Math.max(800, Math.min(3000, totalHeight));
+                        $(self).height(finalHeight);
+                    } else {
+                        // Fallback se não conseguir medir
+                        $(self).height(1600);
+                    }
+                }, 500); // aguardar Bootstrap aplicar estilos
+            } catch(e) {
+                console.log('Erro ao calcular altura:', e);
+                // Fallback para altura fixa
+                $(self).height(1600);
+            }
+        }, 200); // aguardar carregamento completo
+    });
+    
+    $('#sql-content').html(iframe);
   }
 
   // --- BLOCO: Sistema de abas ---
