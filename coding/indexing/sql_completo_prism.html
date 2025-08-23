@@ -19,6 +19,9 @@
             background: #1a1a1a;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
         
         .card {
@@ -29,21 +32,28 @@
         .card-header {
             background: #0d6efd !important;
             border-bottom: 1px solid #404040 !important;
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.85rem !important;
         }
         
         .card-body {
             background: #2d2d2d !important;
+            padding: 0.75rem !important;
         }
         
         pre {
             background: #1a1a1a !important;
             border: 1px solid #404040 !important;
             margin: 0 !important;
+            font-size: 0.75rem !important;
+            line-height: 1.4 !important;
         }
         
         code {
             background: transparent !important;
             color: #ffffff !important;
+            font-size: 0.75rem !important;
+            font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace !important;
         }
         
         /* Prism Tomorrow Night overrides */
@@ -91,17 +101,17 @@
     </style>
 </head>
 <body>
-    <div class="container py-4">
+    <div class="container py-2">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center mb-4 text-info">
-                    <iconify-icon icon="ph:database" width="32" height="32" class="me-2"></iconify-icon>
+                <h2 class="text-center mb-3 text-info" style="font-size: 1.5rem;">
+                    <iconify-icon icon="ph:database" width="24" height="24" class="me-2"></iconify-icon>
                     SQL Snippets com Prism.js
                 </h2>
             </div>
         </div>
         
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             <!-- CREATE DATABASE -->
             <div class="col">
                 <div class="card h-100 shadow">

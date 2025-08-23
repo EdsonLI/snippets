@@ -204,7 +204,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#sql-content').html('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 100vh; border: none; background: #1a1a1a;"></iframe>');
+    $('#sql-content').html('<iframe src="./sql_completo_prism.html" style="width: 100%; height: auto; min-height: 800px; border: none; background: #1a1a1a; overflow: hidden;" scrolling="no"></iframe>');
   }
 
   // --- BLOCO: Sistema de abas ---
