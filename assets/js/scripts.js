@@ -205,18 +205,11 @@ $(document).ready(function() {
     });
 
     $('#sql-content').load('./snippets_sql_new.html', function() {
-      // Usar Prism.js para SQL
-      if (typeof Prism !== 'undefined') {
-        Prism.highlightAll();
-      } else {
-        // Carregar Prism.js dinamicamente se não estiver carregado
-        $('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">');
-        $.getScript('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js', function() {
-          $.getScript('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js', function() {
-            Prism.highlightAll();
-          });
-        });
-      }
+      // Forçar o highlight.js a processar especificamente SQL
+      $('#sql-content').find('pre code[class*="language-sql"]').each(function(i, block) {
+        $(block).removeClass().addClass('sql');
+        hljs.highlightElement(block);
+      });
       
       setupSnippetInteractions();
       addCopyButtons();
