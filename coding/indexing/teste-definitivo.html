@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ TESTE SYNTAX HIGHLIGHTING DEFINITIVO</title>
+    
+    <!-- jQuery -->
+    <script src="../../assets/js/jquery/jquery-3.7.1.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1e1e2e;
+            color: #cdd6f4;
+        }
+        
+        h1, h2 { color: #a6e3a1; margin: 20px 0 10px 0; }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #313244;
+            border-radius: 8px;
+            border-left: 4px solid #a6e3a1;
+        }
+        
+        .status {
+            background: #a6e3a1;
+            color: #1e1e2e;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>✅ SYNTAX HIGHLIGHTING DEFINITIVO - SEM DEPENDÊNCIAS</h1>
+    
+    <div class="status">
+        🚀 Esta solução funciona 100% sem dependências externas<br>
+        🎨 Usa apenas CSS e JavaScript puro<br>
+        ⚡ Não precisa de CDN ou bibliotecas externas<br>
+        📱 Funciona offline e em qualquer ambiente
+    </div>
+    
+    <div class="test-section">
+        <h2>🐘 Código PHP</h2>
+        <pre><code class="language-php"><?php
+class ExemploPHP {
+    private $nome;
+    public $ativo = true;
+    
+    public function __construct($nome) {
+        $this->nome = $nome; // Comentário PHP
+        echo "Classe criada: " . $this->nome;
+    }
+    
+    public function processarDados($dados) {
+        if (empty($dados)) {
+            throw new Exception("Dados vazios não permitidos");
+        }
+        
+        $resultado = array();
+        foreach ($dados as $key => $value) {
+            $resultado[$key] = strtoupper($value);
+        }
+        
+        return $resultado;
+    }
+    
+    public static function validarEmail($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+}
+
+$exemplo = new ExemploPHP("Teste");
+$dados = array("nome" => "joão", "cidade" => "são paulo");
+echo json_encode($exemplo->processarDados($dados));
+?></code></pre>
+    </div>
+    
+    <div class="test-section">
+        <h2>📜 Código JavaScript</h2>
+        <pre><code class="language-javascript">$(document).ready(function() {
+    console.log("jQuery carregado!");
+    
+    // Configuração
+    const config = {
+        apiUrl: "https://api.exemplo.com",
+        timeout: 5000,
+        debug: true
+    };
+    
+    // Função assíncrona
+    async function buscarDados(endpoint) {
+        try {
+            const response = await fetch(config.apiUrl + endpoint, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Erro ${response.status}`);
+            }
+            
+            return await response.json();
+            
+        } catch (error) {
+            console.error("Erro:", error.message);
+            return null;
+        }
+    }
+    
+    // Event listener
+    $('.btn-carregar').on('click', function(e) {
+        e.preventDefault();
+        
+        const $btn = $(this);
+        $btn.prop('disabled', true);
+        
+        buscarDados('/usuarios').then(dados => {
+            $('#resultado').html(JSON.stringify(dados, null, 2));
+        }).finally(() => {
+            $btn.prop('disabled', false);
+        });
+    });
+});</code></pre>
+    </div>
+    
+    <div class="test-section">
+        <h2>🎨 Código CSS</h2>
+        <pre><code class="language-css">/* CSS com variáveis e Grid */
+:root {
+    --primary: #a6e3a1;
+    --secondary: #89b4fa;
+    --background: #1e1e2e;
+    --text: #cdd6f4;
+    --radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius);
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(166, 227, 161, 0.15);
+}</code></pre>
+    </div>
+    
+    <div class="test-section">
+        <h2>🗄️ Código SQL</h2>
+        <pre><code class="language-sql">-- Query com JOINS e agregações
+SELECT 
+    u.id,
+    u.nome,
+    u.email,
+    COUNT(p.id) as total_pedidos,
+    SUM(p.valor_total) as valor_gasto,
+    AVG(p.valor_total) as ticket_medio
+FROM usuarios u
+LEFT JOIN pedidos p ON u.id = p.usuario_id
+WHERE u.ativo = TRUE
+  AND u.created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+GROUP BY u.id, u.nome, u.email
+HAVING total_pedidos > 5
+ORDER BY valor_gasto DESC
+LIMIT 100;
+
+-- Criação de índice
+CREATE INDEX idx_usuario_ativo ON usuarios(ativo, created_at);
+
+-- Insert com dados
+INSERT INTO usuarios (nome, email, ativo) 
+VALUES 
+    ('João Silva', 'joao@email.com', TRUE),
+    ('Maria Santos', 'maria@email.com', TRUE);</code></pre>
+    </div>
+    
+    <div class="test-section">
+        <h2>🆕 Teste AJAX</h2>
+        <button id="btn-ajax" style="background: #a6e3a1; color: #1e1e2e; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+            📥 Carregar código via AJAX
+        </button>
+        <div id="conteudo-ajax"></div>
+    </div>
+    
+    <!-- SYNTAX HIGHLIGHTER DEFINITIVO -->
+    <script src="assets/js/syntax-highlighter-definitivo.js"></script>
+    
+    <script>
+        // Teste AJAX
+        $('#btn-ajax').click(function() {
+            const html = `
+                <div class="test-section" style="margin-top: 20px;">
+                    <h3>✨ HTML carregado via AJAX:</h3>
+                    <pre><code class="language-html"><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo HTML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="logo.svg" alt="Logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <h1>Bem-vindo!</h1>
+            <p>Esta é uma página de exemplo.</p>
+            <button class="btn btn-primary">Saiba mais</button>
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html></code></pre>
+                </div>
+            `;
+            
+            $('#conteudo-ajax').html(html);
+            $(document).trigger('snippets-loaded');
+            console.log('📡 Conteúdo AJAX adicionado!');
+        });
+        
+        console.log('🚀 Página de teste carregada!');
+    </script>
+</body>
+</html>
