@@ -205,7 +205,19 @@ $(document).ready(function() {
     });
 
     $('#sql-content').load('./snippets_sql_new.html', function() {
-      hljs.highlightAll();
+      // Usar Prism.js para SQL
+      if (typeof Prism !== 'undefined') {
+        Prism.highlightAll();
+      } else {
+        // Carregar Prism.js dinamicamente se não estiver carregado
+        $('head').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">');
+        $.getScript('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js', function() {
+          $.getScript('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js', function() {
+            Prism.highlightAll();
+          });
+        });
+      }
+      
       setupSnippetInteractions();
       addCopyButtons();
       

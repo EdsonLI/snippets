@@ -9,6 +9,28 @@
             .sql-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
             .sql-scope .btn-outline-sql { color: #0066cc !important; border-color: #0066cc !important; }
             .sql-scope .btn-outline-sql:hover { background: rgba(0,102,204,.08) !important; color: #0066cc !important; }
+            
+            /* Prism.js customizado para SQL no tema escuro */
+            .sql-scope pre[class*="language-"] {
+                background: var(--snippet-bg) !important;
+                color: var(--snippet-fg) !important;
+                border-radius: 6px !important;
+                padding: 1rem !important;
+                margin: 0 !important;
+            }
+            
+            .sql-scope code[class*="language-"] {
+                background: transparent !important;
+                color: var(--snippet-fg) !important;
+            }
+            
+            /* Tokens SQL coloridos */
+            .sql-scope .token.keyword { color: #66b3ff !important; font-weight: bold; }
+            .sql-scope .token.string { color: #a8e6cf !important; }
+            .sql-scope .token.number { color: #ffd700 !important; }
+            .sql-scope .token.comment { color: #999999 !important; }
+            .sql-scope .token.operator { color: #ff6b6b !important; }
+            .sql-scope .token.punctuation { color: var(--snippet-fg) !important; }
         </style>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
