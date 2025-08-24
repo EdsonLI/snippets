@@ -160,7 +160,7 @@
       </div>
       <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
         <iframe
-          src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html"
+          id="bootstrap-iframe-preview"
           width="100%" 
           height="100%" 
           frameborder="0" 
@@ -170,4 +170,31 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    // Desabilitar completamente qualquer interação antes do modal estar pronto
+    let modalReady = false;
+    
+    $('#previewModalBootstrap').on('shown.bs.modal', function() {
+        // Só após o modal estar completamente visível, carregamos o iframe
+        setTimeout(function() {
+            const iframe = document.getElementById('bootstrap-iframe-preview');
+            if (iframe && !iframe.src) {
+                iframe.src = 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
+                modalReady = true;
+            }
+        }, 300); // Delay adicional para garantir que tudo esteja estabilizado
+    });
+    
+    // Limpar iframe quando modal fechar
+    $('#previewModalBootstrap').on('hidden.bs.modal', function() {
+        const iframe = document.getElementById('bootstrap-iframe-preview');
+        if (iframe) {
+            iframe.src = '';
+        }
+        modalReady = false;
+    });
+});
+</script>
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
