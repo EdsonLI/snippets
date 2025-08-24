@@ -193,7 +193,7 @@ $(document).ready(function() {
       }
     });
 
-    var iframe_php = $('<iframe src="./php_completo_prism.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe_php = $('<iframe src="./php_limpo_corrigido.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     
     iframe_php.on('load', function() {
         var self = this;
@@ -240,7 +240,7 @@ $(document).ready(function() {
     
     $('#php-content').html(iframe_php);
 
-    var iframe = $('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe = $('<iframe src="./sql_limpo_corrigido.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     
     iframe.on('load', function() {
         var self = this;
