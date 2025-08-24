@@ -726,7 +726,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe jQuery - Desktop */
 .iframe-jquery {
-  height: 1150px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1260px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe jQuery - Mobile */
@@ -738,7 +738,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe CSS - Desktop */
 .iframe-css {
-  height: 1180px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1330px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe CSS - Mobile */
@@ -750,7 +750,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe Bootstrap - Desktop */
 .iframe-bootstrap {
-  height: 1200px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1510px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe Bootstrap - Mobile */
@@ -762,7 +762,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe HTML - Desktop */
 .iframe-html {
-  height: 1140px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1440px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe HTML - Mobile */
