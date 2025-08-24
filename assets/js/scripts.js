@@ -208,19 +208,32 @@ $(document).ready(function() {
                     var container = $(iframeDoc).find('.container');
                     
                     if (cards.length > 0 && rows.length > 0) {
+                        // Detectar número de colunas baseado na largura da tela/container
+                        var containerWidth = container.width();
+                        var cardWidth = cards.first().outerWidth();
+                        var numCols;
+                        
+                        // Calcular quantas colunas cabem baseado no Bootstrap responsive
+                        if (containerWidth < 576) {
+                            numCols = 1; // Mobile (xs)
+                        } else if (containerWidth < 768) {
+                            numCols = 2; // Small (sm)
+                        } else {
+                            numCols = 3; // Medium+ (md, lg, xl)
+                        }
+                        
                         // Calcular altura baseada nos cards e container
                         var cardHeight = cards.first().outerHeight() || 300; // altura de um card
-                        var numCols = 3; // 3 colunas por linha
                         var numRows = Math.ceil(cards.length / numCols); // quantas linhas
                         var containerPadding = container.outerHeight() - container.height(); // padding do container
                         var rowGap = 24; // gap entre linhas (g-4 do Bootstrap = 1.5rem = 24px)
                         
-                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra + 20% de buffer
+                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra + 30% de buffer
                         var totalHeight = (cardHeight * numRows) + (rowGap * (numRows - 1)) + containerPadding + 100;
-                        var bufferHeight = Math.ceil(totalHeight * 1.2); // 20% de buffer
+                        var bufferHeight = Math.ceil(totalHeight * 1.3); // 30% de buffer para mobile
                         
                         $(self).css('height', bufferHeight + 'px');
-                        console.log('PHP iframe height adjusted to:', bufferHeight + 'px', 'for', cards.length, 'cards');
+                        console.log('PHP iframe height adjusted to:', bufferHeight + 'px', 'for', cards.length, 'cards,', numCols, 'cols,', numRows, 'rows, containerWidth:', containerWidth);
                     } else {
                         // Fallback: altura baseada no conteúdo do documento
                         var bodyHeight = iframeDoc.body.scrollHeight;
@@ -255,31 +268,44 @@ $(document).ready(function() {
                     var container = $(iframeDoc).find('.container');
                     
                     if (cards.length > 0 && rows.length > 0) {
+                        // Detectar número de colunas baseado na largura da tela/container
+                        var containerWidth = container.width();
+                        var cardWidth = cards.first().outerWidth();
+                        var numCols;
+                        
+                        // Calcular quantas colunas cabem baseado no Bootstrap responsive
+                        if (containerWidth < 576) {
+                            numCols = 1; // Mobile (xs)
+                        } else if (containerWidth < 768) {
+                            numCols = 2; // Small (sm)
+                        } else {
+                            numCols = 3; // Medium+ (md, lg, xl)
+                        }
+                        
                         // Calcular altura baseada nos cards e container
                         var cardHeight = cards.first().outerHeight() || 300; // altura de um card
-                        var numCols = 3; // 3 colunas por linha
                         var numRows = Math.ceil(cards.length / numCols); // quantas linhas
                         var containerPadding = container.outerHeight() - container.height(); // padding do container
                         var rowGap = 24; // gap entre linhas (g-4 do Bootstrap = 1.5rem = 24px)
                         
-                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra + 20% de buffer
+                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra + 30% de buffer
                         var totalHeight = (cardHeight * numRows) + (rowGap * (numRows - 1)) + containerPadding + 100;
-                        totalHeight = Math.ceil(totalHeight * 1.2); // adicionar 20% para espaços extras
+                        totalHeight = Math.ceil(totalHeight * 1.3); // 30% de buffer para mobile
                         
-                        console.log('Card height:', cardHeight, 'Rows:', numRows, 'Total:', totalHeight);
+                        console.log('SQL - Card height:', cardHeight, 'Rows:', numRows, 'Cols:', numCols, 'Total:', totalHeight, 'containerWidth:', containerWidth);
                         
-                        // Aplicar altura calculada (mínimo 800px, máximo 3000px)
-                        var finalHeight = Math.max(800, Math.min(3000, totalHeight));
+                        // Aplicar altura calculada (mínimo 800px, máximo 4000px para mobile)
+                        var finalHeight = Math.max(800, Math.min(4000, totalHeight));
                         $(self).height(finalHeight);
                     } else {
                         // Fallback se não conseguir medir
-                        $(self).height(1600);
+                        $(self).height(2000);
                     }
                 }, 500); // aguardar Bootstrap aplicar estilos
             } catch(e) {
                 console.log('Erro ao calcular altura:', e);
                 // Fallback para altura fixa
-                $(self).height(1600);
+                $(self).height(2000);
             }
         }, 200); // aguardar carregamento completo
     });
