@@ -160,7 +160,7 @@
       </div>
       <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
         <iframe
-          id="iframeBootstrapFormValidationPreview"
+          src="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html"
           width="100%" 
           height="100%" 
           frameborder="0" 
@@ -170,34 +170,4 @@
     </div>
   </div>
 </div>
-
-<script>
-$(document).ready(function() {
-    // Variável para controlar se já foi inicializado
-    if (window.bootstrapModalJQueryInit) return;
-    window.bootstrapModalJQueryInit = true;
-    
-    var $iframe = $('#iframeBootstrapFormValidationPreview');
-    var $modal = $('#previewModalBootstrap');
-    
-    // Função para definir src do iframe
-    function loadIframeSrc() {
-        if ($iframe.length && !$iframe.attr('src')) {
-            var isGithubPages = location.hostname.includes('github.io');
-            var src = isGithubPages
-                ? 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html'
-                : '/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
-            $iframe.attr('src', src);
-        }
-    }
-    
-    // Carregar iframe quando modal for mostrado
-    $modal.on('show.bs.modal', function() {
-        loadIframeSrc();
-    });
-    
-    // Também carregar imediatamente se elementos existirem
-    loadIframeSrc();
-});
-</script>
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
