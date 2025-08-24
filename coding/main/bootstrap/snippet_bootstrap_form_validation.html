@@ -159,12 +159,15 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
       </div>
       <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
+        <div id="modal-loader" class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-info">Carregando...</div>
+        </div>
         <iframe
           id="bootstrap-iframe-preview"
           width="100%" 
           height="100%" 
           frameborder="0" 
-          style="border:none; overflow-y: auto; border-radius: 0.5rem;">
+          style="border:none; overflow-y: auto; border-radius: 0.5rem; display: none;">
         </iframe>
       </div>
     </div>
@@ -172,28 +175,44 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    // Desabilitar completamente qualquer interação antes do modal estar pronto
-    let modalReady = false;
-    
-    $('#previewModalBootstrap').on('shown.bs.modal', function() {
-        // Só após o modal estar completamente visível, carregamos o iframe
-        setTimeout(function() {
-            const iframe = document.getElementById('bootstrap-iframe-preview');
-            if (iframe && !iframe.src) {
+// Solução ultra-simples - apenas uma única execução controlada
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('previewModalBootstrap');
+    const iframe = document.getElementById('bootstrap-iframe-preview');
+    const loader = document.getElementById('modal-loader');
+    let isLoaded = false;
+
+    // Interceptar APENAS o evento de abertura do modal
+    modal.addEventListener('shown.bs.modal', function() {
+        if (!isLoaded) {
+            // Mostrar loader
+            loader.style.display = 'flex';
+            iframe.style.display = 'none';
+            
+            // Carregar iframe após um delay
+            setTimeout(function() {
                 iframe.src = 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
-                modalReady = true;
-            }
-        }, 300); // Delay adicional para garantir que tudo esteja estabilizado
-    });
-    
-    // Limpar iframe quando modal fechar
-    $('#previewModalBootstrap').on('hidden.bs.modal', function() {
-        const iframe = document.getElementById('bootstrap-iframe-preview');
-        if (iframe) {
-            iframe.src = '';
+                
+                // Aguardar o iframe carregar
+                iframe.onload = function() {
+                    loader.style.display = 'none';
+                    iframe.style.display = 'block';
+                    isLoaded = true;
+                };
+            }, 500);
+        } else {
+            // Se já carregado, apenas mostrar
+            loader.style.display = 'none';
+            iframe.style.display = 'block';
         }
-        modalReady = false;
+    });
+
+    // Resetar quando fechar
+    modal.addEventListener('hidden.bs.modal', function() {
+        loader.style.display = 'flex';
+        iframe.style.display = 'none';
+        isLoaded = false;
+        iframe.src = '';
     });
 });
 </script>
