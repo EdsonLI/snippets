@@ -771,3 +771,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
     height: 4000px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
+
+.card-header {
+  border-bottom: var(--bs-card-border-width) solid #30363d !important;
+}
