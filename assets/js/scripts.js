@@ -149,49 +149,17 @@ $(document).ready(function() {
       }
     });
 
-    $('#css-content').load('./snippets_css.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('css-content'));
-      }
-    });
+    var iframe_css = $('<iframe src="./coding/indexing/css_limpo_corrigido.html" class="iframe-css" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    $('#css-content').html(iframe_css);
 
-    $('#bootstrap-content').load('./snippets_bootstrap.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('bootstrap-content'));
-      }
-    });
+    var iframe_bootstrap = $('<iframe src="./coding/indexing/bootstrap_limpo_corrigido.html" class="iframe-bootstrap" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    $('#bootstrap-content').html(iframe_bootstrap);
 
-    $('#jquery-content').load('./snippets_jquery.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('jquery-content'));
-      }
-    });
+    var iframe_jquery = $('<iframe src="./coding/indexing/jquery_limpo_corrigido.html" class="iframe-jquery" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    $('#jquery-content').html(iframe_jquery);
 
-    $('#html-content').load('./snippets_html.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('html-content'));
-      }
-    });
+    var iframe_html = $('<iframe src="./coding/indexing/html_limpo_corrigido.html" class="iframe-html" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    $('#html-content').html(iframe_html);
 
     var iframe_php = $('<iframe src="./php_limpo_corrigido.html" class="iframe-php" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#php-content').html(iframe_php);

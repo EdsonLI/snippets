@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Snippets</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Highlight.js (tema escuro + versão completa) - MESMO DOS OUTROS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/iconify.min.js"></script>
+    
+    <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
+    <link href="assets/css/indexing-unified.css" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <section class="py-5">
+        <div class="container bootstrap-scope card-snippet" id="bootstrap" data-tags="bootstrap">
+            
+            <style>
+                /* Escopo local da página Bootstrap: borda roxa padrão */
+                .bootstrap-scope { --snippet-border: #6610f2; }
+                .bootstrap-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+                .bootstrap-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+                .bootstrap-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+                .bootstrap-scope .btn-outline-bootstrap { color: #6610f2 !important; border-color: #6610f2 !important; }
+                .bootstrap-scope .btn-outline-bootstrap:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
+                
+                /* Remover fundo dos blocos de código */
+                .bootstrap-scope pre { background: transparent !important; font-size: 0.85em !important; }
+                .bootstrap-scope code { background: transparent !important; font-size: 0.85em !important; }
+                .bootstrap-scope pre code { background: transparent !important; font-size: 0.85em !important; }
+            </style>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                
+                <!-- Grid System -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>GRID SYSTEM</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-6"&gt;Coluna 1&lt;/div&gt;
+        &lt;div class="col-md-6"&gt;Coluna 2&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row row-cols-3"&gt;
+        &lt;div class="col"&gt;Item 1&lt;/div&gt;
+        &lt;div class="col"&gt;Item 2&lt;/div&gt;
+        &lt;div class="col"&gt;Item 3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CARDS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+    &lt;/div&gt;
+    &lt;div class="card-body"&gt;
+        &lt;p class="card-text"&gt;Conteúdo do card&lt;/p&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Botão&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>BUTTONS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Botões básicos --&gt;
+&lt;button class="btn btn-primary"&gt;Primário&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Sucesso&lt;/button&gt;
+&lt;button class="btn btn-outline-danger"&gt;Outline&lt;/button&gt;
+
+&lt;!-- Tamanhos --&gt;
+&lt;button class="btn btn-lg btn-primary"&gt;Grande&lt;/button&gt;
+&lt;button class="btn btn-sm btn-secondary"&gt;Pequeno&lt;/button&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>MODAL</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;button class="btn btn-primary" data-bs-toggle="modal" 
+        data-bs-target="#meuModal"&gt;
+    Abrir Modal
+&lt;/button&gt;
+
+&lt;div class="modal fade" id="meuModal"&gt;
+    &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-content"&gt;
+            &lt;div class="modal-header"&gt;
+                &lt;h5 class="modal-title"&gt;Título&lt;/h5&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-body"&gt;
+                Conteúdo do modal
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navbar -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>NAVBAR</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+    &lt;div class="container"&gt;
+        &lt;a class="navbar-brand" href="#"&gt;Logo&lt;/a&gt;
+        &lt;button class="navbar-toggler" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav"&gt;
+            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+            &lt;ul class="navbar-nav"&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forms -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>FORMS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;form&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
+        &lt;input type="email" class="form-control" id="email"&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="senha" class="form-label"&gt;Senha&lt;/label&gt;
+        &lt;input type="password" class="form-control" id="senha"&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CAROUSEL</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;div id="meuCarousel" class="carousel slide" 
+     data-bs-ride="carousel"&gt;
+    &lt;div class="carousel-inner"&gt;
+        &lt;div class="carousel-item active"&gt;
+            &lt;img src="img1.jpg" class="d-block w-100"&gt;
+        &lt;/div&gt;
+        &lt;div class="carousel-item"&gt;
+            &lt;img src="img2.jpg" class="d-block w-100"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="carousel-control-prev" 
+            data-bs-target="#meuCarousel" data-bs-slide="prev"&gt;
+        &lt;span class="carousel-control-prev-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>ACCORDION</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;div class="accordion" id="meuAccordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;h2 class="accordion-header"&gt;
+            &lt;button class="accordion-button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#item1"&gt;
+                Item 1
+            &lt;/button&gt;
+        &lt;/h2&gt;
+        &lt;div id="item1" class="accordion-collapse collapse show"&gt;
+            &lt;div class="accordion-body"&gt;
+                Conteúdo do item 1
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>ALERTS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;div class="alert alert-success" role="alert"&gt;
+    Sucesso! Operação concluída.
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger alert-dismissible" role="alert"&gt;
+    Erro! Algo deu errado.
+    &lt;button type="button" class="btn-close" 
+            data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning" role="alert"&gt;
+    &lt;strong&gt;Atenção!&lt;/strong&gt; Dados serão perdidos.
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>BADGES</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Badges básicos --&gt;
+&lt;span class="badge bg-primary"&gt;Primário&lt;/span&gt;
+&lt;span class="badge bg-success"&gt;Sucesso&lt;/span&gt;
+&lt;span class="badge bg-danger"&gt;Erro&lt;/span&gt;
+
+&lt;!-- Badge pill --&gt;
+&lt;span class="badge rounded-pill bg-info"&gt;Novo&lt;/span&gt;
+
+&lt;!-- Com contador --&gt;
+Mensagens &lt;span class="badge bg-secondary"&gt;4&lt;/span&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dropdowns -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>DROPDOWNS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;div class="dropdown"&gt;
+    &lt;button class="btn btn-secondary dropdown-toggle" 
+            data-bs-toggle="dropdown"&gt;
+        Menu
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Ação 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Ação 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Outra ação&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Utilities -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>UTILITIES</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Espaçamentos --&gt;
+&lt;div class="p-3 m-2"&gt;Padding 3, Margin 2&lt;/div&gt;
+&lt;div class="mt-4 mb-3"&gt;Margin top 4, bottom 3&lt;/div&gt;
+
+&lt;!-- Display --&gt;
+&lt;div class="d-flex justify-content-center"&gt;Centrado&lt;/div&gt;
+&lt;div class="d-none d-md-block"&gt;Visível apenas desktop&lt;/div&gt;
+
+&lt;!-- Cores --&gt;
+&lt;div class="text-primary bg-light"&gt;Texto azul&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Highlight.js - MESMO DOS OUTROS -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

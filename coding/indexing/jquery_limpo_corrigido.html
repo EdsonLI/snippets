@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Snippets</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Highlight.js (tema escuro + versão completa) - MESMO DOS OUTROS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/iconify.min.js"></script>
+    
+    <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
+    <link href="assets/css/indexing-unified.css" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <section class="py-5">
+        <div class="container jquery-scope card-snippet" id="jquery" data-tags="jquery">
+            
+            <style>
+                /* Escopo local da página jQuery: borda roxa padrão */
+                .jquery-scope { --snippet-border: #6610f2; }
+                .jquery-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+                .jquery-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+                .jquery-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+                .jquery-scope .btn-outline-jquery { color: #6610f2 !important; border-color: #6610f2 !important; }
+                .jquery-scope .btn-outline-jquery:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
+                
+                /* Remover fundo dos blocos de código */
+                .jquery-scope pre { background: transparent !important; font-size: 0.85em !important; }
+                .jquery-scope code { background: transparent !important; font-size: 0.85em !important; }
+                .jquery-scope pre code { background: transparent !important; font-size: 0.85em !important; }
+            </style>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                
+                <!-- Document Ready -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>DOCUMENT READY</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">$(document).ready(function() {
+    // Seu código aqui
+    console.log("DOM pronto!");
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seletor de elemento -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>SELETORES</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Por ID
+$('#meuElemento')
+
+// Por classe
+$('.minhaClasse')
+
+// Por tag
+$('p')
+
+// Múltiplos seletores
+$('#id1, .classe1, p')</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eventos -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>EVENTOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Click
+$('#botao').click(function() {
+    alert('Clicado!');
+});
+
+// Hover
+$('.item').hover(
+    function() { $(this).addClass('hover'); },
+    function() { $(this).removeClass('hover'); }
+);</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manipulação de Classes -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CLASSES</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Adicionar classe
+$('.elemento').addClass('ativa');
+
+// Remover classe
+$('.elemento').removeClass('ativa');
+
+// Toggle classe
+$('.elemento').toggleClass('ativa');</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manipulação de Conteúdo -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CONTEÚDO</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Texto
+$('#titulo').text('Novo texto');
+
+// HTML
+$('#container').html('<p>Novo HTML</p>');
+
+// Valor de input
+$('#campo').val('Novo valor');</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CSS -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CSS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Uma propriedade
+$('.elemento').css('color', 'red');
+
+// Múltiplas propriedades
+$('.elemento').css({
+    'background-color': '#333',
+    'padding': '10px',
+    'border-radius': '5px'
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animações -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>ANIMAÇÕES</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Fade
+$('.elemento').fadeIn();
+$('.elemento').fadeOut();
+
+// Slide
+$('.elemento').slideUp();
+$('.elemento').slideDown();
+
+// Personalizada
+$('.elemento').animate({
+    opacity: 0.5,
+    left: '250px'
+}, 1000);</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AJAX -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>AJAX</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// GET
+$.get('api/dados.php', function(data) {
+    console.log(data);
+});
+
+// POST
+$.post('api/salvar.php', {
+    nome: 'João',
+    email: 'joao@email.com'
+}, function(response) {
+    alert('Salvo!');
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulários -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>FORMULÁRIOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Submit
+$('#formulario').submit(function(e) {
+    e.preventDefault();
+    // Validação
+});
+
+// Serializar
+var dados = $('#formulario').serialize();
+
+// Reset
+$('#formulario')[0].reset();</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOM Manipulation -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>DOM</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Adicionar elemento
+$('.container').append('<p>Novo item</p>');
+
+// Remover
+$('.item').remove();
+
+// Clonar
+var clone = $('.original').clone();
+$('.destino').append(clone);</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Each Loop -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>LOOPS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Each
+$('.item').each(function(index) {
+    console.log(index, $(this).text());
+});
+
+// Map
+var textos = $('.item').map(function() {
+    return $(this).text();
+}).get();</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Utilitários -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>UTILITÁRIOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Checar existência
+if ($('.elemento').length) {
+    // Elemento existe
+}
+
+// Delay
+$('.elemento').delay(1000).fadeIn();
+
+// Stop animação
+$('.elemento').stop().fadeOut();</code></pre>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Highlight.js - MESMO DOS OUTROS -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Snippets</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Highlight.js (tema escuro + versão completa) - MESMO DOS OUTROS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/iconify.min.js"></script>
+    
+    <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
+    <link href="assets/css/indexing-unified.css" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <section class="py-5">
+        <div class="container html-scope card-snippet" id="html" data-tags="html">
+            
+            <style>
+                /* Escopo local da página HTML: borda roxa padrão */
+                .html-scope { --snippet-border: #6610f2; }
+                .html-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+                .html-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+                .html-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+                .html-scope .btn-outline-html { color: #6610f2 !important; border-color: #6610f2 !important; }
+                .html-scope .btn-outline-html:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
+                
+                /* Remover fundo dos blocos de código */
+                .html-scope pre { background: transparent !important; font-size: 0.85em !important; }
+                .html-scope code { background: transparent !important; font-size: 0.85em !important; }
+                .html-scope pre code { background: transparent !important; font-size: 0.85em !important; }
+            </style>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                
+                <!-- Estrutura Básica -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>ESTRUTURA BÁSICA</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-br"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Título da Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Meu Site&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cabeçalhos -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CABEÇALHOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;h2&gt;Subtítulo&lt;/h2&gt;
+&lt;h3&gt;Seção&lt;/h3&gt;
+&lt;h4&gt;Subseção&lt;/h4&gt;
+&lt;h5&gt;Pequeno Título&lt;/h5&gt;
+&lt;h6&gt;Menor Título&lt;/h6&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parágrafos e Texto -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>PARÁGRAFOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;p&gt;Parágrafo normal de texto.&lt;/p&gt;
+
+&lt;p&gt;Texto com &lt;strong&gt;negrito&lt;/strong&gt; e &lt;em&gt;itálico&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Texto com &lt;mark&gt;destaque&lt;/mark&gt; e &lt;small&gt;pequeno&lt;/small&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    Citação importante
+&lt;/blockquote&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>LINKS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Link externo --&gt;
+&lt;a href="https://www.google.com" target="_blank"&gt;Google&lt;/a&gt;
+
+&lt;!-- Link interno --&gt;
+&lt;a href="pagina.html"&gt;Outra Página&lt;/a&gt;
+
+&lt;!-- Link âncora --&gt;
+&lt;a href="#secao1"&gt;Ir para Seção 1&lt;/a&gt;
+
+&lt;!-- Link email --&gt;
+&lt;a href="mailto:contato@site.com"&gt;Enviar Email&lt;/a&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagens -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>IMAGENS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Imagem simples --&gt;
+&lt;img src="imagem.jpg" alt="Descrição da imagem"&gt;
+
+&lt;!-- Imagem com dimensões --&gt;
+&lt;img src="foto.jpg" alt="Foto" width="300" height="200"&gt;
+
+&lt;!-- Imagem responsiva --&gt;
+&lt;img src="banner.jpg" alt="Banner" style="max-width: 100%;"&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Listas -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>LISTAS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Lista não ordenada --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Lista ordenada --&gt;
+&lt;ol&gt;
+    &lt;li&gt;Primeiro&lt;/li&gt;
+    &lt;li&gt;Segundo&lt;/li&gt;
+    &lt;li&gt;Terceiro&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabelas -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>TABELAS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Nome&lt;/th&gt;
+            &lt;th&gt;Idade&lt;/th&gt;
+            &lt;th&gt;Cidade&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;João&lt;/td&gt;
+            &lt;td&gt;25&lt;/td&gt;
+            &lt;td&gt;São Paulo&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulários -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>FORMULÁRIOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;form action="processar.php" method="POST"&gt;
+    &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+    &lt;input type="text" id="nome" name="nome" required&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+    
+    &lt;label for="mensagem"&gt;Mensagem:&lt;/label&gt;
+    &lt;textarea id="mensagem" name="mensagem"&gt;&lt;/textarea&gt;
+    
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>INPUTS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Tipos de input --&gt;
+&lt;input type="text" placeholder="Texto"&gt;
+&lt;input type="password" placeholder="Senha"&gt;
+&lt;input type="email" placeholder="Email"&gt;
+&lt;input type="number" placeholder="Número"&gt;
+&lt;input type="date"&gt;
+&lt;input type="file"&gt;
+
+&lt;!-- Checkbox e Radio --&gt;
+&lt;input type="checkbox" id="check1"&gt;
+&lt;input type="radio" name="opcao" value="1"&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divs e Sections -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>CONTAINERS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Divisões --&gt;
+&lt;div class="container"&gt;
+    &lt;header&gt;Cabeçalho&lt;/header&gt;
+    
+    &lt;nav&gt;Menu de navegação&lt;/nav&gt;
+    
+    &lt;main&gt;
+        &lt;section&gt;Seção principal&lt;/section&gt;
+        &lt;aside&gt;Barra lateral&lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;Rodapé&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meta Tags -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>META TAGS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="Descrição da página"&gt;
+    &lt;meta name="keywords" content="palavras, chave"&gt;
+    &lt;meta name="author" content="Seu Nome"&gt;
+    
+    &lt;!-- Open Graph --&gt;
+    &lt;meta property="og:title" content="Título"&gt;
+    &lt;meta property="og:description" content="Descrição"&gt;
+&lt;/head&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comentários -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
+                            <span>COMENTÁRIOS</span>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-html">&lt;!-- Comentário simples --&gt;
+
+&lt;!-- 
+    Comentário
+    de múltiplas
+    linhas
+--&gt;
+
+&lt;div&gt;
+    &lt;!-- Comentário dentro do código --&gt;
+    &lt;p&gt;Conteúdo visível&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Highlight.js - MESMO DOS OUTROS -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>
