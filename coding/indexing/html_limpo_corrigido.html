@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,15 @@
                 .html-scope .btn-outline-html { color: #6610f2 !important; border-color: #6610f2 !important; }
                 .html-scope .btn-outline-html:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
                 
+                /* Alinhamento perfeito ícone + título */
+                .html-scope .card-header svg, .html-scope .card-header iconify-icon, .html-scope .card-header h6 {
+                    vertical-align: middle;
+                }
+                .html-scope .card-header h6 {
+                    margin: 0;
+                    line-height: 1;
+                }
+                
                 /* Remover fundo dos blocos de código */
                 .html-scope pre { background: transparent !important; font-size: 0.85em !important; }
                 .html-scope code { background: transparent !important; font-size: 0.85em !important; }
@@ -46,8 +55,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>ESTRUTURA BÁSICA</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Estrutura Básica</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -69,8 +78,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>CABEÇALHOS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Cabeçalhos</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;h1&gt;Título Principal&lt;/h1&gt;
@@ -87,8 +96,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>PARÁGRAFOS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Parágrafos</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;p&gt;Parágrafo normal de texto.&lt;/p&gt;
@@ -108,8 +117,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>LINKS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Links</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!-- Link externo --&gt;
@@ -131,8 +140,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>IMAGENS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Imagens</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!-- Imagem simples --&gt;
@@ -151,8 +160,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>LISTAS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Listas</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!-- Lista não ordenada --&gt;
@@ -176,8 +185,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>TABELAS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Tabelas</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;table&gt;
@@ -204,8 +213,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>FORMULÁRIOS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Formulários</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;form action="processar.php" method="POST"&gt;
@@ -228,8 +237,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>INPUTS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Inputs</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!-- Tipos de input --&gt;
@@ -251,8 +260,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>CONTAINERS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Containers</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!-- Divisões --&gt;
@@ -276,8 +285,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>META TAGS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Meta Tags</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;head&gt;
@@ -299,8 +308,8 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
-                            <span>COMENTÁRIOS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2" style="color: white;"><g fill="none"><g fill="currentColor" clip-path="url(#SVGXv8lpc2Y)"><path d="M5.08 0h1.082v1.069h.99V0h1.082v3.236H7.152V2.153h-.99v1.083H5.081zm4.576 1.073h-.952V0h2.987v1.073h-.953v2.163H9.656zM12.165 0h1.128l.694 1.137L14.68 0h1.128v3.236h-1.077V1.632l-.744 1.151h-.019l-.745-1.15v1.603h-1.058zm4.181 0h1.083v2.167h1.52v1.07h-2.603z"/><path fill-rule="evenodd" d="M5.046 22.072L3 4.717h18L18.953 22.07L11.99 24zm4.137-9.5l-.194-2.18h8.145l.19-2.128H6.664l.574 6.437h7.377l-.247 2.76l-2.374.642h-.002l-2.37-.64l-.152-1.697H7.332l.298 3.342l4.36 1.21l4.367-1.21l.532-5.964l.052-.571z" clip-rule="evenodd"/></g><defs><clipPath id="SVGXv8lpc2Y"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg>
+                            <h6>Comentários</h6>
                         </div>
                         <div class="card-body">
 <pre><code class="language-html">&lt;!-- Comentário simples --&gt;

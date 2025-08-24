@@ -1,5 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang            <style>
+                /* Escopo local da página CSS: borda roxa padrão */
+                .css-scope { --snippet-border: #6610f2; }
+                .css-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+                .css-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+                .css-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+                .css-scope .btn-outline-css { color: #6610f2 !important; border-color: #6610f2 !important; }
+                .css-scope .btn-outline-css:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
+                
+                /* Alinhamento perfeito ícone + título */
+                .css-scope .card-header svg, .css-scope .card-header iconify-icon, .css-scope .card-header h6 {
+                    vertical-align: middle;
+                }
+                .css-scope .card-header h6 {
+                    margin: 0;
+                    line-height: 1;
+                }
+            </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
