@@ -226,8 +226,9 @@ $(document).ready(function() {
                         var containerPadding = container.outerHeight() - container.height(); // padding do container
                         var rowGap = 24; // gap entre linhas (g-4 do Bootstrap = 1.5rem = 24px)
                         
-                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra
+                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra + 20% de buffer
                         var totalHeight = (cardHeight * numRows) + (rowGap * (numRows - 1)) + containerPadding + 100;
+                        totalHeight = Math.ceil(totalHeight * 1.2); // adicionar 20% para espaços extras
                         
                         console.log('Card height:', cardHeight, 'Rows:', numRows, 'Total:', totalHeight);
                         

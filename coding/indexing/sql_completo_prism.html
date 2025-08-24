@@ -26,13 +26,46 @@
         <div class="container sql-scope card-snippet" id="sql" data-tags="sql">
             
             <style>
-                /* Escopo local da página SQL: borda azul SQL */
-                .sql-scope { --snippet-border: #0066cc; }
-                .sql-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
-                .sql-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
-                .sql-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
-                .sql-scope .btn-outline-sql { color: #0066cc !important; border-color: #0066cc !important; }
-                .sql-scope .btn-outline-sql:hover { background: rgba(0,102,204,.08) !important; color: #0066cc !important; }
+                /* Escopo local da página SQL: borda roxa padrão */
+                .sql-scope { --snippet-border: #6610f2; }
+                .sql-scope .card { 
+                    border-width: 1px !important; 
+                    background: var(--snippet-card-bg) !important; 
+                    color: var(--snippet-card-fg) !important; 
+                    border-color: var(--snippet-border) !important;
+                }
+                .sql-scope .card-header { 
+                    background: #f8f9fa !important; 
+                    color: #333 !important; 
+                    border-bottom: 1px solid var(--snippet-border) !important;
+                    padding: 0.5rem 0.75rem !important;
+                    font-size: 0.85rem !important;
+                }
+                .sql-scope .card-body { 
+                    background: transparent !important; 
+                    color: var(--snippet-card-fg) !important;
+                    padding: 0.75rem !important;
+                }
+                
+                /* Tema escuro - headers escuros, código transparente */
+                body.theme-dark .sql-scope .card-header {
+                    background: #2d3748 !important;
+                    color: #e2e8f0 !important;
+                }
+                
+                body.theme-dark .sql-scope .card-body {
+                    background: transparent !important;
+                }
+                
+                /* Tema claro - headers cinza claro, código transparente */
+                body.theme-light .sql-scope .card-header {
+                    background: #f8f9fa !important;
+                    color: #333 !important;
+                }
+                
+                body.theme-light .sql-scope .card-body {
+                    background: transparent !important;
+                }
             </style>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
