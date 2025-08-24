@@ -218,7 +218,7 @@ body.theme-light code { background-color: #f8f9fa !important; color: #d63384 !im
 body.theme-dark code { background-color: #2d333b !important; color: #f0f6fc !important; }
 
 body.theme-light .bg-dark.border { background-color: #fff !important; border-color: #dee2e6 !important; }
-body.theme-dark .bg-dark.border { background-color: #161b22 !important; border-color: #30363d !important; }
+body.theme-dark .bg-dark.border { /*background-color: #161b22 !important;*/ border-color: #30363d !important; }
 
 /* CORREÇÕES PARA CONTEÚDO DINÂMICO (TAB-CONTENT) */
 body.theme-light .tab-content,
@@ -289,7 +289,7 @@ body.theme-dark .tab-content .card,
 body.theme-dark .tab-content .card-body { background-color: #222b36 !important; color: #e6edf3 !important; }
 
 body.theme-dark .tab-content pre,
-body.theme-dark .tab-content .highlight { background-color: #161b22 !important; color: #e6edf3 !important; }
+body.theme-dark .tab-content .highlight { /*background-color: #161b22 !important;*/ color: #e6edf3 !important; }
 
 #jquery-content, #css-content, #bootstrap-content, #html-content { transition: all 0.3s ease !important; }
 
@@ -331,7 +331,7 @@ body.theme-dark #html-content .card { background-color: #222b36 !important; colo
 body.theme-dark #jquery-content pre,
 body.theme-dark #css-content pre,
 body.theme-dark #bootstrap-content pre,
-body.theme-dark #html-content pre { background-color: #161b22 !important; color: #e6edf3 !important; border: none !important; }
+body.theme-dark #html-content pre { /*background-color: #161b22 !important;*/ color: #e6edf3 !important; border: none !important; }
 
 body.theme-light #jquery-content section,
 body.theme-light #css-content section,
@@ -455,7 +455,7 @@ code.hljs,
 .hljs-punctuation,
 .code-block-wrapper *,
 [data-highlighted="yes"] {
-  background-color: #161b22 !important;
+  /*background-color: #161b22 !important;*/
 }
 
 pre, 
@@ -465,21 +465,21 @@ pre code.hljs,
 
 pre[class*="language-"],
 code[class*="language-"],
-div.code-block-wrapper > pre > code { background-color: #161b22 !important; }
+div.code-block-wrapper > pre > code { /*background-color: #161b22 !important;*/ }
 
 body.theme-dark pre,
 body.theme-dark pre code,
 body.theme-dark pre code.hljs,
 body.theme-dark .code-block-wrapper pre,
 body.theme-dark .code-block-wrapper pre code,
-body.theme-dark .code-block-wrapper pre code.hljs { background-color: #161b22 !important; }
+body.theme-dark .code-block-wrapper pre code.hljs { /*background-color: #161b22 !important;*/ }
 
 body.theme-light pre,
 body.theme-light pre code,
 body.theme-light pre code.hljs,
 body.theme-light .code-block-wrapper pre,
 body.theme-light .code-block-wrapper pre code,
-body.theme-light .code-block-wrapper pre code.hljs { background-color: #161b22 !important; }
+body.theme-light .code-block-wrapper pre code.hljs { /*background-color: #161b22 !important;*/ }
 
 pre::-webkit-scrollbar,
 pre code::-webkit-scrollbar,
@@ -615,7 +615,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Aplicar fundo escuro direto nas células (th/td) e remover sombra */
 .tab-content .table > :not(caption) > * > * {
-  background-color: #161b22 !important;
+  /*background-color: #161b22 !important;*/
   color: #e6edf3 !important;
   box-shadow: none !important;
   background-image: none !important;
@@ -626,7 +626,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 .tab-content .table tbody tr,
 .tab-content .table tbody td,
 .tab-content .table tbody th {
-  background-color: #161b22 !important;
+  /*background-color: #161b22 !important;*/
   color: #e6edf3 !important;
   box-shadow: none !important;
   background-image: none !important;
@@ -634,20 +634,20 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Cabeçalho com o mesmo fundo escuro para consistência */
 .tab-content .table thead th,
-.tab-content .table thead td { background-color: #161b22 !important; color: #e6edf3 !important; }
+.tab-content .table thead td { /*background-color: #161b22 !important;*/ color: #e6edf3 !important; }
 
 /* Rodapé quando existir */
 .tab-content .table tfoot th,
-.tab-content .table tfoot td { background-color: #161b22 !important; color: #e6edf3 !important; }
+.tab-content .table tfoot td { /*background-color: #161b22 !important;*/ color: #e6edf3 !important; }
 
 /* Hover mantém o fundo escuro (sem cinza) */
-.tab-content .table-hover > tbody > tr:hover > * { background-color: #161b22 !important; }
+.tab-content .table-hover > tbody > tr:hover > * { /*background-color: #161b22 !important;*/ }
 
 /* Remove qualquer listra/estado ativo claro do Bootstrap */
 .tab-content .table.table-striped > tbody > tr:nth-of-type(odd) > *,
 .tab-content .table.table-striped > tbody > tr:nth-of-type(even) > *,
 .tab-content .table .table-active,
-.tab-content .table .table-active > * { background-color: #161b22 !important; box-shadow: none !important; }
+.tab-content .table .table-active > * { /*background-color: #161b22 !important;*/ box-shadow: none !important; }
 
 /* Bordas sutis visíveis sobre o fundo escuro */
 .tab-content .table { --bs-table-border-color: rgba(255, 255, 255, 0.12) !important; }
