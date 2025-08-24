@@ -193,16 +193,52 @@ $(document).ready(function() {
       }
     });
 
-    $('#php-content').load('./snippets_php.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('php-content'));
-      }
+    var iframe_php = $('<iframe src="./php_completo_prism.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    
+    iframe_php.on('load', function() {
+        var self = this;
+        setTimeout(function() {
+            try {
+                var iframeDoc = self.contentDocument || self.contentWindow.document;
+                
+                // Aguardar o Bootstrap aplicar altura uniforme dos cards
+                setTimeout(function() {
+                    var cards = $(iframeDoc).find('.card');
+                    var rows = $(iframeDoc).find('.row');
+                    var container = $(iframeDoc).find('.container');
+                    
+                    if (cards.length > 0 && rows.length > 0) {
+                        // Calcular altura baseada nos cards e container
+                        var cardHeight = cards.first().outerHeight() || 300; // altura de um card
+                        var numCols = 3; // 3 colunas por linha
+                        var numRows = Math.ceil(cards.length / numCols); // quantas linhas
+                        var containerPadding = container.outerHeight() - container.height(); // padding do container
+                        var rowGap = 24; // gap entre linhas (g-4 do Bootstrap = 1.5rem = 24px)
+                        
+                        // Altura total = (altura do card × número de linhas) + gaps + padding + margem extra + 20% de buffer
+                        var totalHeight = (cardHeight * numRows) + (rowGap * (numRows - 1)) + containerPadding + 100;
+                        var bufferHeight = Math.ceil(totalHeight * 1.2); // 20% de buffer
+                        
+                        $(self).css('height', bufferHeight + 'px');
+                        console.log('PHP iframe height adjusted to:', bufferHeight + 'px', 'for', cards.length, 'cards');
+                    } else {
+                        // Fallback: altura baseada no conteúdo do documento
+                        var bodyHeight = iframeDoc.body.scrollHeight;
+                        var bufferHeight = Math.ceil(bodyHeight * 1.1); // 10% de buffer como fallback
+                        $(self).css('height', bufferHeight + 'px');
+                        console.log('PHP iframe fallback height:', bufferHeight + 'px');
+                    }
+                }, 200);
+                
+            } catch (e) {
+                console.warn('Error calculating PHP iframe height:', e);
+                // Usar altura fixa em caso de erro
+                $(self).css('height', '2000px');
+            }
+        }, 300);
     });
+    
+    $('#php-content').html(iframe_php);
 
     var iframe = $('<iframe src="./sql_completo_prism.html" style="width: 100%; height: 800px; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     
