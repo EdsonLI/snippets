@@ -11,9 +11,9 @@
         <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-xs btn-outline-info btn-custom" download>
           <iconify-icon icon="mdi:download" width="16" height="16"></iconify-icon>
         </a>
-        <button class="btn btn-xs btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
+        <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-xs btn-outline-info btn-custom">
           <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
-        </button>
+        </a>
         <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-bootstrap-form-validation-feedback">
           <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
         </button>
@@ -150,70 +150,4 @@
 </div>
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
 
-<!-- Modal preview -->
-<div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content bg-dark text-white border border-secondary-custom">
-      <div class="modal-header border-secondary-custom">
-        <h6 class="modal-title text-info" id="previewModalBootstrapLabel">Pré-visualização</h6>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
-      </div>
-      <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
-        <div id="modal-loader" class="d-flex justify-content-center align-items-center h-100">
-          <div class="text-info">Carregando...</div>
-        </div>
-        <iframe
-          id="bootstrap-iframe-preview"
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          style="border:none; overflow-y: auto; border-radius: 0.5rem; display: none;">
-        </iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// Solução ultra-simples - apenas uma única execução controlada
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('previewModalBootstrap');
-    const iframe = document.getElementById('bootstrap-iframe-preview');
-    const loader = document.getElementById('modal-loader');
-    let isLoaded = false;
-
-    // Interceptar APENAS o evento de abertura do modal
-    modal.addEventListener('shown.bs.modal', function() {
-        if (!isLoaded) {
-            // Mostrar loader
-            loader.style.display = 'flex';
-            iframe.style.display = 'none';
-            
-            // Carregar iframe após um delay
-            setTimeout(function() {
-                iframe.src = 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
-                
-                // Aguardar o iframe carregar
-                iframe.onload = function() {
-                    loader.style.display = 'none';
-                    iframe.style.display = 'block';
-                    isLoaded = true;
-                };
-            }, 500);
-        } else {
-            // Se já carregado, apenas mostrar
-            loader.style.display = 'none';
-            iframe.style.display = 'block';
-        }
-    });
-
-    // Resetar quando fechar
-    modal.addEventListener('hidden.bs.modal', function() {
-        loader.style.display = 'flex';
-        iframe.style.display = 'none';
-        isLoaded = false;
-        iframe.src = '';
-    });
-});
-</script>
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
