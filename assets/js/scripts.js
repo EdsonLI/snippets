@@ -149,16 +149,16 @@ $(document).ready(function() {
       }
     });
 
-    var iframe_css = $('<iframe src="./coding/indexing/css_limpo_corrigido.html" class="iframe-css" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe_css = $('<iframe src="./css_limpo_corrigido.html" class="iframe-css" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#css-content').html(iframe_css);
 
-    var iframe_bootstrap = $('<iframe src="./coding/indexing/bootstrap_limpo_corrigido.html" class="iframe-bootstrap" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe_bootstrap = $('<iframe src="./bootstrap_limpo_corrigido.html" class="iframe-bootstrap" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#bootstrap-content').html(iframe_bootstrap);
 
-    var iframe_jquery = $('<iframe src="./coding/indexing/jquery_limpo_corrigido.html" class="iframe-jquery" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe_jquery = $('<iframe src="./jquery_limpo_corrigido.html" class="iframe-jquery" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#jquery-content').html(iframe_jquery);
 
-    var iframe_html = $('<iframe src="./coding/indexing/html_limpo_corrigido.html" class="iframe-html" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    var iframe_html = $('<iframe src="./html_limpo_corrigido.html" class="iframe-html" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#html-content').html(iframe_html);
 
     var iframe_php = $('<iframe src="./php_limpo_corrigido.html" class="iframe-php" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
