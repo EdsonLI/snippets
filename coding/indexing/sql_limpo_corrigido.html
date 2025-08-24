@@ -35,9 +35,9 @@
                 .sql-scope .btn-outline-sql:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
                 
                 /* Remover fundo dos blocos de código */
-                .sql-scope pre { background: transparent !important; }
-                .sql-scope code { background: transparent !important; }
-                .sql-scope pre code { background: transparent !important; }
+                .sql-scope pre { background: transparent !important; font-size: 0.85em !important; }
+                .sql-scope code { background: transparent !important; font-size: 0.85em !important; }
+                .sql-scope pre code { background: transparent !important; font-size: 0.85em !important; }
             </style>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
@@ -46,7 +46,7 @@
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>CREATE DATABASE</span>
                         </div>
                         <div class="card-body">
@@ -66,7 +66,7 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>CREATE TABLE</span>
                         </div>
                         <div class="card-body">
@@ -86,7 +86,7 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>INSERT INTO</span>
                         </div>
                         <div class="card-body">
@@ -107,7 +107,7 @@ VALUES
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>SELECT BÁSICO</span>
                         </div>
                         <div class="card-body">
@@ -128,7 +128,7 @@ WHERE ativo = TRUE;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>UPDATE</span>
                         </div>
                         <div class="card-body">
@@ -149,7 +149,7 @@ WHERE email = 'joao@email.com';</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>DELETE</span>
                         </div>
                         <div class="card-body">
@@ -169,7 +169,7 @@ AND data_criacao < '2024-01-01';</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>JOIN</span>
                         </div>
                         <div class="card-body">
@@ -191,7 +191,7 @@ GROUP BY u.id, u.nome;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>WHERE AVANÇADO</span>
                         </div>
                         <div class="card-body">
@@ -214,7 +214,7 @@ WHERE categoria_id IN (1, 3, 5);</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>ORDER BY & LIMIT</span>
                         </div>
                         <div class="card-body">
@@ -238,7 +238,7 @@ LIMIT 10;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>GROUP BY</span>
                         </div>
                         <div class="card-body">
@@ -260,7 +260,7 @@ HAVING AVG(preco) > 100;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>ALTER TABLE</span>
                         </div>
                         <div class="card-body">
@@ -283,7 +283,7 @@ DROP COLUMN telefone;</code></pre>
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <i class="fas fa-code me-2" style="width: 20px; color: #6610f2;"></i>
+                            <i class="fas fa-code me-2" style="width: 20px; color: white;"></i>
                             <span>ÍNDICES</span>
                         </div>
                         <div class="card-body">
