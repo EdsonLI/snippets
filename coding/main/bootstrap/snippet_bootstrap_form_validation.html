@@ -11,7 +11,7 @@
         <a href="https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html" target="_blank" class="btn btn-xs btn-outline-info btn-custom" download>
           <iconify-icon icon="mdi:download" width="16" height="16"></iconify-icon>
         </a>
-        <button class="btn btn-xs btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrapFormValidation">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-bs-toggle="modal" data-bs-target="#previewModalBootstrap">
           <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
         </button>
         <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-bootstrap-form-validation-feedback">
@@ -151,11 +151,11 @@
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
 
 <!-- Modal preview -->
-<div class="modal fade px-0 m-0" id="previewModalBootstrapFormValidation" tabindex="-1" aria-labelledby="previewModalBootstrapFormValidationLabel" aria-hidden="true">
+<div class="modal fade px-0 m-0" id="previewModalBootstrap" tabindex="-1" aria-labelledby="previewModalBootstrapLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content bg-dark text-white border border-secondary-custom">
       <div class="modal-header border-secondary-custom">
-        <h6 class="modal-title text-info" id="previewModalBootstrapFormValidationLabel">Pré-visualização</h6>
+        <h6 class="modal-title text-info" id="previewModalBootstrapLabel">Pré-visualização</h6>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar" style="filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);"></button>
       </div>
       <div class="modal-body p-0" style="height: 85vh; overflow: hidden; border: 1px solid #555;">
@@ -172,24 +172,22 @@
 </div>
 
 <script>
-// Script movido para fora do modal para evitar re-execução
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById('previewModalBootstrapFormValidation');
-  const iframe = document.getElementById('iframeBootstrapFormValidationPreview');
+(function() {
+  // Executar apenas uma vez
+  if (window.bootstrapModalInitialized) return;
+  window.bootstrapModalInitialized = true;
   
-  if (modal && iframe) {
-    // Executar apenas uma vez quando o modal é mostrado
-    modal.addEventListener('show.bs.modal', function(event) {
-      if (!iframe.src) {
-        // Define src do iframe conforme ambiente
-        var isGithubPages = location.hostname.includes('github.io');
-        var src = isGithubPages
-          ? 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html'
-          : '/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
-        iframe.src = src;
-      }
-    });
-  }
-});
+  document.addEventListener('DOMContentLoaded', function() {
+    const iframe = document.getElementById('iframeBootstrapFormValidationPreview');
+    if (iframe && !iframe.src) {
+      // Define src imediatamente, uma única vez
+      const isGithubPages = location.hostname.includes('github.io');
+      const src = isGithubPages
+        ? 'https://edsonli.github.io/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html'
+        : '/snippets/coding/snippets_standalone/standalone-bootstrap5-validation.html';
+      iframe.src = src;
+    }
+  });
+})();
 </script>
 <!-- https://getbootstrap.com/docs/5.3/forms/validation/#browser-defaults -->
