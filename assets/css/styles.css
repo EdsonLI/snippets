@@ -121,7 +121,7 @@ input[type="text"]:focus {
 .tab.bootstrap-tab.active::after { background-color: #7952b3; }
 .tab.html-tab.active::after { background-color: #Ec6231; }
 .tab.php-tab.active::after { background-color: #777bb3; }
-.tab.php-tab:hover { background: #21262d !important; color: #777bb3 !important; }
+.tab.php-tab:hover:not(.active) { background: #21262d; color: #777bb3; }
 .tab.sql-tab.active::after { background-color: #10a37f; }
 
 .tab .tab-check {
