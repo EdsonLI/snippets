@@ -702,24 +702,24 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe PHP - Desktop */
 .iframe-php {
-  height: 1800px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 2160px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe PHP - Mobile */
 @media (max-width: 767px) {
   .iframe-php {
-    height: 3500px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 3800px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
 /* Iframe SQL - Desktop */
 .iframe-sql {
-  height: 1600px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1550px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe SQL - Mobile */
 @media (max-width: 767px) {
   .iframe-sql {
-    height: 3200px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 3800px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
