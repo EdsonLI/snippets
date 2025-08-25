@@ -48,15 +48,24 @@
                 /* Botões extra pequenos como na página principal */
                 .btn-xs {
                     --bs-btn-padding-y: 0.15rem;
-                    --bs-btn-padding-x: 0.3rem;
+                    --bs-btn-padding-x: 0.2rem;
                     --bs-btn-font-size: 0.675rem;
                     --bs-btn-border-radius: 0.2rem;
-                    min-height: 22px !important;
-                    min-width: 22px !important;
+                    min-height: 20px !important;
+                    min-width: 20px !important;
+                    max-width: 24px !important;
                     display: inline-flex !important;
                     align-items: center !important;
                     justify-content: center !important;
                     line-height: 1 !important;
+                    margin-right: -8px !important;
+                    margin-left: 8px !important;
+                }
+                
+                /* Ícones menores nos botões */
+                .jquery-scope .btn-xs iconify-icon {
+                    width: 14px !important;
+                    height: 14px !important;
                 }
                 
                 /* Efeito hover roxo para os botões de copiar */
@@ -84,7 +93,7 @@
                                 <h6>Document ready</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-document-ready" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -105,7 +114,7 @@
                                 <h6>Seletores</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-seletores" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -133,7 +142,7 @@ $('#id1, .classe1, p')</code></pre>
                                 <h6>Eventos</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-eventos" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -160,7 +169,7 @@ $('.item').hover(
                                 <h6>Classes</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-classes" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -185,7 +194,7 @@ $('.elemento').toggleClass('ativa');</code></pre>
                                 <h6>Conteúdo</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-conteudo" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -210,7 +219,7 @@ $('#campo').val('Novo valor');</code></pre>
                                 <h6>CSS</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-css" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -236,7 +245,7 @@ $('.elemento').css({
                                 <h6>Animações</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-animacoes" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -266,7 +275,7 @@ $('.elemento').animate({
                                 <h6>AJAX</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-ajax" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -295,7 +304,7 @@ $.post('api/salvar.php', {
                                 <h6>Formulários</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-formularios" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -323,7 +332,7 @@ $('#formulario')[0].reset();</code></pre>
                                 <h6>DOM</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-dom" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -349,7 +358,7 @@ $('.destino').append(clone);</code></pre>
                                 <h6>Loops</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-loops" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
@@ -375,7 +384,7 @@ var textos = $('.item').map(function() {
                                 <h6>Utilitários</h6>
                             </div>
                             <button class="btn btn-xs btn-outline-jquery" data-target="jquery-utilitarios" title="Copiar código">
-                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
                             </button>
                         </div>
                         <div class="card-body">
