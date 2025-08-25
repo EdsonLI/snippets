@@ -37,7 +37,19 @@
                 }
                 .jquery-scope .card-header h6 {
                     margin: 0;
-                    line-height: 1;
+                    line-height: 24px;
+                    display: inline-flex;
+                    align-items: center;
+                }
+                
+                /* Alinhamento específico para ícones jQuery maiores */
+                .jquery-scope .card-header .d-flex.align-items-center {
+                    align-items: center !important;
+                }
+                .jquery-scope .card-header iconify-icon[icon="devicon-plain:jquery-wordmark"] {
+                    vertical-align: middle !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
                 }
                 
                 /* Remover fundo dos blocos de código */
