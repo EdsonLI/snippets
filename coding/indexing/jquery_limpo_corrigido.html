@@ -44,6 +44,33 @@
                 .jquery-scope pre { background: transparent !important; font-size: 0.85em !important; }
                 .jquery-scope code { background: transparent !important; font-size: 0.85em !important; }
                 .jquery-scope pre code { background: transparent !important; font-size: 0.85em !important; }
+                
+                /* Botões extra pequenos como na página principal */
+                .btn-xs {
+                    --bs-btn-padding-y: 0.15rem;
+                    --bs-btn-padding-x: 0.3rem;
+                    --bs-btn-font-size: 0.675rem;
+                    --bs-btn-border-radius: 0.2rem;
+                    min-height: 22px !important;
+                    min-width: 22px !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    line-height: 1 !important;
+                }
+                
+                /* Efeito hover roxo para os botões de copiar */
+                .jquery-scope .btn-outline-jquery:hover {
+                    color: #fff !important;
+                    background-color: rgba(111, 66, 193, 0.8) !important;
+                    border-color: transparent !important;
+                    transition: all 0.3s ease !important;
+                }
+                
+                /* Hover para o ícone dentro do botão */
+                .jquery-scope .btn-outline-jquery:hover iconify-icon {
+                    color: #fff !important;
+                }
             </style>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
@@ -377,6 +404,9 @@ $('.elemento').stop().fadeOut();</code></pre>
     
     <!-- jQuery para funcionalidade dos botões de cópia -->
     <script src="../../assets/js/jquery/jquery-3.7.1.min.js"></script>
+    
+    <!-- Scripts principais do projeto -->
+    <script src="../../assets/js/scripts.js"></script>
     
     <!-- Script para botões de cópia -->
     <script>
