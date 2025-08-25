@@ -702,7 +702,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe PHP - Desktop */
 .iframe-php {
-  height: 1240px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1600px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe PHP - Mobile */
@@ -738,13 +738,13 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 
 /* Iframe CSS - Desktop */
 .iframe-css {
-  height: 1330px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+  height: 1180px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
 }
 
 /* Iframe CSS - Mobile */
 @media (max-width: 767px) {
   .iframe-css {
-    height: 3600px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 3000px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
@@ -756,7 +756,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 /* Iframe Bootstrap - Mobile */
 @media (max-width: 767px) {
   .iframe-bootstrap {
-    height: 4000px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 4250px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
@@ -768,7 +768,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 /* Iframe HTML - Mobile */
 @media (max-width: 767px) {
   .iframe-html {
-    height: 4000px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 3800px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
