@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetAlert2 Snippets</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Highlight.js (tema escuro + versão completa) - MESMO DOS OUTROS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/iconify.min.js"></script>
+    
+    <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
+    <link href="assets/css/indexing-unified.css" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <section class="py-5">
+        <div class="container sweetalert2-scope card-snippet" id="sweetalert2" data-tags="sweetalert2">
+            
+            <style>
+                /* Escopo local da página SweetAlert2: borda dourada */
+                .sweetalert2-scope { --snippet-border: #ffa500; }
+                .sweetalert2-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
+                .sweetalert2-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
+                .sweetalert2-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
+                .sweetalert2-scope .btn-outline-sweetalert2 { color: #ffa500 !important; border-color: #ffa500 !important; }
+                .sweetalert2-scope .btn-outline-sweetalert2:hover { background: rgba(255,165,0,.08) !important; color: #ffa500 !important; }
+                
+                /* Alinhamento perfeito ícone + título */
+                .sweetalert2-scope .card-header svg, .sweetalert2-scope .card-header iconify-icon, .sweetalert2-scope .card-header h6 {
+                    vertical-align: middle;
+                }
+                .sweetalert2-scope .card-header h6 {
+                    margin: 0;
+                    line-height: 1;
+                }
+                
+                /* Remover fundo dos blocos de código */
+                .sweetalert2-scope pre { background: transparent !important; font-size: 0.85em !important; }
+                .sweetalert2-scope code { background: transparent !important; font-size: 0.85em !important; }
+                .sweetalert2-scope pre code { background: transparent !important; font-size: 0.85em !important; }
+            </style>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                
+                <!-- SELECT COM VALIDAÇÃO -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="fluent:select-object-skew-edit-20-regular" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Select com Validação</h6>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">Swal.fire({
+  title: 'Escolha uma opção',
+  input: 'select',
+  inputOptions: {
+    'opcao1': 'Opção 1',
+    'opcao2': 'Opção 2',  
+    'opcao3': 'Opção 3'
+  },
+  inputPlaceholder: 'Selecione uma opção',
+  showCancelButton: true,
+  confirmButtonText: 'Confirmar',
+  cancelButtonText: 'Cancelar',
+  inputValidator: (value) => {
+    return !value && 'Você precisa selecionar uma opção!'
+  }
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire('Sucesso!', `Você escolheu: ${result.value}`, 'success');
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALERTA BÁSICO -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="mdi:alert-circle-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Alerta Básico</h6>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Alerta simples
+Swal.fire('Olá!', 'Esta é uma mensagem básica', 'info');
+
+// Com título personalizado
+Swal.fire({
+  title: 'Título Personalizado',
+  text: 'Esta é a mensagem do alerta',
+  icon: 'success',
+  confirmButtonText: 'OK'
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONFIRMAÇÃO -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="mdi:help-circle-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Confirmação</h6>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">Swal.fire({
+  title: 'Tem certeza?',
+  text: "Esta ação não pode ser desfeita!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sim, deletar!',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire('Deletado!', 'Item foi removido.', 'success');
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INPUT TEXT -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="mdi:text-box-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Input de Texto</h6>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">Swal.fire({
+  title: 'Digite seu nome',
+  input: 'text',
+  inputPlaceholder: 'Seu nome aqui...',
+  showCancelButton: true,
+  inputValidator: (value) => {
+    if (!value) {
+      return 'Você precisa digitar algo!'
+    }
+    if (value.length < 3) {
+      return 'Nome deve ter pelo menos 3 caracteres'
+    }
+  }
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(`Olá, ${result.value}!`);
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIMER -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="mdi:timer-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Com Timer</h6>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">Swal.fire({
+  title: 'Fechará automaticamente!',
+  text: 'Esta mensagem será fechada em 3 segundos',
+  timer: 3000,
+  timerProgressBar: true,
+  showConfirmButton: false,
+  didOpen: () => {
+    Swal.showLoading()
+  }
+});
+
+// Com contador regressivo
+let timerInterval
+Swal.fire({
+  title: 'Redirecionando...',
+  html: 'Será redirecionado em <b></b> segundos.',
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: () => {
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Math.ceil(Swal.getTimerLeft() / 1000)
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOADING -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="mdi:loading" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Loading</h6>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Loading simples
+Swal.fire({
+  title: 'Carregando...',
+  text: 'Aguarde um momento',
+  showConfirmButton: false,
+  allowOutsideClick: false,
+  didOpen: () => {
+    Swal.showLoading()
+  }
+});
+
+// Com simulação de processo
+Swal.fire({
+  title: 'Processando...',
+  html: 'Progresso: <b>0%</b>',
+  showConfirmButton: false,
+  allowOutsideClick: false,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    let progress = 0
+    const timer = setInterval(() => {
+      progress += 10
+      b.textContent = progress + '%'
+      if (progress >= 100) {
+        clearInterval(timer)
+        Swal.fire('Concluído!', 'Processo finalizado', 'success')
+      }
+    }, 300)
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Highlight.js - MESMO DOS OUTROS -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>
