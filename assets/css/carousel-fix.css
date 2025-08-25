@@ -1,15 +1,16 @@
 /* Estilos adicionais para as setas do carrossel */
 .tabs-arrow {
-  background-color: rgba(13, 17, 23, 0.8) !important;
+  background: transparent !important;
   width: 40px !important;
   height: 40px !important;
-  border-radius: 50% !important;
+  border: none !important;
+  border-radius: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: none !important;
+  box-shadow: none !important;
   z-index: 100;
   position: absolute;
   top: 50%;
@@ -25,21 +26,31 @@
 }
 
 .tabs-arrow:hover {
-  background-color: rgba(33, 38, 45, 0.9) !important;
+  background: transparent !important;
+  transform: translateY(-50%) !important;
 }
 
 .tabs-arrow i {
   color: #e6edf3;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  transition: none !important;
 }
 
-/* Melhorando a área de clique */
+/* Remover efeitos de hover e movimento */
+.tabs-arrow:active {
+  transform: translateY(-50%) !important;
+  transition: none !important;
+}
+
+/* Melhorando a área de clique - sem efeitos visuais */
 .tabs-arrow i {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: none !important;
+  transform: none !important;
 }
 
 /* Ajustar o layout do carrossel */
@@ -47,6 +58,25 @@
   position: relative;
   margin: 0 20px;
   overflow: visible;
+}
+
+/* Remover qualquer efeito de bounce ou animação nos botões */
+.tabs-arrow,
+.tabs-arrow *,
+.tabs-arrow:hover,
+.tabs-arrow:active,
+.tabs-arrow:focus {
+  animation: none !important;
+  transition: none !important;
+  transform: translateY(-50%) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Garantir que não há movimento vertical */
+.tabs-arrow:active i,
+.tabs-arrow:focus i {
+  transform: none !important;
 }
 
 /* Garantir que o conteúdo das abas tenha espaço suficiente */
