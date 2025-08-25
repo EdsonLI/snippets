@@ -443,43 +443,10 @@ body.theme-dark  #git-content .git-scope .table-hover > tbody > tr:hover > * { b
    ========================= */
 .code-block-wrapper { background-color: transparent !important; }
 
-.code-block-wrapper pre,
-.code-block-wrapper pre code,
-.code-block-wrapper pre code.hljs,
-pre,
-pre code,
-pre code.hljs,
-.hljs,
-code.hljs,
-.language-json,
-.hljs-punctuation,
-.code-block-wrapper *,
-[data-highlighted="yes"] {
-  /*background-color: #161b22 !important;*/
-}
-
 pre, 
 pre code,
 pre code.hljs,
 .hljs { border-radius: 6px; }
-
-pre[class*="language-"],
-code[class*="language-"],
-div.code-block-wrapper > pre > code { /*background-color: #161b22 !important;*/ }
-
-body.theme-dark pre,
-body.theme-dark pre code,
-body.theme-dark pre code.hljs,
-body.theme-dark .code-block-wrapper pre,
-body.theme-dark .code-block-wrapper pre code,
-body.theme-dark .code-block-wrapper pre code.hljs { /*background-color: #161b22 !important;*/ }
-
-body.theme-light pre,
-body.theme-light pre code,
-body.theme-light pre code.hljs,
-body.theme-light .code-block-wrapper pre,
-body.theme-light .code-block-wrapper pre code,
-body.theme-light .code-block-wrapper pre code.hljs { /*background-color: #161b22 !important;*/ }
 
 pre::-webkit-scrollbar,
 pre code::-webkit-scrollbar,
@@ -639,9 +606,6 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 /* Rodapé quando existir */
 .tab-content .table tfoot th,
 .tab-content .table tfoot td { /*background-color: #161b22 !important;*/ color: #e6edf3 !important; }
-
-/* Hover mantém o fundo escuro (sem cinza) */
-.tab-content .table-hover > tbody > tr:hover > * { /*background-color: #161b22 !important;*/ }
 
 /* Remove qualquer listra/estado ativo claro do Bootstrap */
 .tab-content .table.table-striped > tbody > tr:nth-of-type(odd) > *,
