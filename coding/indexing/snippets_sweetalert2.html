@@ -59,7 +59,7 @@
                             <h6>Select com Validação</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-select-validation" class="language-js">Swal.fire({
   title: 'Escolha uma opção',
   input: 'select',
   inputOptions: {
@@ -91,7 +91,7 @@
                             <h6>Alerta Básico</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Alerta simples
+<pre><code id="sweetalert2-basic-alert" class="language-js">// Alerta simples
 Swal.fire('Olá!', 'Esta é uma mensagem básica', 'info');
 
 // Com título personalizado
@@ -113,7 +113,7 @@ Swal.fire({
                             <h6>Confirmação</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-confirmation" class="language-js">Swal.fire({
   title: 'Tem certeza?',
   text: "Esta ação não pode ser desfeita!",
   icon: 'warning',
@@ -139,7 +139,7 @@ Swal.fire({
                             <h6>Input de Texto</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-input-text" class="language-js">Swal.fire({
   title: 'Digite seu nome',
   input: 'text',
   inputPlaceholder: 'Seu nome aqui...',
@@ -169,7 +169,7 @@ Swal.fire({
                             <h6>Com Timer</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-timer" class="language-js">Swal.fire({
   title: 'Fechará automaticamente!',
   text: 'Esta mensagem será fechada em 3 segundos',
   timer: 3000,
@@ -209,7 +209,7 @@ Swal.fire({
                             <h6>Loading</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Loading simples
+<pre><code id="sweetalert2-loading" class="language-js">// Loading simples
 Swal.fire({
   title: 'Carregando...',
   text: 'Aguarde um momento',
@@ -252,7 +252,11 @@ Swal.fire({
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Highlight.js - MESMO DOS OUTROS -->
-    <script>hljs.highlightAll();</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+        });
+    </script>
     
 </body>
 </html>
