@@ -51,12 +51,17 @@
                 <!-- Document Ready -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Document ready</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Document ready</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-document-ready" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">$(document).ready(function() {
+<pre><code id="jquery-document-ready" class="language-javascript">$(document).ready(function() {
     // Seu código aqui
     console.log("DOM pronto!");
 });</code></pre>
@@ -67,12 +72,17 @@
                 <!-- Seletor de elemento -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Seletores</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Seletores</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-seletores" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Por ID
+<pre><code id="jquery-seletores" class="language-javascript">// Por ID
 $('#meuElemento')
 
 // Por classe
@@ -90,12 +100,17 @@ $('#id1, .classe1, p')</code></pre>
                 <!-- Eventos -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Eventos</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Eventos</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-eventos" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Click
+<pre><code id="jquery-eventos" class="language-javascript">// Click
 $('#botao').click(function() {
     alert('Clicado!');
 });
@@ -112,12 +127,17 @@ $('.item').hover(
                 <!-- Manipulação de Classes -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Classes</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Classes</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-classes" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Adicionar classe
+<pre><code id="jquery-classes" class="language-javascript">// Adicionar classe
 $('.elemento').addClass('ativa');
 
 // Remover classe
@@ -132,12 +152,17 @@ $('.elemento').toggleClass('ativa');</code></pre>
                 <!-- Manipulação de Conteúdo -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Conteúdo</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Conteúdo</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-conteudo" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Texto
+<pre><code id="jquery-conteudo" class="language-javascript">// Texto
 $('#titulo').text('Novo texto');
 
 // HTML
@@ -152,12 +177,17 @@ $('#campo').val('Novo valor');</code></pre>
                 <!-- CSS -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>CSS</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>CSS</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-css" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Uma propriedade
+<pre><code id="jquery-css" class="language-javascript">// Uma propriedade
 $('.elemento').css('color', 'red');
 
 // Múltiplas propriedades
@@ -173,12 +203,17 @@ $('.elemento').css({
                 <!-- Animações -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Animações</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Animações</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-animacoes" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Fade
+<pre><code id="jquery-animacoes" class="language-javascript">// Fade
 $('.elemento').fadeIn();
 $('.elemento').fadeOut();
 
@@ -198,12 +233,17 @@ $('.elemento').animate({
                 <!-- AJAX -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>AJAX</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>AJAX</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-ajax" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// GET
+<pre><code id="jquery-ajax" class="language-javascript">// GET
 $.get('api/dados.php', function(data) {
     console.log(data);
 });
@@ -222,12 +262,17 @@ $.post('api/salvar.php', {
                 <!-- Formulários -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Formulários</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Formulários</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-formularios" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Submit
+<pre><code id="jquery-formularios" class="language-javascript">// Submit
 $('#formulario').submit(function(e) {
     e.preventDefault();
     // Validação
@@ -245,12 +290,17 @@ $('#formulario')[0].reset();</code></pre>
                 <!-- DOM Manipulation -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>DOM</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>DOM</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-dom" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Adicionar elemento
+<pre><code id="jquery-dom" class="language-javascript">// Adicionar elemento
 $('.container').append('<p>Novo item</p>');
 
 // Remover
@@ -266,12 +316,17 @@ $('.destino').append(clone);</code></pre>
                 <!-- Each Loop -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Loops</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Loops</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-loops" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Each
+<pre><code id="jquery-loops" class="language-javascript">// Each
 $('.item').each(function(index) {
     console.log(index, $(this).text());
 });
@@ -287,12 +342,17 @@ var textos = $('.item').map(function() {
                 <!-- Utilitários -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
-                            <h6>Utilitários</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="devicon-plain:jquery-wordmark" class="me-2" style="width: 20px; height: 20px;"></iconify-icon>
+                                <h6>Utilitários</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-jquery" data-target="jquery-utilitarios" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Checar existência
+<pre><code id="jquery-utilitarios" class="language-javascript">// Checar existência
 if ($('.elemento').length) {
     // Elemento existe
 }
@@ -314,6 +374,73 @@ $('.elemento').stop().fadeOut();</code></pre>
     <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Highlight.js - MESMO DOS OUTROS -->
     <script>hljs.highlightAll();</script>
+    
+    <!-- jQuery para funcionalidade dos botões de cópia -->
+    <script src="../../assets/js/jquery/jquery-3.7.1.min.js"></script>
+    
+    <!-- Script para botões de cópia -->
+    <script>
+    $(document).ready(function() {
+        // Função para copiar texto para área de transferência
+        function copiarTexto(texto) {
+            return navigator.clipboard.writeText(texto).then(function() {
+                return true;
+            }).catch(function(err) {
+                console.error('Erro ao copiar:', err);
+                return false;
+            });
+        }
+        
+        // Função para processar clique no botão
+        function processarClique(evento) {
+            evento.preventDefault();
+            
+            // Obter ID do elemento alvo
+            const idAlvo = this.getAttribute('data-target');
+            if (!idAlvo) return;
+            
+            // Obter elemento do código
+            const elemento = document.getElementById(idAlvo);
+            if (!elemento) {
+                console.error('Elemento não encontrado:', idAlvo);
+                return;
+            }
+            
+            // Obter texto para copiar
+            const texto = elemento.textContent.trim();
+            
+            // Copiar texto e dar feedback
+            copiarTexto(texto).then((sucesso) => {
+                if (sucesso) {
+                    // Feedback visual
+                    const icone = this.querySelector('iconify-icon');
+                    if (icone) {
+                        const iconeOriginal = icone.getAttribute('icon') || 'mdi:content-copy';
+                        icone.setAttribute('icon', 'mdi:check');
+                        setTimeout(() => icone.setAttribute('icon', iconeOriginal), 1500);
+                    }
+                }
+            });
+        }
+        
+        // Aplicar handlers a todos os botões com data-target
+        function inicializarBotoes() {
+            const botoes = document.querySelectorAll('button[data-target]');
+            
+            botoes.forEach(botao => {
+                // Remover handlers existentes
+                const novoBotao = botao.cloneNode(true);
+                botao.parentNode.replaceChild(novoBotao, botao);
+                
+                // Adicionar novo handler
+                novoBotao.addEventListener('click', processarClique);
+            });
+        }
+        
+        // Inicializar botões
+        inicializarBotoes();
+    });
+    </script>
     
 </body>
 </html>
