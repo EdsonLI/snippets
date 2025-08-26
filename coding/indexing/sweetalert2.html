@@ -2,7 +2,18 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="vi                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="mdi:alert-circle-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                                <h6>Alerta Básico</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-sweetalert2" data-target="sweetalert2-basic-alert" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+                            </button>
+                        </div>
+                        <div class="card-body">
+<pre><code id="sweetalert2-basic-alert" class="language-javascript">// Alerta simples content="width=device-width, initial-scale=1.0">
     <title>SweetAlert2 Snippets</title>
     
     <!-- Bootstrap CSS -->
@@ -14,11 +25,9 @@
     <!-- Highlight.js (tema escuro + versão completa) - MESMO DOS OUTROS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/vs2015.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <!-- Carregamento específico da linguagem JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
     
-    <!-- Iconify -->
-    <script src="https://code.iconify.design/3/iconify.min.js"></script>
+    <!-- Iconify local -->
+    <script src="../../assets/js/iconify/iconify-icon.min.js"></script>
     
     <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
     <link href="assets/css/indexing-unified.css" rel="stylesheet">
@@ -56,12 +65,17 @@
                 <!-- SELECT COM VALIDAÇÃO -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="fluent:select-object-skew-edit-20-regular" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
-                            <h6>Select com Validação</h6>
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <iconify-icon icon="fluent:select-object-skew-edit-20-regular" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                                <h6>Select com Validação</h6>
+                            </div>
+                            <button class="btn btn-xs btn-outline-sweetalert2" data-target="sweetalert2-select-validation" title="Copiar código">
+                                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+                            </button>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-select-validation" class="language-javascript">Swal.fire({
   title: 'Escolha uma opção',
   input: 'select',
   inputOptions: {
@@ -93,7 +107,7 @@
                             <h6>Alerta Básico</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Alerta simples
+<pre><code id="sweetalert2-snippet-2" class="language-javascript">// Alerta simples
 Swal.fire('Olá!', 'Esta é uma mensagem básica', 'info');
 
 // Com título personalizado
@@ -115,7 +129,7 @@ Swal.fire({
                             <h6>Confirmação</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-snippet-1" class="language-javascript">Swal.fire({
   title: 'Tem certeza?',
   text: "Esta ação não pode ser desfeita!",
   icon: 'warning',
@@ -141,7 +155,7 @@ Swal.fire({
                             <h6>Input de Texto</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-snippet-1" class="language-javascript">Swal.fire({
   title: 'Digite seu nome',
   input: 'text',
   inputPlaceholder: 'Seu nome aqui...',
@@ -171,7 +185,7 @@ Swal.fire({
                             <h6>Com Timer</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
+<pre><code id="sweetalert2-snippet-1" class="language-javascript">Swal.fire({
   title: 'Fechará automaticamente!',
   text: 'Esta mensagem será fechada em 3 segundos',
   timer: 3000,
@@ -211,7 +225,7 @@ Swal.fire({
                             <h6>Loading</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Loading simples
+<pre><code id="sweetalert2-snippet-3" class="language-javascript">// Loading simples
 Swal.fire({
   title: 'Carregando...',
   text: 'Aguarde um momento',
@@ -256,5 +270,64 @@ Swal.fire({
     <!-- Highlight.js - MESMO DOS OUTROS -->
     <script>hljs.highlightAll();</script>
     
+    <!-- jQuery para funcionalidade dos botões de cópia -->
+    <script src="../../assets/js/jquery/jquery-3.7.1.min.js"></script>
+    
+    <!-- Script para botões de cópia -->
+    <script>
+    $(document).ready(function() {
+        // Função para copiar texto
+        async function copiarTexto(texto) {
+            try {
+                await navigator.clipboard.writeText(texto);
+                return true;
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+                return false;
+            }
+        }
+        
+        function processarClique() {
+            const targetId = this.getAttribute('data-target');
+            if (!targetId) return;
+            
+            const elemento = document.getElementById(targetId);
+            if (!elemento) return;
+            
+            const texto = elemento.textContent || elemento.innerText || '';
+            
+            copiarTexto(texto).then((sucesso) => {
+                if (sucesso) {
+                    // Feedback visual
+                    const icone = this.querySelector('iconify-icon');
+                    if (icone) {
+                        const iconeOriginal = icone.getAttribute('icon') || 'mdi:content-copy';
+                        icone.setAttribute('icon', 'mdi:check');
+                        setTimeout(() => icone.setAttribute('icon', iconeOriginal), 1500);
+                    }
+                }
+            });
+        }
+        
+        // Aplicar handlers a todos os botões com data-target
+        function inicializarBotoes() {
+            const botoes = document.querySelectorAll('button[data-target]');
+            
+            botoes.forEach(botao => {
+                // Remover handlers existentes
+                const novoBotao = botao.cloneNode(true);
+                botao.parentNode.replaceChild(novoBotao, botao);
+                
+                // Adicionar novo handler
+                novoBotao.addEventListener('click', processarClique);
+            });
+        }
+        
+        // Inicializar botões
+        inicializarBotoes();
+    });
+    </script>
+    
 </body>
 </html>
+
