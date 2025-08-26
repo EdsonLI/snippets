@@ -164,6 +164,9 @@ $(document).ready(function() {
     var iframe_php = $('<iframe src="./php.html" class="iframe-php" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#php-content').html(iframe_php);
 
+    var iframe_sweetalert2 = $('<iframe src="./sweetalert2.html" class="iframe-sweetalert2" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
+    $('#sweetalert2-content').html(iframe_sweetalert2);
+
     var iframe = $('<iframe src="./sql.html" class="iframe-sql" style="width: 100%; border: none; background: #1a1a1a;" scrolling="no"></iframe>');
     $('#sql-content').html(iframe);
   }
