@@ -127,7 +127,7 @@ $(document).ready(function() {
       }
     });
 
-    $('#sweetalert2-content').load('./snippets_sweetalert2.html', function() {
+    $('#sweetalert2-content').load('./sweetalert2.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
