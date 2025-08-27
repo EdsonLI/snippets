@@ -127,17 +127,6 @@ $(document).ready(function() {
       }
     });
 
-    $('#sweetalert2-content').load('./sweetalert2.html', function() {
-      hljs.highlightAll();
-      setupSnippetInteractions();
-      addCopyButtons();
-      
-      // Reaplicar tema ao conteúdo carregado
-      if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('sweetalert2-content'));
-      }
-    });
-
     $('#fontawesome-content').load('./snippets_fontawesome.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
