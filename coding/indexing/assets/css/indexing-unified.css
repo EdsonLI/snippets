@@ -736,6 +736,18 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
   }
 }
 
+/* Iframe SweetAlert2 - Desktop */
+.iframe-sweetalert2 {
+  height: 1175px; /* Altura padrão para desktop - VOCÊ PODE AJUSTAR */
+}
+
+/* Iframe SweetAlert2 - Mobile */
+@media (max-width: 767px) {
+  .iframe-sweetalert2 {
+    height: 3800px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+  }
+}
+
 .card-header {
   border-bottom: var(--bs-card-border-width) solid #30363d !important;
 }
