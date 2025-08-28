@@ -63,8 +63,8 @@
 /* Correção para mobile - remover espaçamento à esquerda */
 @media (max-width: 768px) {
   .tabs-carousel-wrapper {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 1px 0 2px !important;
   }
   
   /* Posicionar botões colados nas bordas em mobile */
