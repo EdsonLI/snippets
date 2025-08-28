@@ -17,13 +17,11 @@
 <pre>
 <code class="language-javascript" id="snippet-jquery-toggle-example">
  (function($) {
-  /* Código jQuery aqui */
   $(document).ready(function() {
     console.log("Rodando IIFE, documento pronto e jQuery carregado!");
   });
  })(jQuery);
 
- /* Com arrow function (se quiser deixar mais compacta) */ 
  (($) => {
   $(function() {
     console.log("Rodando com jQuery em IIFE");
