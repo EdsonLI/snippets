@@ -141,6 +141,8 @@ $(document).ready(function() {
           displayName = 'git'; // Minúsculas para git
         } else if (folder.toLowerCase() === 'ai') {
           displayName = 'IA'; // Mudar AI para IA 
+        } else if (folder.toLowerCase() === 'dev-utils') {
+          displayName = 'Dev Utils'; // Formatação especial para dev-utils
         } else if (['css', 'php', 'sql'].includes(folder.toLowerCase())) {
           displayName = folder.toUpperCase(); // Tudo maiúsculo para CSS, PHP, SQL
         } else {

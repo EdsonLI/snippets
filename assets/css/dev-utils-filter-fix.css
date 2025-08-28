@@ -1,0 +1,44 @@
+/**
+ * Estilos específicos para o filtro Dev Utils
+ * Ícone e posicionamento para manter consistência com outros filtros
+ */
+
+/* Posicionamento do filtro Dev Utils */
+.portfolio-filters li[data-filter=".filter-dev-utils"] {
+    position: relative !important;
+    padding-left: 22px !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    line-height: inherit !important;
+}
+
+/* Ícone do Dev Utils usando Iconify */
+.portfolio-filters li[data-filter=".filter-dev-utils"]::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 2px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 16px !important;
+    height: 16px !important;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2358a6ff'%3E%3Cpath d='M2 3h20v2H2V3m0 4h20v2H2V7m0 4h20v2H2v-2m0 4h20v2H2v-2m0 4h20v2H2v-2Z'/%3E%3C/svg%3E") no-repeat center !important;
+    background-size: 16px 16px !important;
+}
+
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+    .portfolio-filters li[data-filter=".filter-dev-utils"] {
+        padding-left: 20px !important;
+    }
+    
+    .portfolio-filters li[data-filter=".filter-dev-utils"]::before {
+        left: 1px !important;
+        width: 14px !important;
+        height: 14px !important;
+        background-size: 14px 14px !important;
+    }
+}
