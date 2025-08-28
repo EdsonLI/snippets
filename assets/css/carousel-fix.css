@@ -72,13 +72,13 @@
     margin: 0;
   }
   
-  /* Posicionar botões nas bordas em mobile */
+  /* Posicionar botões colados nas bordas em mobile */
   .tabs-arrow.left {
-    left: 5px;
+    left: 0;
   }
   
   .tabs-arrow.right {
-    right: 5px;
+    right: 0;
   }
 }
 
