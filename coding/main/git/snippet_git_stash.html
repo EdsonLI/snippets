@@ -10,48 +10,6 @@
           <p class="text-center">O stash salva temporariamente modificações que ainda não foram commitadas (em arquivos rastreados) e limpa seu working directory, permitindo que você alterne de branch ou execute outro trabalho sem perder o que estava fazendo e sem fazer o commit.</p>
         </div>
         <div class="mb-3">
-          <ul>
-            <li>O que exatamente é salvo:
-              <ul>
-                <li>Quando você faz <code class="language-bash">git stash</code>:</li>
-                <li>Salva o conteúdo atual dos arquivos modificados</li>
-                <li>Limpa essas alterações do seu diretório de trabalho</li>
-                <li>Não comita nada</li>
-                <li>Permite que você troque de branch com segurança</li>
-              </ul>
-            </li>
-            <li>Quando o conteúdo volta: 
-              <ul>
-                <li>Se você só trocar de branch de volta <code class="language-bash">git checkout minha-branch</code>:</li>
-                <li>O conteúdo dos arquivos continua limpo</li>
-                <li>Nada volta automaticamente</li>
-                <li>O stash continua guardado</li>
-              </ul>
-            </li>
-            <li>Para recuperar o conteúdo:
-              <ul>
-                <li>Você precisa aplicar o stash manualmente <code class="language-bash">git stash apply</code>:</li>
-                <li>Ou, se quiser aplicar e remover da pilha:<code class="language-bash">git stash pop</code>:</li>
-                <li>Nada volta automaticamente</li>
-                <li>O stash continua guardado</li>
-              </ul>
-            </li>
-
-            <li>O que acontece se você editar arquivos antes de aplicar o stash:
-              <ul>
-                <li>Se você alterar algum arquivo que já estava no stash, e depois fizer git stash apply, o Git tentará mesclar as alterações, mas se houver conflito, você verá isso no código (como nos merges)</li>
-                <li>Sem conflito: Git aplica as mudanças normalmente</li>
-                <li>Com conflito: Git marca os trechos conflitantes, e você terá que resolver manualmente</li>
-              </ul>
-            </li>
-          </ul>
-          <h6 class="mb-2"><strong>Quando usar?</strong></h6>
-          <ul>
-            <li>Quando você está no meio de uma tarefa mas precisa mudar para outra branch para corrigir um bug.</li>
-            <li>Quando quer limpar o estado atual do projeto, mas pretende voltar a ele depois.</li>
-          </ul>
-        </div>
-        <div class="mb-3">
           <h6 class="mb-2"><strong>Comandos básicos</strong></h6>          
           <div class="mb-3">
             <div class="px-2"><b>1. Guardar modificações atuais:</b></div>
@@ -151,6 +109,49 @@
             </div>
           </div>
         </div>
+        <div class="mb-3">
+          <ul>
+            <li>O que exatamente é salvo:
+              <ul>
+                <li>Quando você faz <code class="language-bash">git stash</code>:</li>
+                <li>Salva o conteúdo atual dos arquivos modificados</li>
+                <li>Limpa essas alterações do seu diretório de trabalho</li>
+                <li>Não comita nada</li>
+                <li>Permite que você troque de branch com segurança</li>
+              </ul>
+            </li>
+            <li>Quando o conteúdo volta: 
+              <ul>
+                <li>Se você só trocar de branch de volta <code class="language-bash">git checkout minha-branch</code>:</li>
+                <li>O conteúdo dos arquivos continua limpo</li>
+                <li>Nada volta automaticamente</li>
+                <li>O stash continua guardado</li>
+              </ul>
+            </li>
+            <li>Para recuperar o conteúdo:
+              <ul>
+                <li>Você precisa aplicar o stash manualmente <code class="language-bash">git stash apply</code>:</li>
+                <li>Ou, se quiser aplicar e remover da pilha:<code class="language-bash">git stash pop</code>:</li>
+                <li>Nada volta automaticamente</li>
+                <li>O stash continua guardado</li>
+              </ul>
+            </li>
+
+            <li>O que acontece se você editar arquivos antes de aplicar o stash:
+              <ul>
+                <li>Se você alterar algum arquivo que já estava no stash, e depois fizer git stash apply, o Git tentará mesclar as alterações, mas se houver conflito, você verá isso no código (como nos merges)</li>
+                <li>Sem conflito: Git aplica as mudanças normalmente</li>
+                <li>Com conflito: Git marca os trechos conflitantes, e você terá que resolver manualmente</li>
+              </ul>
+            </li>
+          </ul>
+          <h6 class="mb-2"><strong>Quando usar?</strong></h6>
+          <ul>
+            <li>Quando você está no meio de uma tarefa mas precisa mudar para outra branch para corrigir um bug.</li>
+            <li>Quando quer limpar o estado atual do projeto, mas pretende voltar a ele depois.</li>
+          </ul>
+        </div>
+        
       </div>
     </div>    
   </div>
