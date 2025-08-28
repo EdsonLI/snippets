@@ -60,6 +60,28 @@
   overflow: visible;
 }
 
+/* Correção para mobile - remover espaçamento à esquerda */
+@media (max-width: 768px) {
+  .tabs-carousel-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .tabs {
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Posicionar botões nas bordas em mobile */
+  .tabs-arrow.left {
+    left: 5px;
+  }
+  
+  .tabs-arrow.right {
+    right: 5px;
+  }
+}
+
 /* Remover qualquer efeito de bounce ou animação nos botões */
 .tabs-arrow,
 .tabs-arrow *,

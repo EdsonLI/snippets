@@ -1,0 +1,235 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-git">
+  <div class="portfolio-content p-2 bg-dark text-light rounded position-relative border border-secondary-custom h-100">
+    <h6 class="text-center">
+      <span class="id-tech-git">git</span>      
+    </h6>
+    <h6 class="mb-1 text-center search-title"><strong>Git Stash</strong></h6>
+    <div class="snippet-code position-relative">
+      <div class="mt-2 small">        
+        <div class="mb-3">          
+          <p class="text-center">O stash salva temporariamente modificações que ainda não foram commitadas (em arquivos rastreados) e limpa seu working directory, permitindo que você alterne de branch ou execute outro trabalho sem perder o que estava fazendo e sem fazer o commit.</p>
+        </div>
+        <div class="mb-3">
+          <ul>
+            <li>O que exatamente é salvo:
+              <ul>
+                <li>Quando você faz <code class="language-bash">git stash</code>:</li>
+                <li>Salva o conteúdo atual dos arquivos modificados</li>
+                <li>Limpa essas alterações do seu diretório de trabalho</li>
+                <li>Não comita nada</li>
+                <li>Permite que você troque de branch com segurança</li>
+              </ul>
+            </li>
+            <li>Quando o conteúdo volta: 
+              <ul>
+                <li>Se você só trocar de branch de volta <code class="language-bash">git checkout minha-branch</code>:</li>
+                <li>O conteúdo dos arquivos continua limpo</li>
+                <li>Nada volta automaticamente</li>
+                <li>O stash continua guardado</li>
+              </ul>
+            </li>
+            <li>Para recuperar o conteúdo:
+              <ul>
+                <li>Você precisa aplicar o stash manualmente <code class="language-bash">git stash apply</code>:</li>
+                <li>Ou, se quiser aplicar e remover da pilha:<code class="language-bash">git stash pop</code>:</li>
+                <li>Nada volta automaticamente</li>
+                <li>O stash continua guardado</li>
+              </ul>
+            </li>
+
+            <li>O que acontece se você editar arquivos antes de aplicar o stash:
+              <ul>
+                <li>Se você alterar algum arquivo que já estava no stash, e depois fizer git stash apply, o Git tentará mesclar as alterações, mas se houver conflito, você verá isso no código (como nos merges)</li>
+                <li>Sem conflito: Git aplica as mudanças normalmente</li>
+                <li>Com conflito: Git marca os trechos conflitantes, e você terá que resolver manualmente</li>
+              </ul>
+            </li>
+          </ul>
+          <h6 class="mb-2"><strong>Quando usar?</strong></h6>
+          <ul>
+            <li>Quando você está no meio de uma tarefa mas precisa mudar para outra branch para corrigir um bug.</li>
+            <li>Quando quer limpar o estado atual do projeto, mas pretende voltar a ele depois.</li>
+          </ul>
+        </div>
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Comandos básicos</strong></h6>          
+          <div class="mb-3">
+            <div class="px-2"><b>1. Guardar modificações atuais:</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-1">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-1" class="language-bash"> git stash</code></pre>
+            </div>
+          </div>          
+          <div class="mb-3">
+            <div class="px-2"><b>2. Listar stashes guardados:</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-2">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-2" class="language-bash"> git stash list</code></pre>
+            </div>
+          </div>          
+          <div class="mb-3">
+            <div class="px-2"><b>3. Restaurar último stash (mantendo na lista):</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-3">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-3" class="language-bash"> git stash apply</code></pre>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="px-2"><b>4. Aplicar e remover do stash (como "colar e excluir"):</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-4">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-4" class="language-bash"> git stash pop</code></pre>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="px-2"><b>Remover um stash específico (sem aplicar):</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-5">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-5" class="language-bash"> git stash drop stash@{0}</code></pre>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="px-2"><b>Remover todos os stashes:</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-6">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-6" class="language-bash"> git stash clear</code></pre>
+            </div>
+          </div>
+        </div>        
+        <div class="mb-3">
+          <h6 class="mb-2"><strong>Exemplo de uso combinado</strong></h6>
+          <p class="mb-2 px-2">Você está em <code>branch-a</code> com alterações locais, e precisa mudar para <code>branch-b</code> mas não quer perder suas mudanças nem commitá-las ainda:</p>          
+          <div class="position-relative">
+            <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-7">
+              <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+            </button>
+            <pre class="git-pre-code">
+<code id="gul-step-7" class="language-bash"> git stash
+ git checkout branch-b
+ git checkout branch-a
+ git stash pop</code></pre>
+          </div>
+        </div>        
+        <div class="mt-3">
+          <h6 class="mb-2"><strong>Dicas avançadas</strong></h6>          
+          <div class="mb-3">
+            <div class="px-2"><b>1. Criar stash com mensagem descritiva:</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-8">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-8" class="language-bash"> git stash push -m "descrição do que estou guardando"</code></pre>
+            </div>
+          </div>          
+          <div class="mb-3">
+            <div class="px-2"><b>2. Aplicar um stash específico:</b></div>
+            <div class="position-relative">
+              <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="gul-step-9">
+                <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+              </button>
+              <pre class="git-pre-code">
+<code id="gul-step-9" class="language-bash"> git stash apply stash@{2}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</div>
+
+
+Mas e o rebase? não seria uma alternativa fazer o rebase da 125-melhorias-pra-o-fluxo-de-caixa para a 170-pedido-retornando-erro-de-acesso? o que isso faria exatamente, tecnicamente? qual a diferença com a Opção 1 – merge direto da A em B?
+
+Vamos destrinchar bem no seu caso real (125-melhorias-pra-o-fluxo-de-caixa = branch A, 170-pedido-retornando-erro-de-acesso = branch B).
+
+1. O que acontece se você fizer merge de A em B:
+Opção 1 – merge direto da A em B:
+git checkout 170-pedido-retornando-erro-de-acesso
+git pull origin 170-pedido-retornando-erro-de-acesso
+git merge origin/125-melhorias-pra-o-fluxo-de-caixa
+
+O que faz:
+O Git cria um commit de merge novo em B.
+Esse commit aponta para dois pais: o último da A e o último da B.
+Histórico fica preservado exatamente como aconteceu:
+A nasceu da development, fez N commits.
+B nasceu da development, depois recebeu um merge trazendo os commits de A.
+Você verá no gráfico um “Y” se juntando.
+Futuro merge da B para development: o Git reconhece que A já foi mesclada e não duplica commits.
+✅ Vantagem: histórico fiel, sem reescrever nada.
+❌ Desvantagem: histórico fica com commits de merge, mais “poluído”.
+
+2. O que acontece se você fizer rebase da A em B:
+git checkout 170-pedido-retornando-erro-de-acesso
+git rebase origin/125-melhorias-pra-o-fluxo-de-caixa
+
+⚠️ Importante: a sintaxe é "rebase B em cima de A" → ou seja, você diz:
+"pega os commits da B e reescreve eles como se tivessem começado a partir do topo da A".
+
+Tecnicamente:
+
+O Git pega os commits exclusivos da B, remove-os temporariamente.
+Avança o ponteiro da B para o último commit da A.
+Reaplica (regrava) os commits da B um por um em cima da A.
+
+🔎 Resultado:
+O histórico fica linear, como se você tivesse criado a B a partir da A desde o início.
+Não existe commit de merge.
+Os commits da B têm novos hashes (porque foram regravados).
+
+✅ Vantagem: histórico limpo e linear, fácil de ler.
+❌ Desvantagem: histórico foi reescrito, o que pode dar dor de cabeça se a branch já foi compartilhada com outras pessoas (porque hashes mudam).
+
+3. Diferença prática para você
+Merge: preserva a realidade → “B foi criada da development, mas depois mesclou A”.
+Rebase: finge a realidade → “B nasceu da A e continuou de lá”.
+
+No final, se você fizer merge da B em development depois que a A já tiver sido mergeada, o resultado final do código é o mesmo.
+A diferença é só no histórico.
+
+4. Qual escolher?
+Se a branch já está no remoto (origin/B) e pode ser compartilhada → use merge (mais seguro, não reescreve histórico).
+Se a branch ainda é só sua, ninguém mais puxou → o rebase pode ser melhor (histórico limpo e linear).
+
+Resumo no seu caso:
+merge → mantém B como foi (da development), mas traz A junto agora.
+rebase → reescreve a história para fingir que B nasceu de A.
+
+Tanto 'merge' quanto 'rebase' podem gerar conflitos, a diferença está quando e como esses conflitos aparecem:
+No merge, o Git tenta unir os dois históricos de uma vez.
+Se houver arquivos modificados tanto em A quanto em B (em linhas conflitantes), você vê os conflitos na hora do merge.
+Você resolve os conflitos e cria um commit de merge que “fecha” a divergência.
+📌 Resultado: um único ponto no histórico onde o conflito foi tratado.
+
+No rebase, o Git vai pegar cada commit da B e tentar reaplicá-lo em cima da A, um por um.
+Se um desses commits tocar na mesma parte do código já modificada na A → conflito aparece naquele commit específico.
+Você resolve o conflito, dá git rebase --continue, e o Git segue para o próximo commit.
+📌 Resultado: conflitos aparecem possivelmente em vários pontos, commit a commit.
+
+Comparando na prática:
+Merge → 1 conflito grande, resolvido de uma vez, depois commit de merge.
+Rebase → conflitos menores, resolvidos commit a commit, mas pode ser mais trabalhoso se houver muitos.
+
+Equívoco comum:
+“No rebase não vai haver conflito”
+❌ Isso é mito!
+👉 O que muda é que o rebase espalha os conflitos ao longo dos commits, enquanto o merge concentra tudo num só momento.
