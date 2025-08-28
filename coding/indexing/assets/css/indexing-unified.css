@@ -41,8 +41,8 @@ body.theme-light {
 
 .theme-toggle-btn { 
   position: fixed; 
-  top: 1rem; 
-  right: 1rem; 
+  top: .7rem; 
+  right: .7rem; 
   z-index: 1050;
   background: transparent !important;
   border: none !important;
