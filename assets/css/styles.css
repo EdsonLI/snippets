@@ -957,10 +957,10 @@ a:hover {
   display: flex;
   align-items: center;
   margin-bottom: 18px;
-  width: calc(100% - 20px); /* Reduzir um pouco para acomodar as setas */
+  width: 100%;
   padding: 0;
-  margin-left: 10px;  /* Pequena margem para compensar as setas */
-  margin-right: 10px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .tabs {
