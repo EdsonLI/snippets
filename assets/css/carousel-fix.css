@@ -67,11 +67,6 @@
     padding: 0;
   }
   
-  .tabs {
-    padding: 0;
-    margin: 0;
-  }
-  
   /* Posicionar botões colados nas bordas em mobile */
   .tabs-arrow.left {
     left: 0;
@@ -102,7 +97,8 @@
 }
 
 /* Garantir que o conteúdo das abas tenha espaço suficiente */
-.tabs {
-  padding: 0 10px;
+.tabs {  
   scroll-behavior: smooth;
+  padding: 0 !important;
+  margin: 0 !important;
 }
