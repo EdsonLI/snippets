@@ -56,15 +56,16 @@
 /* Ajustar o layout do carrossel */
 .tabs-carousel-wrapper {
   position: relative;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   overflow: visible;
 }
 
 /* Correção para mobile - remover espaçamento à esquerda */
 @media (max-width: 768px) {
   .tabs-carousel-wrapper {
-    margin: 0 !important;
-    padding: 0 1px 0 2px !important;
+    /*margin: 0 !important;
+    padding: 0 0 0 2px !important;*/
   }
   
   /* Posicionar botões colados nas bordas em mobile */
