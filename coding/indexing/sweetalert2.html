@@ -99,9 +99,9 @@
                                 </span>
                                 <h6>Select com Validação</h6>
                             </div>
-                            <button class="btn btn-xs btn-outline-info btn-custom" id="btn-preview-swal2-select-validation">
-                                <i class="fa fa-eye"></i>
-                            </button>
+              <button class="btn btn-xs btn-outline-sweetalert2 btn-custom" id="btn-preview-swal2-select-validation">
+                <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
+              </button>
                         </div>
                         <div class="card-body">
 <pre><code class="language-javascript">Swal.fire({
@@ -384,4 +384,17 @@ Swal.fire({
     <script>hljs.highlightAll();</script>
     
 </body>
-</html>
+  <style>
+  /* Ajuste para posicionar o SweetAlert2 a 10% do topo */
+  .swal2-top-10pct {
+    top: 10% !important;
+    margin-top: 0 !important;
+  }
+  /* Hover customizado igual ao main */
+  .btn-outline-sweetalert2.btn-custom:hover, .btn-outline-sweetalert2.btn-custom:focus {
+    background: rgba(255,165,0,.08) !important;
+    color: #ffa500 !important;
+    border-color: #ffa500 !important;
+    box-shadow: 0 2px 8px 0 rgba(255,165,0,0.15);
+  }
+  </style>
