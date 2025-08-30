@@ -672,7 +672,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 /* Iframe PHP - Mobile */
 @media (max-width: 767px) {
   .iframe-php {
-    height: 3800px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 4000px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
@@ -708,7 +708,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 /* Iframe CSS - Mobile */
 @media (max-width: 767px) {
   .iframe-css {
-    height: 3000px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 2950px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
@@ -720,7 +720,7 @@ body.theme-light .tab-content .table { --bs-table-border-color: rgba(0, 0, 0, 0.
 /* Iframe Bootstrap - Mobile */
 @media (max-width: 767px) {
   .iframe-bootstrap {
-    height: 4250px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
+    height: 4150px; /* Altura para mobile - VOCÊ PODE AJUSTAR */
   }
 }
 
