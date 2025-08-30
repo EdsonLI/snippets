@@ -1,0 +1,76 @@
+/* Efeito círculo com hover para o logo principal */
+
+.logo-with-circle {
+    position: relative;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    background-color: #ffffff !important;
+    border: 2px solid #6f42c1 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: border-color .15s ease, box-shadow .15s ease !important;
+    text-decoration: none !important;
+    margin-right: 1rem !important;
+}
+
+.logo-with-circle:hover {
+    border-color: #8c6fff !important;
+    box-shadow: 0 0 0 3px rgba(140, 111, 255, 0.35) !important;
+    text-decoration: none !important;
+}
+
+.logo-with-circle .svg-logo-jedi {
+    width: 50px !important;
+    height: 50px !important;
+    display: block !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    shape-rendering: crispEdges !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    filter: brightness(1.06) saturate(1.06) !important;
+    transition: filter .15s ease !important;
+}
+
+.logo-with-circle .svg-logo-jedi path {
+    fill: #6f42c1 !important;
+    opacity: 1 !important;
+}
+
+/* Adaptações para tema escuro */
+body.dark .logo-with-circle {
+    background-color: #21262d !important;
+    border-color: #6f42c1 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Media query para responsividade */
+@media (max-width: 768px) {
+    .logo-with-circle {
+        width: 60px !important;
+        height: 60px !important;
+        margin-right: 0.75rem !important;
+    }
+    
+    .logo-with-circle .svg-logo-jedi {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-with-circle {
+        width: 50px !important;
+        height: 50px !important;
+        margin-right: 0.5rem !important;
+    }
+    
+    .logo-with-circle .svg-logo-jedi {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
