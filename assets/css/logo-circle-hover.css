@@ -8,7 +8,7 @@
     width: 80px !important;
     height: 80px !important;
     border-radius: 50% !important;
-    background-color: #ffffff !important;
+    background-color: transparent !important;
     border: 2px solid #6f42c1 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
     transition: border-color .15s ease, box-shadow .15s ease !important;
@@ -43,7 +43,7 @@
 
 /* Adaptações para tema escuro */
 body.dark .logo-with-circle {
-    background-color: #21262d !important;
+    background-color: transparent !important;
     border-color: #6f42c1 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
