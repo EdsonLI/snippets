@@ -100,7 +100,10 @@
                                 <h6>Select com Validação</h6>
                             </div>
               <button class="btn btn-xs btn-outline-sweetalert2 btn-custom" id="btn-preview-swal2-select-validation">
-                <iconify-icon icon="mdi:eye-outline" width="16" height="16"></iconify-icon>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;">
+                                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                                  <circle cx="12" cy="12" r="3.5"/>
+                                </svg>
               </button>
                         </div>
                         <div class="card-body">
@@ -396,5 +399,9 @@ Swal.fire({
     color: #ffa500 !important;
     border-color: #ffa500 !important;
     box-shadow: 0 2px 8px 0 rgba(255,165,0,0.15);
+  }
+  /* Remover border-radius excessivo dos cards para padrão main */
+  .card-snippet .card, .card {
+    border-radius: 0.5rem !important;
   }
   </style>
