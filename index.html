@@ -337,13 +337,18 @@
         $('body').toggleClass('dark-theme', dark);
         $themeBtn.attr('title', dark ? 'Tema claro' : 'Tema escuro');
         localStorage.setItem('theme', dark ? 'dark' : 'light');
-  // Envia o tema para todos os iframes de snippets
+        // Envia o tema para todos os iframes de snippets (várias tentativas para garantir)
         const themeMsg = { type: 'theme', value: dark ? 'dark' : 'light' };
-        $('iframe').each(function() {
-          try {
-            this.contentWindow.postMessage(themeMsg, '*');
-          } catch (e) {}
-        });
+        function sendThemeToIframes() {
+          $('iframe').each(function() {
+            try {
+              this.contentWindow.postMessage(themeMsg, '*');
+            } catch (e) {}
+          });
+        }
+        sendThemeToIframes();
+        setTimeout(sendThemeToIframes, 200);
+        setTimeout(sendThemeToIframes, 600);
       }
       const saved = localStorage.getItem('theme');
       setTheme(saved === 'dark');
@@ -351,15 +356,21 @@
         setTheme(!$('body').hasClass('dark-theme'));
       });
   // Ao carregar, garante que o tema seja enviado para iframes já presentes
-      setTimeout(function() {
+      function sendThemeToIframesOnLoad() {
         const dark = $('body').hasClass('dark-theme');
         const themeMsg = { type: 'theme', value: dark ? 'dark' : 'light' };
-        $('iframe').each(function() {
-          try {
-            this.contentWindow.postMessage(themeMsg, '*');
-          } catch (e) {}
-        });
-      }, 500);
+        function send() {
+          $('iframe').each(function() {
+            try {
+              this.contentWindow.postMessage(themeMsg, '*');
+            } catch (e) {}
+          });
+        }
+        send();
+        setTimeout(send, 200);
+        setTimeout(send, 600);
+      }
+      setTimeout(sendThemeToIframesOnLoad, 500);
 
     // Responde ao iframe quando ele pedir o tema atual
     window.addEventListener('message', function(event) {
