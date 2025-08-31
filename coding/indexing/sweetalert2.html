@@ -439,7 +439,11 @@ Swal.fire({
   <script>
   $(function() {
     $("#btn-preview-swal2-loading").click(function() {
-      const $card = $(this).closest('.card');
+      var $card = $(this).closest('.card');
+      var cardOffset = $card.offset();
+      var scrollTop = $(window).scrollTop();
+      var popupTop = cardOffset.top - scrollTop - 12; // 12px para dar um pequeno espaço acima
+      if (popupTop < 10) popupTop = 10;
       Swal.fire({
         title: 'Carregando...',
         text: 'Aguarde um momento',
@@ -447,10 +451,16 @@ Swal.fire({
         allowOutsideClick: false,
         didOpen: () => {
           Swal.showLoading();
+          // Aplica o top dinâmico
+          $(Swal.getPopup()).css({
+            position: 'fixed',
+            top: popupTop + 'px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            margin: 0
+          });
         },
-        target: $card[0],
         position: 'top',
-        anchorPlacement: 'center',
         customClass: {
           popup: 'swal2-top-10pct'
         }
