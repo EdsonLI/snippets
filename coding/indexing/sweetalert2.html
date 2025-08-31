@@ -289,7 +289,7 @@ Swal.fire({
                             <iconify-icon icon="mdi:loading" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
                             <h6>Loading</h6>
                             <button class="btn btn-xs btn-outline-sweetalert2 btn-custom ms-auto" id="btn-preview-swal2-loading" title="Visualizar live preview" style="margin-left:auto;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
                                   <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
                                   <circle cx="12" cy="12" r="3.5"/>
                                 </svg>
@@ -417,8 +417,8 @@ Swal.fire({
   .btn-outline-sweetalert2.btn-custom .icon-preview-eye {
     stroke: #ffa500;
     transition: stroke 0.18s;
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     display: block;
   }
   .btn-outline-sweetalert2.btn-custom:hover, .btn-outline-sweetalert2.btn-custom:focus {
@@ -439,6 +439,7 @@ Swal.fire({
   <script>
   $(function() {
     $("#btn-preview-swal2-loading").click(function() {
+      const $card = $(this).closest('.card');
       Swal.fire({
         title: 'Carregando...',
         text: 'Aguarde um momento',
@@ -447,7 +448,9 @@ Swal.fire({
         didOpen: () => {
           Swal.showLoading();
         },
+        target: $card[0],
         position: 'top',
+        anchorPlacement: 'center',
         customClass: {
           popup: 'swal2-top-10pct'
         }
