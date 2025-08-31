@@ -24,6 +24,29 @@
 <body>
 <script>
 (function() {
+    // Sempre deixa os snippets escuros
+    function fixSnippetsDark() {
+        var style = document.createElement('style');
+        style.innerHTML = `
+            .jquery-scope .card,
+            .jquery-scope .card-header,
+            .jquery-scope .card-body {
+                background: #222b36 !important;
+                color: #e6edf3 !important;
+                border-color: #6610f2 !important;
+            }
+            .jquery-scope pre,
+            .jquery-scope code,
+            .jquery-scope pre code {
+                background: #161b22 !important;
+                color: #e6edf3 !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    fixSnippetsDark();
+
+    // Troca o tema do body e do restante da página
     function applyTheme(theme) {
         document.body.classList.remove('theme-dark', 'theme-light', 'dark-theme');
         if (theme === 'theme-dark') {
@@ -41,6 +64,12 @@
     try {
         window.parent.postMessage({ type: 'request-theme' }, '*');
     } catch (e) {}
+
+    // Aplica o tema inicial conforme localStorage (igual ao parent)
+    var saved = localStorage.getItem('snippetTheme');
+    if (saved === 'theme-dark' || saved === 'theme-light') {
+        applyTheme(saved);
+    }
 })();
 </script>
         <script>
