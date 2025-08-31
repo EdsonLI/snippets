@@ -361,6 +361,20 @@
         });
       }, 500);
 
+    // Responde ao iframe quando ele pedir o tema atual
+    window.addEventListener('message', function(event) {
+      if (event && event.data && event.data.type === 'request-theme') {
+        const dark = $('body').hasClass('dark-theme');
+        const themeMsg = { type: 'theme', value: dark ? 'dark' : 'light' };
+        // Responde apenas para o iframe que pediu
+        if (event.source) {
+          try {
+            event.source.postMessage(themeMsg, '*');
+          } catch (e) {}
+        }
+      }
+    });
+
   // Filtro + busca integrada
       let currentFilter = '*';
   // Desktop (Isotope)
