@@ -172,11 +172,11 @@ input[type="text"]:focus {
 
 .tab.madbuilder-tab.active .tab-check { color: #F2911D !important; }
 .tab.vscode-tab.active .tab-check { color: #007ACC !important; }
-.tab.vscode-tab { margin-right: 1.5px !important; }
 .tab.git-tab.active .tab-check { color: #DE4C36 !important; }
 .tab.git-tab { margin-left: 1px !important; }
 .tab.sweetalert2-tab.active .tab-check { color: #d19a66 !important; }
 .tab.fontawesome-tab.active .tab-check { color: #339AF0 !important; }
+.tab.fontawesome-tab { margin-right: 1.5px !important; }
 .tab.jquery-tab.active .tab-check { color: #0769ad !important; }
 .tab.css-tab.active .tab-check { color: #1572B6 !important; }
 .tab.bootstrap-tab.active .tab-check { color: #7952b3 !important; }

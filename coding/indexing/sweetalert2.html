@@ -96,7 +96,7 @@
                                 <h6>Select com Validação</h6>
                             </div>
               <button class="btn btn-xs btn-outline-sweetalert2 btn-custom" id="btn-preview-swal2-select-validation">
-                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
+                                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
                                   <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
                                   <circle cx="12" cy="12" r="3.5"></circle>
                                 </svg>
@@ -152,7 +152,7 @@
                             </span>
                             <h6>Loading</h6>
                             <button class="btn btn-xs btn-outline-sweetalert2 btn-custom ms-auto" id="btn-preview-swal2-loading" title="Visualizar live preview" style="margin-left:auto;">
-                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
+                                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
                                   <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
                                   <circle cx="12" cy="12" r="3.5"/>
                                 </svg>
@@ -431,8 +431,12 @@ Swal.fire({
   .btn-outline-sweetalert2.btn-custom .icon-preview-eye {
     stroke: #ffa500;
     transition: stroke 0.18s;
-    width: 10px;
-    height: 10px;
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
+    min-height: 8px !important;
+    max-width: 8px !important;
+    max-height: 8px !important;
     display: block;
   }
   .btn-outline-sweetalert2.btn-custom:hover, .btn-outline-sweetalert2.btn-custom:focus {
