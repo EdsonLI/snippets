@@ -82,6 +82,21 @@
         <div class="container jquery-scope card-snippet" id="jquery" data-tags="jquery">
             
             <style>
+                /* Força máxima: blocos de código SEMPRE escuros, mesmo com highlight.js ou outros estilos */
+                .jquery-scope pre,
+                .jquery-scope pre code,
+                .jquery-scope code,
+                .jquery-scope .card-body pre,
+                .jquery-scope .card-body code,
+                .jquery-scope .card-body pre code,
+                .jquery-scope .card pre,
+                .jquery-scope .card pre code,
+                .jquery-scope .card code {
+                    background: #161b22 !important;
+                    color: #e6edf3 !important;
+                    border: none !important;
+                    box-shadow: none !important;
+                }
                 /* Escopo local da página jQuery: snippets SEMPRE escuros */
                 .jquery-scope { --snippet-border: #6610f2; }
                 .jquery-scope .card,
