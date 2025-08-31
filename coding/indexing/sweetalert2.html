@@ -100,7 +100,7 @@
                                 <h6>Select com Validação</h6>
                             </div>
               <button class="btn btn-xs btn-outline-sweetalert2 btn-custom" id="btn-preview-swal2-select-validation">
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
                                   <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
                                   <circle cx="12" cy="12" r="3.5"/>
                                 </svg>
@@ -394,18 +394,26 @@ Swal.fire({
     margin-top: 0 !important;
   }
   .btn-outline-sweetalert2.btn-custom {
-    padding: 1px 5px !important;
-    min-width: 22px;
-    min-height: 22px;
+    padding: 0 !important;
+    min-width: 18px;
+    min-height: 18px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0.18rem !important;
+    border-radius: 0.12rem !important;
     transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s;
+    position: relative;
+    top: -2px;
+    right: -2px;
   }
   .btn-outline-sweetalert2.btn-custom .icon-preview-eye {
     stroke: #ffa500;
     transition: stroke 0.18s;
+    width: 16px;
+    height: 16px;
+    display: block;
   }
   .btn-outline-sweetalert2.btn-custom:hover, .btn-outline-sweetalert2.btn-custom:focus {
     background: #23272b !important;
@@ -419,6 +427,6 @@ Swal.fire({
   }
   /* Remover border-radius excessivo dos cards para padrão main */
   .card-snippet .card, .card {
-    border-radius: 0.28rem !important;
+    border-radius: 0.18rem !important;
   }
   </style>
