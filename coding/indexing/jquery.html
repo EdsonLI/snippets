@@ -68,6 +68,11 @@
         <div class="container jquery-scope card-snippet" id="jquery" data-tags="jquery">
             
             <style>
+                /* Aplica fundo e cor geral do tema ao body */
+                body.theme-dark, body.theme-light {
+                    background: var(--snippet-bg) !important;
+                    color: var(--snippet-fg) !important;
+                }
                 /* Escopo local da página jQuery: usa variáveis do tema global */
                 .jquery-scope { --snippet-border: var(--snippet-border); }
                 .jquery-scope .card {
