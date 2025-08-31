@@ -127,14 +127,14 @@ $(document).ready(function() {
       }
     });
 
-    $('#fontawesome-content').load('./snippets_fontawesome.html', function() {
+    $('#icons-content').load('./icons.html', function() {
       hljs.highlightAll();
       setupSnippetInteractions();
       addCopyButtons();
       
       // Reaplicar tema ao conteúdo carregado
       if (window.snippetTheme) {
-        window.snippetTheme.reapplyThemeToContent(document.getElementById('fontawesome-content'));
+        window.snippetTheme.reapplyThemeToContent(document.getElementById('icons-content'));
       }
     });
 
