@@ -24,35 +24,21 @@
 <body>
 <script>
 (function() {
-    // Sempre deixa os snippets escuros
-    function fixSnippetsDark() {
-        var style = document.createElement('style');
-        style.innerHTML = `
-            .jquery-scope .card,
-            .jquery-scope .card-header,
-            .jquery-scope .card-body {
-                background: #222b36 !important;
-                color: #e6edf3 !important;
-                border-color: #6610f2 !important;
-            }
-            .jquery-scope pre,
-            .jquery-scope code,
-            .jquery-scope pre code {
-                background: #161b22 !important;
-                color: #e6edf3 !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    fixSnippetsDark();
-
     // Troca o tema do body e do restante da página
     function applyTheme(theme) {
         document.body.classList.remove('theme-dark', 'theme-light', 'dark-theme');
         if (theme === 'theme-dark') {
             document.body.classList.add('theme-dark');
+            document.body.style.background = '#0d1117';
+            document.body.style.color = '#e6edf3';
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(sec){ sec.style.background = '#0d1117'; sec.style.color = '#e6edf3'; });
         } else {
             document.body.classList.add('theme-light');
+            document.body.style.background = '#f8f9fa';
+            document.body.style.color = '#222b36';
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(sec){ sec.style.background = '#f8f9fa'; sec.style.color = '#222b36'; });
         }
     }
     window.addEventListener('message', function(event) {
@@ -64,7 +50,6 @@
     try {
         window.parent.postMessage({ type: 'request-theme' }, '*');
     } catch (e) {}
-
     // Aplica o tema inicial conforme localStorage (igual ao parent)
     var saved = localStorage.getItem('snippetTheme');
     if (saved === 'theme-dark' || saved === 'theme-light') {
@@ -97,26 +82,15 @@
         <div class="container jquery-scope card-snippet" id="jquery" data-tags="jquery">
             
             <style>
-                /* Aplica fundo e cor geral do tema ao body */
-                body.theme-dark, body.theme-light {
-                    background: var(--snippet-bg) !important;
-                    color: var(--snippet-fg) !important;
-                }
-                /* Escopo local da página jQuery: usa variáveis do tema global */
-                .jquery-scope { --snippet-border: var(--snippet-border); }
-                .jquery-scope .card {
-                    border-width: 1px !important;
-                    background: var(--snippet-card-bg) !important;
-                    color: var(--snippet-card-fg) !important;
-                    border-color: var(--snippet-border) !important;
-                }
-                .jquery-scope .card-header {
-                    background: var(--snippet-card-bg) !important;
-                    color: var(--snippet-card-fg) !important;
-                }
+                /* Escopo local da página jQuery: snippets SEMPRE escuros */
+                .jquery-scope { --snippet-border: #6610f2; }
+                .jquery-scope .card,
+                .jquery-scope .card-header,
                 .jquery-scope .card-body {
-                    background: var(--snippet-card-bg) !important;
-                    color: var(--snippet-card-fg) !important;
+                    border-width: 1px !important;
+                    background: #222b36 !important;
+                    color: #e6edf3 !important;
+                    border-color: #6610f2 !important;
                 }
                 .jquery-scope .btn-outline-jquery {
                     color: var(--snippet-border) !important;
