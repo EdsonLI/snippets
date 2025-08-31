@@ -288,6 +288,12 @@ Swal.fire({
                         <div class="card-header d-flex align-items-center">
                             <iconify-icon icon="mdi:loading" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
                             <h6>Loading</h6>
+                            <button class="btn btn-xs btn-outline-sweetalert2 btn-custom ms-auto" id="btn-preview-swal2-loading" title="Visualizar live preview" style="margin-left:auto;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
+                                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                                  <circle cx="12" cy="12" r="3.5"/>
+                                </svg>
+                            </button>
                         </div>
                         <div class="card-body">
 <pre><code class="language-javascript">// Loading simples
@@ -430,3 +436,22 @@ Swal.fire({
     border-radius: 0.18rem !important;
   }
   </style>
+  <script>
+  $(function() {
+    $("#btn-preview-swal2-loading").click(function() {
+      Swal.fire({
+        title: 'Carregando...',
+        text: 'Aguarde um momento',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        position: 'top',
+        customClass: {
+          popup: 'swal2-top-10pct'
+        }
+      });
+    });
+  });
+  </script>
