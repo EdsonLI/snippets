@@ -53,6 +53,40 @@
   
   <!-- Script para toggle de tema -->
   <script src="assets/js/theme-toggle.js"></script>
+<script>
+// Envia o tema para todos os iframes de snippet sempre que o tema for alterado
+function sendThemeToIframes() {
+  var theme = document.body.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
+  document.querySelectorAll('iframe').forEach(function(iframe) {
+    try {
+      iframe.contentWindow.postMessage({ type: 'theme', value: theme }, '*');
+    } catch (e) {}
+  });
+}
+// Hook no botão de tema
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('themeToggle');
+  if (btn) {
+    btn.addEventListener('click', function() {
+      setTimeout(sendThemeToIframes, 100);
+      setTimeout(sendThemeToIframes, 400);
+    });
+  }
+  // Envia tema ao carregar
+  setTimeout(sendThemeToIframes, 500);
+});
+// Responde ao request-theme do iframe
+window.addEventListener('message', function(event) {
+  if (event && event.data && event.data.type === 'request-theme') {
+    var theme = document.body.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
+    if (event.source) {
+      try {
+        event.source.postMessage({ type: 'theme', value: theme }, '*');
+      } catch (e) {}
+    }
+  }
+});
+</script>
   
   <!-- Script para correção do fundo dos blocos de código -->
   <script src="assets/js/code-dark-fix.js"></script>
