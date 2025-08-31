@@ -18,7 +18,27 @@
     <!-- CSS unificado do indexing - EXATAMENTE IGUAL AOS OUTROS -->
     <link href="assets/css/indexing-unified.css" rel="stylesheet">
 </head>
-<body class="theme-dark">
+<body>
+<script>
+(function() {
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+        }
+    }
+    window.addEventListener('message', function(event) {
+        if (event && event.data && event.data.type === 'theme') {
+            applyTheme(event.data.value);
+        }
+    });
+    // Solicita tema ao parent ao carregar
+    try {
+        window.parent.postMessage({ type: 'request-theme' }, '*');
+    } catch (e) {}
+})();
+</script>
         <script>
         // Sincroniza tema recebido do parent via postMessage
         (function() {
