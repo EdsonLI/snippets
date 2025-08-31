@@ -19,6 +19,27 @@
     <link href="assets/css/indexing-unified.css" rel="stylesheet">
 </head>
 <body class="theme-dark">
+        <script>
+        // Sincroniza tema recebido do parent via postMessage
+        (function() {
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-theme');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                }
+            }
+            window.addEventListener('message', function(event) {
+                if (event && event.data && event.data.type === 'theme') {
+                    applyTheme(event.data.value);
+                }
+            });
+            // Solicita tema ao parent ao carregar (caso o iframe seja recarregado isoladamente)
+            try {
+                window.parent.postMessage({ type: 'request-theme' }, '*');
+            } catch (e) {}
+        })();
+        </script>
     <section class="py-5">
         <div class="container jquery-scope card-snippet" id="jquery" data-tags="jquery">
             

@@ -328,50 +328,67 @@
   <script src="assets/js/main.js"></script>
   <script>
     $(document).ready(function() {
-      // Inicialização de botões de cópia é feita pelo snippet-copy-simple.js
+  // Inicialização de botões de cópia é feita pelo snippet-copy-simple.js
 
-      // Theme toggle logic - Convertido para jQuery
+  // Theme toggle logic - Convertido para jQuery
       const $themeBtn = $('#theme-toggle');
       const $icon = $themeBtn.find('iconify-icon');
       function setTheme(dark) {
         $('body').toggleClass('dark-theme', dark);
         $themeBtn.attr('title', dark ? 'Tema claro' : 'Tema escuro');
         localStorage.setItem('theme', dark ? 'dark' : 'light');
+  // Envia o tema para todos os iframes de snippets
+        const themeMsg = { type: 'theme', value: dark ? 'dark' : 'light' };
+        $('iframe').each(function() {
+          try {
+            this.contentWindow.postMessage(themeMsg, '*');
+          } catch (e) {}
+        });
       }
       const saved = localStorage.getItem('theme');
       setTheme(saved === 'dark');
       $themeBtn.on('click', function() {
         setTheme(!$('body').hasClass('dark-theme'));
       });
+  // Ao carregar, garante que o tema seja enviado para iframes já presentes
+      setTimeout(function() {
+        const dark = $('body').hasClass('dark-theme');
+        const themeMsg = { type: 'theme', value: dark ? 'dark' : 'light' };
+        $('iframe').each(function() {
+          try {
+            this.contentWindow.postMessage(themeMsg, '*');
+          } catch (e) {}
+        });
+      }, 500);
 
-      // Filtro + busca integrada
+  // Filtro + busca integrada
       let currentFilter = '*';
-      // Desktop (Isotope)
+  // Desktop (Isotope)
       $('#dynamic-snippets-filters').on('click', 'li', function() {
         currentFilter = $(this).attr('data-filter');
         $('#search').trigger('input');
       });
-      // Mobile (custom)
+  // Mobile (custom)
       $('#dynamic-snippets-filters-mobile').on('click', 'li', function() {
         currentFilter = $(this).attr('data-filter');
         $('#search').trigger('input');
       });
 
-      // Busca avançada integrada ao filtro (suporta elementos com classe search-title)
+  // Busca avançada integrada ao filtro (suporta elementos com classe search-title)
       $('#search').on('input', function() {
         var searchVal = $(this).val().toLowerCase();
         
-        // Não filtrar se o campo de busca estiver vazio
+  // Não filtrar se o campo de busca estiver vazio
         if (searchVal === '') {
           $('.isotope-item').show();
           return;
         }
         
-        // Seleciona os itens conforme filtro de categoria
+  // Seleciona os itens conforme filtro de categoria
         var $items = (currentFilter === '*' ? $('.isotope-item') : $('.isotope-item'+currentFilter));
         $('.isotope-item').hide();
         
-        // Filtrar os itens considerando títulos de busca como prioridade
+  // Filtrar os itens considerando títulos de busca como prioridade
         $items.filter(function() {
           // Busca específica em elementos com classe search-title
           const $searchTitle = $(this).find('.search-title');
