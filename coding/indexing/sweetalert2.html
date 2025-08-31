@@ -131,6 +131,55 @@
                     </div>
                 </div>
 
+                <!-- LOADING -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header d-flex align-items-center">
+                            <iconify-icon icon="mdi:loading" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Loading</h6>
+                            <button class="btn btn-xs btn-outline-sweetalert2 btn-custom ms-auto" id="btn-preview-swal2-loading" title="Visualizar live preview" style="margin-left:auto;">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
+                                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                                  <circle cx="12" cy="12" r="3.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="card-body">
+<pre><code class="language-javascript">// Loading simples
+Swal.fire({
+  title: 'Carregando...',
+  text: 'Aguarde um momento',
+  showConfirmButton: false,
+  allowOutsideClick: false,
+  didOpen: () => {
+    Swal.showLoading()
+  }
+});
+
+// Com simulação de processo
+Swal.fire({
+  title: 'Processando...',
+  html: 'Progresso: <b>0%</b>',
+  showConfirmButton: false,
+  allowOutsideClick: false,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    let progress = 0
+    const timer = setInterval(() => {
+      progress += 10
+      b.textContent = progress + '%'
+      if (progress >= 100) {
+        clearInterval(timer)
+        Swal.fire('Concluído!', 'Processo finalizado', 'success')
+      }
+    }, 300)
+  }
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- ALERTA BÁSICO -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
@@ -181,32 +230,6 @@ Swal.fire({
   text: 'Esta é a mensagem do alerta',
   icon: 'success',
   confirmButtonText: 'OK'
-});</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CONFIRMAÇÃO -->
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="mdi:help-circle-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
-                            <h6>Confirmação</h6>
-                        </div>
-                        <div class="card-body">
-<pre><code class="language-javascript">Swal.fire({
-  title: 'Tem certeza?',
-  text: "Esta ação não pode ser desfeita!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Sim, deletar!',
-  cancelButtonText: 'Cancelar'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire('Deletado!', 'Item foi removido.', 'success');
-  }
 });</code></pre>
                         </div>
                     </div>
@@ -282,55 +305,32 @@ Swal.fire({
                     </div>
                 </div>
 
-                <!-- LOADING -->
+                <!-- CONFIRMAÇÃO -->
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header d-flex align-items-center">
-                            <iconify-icon icon="mdi:loading" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
-                            <h6>Loading</h6>
-                            <button class="btn btn-xs btn-outline-sweetalert2 btn-custom ms-auto" id="btn-preview-swal2-loading" title="Visualizar live preview" style="margin-left:auto;">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-preview-eye">
-                                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
-                                  <circle cx="12" cy="12" r="3.5"/>
-                                </svg>
-                            </button>
+                            <iconify-icon icon="mdi:help-circle-outline" class="me-2" style="width: 20px; height: 20px; color: white;"></iconify-icon>
+                            <h6>Confirmação</h6>
                         </div>
                         <div class="card-body">
-<pre><code class="language-javascript">// Loading simples
-Swal.fire({
-  title: 'Carregando...',
-  text: 'Aguarde um momento',
-  showConfirmButton: false,
-  allowOutsideClick: false,
-  didOpen: () => {
-    Swal.showLoading()
-  }
-});
-
-// Com simulação de processo
-Swal.fire({
-  title: 'Processando...',
-  html: 'Progresso: <b>0%</b>',
-  showConfirmButton: false,
-  allowOutsideClick: false,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    let progress = 0
-    const timer = setInterval(() => {
-      progress += 10
-      b.textContent = progress + '%'
-      if (progress >= 100) {
-        clearInterval(timer)
-        Swal.fire('Concluído!', 'Processo finalizado', 'success')
-      }
-    }, 300)
+<pre><code class="language-javascript">Swal.fire({
+  title: 'Tem certeza?',
+  text: "Esta ação não pode ser desfeita!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Sim, deletar!',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire('Deletado!', 'Item foi removido.', 'success');
   }
 });</code></pre>
                         </div>
                     </div>
                 </div>
-            
+
             </div>
         </div>
     </section>
