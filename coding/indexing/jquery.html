@@ -68,13 +68,30 @@
         <div class="container jquery-scope card-snippet" id="jquery" data-tags="jquery">
             
             <style>
-                /* Escopo local da página jQuery: borda roxa padrão */
-                .jquery-scope { --snippet-border: #6610f2; }
-                .jquery-scope .card { border-width: 1px !important; background: transparent !important; color: var(--snippet-fg) !important; }
-                .jquery-scope .card-header { background: transparent !important; color: var(--snippet-fg) !important; }
-                .jquery-scope .card-body { background: transparent !important; color: var(--snippet-fg) !important; }
-                .jquery-scope .btn-outline-jquery { color: #6610f2 !important; border-color: #6610f2 !important; }
-                .jquery-scope .btn-outline-jquery:hover { background: rgba(102,16,242,.08) !important; color: #6610f2 !important; }
+                /* Escopo local da página jQuery: usa variáveis do tema global */
+                .jquery-scope { --snippet-border: var(--snippet-border); }
+                .jquery-scope .card {
+                    border-width: 1px !important;
+                    background: var(--snippet-card-bg) !important;
+                    color: var(--snippet-card-fg) !important;
+                    border-color: var(--snippet-border) !important;
+                }
+                .jquery-scope .card-header {
+                    background: var(--snippet-card-bg) !important;
+                    color: var(--snippet-card-fg) !important;
+                }
+                .jquery-scope .card-body {
+                    background: var(--snippet-card-bg) !important;
+                    color: var(--snippet-card-fg) !important;
+                }
+                .jquery-scope .btn-outline-jquery {
+                    color: var(--snippet-border) !important;
+                    border-color: var(--snippet-border) !important;
+                }
+                .jquery-scope .btn-outline-jquery:hover {
+                    background: rgba(102,16,242,.08) !important;
+                    color: var(--snippet-border) !important;
+                }
                 
                 /* Alinhamento perfeito ícone + título */
                 .jquery-scope .card-header svg, .jquery-scope .card-header iconify-icon, .jquery-scope .card-header h6 {
@@ -97,10 +114,22 @@
                     align-items: center !important;
                 }
                 
-                /* Remover fundo dos blocos de código */
-                .jquery-scope pre { background: transparent !important; font-size: 0.85em !important; }
-                .jquery-scope code { background: transparent !important; font-size: 0.85em !important; }
-                .jquery-scope pre code { background: transparent !important; font-size: 0.85em !important; }
+                /* Fundo dos blocos de código usa variável do tema */
+                .jquery-scope pre {
+                    background: var(--snippet-bg) !important;
+                    color: var(--snippet-fg) !important;
+                    font-size: 0.85em !important;
+                }
+                .jquery-scope code {
+                    background: var(--snippet-bg) !important;
+                    color: var(--snippet-fg) !important;
+                    font-size: 0.85em !important;
+                }
+                .jquery-scope pre code {
+                    background: var(--snippet-bg) !important;
+                    color: var(--snippet-fg) !important;
+                    font-size: 0.85em !important;
+                }
                 
                 /* Botões extra pequenos como na página principal */
                 .btn-xs {
