@@ -241,17 +241,13 @@
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-seletores" class="language-javascript">// Por ID
-$('#meuElemento')
+<pre><code id="jquery-seletores" class="language-javascript">$('#meuElemento');
 
-// Por classe
-$('.minhaClasse')
+$('.minhaClasse');
 
-// Por tag
-$('p')
+$('p');
 
-// Múltiplos seletores
-$('#id1, .classe1, p')</code></pre>
+$('#id1, .classe1, p');</code></pre>
                         </div>
                     </div>
                 </div>
@@ -269,12 +265,10 @@ $('#id1, .classe1, p')</code></pre>
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-eventos" class="language-javascript">// Click
-$('#botao').click(function() {
+<pre><code id="jquery-eventos" class="language-javascript">$('#botao').click(function() {
     alert('Clicado!');
 });
 
-// Hover
 $('.item').hover(
     function() { $(this).addClass('hover'); },
     function() { $(this).removeClass('hover'); }
@@ -296,13 +290,10 @@ $('.item').hover(
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-classes" class="language-javascript">// Adicionar classe
-$('.elemento').addClass('ativa');
+<pre><code id="jquery-classes" class="language-javascript">$('.elemento').addClass('ativa');
 
-// Remover classe
 $('.elemento').removeClass('ativa');
 
-// Toggle classe
 $('.elemento').toggleClass('ativa');</code></pre>
                         </div>
                     </div>
@@ -321,13 +312,10 @@ $('.elemento').toggleClass('ativa');</code></pre>
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-conteudo" class="language-javascript">// Texto
-$('#titulo').text('Novo texto');
+<pre><code id="jquery-conteudo" class="language-javascript">$('#titulo').text('Novo texto');
 
-// HTML
 $('#container').html('<p>Novo HTML</p>');
 
-// Valor de input
 $('#campo').val('Novo valor');</code></pre>
                         </div>
                     </div>
@@ -346,10 +334,8 @@ $('#campo').val('Novo valor');</code></pre>
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-css" class="language-javascript">// Uma propriedade
-$('.elemento').css('color', 'red');
+<pre><code id="jquery-css" class="language-javascript">$('.elemento').css('color', 'red');
 
-// Múltiplas propriedades
 $('.elemento').css({
     'background-color': '#333',
     'padding': '10px',
@@ -372,15 +358,12 @@ $('.elemento').css({
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-animacoes" class="language-javascript">// Fade
-$('.elemento').fadeIn();
+<pre><code id="jquery-animacoes" class="language-javascript">$('.elemento').fadeIn();
 $('.elemento').fadeOut();
 
-// Slide
 $('.elemento').slideUp();
 $('.elemento').slideDown();
 
-// Personalizada
 $('.elemento').animate({
     opacity: 0.5,
     left: '250px'
@@ -402,12 +385,10 @@ $('.elemento').animate({
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-ajax" class="language-javascript">// GET
-$.get('api/dados.php', function(data) {
+<pre><code id="jquery-ajax" class="language-javascript">$.get('api/dados.php', function(data) {
     console.log(data);
 });
 
-// POST
 $.post('api/salvar.php', {
     nome: 'João',
     email: 'joao@email.com'
@@ -431,16 +412,12 @@ $.post('api/salvar.php', {
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-formularios" class="language-javascript">// Submit
-$('#formulario').submit(function(e) {
+<pre><code id="jquery-formularios" class="language-javascript">$('#formulario').submit(function(e) {
     e.preventDefault();
-    // Validação
 });
 
-// Serializar
 var dados = $('#formulario').serialize();
 
-// Reset
 $('#formulario')[0].reset();</code></pre>
                         </div>
                     </div>
@@ -459,13 +436,10 @@ $('#formulario')[0].reset();</code></pre>
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-dom" class="language-javascript">// Adicionar elemento
-$('.container').append('<p>Novo item</p>');
+<pre><code id="jquery-dom" class="language-javascript">$('.container').append('<p>Novo item</p>');
 
-// Remover
 $('.item').remove();
 
-// Clonar
 var clone = $('.original').clone();
 $('.destino').append(clone);</code></pre>
                         </div>
@@ -485,12 +459,10 @@ $('.destino').append(clone);</code></pre>
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-loops" class="language-javascript">// Each
-$('.item').each(function(index) {
+<pre><code id="jquery-loops" class="language-javascript">$('.item').each(function(index) {
     console.log(index, $(this).text());
 });
 
-// Map
 var textos = $('.item').map(function() {
     return $(this).text();
 }).get();</code></pre>
@@ -511,15 +483,12 @@ var textos = $('.item').map(function() {
                             </button>
                         </div>
                         <div class="card-body">
-<pre><code id="jquery-utilitarios" class="language-javascript">// Checar existência
-if ($('.elemento').length) {
-    // Elemento existe
+<pre><code id="jquery-utilitarios" class="language-javascript">if ($('.elemento').length) {
+    ...
 }
 
-// Delay
 $('.elemento').delay(1000).fadeIn();
 
-// Stop animação
 $('.elemento').stop().fadeOut();</code></pre>
                         </div>
                     </div>
