@@ -1,0 +1,142 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-copilot filter-ai">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-copilot">GitHub Copilot</span>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-variables">
+          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://docs.github.com/en/copilot/reference/cheat-sheet" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link title="Documentação Oficial">
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </h6>
+    <h6 class="mb-1 text-center search-title"><strong>Variables</strong></h6>
+
+    <!-- snippet-code -->
+    <div class="snippet-code position-relative">
+      <!-- Bloco geral para copiar tudo pelo botão do cabeçalho -->
+      <pre class="d-none"><code id="snippet-copilot-variables" class="language-markdown">
+## Variáveis de contexto (#) — visão geral
+
+- **#function**: inclui **o código do método/função onde o cursor está** (não depende do nome).
+- **#selection**: inclui **apenas o trecho selecionado**.
+- **#file**: inclui **todo o arquivo atual**.
+- **#class**: inclui **a classe atual** (quando aplicável).
+- **#project**: inclui **contexto do projeto inteiro/workspace**.
+
+### Nota importante (métodos pelo nome)
+- Não existe `#onSave`. Para focar em `onSave`, faça **uma destas opções**:
+  1) Posicione o cursor **dentro de onSave** e use `#function`.
+  2) **Selecione** o código do método e use `#selection`.
+  3) Use `#file` e peça explicitamente: "Explique o método **onSave** em #file".
+      </code></pre>
+
+      <!-- #function -->
+      <div class="mb-3">
+        <div class="px-2">
+          <b>#function</b> — Pega o código da função/método onde o <i>cursor está</i>. Não depende do nome do método.
+          <div class="small mt-1">
+            <b>Explicação estilo “como assim function faz?”:</b><br>
+            Ao usar <code>#function</code>, o Copilot Chat “expande” automaticamente o código do método atual (ex.: <code>onSave</code>) e trabalha em cima dele.
+          </div>
+        </div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-function">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="var-cmd-function" class="language-bash">Explique o que #function faz e sugira melhorias
+Liste riscos e edge cases em #function e proponha testes
+/refactor: simplifique #function mantendo o comportamento
+/tests #function</code></pre>
+        </div>
+      </div>
+
+      <!-- Nota rápida: nome do método -->
+      <div class="mb-3">
+        <div class="px-2">
+          <b>Nota rápida — “Quero saber o que <code>onSave</code> faz”</b><br>
+          <span class="small">Não existe <code>#onSave</code>. Use uma destas abordagens 👇</span>
+        </div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-method-name">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="var-cmd-method-name" class="language-bash"># (A) Cursor dentro de onSave:
+Explique o que #function faz e sugira melhorias
+
+# (B) Selecionando o método:
+/explain #selection
+/tests #selection
+
+# (C) No arquivo todo, pedindo explicitamente o nome:
+Explique o método onSave em #file e aponte riscos</code></pre>
+        </div>
+      </div>
+
+      <!-- #selection -->
+      <div class="mb-3">
+        <div class="px-2">
+          <b>#selection</b> — Usa apenas o trecho que você destacou. Ideal para partes específicas (um método, um bloco complexo, uma query).
+        </div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-selection">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="var-cmd-selection" class="language-bash">/explain #selection
+/comment #selection
+/fix #selection
+/refactor: extraia funções menores a partir de #selection</code></pre>
+        </div>
+      </div>
+
+      <!-- #file -->
+      <div class="mb-3">
+        <div class="px-2">
+          <b>#file</b> — Considera o arquivo inteiro (bom para visão geral, docs, padronização e otimizações amplas).
+        </div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-file">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="var-cmd-file" class="language-bash">Mapeie responsabilidades e dependências em #file
+/docs #file
+/optimize #file
+Encontre cheiros de código em #file e proponha refatorações</code></pre>
+        </div>
+      </div>
+
+      <!-- #class -->
+      <div class="mb-3">
+        <div class="px-2">
+          <b>#class</b> — Contexto da classe atual (quando a linguagem/suporte permitir). Se não funcionar, selecione a classe e use <code>#selection</code>.
+        </div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-class">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="var-cmd-class" class="language-bash">/explain #class
+/docs #class
+Identifique violações de SRP em #class e sugira divisão em classes menores</code></pre>
+        </div>
+      </div>
+
+      <!-- #project -->
+      <div class="mb-3">
+        <div class="px-2">
+          <b>#project</b> — Contexto amplo do workspace. Útil para arquitetura, convenções, e dependências. (Dica: seja específico no pedido para não vir genérico demais.)
+        </div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-project">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="var-cmd-project" class="language-bash">Analise #project e liste problemas de arquitetura por módulo
+Padronize nomenclaturas e estilos detectados em #project
+Sugira um plano de refatoração incremental para #project (priorize alto impacto/baixo risco)</code></pre>
+        </div>
+      </div>
+
+    </div>
+    <!-- /snippet-code -->
+  </div>
+</div>
