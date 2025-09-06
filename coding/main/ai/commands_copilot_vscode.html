@@ -1,0 +1,111 @@
+<div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-copilot filter-ai">
+  <div class="portfolio-content h-100 p-2 bg-dark text-light rounded position-relative border border-secondary-custom">
+    <h6 class="text-center">
+      <span class="id-tech-copilot">GitHub Copilot</span>
+      <div class="snippet-actions-float d-flex align-items-center gap-1">
+        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-commands">
+          <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
+        </button>
+        <a href="https://docs.github.com/en/copilot/reference/cheat-sheet" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link title="Documentação Oficial">
+          <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
+        </a>
+      </div>
+    </h6>
+    <h6 class="mb-1 text-center search-title"><strong>Commands</strong></h6>
+
+    <!-- snippet-code -->
+    <div class="snippet-code position-relative">
+
+      <!-- /explain -->
+      <div class="mb-3">
+        <div class="px-2"><b>/explain</b> — Explica o código fornecido.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-explain">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-explain" class="language-bash">/explain #selection</code></pre>
+        </div>
+      </div>
+
+      <!-- /fix -->
+      <div class="mb-3">
+        <div class="px-2"><b>/fix</b> — Sugere correções para o trecho.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-fix">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-fix" class="language-bash">/fix #function</code></pre>
+        </div>
+      </div>
+
+      <!-- /tests -->
+      <div class="mb-3">
+        <div class="px-2"><b>/tests</b> — Gera testes unitários.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-tests">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-tests" class="language-bash">/tests #function</code></pre>
+        </div>
+      </div>
+
+      <!-- /docs -->
+      <div class="mb-3">
+        <div class="px-2"><b>/docs</b> — Cria documentação.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-docs">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-docs" class="language-bash">/docs #class</code></pre>
+        </div>
+      </div>
+
+      <!-- /optimize -->
+      <div class="mb-3">
+        <div class="px-2"><b>/optimize</b> — Sugere melhorias de performance.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-optimize">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-optimize" class="language-bash">/optimize #file</code></pre>
+        </div>
+      </div>
+
+      <!-- /comment -->
+      <div class="mb-3">
+        <div class="px-2"><b>/comment</b> — Adiciona comentários explicativos.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-comment">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-comment" class="language-bash">/comment #selection</code></pre>
+        </div>
+      </div>
+
+      <!-- /edit -->
+      <div class="mb-3">
+        <div class="px-2"><b>/edit</b> — Refatora ou ajusta código.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-edit">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-edit" class="language-bash">/edit: Troque callbacks por async/await em #selection</code></pre>
+        </div>
+      </div>
+
+      <!-- /new -->
+      <div class="mb-3">
+        <div class="px-2"><b>/new</b> — Cria novo módulo ou arquivo.</div>
+        <div class="position-relative">
+          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="copilot-cmd-new">
+            <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
+          </button>
+          <pre><code id="copilot-cmd-new" class="language-bash">/new componente React com props title e description</code></pre>
+        </div>
+      </div>
+
+    </div>
+    <!-- /snippet-code -->
+
+  </div>
+</div>

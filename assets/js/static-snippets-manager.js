@@ -33,7 +33,7 @@ $(document).ready(function() {
     filterMap: new Map(),       // Mapeamento de pastas para classes de filtro
     isotopeInitialized: false   // Rastrear se o Isotope já foi inicializado
   };  const STATIC_DIRECTORY_MAP = {
-    'ai': ['github-copilot.html', 'instructions_copilot_vscode.html'],
+    'ai': ['commands_copilot_vscode.html', 'github-copilot.html', 'instructions_copilot_vscode.html'],
     'bootstrap': ['snippet_bootstrap_form_validation.html'],
     'css': ['snippet_css_display_flex_center.html'],
     'dev-utils': ['dev-utils.html'],
@@ -45,7 +45,7 @@ $(document).ready(function() {
     'sql': ['snippet_procedure_clean_data.html', 'snippet_procedure_report_basic.html'],
     'sweetalert2': ['snippet_sweetalert2_confirm_example.html', 'snippet_sweetalert2_confirm_with_function_attached_example.html', 'snippet_sweetalert2_select_color_radio_example.html'],
     'w3schools': ['w3schools.html']
-    // Última atualização: 28/08/2025 19:49:36
+    // Última atualização: 06/09/2025 18:45:50
   };
 
   /**
