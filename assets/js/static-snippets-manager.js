@@ -18,10 +18,10 @@ $(document).ready(function() {
 
   // Sistema de log para facilitar diagnósticos
   const log = {
-    info: (msg) => {},
-    success: (msg) => {},
-    warn: (msg) => {},
-    error: (msg, err) => {}
+    info: (msg) => SNIPPETS_CONFIG.debug && console.log(`[SNIPPETS INFO] ${msg}`),
+    success: (msg) => SNIPPETS_CONFIG.debug && console.log(`[SNIPPETS SUCCESS] ${msg}`),
+    warn: (msg) => SNIPPETS_CONFIG.debug && console.warn(`[SNIPPETS WARN] ${msg}`),
+    error: (msg, err) => SNIPPETS_CONFIG.debug && console.error(`[SNIPPETS ERROR] ${msg}`, err || '')
   };
 
   // Estado do carregador - rastreia o que foi carregado
@@ -246,12 +246,32 @@ $(document).ready(function() {
    * @returns {string} HTML processado
    */
   function processHtml(html, snippetPath) {
+    // Criar um elemento temporário para manipular o HTML
+    const $tempDiv = $('<div>').html(html);
+    
+    // Corrigir caminhos relativos dos scripts para caminhos absolutos corretos
+    $tempDiv.find('script[src*="../../../assets/"]').each(function() {
+      const $script = $(this);
+      const originalSrc = $script.attr('src');
+      // Converter ../../../assets/ para assets/
+      const newSrc = originalSrc.replace(/\.\.\/\.\.\/\.\.\//g, '');
+      $script.attr('src', newSrc);
+      log.info(`Script path corrigido: ${originalSrc} -> ${newSrc}`);
+    });
+    
+    // Corrigir caminhos relativos dos links CSS
+    $tempDiv.find('link[href*="../../../assets/"]').each(function() {
+      const $link = $(this);
+      const originalHref = $link.attr('href');
+      // Converter ../../../assets/ para assets/
+      const newHref = originalHref.replace(/\.\.\/\.\.\/\.\.\//g, '');
+      $link.attr('href', newHref);
+      log.info(`CSS path corrigido: ${originalHref} -> ${newHref}`);
+    });
+    
     // Remover ou modificar links para snippets_standalone
     if (html.includes('snippets_standalone')) {
       log.warn(`Encontrados links para snippets_standalone em: ${snippetPath}`);
-      
-      // Criar um elemento temporário para manipular o HTML
-      const $tempDiv = $('<div>').html(html);
       
       // Processar links de download que apontam para arquivos standalone
       $tempDiv.find('a[href*="snippets_standalone"]').each(function() {
@@ -291,11 +311,9 @@ $(document).ready(function() {
         
         log.info(`Iframe de standalone substituído: ${originalSrc}`);
       });
-      
-      return $tempDiv.html();
     }
     
-    return html;
+    return $tempDiv.html();
   }
 
   function reinitializeIsotope() {
