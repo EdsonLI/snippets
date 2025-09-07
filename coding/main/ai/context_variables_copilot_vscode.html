@@ -3,9 +3,9 @@
     <h6 class="text-center">
       <span class="id-tech-copilot">GitHub Copilot</span>
       <div class="snippet-actions-float d-flex align-items-center gap-1">
-        <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-variables">
+        <!-- <button class="btn btn-xs btn-outline-info btn-custom" data-target="snippet-copilot-variables">
           <iconify-icon icon="mdi:content-copy" width="16" height="16"></iconify-icon>
-        </button>
+        </button> -->
         <a href="https://docs.github.com/en/copilot/reference/cheat-sheet" target="_blank" class="btn btn-xs btn-outline-info btn-custom" data-snippet-external-link title="Documentação Oficial">
           <iconify-icon icon="mdi:open-in-new" width="16" height="16"></iconify-icon>
         </a>
@@ -42,9 +42,9 @@
           </div>
         </div>
         <div class="position-relative">
-          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-function">
+          <!-- <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-function">
             <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-          </button>
+          </button> -->
           <pre><code id="var-cmd-function" class="language-bash">Explique o que #function faz e sugira melhorias
 Liste riscos e edge cases em #function e proponha testes
 /refactor: simplifique #function mantendo o comportamento
@@ -59,9 +59,9 @@ Liste riscos e edge cases em #function e proponha testes
           <span class="small">Não existe <code>#onSave</code>. Use uma destas abordagens 👇</span>
         </div>
         <div class="position-relative">
-          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-method-name">
+          <!-- <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-method-name">
             <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-          </button>
+          </button> -->
           <pre><code id="var-cmd-method-name" class="language-bash"># (A) Cursor dentro de onSave:
 Explique o que #function faz e sugira melhorias
 
@@ -80,9 +80,9 @@ Explique o método onSave em #file e aponte riscos</code></pre>
           <b>#selection</b> — Usa apenas o trecho que você destacou. Ideal para partes específicas (um método, um bloco complexo, uma query).
         </div>
         <div class="position-relative">
-          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-selection">
+          <!-- <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-selection">
             <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-          </button>
+          </button> -->
           <pre><code id="var-cmd-selection" class="language-bash">/explain #selection
 /comment #selection
 /fix #selection
@@ -96,9 +96,9 @@ Explique o método onSave em #file e aponte riscos</code></pre>
           <b>#file</b> — Considera o arquivo inteiro (bom para visão geral, docs, padronização e otimizações amplas).
         </div>
         <div class="position-relative">
-          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-file">
+          <!-- <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-file">
             <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-          </button>
+          </button> -->
           <pre><code id="var-cmd-file" class="language-bash">Mapeie responsabilidades e dependências em #file
 /docs #file
 /optimize #file
@@ -112,9 +112,9 @@ Encontre cheiros de código em #file e proponha refatorações</code></pre>
           <b>#class</b> — Contexto da classe atual (quando a linguagem/suporte permitir). Se não funcionar, selecione a classe e use <code>#selection</code>.
         </div>
         <div class="position-relative">
-          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-class">
+          <!-- <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-class">
             <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-          </button>
+          </button> -->
           <pre><code id="var-cmd-class" class="language-bash">/explain #class
 /docs #class
 Identifique violações de SRP em #class e sugira divisão em classes menores</code></pre>
@@ -127,9 +127,9 @@ Identifique violações de SRP em #class e sugira divisão em classes menores</c
           <b>#project</b> — Contexto amplo do workspace. Útil para arquitetura, convenções, e dependências. (Dica: seja específico no pedido para não vir genérico demais.)
         </div>
         <div class="position-relative">
-          <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-project">
+          <!-- <button class="btn btn-xs btn-outline-info btn-custom position-absolute top-0 end-0 m-1" data-target="var-cmd-project">
             <iconify-icon icon="mdi:content-copy" width="14" height="14"></iconify-icon>
-          </button>
+          </button> -->
           <pre><code id="var-cmd-project" class="language-bash">Analise #project e liste problemas de arquitetura por módulo
 Padronize nomenclaturas e estilos detectados em #project
 Sugira um plano de refatoração incremental para #project (priorize alto impacto/baixo risco)</code></pre>
