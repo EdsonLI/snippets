@@ -17,7 +17,11 @@
 <div class="snippet-code position-relative">     
 <pre>
 <code class="language-sql" id="snippet-sql-procedure-clear-company">
+START TRANSACTION;
+SET FOREIGN_KEY_CHECKS = 0;
 CALL CleanCompanyData(13433, 'product_stock_balance,bank_summary');
+SET FOREIGN_KEY_CHECKS = 1;
+COMMIT;
 </code>
 </pre>
 <pre><code class="language-sql">DELIMITER //
